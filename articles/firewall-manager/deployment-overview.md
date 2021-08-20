@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: ceb6e84b31067f7289b9e003a4fb273ce717de33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bed9249b521d1b45f7d2bf6254802556c38b60d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89079097"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345919"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Übersicht über die Bereitstellung mit Azure Firewall Manager
 
@@ -62,10 +62,7 @@ Es gibt mehrere Möglichkeiten, Azure Firewall Manager bereitzustellen, jedoch s
    - Leiten Sie mithilfe der Seite zur Routeneinstellung für geschützte virtuelle Hubs den Datenverkehr zur Filterung und Protokollierung ohne benutzerdefinierte Routen (UDR) auf virtuellen Spoke-Netzwerken einfach an Ihren geschützten Hub weiter.
 
 > [!NOTE]
-> - Sie können nicht mehr als einen Hub pro virtuellem WAN verwenden. Aber Sie können mehrere virtuelle WANs in der Region hinzufügen, um dies zu erreichen.
 > - Überlappende IP-Adressräume für Hubs sind in einem VWAN nicht möglich.
-> - Ihre Hub-VNET-Verbindungen müssen sich in der gleichen Region wie der Hub befinden.
->
 > Weitere bekannte Probleme finden Sie unter [Was ist Azure Firewall Manager?](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>Konvertieren von virtuellen Netzwerken

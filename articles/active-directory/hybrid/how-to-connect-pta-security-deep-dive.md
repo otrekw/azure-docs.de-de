@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f9faf134c47bdcb67d6a745be3d0c9980713c29
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89280144"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107026"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -220,6 +220,6 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://aka.ms/adfstoptadpdownload): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
 - [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren Sie die Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen.
 - [Funktionsweise](how-to-connect-pta-how-it-works.md): Lernen Sie die grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD kennen.
-- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Finden Sie Antworten auf häufig gestellte Fragen.
+- [Häufig gestellte Fragen](how-to-connect-pta-faq.yml): Finden Sie Antworten auf häufig gestellte Fragen.
 - [Problembehandlung](tshoot-connect-pass-through-authentication.md): Hier finden Sie Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können.
 - [Nahtloses einmaliges Anmelden mit Azure AD:](how-to-connect-sso.md) Erfahren Sie mehr über diese Ergänzungsfunktion.

@@ -3,13 +3,13 @@ title: 'Entwickeln und Bereitstellen eines gRPC-Rückschlussservers: Azure Video
 description: Dieser Artikel enthält Anleitungen zum Entwickeln und Bereitstellen eines gRPC-Rückschlussservers, der mit Azure Video Analyzer verwendet werden soll.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/01/2021
-ms.openlocfilehash: 499620dd0fc2f200f0f0a5080b9ab540a07f1df3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 5d0e09bc4d1f542de0e59a7dc6da37248d2e0674
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385826"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601432"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
 
@@ -42,7 +42,7 @@ Führen Sie die erforderlichen Schritte aus, um das Video Analyzer-Modul bereitz
 1. Wählen Sie eine der zahlreichen Sprachen aus, die von gRPC unterstützt werden: C#, C++, Dart, Go, Java, Node, Objective-C, PHP, Python, Ruby.
 1. Implementieren Sie einen gRPC-Server, der über die [proto3-Dateien](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc) mit Azure Video Analyzer kommuniziert.
 
-    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.png" alt-text="gRPC-Server, der über die proto3-Dateien mit Azure Video Analyzer kommuniziert":::
+    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.svg" alt-text="gRPC-Server, der über die proto3-Dateien mit Azure Video Analyzer kommuniziert":::
 
     In diesem Dienst:
     1. Behandeln Sie den Austausch von Sitzungsbeschreibungsnachrichten zwischen dem Server und dem Client.

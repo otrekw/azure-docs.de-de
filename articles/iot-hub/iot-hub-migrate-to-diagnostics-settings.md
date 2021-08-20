@@ -2,18 +2,17 @@
 title: Migrieren der Azure IoT Hub-Betriebsüberwachung zu IoT Hub-Ressourcenprotokollen in Azure Monitor | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure IoT Hub aktualisieren, damit zur Echtzeitüberwachung des Status von Vorgängen in Ihrem IoT-Hub Azure Monitor anstelle der Betriebsüberwachung verwendet wird.
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41b3298e265fb3dab41a6fc1af51e3ff0829489
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591841"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355223"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrieren Ihrer IoT Hub-Instanz von der Betriebsüberwachung zu Azure Monitor-Ressourcenprotokollen
 

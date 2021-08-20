@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 07/01/2021
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d9eb9843e9ce0d59c28b2011164611e2a54e2b68
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865295"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215365"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -49,7 +49,7 @@ Ein Benutzer muss seine Unternehmensanmeldeinformationen ein zweites Mal eingebe
 
 Im folgenden Abschnitt wird ausführlich beschrieben, wie die Kennworthashsynchronisierung zwischen Active Directory und Azure AD funktioniert.
 
-![Detaillierter Kennwortfluss](./media/how-to-connect-password-hash-synchronization/arch3b.png)
+[![Detaillierter Kennwortfluss](./media/how-to-connect-password-hash-synchronization/arch3d.png)](./media/how-to-connect-password-hash-synchronization/arch3d.png#lightbox)
 
 1. Alle zwei Minuten fordert der Kennworthashsynchronisierungs-Agent auf dem AD Connect-Server gespeicherte Kennworthashes (unicodePwd-Attribut) von einem DC an.  Diese Anforderung erfolgt über das [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47)-Standardreplikationsprotokoll, das zum Synchronisieren von Daten zwischen DCs verwendet wird. Das Dienstkonto muss die AD-Berechtigungen „Verzeichnisänderungen replizieren“ und „Verzeichnisänderungen replizieren: Alle“ haben (die bei der Installation standardmäßig erteilt werden), um die Kennworthashes abzurufen.
 2. Vor dem Senden verschlüsselt der Domänencontroller den MD4-Kennworthash mithilfe eines Schlüssels, bei dem es sich um einen [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt)-Hash des RPC-Sitzungsschlüssel und einen Salt-Wert handelt. Anschließend wird das Ergebnis über RPC an den Kennworthashsynchronisierungs-Agent gesendet. Der Domänencontroller übergibt auch mithilfe des Replikationsprotokolls des Domänencontrollers den Salt-Wert an den Synchronisierungs-Agent, damit der Agent den Umschlag entschlüsseln kann.

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure App Service Sie bei der Aufrechterhaltung d
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ba7e71570e235de297bd0eabc466b5ea180ece
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87073745"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895227"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Verschieben von App Service-Apps in eine andere Region
 
@@ -29,7 +29,7 @@ Ermitteln Sie alle App Service-Ressourcen, die die betroffene App zurzeit verwen
 - [App Service-Pläne](overview-hosting-plans.md)
 - [Bereitstellungsslots](deploy-staging-slots.md)
 - [In Azure erworbene benutzerdefinierte Domänen](manage-custom-dns-buy-domain.md)
-- [SSL-Zertifikate](configure-ssl-certificate.md)
+- [TLS-/SSL-Zertifikate](configure-ssl-certificate.md)
 - [Integration des virtuellen Azure-Netzwerks](web-sites-integrate-with-vnet.md)
 - [Hybridverbindungen](app-service-hybrid-connections.md)
 - [Verwaltete Identitäten](overview-managed-identity.md)

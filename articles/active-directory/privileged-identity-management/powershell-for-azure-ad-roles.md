@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 936351dd9f2b19fab4ea95012b118d00d0c87299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548749"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349403"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell für Azure AD-Rollen in Privileged Identity Management (PIM)
 
 Dieser Artikel enthält Anweisungen für die Verwendung von Azure Active Directory (Azure AD) PowerShell-Cmdlets, um Azure AD-Rollen in Privileged Identity Management (PIM) zu verwenden. Darüber hinaus erfahren Sie, wie das Azure AD PowerShell-Modul eingerichtet wird.
-
-> [!Note]
-> Die offizielle PowerShell wird nur unterstützt, wenn Sie die neue Version von Azure AD Privileged Identity Management verwenden. Navigieren Sie zu Privileged Identity Management, und stellen Sie sicher, dass das folgende Banner auf der Schnellstartseite angezeigt wird.
-> [![Überprüfen der vorhandenen Version von Privileged Identity Management](media/pim-how-to-add-role-to-user/pim-new-version.png "Auswählen von „Azure AD“ > „Privileged Identity Management“")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) Wenn dieses Banner nicht angezeigt wird, warten Sie bitte noch, da wir derzeit damit beschäftigt sind, in den nächsten Wochen diese aktualisierte Umgebung einzuführen.
-> Die PowerShell-Cmdlets in Privileged Identity Management werden durch das Azure AD Preview-Modul unterstützt. Wenn Sie bisher ein anderes Modul verwendet haben und bei diesem Modul jetzt eine Fehlermeldung erhalten, verwenden Sie das neue Modul. Wenn Sie ein anderes Modul verwenden und Produktionssysteme damit eingerichtet haben, wenden Sie sich an [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com).
 
 ## <a name="installation-and-setup"></a>Installation und Einrichtung
 
@@ -159,7 +154,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
-- [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
-- [Konfigurieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-configure.md)
 - [Rollendefinitionen in Azure AD](../roles/permissions-reference.md)

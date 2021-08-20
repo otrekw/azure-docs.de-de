@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 53c0ad42e51e8ffc562827e9a67e01b132dafd89
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76fb327eaf2f95bd96513f6382a00e29a54fe893
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776718"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462244"
 ---
 # <a name="use-robocopy-to-migrate-to-azure-file-shares"></a>Verwenden von Robocopy zum Migrieren zu Azure-Dateifreigaben
 
@@ -23,6 +23,13 @@ In diesem Migrationsartikel wird die Verwendung von Robocopy zum Verschieben ode
 > * Migrationsroute: vom Quellspeicherort &rArr; Windows-Computer mit Robocopy &rArr; Azure-Dateifreigabe
 
 Es gibt viele verschiedene Migrationsrouten für unterschiedliche Quell- und Bereitstellungskombinationen. Anhand der [Tabelle der Migrationsleitfäden](storage-files-migration-overview.md#migration-guides) können Sie die Migration ermitteln, die Ihren Anforderungen am besten entspricht.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="azcopy-vs-robocopy"></a>AzCopy im Vergleich zu Robocopy
 AzCopy und Robocopy sind zwei grundlegend verschiedene Tools zum Kopieren von Dateien. Robocopy verwendet eine beliebige Version des SMB-Protokolls. AzCopy ist ein cloudnatives Tool, das zum Verschieben von Daten verwendet werden kann, sofern sich das Ziel in Azure Storage befindet. AzCopy ist von einem REST-Protokoll abhängig.

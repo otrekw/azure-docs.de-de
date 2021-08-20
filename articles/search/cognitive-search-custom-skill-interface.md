@@ -2,18 +2,17 @@
 title: Schnittstellendefinition für benutzerdefinierte Skills
 titleSuffix: Azure Cognitive Search
 description: Anpassen der Schnittstelle für die Datenextraktion für benutzerdefinierte Web-API-Skills in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4cc3d7f1ce22b89f115e2aec69b45c474cb42b3
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935414"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728448"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Anreicherungspipeline der kognitiven Azure-Suche
 

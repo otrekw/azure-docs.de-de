@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: fd19bce05d18eb8f9b8fd3806082caeebe98bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5767818bbba94c6c923a493a0aee14eb6b26c311
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013991"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419557"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-> [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-v-2-v-3-migration-introduction.md).
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 Ab windowsazure.mediaservices 4.0.0.4 unterstützt Azure Media Services auf Azure Active Directory (Azure AD) basierende Authentifizierung. In diesem Thema wird gezeigt, wie Sie die Azure AD-Authentifizierung verwenden, um auf die Azure Media Services-API mit Microsoft .NET zuzugreifen.
 

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bae05ac9f7b8287cf7e66a0c1a0e634e8d541489
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582541"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678784"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -63,7 +63,7 @@ Sie können eine App in einen anderen App Service-Plan verschieben, solange sich
    > [!IMPORTANT]
    > Wenn Sie eine App aus einem Plan mit einem höheren Tarif in einen Plan mit einem niedrigeren Tarif verschieben, z. B. von **D1** in **F1**, kann die App bestimmte Funktionen im Zielplan verlieren. Wenn Ihrer App beispielsweise TLS/SSL-Zertifikate verwendet, wird Ihnen möglicherweise folgende Fehlermeldung angezeigt:
    >
-   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+   > `Cannot update the site with hostname '<app_name>' because its current TLS/SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed TLS/SSL configuration is 'Disabled'.`
 
 5. Wenn Sie fertig sind, wählen Sie **OK** aus.
    

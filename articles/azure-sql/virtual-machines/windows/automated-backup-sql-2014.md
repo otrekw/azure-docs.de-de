@@ -15,12 +15,12 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 63cedc008595cc899490f51c42b8c83dac79eecc
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: cad63eaa8e548e48e76bba63e5ba70358b34cd99
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346247"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,11 +78,9 @@ Scrollen Sie auf der Registerkarte **SQL Server-Einstellungen** nach unten zu **
 
 ## <a name="configure-existing-vms"></a>Konfigurieren vorhandener VMs
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 Für vorhandene SQL Server-VMs können Sie automatisierte Sicherungen aktivieren und deaktivieren, die Beibehaltungsdauer ändern, das Speicherkonto angeben und die Verschlüsselung über das Azure-Portal aktivieren. 
 
-Navigieren Sie für Ihren virtuellen SQL Server 2014-Computer zur [Ressource für virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource), und wählen Sie dann **Sicherungen** aus. 
+Navigieren Sie für Ihren virtuellen SQL Server 2014-Computer zur [Ressource für virtuelle SQL-Computer](manage-sql-vm-portal.md#access-the-resource), und wählen Sie dann **Sicherungen** aus. 
 
 ![Automatisierte SQL-Sicherung für vorhandene virtuelle Computer](./media/automated-backup-sql-2014/azure-sql-rm-autobackup-existing-vms.png)
 
@@ -91,7 +89,7 @@ Wählen Sie abschließend die Schaltfläche **Übernehmen** am unteren Rand der 
 Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
 > [!NOTE]
-> Sie können die automatisierte Sicherung auch mithilfe einer Vorlage konfigurieren. Weitere Informationen finden Sie unter [Azure quickstart template for Automated Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update)(Azure-Schnellstartvorlage für die automatisierte Sicherung).
+> Sie können die automatisierte Sicherung auch mithilfe einer Vorlage konfigurieren. Weitere Informationen finden Sie unter [Azure quickstart template for Automated Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-existing-autobackup-update)(Azure-Schnellstartvorlage für die automatisierte Sicherung).
 
 ## <a name="configure-with-powershell"></a>Konfigurieren mithilfe von PowerShell
 
@@ -268,7 +266,7 @@ Zum einen können Sie den Status durch Aufruf von [msdb.smart_admin.sp_get_backu
 Eine andere Option besteht darin, das integrierte Datenbank-E-Mail-Feature für Benachrichtigungen zu verwenden.
 
 1. Rufen Sie die gespeicherte Prozedur [msdb.smart_admin.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) auf, um dem Parameter **SSMBackup2WANotificationEmailIds** eine E-Mail-Adresse zuzuweisen. 
-1. Aktivieren Sie [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md), um die E-Mails von der Azure-VM zu senden.
+1. Aktivieren Sie [SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account), um die E-Mails von der Azure-VM zu senden.
 1. Verwenden Sie den SMTP-Server und den Benutzernamen, um das Datenbank-E-Mail-Feature zu konfigurieren. Sie können das Datenbank-E-Mail-Feature in SQL Server Management Studio oder mithilfe von Transact-SQL-Befehlen konfigurieren. Weitere Informationen finden Sie unter [Datenbank-E-Mail](/sql/relational-databases/database-mail/database-mail).
 1. [Konfigurieren Sie den SQL Server-Agent für die Verwendung von Datenbank-E-Mail](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail).
 1. Stellen Sie sicher, dass der SMTP-Port sowohl in der lokalen VM-Firewall als auch in der Netzwerksicherheitsgruppe für die VM zugelassen ist.

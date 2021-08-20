@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: fb28a431f9f2f136d177a5d51398bc2427a7134d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3c03a6a712190e972347b1e40c5583b5dc74792f
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540166"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429776"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -28,6 +28,8 @@ Azure Cognitive Services sind cloudbasierte Dienste mit REST-APIs und Clientbibl
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein gültiges Azure-Abonnement: [Erstellen Sie ein kostenloses Abonnement](https://azure.microsoft.com/free/cognitive-services/).
+* [!INCLUDE [contributor-requirement](./includes/quickstarts/contributor-requirement.md)]
+
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Erstellen einer neuen Azure Cognitive Services-Ressource
 
@@ -63,7 +65,7 @@ Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cogni
 
 ### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
 
-|Projektdetails| Beschreibung   |
+|Projektdetails| BESCHREIBUNG   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
@@ -78,7 +80,7 @@ Lesen und akzeptieren Sie die Bedingungen (nach Ihren Anforderungen), und wähle
 
 ### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
-|Projektdetails| Beschreibung   |
+|Projektdetails| BESCHREIBUNG   |
 |--|--|
 | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
 | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |

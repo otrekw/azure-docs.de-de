@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 7046ac7852585a51174c774a0ef2f1150a72ae1f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 011420abfbd6bf5994aa65024651f2bbd34e1bf4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591960"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346945"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -65,21 +65,6 @@ GROUP BY SalesOrderID, UnitPrice, UnitPriceDiscount WITH ROLLUP;
 
 Weitere Informationen: [Nicht mehr unterstützte Datenbank-Engine-Funktionalität in SQL Server](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="change-data-capture-cdc"></a>Change Data Capture (CDC)<a id="CDC"></a>
-
-**Titel: Change Data Capture (CDC) wird in Azure SQL-Datenbank nicht unterstützt.**    
-**Kategorie**: Problem   
-
-
-**Beschreibung**   
-Change Data Capture (CDC) wird in Azure SQL-Datenbank nicht unterstützt. Ermitteln Sie, ob stattdessen die Änderungsnachverfolgung verwendet werden kann.  Alternativ können Sie die Migration zu Azure SQL Managed Instance oder SQL Server auf einem virtuellen Azure-Computer durchführen. 
-
-
-**Empfehlung**   
-Change Data Capture (CDC) wird in Azure SQL-Datenbank nicht unterstützt. Ermitteln Sie, ob stattdessen die Änderungsnachverfolgung genutzt werden kann, oder erwägen Sie die Migration zu Azure SQL Managed Instance.
-
-Weitere Informationen: [Aktivieren der Azure SQL-Änderungsnachverfolgung](https://social.technet.microsoft.com/wiki/contents/articles/2976.azure-sql-how-to-enable-change-tracking.aspx)
-
 ## <a name="clr-assemblies"></a>CLR-Assemblys<a id="ClrAssemblies"></a>
 
 **Titel: SQL-CLR-Assemblys werden in Azure SQL-Datenbank nicht unterstützt.**    
@@ -93,7 +78,7 @@ Azure SQL-Datenbank unterstützt keine SQL-CLR-Assemblys.
 **Empfehlung**   
 Derzeit gibt es keine Möglichkeit, dies in Azure SQL-Datenbank zu erreichen. Für die empfohlenen Alternativlösungen dürfen für Anwendungscode und Datenbankänderungen nur Assemblys genutzt werden, die von Azure SQL-Datenbank unterstützt werden. Alternativ können Sie die Migration zu Azure SQL Managed Instance oder SQL Server auf einem virtuellen Azure-Computer durchführen.
 
-Weitere Informationen: [Fehlende Unterstützung von Transact-SQL: Unterschiede in SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+Weitere Informationen: [Fehlende Unterstützung von Transact-SQL: Unterschiede in SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 ## <a name="cryptographic-provider"></a>Kryptografieanbieter<a id="CryptographicProvider"></a>
 
@@ -249,7 +234,7 @@ Weitere Informationen: [Transaktionen über mehrere Server für Azure SQL Manage
 **Empfehlung**   
 Azure SQL-Datenbank kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden. Aus diesem Grund wird für die OPENROWSET-Funktion nur der Blobtyp DATASOURCE unterstützt. Alternativ können Sie zu SQL Server auf dem virtuellen Azure-Computer migrieren.
 
-Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="openrowset-provider"></a>OPENROWSET (Anbieter)<a id="OpenRowsetWithSQLAndNonSQLProvider"></a>
@@ -264,7 +249,7 @@ OpenRowSet mit einem SQL- oder anderen Anbieter ist eine Alternative zum Zugriff
 **Empfehlung**   
 Azure SQL-Datenbank unterstützt OPENROWSET nur für den Import aus Azure Blob Storage. Alternativ können Sie zu SQL Server auf dem virtuellen Azure-Computer migrieren.
 
-Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="non-ansi-left-outer-join"></a>Linke äußere Verknüpfung (kein ANSI)<a id="NonANSILeftOuterJoinSyntax"></a>
@@ -374,7 +359,7 @@ Ein Trigger ist eine besondere Art von gespeicherter Prozedur, die als Reaktion 
 **Empfehlung**   
 Verwenden Sie stattdessen einen Trigger auf Datenbankebene. Alternativ können Sie die Migration zu Azure SQL Managed Instance oder SQL Server auf einem virtuellen Azure-Computer durchführen.
 
-Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge<a id="AgentJobs"></a>
@@ -444,7 +429,7 @@ Ablaufverfolgungsflags werden zur temporären Festlegung bestimmter Servereigens
 **Empfehlung**   
 Sehen Sie sich in Azure Migrate den Abschnitt mit den betroffenen Objekten an. Darin sind alle Ablaufverfolgungsflags aufgeführt, die in Azure SQL-Datenbank nicht unterstützt werden, und Sie können ermitteln, ob sie entfernt werden können. Alternativ können Sie die Migration zum Dienst Azure SQL Managed Instance, für den eine begrenzte Anzahl von globalen Ablaufverfolgungsflags unterstützt wird, oder zu SQL Server auf einem virtuellen Azure-Computer durchführen.
 
-Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+Weitere Informationen: [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="windows-authentication"></a>Windows-Authentifizierung<a id="WindowsAuthentication"></a>

@@ -7,13 +7,12 @@ ms.date: 08/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd73c1ef16b48340a77ce6a64823465a4f893b05
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91999724"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347142"
 ---
 # <a name="toggle-live-chat"></a>Ein-/Ausschalten des Livechats
 
@@ -49,4 +48,4 @@ Um den Chat anzuzeigen, wählen Sie im Bereich **Hilfe** die Option **Chat anzei
 Nachdem Sie erfahren haben, wie Sie einen Livechat in Azure IoT Central ein-/ausschalten, empfehlen wir Ihnen nun als nächsten Schritt Folgendes:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-add-tiles-to-your-dashboard.md)
+> [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-manage-dashboards.md)

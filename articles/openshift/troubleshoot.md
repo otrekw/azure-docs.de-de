@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: troubleshooting
 ms.date: 05/08/2019
-ms.openlocfilehash: af66abff3507279dd1954fd83627900578229866
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b68a84b599f8dab071b54f566721ecd7118294e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100632950"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090599"
 ---
 # <a name="troubleshooting-for-azure-red-hat-openshift"></a>Problembehandlung für Azure Red Hat OpenShift
 
@@ -36,4 +36,4 @@ Wenn die Erstellung eines Clusters zu einem Fehler der Art `No registered resour
 
 - Im [Hilfecenter zu Red Hat OpenShift](https://help.openshift.com/) finden Sie weitere Informationen zur Problembehandlung für OpenShift.
 
-- Hier erhalten Sie Antworten auf [häufig gestellte Fragen zu Azure Red Hat OpenShift](openshift-faq.md).
+- Hier erhalten Sie Antworten auf [häufig gestellte Fragen zu Azure Red Hat OpenShift](openshift-faq.yml).

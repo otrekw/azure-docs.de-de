@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 45663b7a2229de0600e60ec2e40c5b721440b997
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346650"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Authentifizierungsmethoden in Azure Active Directory – Microsoft Authenticator-App
 
 Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für Ihr Azure AD-Geschäfts-, Schul- oder Uni-Konto bzw. Ihr Microsoft-Konto und ist verfügbar für [Android](https://go.microsoft.com/fwlink/?linkid=866594) und [iOS](https://go.microsoft.com/fwlink/?linkid=866594). Mit der Microsoft Authenticator-App können sich Benutzer bei der Anmeldung ohne Kennwort authentifizieren. Alternativ können Sie die App bei der Self-Service-Kennwortzurücksetzung (SSPR) oder bei Azure AD Multi-Factor Authentication-Ereignissen als zusätzliche Prüfoption verwenden.
 
-Benutzer erhalten dann eine Benachrichtigung über die mobile App und können den Vorgang genehmigen oder ablehnen. Sie können aber auch mit der Authenticator-App einen OAUTH-Prüfcode generieren und auf einem Anmeldebildschirm eingeben. Wenn Sie sowohl die Benachrichtigung als auch den Prüfcode aktivieren, können Benutzer, die die Microsoft Authenticator-App registrieren, ihre Identität anhand von beiden Methoden bestätigen.
+Benutzer erhalten dann eine Benachrichtigung über die mobile App und können den Vorgang genehmigen oder ablehnen. Sie können aber auch mit der Microsoft Authenticator-App einen OATH-Prüfcode generieren und auf einem Anmeldebildschirm eingeben. Wenn Sie sowohl die Benachrichtigung als auch den Prüfcode aktivieren, können Benutzer, die die Microsoft Authenticator-App registrieren, ihre Identität anhand von beiden Methoden bestätigen.
 
 Informationen zur Verwendung der Microsoft Authenticator-App an einer Anmeldeaufforderung anstelle der Kombination aus Benutzername und Kennwort finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App](howto-authentication-passwordless-phone.md).
 

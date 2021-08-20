@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5f8d78f7080c1505db4a82d9393801ad8418beed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349708"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Leitfaden: Ausführen von .NET 5.0-Funktionen in Azure
 
@@ -44,7 +44,7 @@ Bei der prozessexternen Ausführung bestehen die folgenden Vorteile für Ihre .N
 Ein Projekt mit isolierten .NET-Funktionen ist im Grunde ein Projekt für eine .NET-Konsolen-App mit .NET 5.0 als Ziel. Die folgenden Dateien werden in jedem isolierten .NET-Projekt benötigt:
 
 + [host.json](functions-host-json.md)
-+ [local.settings.json](functions-run-local.md#local-settings-file)
++ [local.settings.json](functions-develop-local.md#local-settings-file)
 + C#-Projektdatei (.csproj), definiert das Projekt und die Abhängigkeiten
 + Program.cs, der Einstiegspunkt für die App
 
@@ -142,7 +142,7 @@ Eine Funktion kann über null oder mehr Eingabebindungen verfügen, die Daten an
 
 ### <a name="output-bindings"></a>Ausgabebindungen
 
-Wenn Sie eine Ausgabebindung schreiben möchten, müssen Sie ein Ausgabebindungsattribut an die Funktionsmethode anfügen, in der definiert ist, wie in den gebundenen Dienst geschrieben werden soll. Der von der Methode zurückgegebene Wert wird in die Ausgabebindung geschrieben. Im folgenden Beispiel wird ein Zeichenfolgenwert mithilfe einer Ausgabebindung in die Nachrichtenwarteschlange `functiontesting2` geschrieben:
+Wenn Sie eine Ausgabebindung schreiben möchten, müssen Sie ein Ausgabebindungsattribut an die Funktionsmethode anfügen, in der definiert ist, wie in den gebundenen Dienst geschrieben werden soll. Der von der Methode zurückgegebene Wert wird in die Ausgabebindung geschrieben. Im folgenden Beispiel wird ein Zeichenfolgenwert mithilfe einer Ausgabebindung in die Nachrichtenwarteschlange `myqueue-output` geschrieben:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 

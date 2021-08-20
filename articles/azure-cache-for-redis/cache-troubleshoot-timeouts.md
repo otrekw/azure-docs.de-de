@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4549978925f2e7016b54ce3004eabadaa8e985f
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88213460"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134346"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problembehandlung bei Timeouts bei Azure Cache for Redis
 
@@ -50,6 +50,8 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 | wr |Es ist ein aktiver Writer vorhanden (d. h., die 6 noch nicht gesendeten Anforderungen werden nicht ignoriert); Bytes/aktive Writer. |
 | in |Es sind keine aktiven Reader vorhanden, und null Bytes sind zum Lesen auf der NIC (Network Interface Card, Netzwerkschnittstellenkarte) vorhanden; Bytes/aktive Reader |
 
+Im vorherigen Ausnahmebeispiel enthalten die Abschnitte `IOCP` und `WORKER` jeweils einen `Busy`-Wert, der größer als der `Min`-Wert ist. Der Unterschied bedeutet, dass Sie Ihre `ThreadPool`-Einstellungen anpassen sollten. Sie können Ihre [ThreadPool-Einstellungen](cache-management-faq.yml#important-details-about-threadpool-growth) so konfigurieren, dass sichergestellt ist, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
+
 Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
 1. Wenn Sie den StackExchange.Redis-Client verwenden, sollten Sie als bewährte Methode zum Herstellen der Verbindung das folgende Muster verwenden.
@@ -74,10 +76,10 @@ Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
 1. Stellen Sie sicher, dass sich Ihr Server und die Clientanwendung in der gleichen Azure-Region befinden. Wenn Ihr Cache z. B. in der Region „USA, Osten“ und Ihr Client in der Region „USA, Westen“ angesiedelt ist, erhalten Sie möglicherweise Timeouts, und die Anforderung wird nicht innerhalb des `synctimeout`-Intervalls abgeschlossen. Auch beim Debuggen über den lokalen Entwicklungscomputer können Timeouts auftreten. 
 
-    Es wird dringend empfohlen, den Cache und den Client in der gleichen Azure-Region anzusiedeln. Wenn Ihr Szenario regionsübergreifende Aufrufe beinhaltet, sollten Sie das `synctimeout`-Intervall auf einen höheren Wert als die standardmäßigen 5000 ms festlegen. Nehmen Sie zu diesem Zweck eine `synctimeout`-Eigenschaft in die Verbindungszeichenfolge auf. Das folgende Beispiel zeigt einen Codeausschnitt aus einer Verbindungszeichenfolge für StackExchange.Redis, bereitgestellt von Azure Cache for Redis, mit einem `synctimeout` von 2000 ms.
+    Es wird dringend empfohlen, den Cache und den Client in der gleichen Azure-Region anzusiedeln. Wenn Ihr Szenario regionsübergreifende Aufrufe beinhaltet, sollten Sie das `synctimeout`-Intervall auf einen höheren Wert als die standardmäßigen 5000 ms festlegen. Nehmen Sie zu diesem Zweck eine `synctimeout`-Eigenschaft in die Verbindungszeichenfolge auf. Das folgende Beispiel zeigt einen Codeausschnitt aus einer Verbindungszeichenfolge für StackExchange.Redis, bereitgestellt von Azure Cache for Redis, mit einem `synctimeout` von 8000 ms.
 
     ```output
-    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    synctimeout=8000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
     ```
 
 1. Verwenden Sie immer die neueste Version des [NuGet-Pakets für StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/). Es werden ständig Fehler im Code behoben, um ihn widerstandsfähiger gegen Timeouts zu machen. Das Nutzen der neuesten Version ist also wichtig.
@@ -121,5 +123,5 @@ Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
 - [Behandeln von clientseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-client.md)
 - [Behandeln von serverseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-server.md)
-- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md)

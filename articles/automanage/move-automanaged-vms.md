@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: alsin
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 99371b8618756c196b75858288c5c4785272a7e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e9fba5ff9dc10e0691423da689024af3e2b72bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650464"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468345"
 ---
 # <a name="move-an-azure-automanage-virtual-machine-to-a-different-region"></a>Verschieben einer Azure Automanage-VM in eine andere Region
 In diesem Artikel wird beschrieben, wie Sie Automanage auf einem virtuellen Computer (VM) aktivieren, wenn Sie diesen in eine andere Region verschieben. Sie sollten Ihre VMs aus verschiedenen Gründen in eine andere Region verschieben. Beispielsweise, um eine neue Azure-Region zu nutzen, interne Richtlinien- und Governanceanforderungen zu erfüllen oder als Reaktion auf Anforderungen der Kapazitätsplanung. Die VMs, die Sie verschieben, werden derzeit möglicherweise automatisch verwaltet. Dies soll auch nach dem Verschieben noch der Fall sein.
@@ -33,4 +33,4 @@ Nachdem Sie Ihre VMs regionsübergreifend verschoben haben, können Sie Automana
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Azure Automanage finden Sie [hier](./automanage-virtual-machines.md).
-* [Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs](./faq.md)
+* [Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs](./faq.yml)

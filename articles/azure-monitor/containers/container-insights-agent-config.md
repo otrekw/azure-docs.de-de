@@ -3,12 +3,12 @@ title: Konfigurieren der Datensammlung durch den Container Insights-Agent | Micr
 description: In diesem Artikel wird beschrieben, wie Sie den Container Insights-Agent so konfigurieren, dass dieser die Protokollsammlung von stdout-/stderr- sowie Umgebungsvariablen steuert.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1305ddc4417dc294dad865971dcd8970acfb8a2c
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346813"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurieren der Datensammlung des Container Insights-Agents
 
@@ -146,4 +146,4 @@ Die Ausgabe sieht ähnlich der folgenden mit der Anmerkung „schema-versions“
 
 - Wenn die Überwachung aktiviert ist, um Integrität und Ressourcenverwendung Ihres AKS- oder Hybridclusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Container Insights.
 
-- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
+- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-query.md) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.

@@ -1,18 +1,18 @@
 ---
 title: App und Bereitstellung in Azure Spring Cloud
 description: In diesem Themenbereich wird der Unterschied zwischen Applikation und Bereitstellung in Azure Spring Cloud erklärt.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a543d3f6a875c41b3657ccc947c6f697bbcfd09
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b5a48a562781e68d7b653d55eb63d8a9edc71228
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129115"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349875"
 ---
 # <a name="app-and-deployment-in-azure-spring-cloud"></a>App und Bereitstellung in Azure Spring Cloud
 
@@ -27,6 +27,7 @@ Sie können über mehrere Dienstinstanzen innerhalb eines einzelnen Azure-Abonne
 Der Standardtarif der Azure Spring Cloud ermöglicht, dass eine App eine Produktionsbereitstellung und eine Stagingbereitstellung hat, sodass Sie damit auf einfache Weise eine Blue/Green-Bereitstellung durchführen können.
 
 ## <a name="app"></a>App
+
 Die folgenden Features/Eigenschaften werden auf App-Ebene definiert.
 
 | Features | Beschreibung |
@@ -58,4 +59,5 @@ Die folgenden Features/Eigenschaften werden auf der Bereitstellungsebene definie
 * **Die Bereitstellungs Verwaltung ist im Tarif „Basic“ nicht verfügbar**: Verwenden Sie den Tarif „Standard“ für die Blue/Green-Bereitstellungsfunktion.
 
 ## <a name="see-also"></a>Siehe auch
+
 * [Einrichten einer Stagingumgebung in Azure Spring Cloud](./how-to-staging-environment.md)

@@ -2,18 +2,17 @@
 title: 'Bereitstellen von Modulen und Routen mit Bereitstellungsmanifesten: Azure IoT Edge'
 description: Hier erfahren Sie, wie ein Bereitstellungsmanifest deklariert, welche Module auf welche Weise bereitgestellt werden sollen und wie Nachrichtenrouten zwischen ihnen erstellt werden.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a83e2f8c14b2dcb4c97d1189ad262b3ed51b2d79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354914"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
@@ -330,7 +329,7 @@ Hier sehen Sie ein Beispiel für ein gültiges Bereitstellungsmanifestdokument:
             "type": "docker",
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
-              "createOptions": ""
+              "createOptions": "{}"
             }
           },
           "edgeHub": {

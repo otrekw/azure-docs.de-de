@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: cda9aacfc3a207aa43c63cc26189da64fac87e85
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557380"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893922"
 ---
 # <a name="project-cerberus"></a>Project Cerberus
 
@@ -45,6 +45,7 @@ In Verbindung mit dem Hostnachweisdienst erweitern und fördern die Cerberus-Fun
 Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
 - [Firmwaresicherheit](firmware.md)
+- [Codeintegrität auf der Azure-Plattform](code-integrity.md)
 - [Sicherer Start](secure-boot.md)
 - [Gemessener Start- und Hostnachweis](measured-boot-host-attestation.md)
 - [Verschlüsselung ruhender Daten](encryption-atrest.md)

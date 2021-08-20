@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2021
 ms.author: yelevin
-ms.openlocfilehash: b5c9b2d6a586d440218cf4740155bc9fa3bdd3d7
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 60d72bcc687659f27e309942040f46a20aab5d3f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372749"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346210"
 ---
 # <a name="export-and-import-analytics-rules-to-and-from-arm-templates"></a>Exportieren und Importieren von Analyseregeln in und aus ARM-Vorlagen
 
@@ -66,5 +66,5 @@ Die Datei enthält alle in der Analyseregel definierten Parameter. Daher enthäl
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument haben Sie erfahren, wie Sie Analyseregeln in und aus ARM-Vorlagen exportieren und importieren.
-- Erfahren Sie mehr über [Analyseregeln](tutorial-detect-threats-built-in.md), einschließlich [benutzerdefinierter geplanter Regeln](tutorial-detect-threats-custom.md).
+- Erfahren Sie mehr über [Analyseregeln](detect-threats-built-in.md), einschließlich [benutzerdefinierter geplanter Regeln](detect-threats-custom.md).
 - Weitere Informationen zu ARM-Vorlagen finden Sie [hier](../azure-resource-manager/templates/overview.md).

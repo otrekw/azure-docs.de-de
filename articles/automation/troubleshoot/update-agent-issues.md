@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2020
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9dd04181f8118bef21dd64fc92c65cce248c1c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580892"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346622"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Beheben von Problemen mit dem Windows Update-Agent
 
@@ -57,7 +57,7 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 
 ### <a name="net-462"></a>.NET 4.6.2
 
-Bei der .NET Framework-Überprüfung wird untersucht, ob auf dem System [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) oder höher installiert ist.
+Bei der .NET Framework-Überprüfung wird untersucht, ob auf dem System [.NET Framework 4.6.2](https://dotnet.microsoft.com/download/dotnet-framework/net462) oder höher installiert ist.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
@@ -87,7 +87,7 @@ Die Proxy- und Firewallkonfigurationen müssen die Kommunikation des Hybrid Runb
 
 Dieser Test überprüft, ob der Log Analytics-Agent für Windows (`healthservice`) auf dem Computer ausgeführt wird. Weitere Informationen zur Behandlung von Problemen mit dem Dienst finden Sie unter [Der Log Analytics-Agent für Windows wird nicht ausgeführt](hybrid-runbook-worker.md#mma-not-running).
 
-Informationen zum erneuten Installieren des Log Analytics-Agents für Windows finden Sie unter [Installieren des Agents für Windows](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
+Informationen zum erneuten Installieren des Log Analytics-Agents für Windows finden Sie unter [Installieren des Agents für Windows](../../azure-monitor/agents/agent-windows.md).
 
 ### <a name="monitoring-agent-service-events"></a>Ereignisse des Monitoring Agent-Diensts
 

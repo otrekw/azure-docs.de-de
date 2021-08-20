@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: 6dac3b8230a0bad9c6492b236eac5dddc1839471
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498862"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895776"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Gemessener Start- und Hostnachweis
 In diesem Artikel wird beschrieben, wie Microsoft die Integrität und Sicherheit von Hosts durch gemessenen Start- und Hostnachweis gewährleistet.
@@ -55,6 +55,7 @@ UEFI [Secure Boot](secure-boot.md) gewährleistet, dass während der Startsequen
 Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
 - [Firmwaresicherheit](firmware.md)
+- [Codeintegrität auf der Azure-Plattform](code-integrity.md)
 - [Sicherer Start](secure-boot.md)
 - [Project Cerberus](project-cerberus.md)
 - [Verschlüsselung ruhender Daten](encryption-atrest.md)

@@ -2,19 +2,18 @@
 title: Installieren von IoT Edge unter Kubernetes | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie IoT Edge unter Kubernetes mit einer lokalen Entwicklungsclusterumgebung installieren können.
 author: kgremban
-manager: philmea
 ms.author: veyalla
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: iotedge-2018-06
-ms.openlocfilehash: a5407c46be6726974a920b5dddd87639dc426d0d
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c2ca09f036bbd15e87d6e633ba470e56637bf272
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345775"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Installieren von IoT Edge unter Kubernetes (Vorschauversion)
 

@@ -4,12 +4,12 @@ description: Verwenden von Fault Injection und Cluster Analysis Service-APIs zum
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f9746a3c58c32c0e21daaa79491be105fc14a1a
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732430"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136902"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige verteilte Dienste zu erstellen. Um robuste, verteilte Dienste in einer unzuverlässigen Infrastruktur zu schreiben, müssen Entwickler in der Lage sein, die Stabilität ihrer Dienste zu testen, während die zugrunde liegende unzuverlässige Infrastruktur komplizierte Statusübergänge aufgrund von Fehlern durchläuft.
@@ -77,7 +77,7 @@ using System.Fabric;
 using System.Diagnostics;
 using System.Fabric.Chaos.DataStructures;
 
-class Program
+static class Program
 {
     private class ChaosEventComparer : IEqualityComparer<ChaosEvent>
     {
@@ -91,7 +91,7 @@ class Program
         }
     }
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var clusterConnectionString = "localhost:19000";
         using (var client = new FabricClient(clusterConnectionString))
@@ -168,7 +168,7 @@ class Program
 
             try
             {
-                client.TestManager.StartChaosAsync(parameters).GetAwaiter().GetResult();
+                await client.TestManager.StartChaosAsync(parameters);
             }
             catch (FabricChaosAlreadyRunningException)
             {
@@ -187,8 +187,8 @@ class Program
                 try
                 {
                     report = string.IsNullOrEmpty(continuationToken)
-                        ? client.TestManager.GetChaosReportAsync(filter).GetAwaiter().GetResult()
-                        : client.TestManager.GetChaosReportAsync(continuationToken).GetAwaiter().GetResult();
+                        ? await client.TestManager.GetChaosReportAsync(filter)
+                        : await client.TestManager.GetChaosReportAsync(continuationToken);
                 }
                 catch (Exception e)
                 {
@@ -205,7 +205,7 @@ class Program
                         throw;
                     }
 
-                    Task.Delay(TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
+                    await Task.Delay(TimeSpan.FromSeconds(1.0));
                     continue;
                 }
 
@@ -228,7 +228,7 @@ class Program
                     break;
                 }
 
-                Task.Delay(TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
+                await Task.Delay(TimeSpan.FromSeconds(1.0));
             }
         }
     }

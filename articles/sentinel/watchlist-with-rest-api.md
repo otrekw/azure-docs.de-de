@@ -15,17 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
-ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 254647e6e73683b13bd8c1cbeb7b476066c36a7c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98798024"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467964"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>Verwalten von Watchlists in Azure Sentinel mithilfe der REST-API
-
-> [!IMPORTANT]
-> Das Feature Watchlists befindet sich derzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 Mit Azure Sentinel, das teilweise auf Azure Monitor Log Analytics basiert, können Sie mit der REST-API von Log Analytics Watchlists verwalten. In diesem Dokument erfahren Sie, wie Sie Watchlists und deren Elemente mithilfe der REST-API erstellen, ändern und löschen.  Watchlists, die auf diese Weise erstellt werden, werden in der Azure Sentinel-Benutzeroberfläche angezeigt.
 

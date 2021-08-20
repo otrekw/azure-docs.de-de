@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/29/2020
-ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 4708cdc0a7937749e0df9a65267067f5dc31198d
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952166"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343198"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -28,10 +28,10 @@ Ein Plattformfeature von Azure Purview ist die Möglichkeit zum Anzeigen der Her
 ### <a name="data-processing-system"></a>Datenverarbeitungssystem
 Datenintegrations- und ETL-Tools können die Herkunftsinformationen zur Ausführungszeit per Pushvorgang an Azure Purview übertragen. Zu dieser Kategorie von Datensystemen gehören Tools wie Data Factory, Data Share, Synapse, Azure Databricks usw. Die Datenverarbeitungssysteme verweisen auf Datasets als Quelle unterschiedlicher Datenbanken und Speicherlösungen für die Erstellung von Zieldatasets. Die Datenverarbeitungssysteme, die in Bezug auf die Herkunft derzeit in Purview integriert sind, sind unten in der Tabelle aufgeführt.
 
-
 | Datenverarbeitungssystem | Unterstützter Bereich |
 | ---------------------- | ------------|
-| Azure Data Factory | [Kopieraktivität](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [Datenflussaktivität](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Aktivität „SSIS-Paket ausführen“](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [Kopieraktivität](how-to-link-azure-data-factory.md#copy-activity-support) <br> [Datenflussaktivität](how-to-link-azure-data-factory.md#data-flow-support) <br> [Aktivität „SSIS-Paket ausführen“](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
+| Azure Synapse Analytics | [Kopieraktivität](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) |
 | Azure Data Share | [Momentaufnahme freigeben](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>Datenspeichersysteme

@@ -3,19 +3,19 @@ title: Trainieren und Bereitstellen eines Custom Speech-Modells – Speech-Dien
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Custom Speech-Modelle trainieren und bereitstellen können. Das Training einer Spracherkennung kann die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell verbessern.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 4ba046b5461c3b734d54ad3694f0ceea2e5127c6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.author: lajanuar
+ms.openlocfilehash: a174848cf8a08942b9aa3777fc25bb0a0fcb8684
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387042"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350108"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 

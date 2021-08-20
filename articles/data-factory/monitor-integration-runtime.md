@@ -2,17 +2,18 @@
 title: Überwachen einer Integration Runtime in Azure Data Factory
 description: Erfahren Sie, wie verschiedene Arten der Integrationslaufzeit in Azure Data Factory überwacht werden.
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e8a624d715405a32b6ceb24912161709bf89806
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 10770e3df3f666163958344868a86ee8e7374d55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670737"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349512"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -42,7 +43,7 @@ Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollstä
 
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 -------- | ------------- | 
 | Name | Name der Azure-Integrationslaufzeit. |  
 | State | Status der Azure-Integrationslaufzeit. | 
@@ -71,7 +72,7 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataF
 
 Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 | -------- | ----------- | 
 | Name | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
 | Status | Der Status der allgemeinen selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im nächsten Abschnitt. | 

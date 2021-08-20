@@ -4,15 +4,16 @@ description: Hier erfahren Sie, wie Sie mithilfe einer Lösungsvorlage Daten aus
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e313e3cb6711a844b4e0aa44a5453fc945a974d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346537"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 

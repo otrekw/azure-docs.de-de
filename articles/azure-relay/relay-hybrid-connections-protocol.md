@@ -2,13 +2,13 @@
 title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokumentation
 description: In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: fb87a2deb40455befccdd1d7ae4b0b54010b1af3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314217"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668731"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 

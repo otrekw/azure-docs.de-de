@@ -7,13 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 278dae8b3569dd0ff92d3ba12197d1049070167a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91310168"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355692"
 ---
 # <a name="supported-data-format-details"></a>Details zu unterstützten Datenformaten
 
@@ -49,83 +48,83 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | partial | ja     | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
 | `AddressDetails`     | partial | nein      | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
-| `atom:author`        | ja     | ja     |                                                                                                                            |
-| `atom:link`          | ja     | ja     |                                                                                                                            |
-| `atom:name`          | ja     | ja     |                                                                                                                            |
+| `atom:author`        | ja     | Ja     |                                                                                                                            |
+| `atom:link`          | Ja     | Ja     |                                                                                                                            |
+| `atom:name`          | Ja     | ja     |                                                                                                                            |
 | `BalloonStyle`       | partial | partial | `displayMode` wird nicht unterstützt. Wird in `PopupTemplate` konvertiert. Fügen Sie zum Schreiben eine Eigenschaft vom Typ `popupTemplate` als Eigenschaft des Features hinzu, für das der Schreibvorgang ausgeführt werden soll. |
-| `begin`              | ja     | ja     |                                                                                                                            |
-| `color`              | ja     | ja     | Beinhaltet `#AABBGGRR` und `#BBGGRR`. Wird analysiert, um eine CSS-Farbzeichenfolge zu erhalten.                                                           |
-| `colorMode`          | ja     | nein      |                                                                                                                            |
-| `coordinates`        | ja     | ja     |                                                                                                                            |
-| `Data`               | ja     | ja     |                                                                                                                            |
-| `description`        | ja     | ja     |                                                                                                                            |
-| `displayName`        | ja     | ja     |                                                                                                                            |
-| `Document`           | ja     | ja     |                                                                                                                            |
+| `begin`              | ja     | Ja     |                                                                                                                            |
+| `color`              | Ja     | ja     | Beinhaltet `#AABBGGRR` und `#BBGGRR`. Wird analysiert, um eine CSS-Farbzeichenfolge zu erhalten.                                                           |
+| `colorMode`          | ja     | Nein      |                                                                                                                            |
+| `coordinates`        | Ja     | Ja     |                                                                                                                            |
+| `Data`               | Ja     | Ja     |                                                                                                                            |
+| `description`        | Ja     | Ja     |                                                                                                                            |
+| `displayName`        | Ja     | Ja     |                                                                                                                            |
+| `Document`           | Ja     | ja     |                                                                                                                            |
 | `drawOrder`          | partial | nein      | Wird für Bodenüberlagerungen gelesen und zum Sortieren dieser Überlagerungen verwendet. 
-| `east`               | ja     | ja     |                                                                                                                            |
-| `end`                | ja     | ja     |                                                                                                                            |
-| `ExtendedData`       | ja     | ja     | Unterstützt nicht typisierte Elemente vom Typ `Data`, `SimpleData` und `Schema` sowie Entitätsersetzungen im Format `$[dataName]`.                      |
+| `east`               | ja     | Ja     |                                                                                                                            |
+| `end`                | Ja     | Ja     |                                                                                                                            |
+| `ExtendedData`       | Ja     | ja     | Unterstützt nicht typisierte Elemente vom Typ `Data`, `SimpleData` und `Schema` sowie Entitätsersetzungen im Format `$[dataName]`.                      |
 | `extrude`            | partial | partial | Wird nur für Polygone unterstützt. MultiGeometry-Objekte mit Polygonen verschiedener Höhe werden in einzelne Features unterteilt. Linienformate werden nicht unterstützt. Polygone mit der Höhe „0“ werden als flaches Polygon gerendert. Beim Lesen wird die Höhe der ersten Koordinate im äußeren Ring als Höheneigenschaft des Polygons hinzugefügt. Anschließend wird die Höhe der ersten Koordinate verwendet, um das Polygon auf der Karte zu rendern. |
-| `fill`               | ja     | ja     |                                                                                                                            |
-| `Folder`             | ja     | ja     |                                                                                                                            |
-| `GroundOverlay`      | ja     | ja     | `color` wird nicht unterstützt.                                                                                                   |
+| `fill`               | ja     | Ja     |                                                                                                                            |
+| `Folder`             | Ja     | Ja     |                                                                                                                            |
+| `GroundOverlay`      | Ja     | ja     | `color` wird nicht unterstützt.                                                                                                   |
 | `heading`            | partial | nein      | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden.                 |
 | `hotSpot`            | ja     | partial | Ein Schreibvorgang wird nur ausgeführt, wenn Daten in der Eigenschaft der Form gespeichert werden. Einheiten werden nur als Pixel ausgegeben.                         |
 | `href`               | ja     | ja     |                                                                                                                            |
 | `Icon`               | partial | partial | Wird analysiert, aber nicht von `SimpleDataLayer` gerendert. Die Symboleigenschaft der Form wird nur geschrieben, wenn sie URI-Daten enthält. Nur `href` wird unterstützt. |
 | `IconStyle`          | partial | partial | Werte vom Typ `icon`, `heading`, `colorMode` und `hotspots` werden analysiert, aber nicht von `SimpleDataLayer` gerendert.         |
-| `innerBoundaryIs`    | ja     | ja     |                                                                                                                            |
-| `kml`                | ja     | ja     |                                                                                                                            |
-| `LabelStyle`         | nein      | nein      |                                                                                                                            |
-| `LatLonBox`          | ja     | ja     |                                                                                                                            |
-| `gx:LatLonQuad`      | ja     | ja     |                                                                                                                            |
-| `LinearRing`         | ja     | ja     |                                                                                                                            |
-| `LineString`         | ja     | ja     |                                                                                                                            |
-| `LineStyle`          | ja     | ja     | `colorMode` wird nicht unterstützt.                                                                                         |
+| `innerBoundaryIs`    | ja     | Ja     |                                                                                                                            |
+| `kml`                | Ja     | Ja     |                                                                                                                            |
+| `LabelStyle`         | Nein      | Nein      |                                                                                                                            |
+| `LatLonBox`          | Ja     | Ja     |                                                                                                                            |
+| `gx:LatLonQuad`      | Ja     | Ja     |                                                                                                                            |
+| `LinearRing`         | Ja     | Ja     |                                                                                                                            |
+| `LineString`         | Ja     | Ja     |                                                                                                                            |
+| `LineStyle`          | Ja     | ja     | `colorMode` wird nicht unterstützt.                                                                                         |
 | `Link`               | ja     | nein      | Für Netzwerkverbindungen wird nur die Eigenschaft `href` unterstützt.                                                                   |
 | `MultiGeometry`      | partial | partial | Wird beim Lesen ggf. in einzelne Features unterteilt.                                                                     |
-| `name`               | ja     | ja     |                                                                                                                            |
-| `NetworkLink`        | ja     | nein      | Links müssen sich in der gleichen Domäne befinden wie das Dokument.                                                                  |
-| `NetworkLinkControl` | nein      | nein      |                                                                                                                            |
-| `north`              | ja     | ja     |                                                                                                                            |
-| `open`               | ja     | ja     |                                                                                                                            |
-| `outerBoundaryIs`    | ja     | ja     |                                                                                                                            |
-| `outline`            | ja     | ja     |                                                                                                                            |
-| `overlayXY`          | nein      | nein      |                                                                                                                            |
+| `name`               | ja     | Ja     |                                                                                                                            |
+| `NetworkLink`        | Ja     | nein      | Links müssen sich in der gleichen Domäne befinden wie das Dokument.                                                                  |
+| `NetworkLinkControl` | nein      | Nein      |                                                                                                                            |
+| `north`              | Ja     | Ja     |                                                                                                                            |
+| `open`               | Ja     | Ja     |                                                                                                                            |
+| `outerBoundaryIs`    | Ja     | Ja     |                                                                                                                            |
+| `outline`            | Ja     | Ja     |                                                                                                                            |
+| `overlayXY`          | Nein      | nein      |                                                                                                                            |
 | `Pair`               | partial | nein      | Es wird nur der Stil `normal` in einem Element vom Typ `StyleMap` unterstützt. `highlight` wird nicht unterstützt.                                   |
-| `phoneNumber`        | ja     | ja     |                                                                                                                            |
-| `PhotoOverlay`       | nein      | nein      |                                                                                                                            |
-| `Placemark`          | ja     | ja     |                                                                                                                            |
-| `Point`              | ja     | ja     |                                                                                                                            |
-| `Polygon`            | ja     | ja     |                                                                                                                            |
-| `PolyStyle`          | ja     | ja     |                                                                                                                            |
+| `phoneNumber`        | ja     | Ja     |                                                                                                                            |
+| `PhotoOverlay`       | Nein      | Nein      |                                                                                                                            |
+| `Placemark`          | Ja     | Ja     |                                                                                                                            |
+| `Point`              | Ja     | Ja     |                                                                                                                            |
+| `Polygon`            | Ja     | Ja     |                                                                                                                            |
+| `PolyStyle`          | Ja     | ja     |                                                                                                                            |
 | `Region`             | partial | partial | `LatLongBox` wird auf der Dokumentebene unterstützt.                                                                      |
-| `rotation`           | nein      | nein      |                                                                                                                            |
-| `rotationXY`         | nein      | nein      |                                                                                                                            |
-| `scale`              | nein      | nein      |                                                                                                                            |
-| `Schema`             | ja     | ja     |                                                                                                                            |
-| `SchemaData`         | ja     | ja     |                                                                                                                            |
+| `rotation`           | nein      | Nein      |                                                                                                                            |
+| `rotationXY`         | Nein      | Nein      |                                                                                                                            |
+| `scale`              | Nein      | Nein      |                                                                                                                            |
+| `Schema`             | Ja     | Ja     |                                                                                                                            |
+| `SchemaData`         | Ja     | ja     |                                                                                                                            |
 | `schemaUrl`          | partial | ja     | Das Laden von Stilen aus externen Dokumenten, die in keiner KMZ-Datei enthalten sind, wird nicht unterstützt.                             |
-| `ScreenOverlay`      | nein      | nein      |                                                                                                                            |
-| `screenXY`           | nein      | nein      |                                                                                                                            |
-| `SimpleData`         | ja     | ja     |                                                                                                                            |
-| `SimpleField`        | ja     | ja     |                                                                                                                            |
-| `size`               | nein      | nein      |                                                                                                                            |
+| `ScreenOverlay`      | nein      | Nein      |                                                                                                                            |
+| `screenXY`           | Nein      | Nein      |                                                                                                                            |
+| `SimpleData`         | Ja     | Ja     |                                                                                                                            |
+| `SimpleField`        | Ja     | Ja     |                                                                                                                            |
+| `size`               | Nein      | nein      |                                                                                                                            |
 | `Snippet`            | partial | partial | Das Attribut `maxLines` wird ignoriert.                                                                                  |
-| `south`              | ja     | ja     |                                                                                                                            |
-| `Style`              | ja     | ja     |                                                                                                                            |
+| `south`              | ja     | Ja     |                                                                                                                            |
+| `Style`              | Ja     | ja     |                                                                                                                            |
 | `StyleMap`           | partial | nein      | Nur der normale Stil in einem Element vom Typ `StyleMap` wird unterstützt.                                                                        |
 | `styleUrl`           | partial | ja     | URLs für externe Stile werden nicht unterstützt.                                                                         |
 | `text`               | ja     | ja     | Das Ersetzen von `$[geDirections]` wird nicht unterstützt.                                                                          |
-| `textColor`          | ja     | ja     |                                                                                                                            |
-| `TimeSpan`           | ja     | ja     |                                                                                                                            |
-| `TimeStamp`          | ja     | ja     |                                                                                                                            |
-| `value`              | ja     | ja     |                                                                                                                            |
+| `textColor`          | ja     | Ja     |                                                                                                                            |
+| `TimeSpan`           | Ja     | Ja     |                                                                                                                            |
+| `TimeStamp`          | Ja     | Ja     |                                                                                                                            |
+| `value`              | Ja     | ja     |                                                                                                                            |
 | `viewRefreshMode`    | partial | nein      |  Wenn auf einen WMS-Dienst verwiesen wird, wird für Bodenüberlagerungen nur `onStop` unterstützt. `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` wird an die URL angefügt und aktualisiert, wenn die Karte verschoben wird.  |
-| `visibility`         | ja     | ja     |                                                                                                                            |
-| `west`               | ja     | ja     |                                                                                                                            |
-| `when`               | ja     | ja     |                                                                                                                            |
-| `width`              | ja     | ja     |                                                                                                                            |
+| `visibility`         | ja     | Ja     |                                                                                                                            |
+| `west`               | Ja     | Ja     |                                                                                                                            |
+| `when`               | Ja     | Ja     |                                                                                                                            |
+| `width`              | Ja     | ja     |                                                                                                                            |
 
 ### <a name="georss-elements"></a>GeoRSS-Elemente
 
@@ -133,71 +132,71 @@ Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 
 | Elementname             | Lesen    | Schreiben | Hinweise                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
-| `atom:author`            | ja     | ja   |                                                                                                |
-| `atom:category`          | ja     | ja   |                                                                                                |
-| `atom:content`           | ja     | ja   |                                                                                                |
-| `atom:contributor`       | ja     | ja   |                                                                                                |
-| `atom:email`             | ja     | ja   |                                                                                                |
-| `atom:entry`             | ja     | ja   |                                                                                                |
-| `atom:feed`              | ja     | ja   |                                                                                                |
-| `atom:icon`              | ja     | ja   |                                                                                                |
-| `atom:id`                | ja     | ja   |                                                                                                |
-| `atom:link`              | ja     | ja   |                                                                                                |
-| `atom:logo`              | ja     | ja   |                                                                                                |
-| `atom:name`              | ja     | ja   |                                                                                                |
-| `atom:published`         | ja     | ja   |                                                                                                |
-| `atom:rights`            | ja     | ja   |                                                                                                |
-| `atom:source`            | ja     | ja   |                                                                                                |
-| `atom:subtitle`          | ja     | ja   |                                                                                                |
-| `atom:summary`           | ja     | ja   |                                                                                                |
-| `atom:title`             | ja     | ja   |                                                                                                |
-| `atom:updated`           | ja     | ja   |                                                                                                |
-| `atom:uri`               | ja     | ja   |                                                                                                |
-| `geo:lat`                | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
+| `atom:author`            | ja     | Ja   |                                                                                                |
+| `atom:category`          | Ja     | Ja   |                                                                                                |
+| `atom:content`           | Ja     | Ja   |                                                                                                |
+| `atom:contributor`       | Ja     | Ja   |                                                                                                |
+| `atom:email`             | Ja     | Ja   |                                                                                                |
+| `atom:entry`             | Ja     | Ja   |                                                                                                |
+| `atom:feed`              | Ja     | Ja   |                                                                                                |
+| `atom:icon`              | Ja     | Ja   |                                                                                                |
+| `atom:id`                | Ja     | Ja   |                                                                                                |
+| `atom:link`              | Ja     | Ja   |                                                                                                |
+| `atom:logo`              | Ja     | Ja   |                                                                                                |
+| `atom:name`              | Ja     | Ja   |                                                                                                |
+| `atom:published`         | Ja     | Ja   |                                                                                                |
+| `atom:rights`            | Ja     | Ja   |                                                                                                |
+| `atom:source`            | Ja     | Ja   |                                                                                                |
+| `atom:subtitle`          | Ja     | Ja   |                                                                                                |
+| `atom:summary`           | Ja     | Ja   |                                                                                                |
+| `atom:title`             | Ja     | Ja   |                                                                                                |
+| `atom:updated`           | Ja     | Ja   |                                                                                                |
+| `atom:uri`               | Ja     | Ja   |                                                                                                |
+| `geo:lat`                | Ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `geo:lon`                | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `geo:long`               | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `georss:box`             | ja     | nein    | Wird als Polygon gelesen und mit der `subType`-Eigenschaft „Rectangle“ (Rechteck) versehen.                                |
-| `georss:circle`          | ja     | ja   |                                                                                                |
-| `georss:elev`            | ja     | ja   |                                                                                                |
-| `georss:featurename`     | ja     | ja   |                                                                                                |
-| `georss:featuretypetag`  | ja     | ja   |                                                                                                |
-| `georss:floor`           | ja     | ja   |                                                                                                |
-| `georss:line`            | ja     | ja   |                                                                                                |
-| `georss:point`           | ja     | ja   |                                                                                                |
-| `georss:polygon`         | ja     | ja   |                                                                                                |
-| `georss:radius`          | ja     | ja   |                                                                                                |
-| `georss:relationshiptag` | ja     | ja   |                                                                                                |
-| `georss:where`           | ja     | ja   |                                                                                                |
-| `geourl:latitude`        | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
+| `georss:circle`          | ja     | Ja   |                                                                                                |
+| `georss:elev`            | Ja     | Ja   |                                                                                                |
+| `georss:featurename`     | Ja     | Ja   |                                                                                                |
+| `georss:featuretypetag`  | Ja     | Ja   |                                                                                                |
+| `georss:floor`           | Ja     | Ja   |                                                                                                |
+| `georss:line`            | Ja     | Ja   |                                                                                                |
+| `georss:point`           | Ja     | Ja   |                                                                                                |
+| `georss:polygon`         | Ja     | Ja   |                                                                                                |
+| `georss:radius`          | Ja     | Ja   |                                                                                                |
+| `georss:relationshiptag` | Ja     | Ja   |                                                                                                |
+| `georss:where`           | Ja     | Ja   |                                                                                                |
+| `geourl:latitude`        | Ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `geourl:longitude`       | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `position`               | ja     | nein    | Bei manchen XML-Feeds wird GML mit einem Positionstag (anstelle eines `georss:where`-Tags) umschlossen. Dieses Tag wird zwar gelesen, beim Schreiben wird jedoch ein `georss:where`-Tag verwendet. |
 | `rss`                    | ja     | nein    | GeoRSS (im ATOM-Format geschrieben).                                                                 |
 | `rss:author`             | ja     | partial | Wird als `atom:author` geschrieben.                                                                 |
 | `rss:category`           | ja     | partial | Wird als `atom:category` geschrieben.                                                               |
-| `rss:channel`            | ja     | nein    |                                                                                                |
-| `rss:cloud`              | ja     | nein    |                                                                                                |
-| `rss:comments`           | ja     | nein    |                                                                                                |
+| `rss:channel`            | ja     | Nein    |                                                                                                |
+| `rss:cloud`              | Ja     | Nein    |                                                                                                |
+| `rss:comments`           | Ja     | Nein    |                                                                                                |
 | `rss:copyright`          | ja     | partial | Wird als `atom:rights` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `rights` `properties` verfügt.       |
 | `rss:description`        | ja     | partial | Wird als `atom:content` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `content` `properties` verfügt.      |
-| `rss:docs`               | ja     | nein    |                                                                                                |
-| `rss:enclosure`          | ja     | nein    |                                                                                                |
-| `rss:generator`          | ja     | nein    |                                                                                                |
+| `rss:docs`               | ja     | Nein    |                                                                                                |
+| `rss:enclosure`          | Ja     | Nein    |                                                                                                |
+| `rss:generator`          | Ja     | Nein    |                                                                                                |
 | `rss:guid`               | ja     | partial | Wird als `atom:id` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `id` `properties` verfügt.         |
 | `rss:image`              | ja     | partial | Wird als `atom:logo` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `logo` `properties` verfügt.      |
 | `rss:item`               | ja     | partial | Wird als `atom:entry` geschrieben.                                                                  |
-| `rss:language`           | ja     | nein    |                                                                                                |
+| `rss:language`           | ja     | Nein    |                                                                                                |
 | `rss:lastBuildDate`      | ja     | partial | Wird als `atom:updated` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `updated` `properties` verfügt.     |
 | `rss:link`               | ja     | partial | Wird als `atom:link` geschrieben.                                                                   |
 | `rss:managingEditor`     | ja     | partial | Wird als `atom:contributor` geschrieben.                                                            |
 | `rss:pubDate`            | ja     | partial | Wird als `atom:published` geschrieben, wenn die Form noch nicht über eine Eigenschaft vom Typ `published` `properties` verfügt.  |
-| `rss:rating`             | ja     | nein    |                                                                                                |
-| `rss:skipDays`           | ja     | nein    |                                                                                                |
-| `rss:skipHours`          | ja     | nein    |                                                                                                |
+| `rss:rating`             | ja     | Nein    |                                                                                                |
+| `rss:skipDays`           | Ja     | Nein    |                                                                                                |
+| `rss:skipHours`          | Ja     | Nein    |                                                                                                |
 | `rss:source`             | ja     | partial | Wird als `atom:source` geschrieben mit `atom:link` geschrieben.                                       |
-| `rss:textInput`          | ja     | nein    |                                                                                                |
+| `rss:textInput`          | ja     | Nein    |                                                                                                |
 | `rss:title`              | ja     | partial | Wird als `atom:title` geschrieben.                                                                  |
-| `rss:ttl`                | ja     | nein    |                                                                                                |
-| `rss:webMaster`          | ja     | nein    |                                                                                                |
+| `rss:ttl`                | ja     | Nein    |                                                                                                |
+| `rss:webMaster`          | Ja     | nein    |                                                                                                |
 
 ### <a name="gml-elements"></a>GML-Elemente
 
@@ -206,42 +205,42 @@ Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente:
 | Elementname            | Lesen | Schreiben | Hinweise                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | ja  | nein    | Wird als `gml:posList` geschrieben.                                                              |
-| `gml:curveMember`       | ja  | nein    |                                                                                        |
-| `gml:curveMembers`      | ja  | nein    |                                                                                        |
-| `gml:Box`               | ja  | nein    | Wird als `gml:Envelope` geschrieben.                                                             |
-| `gml:description`       | ja  | ja   |                                                                                        |
-| `gml:Envelope`          | ja  | ja   |                                                                                        |
-| `gml:exterior`          | ja  | ja   |                                                                                        |
-| `gml:Feature`           | ja  | nein    | Wird als Form geschrieben.                                                                    |
+| `gml:curveMember`       | ja  | Nein    |                                                                                        |
+| `gml:curveMembers`      | Ja  | Nein    |                                                                                        |
+| `gml:Box`               | Ja  | nein    | Wird als `gml:Envelope` geschrieben.                                                             |
+| `gml:description`       | ja  | Ja   |                                                                                        |
+| `gml:Envelope`          | Ja  | Ja   |                                                                                        |
+| `gml:exterior`          | Ja  | Ja   |                                                                                        |
+| `gml:Feature`           | Ja  | nein    | Wird als Form geschrieben.                                                                    |
 | `gml:FeatureCollection` | ja  | nein    | Wird als Geometrieauflistung geschrieben.                                                      |
 | `gml:featureMember`     | ja  | nein    | Wird als Geometrieauflistung geschrieben.                                                      |
 | `gml:geometry`          | ja  | nein    | Wird als Form geschrieben.                                                                    |
-| `gml:geometryMember`    | ja  | ja   |                                                                                        |
-| `gml:geometryMembers`   | ja  | ja   |                                                                                        |
-| `gml:identifier`        | ja  | ja   |                                                                                        |
-| `gml:innerBoundaryIs`   | ja  | nein    | Wird mithilfe von `gml.interior` geschrieben.                                                          |
-| `gml:interior`          | ja  | ja   |                                                                                        |
-| `gml:LinearRing`        | ja  | ja   |                                                                                        |
-| `gml:LineString`        | ja  | ja   |                                                                                        |
-| `gml:lineStringMember`  | ja  | ja   |                                                                                        |
-| `gml:lineStringMembers` | ja  | nein    |                                                                                        |
-| `gml:MultiCurve`        | ja  | nein    | Liest nur Member vom Typ `gml:LineString`. Wird als `gml.MultiLineString` geschrieben.                  |
+| `gml:geometryMember`    | ja  | Ja   |                                                                                        |
+| `gml:geometryMembers`   | Ja  | Ja   |                                                                                        |
+| `gml:identifier`        | Ja  | Ja   |                                                                                        |
+| `gml:innerBoundaryIs`   | Ja  | nein    | Wird mithilfe von `gml.interior` geschrieben.                                                          |
+| `gml:interior`          | ja  | Ja   |                                                                                        |
+| `gml:LinearRing`        | Ja  | Ja   |                                                                                        |
+| `gml:LineString`        | Ja  | Ja   |                                                                                        |
+| `gml:lineStringMember`  | Ja  | Ja   |                                                                                        |
+| `gml:lineStringMembers` | Ja  | Nein    |                                                                                        |
+| `gml:MultiCurve`        | Ja  | nein    | Liest nur Member vom Typ `gml:LineString`. Wird als `gml.MultiLineString` geschrieben.                  |
 | `gml:MultiGeometry`     | partial  | partial   | Wird nur als FeatureCollection-Element gelesen.                                              |
-| `gml:MultiLineString`   | ja  | ja   |                                                                                        |
-| `gml:MultiPoint`        | ja  | ja   |                                                                                        |
-| `gml:MultiPolygon`      | ja  | ja   |                                                                                        |
-| `gml:MultiSurface`      | ja  | nein    | Liest nur Member vom Typ `gml:Polygon`. Wird als `gml.MultiPolygon` geschrieben.                        |
-| `gml:name`              | ja  | ja   |                                                                                        |
-| `gml:outerBoundaryIs`   | ja  | nein    | Wird mithilfe von `gml.exterior` geschrieben.                                                          |
-| `gml:Point`             | ja  | ja   |                                                                                        |
-| `gml:pointMember`       | ja  | ja   |                                                                                        |
-| `gml:pointMembers`      | ja  | nein    |                                                                                        |
-| `gml:Polygon`           | ja  | ja   |                                                                                        |
-| `gml:polygonMember`     | ja  | ja   |                                                                                        |
-| `gml:polygonMembers`    | ja  | nein    |                                                                                        |
-| `gml:pos`               | ja  | ja   |                                                                                        |
-| `gml:posList`           | ja  | ja   |                                                                                        |
-| `gml:surfaceMember`     | ja  | ja   |                                                                                        |
+| `gml:MultiLineString`   | ja  | Ja   |                                                                                        |
+| `gml:MultiPoint`        | Ja  | Ja   |                                                                                        |
+| `gml:MultiPolygon`      | Ja  | Ja   |                                                                                        |
+| `gml:MultiSurface`      | Ja  | nein    | Liest nur Member vom Typ `gml:Polygon`. Wird als `gml.MultiPolygon` geschrieben.                        |
+| `gml:name`              | ja  | Ja   |                                                                                        |
+| `gml:outerBoundaryIs`   | Ja  | nein    | Wird mithilfe von `gml.exterior` geschrieben.                                                          |
+| `gml:Point`             | ja  | Ja   |                                                                                        |
+| `gml:pointMember`       | Ja  | Ja   |                                                                                        |
+| `gml:pointMembers`      | Ja  | Nein    |                                                                                        |
+| `gml:Polygon`           | Ja  | Ja   |                                                                                        |
+| `gml:polygonMember`     | Ja  | Ja   |                                                                                        |
+| `gml:polygonMembers`    | Ja  | Nein    |                                                                                        |
+| `gml:pos`               | Ja  | Ja   |                                                                                        |
+| `gml:posList`           | Ja  | Ja   |                                                                                        |
+| `gml:surfaceMember`     | Ja  | ja   |                                                                                        |
 
 #### <a name="additional-notes"></a>Weitere Hinweise
 
@@ -256,46 +255,46 @@ Das räumliche E/A-Modul unterstützt die folgenden GPX-Elemente:
 
 | Elementname             | Lesen    | Schreiben   | Hinweise                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
-| `gpx:ageofdgpsdata`      | ja     | ja     |                                                                                             |
-| `gpx:author`             | ja     | ja     |                                                                                             |
-| `gpx:bounds`             | ja     | ja     | Wird beim Lesen in ein LocationRect-Element konvertiert.                                                    |
-| `gpx:cmt`                | ja     | ja     |                                                                                             |
-| `gpx:copyright`          | ja     | ja     |                                                                                             |
-| `gpx:desc`               | ja     | ja     | Wird zur Abstimmung auf andere XML-Formate beim Lesen in eine Beschreibungseigenschaft kopiert.               |
-| `gpx:dgpsid`             | ja     | ja     |                                                                                             |
-| `gpx:ele`                | ja     | ja     |                                                                                             |
+| `gpx:ageofdgpsdata`      | ja     | Ja     |                                                                                             |
+| `gpx:author`             | Ja     | Ja     |                                                                                             |
+| `gpx:bounds`             | Ja     | ja     | Wird beim Lesen in ein LocationRect-Element konvertiert.                                                    |
+| `gpx:cmt`                | ja     | Ja     |                                                                                             |
+| `gpx:copyright`          | Ja     | Ja     |                                                                                             |
+| `gpx:desc`               | Ja     | ja     | Wird zur Abstimmung auf andere XML-Formate beim Lesen in eine Beschreibungseigenschaft kopiert.               |
+| `gpx:dgpsid`             | ja     | Ja     |                                                                                             |
+| `gpx:ele`                | Ja     | ja     |                                                                                             |
 | `gpx:extensions`         | partial | partial | Beim Lesen werden Stilinformationen extrahiert. Alle anderen Erweiterungen werden in einem einfachen JSON-Objekt zusammengefasst. Nur Informationen zum Formstil werden geschrieben. |
-| `gpx:geoidheight`        | ja     | ja     |                                                                                             |
-| `gpx:gpx`                | ja     | ja     |                                                                                             |
-| `gpx:hdop`               | ja     | ja     |                                                                                             |
-| `gpx:link`               | ja     | ja     |                                                                                             |
-| `gpx:magvar`             | ja     | ja     |                                                                                             |
-| `gpx:metadata`           | ja     | ja     |                                                                                             |
-| `gpx:name`               | ja     | ja     |                                                                                             |
-| `gpx:pdop`               | ja     | ja     |                                                                                             |
-| `gpx:rte`                | ja     | ja     |                                                                                             |
-| `gpx:rtept`              | ja     | ja     |                                                                                             |
-| `gpx:sat`                | ja     | ja     |                                                                                             |
-| `gpx:src`                | ja     | ja     |                                                                                             |
-| `gpx:sym`                | ja     | ja     | Der Wert wird erfasst, aber nicht zum Ändern des Reißzweckensymbols verwendet.                               |
-| `gpx:text`               | ja     | ja     |                                                                                             |
-| `gpx:time`               | ja     | ja     |                                                                                             |
-| `gpx:trk`                | ja     | ja     |                                                                                             |
-| `gpx:trkpt`              | ja     | ja     |                                                                                             |
-| `gpx:trkseg`             | ja     | ja     |                                                                                             |
-| `gpx:type`               | ja     | ja     |                                                                                             |
-| `gpx:vdop`               | ja     | ja     |                                                                                             |
-| `gpx:wpt`                | ja     | ja     |                                                                                             |
-| `gpx_style:color`        | ja     | ja     |                                                                                             |
+| `gpx:geoidheight`        | ja     | Ja     |                                                                                             |
+| `gpx:gpx`                | Ja     | Ja     |                                                                                             |
+| `gpx:hdop`               | Ja     | Ja     |                                                                                             |
+| `gpx:link`               | Ja     | Ja     |                                                                                             |
+| `gpx:magvar`             | Ja     | Ja     |                                                                                             |
+| `gpx:metadata`           | Ja     | Ja     |                                                                                             |
+| `gpx:name`               | Ja     | Ja     |                                                                                             |
+| `gpx:pdop`               | Ja     | Ja     |                                                                                             |
+| `gpx:rte`                | Ja     | Ja     |                                                                                             |
+| `gpx:rtept`              | Ja     | Ja     |                                                                                             |
+| `gpx:sat`                | Ja     | Ja     |                                                                                             |
+| `gpx:src`                | Ja     | Ja     |                                                                                             |
+| `gpx:sym`                | Ja     | ja     | Der Wert wird erfasst, aber nicht zum Ändern des Reißzweckensymbols verwendet.                               |
+| `gpx:text`               | ja     | Ja     |                                                                                             |
+| `gpx:time`               | Ja     | Ja     |                                                                                             |
+| `gpx:trk`                | Ja     | Ja     |                                                                                             |
+| `gpx:trkpt`              | Ja     | Ja     |                                                                                             |
+| `gpx:trkseg`             | Ja     | Ja     |                                                                                             |
+| `gpx:type`               | Ja     | Ja     |                                                                                             |
+| `gpx:vdop`               | Ja     | Ja     |                                                                                             |
+| `gpx:wpt`                | Ja     | Ja     |                                                                                             |
+| `gpx_style:color`        | Ja     | ja     |                                                                                             |
 | `gpx_style:line`         | partial | partial | `color`, `opacity`, `width` und `lineCap` werden unterstützt.                                           |
-| `gpx_style:opacity`      | ja     | ja     |                                                                                             |
-| `gpx_style:width`        | ja     | ja     |                                                                                             |
-| `gpxx:DisplayColor`      | ja     | nein      | Dient zum Angeben der Farbe einer Form. Beim Schreiben wird stattdessen die Farbe `gpx_style:line` verwendet.  |
+| `gpx_style:opacity`      | ja     | Ja     |                                                                                             |
+| `gpx_style:width`        | Ja     | Ja     |                                                                                             |
+| `gpxx:DisplayColor`      | Ja     | nein      | Dient zum Angeben der Farbe einer Form. Beim Schreiben wird stattdessen die Farbe `gpx_style:line` verwendet.  |
 | `gpxx:RouteExtension`    | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
 | `gpxx:TrackExtension`    | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
 | `gpxx:WaypointExtension` | partial | nein      | Alle Eigenschaften werden in `properties` eingelesen. Es wird nur `DisplayColor` verwendet.                     |
-| `gpx:keywords`           | ja     | ja     |                                                                                             |
-| `gpx:fix`                | ja     | ja     |                                                                                             |
+| `gpx:keywords`           | ja     | Ja     |                                                                                             |
+| `gpx:fix`                | Ja     | ja     |                                                                                             |
 
 #### <a name="additional-notes"></a>Weitere Hinweise
 

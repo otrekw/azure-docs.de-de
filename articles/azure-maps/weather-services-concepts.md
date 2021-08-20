@@ -7,13 +7,12 @@ ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: d1dbac6df2e4cc4f872cece3f519dbd7d65e2af4
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b123caf65c86980dfa3cacf5e7d412851332afc8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355837"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
@@ -100,7 +99,7 @@ Von einigen Wetterinfodienst-APIs (Vorschau) wird `iconCode` in der Antwort zur�
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Farbskala für Radar- und Satellitenbilder
 
-Über die [Get Map Tile v2-API](/rest/api/maps/renderv2/getmaptilepreview) können Benutzer die neuesten Radar- und Infrarotsatellitenbilder anfordern. Weitere Informationen zur Interpretation von Farben für Radar- und Satellitenkacheln finden Sie im nachfolgenden Leitfaden.
+Über die [Get Map Tile v2-API](/rest/api/maps/render-v2/get-map-tile) können Benutzer die neuesten Radar- und Infrarotsatellitenbilder anfordern. Weitere Informationen zur Interpretation von Farben für Radar- und Satellitenkacheln finden Sie im nachfolgenden Leitfaden.
 
 ### <a name="radar-images"></a>Radarbilder
 

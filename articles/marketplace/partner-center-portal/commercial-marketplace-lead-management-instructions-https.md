@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 05/21/2021
-ms.openlocfilehash: f4ef8d7d29b65af4876912e6dbbd3827693737c6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5b0073f0f6ab3ecfc06d581ab7cf70c6bf27896e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450363"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285164"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -233,7 +233,7 @@ Sie können Ihre Konfiguration mit [Postman](https://app.getpostman.com/app/down
 
 Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für Ihr Angebot im Veröffentlichungsportal zu konfigurieren.
 
-1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an.
 
 1. Wählen Sie Ihr Angebot aus, und wechseln Sie zur Registerkarte **Angebotseinrichtung**.
 

@@ -1,21 +1,20 @@
 ---
 title: Azure IoT-Geräteverwaltung mit IoT-Erweiterung für Azure CLI | Microsoft-Dokumentation
 description: Verwenden Sie das Tool IoT-Erweiterung für Azure CLI mit den Verwaltungsmethoden für direkte Methoden und gewünschte Eigenschaften von Gerätezwillingen.
-author: chrissie926
+author: robinsh
 manager: ''
 keywords: Azure Iot-Geräteverwaltung, Azure IoT Hub-Geräteverwaltung, IoT-Geräteverwaltung, IoT Hub-Geräteverwaltung
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
-ms.author: menchi
-ms.openlocfilehash: a6bf14691e583190c4485ae854de78b187d95211
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: robinsh
+ms.openlocfilehash: c67e9fc7cb6a2530c752efee760b2fb7fcb7f277
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773897"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727098"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Verwenden der IoT-Erweiterung für Azure CLI für die Verwaltung von Azure IoT Hub-Geräten
 
@@ -43,7 +42,7 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
+* Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
 
   * Ein aktives Azure-Abonnement.
   * Ein Azure IoT Hub in Ihrem Abonnement.

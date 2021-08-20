@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c7b8b400d2f927fa4b5d6f713b29dbda34eec959
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013dea780c1f5819d9b9caefeec3b66066d1f44c
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757677"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033549"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
@@ -101,4 +101,4 @@ Gehen Sie folgendermaßen vor, um eine Azure Virtual Desktop-Umgebung einzuricht
 - Informationen zum Einrichten vollständig verwalteter Dateifreigaben in der Cloud finden Sie unter [Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
 - Informationen zum Konfigurieren von FSLogix-Profilcontainern finden Sie unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md).
 - Informationen zum Zuweisen von Benutzern zu einem Hostpool finden Sie unter [Verwalten von App-Gruppen für Azure Virtual Desktop](manage-app-groups.md).
-- Informationen zum Zugriff auf Ihre Azure Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung mit Azure Virtual Desktop](connect-web.md).
+- Informationen zum Zugriff auf Ihre Azure Virtual Desktop-Ressourcen über einen Browser finden Sie unter [Herstellen einer Verbindung mit Azure Virtual Desktop](./user-documentation/connect-web.md).

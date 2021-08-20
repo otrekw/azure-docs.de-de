@@ -3,12 +3,12 @@ title: Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
 description: Erfahren Sie mehr zu den Unterschieden zwischen benutzerdefinierten Images und Formeln als Basis für virtuelle Computer, sodass Sie entscheiden können, welche Methode sich für Ihre Umgebung am besten eignet.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc4f7497e2e4a67fdf383f0b801da0b729d7cbf8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87287528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346884"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
 Sowohl [benutzerdefinierte Images](devtest-lab-create-template.md) als auch [Formeln](devtest-lab-manage-formulas.md) können als Basis für [neu erstellte virtuelle Computer](devtest-lab-add-vm.md) verwendet werden. Der grundlegende Unterschied zwischen benutzerdefinierten Images und Formeln ist jedoch, dass ein benutzerdefiniertes Image einfach ein auf einer virtuellen Festplatte basierendes Image ist. Eine Formel ist ein Image, das ebenfalls auf einer virtuellen Festplatte, aber *zusätzlich* auch auf vorkonfigurierten Einstellungen basiert, wie beispielsweise VM-Größe, virtuelles Netzwerk, Subnetz und Artefakten. Diese vorkonfigurierten Einstellungen werden mit Standardwerten eingerichtet, die zum Zeitpunkt der Erstellung des virtuellen Computers überschrieben werden können. In diesem Artikel werden einige Vor- und Nachteile der Verwendung von benutzerdefinierten Images im Vergleich zur Verwendung von Formeln erläutert.
@@ -41,7 +41,7 @@ Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithi
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
-* [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](./devtest-lab-faq.md#blog-post)
+* [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.md)
+- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.yml)

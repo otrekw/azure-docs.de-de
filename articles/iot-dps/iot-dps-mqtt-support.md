@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d13bdc5bb98159d5a267a821f0431bed622e5e11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967124"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346087"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikation mit Ihrer DPS-Instanz über das MQTT-Protokoll
 
@@ -70,8 +70,8 @@ Damit Sie das MQTT-Protokoll direkt verwenden können, *muss* Ihr Client die Ver
 
 Zum Registrieren eines Geräts über DPS sollte es abonnieren und dazu `$dps/registrations/res/#` als **Themenfilter** verwenden. Der Platzhalter mit mehreren Ebenen `#` im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. DPS lässt die Verwendung des Platzhalters `#` oder `?` zum Filtern von Unterthemen nicht zu. Da DPS kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
 
-Das Gerät sollte eine Registrierungsmeldung an DPS veröffentlichen und dabei `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` als **Themennamen** verwenden. Die Nutzlast sollte das Objekt [Geräteregistrierung](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) im JSON-Format enthalten.
-In einem erfolgreichen Szenario erhält das Gerät eine Antwort auf den Themennamen `$dps/registrations/res/202/?$rid={request_id}&retry-after=x`. Dabei ist „x“ der Retry-After-Wert in Sekunden. Die Nutzlast der Antwort enthält das Objekt [RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) im JSON-Format.
+Das Gerät sollte eine Registrierungsmeldung an DPS veröffentlichen und dabei `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` als **Themennamen** verwenden. Die Nutzlast sollte das Objekt [Geräteregistrierung](/rest/api/iot-dps/device/runtime-registration/register-device) im JSON-Format enthalten.
+In einem erfolgreichen Szenario erhält das Gerät eine Antwort auf den Themennamen `$dps/registrations/res/202/?$rid={request_id}&retry-after=x`. Dabei ist „x“ der Retry-After-Wert in Sekunden. Die Nutzlast der Antwort enthält das Objekt [RegistrationOperationStatus](/rest/api/iot-dps/device/runtime-registration/register-device#registrationoperationstatus) im JSON-Format.
 
 ## <a name="polling-for-registration-operation-status"></a>Abrufen des Registrierungsvorgangsstatus
 

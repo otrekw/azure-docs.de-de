@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 6dde8aaa676e8045326f7078e1c3fd2a0ada6dc2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: d6a22f1bab9b24412fe9109fff955d3eeeb0749c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347202"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,15 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 
 ```sql
 CREATE LOGIN [<login name>]
-WITH PASSWORD = <login password>,
-SID = <desired login SID>
+WITH PASSWORD = '<login password>',
+SID = 0x1234 /*replace 0x1234 with the desired login SID*/
 ```
 
 > [!NOTE]
 > Wenn Sie Benutzerzugriff auf die sekundäre Datenbank, aber nicht auf die primäre gewähren möchten, ändern Sie dazu die Benutzeranmeldung auf dem primären Server mithilfe der folgenden Syntax.
 >
 > ```sql
-> ALTER LOGIN <login name> DISABLE
+> ALTER LOGIN [<login name>] DISABLE
 > ```
 >
 > DISABLE ändert nicht das Kennwort, sodass Sie sie bei Bedarf stets aktivieren können.

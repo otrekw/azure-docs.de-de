@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: depadia
-ms.openlocfilehash: f520bc6615d9c7ea40612e7d52fb201d04c246e9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: bd65c77d8be0cef06a81f0f7699b04134e0e1706
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408117"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355868"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-windows-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Windows in Azure
 
@@ -445,7 +445,7 @@ Filestore bezieht sich auf die Datenträgerverzeichnisse, in denen Inhalte wie B
 
 Für eine unter Windows ausgeführte SAP BOBI-Plattform können Sie entweder [Azure Files Premium](../../../storage/files/storage-files-introduction.md) oder [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) für den Filestore auswählen, um die Hochverfügbarkeit und Langlebigkeit sicherzustellen. Für Azure Files Premium wird ZRS unterstützt. Dies kann für die zonenübergreifende Bereitstellung einer SAP BOBI-Plattform nützlich sein. Weitere Informationen finden Sie im Abschnitt [Redundanz](../../../storage/files/storage-files-planning.md#redundancy) für Azure Files.
 
-Da der Dateifreigabedienst nicht in allen Regionen verfügbar ist, sollten Sie in der Liste mit den [verfügbaren Produkten nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/) nach aktuellen Informationen suchen. Wenn der Dienst in Ihrer Region nicht verfügbar ist, können Sie einen NFS-Server erstellen, über den Sie das Dateisystem für eine SAP BOBI-Anwendung freigeben. Sie müssen aber auch seine Hochverfügbarkeit berücksichtigen.
+Da der Dateifreigabedienst nicht in allen Regionen verfügbar ist, sollten Sie in der Liste mit den [verfügbaren Produkten nach Region](https://azure.microsoft.com/global-infrastructure/services/) nach aktuellen Informationen suchen. Wenn der Dienst in Ihrer Region nicht verfügbar ist, können Sie einen NFS-Server erstellen, über den Sie das Dateisystem für eine SAP BOBI-Anwendung freigeben. Sie müssen aber auch seine Hochverfügbarkeit berücksichtigen.
 
 ### <a name="high-availability-for-the-load-balancer"></a>Hochverfügbarkeit für den Lastenausgleich
 
@@ -501,7 +501,7 @@ Filestore ist ein Datenträgerverzeichnis, in dem die eigentlichen Dateien, z. 
 - **Azure Files Premium** unterstützt nur LRS und ZRS. Für die Azure Files Premium-Strategie zur Notfallwiederherstellung können Sie [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/?preserve-view=true&view=azps-5.8.0) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](../../../storage/common/storage-disaster-recovery-guidance.md).
 - **Azure NetApp Files** stellt NFS- und SMB-Volumes bereit, sodass jedes dateibasierte Kopiertool zur Replikation von Daten zwischen Azure-Regionen verwendet werden kann. Weitere Informationen zum Kopieren eines Azure NetApp Files-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
 
-  Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet. Hierfür wird die NetApp SnapMirror-Technologie genutzt. Bei dieser Technologie werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Darüber hinaus wird auch die Replikationsdauer reduziert, damit Sie einen niedrigeren RPO-Wert erzielen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
+  Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet. Hierfür wird die NetApp SnapMirror-Technologie genutzt. Bei dieser Technologie werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Darüber hinaus wird auch die Replikationsdauer reduziert, damit Sie einen niedrigeren RPO-Wert erzielen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
 
 ### <a name="cms-database"></a>CMS-Datenbank
 

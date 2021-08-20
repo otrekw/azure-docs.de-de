@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 54ddababad561edd307aab29b88415353887818b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965473"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444931"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -184,7 +184,7 @@ Azure Backup erfordert das Verschieben von Daten Ihrer Workload in den Recovery 
 
 Ein [privater Endpunkt](../private-link/private-endpoint-overview.md) in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Azure Backup ermöglicht Ihnen die sichere Sicherung und Wiederherstellung Ihrer Daten aus Ihren Recovery Services-Tresoren unter Verwendung privater Endpunkte.
 
-* Wenn Sie private Endpunkte für den Tresor aktivieren, werden sie nur für die Sicherung und Wiederherstellung von SQL- und SAP HANA-Workloads in Sicherungen virtueller Azure-Computer und MARS-Agents verwendet.  Sie können den Tresor auch für die Sicherung anderer Workloads einsetzen (die allerdings keine privaten Endpunkte benötigen). Neben der Sicherung von SQL- und SAP HANA-Workloads und einer Sicherung mit dem MARS-Agent werden private Endpunkte im Fall einer Azure VM-Sicherung auch für die Dateiwiederherstellung verwendet. [Hier erhalten Sie weitere Informationen](private-endpoints.md#recommended-and-supported-scenarios).
+* Wenn Sie private Endpunkte für den Tresor aktivieren, werden sie nur für die Sicherung und Wiederherstellung von SQL- und SAP HANA-Workloads in Sicherungen virtueller Azure-Computer und MARS-Agents verwendet.  Sie können den Tresor auch für die Sicherung anderer Workloads einsetzen (die allerdings keine privaten Endpunkte benötigen). Neben der Sicherung von SQL- und SAP HANA-Workloads und einer Sicherung mit dem MARS-Agent werden private Endpunkte im Fall einer Azure VM-Sicherung auch für die Dateiwiederherstellung verwendet. [Hier erhalten Sie weitere Informationen](private-endpoints-overview.md#recommended-and-supported-scenarios).
 
 * Azure Active Directory unterstützt derzeit keine privaten Endpunkte. Daher müssen IP-Adressen und FQDNs, die für Azure Active Directory erforderlich sind, ein ausgehender Zugriff aus dem abgesicherten Netzwerk gestattet werden, wenn eine Sicherung von Datenbanken auf virtuellen Azure-Computern und eine Sicherung mit dem MARS-Agent erfolgt. Sie können ggf. auch NSG- und Azure Firewall-Tags verwenden, um Zugriff auf Azure AD zuzulassen. [Weitere Informationen zu erforderlichen Komponenten finden Sie hier.](./private-endpoints.md#before-you-start)
 

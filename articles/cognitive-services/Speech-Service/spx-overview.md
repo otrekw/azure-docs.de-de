@@ -3,20 +3,20 @@ title: Die Azure Speech-Befehlszeilenschnittstelle
 titleSuffix: Azure Cognitive Services
 description: Die Speech-Befehlszeilenschnittstelle ist ein Befehlszeilentool, mit dem der Speech-Dienst verwendet werden kann, ohne Code zu schreiben. Der Einrichtungsaufwand für die Speech-Befehlszeilenschnittstelle ist minimal, und Sie können sofort mit wichtigen Features des Speech-Diensts experimentieren, um zu ermitteln, ob die Anforderungen Ihrer Anwendungsfälle erfüllt werden können.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 4a2b1ca8a852f775b61bf378998e46a1e6d580f1
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106121"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350199"
 ---
 # <a name="what-is-the-speech-cli"></a>Worum handelt es sich bei der Speech-Befehlszeilenschnittstelle?
 

@@ -3,20 +3,20 @@ title: 'Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK – S
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie einen Echobot mithilfe von Microsoft Bot Framework, stellen ihn in Azure bereit und registrieren ihn beim Bot Framework-Direct Line Speech-Kanal. Anschließend konfigurieren Sie eine Beispiel-Client-App für Windows, über die Sie mit dem Bot sprechen und die Antwort hören können.
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: de0653ecae4c46345d961fc9c6b17930ed5b2627
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552307"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350231"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um eine Speech-Ressource zu erstellen:
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) eine Speech-Ressource enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
 
@@ -128,7 +128,7 @@ Im nächsten Schritt wird ein App Service-Plan erstellt. Mit einem App Service-P
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) zwei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
@@ -213,7 +213,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
 1. Überprüfen Sie an dieser Stelle Ihre Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal, und bestätigen Sie diese drei Ressourcen:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -250,7 +250,7 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollte jetzt mindestens vier Ressourcen anzeigen:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -330,7 +330,7 @@ Wenn im Hauptfenster der App eine Fehlermeldung angezeigt wird, können Sie den 
 |Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1002 Fehlerdetails: Vom Server wurde Statuscode '503' zurückgegeben, als Statuscode '101' erwartet wurde. | Vergewissern Sie sich, dass Sie das Kontrollkästchen [„Enable Streaming Endpoint“ (Streamingendpunkt aktivieren) aktiviert](#register-the-direct-line-speech-channel) und/oder [**Websockets** auf „Ein“ festlegt](#enable-web-sockets) haben.<br>Stellen Sie sicher, dass Ihre Azure App Service-Instanz ausgeführt wird. Wenn dies der Fall ist, starten Sie die App Service-Instanz neu.|
 |Fehler (ConnectionFailure): Verbindung wurde vom Remotehost geschlossen. Fehlercode: 1011. Fehlerdetails: Der Antwortstatuscode gibt keinen Erfolg an: 500 (InternalServerError)| Im Bot ist im Feld [speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) der Ausgabeaktivität eine neuronale Stimme angegeben, in der Azure-Region, die Ihrem Speech-Abonnementschlüssel zugeordnet ist, werden neuronale Stimmen jedoch nicht unterstützt. Informationen finden Sie unter [Standard- und neuronale Stimmen](./regions.md#neural-and-standard-voices).|
 
-Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.md). Wenn Sie Ihr Problem nach dem Ausführen aller Schritte in diesem Tutorial trotzdem nicht lösen können, geben Sie ein neues Problem auf der [GitHub-Seite des Sprachassistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues) ein.
+Wenn Ihr Problem in der Tabelle nicht aufgeführt wird, finden Sie weitere Informationen unter [Sprachassistenten: Häufig gestellte Fragen (FAQs)](faq-voice-assistants.yml). Wenn Sie Ihr Problem nach dem Ausführen aller Schritte in diesem Tutorial trotzdem nicht lösen können, geben Sie ein neues Problem auf der [GitHub-Seite des Sprachassistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues) ein.
 
 #### <a name="a-note-on-connection-time-out"></a>Hinweis zum Verbindungstimeout
 

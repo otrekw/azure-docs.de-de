@@ -2,20 +2,18 @@
 title: Wettervorhersage mithilfe von Azure Machine Learning Studio (klassisch) mit Daten vom IoT-Hub
 description: Verwenden Sie Azure Machine Learning Studio (klassisch), um das Regenrisiko basierend auf den Temperatur- und Luftfeuchtigkeitsdaten vorherzusagen, die Ihr IoT-Hub über einen Sensor erfasst.
 author: robinsh
-manager: philmea
 keywords: Wettervorhersage, Machine Learning
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f9b683d08a5b1fde172efa5a769a605d3d1862da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566978"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346880"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT-Hubs in Azure Machine Learning Studio (klassisch)
 
@@ -27,7 +25,7 @@ Machine Learning ist ein Data Science-Verfahren, bei dem Computer aus vorhandene
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](quickstart-send-telemetry-dotnet.md) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
+- Sie müssen das Tutorial [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-web-simulator-get-started.md) oder eines der gerätespezifischen Tutorials abgeschlossen haben. Sie können beispielsweise zu [Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)](iot-hub-raspberry-pi-kit-node-get-started.md) oder zu einer der Schnellstartanleitungen zum [Senden von Telemetriedaten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) wechseln. In diesen Artikeln werden folgende Anforderungen beschrieben:
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.

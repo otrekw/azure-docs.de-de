@@ -4,12 +4,12 @@ description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwen
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5dffc98e73a9d9e85b301d3272869b7fb5118ab5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731849"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347205"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 
@@ -82,4 +82,4 @@ Dieses Leistungsdiagramm bildet eine Entsprechung des Aufrufs von `kubectl get p
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [Beispielabfragen für die Protokollsuche](container-insights-log-search.md#search-logs-to-analyze-data) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.
+Unter [Beispielabfragen für die Protokollsuche](container-insights-log-query.md) finden Sie vordefinierte Abfragen und Beispiele zum Erstellen von Warnungen und Visualisierungen. Darüber hinaus können Sie eine weitergehende Analyse des Clusters durchführen.

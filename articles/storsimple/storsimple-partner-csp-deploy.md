@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b79ed39464d7f10c1c2ad50f22941d50d42b802b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021859"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085234"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
 
@@ -103,5 +103,5 @@ Möglicherweise gibt es schon einen Bestandskunden, dem Sie ein Abonnement hinzu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md) fort.
+- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.yml) fort.
 - Wenn Sie zur Bereitstellung Ihrer StorSimple-Lösung bereit sind, lesen Sie unter [Deploy StorSimple Virtual Array for Cloud Solution Provider Program](storsimple-partner-csp-deploy.md) (Bereitstellen von StorSimple Virtual Array für das Programm für Cloudlösungsanbieter) weiter.

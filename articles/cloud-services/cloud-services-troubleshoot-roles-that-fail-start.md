@@ -4,16 +4,16 @@ description: Hier finden Sie einige der häufigsten Gründe, aus denen eine Clou
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35f368b11d627c8c418a04953c054d43fe5d013b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743218"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092507"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>Problembehandlung bei (klassischen) Azure-Clouddienstrollen, die nicht gestartet werden
 

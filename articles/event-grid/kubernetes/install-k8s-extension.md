@@ -6,19 +6,19 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/26/2021
 ms.topic: how-to
-ms.openlocfilehash: d77d2c0c378d57c26f1496dc712c736a79c0c2ae
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 149f46d96e7e723c89eb473aa5faea2301bc9d5f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614543"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356270"
 ---
 # <a name="install-event-grid-extension-on-azure-arc-enabled-kubernetes-cluster"></a>Installieren Sie die Event Grid-Erweiterung auf einem Azure Arc-fähigen Kubernetes-Cluster
 Dieser Artikel führt Sie durch die Schritte zur Installation von Event Grid auf einem [Azure Arc-fähigen Kubernetes](../../azure-arc/kubernetes/overview.md)-Cluster.
 
 Der Kürze halber wird in diesem Artikel „Event Grid auf der Kubernetes Erweiterung“ als „Event Grid auf Kubernetes“ oder einfach als „Event Grid“ bezeichnet.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="supported-kubernetes-distributions"></a>Unterstützte Kubernetes-Distributionen
@@ -27,7 +27,6 @@ Nachfolgend sind die unterstützten Kubernetes-Versionen aufgeführt, auf denen 
 1. Von Azure AKS [unterstützte Kubernetes-Distributionen](../../aks/supported-kubernetes-versions.md).
 1. RedHat [OpenShift Container-Plattform](https://www.openshift.com/products/container-platform).
 
-Weitere Distributionen werden entsprechend [dem Feedback der Benutzer](https://feedback.azure.com/forums/909934-azure-event-grid) und seiner [Unterstützung durch Azure Arc-fähigen Kubernetes integriert.](../../azure-arc/kubernetes/validation-program.md)
 
 ## <a name="event-grid-extension"></a>Bezeichnung der Event Grid-Erweiterung
 Der Vorgang zum Installieren einer Event Grid-Serviceinstanz in einem Kubernetes-Cluster ist die Erstellung einer Azure Arc-Clustererweiterung, die sowohl einen **Event Grid-Broker** als auch einen **Event Grid-Operator** bereitstellt. Weitere Informationen zur Funktion des Brokers und Operators finden Sie unter [Event Grid für Kubernetes-Komponenten.](concepts.md#event-grid-on-kubernetes-components) Die [ Azure Arc-Cluster-Erweiterungsfunktion](../../azure-arc/kubernetes/conceptual-extensions.md) ermöglicht die Lebenszyklusverwaltung mit Azure Resource Manager(ARM)-Steuerungsebenen-Vorgängen die zu Event Grid in Azure Arc-fähigen Kubernetes-Clustern bereitgestellt werden.
@@ -39,7 +38,7 @@ Der Vorgang zum Installieren einer Event Grid-Serviceinstanz in einem Kubernetes
 Bevor Sie mit der Installation von Event Grid fortfahren, stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind. 
 
 1. Ein Cluster, der in einer der [unterstützten Kubernetes-Distributionen ausgeführt wird](#supported-kubernetes-distributions).
-1. [Ein Azure-Abonnement](https://azure.microsoft.com/en-us/free/).
+1. [Ein Azure-Abonnement](https://azure.microsoft.com/free/).
 1. [PKI-Zertifikate,](#pki-certificate-requirements) die zum Herstellen einer HTTPS-Verbindung mit dem Event Grid Broker verwendet werden.
 1. [Verbinden Sie Ihren Cluster mit Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md).
 
@@ -117,7 +116,7 @@ Um eine sichere HTTPS-Kommunikation mit dem Event Grid-Broker und Event Grid-Ope
         :::image type="content" source="./media/install-k8s-extension/monitoring-page.png" alt-text="Installieren der Event Grid Erweiterung – Überwachungsseite":::    
     1. Wählen Sie **Weiter: Tags** um zur **Tags**-Seite zu navigieren. 
 1. Führen Sie auf der Seite **Tags** die folgenden Schritte aus:
-    1. Definieren Sie [Tags](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) bei Bedarf.
+    1. Definieren Sie [Tags](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) bei Bedarf.
 
         :::image type="content" source="./media/install-k8s-extension/tags-page.png" alt-text="Installieren der Event Grid Erweiterung – Tags-Seite":::
     1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.

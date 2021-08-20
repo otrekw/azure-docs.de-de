@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 24bdbb37a2ec88d930752f728acecd23eb2896b7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949548"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106927"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -131,7 +131,7 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 | ------- | -------- |
 | Azure-Servicebus | [Migrieren zu Shared Access Signatures](../../service-bus-messaging/service-bus-sas.md) |
 | Azure Service Bus Relay | [Migrieren zu Shared Access Signatures](../../azure-relay/relay-migrate-acs-sas.md) |
-| Azure Managed Cache | [Migrieren zu Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure Managed Cache | [Migrieren zu Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.yml) |
 | Azure DataMarket | [DataMarket ist jetzt veraltet](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk Services | [Migrieren zum Feature Logic Apps von Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure Media Services announces support for AAD and deprecation of ACS authentication](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) (Azure Media Services verkündet Unterstützung für AAD sowie Einstellung der ACS-Authentifizierung) |

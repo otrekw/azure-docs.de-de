@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 84f32755a4838fbcb29b3d85d8308b5288d746ea
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e3772f3583e4487c8c508136537ab213413865e7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537903"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464742"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -48,7 +48,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
    * **Eingehender Datenverkehr von Azure Load Balancer:** Aktivieren Sie für Integritätstests den eingehenden Port 443 aus dem Diensttag **AzureLoadBalancer**. Dadurch kann Azure Load Balancer die Konnektivität erkennen.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Screenshot mit eingehenden Sicherheitsregeln für Azure Bastion-Konnektivität.":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Screenshot mit eingehenden Sicherheitsregeln für Azure Bastion-Konnektivität." lightbox="./media/bastion-nsg/inbound.png":::
 
 * **Ausgehender Datenverkehr:**
 
@@ -58,7 +58,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
    * **Ausgehender Datenverkehr zum Internet:** Azure Bastion muss in der Lage sein, mit dem Internet zu kommunizieren, damit Sitzungen und Zertifikate überprüft werden können. Aus diesem Grund wird empfohlen, Port 80 ausgehend zum **Internet** zu aktivieren.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Screenshot mit ausgehenden Sicherheitsregeln für Azure Bastion-Konnektivität.":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Screenshot mit ausgehenden Sicherheitsregeln für Azure Bastion-Konnektivität." lightbox="./media/bastion-nsg/outbound.png":::
 
 ### <a name="target-vm-subnet"></a>Ziel-VM-Subnetz
 Dieses Subnetz enthält die Ziel-VM, mit der Sie eine RDP-/SSH-Verbindung herstellen möchten.

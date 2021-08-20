@@ -3,19 +3,19 @@ title: Aktualisieren eines Befehls über einen Webendpunkt
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie den Zustand eines Befehls aktualisieren, indem Sie einen Aufruf an einen Webendpunkt verwenden.
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: d0b77e6af36f0a71405f6c032bfdd121abeb0071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 9900d873de5efac89db13b80c0cc37167a0cee05
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97560269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356188"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Aktualisieren eines Befehls über einen Webendpunkt
 
@@ -120,7 +120,7 @@ Jetzt wollen wir die Azure-Funktion mit der vorhandenen App „Benutzerdefiniert
 1. Klicken Sie auf **Test**.
 1. Senden Sie mehrmals `increment` (dies ist der Beispielsatz für den Befehl `IncrementCounter`).
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Screenshot, der ein Beispiel für einen Inkrementzähler zeigt.":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example-no-mic.png" alt-text="Screenshot, der ein Beispiel für einen Inkrementzähler zeigt.":::
 
 Beachten Sie, wie der Wert des `Counter`-Parameters bei jedem Durchgang von der Azure-Funktion inkrementiert wird.
 

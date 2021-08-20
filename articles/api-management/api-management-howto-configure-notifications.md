@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddea6f64aa4c3f78116e30ba8c9731acebfbb006
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84690301"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346423"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
 
@@ -84,9 +84,6 @@ Jede E-Mail-Vorlage enthält einen Betreff im Nur-Text-Format und einen Text im 
 ![Editor für E-Mail-Vorlagen][api-management-email-template]
 
 Die **Parameter** aus der Liste können in den Betreff oder den Text eingefügt werden und werden beim Versand der E-Mail durch den entsprechenden Wert ersetzt. Um einen Parameter einzufügen, platzieren Sie den Cursor an die gewünschte Stelle, und klicken Sie auf den Pfeil links neben dem Parameternamen.
-
-> [!NOTE]
-> Die Parameter in der Vorschau und beim Testversand werden nicht durch tatsächliche Werte ersetzt.
 
 Klicken Sie auf **Speichern**, um die Änderungen an der E-Mail-Vorlage zu speichern, oder auf **Verwerfen**, um die Änderungen zu verwerfen.
 

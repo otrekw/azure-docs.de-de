@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d26947b48ca64ea5f06f3f9566d05fd110d6e93f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097413"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091841"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Android SDK)
 
@@ -221,7 +221,7 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
-| `accumulated()` | number | Ruft den Wert einer bis dahin akkumulierten Clustereigenschaft ab. |
+| `accumulated()` | number | Ruft den Wert einer bis dahin akkumulierten Clustereigenschaft ab. Dieser kann nur in der Option `clusterProperties` einer gruppierten `DataSource`-Quelle verwendet werden. |
 | `at(number | Expression, Expression)` | value | Ruft ein Element aus einem Array ab. |
 | `geometryType()` | Zeichenfolge | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
 | `get(string | Expression)` \| `get(string | Expression, Expression)` | value | Ruft den Eigenschaftswert aus den Eigenschaften des angegebenen Objekts ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
@@ -856,9 +856,9 @@ Mit dem obigen Ausdruck wird in der Karte eine Nadel mit dem Überlagerungstext 
 
 ![Beispiel für Zeichenfolgenoperator-Ausdruck](media/how-to-expressions/string-operator-expression.png)
 
-## <a name="interpolate-and-step-expressions"></a>Interpolations- und Schrittausdrücke
+## <a name="interpolate-and-step-expressions&quot;></a>Interpolations- und Schrittausdrücke
 
-Interpolations- und Schrittausdrücke können verwendet werden, um Werte entlang einer interpolierten Kurve oder für eine Schrittfunktion zu berechnen. Für diese Ausdrücke wird ein Ausdruck verwendet, bei dem ein numerischer Wert als Eingabe zurückgegeben wird, z. B. `get("temperature")`. Der Eingabewert wird anhand von Paaren mit Ein- und Ausgabewerten ausgewertet, um den Wert zu ermitteln, der am besten zur interpolierten Kurve oder Schrittfunktion passt. Die Ausgabewerte werden als „Stopps“ bezeichnet. Bei den Eingabewerten für jeden „Stopp“ muss es sich um Zahlen in aufsteigender Reihenfolge handeln. Die Ausgabewerte müssen eine Zahl, ein Array mit Farben oder eine Farbe sein.
+Interpolations- und Schrittausdrücke können verwendet werden, um Werte entlang einer interpolierten Kurve oder für eine Schrittfunktion zu berechnen. Für diese Ausdrücke wird ein Ausdruck verwendet, bei dem ein numerischer Wert als Eingabe zurückgegeben wird, z. B. `get(&quot;temperature")`. Der Eingabewert wird anhand von Paaren mit Ein- und Ausgabewerten ausgewertet, um den Wert zu ermitteln, der am besten zur interpolierten Kurve oder Schrittfunktion passt. Die Ausgabewerte werden als „Stopps“ bezeichnet. Bei den Eingabewerten für jeden „Stopp“ muss es sich um Zahlen in aufsteigender Reihenfolge handeln. Die Ausgabewerte müssen eine Zahl, ein Array mit Farben oder eine Farbe sein.
 
 ### <a name="interpolate-expression"></a>Interpolate-Ausdruck
 

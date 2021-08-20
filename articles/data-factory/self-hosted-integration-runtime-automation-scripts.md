@@ -2,17 +2,18 @@
 title: Automatisieren der Installation von selbstgehosteter Integration Runtime mithilfe von lokalen PowerShell-Skripts
 description: Informationen zum Automatisieren der Installation von selbstgehosteter Integration Runtime auf lokalen Computern
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 54699a5641b98cde5bbff1f55add8b8345d6a1ac
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c64f71e6cdd008efa74d7279e3dc275bd24825f0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488283"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346591"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatisieren der Installation von selbstgehosteter Integration Runtime mithilfe von lokalen PowerShell-Skripts
 Sie können mithilfe von lokalen PowerShell-Skripts die Installation von selbstgehosteter Integration Runtime auf lokalen Computern automatisieren (mit Ausnahme von Azure VMs, bei denen Sie stattdessen die Resource Manager-Vorlage nutzen können). In diesem Artikel werden zwei Skripts vorgestellt, die Sie dafür verwenden können.

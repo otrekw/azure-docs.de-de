@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 7c7476a3ab885e9c127cbd571ad723864bf0d898
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4ffafa5618de85a0d47a5cf8317aae6d6b5d6987
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534570"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356645"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault für Cognitive Services
 
@@ -23,7 +23,7 @@ Der Prozess zum Aktivieren von kundenseitig verwalteten Schlüsseln mit Azure Ke
 
 * [Custom Vision-Verschlüsselung für ruhende Daten](../custom-vision-service/encrypt-data-at-rest.md)
 * [Verschlüsselung für ruhende Daten der Gesichtserkennungsdienste](../face/encrypt-data-at-rest.md)
-* [Verschlüsselung für ruhende Daten der Formularerkennung](../form-recognizer/encrypt-data-at-rest.md)
+* [Verschlüsselung für ruhende Daten der Formularerkennung](../../applied-ai-services/form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Sprache
 
@@ -39,7 +39,6 @@ Der Prozess zum Aktivieren von kundenseitig verwalteten Schlüsseln mit Azure Ke
 
 * [Content Moderator-Verschlüsselung für ruhende Daten](../Content-Moderator/encrypt-data-at-rest.md)
 * [Verschlüsselung für ruhende Daten der Personalisierung](../personalizer/encrypt-data-at-rest.md)
-* [Verschlüsselung für ruhende Daten des Metrics Advisor-Diensts](../metrics-advisor/encryption.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

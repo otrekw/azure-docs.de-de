@@ -3,12 +3,12 @@ title: Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs | Micros
 description: Erfahren Sie, wie Sie mit dem Azure-Portal ein lizenziertes Image in Azure DevTest Labs aktivieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32ecbfc37d47835766d863b54d823be95fffb008
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91276355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356001"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs
 
@@ -78,7 +78,7 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 
-- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](./devtest-lab-faq.md#blog-post)
+- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Kopieren benutzerdefinierter Images zwischen Azure DevTest Labs)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Nächste Schritte

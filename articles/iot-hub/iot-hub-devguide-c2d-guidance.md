@@ -2,7 +2,6 @@
 title: Azure IoT Hub – C2D-Optionen (Cloud-zu-Gerät) | Microsoft Docs
 description: Entwicklerhandbuch – Leitfaden, der angibt, wann direkte Methoden, gewünschte Eigenschaften von Gerätezwillingen oder C2D-Nachrichten für C2D-Kommunikationen verwendet werden sollen.
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 105374dc214ad77978973a5e7288ac1dd487941b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093009"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346083"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Leitfaden zur C2D-Kommunikation
 
@@ -30,7 +29,7 @@ IoT Hub bietet drei Optionen für Geräte-Apps, um Funktionen einer Back-End-App
 
 * [Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D)](iot-hub-devguide-messages-c2d.md) zum Senden unidirektionaler Benachrichtigungen an die Geräte-App.
 
-Informationen zur Verwendung dieser Optionen zum Steuern von IoT Plug & Play-Geräten durch [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) finden Sie im [Leitfaden für IoT Plug & Play-Dienstentwickler](../iot-pnp/concepts-developer-guide-service.md).
+Informationen zur Verwendung dieser Optionen zum Steuern von IoT Plug & Play-Geräten durch [Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) finden Sie im [Leitfaden für IoT Plug & Play-Dienstentwickler](../iot-develop/concepts-developer-guide-service.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -48,6 +47,6 @@ Hier finden Sie einen detaillierten Vergleich verschiedener Optionen für die C2
 
 Erfahren Sie in den folgenden Tutorials, wie Sie direkte Methoden, gewünschte Eigenschaften und C2D-Nachrichten einsetzen:
 
-* [Verwenden von direkten Methoden](quickstart-control-device-node.md)
+* [Verwenden von direkten Methoden](quickstart-control-device.md)
 * [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten](tutorial-device-twins.md) 
 * [Senden von C2D-Nachrichten](iot-hub-node-node-c2d.md)

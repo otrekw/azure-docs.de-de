@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: b26ce91b005fc7bd4d5b89ccf5306dc03a040b0f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 426a83836a16fd3d4a403b3cda015dd5f49af22e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106749"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346450"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure-Portal
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -23,7 +25,7 @@ Azure Database for MySQL Flexible Server unterstützt zwei Arten von sich gegens
 1. Öffentlicher Zugriff (zugelassene IP-Adressen)
 2. Privater Zugriff (VNET-Integration)
 
-In diesem Artikel konzentrieren wir uns auf die Erstellung eines MySQL-Servers mit **öffentlichem Zugriff (zulässige IP-Adressen)** unter Verwendung des Azure-Portals und bieten eine Übersicht über die Verwaltung von Firewallregeln nach der Erstellung eines flexiblen Servers. Mit *Öffentlicher Zugriff (zulässige IP-Adressen)* werden die Verbindungen mit dem MySQL-Server ausschließlich auf zulässige IP-Adressen beschränkt. Die Client-IP-Adressen müssen in Firewallregeln zugelassen werden. Weitere Informationen finden Sie unter [Öffentlicher Zugriff (zugelassene IP-Adressen)](./concepts-networking.md#public-access-allowed-ip-addresses). Die Firewallregeln können zum Zeitpunkt der Servererstellung definiert werden (empfohlen), jedoch können sie auch später hinzugefügt werden. In diesem Artikel erhalten Sie eine Übersicht über das Erstellen und Verwalten von Firewallregeln mithilfe von „Öffentlicher Zugriff (zulässige IP-Adressen)“.
+In diesem Artikel konzentrieren wir uns auf die Erstellung eines MySQL-Servers mit **öffentlichem Zugriff (zulässige IP-Adressen)** unter Verwendung des Azure-Portals und bieten eine Übersicht über die Verwaltung von Firewallregeln nach der Erstellung eines flexiblen Servers. Mit *Öffentlicher Zugriff (zulässige IP-Adressen)* werden die Verbindungen mit dem MySQL-Server ausschließlich auf zulässige IP-Adressen beschränkt. Die Client-IP-Adressen müssen in Firewallregeln zugelassen werden. Weitere Informationen finden Sie unter [Öffentlicher Zugriff (zugelassene IP-Adressen)](./concepts-networking-public.md#public-access-allowed-ip-addresses). Die Firewallregeln können zum Zeitpunkt der Servererstellung definiert werden (empfohlen), jedoch können sie auch später hinzugefügt werden. In diesem Artikel erhalten Sie eine Übersicht über das Erstellen und Verwalten von Firewallregeln mithilfe von „Öffentlicher Zugriff (zulässige IP-Adressen)“.
 
 ## <a name="create-a-firewall-rule-when-creating-a-server"></a>Erstellen einer Firewallregel beim Erstellen eines Servers
 
@@ -37,7 +39,7 @@ In diesem Artikel konzentrieren wir uns auf die Erstellung eines MySQL-Servers m
    > Azure Database for MySQL Flexible Server erstellt eine Firewall auf Serverebene. Sie verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen zu öffnen.
 
 7. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
-8.  Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann einige Minuten dauern.
+8. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann einige Minuten dauern.
 
 ## <a name="create-a-firewall-rule-after-server-is-created"></a>Erstellen einer Firewallregel nach der Erstellung des Servers
 
@@ -73,7 +75,7 @@ Wenn eine Anwendung innerhalb von Azure versucht, eine Verbindung mit Ihrem Serv
 Die Ressourcen müssen sich nicht im gleichen virtuellen Netzwerk (VNET) oder in der gleichen Ressourcengruppe für die Firewallregel befinden, um diese Verbindungen zu ermöglichen. Ist der Verbindungsversuch nicht zulässig, erreicht die Anforderung die Azure Database for MySQL Flexible Server-Instanz nicht.
 
 > [!IMPORTANT]
-> Diese Option konfiguriert die Firewall so, dass sie alle von Azure ausgehenden Verbindungen zulässt, auch Verbindungen von den Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
+>Diese Option konfiguriert die Firewall so, dass sie alle von Azure ausgehenden Verbindungen zulässt, auch Verbindungen von den Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
 >
 > Für den sicheren Zugriff auf die Flexible Server-Instanz sollten Sie **Privater Zugriff (VNET-Integration)** auswählen.
 >
@@ -88,6 +90,7 @@ Wiederholen Sie die folgenden Schritte zum Verwalten der Firewallregeln.
 - Um eine vorhandene Regel zu löschen, klicken Sie auf die Auslassungspunkte [...] und dann auf **Löschen**. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Informationen finden Sie unter [Netzwerke in Azure Database for MySQL Flexible Server](./concepts-networking.md).
-- Erfahren Sie mehr über [Firewallregeln für Azure Database for MySQL Flexible Server](./concepts-networking.md#public-access-allowed-ip-addresses).
-- [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI](./how-to-manage-firewall-cli.md).
+- Erfahren Sie mehr über [Firewallregeln für Azure Database for MySQL Flexible Server](./concepts-networking-public.md#public-access-allowed-ip-addresses).
+- [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI](./how-to-manage-firewall-cli.md)

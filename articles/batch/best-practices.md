@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 181f8f8ced4113521c8791fd9e1b5d651776783e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773339"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126462"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -197,7 +197,7 @@ Normalerweise erfolgt der Zugriff auf virtuelle Computer in einem Batch-Pool üb
 
 ### <a name="testing-connectivity-with-cloud-services-configuration"></a>Testen der Konnektivität mit Cloud Services-Konfiguration
 
-Sie können das normale „ping“/ICMP-Protokoll nicht mit Cloud Services verwenden, da das ICMP-Protokoll nicht über Azure Load Balancer zugelassen wird. Weitere Informationen finden Sie unter [Konnektivität und Netzwerke in Azure Cloud Services](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service).
+Sie können das normale „ping“/ICMP-Protokoll nicht mit Cloud Services verwenden, da das ICMP-Protokoll nicht über Azure Load Balancer zugelassen wird. Weitere Informationen finden Sie unter [Konnektivität und Netzwerke in Azure Cloud Services](../cloud-services/cloud-services-connectivity-and-networking-faq.yml#can-i-ping-a-cloud-service-).
 
 ## <a name="batch-node-underlying-dependencies"></a>Zugrunde liegende Abhängigkeiten von Batch-Knoten
 

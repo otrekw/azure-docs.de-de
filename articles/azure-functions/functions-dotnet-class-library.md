@@ -3,13 +3,13 @@ title: Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functio
 description: Hier erfahren Sie, wie Sie C# zum Entwickeln und Veröffentlichen von Code als Klassenbibliotheken verwenden, der prozessintern mit der Azure Functions-Runtime ausgeführt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 07/24/2020
-ms.openlocfilehash: 60afc79c332385958d9f73ad1e224cab90293e1c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.date: 07/24/2021
+ms.openlocfilehash: 5681a985769f49429e5b92946311c3d10ea8ecf6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903129"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349984"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functions
 
@@ -48,7 +48,7 @@ Wenn Sie die Funktion unter Linux in einem Premium- oder Dedicated-Plan (App Ser
 In Visual Studio wird mit der **Azure Functions**-Projektvorlage ein C#-Klassenbibliotheksprojekt erstellt, das die folgenden Dateien enthält:
 
 * [host.json](functions-host-json.md): Speichert Konfigurationseinstellungen, die sich auf alle Funktionen im Projekt auswirken, wenn es lokal oder in Azure ausgeführt wird.
-* [local.settings.json](functions-run-local.md#local-settings-file): Speichert App-Einstellungen und Verbindungszeichenfolgen, die verwendet werden, wenn das Projekt lokal ausgeführt wird. Diese Datei enthält Geheimnisse und wird nicht in Ihrer Funktions-App in Azure veröffentlicht. Gehen Sie stattdessen so vor, dass Sie [Ihrer Funktions-App App-Einstellungen hinzufügen](functions-develop-vs.md#function-app-settings).
+* [local.settings.json](functions-develop-local.md#local-settings-file): Speichert App-Einstellungen und Verbindungszeichenfolgen, die verwendet werden, wenn das Projekt lokal ausgeführt wird. Diese Datei enthält Geheimnisse und wird nicht in Ihrer Funktions-App in Azure veröffentlicht. Gehen Sie stattdessen so vor, dass Sie [Ihrer Funktions-App App-Einstellungen hinzufügen](functions-develop-vs.md#function-app-settings).
 
 Wenn Sie das Projekt erstellen, wird im Buildausgabeverzeichnis eine Ordnerstruktur generiert, die weitgehend so aussieht wie das folgende Beispiel:
 
@@ -465,7 +465,7 @@ namespace functionapp0915
 
 In diesem Beispiel werden die benutzerdefinierten Metrikdaten vom Host aggregiert, bevor sie an die Tabelle „customMetrics“ gesendet werden. Weitere Informationen finden Sie in der Dokumentation zu [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) in Application Insights. 
 
-Bei der lokalen Ausführung müssen Sie die Einstellung `APPINSIGHTS_INSTRUMENTATIONKEY` mit dem Application Insights-Schlüssel zur Datei [local.settings.json](functions-run-local.md#local-settings-file) hinzufügen.
+Bei der lokalen Ausführung müssen Sie die Einstellung `APPINSIGHTS_INSTRUMENTATIONKEY` mit dem Application Insights-Schlüssel zur Datei [local.settings.json](functions-develop-local.md#local-settings-file) hinzufügen.
 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)

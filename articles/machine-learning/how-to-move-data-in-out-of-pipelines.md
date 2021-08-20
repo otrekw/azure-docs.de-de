@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: ae041bd8780524d24c360412232ec77ae60aa3c4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ddac4588009d495ac64c607e97780eca5aceb54b
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884712"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112515454"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -34,7 +34,7 @@ In diesem Artikel wird Folgendes gezeigt:
 
 Sie benötigen Folgendes:
 
-- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 - Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
 
@@ -169,14 +169,6 @@ dataprep_step = PythonScriptStep(
     compute_target=cluster,
     arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
     )
-```
-
-Sie können den Inhalt des `OutputFileDatasetConfig`-Objekts am Ende einer Ausführung hochladen. Verwenden Sie in diesem Fall die `as_upload()`-Funktion zusammen mit Ihrem `OutputFileDatasetConfig`-Objekt, und geben Sie an, ob vorhandene Dateien im Ziel überschrieben werden sollen. 
-
-```python
-#get blob datastore already registered with the workspace
-blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
 ```
 
 > [!NOTE]

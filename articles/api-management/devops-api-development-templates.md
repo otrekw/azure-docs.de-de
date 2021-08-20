@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e7d0515262fc06d850b61f257e7cd577797bcf39
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888426"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346906"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD für API Management mit Azure Resource Manager-Vorlagen
 
@@ -67,7 +67,7 @@ Die Verwendung von Resource Manager-Vorlagen stellt API-Entwickler vor Herausfo
 
 * API-Herausgeber können den Pull Request überprüfen und sicherstellen, dass die Änderungen sicher und konform sind. Beispielsweise können sie überprüfen, ob für die Kommunikation mit der API nur HTTPS zulässig ist. Die meisten Überprüfungen können als Schritt in der CI/CD-Pipeline automatisiert werden.
 
-* Nachdem die Änderungen genehmigt wurden und die Zusammenführung erfolgreich abgeschlossen wurde, können die API-Herausgeber angeben, dass sie entweder nach einem Zeitplan oder nach Bedarf für die Instanz „Produktion“ bereitgestellt werden sollen. Die Bereitstellung der Vorlagen kann mit [GitHub Actions](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipelines](/azure/devops/pipelines), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), der [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) oder anderen Tools automatisiert werden.
+* Nachdem die Änderungen genehmigt wurden und die Zusammenführung erfolgreich abgeschlossen wurde, können die API-Herausgeber angeben, dass sie entweder nach einem Zeitplan oder nach Bedarf für die Instanz „Produktion“ bereitgestellt werden sollen. Die Bereitstellung der Vorlagen kann mit [GitHub Actions](https://docs.github.com/en/actions), [Azure Pipelines](/azure/devops/pipelines), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md), der [Azure CLI](../azure-resource-manager/templates/deploy-cli.md) oder anderen Tools automatisiert werden.
 
 
 Bei dieser Vorgehensweise kann eine Organisation die Bereitstellung von API-Änderungen in API Management-Instanzen automatisieren, und es ist einfach, Änderungen von einer Umgebung in eine andere weiterzugeben. Da unterschiedliche API-Entwicklungsteams an verschiedenen Gruppen von API-Vorlagen und Dateien arbeiten, kommt es nicht zu Beeinträchtigungen zwischen den Teams.

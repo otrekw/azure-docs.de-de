@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: db8164cc0d1216050bfd7f6cc071b3d47db452f1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cae8c1564d9ba03d48f5ac8dcc1eb23b36589df4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956317"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355184"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -57,17 +57,17 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 |---------|---------|---------|---------|---------|
 |Online|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|Azure Cosmos DB-API für MongoDB |&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
 |Offline|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| Azure Cosmos DB-API für MongoDB| &bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Eignet sich für große Datasets und übernimmt die Replikation von Liveänderungen <br/>&bull; Funktioniert nur mit anderen MongoDB-Quellen|
-|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON-/CSV-Dateien<br/>&bull;SQL-API von Azure Cosmos DB<br/>&bull;Azure Cosmos DB-API für MongoDB <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/><br/> Informationen zu weiteren unterstützten Quellen finden Sie im Artikel [Azure Data Factory](../data-factory/connector-overview.md). | &bull;SQL-API von Azure Cosmos DB<br/>&bull;Azure Cosmos DB-API für MongoDB <br/>&bull; JSON-Dateien <br/><br/> Informationen zu weiteren unterstützten Zielen finden Sie im Artikel [Azure Data Factory](../data-factory/connector-overview.md).| &bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
+|Offline|[Azure Data Factory](../data-factory/connector-azure-cosmos-db-mongodb-api.md)| &bull;JSON-/CSV-Dateien<br/>&bull;SQL-API von Azure Cosmos DB<br/>&bull;Azure Cosmos DB-API für MongoDB <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;Azure Blob Storage <br/><br/> Informationen zu weiteren unterstützten Quellen finden Sie im Artikel [Azure Data Factory](../data-factory/connector-overview.md). | &bull;SQL-API von Azure Cosmos DB<br/>&bull;Azure Cosmos DB-API für MongoDB <br/>&bull; JSON-Dateien <br/><br/> Informationen zu weiteren unterstützten Zielen finden Sie im Artikel [Azure Data Factory](../data-factory/connector-overview.md).| &bull; Einfache Einrichtung und Unterstützung mehrerer Quellen <br/>&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Fehlende Prüfpunktausführung: Wenn während der Migration ein Problem auftritt, muss der gesamte Migrationsprozess neu gestartet werden.<br/>&bull; Fehlende Warteschlange für unzustellbare Nachrichten: Dies bedeutet, dass wenige fehlerhafte Dateien den gesamten Migrationsprozess unterbrechen können. <br/>&bull; Erfordert benutzerdefinierten Code, um den Lesedurchsatz für bestimmte Datenquellen zu erhöhen|
 |Offline|[Vorhandene Mongo-Tools (mongodump, mongorestore, Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | Azure Cosmos DB-API für MongoDB| &bull; Einfache Einrichtung und Integration <br/>&bull; Erfordert die benutzerdefinierte Behandlung von Drosselungen|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Cassandra-API für Azure Cosmos DB
 
 |Migrationstyp|Lösung|Unterstützte Quellen|Unterstützte Ziele|Überlegungen|
 |---------|---------|---------|---------|---------|
-|Offline|[cqlsh-Befehl COPY](cassandra-import-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV-Dateien | Cassandra-API für Azure Cosmos DB| &bull; Einfache Einrichtung <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Funktioniert nur, wenn die Quelle eine Cassandra-Tabelle ist|
-|Offline|[Kopieren der Tabelle mit Spark](cassandra-import-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Cassandra-API für Azure Cosmos DB| Cassandra-API für Azure Cosmos DB | &bull; Ermöglicht die Verwendung von Spark-Funktionen zum Parallelisieren von Transformation und Erfassung <br/>&bull; Erfordert die Konfiguration mit einer benutzerdefinierten Wiederholungsrichtlinie für die Behandlung der Drosselung|
-|Online|[Striim (aus Oracle DB/Apache Cassandra)](cosmosdb-cassandra-api-migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> Informationen zu weiteren unterstützten Quellen finden Sie auf der [Striim-Website](https://www.striim.com/sources-and-targets/).|&bull;SQL-API von Azure Cosmos DB<br/>&bull;Cassandra-API für Azure Cosmos DB <br/><br/> Informationen zu weiteren unterstützten Zielen finden Sie auf der [Striim-Website](https://www.striim.com/sources-and-targets/).| &bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
-|Online|[Blitzz (aus Oracle DB/Apache Cassandra)](oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>Informationen zu weiteren unterstützten Quellen finden Sie auf der [Blitzz-Website](https://www.blitzz.io/). |Cassandra-API für Azure Cosmos DB. <br/><br/>Informationen zu weiteren unterstützten Zielen finden Sie auf der [Blitzz-Website](https://www.blitzz.io/). | &bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
+|Offline|[cqlsh-Befehl COPY](cassandra/migrate-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV-Dateien | Cassandra-API für Azure Cosmos DB| &bull; Einfache Einrichtung <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Funktioniert nur, wenn die Quelle eine Cassandra-Tabelle ist|
+|Offline|[Kopieren der Tabelle mit Spark](cassandra/migrate-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Cassandra-API für Azure Cosmos DB| Cassandra-API für Azure Cosmos DB | &bull; Ermöglicht die Verwendung von Spark-Funktionen zum Parallelisieren von Transformation und Erfassung <br/>&bull; Erfordert die Konfiguration mit einer benutzerdefinierten Wiederholungsrichtlinie für die Behandlung der Drosselung|
+|Online|[Striim (aus Oracle DB/Apache Cassandra)](cassandra/migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> Informationen zu weiteren unterstützten Quellen finden Sie auf der [Striim-Website](https://www.striim.com/sources-and-targets/).|&bull;SQL-API von Azure Cosmos DB<br/>&bull;Cassandra-API für Azure Cosmos DB <br/><br/> Informationen zu weiteren unterstützten Zielen finden Sie auf der [Striim-Website](https://www.striim.com/sources-and-targets/).| &bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
+|Online|[Blitzz (aus Oracle DB/Apache Cassandra)](cassandra/oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>Informationen zu weiteren unterstützten Quellen finden Sie auf der [Blitzz-Website](https://www.blitzz.io/). |Cassandra-API für Azure Cosmos DB. <br/><br/>Informationen zu weiteren unterstützten Zielen finden Sie auf der [Blitzz-Website](https://www.blitzz.io/). | &bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
 
 ## <a name="other-apis"></a>Andere APIs
 
@@ -75,8 +75,8 @@ Bei anderen APIs als SQL-API, Mongo-API und Cassandra-API werden in den Umgebung
 
 **Tabellen-API** 
 
-* [Datenmigrationstool](table-import.md#data-migration-tool)
-* [AzCopy](table-import.md#migrate-data-by-using-azcopy)
+* [Datenmigrationstool](table/table-import.md#data-migration-tool)
+* [AzCopy](table/table-import.md#migrate-data-by-using-azcopy)
 
 **Gremlin-API**
 

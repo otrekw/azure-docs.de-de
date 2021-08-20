@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587791"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444309"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -96,7 +96,7 @@ Die Installationsprogramme befinden sich auf dem Konfigurationsserver im Ordner 
 Installieren Sie den Dienst auf jedem virtuellen Computer, den Sie replizieren möchten, mit einer der folgenden Methoden:
 
 - [Pushinstallation](vmware-physical-mobility-service-overview.md#push-installation)
-- [Manuelle Installation](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui) über die Benutzeroberfläche oder PowerShell.
+- [Manuelle Installation](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui-classic) über die Benutzeroberfläche oder PowerShell.
 - Bereitstellung mithilfe eines Bereitstellungstools wie z. B. [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger

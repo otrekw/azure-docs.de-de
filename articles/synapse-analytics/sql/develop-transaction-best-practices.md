@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b47342a0013eafe9444c30ced4d00a96500ccdab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d309e2786a1ec56a5e34f2594520e7e36bbcf6b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356117"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimieren von Transaktionen beim dedizierten SQL-Pool in Azure Synapse Analytics 
 
@@ -44,7 +44,7 @@ Die Sicherheitslimits für Transaktionen gelten nur für Vorgänge mit vollstän
 
 Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 
-* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
+* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context))
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -84,7 +84,7 @@ Das Laden von Daten in eine nicht leere Tabelle mit einem gruppierten Index kann
 
 ## <a name="optimize-deletes"></a>Optimieren von Löschvorgängen
 
-DELETE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true), um die alte Tabelle gegen die neu erstellte Tabelle auszutauschen.
+DELETE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true), um die alte Tabelle gegen die neu erstellte Tabelle auszutauschen.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -177,11 +177,11 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Bei der Neuerstellung großer Tabellen können die Features zur Workloadverwaltung des dedizierten SQL-Pools vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Bei der Neuerstellung großer Tabellen können die Features zur Workloadverwaltung des dedizierten SQL-Pools vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="optimize-with-partition-switching"></a>Optimieren mit Partitionswechsel
 
-Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ist ein Muster für Partitionswechsel sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
+Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context) ist ein Muster für Partitionswechsel sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
 
 Schritte zum Durchführen eines Partitionswechsels:
 
@@ -406,7 +406,7 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Anleitung zum Anhalten und Skalieren
 
-Mithilfe von Azure Synapse Analytics können Sie Ihren dedizierten SQL-Pool bei Bedarf [anhalten, fortsetzen und skalieren](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Mithilfe von Azure Synapse Analytics können Sie Ihren dedizierten SQL-Pool bei Bedarf [anhalten, fortsetzen und skalieren](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?context=/azure/synapse-analytics/context/context). 
 
 Wenn Sie Ihren dedizierten SQL-Pool anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. 
 

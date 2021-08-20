@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: e4f19afc0edf0f43b64548ae1c93ed5ff8dfa8a1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61f4ee43f89e4b0dffe626be84b135e6dc8e3a29
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866572"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286464"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -24,7 +24,7 @@ Verwenden Sie die HDInsight-Tools im Azure-Toolkit für [Eclipse](https://www.ec
 
 * Apache Spark-Cluster in HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [Java Developer Kit (JDK), Version 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java Developer Kit (JDK), Version 8](/azure/developer/java/fundamentals/java-support-on-azure)
 
 * [Eclipse-IDE](https://www.eclipse.org/downloads/). In diesem Artikel wird die Eclipse-IDE für Java-Entwickler verwendet.
 
@@ -92,7 +92,7 @@ Sie können einen normalen Cluster mithilfe des verwalteten Ambari-Benutzernamen
 
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
-   > :::image type="content" source="./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png" alt-text="Azure-Explorer – Speicherkonten" border="true":::
+   > :::image type="content" source="./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png" alt-text="Azure-Explorer: Speicherkonten" border="true":::
    >
    > Wenn **Speicherschlüssel** den aktuellen Fokus besitzt, müssen Benutzer, die nur die Tastatur verwenden, **STRG+TAB** verwenden, um den Fokus in das nächste Feld im Dialogfeld zu verschieben.
 
@@ -326,7 +326,7 @@ Es gibt zwei Modi zum Übermitteln der Aufträge. Wenn Speicheranmeldeinformatio
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 

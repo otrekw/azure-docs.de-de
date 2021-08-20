@@ -6,13 +6,13 @@ ms.date: 10/16/2020
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
-ms.custom: bfmigrate
-ms.openlocfilehash: b70d425aa54267d13ce25cb7113898b6bb9da0d4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: bfmigrate, devx-track-azurepowershell
+ms.openlocfilehash: 0a4ea6393741e15d8dce94869213c62c08537c7e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95998116"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110696872"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 

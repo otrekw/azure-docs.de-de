@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df7af81b51428f53beb7722c7f224dc7afdd28cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354996"
 ---
 # <a name="the-azure-defender-dashboard"></a>Das Azure Defender-Dashboard
 
@@ -46,7 +46,7 @@ Das Dashboard enthält die folgenden Abschnitte:
 
 In diesem Artikel haben Sie etwas über das Azure Defender-Dashboard erfahren. 
 
-Weitere Informationen zu Azure Defender finden Sie unter [Einführung in Azure Defender](azure-defender.md).
-
 > [!div class="nextstepaction"]
 > [Aktivieren von Azure Defender](enable-azure-defender.md)
+
+Weitere Informationen zu Azure Defender finden Sie unter [Einführung in Azure Defender](azure-defender.md).

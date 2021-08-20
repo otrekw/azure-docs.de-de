@@ -3,16 +3,16 @@ title: Massenbearbeitung von Ressourcen zur Kennzeichnung von Klassifizierungen,
 description: Erfahren Sie mehr über die Massenbearbeitung von Ressourcen in Azure Purview.
 author: nayenama
 ms.author: nayenama
-ms.service: data-catalog
-ms.subservice: data-catalog-gen2
+ms.service: purview
+ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cebef52882135d569465f299ab71efcffb931eda
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024233"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471244"
 ---
 # <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Massenbearbeitung von Ressourcen zur Kommentierung von Klassifizierungen, Glossarbegriffen und zum Ändern von Kontakten
 

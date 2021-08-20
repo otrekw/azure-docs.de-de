@@ -2,13 +2,13 @@
 title: Erstellen, Anzeigen und Verwalten von Systemthemen in Azure Event Grid mithilfe der CLI
 description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure CLI Systemthemen erstellen, anzeigen und löschen.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 34a098406762fd57dc9dc4b58fc375286f5d5b13
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 07/22/2021
+ms.openlocfilehash: e8ea2e1351b5faf93e58d5a96561555050ce05b6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874295"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469415"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Erstellen, Anzeigen und Verwalten von Systemthemen in Azure Event Grid mithilfe der Azure CLI
 In diesem Artikel wird beschrieben, wie Sie Systemthemen mithilfe der Azure CLI im Azure-Portal erstellen und verwalten. Eine Übersicht zu Systemthemen finden Sie unter [Systemthemen](system-topics.md).

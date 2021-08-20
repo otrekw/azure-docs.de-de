@@ -4,17 +4,16 @@ description: Verwaltet das Sicherheitsniveau für IoT Edge-Gerät und die Integr
 services: iot-edge
 keywords: Sicherheit, sicheres Element, Enclave, TEE, IoT Edge
 author: eustacea
-manager: philmea
 ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: a04f99151a10a2bfea7341eda47566ab54eca537
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028671"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355770"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 

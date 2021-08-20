@@ -8,17 +8,17 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 99cad194317a2dfc7a5924635aef7484d83f8ba0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f892bd439424fdd35110dfa704e0bf319d85a0c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969284"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347069"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>Diagnostizieren und Behandeln von Problemen im Zusammenhang mit der Azure Cosmos DB-Ausnahme „Zu hohe Anforderungsrate“ (429)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Dieser Artikel enthält bekannte Ursachen und Lösungen für verschiedene Fehler mit dem Statuscode 429 für die SQL-API. Wenn Sie die API für MongoDB verwenden, finden Sie im Artikel [Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB](mongodb-troubleshoot.md) Informationen zum Debuggen des Statuscodes 16500.
+Dieser Artikel enthält bekannte Ursachen und Lösungen für verschiedene Fehler mit dem Statuscode 429 für die SQL-API. Wenn Sie die API für MongoDB verwenden, finden Sie im Artikel [Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB](mongodb/error-codes-solutions.md) Informationen zum Debuggen des Statuscodes 16500.
 
 Die Ausnahme „Anforderungsrate zu groß“ mit Fehlercode 429 weist darauf hin, dass die Rate Ihrer Anforderungen an Azure Cosmos DB begrenzt wird.
 

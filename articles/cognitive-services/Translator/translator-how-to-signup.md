@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c21d78e9731bc1711e62d26d6cca269868ac1714
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101712928"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346996"
 ---
 # <a name="create-a-translator-resource"></a>Erstellen einer Translator-Ressource
 
-In diesem Artikel erfahren Sie, wie Sie eine Übersetzerressource im Azure-Portal erstellen. Der [Übersetzer von Azure](translator-info-overview.md) ist ein cloudbasierter Dienst für maschinelle Übersetzung, der zur [Azure Cognitive Services](../what-are-cognitive-services.md)-Familie der REST-APIs gehört. Azure-Ressourcen sind Instanzen von Diensten, die Sie erstellen. Alle API-Anforderungen an Azure-Dienste erfordern eine **Endpunkt**-URL und einen schreibgeschützten **Abonnementschlüssel** zum Authentifizieren des Zugriffs.
+In diesem Artikel erfahren Sie, wie Sie eine Übersetzerressource im Azure-Portal erstellen. Der [Übersetzer von Azure](translator-overview.md) ist ein cloudbasierter Dienst für maschinelle Übersetzung, der zur [Azure Cognitive Services](../what-are-cognitive-services.md)-Familie der REST-APIs gehört. Azure-Ressourcen sind Instanzen von Diensten, die Sie erstellen. Alle API-Anforderungen an Azure-Dienste erfordern eine **Endpunkt**-URL und einen schreibgeschützten **Abonnementschlüssel** zum Authentifizieren des Zugriffs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Der Zugriff auf die Übersetzerressource ist über zwei verschiedene Ressourcent
 * Ressourcentypen für **einzelne Dienste** ermöglichen den Zugriff auf einen API-Schlüssel und einen Endpunkt für einen einzelnen Dienst.  
 
 * Ressourcentypen für **mehrere Dienste** ermöglichen den Zugriff auf mehrere Cognitive Services-Instanzen über einen einzelnen API-Schlüssel und Endpunkt. Die Cognitive Services-Ressource ist derzeit für die folgenden Dienste verfügbar:
-  * Computersprache ([Übersetzer](../translator/translator-info-overview.md), [LUIS (Language Understanding)](../luis/what-is-luis.md), [Textanalyse](../text-analytics/overview.md))  
+  * Computersprache ([Übersetzer](../translator/translator-overview.md), [LUIS (Language Understanding)](../luis/what-is-luis.md), [Textanalyse](../text-analytics/overview.md))  
   * Vision ([Maschinelles Sehen](../computer-vision/overview.md), [Gesichtserkennung](../face/overview.md))  
   * Entscheidungsfindung ([Content Moderator](../content-moderator/overview.md))  
 

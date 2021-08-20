@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: yelevin
-ms.openlocfilehash: fe86c963ab0ec009b527d2d6138a8af2af9ba68a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ba268f75b770dfd3d19e7bc4750f2c466245279d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890832"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345962"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>Verbinden von Azure Key Vault-Diagnoseprotokollen
 
@@ -22,6 +22,8 @@ Azure Key Vault ist ein Clouddienst zum sicheren Speichern und Zugreifen auf Geh
 Mit diesem Connector können Sie Azure Key Vault-Diagnoseprotokolle zu Azure Sentinel streamen, um die Aktivitäten in allen Instanzen kontinuierlich überwachen zu können.
 
 Erfahren Sie mehr über die [Überwachung von Azure Key Vault](../azure-monitor/insights/key-vault-insights-overview.md) und [Azure Key Vault-Diagnosetelemetriedaten](../key-vault/general/logging.md).
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +51,7 @@ Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azur
 
     1. Lassen Sie auf der Registerkarte **Parameter** die Felder **Auswirkung** und **Einstellungsname** unverändert. Wählen Sie in der Dropdownliste **Log Analytics-Arbeitsbereich** Ihren Azure Sentinel-Arbeitsbereich aus. Die übrigen Dropdownfelder stellen die verfügbaren Diagnoseprotokolltypen dar. Behalten Sie für alle Protokolltypen, die erfasst werden sollen, die Markierung „True“ bei.
 
-    1. Die Richtlinie wird auf in Zukunft hinzugefügte Ressourcen angewendet. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Korrektur** aus, und aktivieren Sie das Kontrollkästchen **Korrekturtask erstellen**.
+    1. Die Richtlinie wird auf Ressourcen angewendet, die in Zukunft hinzugefügt werden. Wählen Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen die Registerkarte **Wartung** aus, und aktivieren Sie das Kontrollkästchen **Wartungstask erstellen**.
 
     1. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. Damit ist die Richtlinie dem ausgewählten Bereich zugewiesen.
 
@@ -61,5 +63,5 @@ Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azur
 
 In diesem Dokument haben Sie erfahren, wie Sie mithilfe von Azure Policy Azure Key Vault mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).

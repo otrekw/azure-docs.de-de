@@ -4,20 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: a302cdacb7943e81f884b7f83a03c8b72ce3e197
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: e134173fdcd72c637be990b92a278d848ce6527b
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560683"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535687"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Communication Services-SDK „Calling“ nutzen, um Ihrer App 1:1-Videoanrufe hinzuzufügen. Hier erfahren Sie, wie Sie einen Videoanruf mithilfe des Calling SDK von Azure Communication Services für iOS beginnen und beantworten.
 
-> [!NOTE]
-> In diesem Dokument wird die Version 1.0.0 des Calling SDK verwendet.
+## <a name="sample-code"></a>Beispielcode
 
-> [!NOTE]
-> Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling).
+Wenn Sie direkt zum Ende springen möchten, können Sie diese Schnellstartanleitung als Beispiel auf [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -76,12 +74,12 @@ import AVFoundation
 ## <a name="object-model"></a>Objektmodell
 Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK für iOS.
 
-| Name      | Beschreibung | 
-| :---        |    :----   |
-| CallClient  | „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.      |
-| CallAgent  | CallAgent dient zum Starten und Verwalten von Anrufen.        |
-| CommunicationTokenCredential| „CommunicationTokenCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.    |
-| CommunicationIdentifier | „CommunicationIdentifier“ wird zur Darstellung der Identität des Benutzers verwendet, wie u. a. die folgenden: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication.        |
+| Name                         | Beschreibung                                                                                                                                                                        |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CallClient                   | „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.                                                                                                                         |
+| CallAgent                    | CallAgent dient zum Starten und Verwalten von Anrufen.                                                                                                                                   |
+| CommunicationTokenCredential | „CommunicationTokenCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.                                                                                     |
+| CommunicationIdentifier      | „CommunicationIdentifier“ wird zur Darstellung der Identität des Benutzers verwendet, wie u. a. die folgenden: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
 
 ## <a name="create-the-call-agent"></a>Erstellen des Anruf-Agents
 Ersetzen Sie die Implementierung der ContentView-Struktur durch einige einfache Benutzeroberflächen-Steuerelemente, die einem Benutzer das Initiieren und Beenden eines Anrufs ermöglichen. In diesem Schnellstart fügen wir eine Geschäftslogik an diese Steuerelemente an.
@@ -228,7 +226,9 @@ struct ContentView_Previews: PreviewProvider {
 ```
 
 ### <a name="authenticate-the-client"></a>Authentifizieren des Clients
-Um eine CallAgent-Instanz zu initialisieren, benötigen wir ein Benutzerzugriffstoken, mit dem wir Anrufe tätigen und empfangen können. Fügen Sie den folgenden Code zum `onAppear`-Rückruf in `ContentView.swift` hinzu:
+Um eine CallAgent-Instanz zu initialisieren, benötigen wir ein Benutzerzugriffstoken, mit dem wir Anrufe tätigen und empfangen können. Wenn Sie noch über kein Token verfügen, finden Sie unter [Benutzerzugriffstoken](../../../access-tokens.md?pivots=programming-language-csharp) weitere Informationen.
+
+Sobald Sie über ein Token verfügen, fügen Sie den folgenden Code zum `onAppear`-Rückruf in `ContentView.swift` hinzu: Sie müssen `<USER ACCESS TOKEN>` durch ein gültiges Benutzerzugriffstoken** für Ihre Ressource ersetzen:
 
 ```Swift
 var userCredential: CommunicationTokenCredential?
@@ -239,8 +239,6 @@ do {
     return
 }
 ```
-
-Ersetzen Sie `<USER ACCESS TOKEN>` durch ein gültiges Benutzerzugriffstoken für Ihre Ressource. Wenn Sie noch über kein Token verfügen, finden Sie unter [Benutzerzugriffstoken](../../../access-tokens.md?pivots=programming-language-csharp) weitere Informationen.
 
 ### <a name="initialize-the-callagent-and-access-device-manager"></a>Initialisieren des CallAgent und Zugreifen auf Geräte-Manager
 Um eine CallAgent-Instanz anhand eines CallClient zu erzeugen, müssen Sie die `callClient.createCallAgent`-Methode verwenden, die ein CallAgent-Objekt asynchron zurückgibt, nachdem es initialisiert wurde. DeviceManager ermöglicht Ihnen das Aufzählen lokaler Geräte, die in einem Anruf zur Übertragung von Audio- bzw. Videostreams verwendet werden können. Mithilfe des Geräte-Managers können Sie auch beim Benutzer die Berechtigung für den Zugriff auf Mikrofon/Kamera anfordern. 
@@ -617,7 +615,3 @@ public class RemoteParticipantObserver : NSObject, RemoteParticipantDelegate {
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 Sie können Ihre App auf dem iOS-Simulator erstellen und ausführen, indem Sie „Produkt“ und anschließend „Ausführen“ auswählen oder die Tastenkombination „⌘-R“ verwenden.
-
-## <a name="sample-code"></a>Beispielcode
-
-Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling) herunterladen.

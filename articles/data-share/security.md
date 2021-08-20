@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 12/17/2020
-ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 770ee01d054aec084e9abd609af28e8125844e0f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678428"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895866"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Sicherheitsübersicht für Azure Data Share
 
@@ -30,8 +30,7 @@ Zugriffssteuerungen für Azure Data Share können auf der Data Share-Ressourcene
 Nachdem eine Freigabe erstellt oder empfangen wurde, können Benutzer mit entsprechender Berechtigung für die Data Share-Ressource Änderungen vornehmen. Wenn ein Benutzer, der eine Freigabe erstellt oder empfängt, die Organisation verlässt, wird weder die Freigabe beendet noch der Datenfluss gestoppt. Andere Benutzer mit entsprechender Berechtigung für die Data Share-Ressource können die Freigabe weiter verwalten.
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>Freigeben von Daten für Datenspeicher mit aktivierter Firewall
-Um Daten für Speicherkonten mit aktivierter Firewall in ein- oder ausgehender Richtung freizugeben, müssen Sie in Ihrem Speicherkonto die Option **Vertrauenswürdige Microsoft-Dienste zulassen** aktivieren. Ausführliche Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](
-https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Um Daten für Speicherkonten mit aktivierter Firewall in ein- oder ausgehender Richtung freizugeben, müssen Sie in Ihrem Speicherkonto die Option **Vertrauenswürdige Microsoft-Dienste zulassen** aktivieren. Ausführliche Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

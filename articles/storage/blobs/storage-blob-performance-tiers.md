@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: faf26ce78e0d6137c93e150d31bd49b9e72b6b8b
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: e701ac76672712f98930d0a2d87e3da5b2afdc51
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655100"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356336"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -82,7 +82,7 @@ Daten, die in einem Premium-Blockblob-Speicherkonto gespeichert sind, können ni
 
 Evaluieren von „Heiß“, „Kalt“ und „Archiv“ in GPv2- und Blobspeicherkonten
 
-- [Informationen zum Aktivieren von Blobdaten aus der Archivzugriffsebene](storage-blob-rehydration.md)
+- [Informationen zum Aktivieren von Blobdaten aus der Archivzugriffsebene](archive-rehydrate-overview.md)
 - [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](./monitor-blob-storage.md)
 - Prüfen der Preise für „Heiß“, „Kalt“ und „Archiv“ in Blobspeicher- und GPv2-Konten nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Überprüfen der Preise für Datenübertragungen unter Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 3c26368e6281ad74d617891ba15c980117b25a6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/02/2021
+ms.openlocfilehash: 0806ef1a191759e769271a97fb1809298cde10db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345911"
 ---
 # <a name="azure-database-for-postgresql---known-issues-and-limitations"></a>Azure Database for PostgreSQL: Bekannte Probleme und Einschränkungen
 
@@ -25,13 +25,6 @@ Gilt für Azure Database for PostgreSQL – Einzelserver.
 | ----- | ------ | ---- | 
 | PostgreSQL 9.6, 10, 11 | Wenn Sie den Serverparameter `pg_qs.replace_parameter_placeholders` aktivieren, kann es vorkommen, dass ein Server in einigen seltenen Szenarien heruntergefahren wird. | Legen Sie im Azure-Portal im Abschnitt „Serverparameter“ den Wert des Parameters `pg_qs.replace_parameter_placeholders` auf `OFF` fest, und speichern sie ihn.   | 
 
-## <a name="server-parameters"></a>Serverparameter
-
-Gilt für Azure Database for PostgreSQL – Einzelserver und flexibler Server
-
-| Zutreffend | Ursache | Wartung| 
-| ----- | ------ | ---- | 
-| PostgreSQL 9.6, 10, 11 | Wenn Sie den Serverparameter `max_locks_per_transaction` auf einen höheren Wert als den [empfohlenen](https://www.postgresql.org/docs/11/kernel-resources.html) Wert ändern, kann dies dazu führen, dass der Server nach einem Neustart nicht mehr gestartet wird. | Belassen Sie den Standardwert (32 oder 64), oder verwenden Sie einen angemessenen Wert gemäß der PostgreSQL-[Dokumentation](https://www.postgresql.org/docs/11/kernel-resources.html). <br> <br> Auf der Dienstseite wird daran gearbeitet, den hohen Wert basierend auf der SKU einzuschränken.  | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen finden Sie unter [bewährte Methoden](./concepts-query-store-best-practices.md) für den Abfragespeicher.

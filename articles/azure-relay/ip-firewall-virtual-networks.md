@@ -2,13 +2,13 @@
 title: Konfigurieren einer IP-Firewall für den Azure Relay-Namespace
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Relay-Namespaces zulassen.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: fe5e1eac2f5ba90b2a1bcc461668d673ffc22965
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91999505"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667738"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurieren einer IP-Firewall für einen Azure Relay-Namespace
 Standardmäßig kann über das Internet auf Relaynamespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.

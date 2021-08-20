@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-azurepowershell
-ms.openlocfilehash: d9179872562ea048fe713d9535c4ff2994bcd223
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5c652696d825b6dae4665de1d8afdd9bae6848a4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666790"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356394"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>Aktivieren und Verwalten von Azure Storage Analytics-Metriken (klassisch)
 
 [Azure Storage Analytics](storage-analytics.md) enthält Metriken für alle Speicherdienste für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken für Ihr Konto aufgezeichnet werden sollen, und Diagramme konfigurieren, die visuelle Darstellungen Ihrer Metrikdaten bieten. In diesem Artikel wird gezeigt, wie Sie Metriken aktivieren und verwalten können. Wenn Sie erfahren möchten, wie Protokolle aktiviert werden, lesen Sie[Aktivieren und Verwalten von Azure Storage Analytics-Protokollen (klassisch)](manage-storage-analytics-logs.md).
 
-Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschau) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
+Es wird empfohlen, [Azure Monitor für Storage](./storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) (Vorschau) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
 
 > [!NOTE]
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).

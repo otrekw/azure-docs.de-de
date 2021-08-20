@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df37d64e634d2764666e29300e5157ceb3f3ec39
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48f7cc738b55ef02de1d631d9ed7a41a9bc8a0b0
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690843"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988816"
 ---
 # <a name="remove-azure-role-assignments"></a>Entfernen von Azure-Rollenzuweisungen
 
@@ -39,7 +39,7 @@ Sie benötigen Folgendes, um Rollenzuweisungen entfernen zu können:
 
 1. Klicken Sie auf **Entfernen**.
 
-   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-remove/remove-role-assignment.png)
+   ![Nachricht zum Entfernen der Rollenzuweisung](./media/shared/remove-role-assignment.png)
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 

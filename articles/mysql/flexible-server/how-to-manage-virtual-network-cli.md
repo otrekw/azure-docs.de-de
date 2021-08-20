@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7da8062f18d737af9d19df54863bc56c7268910c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 243aa85ed2e52fe73efcb0e81c5b3de70b43039e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776913"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346505"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for MySQL – Flexible Server über die Azure CLI
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -23,7 +25,7 @@ Azure Database for MySQL Flexible Server unterstützt zwei Arten von sich gegens
 - Öffentlicher Zugriff (zugelassene IP-Adressen)
 - Privater Zugriff (VNET-Integration)
 
-In diesem Artikel wird die Erstellung von MySQL-Servern mit der Option **Privater Zugriff (VNET-Integration)** über die Azure CLI behandelt. Mit *Privater Zugriff (VNET-Integration)* können Sie Ihre Flexible Server-Instanz in Ihrer eigenen [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)-Instanz bereitstellen. Azure Virtual Network-Instanzen ermöglichen eine private und sichere Netzwerkkommunikation. Bei privatem Zugriff sind die Verbindungen mit dem MySQL-Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen hierzu finden Sie unter [Privater Zugriff (VNET-Integration)](./concepts-networking.md#private-access-vnet-integration).
+In diesem Artikel wird die Erstellung von MySQL-Servern mit der Option **Privater Zugriff (VNET-Integration)** über die Azure CLI behandelt. Mit *Privater Zugriff (VNET-Integration)* können Sie Ihre Flexible Server-Instanz in Ihrer eigenen [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)-Instanz bereitstellen. Azure Virtual Network-Instanzen ermöglichen eine private und sichere Netzwerkkommunikation. Bei privatem Zugriff sind die Verbindungen mit dem MySQL-Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen hierzu finden Sie unter [Privater Zugriff (VNET-Integration)](./concepts-networking-vnet.md).
 
 In Azure Database for MySQL Flexible Server können Sie den Server nur während der Erstellung des Servers in einem virtuellen Netzwerk und einem Subnetz bereitstellen. Nachdem die Flexible Server-Instanz in einem virtuellen Netzwerk und einem Subnetz bereitgestellt wurde, können Sie sie nicht in ein anderes virtuelles Netzwerk oder Subnetz verschieben oder auf *Öffentlicher Zugriff (zugelassene IP-Adressen)* umstellen.
 
@@ -84,4 +86,4 @@ Die vollständige Liste von konfigurierbaren CLI-Parametern finden Sie in der [R
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Netzwerke in Azure Database for MySQL Flexible Server](./concepts-networking.md).
 - [Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for MySQL Flexible Server mit dem Azure-Portal](./how-to-manage-virtual-network-portal.md).
-- Erfahren Sie mehr über [Virtuelle Netzwerke für Azure Database for MySQL Flexible Server](./concepts-networking.md#private-access-vnet-integration).
+- Erfahren Sie mehr über [Virtuelle Netzwerke für Azure Database for MySQL Flexible Server](./concepts-networking-vnet.md#private-access-vnet-integration).

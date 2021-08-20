@@ -3,12 +3,12 @@ title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 0dd7cb9f23d820cc8a4001d430e8ef446ecc5460
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 567a6ad5cd7eae6fb6963dbcdb781fc2d7667f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958835"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355438"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem sie ein Lab-Konto eingerichtet haben, erstellen Administratoren oder Dozenten Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -129,7 +129,7 @@ Weitere Informationen zur Benennung anderer Azure-Ressourcen finden Sie unter [N
 
 Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region oder einen Standort des Rechenzentrums angeben, in dem die Ressourcen gehostet werden sollen. In den nächsten Abschnitten wird beschrieben, wie sich eine Region oder ein Standort auf die einzelnen Ressourcen auswirken kann, die mit dem Einrichten eines Labs verbunden sind.
 
-### <a name="resource-group"></a>Ressourcengruppe
+### <a name="resource-group"></a>Resource group
 
 Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
 
@@ -291,7 +291,7 @@ In diesem Beispiel betragen die Kosten:
 * 1 benutzerdefiniertes Image (32 GB) &times; 2 Versionen &times; 8 US-Regionen &times; $ 1,54 = $ 24,64 pro Monat
 
 > [!NOTE]
-> Die vorhergehende Berechnung dient nur als Beispiel. Sie deckt die Speicherkosten für die Verwendung der Shared Image Gallery ab und enthält *keine* Kosten für ausgehenden Datenverkehr. Die tatsächlichen Preise für Speicher finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/en-us/pricing/details/managed-disks/).
+> Die vorhergehende Berechnung dient nur als Beispiel. Sie deckt die Speicherkosten für die Verwendung der Shared Image Gallery ab und enthält *keine* Kosten für ausgehenden Datenverkehr. Die tatsächlichen Preise für Speicher finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 #### <a name="cost-management"></a>Kostenverwaltung
 

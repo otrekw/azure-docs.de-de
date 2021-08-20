@@ -3,13 +3,13 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure-Funktionen mithilfe von Azure Functions-Tools für Visual Studio 2019.
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 12/10/2020
+ms.openlocfilehash: 2cd702286b2f35fcbc725af5ee231e1ab4b78284
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765573"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349987"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -73,7 +73,7 @@ Nach dem Erstellen eines Azure Functions-Projekts erstellt die Projektvorlage ei
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
 
-* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden bei der Ausführung in Azure nicht verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden bei der Ausführung in Azure nicht verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings).
 
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen. Stellen Sie sicher, dass die Einstellung **In Ausgabeverzeichnis kopieren** für diese Datei auf **Kopieren, falls aktueller** festgelegt ist. 
@@ -124,7 +124,7 @@ In C#-Klassenbibliotheksfunktionen werden die von der Funktion verwendeten Bindu
 
     ![Erstellen einer Queue Storage-Triggerfunktion](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit dem Schlüssel `QueueStorage` verwendet. Definieren Sie diese Einstellung für die Verbindungszeichenfolge in der Datei [local.settings.json](functions-run-local.md#local-settings-file).
+    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit dem Schlüssel `QueueStorage` verwendet. Definieren Sie diese Einstellung für die Verbindungszeichenfolge in der Datei [local.settings.json](functions-develop-local.md#local-settings-file).
 
 4. Untersuchen Sie die neu hinzugefügte Klasse. Es wird eine statische `Run()`-Methode angezeigt, der das `FunctionName`-Attribut zugewiesen wird. Dieses Attribut gibt an, dass die Methode den Einstiegspunkt für die Funktion darstellt.
 
@@ -164,7 +164,7 @@ Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als B
 
    Weitere Informationen finden Sie unter [C#-Klassenbibliothek mit Visual Studio](./functions-bindings-register.md#local-csharp). Die bindungsspezifischen NuGet-Paketanforderungen finden Sie im Referenzartikel für die Bindung. Paketanforderungen für den Event Hubs-Trigger finden Sie im [Referenzartikel zu Event Hubs-Bindungen](functions-bindings-event-hubs.md).
 
-3. Falls für die Bindung bestimmte App-Einstellungen erforderlich sind, können Sie diese der Sammlung `Values` in der [Datei mit lokalen Einstellungen](functions-run-local.md#local-settings-file) hinzufügen. 
+3. Falls für die Bindung bestimmte App-Einstellungen erforderlich sind, können Sie diese der Sammlung `Values` in der [Datei mit lokalen Einstellungen](functions-develop-local.md#local-settings-file) hinzufügen. 
 
    Die-Funktion verwendet diese Werte, wenn sie lokal ausgeführt wird. Wenn die Funktion in der Funktions-App in Azure ausgeführt wird, werden die [Einstellungen für Funktions-Apps](#function-app-settings) verwendet.
 

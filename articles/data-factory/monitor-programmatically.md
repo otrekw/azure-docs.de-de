@@ -2,17 +2,18 @@
 title: Programmgesteuertes Überwachen einer Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe verschiedener Software Development Kits (SDKs) eine Pipeline in einer Data Factory überwachen können.
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-python
-ms.openlocfilehash: 4c6c54138f7966c505ec0cdea2a90d2a8c1655f8
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 93187bd3f46fc85375289e911a816e2cb3e3da12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005517"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349511"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programmgesteuertes Überwachen einer Azure Data Factory
 
@@ -37,7 +38,7 @@ Informationen zu den Eigenschaften der Pipelineausführung finden Sie in der [Pi
 * Erfolgreich
 * Fehler
 * Cancelling
-* Canceled
+* Abgebrochen
 
 ## <a name="net"></a>.NET
 Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit dem .NET SDK finden Sie unter [Erstellen einer Data Factory und Pipeline mit dem .NET SDK](quickstart-create-data-factory-dot-net.md).

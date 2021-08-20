@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 115cb4203966bdf4cb60373d9c08994b6eb11576
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d5037a6d236c0071c25e0e4f148c32f67b5e8438
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182604"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006282"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Sichern von Workload-VMs in einer privaten CloudSimple-Cloud mithilfe von Veeam B&R
 
@@ -222,7 +222,7 @@ Greifen Sie über Ihre private Cloud auf vCenter zu, um ein Veeam-Dienstkonto zu
 5. Erstellen Sie die VMs für die Veeam-Sicherungs- und -Proxyserver in vCenter gemäß den [Systemanforderungen für Veeam](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95). Sie können Windows 2012 R2 oder Linux verwenden. Weitere Informationen finden Sie unter [Anforderungen für die Verwendung von Linux-Sicherungsrepositorys](https://www.veeam.com/kb2216).
 6. Stellen Sie die installierbare Veeam-ISO-Datei als CDROM-Gerät in der Veeam-Sicherungsserver-VM bereit.
 7. Wenn Sie eine RDP-Sitzung mit dem Windows 2012 R2-Computer (Ziel für die Veeam-Installation) verwenden, [installieren Sie Veeam B&R 9.5u3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) auf einer Windows 2012 R2-VM.
-8. Suchen Sie die interne IP-Adresse der Veeam-Sicherungsserver-VM, und konfigurieren Sie die IP-Adresse auf dem DHCP-Server als statisch. Die genauen Schritte, die hierfür erforderlich sind, hängen vom DHCP-Server ab. Der Netgate-Artikel <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">Static DHCP Mappings</a> (Statische DHCP-Zuordnungen) erläutert beispielsweise, wie ein DHCP-Server mit einem pfSense-Router konfiguriert wird.
+8. Suchen Sie die interne IP-Adresse der Veeam-Sicherungsserver-VM, und konfigurieren Sie die IP-Adresse auf dem DHCP-Server als statisch. Die genauen Schritte, die hierfür erforderlich sind, hängen vom DHCP-Server ab. Der Netgate-Artikel <a href="https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html" target="_blank">Static DHCP Mappings</a> (Statische DHCP-Zuordnungen) erläutert beispielsweise, wie ein DHCP-Server mit einem pfSense-Router konfiguriert wird.
 
 ### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam-Konsole: Installieren der Veeam-Sicherungs- und -Wiederherstellungssoftware
 
@@ -302,4 +302,4 @@ Informationen zum Einschränken von Berechtigungen finden Sie unter [Einschränk
 
 * [Erstellen eines XFS-Volume auf dem verwalteten Datenträger (RedHat)](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [Einrichten eines NFS-Bereitstellungspunkts unter CentOS 7 (HowToForge)](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [Konfigurieren des DHCP-Servers: Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [Konfigurieren des DHCP-Servers: Netgate](https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html)
