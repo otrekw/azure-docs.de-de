@@ -3,12 +3,12 @@ title: Überwachen von Containerinstanzen
 description: Vorgehensweise zur Überwachung des Verbrauchs von Computeressourcen, z. B. CPU und Arbeitsspeicher, durch Ihre Container in Azure Container Instances.
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: ae9725ffe66bebbed26745c311b2ada07d5d2c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f485efc5bdc29760f0b4278b746940c947777e3
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589299"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219227"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Überwachen von Containerressourcen in Azure Container Instances
 
@@ -51,7 +51,7 @@ In einer Containergruppe, die mehrere Container enthält, verwenden Sie eine [Di
 Metriken für Containerinstanzen können auch per Azure CLI erfasst werden. Rufen Sie zuerst die ID der Containergruppe ab, indem Sie den folgenden Befehl verwenden. Ersetzen Sie `<resource-group>` durch Ihre Ressourcengruppennamen und `<container-group>` durch den Namen Ihrer Containergruppe.
 
 
-```console
+```azurecli
 CONTAINER_GROUP=$(az container show --resource-group <resource-group> --name <container-group> --query id --output tsv)
 ```
 

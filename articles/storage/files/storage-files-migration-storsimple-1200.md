@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 67ddcf5fd7d3ef3c1def12a325eb19980176a8ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756213"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462188"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
 
@@ -20,7 +20,14 @@ Geräte der StorSimple 1200-Serie sind virtuelle Appliances, die in einem lokal
 
 Die StorSimple 1200-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series).  Es ist wichtig, dass Sie so bald wie möglich mit der Planung der Migration beginnen. Dieser Artikel enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für eine erfolgreiche Migration zur Azure-Dateisynchronisierung. 
 
-## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+
+## <a name="azure-file-sync&quot;></a>Azure-Dateisynchronisierung
 
 > [!IMPORTANT]
 > Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan oder Unterstützung bei der Migration zu erhalten.
@@ -32,7 +39,7 @@ Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Haup
 
 In diesem Artikel werden hauptsächlich die Migrationsschritte behandelt. Wenn Sie vor der Migration mehr über die Azure-Dateisynchronisierung erfahren möchten, empfehlen wir die folgenden Artikel:
 
-* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md "Übersicht")
+* [Azure-Dateisynchronisierung – Übersicht](../file-sync/file-sync-planning.md &quot;Übersicht")
 * [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>Migrationsziele

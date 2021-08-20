@@ -2,18 +2,18 @@
 title: Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können mit kundenseitig verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten, oder Sie können sich bei der Verschlüsselung Ihrer verwalteten Datenträger auf von Microsoft verwaltete Schlüssel verlassen.
 author: roygara
-ms.date: 04/15/2021
+ms.date: 06/29/2021
 ms.topic: conceptual
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4607778c78b8b062b265a5754337c09c41ba83f1
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339645"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -21,7 +21,7 @@ Die meisten von Azure verwalteten Datenträger werden mit der Azure Storage-Vers
 
 Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
-Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](/azure/storage/common/storage-service-encryption).
+Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md).
 
 > [!NOTE]
 > Temporäre Datenträger sind keine verwalteten Datenträger und werden nicht von SSE verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
@@ -51,17 +51,6 @@ Vorerst gelten für vom Kunden verwaltete Schlüssel die folgenden Einschränkun
 #### <a name="supported-regions"></a>Unterstützte Regionen
 
 Von Kunden verwaltete Schlüssel sind in allen Regionen verfügbar, in denen verwaltete Datenträger verfügbar sind.
-
-Die automatische Schlüsselrotation ist in der Vorschau und nur in den folgenden Regionen verfügbar:
-
-- East US
-- USA (Ost) 2
-- USA Süd Mitte
-- USA (Westen)
-- USA, Westen 2
-- Nordeuropa
-- Europa, Westen
-- Frankreich, Mitte
 
 > [!IMPORTANT]
 > Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie vom Kunden verwaltete Schlüssel konfigurieren, wird Ihren Ressourcen im Hintergrund automatisch eine verwaltete Identität zugewiesen. Wenn Sie anschließend das Abonnement, die Ressourcengruppe oder den verwalteten Datenträger in ein anderes Azure AD-Verzeichnis verschieben, wird die den verwalteten Datenträgern zugeordnete verwaltete Identität nicht an den neuen Mandanten übertragen, sodass kundenseitig verwaltete Schlüssel möglicherweise nicht mehr funktionieren. Weitere Informationen finden Sie unter [Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

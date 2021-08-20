@@ -9,20 +9,18 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 01/15/2021
-ms.openlocfilehash: 1bfab8547f3c6cc010036170c082eecdb4e335ae
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 07/14/2021
+ms.openlocfilehash: b967ad27b3f20b75e9b7571a865228508bca9112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411561"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727254"
 ---
 # <a name="enable-intel-sgx-for-always-encrypted-for-your-azure-sql-database"></a>Aktivieren von Intel SGX für Always Encrypted für Ihre Azure SQL-Datenbank-Instanz 
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-> [!NOTE]
-> Always Encrypted mit Secure Enclaves für Azure SQL-Datenbank befindet sich derzeit in der **öffentlichen Vorschau**.
 
 [Always Encrypted mit Secure Enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL-Datenbank nutzt [Intel Software Guard Extensions-Enclaves (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/). Damit Intel SGX verfügbar ist, müssen für die Datenbank das [V-Kern-Modell](service-tiers-vcore.md) und die Hardwaregeneration der [DC-Serie](service-tiers-sql-database-vcore.md#dc-series) verwendet werden.
 

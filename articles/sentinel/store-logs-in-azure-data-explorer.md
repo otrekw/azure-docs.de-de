@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 584f108ea534b8703b941d91b7d03b6275ea6134
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1f9d0a146c557f50c0cea776c6e3ae6853377df5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340119"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>Integrieren von Azure Data Explorer für die langfristige Protokollaufbewahrung
 
@@ -31,7 +31,7 @@ Das Speichern von Protokollen in Azure Data Explorer reduziert die Kosten, aber 
 
 Azure Data Explorer ist eine Big Data-Analyseplattform, die speziell für Protokoll- und Datenanalysen optimiert ist. Da Azure Data Explorer als Abfragesprache die Kusto Query Language (KQL) verwendet, stellt er eine gute Alternative zur Datenspeicherung in Azure Sentinel dar. Mit Azure Data Explorer als Datenspeicher können Sie plattformübergreifende Abfragen ausführen und Daten sowohl in Azure Data Explorer als auch in Azure Sentinel visualisieren.
 
-Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Explorer](/azure/data-explorer/) und im [Blog](https://azure.microsoft.com/en-us/blog/tag/azure-data-explorer/).
+Weitere Informationen finden Sie in der [Dokumentation zu Azure Data Explorer](/azure/data-explorer/) und im [Blog](https://azure.microsoft.com/blog/tag/azure-data-explorer/).
 
 ### <a name="when-to-integrate-with-azure-data-explorer"></a>Anwendungsfälle für die Integration in Azure Data Explorer
 
@@ -239,5 +239,5 @@ Fahren Sie unabhängig davon, wo Sie Ihre Daten speichern, mit dem Hunting und d
 
 Weitere Informationen finden Sie unter:
 
-- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](tutorial-investigate-cases.md)
+- [Tutorial: Untersuchen von Vorfällen mit Azure Sentinel](investigate-cases.md)
 - [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)

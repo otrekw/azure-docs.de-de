@@ -2,13 +2,13 @@
 title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen von Systemthemen in Azure Event Grid
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Resource Manager-Vorlagen Systemthemen in Azure Event Grid erstellen können.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 8420e60dd7336d17845a0a1c6b4e5e6637fe9c8a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86115161"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469459"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Erstellen von Systemthemen in Azure Event Grid mithilfe von Resource Manager-Vorlagen
 In diesem Artikel wird beschrieben, wie Sie Systemthemen mithilfe von Resource Manager-Vorlagen erstellen und verwalten. Eine Übersicht über Systemthemen finden Sie unter [Systemthemen](system-topics.md).

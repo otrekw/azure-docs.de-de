@@ -2,7 +2,6 @@
 title: Grundlegendes zu Azure IoT Hub-Gerätezwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden Sie Gerätezwillinge zum Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten.'
 author: nehsin
-manager: philmea
 ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
@@ -11,12 +10,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: cc1f9aaa0409300f99535b0b64f5719f8e8c97ad
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1bea2bab5a930d16ebc7675a14bfa4486dc35951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339163"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -43,7 +42,7 @@ Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachricht
 
 Weitere Informationen zu gewünschten Eigenschaften, direkten Methoden und C2D-Nachrichten finden Sie im [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md).
 
-Informationen über das Verhältnis von Gerätezwillingen zu dem Gerätemodell, das von einem Azure IoT Plug & Play-Gerät verwendet wird, finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-pnp/concepts-digital-twin.md).
+Informationen über das Verhältnis von Gerätezwillingen zu dem Gerätemodell, das von einem Azure IoT Plug & Play-Gerät verwendet wird, finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-develop/concepts-digital-twin.md).
 
 ## <a name="device-twins"></a>Gerätezwillinge
 

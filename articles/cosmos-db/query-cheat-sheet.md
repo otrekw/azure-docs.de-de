@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e62bd96fc21f5cb2cfbf1aca6d3a2187e9b417
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339647"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339938"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Abfragespickzettel für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,6 @@ Laden Sie die [Abfragespickzettel für Azure Cosmos DB im A3-Format](https://go.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Schreiben von Abfragen finden Sie in den folgenden Artikeln:
 * Unterstützung für SQL-API-Abfragen finden Sie in [Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API](tutorial-query-sql-api.md), [SQL-Abfragen für Azure Cosmos DB](./sql-query-getting-started.md) und [Azure Cosmos DB-SQL-Syntaxreferenz](./sql-query-getting-started.md).
-* Informationen zu MongoDB-Abfragen finden Sie unter [Abfrage mit der API für MongoDB von Azure Cosmos DB](tutorial-query-mongodb.md) und [Featureunterstützung und Syntax der API für MongoDB von Azure Cosmos DB](mongodb-feature-support.md).
+* Informationen zu MongoDB-Abfragen finden Sie unter [Abfrage mit der API für MongoDB von Azure Cosmos DB](mongodb/tutorial-query-mongodb.md) und [Featureunterstützung und Syntax der API für MongoDB von Azure Cosmos DB](mongodb/feature-support-32.md).
 * Unterstützung für Gremlin-API-Abfragen finden Sie unter [Tutorial: Abfragen der Gremlin-API von Azure Cosmos BD mithilfe von Gremlin](tutorial-query-graph.md) und [Unterstützung für Gremlin-Diagramme in Azure Cosmos DB](gremlin-support.md).
-* Unterstützung für Tabellen-API-Abfragen finden Sie in [Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API](tutorial-query-table.md).
+* Unterstützung für Tabellen-API-Abfragen finden Sie in [Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API](table/tutorial-query-table.md).

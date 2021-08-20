@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e55202163a447ca2d7d08999c953e619bc027b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98569843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340046"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migration von Version 2.0 zu Version 3.0 der REST-API
 
@@ -143,7 +143,7 @@ Diese Änderung erfordert den Aufruf von `GET` für die Auflistung in einer Schl
 Eine detaillierte Beschreibung zum Erstellen von Transkriptionsbatches finden Sie in [Vorgehensweise bei der Batchtranskription](./batch-transcription.md).
 
 Mit der Transkriptions-API der Version 3 können Sie bestimmte Transkriptionsoptionen explizit festlegen. Alle (optionalen) Konfigurationseigenschaften können jetzt in der `properties`-Eigenschaft festgelegt werden.
-Version 3 unterstützt auch mehrere Eingabedateien, sodass eine Liste von URLs erforderlich ist und nicht eine einzelne URL wie in Version 2. Der v2-Eigenschaftsname `recordingsUrl` ist jetzt `contentUrls` in Version 3. Die Funktionalität der Stimmungsanalyse in Transkriptionen wurde in Version 3 entfernt. Optionen für die Stimmungsanalyse finden Sie unter Microsoft Cognitive Service-[Textanalyse](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/).
+Version 3 unterstützt auch mehrere Eingabedateien, sodass eine Liste von URLs erforderlich ist und nicht eine einzelne URL wie in Version 2. Der v2-Eigenschaftsname `recordingsUrl` ist jetzt `contentUrls` in Version 3. Die Funktionalität der Stimmungsanalyse in Transkriptionen wurde in Version 3 entfernt. Optionen für die Stimmungsanalyse finden Sie unter Microsoft Cognitive Service-[Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
 Die neue Eigenschaft `timeToLive` unter `properties` kann dazu beitragen, die bestehenden abgeschlossenen Entitäten zu löschen. `timeToLive` gibt eine Dauer an, nach der eine abgeschlossene Entität automatisch gelöscht wird. Legen Sie einen hohen Wert fest (z. B. `PT12H`), wenn die Entitäten kontinuierlich nachverfolgt, verbraucht und gelöscht werden und daher normalerweise lange vor Ablauf von 12 Stunden verarbeitet werden.
 

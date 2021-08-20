@@ -8,12 +8,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 453b7558ac4f26395186a6aabc54ce831b5ef9b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10695c20bc177abd084d6a3724ae3d379d4ca74a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071882"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284566"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Data Science mit Ubuntu Data Science Virtual Machine in Azure
 
@@ -326,7 +326,7 @@ rattle()
 > [!NOTE]
 > Sie müssen Rattle nicht auf der DSVM installieren. Sie werden jedoch möglicherweise aufgefordert, zusätzliche Pakete zu installieren, wenn Rattle geöffnet wird.
 
-Die Benutzeroberfläche von Rattle basiert auf Registerkarten. Die meisten Registerkarten entsprechen den Schritten unter [Team Data Science-Prozess](../team-data-science-process/index.yml), z.B. das Laden oder Untersuchen von Daten. Der Data Science-Prozess verläuft von links nach rechts durch die Registerkarten. Die letzte Registerkarte enthält ein Protokoll mit den R-Befehlen, die von Rattle ausgeführt wurden.
+Die Benutzeroberfläche von Rattle basiert auf Registerkarten. Die meisten Registerkarten entsprechen den Schritten unter [Team Data Science-Prozess](/azure/architecture/data-science-process/overview), z.B. das Laden oder Untersuchen von Daten. Der Data Science-Prozess verläuft von links nach rechts durch die Registerkarten. Die letzte Registerkarte enthält ein Protokoll mit den R-Befehlen, die von Rattle ausgeführt wurden.
 
 Gehen Sie wie folgt vor, um das Dataset zu laden und zu konfigurieren:
 

@@ -3,19 +3,19 @@ title: 'Vorgehensweise: Entwickeln von Anwendungen mit benutzerdefinierten Befeh
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Anwendungen mit benutzerdefinierten Befehlen entwickeln und anpassen können. Diese Sprachbefehls-Apps eignen sich am besten für die Aufgabenerledigung oder Befehl-und-Steuerung-Szenarien (Command-and-Control).
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.author: trbye
-ms.openlocfilehash: 84253f897e8b85029ea4425a7919be4bf71028ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: cb97e41740997e35445cdf6dfb7281e54c3a5c16
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451943"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350167"
 ---
 # <a name="develop-custom-commands-applications"></a>Entwickeln von Anwendungen mit benutzerdefinierten Befehlen
 
@@ -93,7 +93,7 @@ Weitere Informationen über Regeln und Vervollständigungsregeln finden Sie unte
 1. Wählen Sie die Standardvervollständigungsregel **Erledigt** aus. Bearbeiten Sie sie anschließend wie folgt:
 
 
-    | Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
+    | Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Name**       | `ConfirmationResponse`                  | Ein Name, der den Zweck der Regel beschreibt.          |
     | **Bedingungen** | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
@@ -153,7 +153,7 @@ Probieren Sie die folgenden Beispieläußerungen aus, indem Sie Sprache oder Tex
 - Erwartete Antwort: OK, lege einen Alarm für morgen 9 Uhr fest
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot, der den Test auf einer Webchatoberfläche anzeigt.](media/custom-commands/create-basic-test-chat.png)
+> ![Screenshot, der den Test auf einer Webchatoberfläche anzeigt.](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 > [!TIP]
 > Im Testbereich können Sie **Rundendetails** auswählen, um Informationen darüber zu erhalten, wie diese Sprach- oder Texteingabe verarbeitet wurde.
@@ -183,7 +183,7 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
    1. Konfigurieren Sie die Eigenschaften des Parameters mithilfe der folgenden Tabelle. Informationen zu sämtlichen Konfigurationseigenschaften eines Befehls finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
 
 
-       | Konfiguration      | Vorgeschlagener Wert     | Beschreibung                                                      |
+       | Konfiguration      | Vorgeschlagener Wert     | BESCHREIBUNG                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **Name**               | `OnOff`           | Ein aussagekräftiger Name für den Parameter                                                                           |
        | **Is Global**          | Nicht markiert       | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle in der Anwendung angewendet wird.|

@@ -4,15 +4,16 @@ description: Erfahren Sie, wie Sie die API für den Zugriff auf kommerzielle Mar
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: fdb2c47781312505a62c5e95d25c9d9364e3b610
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 032bdc632832c7ca8c14cb1124329f68b6b399c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583504"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355887"
 ---
 # <a name="get-started-with-programmatic-access-to-analytics-data"></a>Erste Schritte mit dem programmgesteuerten Zugriff auf Analysedaten
 

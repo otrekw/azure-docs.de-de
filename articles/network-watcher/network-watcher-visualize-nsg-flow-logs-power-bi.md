@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 50f08ffc304962cc66f6eed07adcb5b7e4aa6692
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c386714fbc24c5e5f2f7e71234e2838aa2e5f216
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011151"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542236"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 
@@ -52,7 +52,7 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
 ### <a name="steps"></a>Schritte
 
-1. Laden Sie die folgende Power BI-Vorlage in der Power BI Desktop-Anwendung herunter, und öffnen Sie sie: [Network Watcher PowerBI flow logs template](https://aka.ms/networkwatcherpowerbiflowlogstemplate) (Network Watcher – Vorlage für Power BI-Datenflussprotokolle).
+1. Laden Sie die folgende Power BI-Vorlage in der Power BI Desktop-Anwendung herunter, und öffnen Sie sie: [Network Watcher PowerBI flow logs template](https://aka.ms/networkwatcherflowlogspowerbitemplate) (Network Watcher – Vorlage für Power BI-Datenflussprotokolle).
 1. Geben Sie die erforderlichen Abfrageparameter ein.
    1. **StorageAccountName**: Gibt den Namen des Speicherkontos mit den NSG-Datenflussprotokollen an, die geladen und visualisiert werden sollen.
    1. **NumberOfLogFiles**: Gibt die Anzahl von Protokolldateien an, die heruntergeladen und in Power BI visualisiert werden sollen. Wenn beispielsweise der Wert 50 angegeben ist, sind dies die letzten 50 Protokolldateien. Wenn zwei NSGs aktiviert und für das Senden von NSG-Datenflussprotokollen an dieses Konto konfiguriert sind, können die letzten 25 Stunden des Protokollverlaufs angezeigt werden.

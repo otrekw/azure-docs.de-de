@@ -6,10 +6,9 @@ title: include file description: include file services: event-hubs author: spell
 In der folgenden Tabelle finden Sie die Kontingente und Grenzwerte, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="common-limits-for-all-tiers"></a>Allgemeine Grenzwerte für alle Ebenen
-[!INCLUDE [event-hubs-common-limits](event-hubs-common-limits.md)]
+[!INCLUDE [event-hubs-common-limits](../articles/event-hubs/includes/event-hubs-common-limits.md)]
 
 ### <a name="basic-vs-standard-vs-premium-vs-dedicated-tiers"></a>Vergleich der Tarife „Basic“, „Standard“, „Premium“ und „Dedicated“
-[!INCLUDE [event-hubs-tier-limits](event-hubs-tier-limits.md)]
+[!INCLUDE [event-hubs-tier-limits](../articles/event-hubs/includes/event-hubs-tier-limits.md)]
 
-[!INCLUDE [event-hubs-tier-features](event-hubs-tier-features.md)]
 

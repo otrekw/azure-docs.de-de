@@ -3,12 +3,12 @@ title: Bereitstellungsmodi
 description: Beschreibt das Festlegen, ob für Azure Resource Manager eine vollständige oder inkrementelle Bereitstellung verwendet wird.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7566a24297a31c3138228528be050be6c7cf11c8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 98e92cfc58acd85d1ed49cec0e29d1d73b5b8efb
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963286"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112320872"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -101,11 +101,10 @@ Verwenden Sie zum Festlegen des Bereitstellungsmodus mit der Azure CLI den `mode
 
 ```azurecli-interactive
 az deployment group create \
-  --name ExampleDeployment \
   --mode Complete \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleResourceGroup \
+  --template-file storage.json
 ```
 
 Im folgenden Beispiel ist eine verknüpfte Vorlage mit festgelegtem inkrementellen Bereitstellungsmodus dargestellt:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d8cba5c69802828a0bd486d902d85199f3ae1d00
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279016"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122356580"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für Paketerstellung und Übertragung
 
@@ -26,14 +26,14 @@ ms.locfileid: "106279016"
 
 In diesem Artikel finden Sie einen szenariobasierten Migrationsleitfaden für die Paketerstellung und Übertragung, der Sie bei der Migration von Azure Media Services V2 zu V3 unterstützt.
 
-Wichtige Änderungen bei der Art und Weise, wie Inhalte in der V3-API veröffentlicht werden. Das neue Veröffentlichungsmodell wurde vereinfacht und verwendet weniger Entitäten zum Erstellen eines Streaminglocators. Die API wurde von den zuvor benötigten vier Entitäten auf lediglich zwei Entitäten reduziert. Richtlinien für symmetrische Schlüssel und Streaminglocators ersetzen nun den Bedarf an `ContentKeyAuthoriationPolicy`, `AssetDeliveyPolicy`, `ContentKey` und `AccessPolicy`.
+Wichtige Änderungen bei der Art und Weise, wie Inhalte in der V3-API veröffentlicht werden. Das neue Veröffentlichungsmodell wurde vereinfacht und verwendet weniger Entitäten zum Erstellen eines Streaminglocators. Die API wurde von den zuvor benötigten vier Entitäten auf lediglich zwei Entitäten reduziert. Richtlinien für symmetrische Schlüssel und Streaminglocators ersetzen nun den Bedarf an `ContentKeyAuthorizationPolicy`, `AssetDeliveryPolicy`, `ContentKey` und `AccessPolicy`.
 
 ## <a name="packaging-and-delivery-in-v3"></a>Paketerstellung und Übertragung in V3
 
 1. Erstellen von [Richtlinien für symmetrische Schlüssel](drm-content-key-policy-concept.md)
 1. Erstellen von [Streaminglocators](stream-streaming-locators-concept.md)
 1. Abrufen der [Streamingpfade](create-streaming-locator-build-url.md) 
-    1. Konfigurieren dieser Pfade für einen [DASH](encode-dynamic-packaging-concept.md#mpeg-dash-protocol)- oder [HLS](encode-dynamic-packaging-concept.md#hls-protocol)-Player
+    1. Konfigurieren dieser Pfade für einen [DASH](encode-dynamic-packaging-concept.md#deliver-dash)- oder [HLS](encode-dynamic-packaging-concept.md#deliver-hls)-Player
 
 Die zugehörigen Schritte finden Sie in den nachstehenden Konzepten, Tutorials und Schrittanleitungen zur Veröffentlichung.
 

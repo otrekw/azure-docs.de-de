@@ -2,26 +2,25 @@
 title: Grundlegendes zum SAML-basierten einmaligen Anmelden (Single Sign-On, SSO) für Apps bei Azure Active Directory
 description: Grundlegendes zum SAML-basierten einmaligen Anmelden (Single Sign-On, SSO) für Apps bei Azure Active Directory
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/28/2020
-ms.author: mtillman
-ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1f08e5d75b1a364a3a79a8da01a0a6494a61fdd6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/28/2021
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: ac68db14ec080372acfae3e9f1e5d3dd3f6a47c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346635"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Grundlegendes zum SAML-basierten einmaligen Anmelden
 
-In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. In diesem Artikel erfahren Sie mehr über die SAML-basierte Option für einmaliges Anmelden. 
-
+In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. In diesem Artikel erfahren Sie mehr über die SAML-basierte Option für einmaliges Anmelden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -29,13 +28,12 @@ Die Verwendung von Azure AD als Identitätsanbieter und das Konfigurieren des e
 
 In der [Schnellstartserie](add-application-portal-setup-sso.md) finden Sie einen Artikel zum Konfigurieren des einmaligen Anmeldens. Darin erfahren Sie, wie Sie auf die SAML-Konfigurationsseite für eine App zugreifen. Die SAML-Konfigurationsseite enthält fünf Abschnitte. Diese Abschnitte werden in diesem Artikel erläutert.
 
-> [!IMPORTANT] 
-> Es gibt einige Szenarien, in denen die Option **Einmaliges Anmelden** in der Navigation für eine Anwendung in **Unternehmensanwendungen** nicht vorhanden ist. 
+> [!IMPORTANT]
+> Es gibt einige Szenarien, in denen die Option **Einmaliges Anmelden** in der Navigation für eine Anwendung in **Unternehmensanwendungen** nicht vorhanden ist.
 >
-> Wenn die Anwendung mithilfe von **App-Registrierungen** registriert wurde, wird die Funktion zum einmaligen Anmelden so konfiguriert, dass standardmäßig OIDC OAuth verwendet wird. In diesem Fall wird die Option **Einmaliges Anmelden** in der Navigation unter **Unternehmensanwendungen** nicht angezeigt. Wenn Sie **App-Registrierungen** zum Hinzufügen Ihrer benutzerdefinierten App verwenden, konfigurieren Sie die Optionen in der Manifestdatei. Weitere Informationen zur Manifestdatei finden Sie unter [Azure Active Directory-App-Manifest](../develop/reference-app-manifest.md). Weitere Informationen zu SSO-Standards finden Sie unter [Authentifizierung und Autorisierung mit der Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform). 
+> Wenn die Anwendung mithilfe von **App-Registrierungen** registriert wurde, wird die Funktion zum einmaligen Anmelden so konfiguriert, dass standardmäßig OIDC OAuth verwendet wird. In diesem Fall wird die Option **Einmaliges Anmelden** in der Navigation unter **Unternehmensanwendungen** nicht angezeigt. Wenn Sie **App-Registrierungen** zum Hinzufügen Ihrer benutzerdefinierten App verwenden, konfigurieren Sie die Optionen in der Manifestdatei. Weitere Informationen zur Manifestdatei finden Sie unter [Azure Active Directory-App-Manifest](../develop/reference-app-manifest.md). Weitere Informationen zu SSO-Standards finden Sie unter [Authentifizierung und Autorisierung mit der Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform).
 >
 > Zu den Szenarien, in denen ebenfalls **Einmaliges Anmelden** in der Navigation fehlt, zählen auch folgende Beispiele: Eine Anwendung wird in einem anderen Mandanten gehostet. Ihr Konto verfügt nicht über die erforderlichen Berechtigungen (globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals). Berechtigungen können auch zu einem Szenario führen, in dem Sie die Option **Einmaliges Anmelden**  zwar öffnen, aber nicht speichern können. Weitere Informationen zu administrativen Rollen in Azure AD finden Sie unter https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
-
 
 ## <a name="basic-saml-configuration"></a>Grundlegende SAML-Konfiguration
 
@@ -52,20 +50,18 @@ Sie sollten die Werte vom Hersteller der Anwendung erhalten. Sie können die Wer
 | **Relayzustand** | Optional | Optional | Mit dieser Option wird die Anwendung darüber informiert, wohin der Benutzer nach der Authentifizierung umgeleitet werden soll. In der Regel ist der Wert eine für die Anwendung gültige URL. Einige Anwendungen verwenden dieses Feld jedoch anders. Weitere Informationen erhalten Sie vom Anwendungshersteller.
 | **Abmelde-URL** | Optional | Optional | Wird verwendet, um die SAML-Abmeldeantworten an die Anwendung zurückzusenden.
 
-## <a name="user-attributes-and-claims"></a>Benutzerattribute und Ansprüche 
+## <a name="user-attributes-and-claims"></a>Benutzerattribute und Ansprüche
 
-Wenn sich ein Benutzer bei der Anwendung authentifiziert, stellt Azure AD der Anwendung ein SAML-Token aus, das Informationen (so genannte „Ansprüche“) über den Benutzer enthält, die ihn eindeutig identifizieren. Zu diesen Informationen gehören standardmäßig der Benutzername, die E-Mail-Adresse, der Vorname und der Nachname des Benutzers. Möglicherweise müssen Sie diese Ansprüche anpassen, wenn die Anwendung beispielsweise bestimmte Anspruchswerte oder für **Name** ein anderes Format als den Benutzernamen erfordert. 
+Wenn sich ein Benutzer bei der Anwendung authentifiziert, stellt Azure AD der Anwendung ein SAML-Token aus, das Informationen (so genannte „Ansprüche“) über den Benutzer enthält, die ihn eindeutig identifizieren. Zu diesen Informationen gehören standardmäßig der Benutzername, die E-Mail-Adresse, der Vorname und der Nachname des Benutzers. Möglicherweise müssen Sie diese Ansprüche anpassen, wenn die Anwendung beispielsweise bestimmte Anspruchswerte oder für **Name** ein anderes Format als den Benutzernamen erfordert.
 
 > [!IMPORTANT]
 > Viele Apps sind bereits vorkonfiguriert und befinden sich im App-Katalog. Sie müssen sich bei diesen Apps keine Gedanken über das Festlegen von Benutzer- und Gruppenansprüchen machen. Die [Schnellstartserie](add-application-portal.md) führt Sie durch das Hinzufügen und Konfigurieren von Apps.
-
 
 Der Bezeichnerwert der **eindeutigen Benutzer-ID (Namens-ID)** ist ein erforderlicher Anspruch und sehr wichtig. Der Standardwert ist *user.userprincipalname*. Mit der Benutzer-ID wird jeder Benutzer in der Anwendung eindeutig identifiziert. Beispiel: Ist die E-Mail-Adresse sowohl der Benutzername als auch der eindeutige Bezeichner, legen Sie den Wert auf *user.mail* fest.
 
 Weitere Informationen zum Anpassen von SAML-Ansprüchen finden Sie unter [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md).
 
 Weitere Informationen zum Hinzufügen neuer Ansprüche finden Sie unter [Hinzufügen anwendungsspezifischer Ansprüche](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims) und zum Hinzufügen von Gruppenansprüchen unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
-
 
 > [!NOTE]
 > Weitere Möglichkeiten zum Anpassen des SAML-Tokens, das von Azure AD an Ihre Anwendung gesendet wird, finden Sie in den folgenden Ressourcen:
@@ -83,7 +79,8 @@ Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwe
 
 In Azure AD können Sie das aktive Zertifikat im Base64- oder Raw-Format direkt von der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** herunterladen. Außerdem können Sie das aktive Zertifikat abrufen, indem Sie die XML-Datei mit den Anwendungsmetadaten herunterladen oder die App-Verbundmetadaten-URL verwenden. Führen Sie diese Schritte aus, um Ihre Zertifikate (aktiv oder inaktiv) anzuzeigen, zu erstellen oder herunterzuladen.
 
-Beim Überprüfen eines Zertifikats sind einige allgemeine Aspekte zu berücksichtigen: 
+Beim Überprüfen eines Zertifikats sind einige allgemeine Aspekte zu berücksichtigen:
+
    - *Das richtige Ablaufdatum.* Sie können ein Ablaufdatum konfigurieren, das bis zu drei Jahre in der Zukunft liegt.
    - *Ein aktiver Status des richtigen Zertifikats.* Wenn der Status **Inaktiv** lautet, ändern Sie diesen zu **Aktiv**. Um den Status zu ändern, klicken Sie mit der rechten Maustaste auf die Zeile des Zertifikats, und wählen Sie **Zertifikat als aktiv festlegen** aus.
    - *Die richtige Anmeldeoption und der entsprechende Algorithmus*.
@@ -95,10 +92,11 @@ Manchmal müssen Sie das Zertifikat herunterladen. Achten Sie genau darauf, wo S
 > Bei Verwendung von https://login.microsoftonline.com/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={app-id} muss die Anwendung in der Lage sein, die Bytereihenfolge-Marke in der gerenderten XML-Datei zu verarbeiten. Bei Überprüfung der XML-Daten wird die Bytereihenfolge-Marke als nicht druckbares ASCII-Zeichen „»¿“ und im Hexadezimalformat als EF BB BF dargestellt.
 
 Wenn Sie Änderungen am Zertifikat vornehmen möchten, wählen Sie die Schaltfläche „Bearbeiten“ aus. Sie können auf der Seite **SAML-Signaturzertifikat** verschiedene Aktionen ausführen:
-   - Wenn Sie ein neues Zertifikat erstellen möchten, wählen Sie **Neues Zertifikat**, anschließend unter **Ablaufdatum** das Ablaufdatum und dann **Speichern** aus. Wenn Sie das Zertifikat aktivieren möchten, wählen Sie das Kontextmenü ( **...** ) und anschließend **Zertifikat als aktiv festlegen** aus.
-   - Wenn Sie ein Zertifikat mit privatem Schlüssel und PFX-Anmeldeinformationen hochladen möchten, wählen Sie **Zertifikat importieren** aus, und navigieren Sie zu dem Zertifikat. Geben Sie unter **PFX-Kennwort** das PFX-Kennwort ein, und wählen Sie anschließend **Speichern** aus.  
-   - Konfigurieren Sie die erweiterten Einstellungen für das Signieren des Zertifikats. Weitere Informationen zu diesen Optionen finden Sie unter [Erweiterte Optionen für die Zertifikatsignierung](certificate-signing-options.md).
-   - Wenn weitere Personen darüber informiert werden sollen, dass das Ablaufdatum des aktiven Zertifikats bald erreicht ist, geben Sie die entsprechenden E-Mail-Adressen in die Felder für die **Benachrichtigungs-E-Mail-Adressen** ein.
+
+- Wenn Sie ein neues Zertifikat erstellen möchten, wählen Sie **Neues Zertifikat**, anschließend unter **Ablaufdatum** das Ablaufdatum und dann **Speichern** aus. Wenn Sie das Zertifikat aktivieren möchten, wählen Sie das Kontextmenü ( **...** ) und anschließend **Zertifikat als aktiv festlegen** aus.
+- Wenn Sie ein Zertifikat mit privatem Schlüssel und PFX-Anmeldeinformationen hochladen möchten, wählen Sie **Zertifikat importieren** aus, und navigieren Sie zu dem Zertifikat. Geben Sie unter **PFX-Kennwort** das PFX-Kennwort ein, und wählen Sie anschließend **Speichern** aus.  
+- Konfigurieren Sie die erweiterten Einstellungen für das Signieren des Zertifikats. Weitere Informationen zu diesen Optionen finden Sie unter [Erweiterte Optionen für die Zertifikatsignierung](certificate-signing-options.md).
+- Wenn weitere Personen darüber informiert werden sollen, dass das Ablaufdatum des aktiven Zertifikats bald erreicht ist, geben Sie die entsprechenden E-Mail-Adressen in die Felder für die **Benachrichtigungs-E-Mail-Adressen** ein.
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>Einrichten der Anwendung für die Verwendung von Azure AD
 
@@ -137,3 +135,4 @@ Weitere Informationen finden Sie unter [Debuggen des SAML-basierten einmaligen A
 - [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md)
 - [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 - [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md)
+

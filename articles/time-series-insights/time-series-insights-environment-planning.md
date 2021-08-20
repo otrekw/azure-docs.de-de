@@ -3,20 +3,21 @@ title: Planen Ihrer Gen1-Umgebung – Azure Time Series Insights | Microsoft-Dok
 description: Bewährte Methoden für das Vorbereiten, Konfigurieren und Bereitstellen Ihrer allgemein verfügbaren Azure Time Series Insights Gen1-Umgebung.
 services: time-series-insights
 ms.service: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e93c415e464b344a24593428c267fb09e6566e08
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95016206"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136830"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Planen Ihrer Azure Time Series Insights Gen1-Umgebung
 
@@ -33,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights Gen1
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Für den Einstieg in Azure Time Series Insights sollten Sie idealerweise wissen, wie viele Daten voraussichtlich pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.  
+Für den Einstieg in Azure Time Series Insights sollten Sie idealerweise wissen, wie viele Daten voraussichtlich pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.
 
 Weitere Informationen zur Kapazität und Aufbewahrung für beide Azure Time Series Insights-SKUs finden Sie unter [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
@@ -118,7 +119,7 @@ Es muss unbedingt sichergestellt sein, dass die Art, in der Sie Ereignisse an Az
 Ein *Referenzdataset* ist eine Sammlung von Elementen, die die Ereignisse aus Ihrer Ereignisquelle ergänzen. Die Azure Time Series Insights-Erfassungs-Engine verknüpft jedes Ereignis aus Ihrer Ereignisquelle mit der entsprechenden Datenzeile in Ihrem Referenzdataset. Das ergänzte Ereignis ist dann für Abfragen verfügbar. Die Verknüpfung basiert auf den in Ihrem Referenzdataset definierten **Primärschlüsselspalten**.
 
 > [!NOTE]
-> Referenzdaten werden nicht rückwirkend verknüpft. Nur aktuelle und künftige eingehende Daten werden nach dem Konfigurieren und Hochladen abgeglichen und dem Referenzdataset hinzugefügt. Wenn Sie planen, eine große Menge von Verlaufsdaten an Azure Time Series Insights zu senden, und nicht zuerst Referenzdaten in Azure Time Series Insights hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).  
+> Referenzdaten werden nicht rückwirkend verknüpft. Nur aktuelle und künftige eingehende Daten werden nach dem Konfigurieren und Hochladen abgeglichen und dem Referenzdataset hinzugefügt. Wenn Sie planen, eine große Menge von Verlaufsdaten an Azure Time Series Insights zu senden, und nicht zuerst Referenzdaten in Azure Time Series Insights hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).
 
 Weitere Informationen dazu, wie Sie Ihre Referenzdaten in Azure Time Series Insights erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Referenzdatasets](time-series-insights-add-reference-data-set.md).
 

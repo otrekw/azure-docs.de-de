@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 725711ed7d49b21303769ccd6959fc8b2083e9fa
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 0b6d64167451b3c7363d6bd80c5fafcd67b6fc5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063609"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339706"
 ---
 # <a name="customize-alert-details-in-azure-sentinel"></a>Anpassen von Warnungsdetails in Azure Sentinel 
 
@@ -63,5 +63,5 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Warnungsdetails in Azure Sentinel-Analyseregeln anpassen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
+- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
 - Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).

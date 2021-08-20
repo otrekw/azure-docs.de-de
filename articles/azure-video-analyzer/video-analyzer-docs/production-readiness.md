@@ -2,13 +2,13 @@
 title: Produktionsbereitschaft und Best Practices
 description: Dieser Artikel enthält eine Anleitung zum Konfigurieren und Bereitstellen des Azure Video Analyzer-Moduls in Produktionsumgebungen.
 ms.topic: reference
-ms.date: 04/26/2021
-ms.openlocfilehash: af353c6845259f09edf4f1cb6ee4282f0fae6ba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 1f7477be52d99bdfca91fd0d122d2db63ef27827
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386090"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602141"
 ---
 # <a name="production-readiness-and-best-practices"></a>Produktionsbereitschaft und Best Practices
 
@@ -123,40 +123,6 @@ Als nächstes können Sie in den Erstellungsoptionen für das Edge-Modul im Bere
 Wenn Sie sich die Beispielpipelines für den Schnellstart und die Tutorials ansehen z. B. zur [fortlaufenden Videoaufzeichnung](use-continuous-video-recording.md), werden Sie feststellen, dass das Medien-Cache-Verzeichnis (`localMediaCachePath`) ein Unterverzeichnis unter `applicationDataDirectory` verwendet. Dies ist die empfohlene Vorgehensweise, da der Cache vorübergehende Daten enthält.
 
 Beachten Sie auch, dass für Produktionsumgebungen, in denen Sie TLS-Verschlüsselung zur Sicherung des Datenverkehrs verwenden, die Einstellung `allowedUnsecuredEndpoints` auf `true` empfohlen wird.
-
-### <a name="naming-video-or-files"></a>Benennen von Videos oder Dateien
-
-Pipelines ermöglichen die Aufzeichnung von Videos in der Cloud oder als MP4-Dateien auf dem Edge-Gerät. Diese können durch [fortlaufende Videoaufzeichnung](use-continuous-video-recording.md) oder [ereignisbasierte Videoaufzeichnung](record-event-based-live-video.md) generiert werden.
-
-Die empfohlene Namensstruktur für die Aufzeichnung in der Cloud besteht im Benennen der Videoressource als „<anytext>-${System.TopologyName}-${System.PipelineName}“. Eine festgelegte Live-Pipeline kann nur eine Verbindung mit einer RTSP-fähigen IP-Kamera herstellen, und Sie sollten die Eingabe dieser Kamera in einer Videoressource aufzeichnen. Sie können z. B. `VideoName` in den Videosenken wie nachfolgend beschrieben, einstellen:
-
-```
-"VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"
-```
-Beachten Sie, dass das Ersetzungsmuster durch das `$`-Zeichen gefolgt von geschweiften Klammern **${Variablenname}** definiert wird.
-
-Für die Aufzeichnung von MP4-Dateien auf dem Edge-gerät mit ereignisbasierter Aufzeichnung können Sie Folgendes verwenden:
-
-```
-"fileNamePattern": "sampleFilesFromEVR-${System.TopologyName}-${System.PipelineName}-${fileSinkOutputName}-${System.Runtime.DateTime}"
-```
-
-> [!Note]
-> Im Beispiel oben ist die Variable **fileSinkOutputName** der Name einer Beispielvariable, den Sie bei der Erstellung einer Live-Pipeline definieren. Dies ist **keine** Systemvariable. Beachten Sie, dass durch die Verwendung von **DateTime** ein einzigartiger MP4-Dateiname für jedes Ereignis sichergestellt wird.
-
-#### <a name="system-variables"></a>Systemvariablen
-
-Folgende systemseitig definierte Variablen können Sie u. a. verwenden:
-
-| Systemvariable        | Beschreibung                                                  | Beispiel              |
-| :--------------------- | :----------------------------------------------------------- | :------------------- |
-| System.Runtime.DateTime        | UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format (Basisdarstellung YYYYMMDDThhmmss). | 20200222T173200Z     |
-| System.Runtime.PreciseDateTime | UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format mit Millisekunden (Basisdarstellung YYYYMMDDThhmmss.sss). | 20200222T173200.123Z |
-| System.TopologyName    | Vom Benutzer angegebener Name der ausgeführten Pipeline-Topologie.          | IngestAndRecord      |
-| System.PipelineName    | Vom Benutzer angegebener Name der ausgeführten Live-Pipeline.          | camera001            |
-
-> [!Tip]
-> System.Runtime.PreciseDateTime und System.Runtime.DateTime können beim Benennen von Videos in der Cloud nicht verwendet werden.
 
 ### <a name="tips-about-maintaining-your-edge-device"></a>Tipps zur Wartung Ihres Edge-Geräts
 

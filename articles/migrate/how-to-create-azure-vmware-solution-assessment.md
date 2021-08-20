@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: f7014f8a403614740bdbc05abab4e7024f83c196
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: cfa3004b0587bbfe74157bf2922dd98cd8741597
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570518"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355558"
 ---
 # <a name="create-an-azure-vmware-solution-assessment"></a>Erstellen einer Azure VMware Solution-Bewertung
 
@@ -150,7 +150,7 @@ Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
     - **Bereitschaft unbekannt**: Azure Migrate konnte die Bereitschaft des Servers aufgrund unzureichender Metadaten aus der lokalen Umgebung nicht bestimmen.
 
 3. Überprüfen Sie das vorgeschlagene Tool:
-    - **VMware HCX oder Enterprise**: Für VMware-Server wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. [Weitere Informationen](../azure-vmware/tutorial-deploy-vmware-hcx.md).
+    - **VMware HCX oder Enterprise**: Für VMware-Server wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. [Weitere Informationen](../azure-vmware/configure-vmware-hcx.md).
     - **Unbekannt**: Für Server, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool unbekannt. Für VMware-Server empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). 
 
 4. Klicken Sie auf einen **AVS-Bereitschaftsstatus**. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.

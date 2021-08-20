@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 30a0269b5729516d8e8e378c700c493262e77f10
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18438400054a8f7aa4d718efdff4ef2e116b3bf3
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "108756177"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462422"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migration von Linux zu einer Hybrid-Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -28,6 +28,13 @@ Wenn Ihr Szenario anders ist, sehen Sie sich die [Tabelle mit Migrationsleitfäd
 Die Azure-Dateisynchronisierung arbeitet auf Windows Server-Instanzen mit direkt angeschlossenem Speicher. Die Synchronisierung mit und von Linux-Clients, SMB-Remotefreigaben (Server Message Block) oder NFS-Freigaben (Network File System) wird nicht unterstützt.
 
 Wenn Sie Ihre Dateidienste in eine Hybridbereitstellung umwandeln, wird daher eine Migration zu Windows Server erforderlich. Dieser Artikel führt Sie durch die Planung und Durchführung einer solchen Migration.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>Migrationsziele
 

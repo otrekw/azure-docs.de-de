@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 3ce83de7f876bbd67120bf511d29860b71cd2227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98d97bd7c8ffab685475f50130d68668fe1c9f8b
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771276"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122343363"
 ---
 # <a name="step-3-validate-connectivity"></a>SCHRITT 3: Überprüfen der Konnektivität
 
-Nachdem Sie Ihre Protokollweiterleitung bereitgestellt haben (in Schritt 1) und Ihre Sicherheitslösung für das Senden von CEF-Nachrichten konfiguriert haben (in Schritt 2), befolgen Sie diese Anweisungen, um die Konnektivität zwischen Ihrer Sicherheitslösung und Azure Sentinel zu überprüfen. 
+Nachdem Sie Ihre Protokollweiterleitung bereitgestellt haben (in Schritt 1) und Ihre Sicherheitslösung für das Senden von CEF-Nachrichten konfiguriert haben (in Schritt 2), befolgen Sie diese Anweisungen, um die Konnektivität zwischen Ihrer Sicherheitslösung und Azure Sentinel zu überprüfen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,9 +37,9 @@ Verwenden Sie den Befehl `python –version` zum Überprüfen dieser Voraussetzu
 ## <a name="how-to-validate-connectivity"></a>Überprüfen der Konnektivität
 
 1. Öffnen Sie im Azure Sentinel-Navigationsmenü die Option **Protokolle**. Führen Sie mithilfe des Schemas **CommonSecurityLog** eine Abfrage aus, um zu überprüfen, ob Sie Protokolle von Ihrer Sicherheitslösung erhalten.<br>
-Achten Sie darauf, dass es etwa 20 Minuten dauern kann, bis Ihre Protokolle in **Log Analytics** angezeigt werden. 
+Achten Sie darauf, dass es etwa 20 Minuten dauern kann, bis Ihre Protokolle in **Log Analytics** angezeigt werden.
 
-1. Wenn keine Ergebnisse der Abfrage angezeigt werden, vergewissern Sie sich, dass von Ihrer Sicherheitslösung Ereignisse generiert werden, oder versuchen Sie, einige Ergebnisse zu generieren, und vergewissern Sie sich, dass sie an den von Ihnen festgelegten Syslog-Weiterleitungscomputer weitergeleitet werden. 
+1. Wenn keine Ergebnisse der Abfrage angezeigt werden, vergewissern Sie sich, dass von Ihrer Sicherheitslösung Ereignisse generiert werden, oder versuchen Sie, einige Ergebnisse zu generieren, und vergewissern Sie sich, dass sie an den von Ihnen festgelegten Syslog-Weiterleitungscomputer weitergeleitet werden.
 
 1. Führen Sie das folgende Skript für die Protokollweiterleitung aus (geben Sie die Arbeitsbereichs-ID anstelle des Platzhalters ein), um die Konnektivität zwischen Ihrer Sicherheitslösung, der Protokollweiterleitung und Azure Sentinel zu überprüfen. Das Skript überprüft, ob der Daemon an den richtigen Ports lauscht, die Weiterleitung ordnungsgemäß konfiguriert ist und die Kommunikation zwischen dem Daemon und dem Log Analytics-Agent nicht blockiert wird. Außerdem sendet es auch TestCommonEventFormat-Pseudonachrichten, um die End-to-End-Konnektivität zu überprüfen. <br>
 
@@ -81,20 +81,20 @@ Das Überprüfungsskript führt die folgenden Überprüfungen durch:
     </filter>
     ```
 
-1. Überprüft anhand des folgenden Befehls, ob die Analyse für Cisco ASA-Firewallereignisse wie erwartet konfiguriert ist: 
+1. Überprüft anhand des folgenden Befehls, ob die Analyse für Cisco ASA-Firewallereignisse wie erwartet konfiguriert ist:
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>Wenn ein Problem mit der Analyse vorliegt, generiert das Skript eine Fehlermeldung, in der Sie aufgefordert werden, **den folgenden Befehl manuell auszuführen** (ersetzen Sie den Platzhalter durch die Arbeitsbereichs-ID). Mit dem Befehl wird die korrekte Analyse sichergestellt, und der Agent wird neu gestartet.
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. Überprüft anhand des folgenden Befehls, ob das Feld *Computer* in der Syslog-Quelle im Log Analytics-Agent ordnungsgemäß zugeordnet ist: 
+1. Überprüft anhand des folgenden Befehls, ob das Feld *Computer* in der Syslog-Quelle im Log Analytics-Agent ordnungsgemäß zugeordnet ist:
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -114,7 +114,7 @@ Das Überprüfungsskript führt die folgenden Überprüfungen durch:
     - Konfigurationsdatei: `/etc/rsyslog.d/security-config-omsagent.conf`
 
         ```bash
-        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
         ```
 
 1. Startet den Syslog-Daemon und den Log Analytics-Agent neu:
@@ -174,20 +174,20 @@ Das Überprüfungsskript führt die folgenden Überprüfungen durch:
     </filter>
     ```
 
-1. Überprüft anhand des folgenden Befehls, ob die Analyse für Cisco ASA-Firewallereignisse wie erwartet konfiguriert ist: 
+1. Überprüft anhand des folgenden Befehls, ob die Analyse für Cisco ASA-Firewallereignisse wie erwartet konfiguriert ist:
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>Wenn ein Problem mit der Analyse vorliegt, generiert das Skript eine Fehlermeldung, in der Sie aufgefordert werden, **den folgenden Befehl manuell auszuführen** (ersetzen Sie den Platzhalter durch die Arbeitsbereichs-ID). Mit dem Befehl wird die korrekte Analyse sichergestellt, und der Agent wird neu gestartet.
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. Überprüft anhand des folgenden Befehls, ob das Feld *Computer* in der Syslog-Quelle im Log Analytics-Agent ordnungsgemäß zugeordnet ist: 
+1. Überprüft anhand des folgenden Befehls, ob das Feld *Computer* in der Syslog-Quelle im Log Analytics-Agent ordnungsgemäß zugeordnet ist:
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -243,11 +243,12 @@ Das Überprüfungsskript führt die folgenden Überprüfungen durch:
     ```
 ---
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie gelernt, wie Sie CEF-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
 - Erfahren Sie mehr über die [CEF- und CommonSecurityLog-Feldzuordnung](cef-name-mapping.md).
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
-- [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).
+- [Verwenden Sie Arbeitsmappen](monitor-your-data.md), um Ihre Daten zu überwachen.

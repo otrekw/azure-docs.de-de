@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Umgebungsvariablen in den Containern f
 ms.topic: article
 ms.date: 04/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55a653baa6304ad830df52d0e303366edc8ae4e0
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: eb41aeac02250a77aa8f106580b60cd6971791aa
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698739"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350711"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Festlegen von Umgebungsvariablen in Container Instances
 
@@ -179,7 +179,7 @@ properties:
           value: 'my-exposed-value'
         - name: 'SECRET'
           secureValue: 'my-secret-value'
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       ports: []
       resources:
         requests:
@@ -227,7 +227,7 @@ Die JSON-Antwort zeigt Schlüssel und Wert der unsicheren Umgebungsvariablen an,
 Mit dem Befehl [az container exec][az-container-exec], der die Ausführung eines Befehls aus einem laufenden Container heraus ermöglicht, können Sie überprüfen, ob die sichere Umgebungsvariable festgelegt wurde. Führen Sie den folgenden Befehl aus, um eine interaktive Bash-Sitzung im Container zu starten:
 
 ```azurecli-interactive
-az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
+az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/sh"
 ```
 
 Wenn Sie eine interaktive Shell innerhalb des Containers geöffnet haben, können Sie auf den Wert der `SECRET`-Variablen zugreifen:

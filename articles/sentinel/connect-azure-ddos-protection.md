@@ -9,16 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 999555624ad4e88058a575dce3fb9cd606228b18
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98621344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355277"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Herstellen einer Verbindung für Daten aus Azure DDoS Protection
 
-Ein DDoS-Angriff (Distributed Denial of Service) hat das Ziel, die Ressourcen einer Anwendung zu verbrauchen, damit diese für berechtigte Benutzer nicht mehr verfügbar ist. Jeder Endpunkt, der öffentlich über das Internet erreichbar ist, kann Ziel von DDoS-Angriffen werden. Die Verwendung von [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt einen zuverlässigen Schutz vor DDoS-Angriffen dar. Sie können Azure DDoS Protection-Protokolle mit Azure Sentinel verbinden. Dies ermöglicht es Ihnen, Protokolldaten in Arbeitsmappen anzuzeigen, sie zum Erstellen benutzerdefinierter Warnungen zu verwenden und sie zur Verbesserung Ihrer Untersuchungen zu integrieren. 
+Ein DDoS-Angriff (Distributed Denial of Service) hat das Ziel, die Ressourcen einer Anwendung zu verbrauchen, damit diese für berechtigte Benutzer nicht mehr verfügbar ist. Jeder Endpunkt, der öffentlich über das Internet erreichbar ist, kann Ziel von DDoS-Angriffen werden. Die Verwendung von [Azure DDoS Protection](../ddos-protection/ddos-protection-overview.md) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt einen zuverlässigen Schutz vor DDoS-Angriffen dar. Sie können Azure DDoS Protection-Protokolle mit Azure Sentinel verbinden. Dies ermöglicht es Ihnen, Protokolldaten in Arbeitsmappen anzuzeigen, sie zum Erstellen benutzerdefinierter Warnungen zu verwenden und sie zur Verbesserung Ihrer Untersuchungen zu integrieren.
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,5 +61,5 @@ Ein DDoS-Angriff (Distributed Denial of Service) hat das Ziel, die Ressourcen ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument wurde beschrieben, wie Sie für Azure DDoS Protection-Protokolle eine Verbindung mit Azure Sentinel herstellen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).

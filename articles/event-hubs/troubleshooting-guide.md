@@ -3,12 +3,12 @@ title: 'Beheben von Konnektivitätsproblemen: Azure Event Hubs | Microsoft-Dokum
 description: Dieser Artikel bietet Informationen zum Beheben von Konnektivitätsproblemen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48c96cf2e0a142c96e1413bb62730ef2e31aa7ca
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012679"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416637"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Behandeln von Konnektivitätsproblemen: Azure Event Hubs
 Es gibt verschiedene Gründe dafür, dass Clientanwendungen keine Verbindung mit einem Event Hub herstellen können. Die auftretenden Konnektivitätsprobleme können dauerhaft oder vorübergehend sein. Wenn das Problem immer (dauerhaft) auftritt, können Sie die Verbindungszeichenfolge, die Firewalleinstellungen Ihrer Organisation, IP-Firewalleinstellungen, Netzwerksicherheitseinstellungen (Dienstendpunkte, private Endpunkte usw.) überprüfen. Bei zeitweiligen Problemen kann ein Upgrade auf die neueste Version des SDK, das Ausführen von Befehlen zum Überprüfen von gelöschten Paketen und das Abrufen von Netzwerkablaufverfolgungen bei der Behebung von Problemen hilfreich sein. 
@@ -26,7 +26,7 @@ Vergewissern Sie sich, dass die verwendete Verbindungszeichenfolge richtig ist. 
 
 Vergewissern Sie sich bei Kafka-Clients, dass die Dateien „producer.config“ oder „consumer.config“ ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit Kafka in Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs).
 
-[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
+[!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Sicherstellen, dass das AzureEventGrid-Diensttag in Ihren Netzwerksicherheitsgruppen zulässig ist
 Wenn Ihre Anwendung in einem Subnetz ausgeführt wird und eine zugeordnete Netzwerksicherheitsgruppe vorhanden ist, stellen Sie sicher, dass ausgehender Internetdatenverkehr oder das AzureEventGrid-Diensttag zulässig ist. Lesen Sie [Diensttags des virtuellen Netzwerks](../virtual-network/service-tags-overview.md), und suchen Sie nach `EventHub`.

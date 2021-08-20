@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die Datenträgerverschlüsselung für ve
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 800ebb11c1d191ca68222b1fa473cebbca0e8912
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b10c5fbade903ec9eb5786fc33eaaddff212956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671321"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284110"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>Aktivieren von Datenträgerverschlüsselung für verwaltete Service Fabric-Clusterknoten
 
@@ -37,7 +37,7 @@ Azure Disk Encryption erfordert Azure Key Vault zum Steuern und Verwalten von Ve
 
 ### <a name="create-key-vault-with-disk-encryption-enabled"></a>Erstellen eines Key Vault mit aktivierter Datenträger Verschlüsselung
 
-Führen Sie die folgenden Befehle aus, um einen neuen Key Vault für die Datenträgerverschlüsselung zu erstellen. Stellen Sie sicher, dass die Region für den Key Vault [für verwaltete Service Fabric-Cluster unterstützt](faq-managed-cluster.md#what-regions-are-supported) wird und mit der Region des Clusters übereinstimmt.
+Führen Sie die folgenden Befehle aus, um einen neuen Key Vault für die Datenträgerverschlüsselung zu erstellen. Stellen Sie sicher, dass die Region für den Key Vault [für verwaltete Service Fabric-Cluster unterstützt](./faq-managed-cluster.yml#what-regions-are-supported-) wird und mit der Region des Clusters übereinstimmt.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

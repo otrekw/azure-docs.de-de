@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Netzwerkendpunkte für Azure Files konfigurie
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 706ce7fbcc727be365c8b9ebc65d8ac2c9817c2f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6d92350a46319400cb0c5ec8dce4b87ef1da5487
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287624"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224974"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurieren von Azure Files-Netzwerkendpunkten
 
@@ -26,6 +26,13 @@ Azure Files verfügt über zwei Arten von Endpunkten für den Zugriff auf Azure-
 In diesem Artikel geht es um die Konfiguration der Endpunkte eines Speicherkontos für den direkten Zugriff auf die Azure-Dateifreigabe. Die meisten Details in diesem Dokument gelten auch in Bezug darauf, wie die Azure-Dateisynchronisierung mit öffentlichen und privaten Endpunkten für das Speicherkonto interagiert. Weitere Informationen zu den Netzwerkaspekten für eine Bereitstellung der Azure-Dateisynchronisierung finden Sie aber unter [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](../file-sync/file-sync-firewall-and-proxy.md).
 
 Wir empfehlen Ihnen, vor dem Lesen dieses Leitfadens den Artikel [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md) zu lesen.
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

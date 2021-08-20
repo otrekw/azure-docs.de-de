@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96e055205c5c016504cd6246b9c1b6d1533ad6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594967"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339512"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Übersicht über Azure Kubernetes-Netzwerkrichtlinien
 
@@ -154,7 +154,7 @@ Nach der Aktivierung der Sammlung der NPM-Metriken können Sie die Metriken im A
 Neben dem Anzeigen der Arbeitsmappe (unten aufgeführte Abbildungen) können Sie die Prometheus-Metriken auch direkt in den Protokollen im Abschnitt „Insights“ abfragen. Diese Abfrage gibt z. B. alle gesammelten Metriken zurück.
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-Sie können die Metriken auch direkt in Log Analytics abfragen. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/containers/container-insights-log-search.md). 
+Sie können die Metriken auch direkt in Log Analytics abfragen. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/containers/container-insights-log-query.md). 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Anzeigen im Grafana-Dashboard
 Richten Sie einen Grafana-Server ein und konfigurieren Sie wie unter [diesem Link](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource) beschrieben eine Log Analytics-Datenquelle. Importieren Sie dann das [Grafana-Dashboard mit einem Log Analytics-Back-End](https://grafana.com/grafana/dashboards/10956) in Grafana Labs.

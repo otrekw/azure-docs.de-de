@@ -4,16 +4,14 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure Service Bus-Themen
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cdb6ca30b2c9abf2c2525057a90888b2c5d1c78
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88066201"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302534"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit PHP
-
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele wurden in PHP geschrieben und verwenden das [Azure-SDK für PHP](https://github.com/Azure/azure-sdk-for-php). Folgende Szenarien werden behandelt:
 
@@ -22,6 +20,10 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 - Senden von Nachrichten an ein Thema 
 - Empfangen von Nachrichten aus einem Abonnement
 - Löschen von Themen und Abonnements
+
+> [!IMPORTANT]
+> Seit Februar 2021 befindet sich das Azure SDK für PHP in der Deaktivierungsphase und wird von Microsoft nicht mehr offiziell unterstützt. Weitere Informationen dazu finden Sie in [dieser Ankündigung](https://github.com/Azure/azure-sdk-for-php#important-annoucement) auf GitHub. Dieser Artikel wird bald entfernt. 
+ 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).

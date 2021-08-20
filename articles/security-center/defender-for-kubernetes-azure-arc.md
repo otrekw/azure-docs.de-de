@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 02690da936190b7d868f54c987939c06b91b1a35
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e11d455238f4a4e8c128a6cda83a145adaf149e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854016"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347025"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
@@ -30,7 +30,7 @@ Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schütze
 | Releasestatus | **Vorschau**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | Erforderliche Rollen und Berechtigungen | Der [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin) kann Warnungen verwerfen.<br>Der [Sicherheitsleseberechtigte](../role-based-access-control/built-in-roles.md#security-reader) kann Ergebnisse anzeigen. |
 | Preise | [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md) erforderlich |
-| Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
+| Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
 | Einschränkungen | Managed Kubernetes-Angebote wie Google Kubernetes Engine und Elastic Kubernetes Service werden von Kubernetes mit Azure Arc-Unterstützung und der Azure Defender-Erweiterung **nicht unterstützt**. [Azure Defender ist für Azure Kubernetes Service (AKS) nativ verfügbar](defender-for-kubernetes-introduction.md). Eine Verbindung des Clusters mit Azure Arc ist nicht erforderlich. |
 | Umgebungen und Regionen | Die Verfügbarkeit dieser Erweiterung stimmt mit der von [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) überein.|
 
@@ -103,9 +103,9 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
     Im Folgenden werden alle unterstützten Konfigurationseinstellungen für den Azure Defender-Erweiterungstyp beschrieben:
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     |----------|-------------|
-    | logAnalyticsWorkspaceResourceID | **Optional:** Vollständige Ressourcen-ID Ihres eigenen Log Analytics-Arbeitsbereichs.<br>Wenn keine Angabe vorliegt, wird der Standardarbeitsbereich der Region verwendet.<br><br>Um die vollständige Ressourcen-ID zu erhalten, zeigen Sie die Liste der Arbeitsbereiche in Ihren Abonnements im JSON-Standardformat an, indem Sie den folgenden Befehl ausführen:<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Die Ressourcen-ID des Log Analytics Arbeitsbereichs weist folgende Syntax auf:<br>/subscriptions/{Ihre-Abonnement-ID}/resourceGroups/{Ihre-Ressourcengruppe}/providers/Microsoft.OperationalInsights/workspaces/{Ihr-Arbeitsbereichsname}. <br>Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces). |
+    | logAnalyticsWorkspaceResourceID | **Optional:** Vollständige Ressourcen-ID Ihres eigenen Log Analytics-Arbeitsbereichs.<br>Wenn keine Angabe vorliegt, wird der Standardarbeitsbereich der Region verwendet.<br><br>Um die vollständige Ressourcen-ID zu erhalten, zeigen Sie die Liste der Arbeitsbereiche in Ihren Abonnements im JSON-Standardformat an, indem Sie den folgenden Befehl ausführen:<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Die Ressourcen-ID des Log Analytics Arbeitsbereichs weist folgende Syntax auf:<br>/subscriptions/{Ihre-Abonnement-ID}/resourceGroups/{Ihre-Ressourcengruppe}/providers/Microsoft.OperationalInsights/workspaces/{Ihr-Arbeitsbereichsname}. <br>Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces). |
     | auditLogPath |**Optional:** Der vollständige Pfad zu den Überwachungsprotokolldateien.<br>Wenn nicht angegeben, wird der Standardpfad ``/var/log/kube-apiserver/audit.log`` verwendet.<br>Für die AKS-Engine lautet der Standardpfad ``/var/log/kubeaudit/audit.log``. |
 
     Der folgende Befehl zeigt ein Beispiel für die Verwendung aller optionalen Felder:
@@ -118,7 +118,7 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
 ### <a name="use-azure-resource-manager-to-deploy-the-azure-defender-extension"></a>Verwenden von Azure Resource Manager zum Bereitstellen der Azure Defender-Erweiterung
 
-Um Azure Resource Manager zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, benötigen Sie einen Log Analytics-Arbeitsbereich für Ihr Abonnement. Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces).
+Um Azure Resource Manager zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, benötigen Sie einen Log Analytics-Arbeitsbereich für Ihr Abonnement. Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
 
 Sie können die Resource Manager-Vorlage **azure-defender-extension-arm-template.json** aus den [Installationsbeispielen](https://aka.ms/kubernetes-extension-installation-examples) von Security Center verwenden.
 
@@ -129,7 +129,7 @@ Sie können die Resource Manager-Vorlage **azure-defender-extension-arm-template
 
 ### <a name="use-rest-api-to-deploy-the-azure-defender-extension"></a>Verwenden der REST-API zum Bereitstellen der Azure Defender-Erweiterung 
 
-Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, benötigen Sie einen Log Analytics-Arbeitsbereich für Ihr Abonnement. Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-workspaces).
+Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, benötigen Sie einen Log Analytics-Arbeitsbereich für Ihr Abonnement. Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces).
 
 > [!TIP]
 > Die einfachste Möglichkeit, die API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, ist das bereitgestellte Beispiel mit **JSON zur Postman-Sammlung** aus den [Installationsbeispielen](https://aka.ms/kubernetes-extension-installation-examples) von Security Center.
@@ -141,7 +141,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Hierbei gilt:
 
-    | Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                  |
+    | Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung |
     | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, in der Ihre Kubernetes-Ressource mit Azure Arc-Unterstützung enthalten ist |
@@ -168,7 +168,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Im Folgenden werden die Eigenschaften beschrieben:
 
-    | Eigenschaft | Beschreibung | 
+    | Eigenschaft | BESCHREIBUNG | 
     | -------- | ----------- |
     | logAnalytics.workspaceId | Arbeitsbereichs-ID der Log Analytics-Ressource |
     | logAnalytics.key         | Schlüssel der Log Analytics-Ressource | 
@@ -324,7 +324,7 @@ Um die Erweiterung mit der REST-API zu entfernen, führen Sie den folgenden DELE
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                           |
+| Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihres Kubernetes-Clusters mit Arc-Unterstützung |
 | Ressourcengruppe  | path | True     | Zeichenfolge | Ressourcengruppe Ihres Kubernetes-Clusters mit Arc-Unterstützung  |

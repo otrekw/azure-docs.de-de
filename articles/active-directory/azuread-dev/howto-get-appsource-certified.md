@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: d9a4da6fe65fda07609c7399518fa324017ea44c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 020b9f61af668e1e0e29a3a93ee5cdc5d8803e81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649344"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440288"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 
@@ -39,7 +39,7 @@ Eine *mehrinstanzenfähige Anwendung* ist eine Anwendung, die Anmeldungen von Be
 Führen Sie diese Schritte aus, um die Mehrinstanzenfähigkeit für Ihre Anwendung zu aktivieren:
 1. Legen Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) in den Registrierungsdaten Ihrer Anwendung die `Multi-Tenanted`-Eigenschaft auf `Yes` fest. Im Azure-Portal erstellte Anwendungen werden standardmäßig mit *[nur einem Mandanten](#single-tenant-applications)* konfiguriert.
 1. Aktualisieren Sie Ihren Code, um Anforderungen an den Endpunkt `common` zu senden. Ändern Sie dazu den Endpunkt von `https://login.microsoftonline.com/{yourtenant}` in `https://login.microsoftonline.com/common*`.
-1. Für einige Plattformen, z.B. ASP.NET, müssen Sie den Code auch so aktualisieren, dass er mehrere Aussteller akzeptiert.
+1. Bei einigen Plattformen (wie z. B. ASP.NET) müssen Sie den Code auch so aktualisieren, dass mehrere Aussteller akzeptiert werden.
 
 Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter [Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
@@ -47,7 +47,7 @@ Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter [Anmelden von
 
 Eine *Anwendung mit einem Mandanten* ist eine Anwendung, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptiert. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als Gastkonto der Azure AD-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. 
 
-Sie können Benutzer [programmgesteuert](../../active-directory-b2c/code-samples.md) über die [Azure AD B2B-Zusammenarbeit](../external-identities/what-is-b2b.md) als Gastkonten zu Azure AD hinzufügen. Wenn Sie B2B verwenden, können Benutzer ein Self-Service-Portal erstellen, das keine Einladung für die Anmeldung erfordert. Weitere Informationen finden Sie unter [Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit](../external-identities/self-service-portal.md).
+Sie können Benutzer [programmgesteuert](../../active-directory-b2c/integrate-with-app-code-samples.md) über die [Azure AD B2B-Zusammenarbeit](../external-identities/what-is-b2b.md) als Gastkonten zu Azure AD hinzufügen. Wenn Sie B2B verwenden, können Benutzer ein Self-Service-Portal erstellen, das keine Einladung für die Anmeldung erfordert. Weitere Informationen finden Sie unter [Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit](../external-identities/self-service-portal.md).
 
 Anwendungen mit einem Mandanten können die *Kontaktformular*-Oberfläche aktivieren, aber wenn Sie die kostenlose Testbenutzeroberfläche per Einfachklick, die AppSource empfiehlt, aktivieren möchten, ermöglichen Sie stattdessen die Mehrinstanzenfähigkeit Ihrer Anwendung.
 

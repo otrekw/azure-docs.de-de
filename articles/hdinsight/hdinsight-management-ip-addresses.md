@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 002e224fc64943ab29876ca47d7f5d337bc1230d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 617624fe3ae3ea5c0dc7bb3f34145f0aadf4ac4b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020221"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219211"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
@@ -84,7 +84,7 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 | &nbsp; | USA, Westen-Mitte | 52.161.23.15<br>52.161.10.167 | \*:443 | Eingehend |
 | &nbsp; | USA (Westen) | 13.64.254.98<br>23.101.196.19 | \*:443 | Eingehend |
 | &nbsp; | USA, Westen 2 | 52.175.211.210<br>52.175.222.222 | \*:443 | Eingehend |
-| &nbsp; | Vereinigte Arabische Emirate, Norden | 65.52.252.96<br>65.52.252.97 | \*:443 | Eingehend |
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | 65.52.252.96<br>65.52.252.97 | \*:443 | Eingehend |
 | &nbsp; | VAE, Mitte | 20.37.76.96<br>20.37.76.99 | \*:443 | Eingehend |
 
 Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](../azure-government/compare-azure-government-global-azure.md) (Azure Government – Daten und Analyse)

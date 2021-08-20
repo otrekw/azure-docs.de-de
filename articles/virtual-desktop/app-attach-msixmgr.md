@@ -1,24 +1,24 @@
 ---
 title: Verwenden des MSIXMGR-Tools – Azure
-description: Hier erfahren Sie, wie Sie das MSIXMGR-Tool für Windows Virtual Desktop verwenden.
+description: Hier erfahren Sie, wie Sie das MSIXMGR-Tool für Azure Virtual Desktop verwenden.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b2cab56fb99bda7da361cc2068396e53e794501d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f7c0af3ef2992fdd2c337ff6d1172f6da6db5f56
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448337"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708774"
 ---
 # <a name="using-the-msixmgr-tool"></a>Verwenden des MSIXMGR-Tools
 
-Das MSIXMGR-Tool dient zum Erweitern von mit MSIX gepackten Anwendungen in MSIX-Images. Das Tool erweitert eine mit MSIX gepackte Anwendung (.MSIX) in eine VHD-, VHDx- oder CIM-Datei. Das resultierende MSIX-Image wird in dem Azure Storage-Konto gespeichert, das von Ihrer Windows Virtual Desktop-Bereitstellung verwendet wird. In diesem Artikel erfahren Sie, wie Sie das MSIXMGR-Tool verwenden.
+Das MSIXMGR-Tool dient zum Erweitern von mit MSIX gepackten Anwendungen in MSIX-Images. Das Tool erweitert eine mit MSIX gepackte Anwendung (.MSIX) in eine VHD-, VHDx- oder CIM-Datei. Das resultierende MSIX-Image wird in dem Azure Storage-Konto gespeichert, das von Ihrer Azure Virtual Desktop-Bereitstellung verwendet wird. In diesem Artikel erfahren Sie, wie Sie das MSIXMGR-Tool verwenden.
 
 >[!NOTE]
->Um die Kompatibilität sicherzustellen, vergewissern Sie sich, dass die CIMs, die Ihre MSIX-Images speichern, in der Betriebssystemversion generiert werden, die in Ihren Windows Virtual Desktop-Hostpools ausgeführt wird. MSIXMGR kann CIM-Dateien erstellen, aber Sie können diese Dateien nur in einem Hostpool verwenden, in dem Windows 10 20H2 ausgeführt wird.
+>Um die Kompatibilität sicherzustellen, vergewissern Sie sich, dass die CIMs, die Ihre MSIX-Images speichern, in der Betriebssystemversion generiert werden, die in Ihren Azure Virtual Desktop-Hostpools ausgeführt wird. MSIXMGR kann CIM-Dateien erstellen, aber Sie können diese Dateien nur in einem Hostpool verwenden, in dem Windows 10 20H2 ausgeführt wird.
 
 ## <a name="requirements"></a>Anforderungen
 
@@ -48,7 +48,7 @@ So erweitern Sie eine MSIX-Datei:
     msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
     ```
 
-    Denken Sie daran, die Platzhalterwerte durch die jeweils relevanten Werte zu ersetzen. Beispiel:
+    Denken Sie daran, die Platzhalterwerte durch die jeweils relevanten Werte zu ersetzen. Zum Beispiel:
 
     ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\%username%\Desktop\packageName_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\packageName.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
@@ -81,7 +81,7 @@ Weitere Informationen zum Einrichten der App-Anfügung finden Sie in den folgend
 - [Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal](app-attach-azure-portal.md)
 - [Einrichten des MSIX-Features zum Anfügen von Apps mit PowerShell](app-attach-powershell.md)
 - [Erstellen von PowerShell-Skripts für das MSIX-Feature zum Anfügen von Apps](app-attach.md)
-- [Vorbereiten eines MSIX-Images für Windows Virtual Desktop](app-attach-image-prep.md)
+- [Vorbereiten eines MSIX-Images für Azure Virtual Desktop](app-attach-image-prep.md)
 - [Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps](app-attach-file-share.md)
 
-Wenn Sie Fragen zum MSIX-Feature zum Anfügen von Apps haben, finden Sie Antworten unter [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.md) und im [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md).
+Wenn Sie Fragen zum MSIX-Feature zum Anfügen von Apps haben, finden Sie Antworten unter [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.yml) und im [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md).

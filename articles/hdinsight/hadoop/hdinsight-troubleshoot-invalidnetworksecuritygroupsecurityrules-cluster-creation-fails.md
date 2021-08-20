@@ -4,12 +4,12 @@ description: 'Fehler bei der Clustererstellung. Fehlercode: InvalidNetworkSecuri
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/31/2019
-ms.openlocfilehash: 7e0b984b3ec4a203f8a1118c0e6a166c5a9e1125
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed3fae13651119d9f7c85ec1fac559c39f15be06
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944384"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299823"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>Szenario: InvalidNetworkSecurityGroupSecurityRules: Fehler bei der Clustererstellung in Azure HDInsight
 
@@ -29,4 +29,4 @@ Navigieren Sie zum Azure-Portal, und ermitteln Sie die NSG des Subnetzes, in dem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

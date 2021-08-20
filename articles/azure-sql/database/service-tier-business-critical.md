@@ -8,16 +8,16 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: mathoma
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma, urmilano
 ms.date: 12/04/2018
-ms.openlocfilehash: 3e5a4283416dcd20c8d419a00cb3debfb208d118
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5c4ea72c94e71e0c57c0d88e5f8324111ae151c2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691571"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119692"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,11 +49,11 @@ Darüber hinaus umfasst der Cluster des Typs „Unternehmenskritisch“ eine int
 Die Dienstebene „Unternehmenskritisch“ ist für Anwendungen gedacht, die Antworten mit geringer Latenz vom zugrunde liegenden SSD-Speicher (durchschnittlich 1 – 2 ms), schnelle Wiederherstellung bei einem Fehler der zugrunde liegenden Infrastruktur oder das Auslagern von Berichten, Analysen und schreibgeschützten Abfragen an das kostenlose lesbare sekundäre Replikat der primären Datenbank erfordern.
 
 Die wichtigsten Gründe dafür, dass Sie die Dienstebene „Unternehmenskritisch“ anstelle der Ebene „Universell“ wählen sollten, sind folgende:
--   **Niedrige E/A-Latenzanforderungen**: Für Workloads, die eine schnelle Reaktion der Speicherebene (durchschnittlich 1 bis 2 Millisekunden) erfordern, sollte die Ebene „Unternehmenskritisch“ verwendet werden. 
--   **Häufige Kommunikation zwischen der Anwendung und der Datenbank**. Anwendungen, die eine Zwischenspeicherung auf Anwendungsebene oder die [Batchverarbeitung von Anforderungen](../performance-improve-use-batching.md) nicht nutzen können und viele SQL-Abfragen senden müssen, für die eine schnelle Verarbeitung erforderlich ist, sind gute Kandidaten für die Ebene „Unternehmenskritisch“.
--   **Große Anzahl von Aktualisierungen**: Einfüge-, Aktualisierungs- und Löschvorgänge verändern die Datenseiten im Arbeitsspeicher (modifizierte Seite), die mit dem Vorgang `CHECKPOINT` in Datendateien gespeichert werden müssen. Ein potenzieller Prozessabsturz der Datenbank-Engine oder ein Failover der Datenbank mit einer großen Anzahl von modifizierten Seiten erhöht unter Umständen die Wiederherstellungszeit in der Ebene „Universell“. Verwenden Sie die Ebene „Unternehmenskritisch“, wenn Sie über eine Workload verfügen, die zu vielen In-Memory-Änderungen führt. 
--   **Zeitintensive Transaktionen, die Daten ändern**. Transaktionen, die für einen längeren Zeitraum geöffnet sind, verhindern das Abschneiden von Protokolldateien, was die Protokollgröße und die Anzahl von [virtuellen Protokolldateien](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) (Virtual Log File, VLF) erhöhen kann. Eine große Anzahl von VLFs kann die Wiederherstellung der Datenbank nach einem Failover verlangsamen.
--   **Workload mit Berichterstellungs- und Analyseabfragen**, die zum kostenlosen sekundären schreibgeschützten Replikat umgeleitet werden können.
+-    **Niedrige E/A-Latenzanforderungen**: Für Workloads, die eine schnelle Reaktion der Speicherebene (durchschnittlich 1 bis 2 Millisekunden) erfordern, sollte die Ebene „Unternehmenskritisch“ verwendet werden. 
+-    **Häufige Kommunikation zwischen der Anwendung und der Datenbank**. Anwendungen, die eine Zwischenspeicherung auf Anwendungsebene oder die [Batchverarbeitung von Anforderungen](../performance-improve-use-batching.md) nicht nutzen können und viele SQL-Abfragen senden müssen, für die eine schnelle Verarbeitung erforderlich ist, sind gute Kandidaten für die Ebene „Unternehmenskritisch“.
+-    **Große Anzahl von Aktualisierungen**: Einfüge-, Aktualisierungs- und Löschvorgänge verändern die Datenseiten im Arbeitsspeicher (modifizierte Seite), die mit dem Vorgang `CHECKPOINT` in Datendateien gespeichert werden müssen. Ein potenzieller Prozessabsturz der Datenbank-Engine oder ein Failover der Datenbank mit einer großen Anzahl von modifizierten Seiten erhöht unter Umständen die Wiederherstellungszeit in der Ebene „Universell“. Verwenden Sie die Ebene „Unternehmenskritisch“, wenn Sie über eine Workload verfügen, die zu vielen In-Memory-Änderungen führt. 
+-    **Zeitintensive Transaktionen, die Daten ändern**. Transaktionen, die für einen längeren Zeitraum geöffnet sind, verhindern das Abschneiden von Protokolldateien, was die Protokollgröße und die Anzahl von [virtuellen Protokolldateien](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) (Virtual Log File, VLF) erhöhen kann. Eine große Anzahl von VLFs kann die Wiederherstellung der Datenbank nach einem Failover verlangsamen.
+-    **Workload mit Berichterstellungs- und Analyseabfragen**, die zum kostenlosen sekundären schreibgeschützten Replikat umgeleitet werden können.
 - **Höhere Resilienz und schnellere Wiederherstellung nach Fehlern**. Bei einem Systemausfall wird die Datenbank auf der primären Instanz deaktiviert, und eines der sekundären Replikate wird sofort zur neuen primären Datenbank mit Lese-/Schreibzugriff, die Abfragen verarbeiten kann. Es ist nicht erforderlich, dass die Datenbank-Engine Transaktionen aus der Protokolldatei analysiert und wiederholt und alle Daten im Speicherpuffer lädt.
 - **Erweiterter Schutz vor Datenbeschädigung**: Die Ebene „Unternehmenskritisch“ nutzt im Hintergrund Datenbankreplikate, um die Geschäftskontinuität sicherzustellen, und der Dienst nutzt auch die automatische Seitenreparatur. Dabei handelt es sich um dieselbe Technologie, die für die [SQL Server-Datenbankspiegelung und Verfügbarkeitsgruppen](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) genutzt wird. Wenn ein Replikat eine Seite aufgrund eines Datenintegritätsproblems nicht lesen kann, wird eine neue Kopie der Seite von einem anderen Replikat abgerufen, die die nicht lesbare Seite ohne Datenverluste oder Ausfallzeiten für den Kunden ersetzt. Diese Funktionalität ist in der Ebene „Universell“ verfügbar, wenn die Datenbank über ein georedundantes Replikat verfügt.
 - **Höhere Verfügbarkeit**: Die Ebene „Unternehmenskritisch“ in einer Konfiguration mit mehreren Verfügbarkeitszonen garantiert eine Verfügbarkeit von 99,995 %, die Ebene „Universell“ im Vergleich dazu 99,99 %.

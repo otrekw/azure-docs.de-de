@@ -8,16 +8,16 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: b9ee3b76b1762034e6c1c5d29654b00d31022ff2
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: dc2c284bf1d44ca4fbdd4ddbea95048c38cdbf55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838085"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354981"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Partner für die Archivierung, Sicherung und Notfallwiederherstellung mit Azure Storage
 
-In diesem Artikel werden die Microsoft Partner-Unternehmen vorgestellt, die für Archivierungs-, Sicherungs- und BCDR-Workloads (Business Continuity & Disaster Recovery) mit Azure Storage integriert sind. Diese Partnerlösungen nutzen die Skalierungs- und Kostenvorteile von Azure Storage. Sie können die Lösungen verwenden, um Herausforderungen mit Sicherungen zu bewältigen, einen Notfallwiederherstellungsstandort zu erstellen oder nicht verwendete Inhalte zur Langzeitaufbewahrung zu archivieren. Aufgrund der vielen Compliancestandards, die Azure Storage erfüllt, und mithilfe von Azure-Features wie dem [unveränderlichen Speicher](../../../blobs/storage-blob-immutable-storage.md) und der [Lebenszyklusverwaltung](../../../blobs/storage-lifecycle-management-concepts.md) können diese Lösungen bandbasierte Sicherungen problemlos ersetzen und einen wirtschaftlichen On-Demand-Wiederherstellungsstandort bieten.
+In diesem Artikel werden die Microsoft Partner-Unternehmen vorgestellt, die für Archivierungs-, Sicherungs- und BCDR-Workloads (Business Continuity & Disaster Recovery) mit Azure Storage integriert sind. Diese Partnerlösungen nutzen die Skalierungs- und Kostenvorteile von Azure Storage. Sie können die Lösungen verwenden, um Herausforderungen mit Sicherungen zu bewältigen, einen Notfallwiederherstellungsstandort zu erstellen oder nicht verwendete Inhalte zur Langzeitaufbewahrung zu archivieren. Aufgrund der vielen Compliancestandards, die Azure Storage erfüllt, und mithilfe von Azure-Features wie dem [unveränderlichen Speicher](../../../blobs/immutable-storage-overview.md) und der [Lebenszyklusverwaltung](../../../blobs/storage-lifecycle-management-concepts.md) können diese Lösungen bandbasierte Sicherungen problemlos ersetzen und einen wirtschaftlichen On-Demand-Wiederherstellungsstandort bieten.
 
 ## <a name="verified-partners"></a>Verifizierte Partner
 

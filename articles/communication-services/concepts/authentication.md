@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9edfb63f5ce43ed325b4c4a1fa67e0e9ca52dc89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 339c455b4301012a8aee7a5d5113647c4bc31a3f
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110864"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652483"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Authentifizieren bei Azure Communication Services
 
@@ -48,7 +48,7 @@ Wenn Sie ACS-APIs manuell mithilfe einer Zugriffstaste aufrufen möchten, müsse
 
 Managed Identities bietet überlegene Sicherheit und Benutzerfreundlichkeit gegenüber anderen Autorisierungsoptionen. Durch die Verwendung von Azure AD vermeiden Sie beispielweise, dass Sie Ihren Kontozugangsschlüssel innerhalb Ihres Codes speichern müssen, wie es bei der Zugriffsschlüsselautorisierung der Fall ist. Während Sie weiterhin die Zugriffsschlüsselautorisierung mit Kommunikationsdienstanwendungen verwenden können, empfiehlt Microsoft, nach Möglichkeit zu Azure AD zu wechseln. 
 
-Um eine verwaltete Identität einzurichten, [erstellen Sie eine registrierte Anwendung über die Azure-Befehlszeilenschnittstelle](../quickstarts/managed-identity-from-cli.md). Anschließend können der Endpunkt und die Anmeldeinformationen zur Authentifizierung der SDKs verwendet werden. Sehen Sie sich Beispiele für die Verwendung der [verwalteten Identität](../quickstarts/managed-identity.md) an.
+Um eine verwaltete Identität einzurichten, [erstellen Sie eine registrierte Anwendung über die Azure-Befehlszeilenschnittstelle](../quickstarts/identity/service-principal-from-cli.md). Anschließend können der Endpunkt und die Anmeldeinformationen zur Authentifizierung der SDKs verwendet werden. Sehen Sie sich Beispiele für die Verwendung der [verwalteten Identität](../quickstarts/identity/service-principal.md) an.
 
 ### <a name="user-access-tokens"></a>Benutzer-Zugriffstoken
 
@@ -58,7 +58,7 @@ Benutzerzugriffstoken werden mit dem Identity SDK erstellt und sind mit den im I
 
 > [!div class="nextstepaction"]
 > [Erstellen und Verwalten von Communication Services-Ressourcen](../quickstarts/create-communication-resource.md)
-> [Erstellen einer Azure Active Directory-Anwendung für verwaltete Identitäten über die Azure CLI](../quickstarts/managed-identity-from-cli.md)
+> [Erstellen einer Azure Active Directory-Anwendung für verwaltete Identitäten über die Azure CLI](../quickstarts/identity/service-principal-from-cli.md)
 > [Erstellen von Benutzerzugriffstoken](../quickstarts/access-tokens.md)
 
 Weitere Informationen finden Sie in den folgenden Artikeln:

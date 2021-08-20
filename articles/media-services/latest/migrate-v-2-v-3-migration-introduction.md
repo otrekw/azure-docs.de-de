@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 32e502ff175a9222faa0eb79fb53f2cc3f76bfb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49d804fdf354dc942ca256e1b5960fd201358a81
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559739"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708173"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>Einführung in die Migration von Media Services V2 zu V3
 
 ![Logo des Migrationsleitfadens](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
 
 Der Migrationsleitfaden für Media Services unterstützt Sie bei der Migration von den Media Services V2-APIs zu den V3-APIs. Durch diese Migration können Sie die neuen Features und Funktionen nutzen, die jetzt verfügbar sind. Entscheiden Sie selbst, was für Ihr Szenario am besten geeignet ist.
+
+[!INCLUDE [v2 deprecation notice](./includes/v2-deprecation-notice.md)]
 
 ## <a name="how-to-use-this-guide"></a>So verwenden Sie diesen Leitfaden
 

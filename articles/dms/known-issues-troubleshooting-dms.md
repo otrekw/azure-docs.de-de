@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5c10b4830a1bba5ff4db07b81ee447e5d33b731
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639799"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349616"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -45,16 +45,6 @@ Der folgende Fehler tritt auf, wenn eine Aktivität für ein Datenbankmigrations
 | Ursache         | Lösung |
 | ------------- | ------------- |
 | Dieser Fehler wird angezeigt, wenn Sie mehr als vier Datenbanken für eine einzige Migrationsaktivität ausgewählt haben. Derzeit ist jede Migrationsaktivität auf vier Datenbanken beschränkt. | Wählen Sie pro Migrationsaktivität maximal vier Datenbanken aus. Wenn Sie mehr als vier Datenbanken parallel migrieren müssen, stellen Sie eine weitere Azure Database Migration Service-Instanz bereit. Derzeit unterstützt jedes Abonnement bis zu zwei Azure Database Migration Service-Instanzen.<br><br> |
-
-## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>Fehler bei der MySQL-Migration zu Azure MySQL mit Wiederherstellungsfehlern
-
-Wenn Sie mit dem Azure Database Migration Service von MySQL zu Azure Database for MySQL migrieren, schlägt die Migrationsaktivität mit folgendem Fehler fehl:
-
-* **Fehler:** Datenbankmigrationsfehler – Aufgabe 'TaskID' wurde aufgrund von [n] aufeinander folgenden Wiederherstellungsfehlern angehalten.
-
-| Ursache         | Lösung |
-| ------------- | ------------- |
-| Dieser Fehler kann auftreten, wenn dem Benutzer, der die Migration durchführt, die Rolle „ReplicationAdmin“ und/oder die Berechtigungen von „REPLICATION CLIENT“, „REPLICATION REPLICA“ und „SUPER“ (Versionen vor MySQL 5.6.6) fehlen.<br><br><br><br><br><br><br><br><br><br><br><br><br> | Stellen Sie sicher, dass die [vorausgesetzten Berechtigungen](./tutorial-mysql-azure-mysql-online.md#prerequisites) für das Benutzerkonto auf der Azure Database for MySQL-Instanz korrekt konfiguriert sind. So können beispielsweise die folgenden Schritte durchgeführt werden, um einen Benutzer namens „migrateuser“ mit den erforderlichen Berechtigungen zu erstellen:<br>1. CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2. Grant all privileges on db_name.* to 'migrateuser'@'%' identified by 'secret'; // Wiederholen Sie diesen Schritt, um Zugriff auf mehr Datenbanken zu gewähren. <br>3. Grant replication slave on *.* to 'migrateuser'@'%' identified by 'secret';<br>4. Grant replication client on *.* to 'migrateuser'@'%' identified by 'secret';<br>5. Flush privileges; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Fehler beim Versuch, den Azure Database Migration Service anzuhalten
 
@@ -127,7 +117,6 @@ Wenn Sie versuchen, Azure Database Migration Service mit einer SQL Server-Datenq
 ## <a name="additional-known-issues"></a>Weitere bekannte Probleme
 
 * [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](./index.yml)
-* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -135,4 +124,4 @@ Wenn Sie versuchen, Azure Database Migration Service mit einer SQL Server-Datenq
 * Lesen Sie den Artikel [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration#data_migration).
 * Lesen Sie den Artikel [Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal](../mysql/howto-server-parameters.md).
 * Lesen Sie den Artikel [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](./pre-reqs.md).
-* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.md).
+* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.yml).

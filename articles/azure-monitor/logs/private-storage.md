@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8fa3c329afe26979e6f557d075aff478e79d10e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354931"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics verwendet Azure Storage für verschiedene Szenarien. Dies wird in 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen (WAD/LAD)
 Die Erweiterungs-Agents für die Azure-Diagnose (auch WAD für Windows-Agents und LAD für Linux-Agents) erfassen verschiedene Betriebssystemprotokolle und speichern sie in einem kundenseitig verwalteten Speicherkonto. Anschließend können Sie diese Protokolle in Log Analytics importieren, um sie zu überprüfen und zu analysieren.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen in Ihrem Speicherkonto
-Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
+Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/storage-insights/create-or-update) mit Ihrem Log Analytics-Arbeitsbereich.
 
 Unterstützte Datentypen:
 * syslog
@@ -100,7 +100,7 @@ So ersetzen Sie ein für die Erfassung verwendetes Speicherkonto:
 Wenn Sie Ihr eigenes Speicherkonto verwenden, sind Sie für die Aufbewahrung verantwortlich. Log Analytics löscht keine Protokolle, die in Ihrem privaten Speicher gespeichert sind. Stattdessen sollten Sie eine Richtlinie einrichten, um die Last wie gewünscht zu verarbeiten.
 
 #### <a name="consider-load"></a>Berücksichtigung der Last
-Speicherkonten können eine bestimmte Last durch Lese- und Schreibanforderungen verarbeiten, bevor sie mit der Drosselung von Anforderungen beginnen. (Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md).) Diese Drosselung wirkt sich auf die für die Erfassung von Protokollen benötigte Zeit aus. Wenn Ihr Speicherkonto überlastet ist, registrieren Sie ein zusätzliches Speicherkonto, um die Last auf die beiden Konten zu verteilen. Sehen Sie sich zur Überwachung der Kapazität und Leistung Ihres Speicherkontos die entsprechenden [Erkenntnisse im Azure-Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview) an.
+Speicherkonten können eine bestimmte Last durch Lese- und Schreibanforderungen verarbeiten, bevor sie mit der Drosselung von Anforderungen beginnen. (Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md).) Diese Drosselung wirkt sich auf die für die Erfassung von Protokollen benötigte Zeit aus. Wenn Ihr Speicherkonto überlastet ist, registrieren Sie ein zusätzliches Speicherkonto, um die Last auf die beiden Konten zu verteilen. Sehen Sie sich zur Überwachung der Kapazität und Leistung Ihres Speicherkontos die entsprechenden [Erkenntnisse im Azure-Portal](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) an.
 
 ### <a name="related-charges"></a>Anfallende Gebühren
 Die Gebühren für Speicherkonten werden anhand der Menge der gespeicherten Daten, des Speichertyps und des Redundanztyps berechnet. Details dazu finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs) und [Azure Table Storage – Preise](https://azure.microsoft.com/pricing/details/storage/tables).

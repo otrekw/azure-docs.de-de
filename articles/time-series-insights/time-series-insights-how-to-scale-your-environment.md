@@ -3,20 +3,21 @@ title: Skalieren der Umgebung – Azure Time Series Insights | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung über das Azure-Portal skalieren.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9000f8726e8d12f909400d38770374d8e425ea1a
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91570226"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371407"
 ---
 # <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights Gen1-Umgebung
 

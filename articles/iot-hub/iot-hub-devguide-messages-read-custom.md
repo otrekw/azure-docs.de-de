@@ -2,18 +2,17 @@
 title: Grundlegendes zu benutzerdefinierten Azure IoT Hub-Endpunkten | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden von Routingabfragen zum Weiterleiten von D2C-Nachrichten an benutzerdefinierte Endpunkte.'
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ebc9240e75e5b30b9159f15f4ec1825c1d2b03ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388260"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346777"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkten für D2C-Nachrichten
 
@@ -21,7 +20,7 @@ ms.locfileid: "107388260"
 
 Mit der IoT Hub-[Nachrichtenweiterleitung](iot-hub-devguide-routing-query-syntax.md) können Benutzer D2C-Nachrichten an dienstseitige Endpunkte weiterleiten. Die Weiterleitung verfügt auch über eine Abfragefunktion zum Filtern der Daten, bevor diese an die Endpunkte weitergeleitet werden. Jede Routingabfrage, die Sie konfigurieren, hat die folgenden Eigenschaften:
 
-| Eigenschaft      | Beschreibung |
+| Eigenschaft      | BESCHREIBUNG |
 | ------------- | ----------- |
 | **Name**      | Der eindeutige Name, mit dem die Abfrage identifiziert wird. |
 | **Quelle**    | Der Ursprung des zu verarbeitenden Datenstroms. Beispiel: Gerätetelemetrie. |

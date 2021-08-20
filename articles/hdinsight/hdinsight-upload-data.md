@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020, devx-track-azurecli
 ms.date: 04/27/2020
-ms.openlocfilehash: 81ce470c53374331afcc91c89fd97e96c3fa0c35
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 42197766873992bbce7c388be778a44d9e4c0d16
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887412"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112538924"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
 
@@ -34,11 +34,11 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 
 | Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) |âœ“ |âœ“ |âœ“ |
-| [Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md) |âœ“ |âœ“ |âœ“ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |âœ“ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |âœ“ | |âœ“ |
-| [Hadoop-Befehl](#hadoop-command-line) |âœ“ |âœ“ |âœ“ |
+| [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+| [Hadoop-Befehl](#hadoop-command-line) |✔ |✔ |✔ |
 
 > [!NOTE]  
 > Der Hadoop-Befehl ist nur für den HDInsight-Cluster verfügbar. Mit dem Befehl können nur Daten aus dem lokalen Dateisystem in Azure Storage geladen werden.  
@@ -76,12 +76,12 @@ Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die
 
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Microsoft Visual Studio-Tools für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |âœ“ |âœ“ |âœ“ |
-| [Azure Storage-Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |âœ“ |âœ“ |âœ“ |
-| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |âœ“ |
-| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |âœ“ |
-| [CloudBerry Explorer für Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |âœ“ |
-| [Cyberduck](https://cyberduck.io/) | |âœ“ |âœ“ |
+| [Microsoft Visual Studio-Tools für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
+| [Azure Storage-Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
+| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
+| [CloudBerry Explorer für Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Einbinden von Azure Storage als lokales Laufwerk
 

@@ -1,25 +1,25 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 07/28/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 498352dad95e9a891c6a49d583e3b7842d4f6420
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4145cc06148db0f12ff2a2288512069155d09a44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108793511"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346106"
 ---
 | Resource | Begrenzung |
 | --- | --- |
 | Datendurchsatz |30 GBit/s|
 |Regelgrenzwerte|10.000 eindeutige Quellen/Ziele in Netzwerkregeln|
-|Maximale Anzahl von DNAT-Regeln|298 für eine einzelne öffentliche IP-Adresse.<br>Alle zusätzlichen öffentlichen IP-Adressen tragen zu den verfügbaren SNAT-Ports bei, verringern jedoch die Anzahl der verfügbaren DNAT-Regeln. Beispielsweise lassen zwei öffentliche IP-Adressen 297 DNAT-Regeln zu. Wenn das Protokoll einer Regel sowohl für TCP als auch für UDP konfiguriert ist, zählt dies als zwei Regeln.|
+|Maximale Anzahl von DNAT-Regeln|250 |
 |Mindestgröße für AzureFirewallSubnet |/26|
 |Portbereich in Netzwerk- und Anwendungsregeln|1 bis 65535|
 |Öffentliche IP-Adressen|Höchstens 250. Alle öffentlichen IP-Adressen können in DNAT-Regeln verwendet werden und zählen zu den verfügbaren SNAT-Ports.|

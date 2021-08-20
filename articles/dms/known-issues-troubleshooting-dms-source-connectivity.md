@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e3dcc8f6bba6830eec9f20732da9e42f03d5b28e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338950"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Problembehandlung von DMS-Fehlern beim Herstellen einer Verbindung mit Quelldatenbanken
 
@@ -86,7 +86,6 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS SQL Se
 ## <a name="known-issues"></a>Bekannte Probleme
 
 * [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](./index.yml)
-* [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -94,4 +93,4 @@ Potenzielle Probleme im Zusammenhang mit der Verbindung mit einer AWS RDS SQL Se
 * Lesen Sie den Artikel [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration).
 * Lesen Sie den Artikel [Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal](../mysql/howto-server-parameters.md).
 * Lesen Sie den Artikel [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](./pre-reqs.md).
-* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.md).
+* Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.yml).

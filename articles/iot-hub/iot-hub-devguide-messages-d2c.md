@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: d7f6030e8d4d2807084d212713df8630f2d7a17a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: b460c906806cc9c9beb9c9e037d1096feea098a3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191726"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404400"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -24,7 +24,7 @@ ms.locfileid: "110191726"
 
 Das Nachrichtenrouting ermöglicht es Ihnen, Nachrichten automatisiert, skalierbar und zuverlässig von Ihren Geräten an Clouddienste zu senden. Das Nachrichtenrouting kann für Folgendes verwendet werden: 
 
-* **Senden von Gerätetelemetrienachrichten und von Ereignissen** – insbesondere von Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei Gerätezwillingen, Änderungsereignissen bei digitalen Zwillingen sowie von Ereignissen beim Geräteverbindungsstatus im integrierten Endpunkt und in benutzerdefinierten Endpunkten. Erfahren Sie mehr über [Routingendpunkte](#routing-endpoints). Weitere Informationen zu den von IoT Plug & Play-Geräten gesendeten Ereignissen finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-pnp/concepts-digital-twin.md).
+* **Senden von Gerätetelemetrienachrichten und von Ereignissen** – insbesondere von Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei Gerätezwillingen, Änderungsereignissen bei digitalen Zwillingen sowie von Ereignissen beim Geräteverbindungsstatus im integrierten Endpunkt und in benutzerdefinierten Endpunkten. Erfahren Sie mehr über [Routingendpunkte](#routing-endpoints). Weitere Informationen zu den von IoT Plug & Play-Geräten gesendeten Ereignissen finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-develop/concepts-digital-twin.md).
 
 * **Filtern von Daten vor dem Weiterleiten an verschiedene Endpunkte** durch Anwenden umfassender Abfragen. Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaften und Nachrichtentext sowie für Gerätezwillingstags und Gerätezwillingseigenschaften durchführen. Erfahren Sie mehr über die Verwendung von [Abfragen im Nachrichtenrouting](iot-hub-devguide-routing-query-syntax.md).
 
@@ -107,7 +107,7 @@ Sie können mit diesem [Tutorial](tutorial-routing.md) eine Route konfigurieren.
 
 Verwenden Sie die folgenden Tutorials, um zu erfahren, wie Sie Nachrichten aus einem Endpunkt lesen:
 
-* Lesen vom [integrierten Endpunkt](quickstart-send-telemetry-node.md)
+* Lesen vom [integrierten Endpunkt](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 * Lesen aus [Blob Storage](../storage/blobs/storage-blob-event-quickstart.md)
 
@@ -126,7 +126,7 @@ Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenroutin
 
 ## <a name="non-telemetry-events"></a>Nicht telemetriebezogene Ereignisse
 
-Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen, Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei digitalen Zwillingen und Ereignissen beim Geräteverbindungsstatus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt wurde. Dann sendet IoT Hub Nachrichten, wenn eine Eigenschaft des digitalen Zwillings festgelegt oder geändert wird, ein digitaler Zwilling ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis eintritt. Und schließlich: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse beim Geräteverbindungsstatus** festgelegt wurde, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät verbunden oder die Verbindung getrennt wurde.
+Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen, Ereignissen beim Gerätelebenszyklus, Änderungsereignissen bei digitalen Zwillingen und Ereignissen beim Geräteverbindungsstatus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-develop/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt wurde. Dann sendet IoT Hub Nachrichten, wenn eine Eigenschaft des digitalen Zwillings festgelegt oder geändert wird, ein digitaler Zwilling ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis eintritt. Und schließlich: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse beim Geräteverbindungsstatus** festgelegt wurde, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät verbunden oder die Verbindung getrennt wurde.
 
 
 [IoT Hub lässt sich auch in Azure Event Grid integrieren](iot-hub-event-grid.md), um Geräteereignisse zu veröffentlichen und so Echtzeitintegrationen und die Automatisierung von Workflows basierend auf diesen Ereignissen zu unterstützen. Informationen dazu, welche Methode sich am besten für Ihr Szenario eignet, finden Sie unter [Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub](iot-hub-event-grid-routing-comparison.md).
@@ -167,6 +167,6 @@ Im [Leitfaden zur Problembehandlung beim Routing](troubleshoot-message-routing.m
 
 * Wie Sie Nachrichtenrouten erstellen, erfahren Sie unter [Verarbeiten von IoT Hub-D2C-Nachrichten mit Routen](tutorial-routing.md).
 
-* [Senden von D2C-Nachrichten](quickstart-send-telemetry-node.md)
+* [Senden von D2C-Nachrichten](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 * Informationen zu den SDKs, die Sie zum Senden von D2C-Nachrichten verwenden können, finden Sie unter [Azure IoT-SDKs](iot-hub-devguide-sdks.md).

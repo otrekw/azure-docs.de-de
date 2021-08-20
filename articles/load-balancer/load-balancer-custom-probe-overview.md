@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 6aa21dda1f19335a542edf729135d55a9f3b9176
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c6dbfd0020598c280e006e863467a4dfa9b29a0c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083474"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284510"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -37,7 +37,7 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 >Lesen Sie dieses Dokument in seiner Gesamtheit, einschließlich der wichtigen [Hinweise zum Entwurf](#design) unten, um einen zuverlässigen Dienst zu erstellen.
 
 >[!IMPORTANT]
->Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource). Informationen, wie Sie diesen Testdatenverkehr in Ihrer Back-End-Instanz anzeigen können, finden Sie in [diesen häufig gestellten Fragen](load-balancer-faqs.md#probes).
+>Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource). Informationen, wie Sie diesen Testdatenverkehr in Ihrer Back-End-Instanz anzeigen können, finden Sie in [diesen häufig gestellten Fragen](/azure/load-balancer/load-balancer-faqs#probes).
 
 >[!IMPORTANT]
 >Unabhängig vom konfigurierten Timeout-Schwellenwert wird bei HTTP(S)-Integritätstests von Load Balancer automatisch eine Instanz getestet, wenn der Server einen anderen Statuscode als „HTTP 200 OK“ zurückgibt oder wenn die Verbindung durch ein TCP-Reset getrennt wird.
@@ -253,7 +253,7 @@ Aktivieren Sie [TCP-Zeitstempel](https://tools.ietf.org/html/rfc1323) nicht.  Da
 
 Öffentliche und interne [Load Balancer Standard](./load-balancer-overview.md) stellen pro Endpunkt und Back-End-Endpunkt den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
 
-Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Azure Monitor-Protokolle bereit.  Azure Monitor-Protokolle steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Azure Monitor-Protokolle](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
+Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Azure Monitor-Protokolle bereit.  Azure Monitor-Protokolle steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Azure Monitor-Protokolle](./monitor-load-balancer.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
 
 ## <a name="limitations"></a>Einschränkungen
 

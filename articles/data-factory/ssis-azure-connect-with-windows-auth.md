@@ -3,19 +3,17 @@ title: Zugreifen auf Datenspeicher und Dateifreigaben mit Windows-Authentifizier
 description: In diesem Artikel erfahren Sie, wie Sie den SSIS-Katalog in Azure SQL-Datenbank und die Azure-SSIS Integration Runtime in Azure Data Factory so konfigurieren, dass dieser Pakete ausführt, die die Windows-Authentifizierung verwenden, um auf Datenspeicher und Dateifreigaben zuzugreifen.
 ms.date: 10/27/2020
 ms.topic: conceptual
-ms.prod: sql
-ms.prod_service: integration-services
-ms.custom: ''
-ms.technology: integration-services
+ms.service: data-factory
+ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: jburchel
-ms.openlocfilehash: 8cb92407954ab5376850e57b0ee91d934480b025
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0777b13eb394ac221bc85679c2ea05925b156c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355173"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Zugreifen auf Datenspeicher und Dateifreigaben mit Windows-Authentifizierung in SSIS-Paketen in Azure
 

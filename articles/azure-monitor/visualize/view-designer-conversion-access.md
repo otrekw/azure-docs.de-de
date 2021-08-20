@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 89b812fff9856fda2bd1da896261481eddfdc566
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d79e36c77505635cb37573712a028b98b66af1ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316675"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472330"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Umwandlung von Ansichts-Designer in Arbeitsmappen – Zusammenfassung und Zugriff
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie laufen aus und werden durch Arbeitsmappen ersetzt, die zusätzliche Funktionalität bereitstellen. In diesem Artikel erfahren Sie, wie Sie eine Übersichtszusammenfassung und Berechtigungen erstellen können, die für den Zugriff auf Arbeitsmappen erforderlich sind.
@@ -33,10 +33,7 @@ Möglicherweise möchten Sie auch mehrere Visualisierungen aus der Arbeitsmappe 
 
 ![Alles anheften](media/view-designer-conversion-access/pin-all.png)
 
-
-
 ## <a name="sharing-and-viewing-permissions"></a>Freigeben und Berechtigungen zum Anzeigen 
-Arbeitsmappen haben den Vorteil, dass sie entweder ein privates oder ein freigegebenes Dokument sind. Standardmäßig werden Arbeitsmappen unter **Meine Berichte** gespeichert, was bedeutet, dass nur der Ersteller diese Arbeitsmappe anzeigen kann.
 
 Sie können Ihre Arbeitsmappen freigeben, indem Sie das Symbol **Freigeben** in der oberen Symbolleiste auswählen, während Sie im **Bearbeitungsmodus** sind. Sie werden aufgefordert, Ihre Arbeitsmappe in **Freigegebene Berichte** zu verschieben, wodurch ein Link generiert wird, der den direkten Zugriff auf die Arbeitsmappe bereitstellt.
 

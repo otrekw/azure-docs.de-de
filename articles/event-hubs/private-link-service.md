@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Di
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76f205d97c7c77ff75f0143181631319c6a23b97
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48688c9f16330830111aff5dd26292825370fcb9
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706048"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415556"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte 
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
@@ -92,7 +92,7 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 
     ![Privater Endpunkt ist erstellt](./media/private-link-service/private-endpoint-created.png)
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 Um vertrauenswürdigen Diensten den Zugriff auf Ihren Namespace zu gestatten, wechseln Sie zur Registerkarte **Firewalls und virtuelle Netzwerke** auf der Seite **Netzwerk**, und wählen Sie **Ja** für **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** aus. 
 

@@ -3,16 +3,16 @@ title: Glossar mit Begriffen zu Azure IoT | Microsoft-Dokumentation
 description: Entwicklerhandbuch – ein Glossar zur Erläuterung einiger allgemeiner Begriffe, die in den Artikeln zu Azure IoT verwendet werden.
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-hub
-services: iot-hub
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668403"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403395"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -182,7 +182,7 @@ Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltun
 
 ### <a name="device-model"></a>Gerätemodell
 
-Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-pnp/concepts-modeling-guide.md).
+Ein Gerätemodell ist ein Typ von [Modell](#model), bei dem die [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) zum Beschreiben der Funktionen eines IoT Plug & Play-Geräts verwendet wird. Ein einfaches Gerätemodell verwendet eine einzelne Schnittstelle, um die Gerätefunktionen zu beschreiben. Ein komplexeres Gerätemodell umfasst mehrere Komponenten, die jeweils eine Reihe von Funktionen beschreiben. Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../iot-develop/concepts-modeling-guide.md).
 
 ### <a name="device-modeling"></a>Gerätemodellierung
 
@@ -214,7 +214,7 @@ Bezieht sich auf Nachrichten, die von einem verbundenen Gerät an [IoT Hub](#iot
 
 ### <a name="digital-twin"></a>Digitaler Zwilling
 
-Ein digitaler Zwilling ist eine Sammlung digitaler Daten, die ein physisches Objekt repräsentieren. Änderungen am physischen Objekt spiegeln sich im digitalen Zwilling wider. In einigen Szenarien können Sie den digitalen Zwilling verwenden, um das physische Objekt zu bearbeiten. Der [Azure Digital Twins-Dienst](../digital-twins/index.yml) verwendet [Modelle](#model), die in der [Digital Twins Definition Language (DTDL)](#digital-twins-definition-language-dtdl) formuliert werden, um digitale Zwillinge von physischen Geräten oder abstrakten Geschäftskonzepten darzustellen und so eine Vielzahl verschiedener cloudbasierter Lösungen für digitale Zwillinge zu ermöglichen. Ein [IoT Plug & Play](../iot-pnp/index.yml)-Gerät besitzt einen digitalen Zwilling, der durch ein DTDL-[Gerätemodell](#device-model) beschrieben wird.
+Ein digitaler Zwilling ist eine Sammlung digitaler Daten, die ein physisches Objekt repräsentieren. Änderungen am physischen Objekt spiegeln sich im digitalen Zwilling wider. In einigen Szenarien können Sie den digitalen Zwilling verwenden, um das physische Objekt zu bearbeiten. Der [Azure Digital Twins-Dienst](../digital-twins/index.yml) verwendet [Modelle](#model), die in der [Digital Twins Definition Language (DTDL)](#digital-twins-definition-language-dtdl) formuliert werden, um digitale Zwillinge von physischen Geräten oder abstrakten Geschäftskonzepten darzustellen und so eine Vielzahl verschiedener cloudbasierter Lösungen für digitale Zwillinge zu ermöglichen. Ein [IoT Plug & Play](../iot-develop/index.yml)-Gerät besitzt einen digitalen Zwilling, der durch ein DTDL-[Gerätemodell](#device-model) beschrieben wird.
 
 ### <a name="digital-twin-change-events"></a>Änderungsereignisse bei digitalen Zwillingen
 
@@ -378,7 +378,7 @@ In Azure IoT-Solution Accelerators werden mehrere Azure-Dienste zu Lösungen zus
 
 In [IoT Hub](#iot-hub) können Sie mit [Aufträgen](../iot-hub/iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT-Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt IoT Hub Aufträge zum [Importieren und Exportieren](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
 
-In IoT Central können Sie Ihre verbundenen Geräte mit [Aufträgen](../iot-central/core/howto-run-a-job.md) gesammelt verwalten und für diese Eigenschaften festlegen und Befehle aufrufen. IoT Central-Aufträge ermöglichen auch das Aktualisieren von [Cloudeigenschaften](#cloud-property) in einem Massenvorgang.
+In IoT Central können Sie Ihre verbundenen Geräte mit [Aufträgen](../iot-central/core/howto-manage-devices-in-bulk.md) gesammelt verwalten und für diese Eigenschaften festlegen und Befehle aufrufen. IoT Central-Aufträge ermöglichen auch das Aktualisieren von [Cloudeigenschaften](#cloud-property) in einem Massenvorgang.
 
 ## <a name="l"></a>L
 
@@ -396,11 +396,11 @@ Der [Device Provisioning Service (DPS)](#device-provisioning-service) kann Gerä
 
 ## <a name="m"></a>M
 
-### <a name="model"></a>Modellieren
+### <a name="model"></a>Modell
 
 Ein Modell definiert einen Typ von Entität in Ihrer physischen Umgebung, einschließlich ihrer Eigenschaften, Telemetrien, Komponenten und zuweilen weiterer Informationen. Modelle werden verwendet, um [digitale Zwillinge](#digital-twin) zu erstellen, die bestimmte physische Objekte dieses Typs darstellen. Modelle werden in der [Digital Twins Definition Language](#digital-twins-definition-language-dtdl) geschrieben.
 
-Beim [Azure Digital Twins-Dienst](../digital-twins/index.yml) können Modelle zum Definieren von Geräten und übergeordneten abstrakten Geschäftskonzepten verwendet werden. Bei [IoT Plug & Play](../iot-pnp/index.yml) werden [Gerätemodelle](#device-model) verwendet, um Geräte genau zu beschreiben.
+Beim [Azure Digital Twins-Dienst](../digital-twins/index.yml) können Modelle zum Definieren von Geräten und übergeordneten abstrakten Geschäftskonzepten verwendet werden. Bei [IoT Plug & Play](../iot-develop/index.yml) werden [Gerätemodelle](#device-model) verwendet, um Geräte genau zu beschreiben.
 
 ### <a name="model-id"></a>Modell-ID
 

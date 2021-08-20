@@ -3,12 +3,12 @@ title: Übersicht über Container Insights | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Container Insights, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3310be54476a9449188c2b7fbfa5bbb6e21cb005
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177708"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355456"
 ---
 # <a name="container-insights-overview"></a>Übersicht über Container Insights
 
@@ -39,7 +39,7 @@ Container Insights stellt eine umfassende Überwachungsumgebung auf Grundlage ve
 * Sie können die Ressourcenauslastung von Workloads überprüfen, die unabhängig von den Standardprozessen, die den Pod unterstützen, im Host ausgeführt werden.
 * Sie bekommen Einblicke in das Verhalten des Clusters bei durchschnittlichen und schwersten Lasten. So können Sie benötigte Kapazitäten ermitteln und die maximale Last bestimmen, die der Cluster toleriert.
 * Konfigurieren Sie Warnungen so, dass Sie proaktiv benachrichtigt werden oder aufgezeichnet wird, wenn die CPU- und Arbeitsspeicherauslastung auf Knoten oder in Containern die Schwellenwerte überschreitet oder wenn eine Änderung des Integritätszustands im Cluster beim Integritätsrollup für Infrastruktur oder Knoten erfolgt.
-* Integrieren Sie [Prometheus](https://prometheus.io/docs/introduction/overview/), um Anwendungs- und Arbeitslastmetriken, die es von Knoten und Kubernetes sammelt, mithilfe von [Abfragen](container-insights-log-search.md) anzuzeigen, um benutzerdefinierte Warnungen und Dashboards zu erstellen und detaillierte Analysen zu erstellen.
+* Integrieren Sie [Prometheus](https://prometheus.io/docs/introduction/overview/), um Anwendungs- und Arbeitslastmetriken, die es von Knoten und Kubernetes sammelt, mithilfe von [Abfragen](container-insights-log-query.md) anzuzeigen, um benutzerdefinierte Warnungen und Dashboards zu erstellen und detaillierte Analysen zu erstellen.
 * Überwachen Sie Containerworkloads, [die auf der AKS-Engine](https://github.com/Azure/aks-engine) lokal und der [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) bereitgestellt werden.
 * Überwachen von Containerworkloads, [die in Azure Red Hat OpenShift](../../openshift/intro-openshift.md) bereitgestellt sind.
 

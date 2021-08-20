@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bcc37451e6a6b2caa98712c07828cc216144c08
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92109118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122354917"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Leitfaden zu Hochverfügbarkeit und Notfallwiederherstellung für Data Lake Storage Gen1
 
@@ -22,7 +22,7 @@ Data Lake Storage Gen1 bietet lokal redundanten Speicher (Locally-Redundant Stor
 Es ist wichtig, einen Plan für die Notfallwiederherstellung vorzubereiten. Lesen Sie die Informationen in diesem Artikel und diese zusätzlichen Ressourcen, die Sie beim Erstellen eines eigenen Plans unterstützen.
 
 * [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/framework/resiliency/overview)
+* [Technischer Leitfaden zur Resilienz in Azure](/azure/architecture/framework/resiliency/app-design)
 
 ### <a name="best-practice-recommendations"></a>Empfehlungen zu bewährten Methoden
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ad395e1b782edb28845bb7db0607d2bab5b5697c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 763369fbbd52ed14b547e2a23dfa0bb977a1b9a4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802011"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116136"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -202,4 +202,4 @@ Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in de
 
 Informationen zur YAML-basierten Konfiguration finden Sie im [YAML-Konfigurationshandbuch](yaml-configuration.md).
 
-Wenn Sie weitere Fragen zur Erweiterung „Sicherheitscodeanalyse“ und zu den angebotenen Tools haben, lesen Sie unsere [Seite mit FAQs](security-code-analysis-faq.md).
+Wenn Sie weitere Fragen zur Erweiterung „Sicherheitscodeanalyse“ und zu den angebotenen Tools haben, lesen Sie unsere [Seite mit FAQs](security-code-analysis-faq.yml).

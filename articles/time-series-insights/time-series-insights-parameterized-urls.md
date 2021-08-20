@@ -3,19 +3,20 @@ title: Teilen von benutzerdefinierten Ansichten mit parametrisierten URLs – Az
 description: Sie erfahren, wie Sie parametrisierte URLs erstellen, um benutzerdefinierte Explorer-Ansichten in Azure Time Series Insights ganz einfach freizugeben.
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: narmeens
+ms.author: narsam
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 395420c61e2cc3f4167590f81e625bf7e67cbfac
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91665326"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371227"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
@@ -78,12 +79,12 @@ Der Parameter `timeSeriesDefinitions=<collection of term objects>` gibt Prädika
 | **useSum** | `true` | Ein optionaler Parameter, der die Verwendung von „Summe“ für Ihr Measure angibt. |
 
 > [!NOTE]
-> Wenn `Events` das ausgewählte **useSum**-Measure ist, ist standardmäßig „Anzahl“ ausgewählt.  
+> Wenn `Events` das ausgewählte **useSum**-Measure ist, ist standardmäßig „Anzahl“ ausgewählt.
 > Wenn `Events` nicht ausgewählt wurde, ist standardmäßig „Durchschnitt“ ausgewählt. |
 
 * Das Schlüssel-Wert-Paar `multiChartStack=<true/false>` aktiviert das Stapeln im Diagramm.
-* Das Schlüssel-Wert-Paar `multiChartSameScale=<true/false>` aktiviert dieselbe Y-Achsenskala begriffsübergreifend Innerhalb eines optionalen Parameters.  
-* Mit `timeBucketUnit=<Unit>&timeBucketSize=<integer>` können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.  
+* Das Schlüssel-Wert-Paar `multiChartSameScale=<true/false>` aktiviert dieselbe Y-Achsenskala begriffsübergreifend Innerhalb eines optionalen Parameters.
+* Mit `timeBucketUnit=<Unit>&timeBucketSize=<integer>` können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.
 * Mit dem Parameter `timezoneOffset=<integer>` können Sie die gewünschte Zeitzone für das Diagrammdarstellung als UTC-Versatz festlegen.
 
 | Paar(e) | BESCHREIBUNG |

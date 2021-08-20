@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 6c2ea063e37660767d266c15dcfc471ee5d73a02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7f12ca1530b40885dea456763bd231d487ba5cb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732107"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004626"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Sichern und Wiederherstellen von Analysis Services-Datenbanken
 
@@ -25,7 +25,7 @@ Das Sichern von Datenbanken für tabellarische Modelle in Azure Analysis Service
 > 
 
 > [!NOTE]
-> Wenn sich das Speicherkonto in einer anderen Region befindet, konfigurieren Sie die Firewalleinstellungen für das Speicherkonto so, dass der Zugriff über **ausgewählte Netzwerke** zulässig ist. Geben Sie im **Adressbereich** der Firewall den IP-Adressbereich für die Region an, in der sich der Analysis Services-Server befindet. Die Konfiguration der Firewalleinstellungen für das Speicherkonto wird unterstützt, um den Zugriff von allen Netzwerken zuzulassen. Allerdings wird die Auswahl bestimmter Netzwerke und die Angabe eines IP-Adressbereichs bevorzugt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md#backup-and-restore).
+> Wenn sich das Speicherkonto in einer anderen Region befindet, konfigurieren Sie die Firewalleinstellungen für das Speicherkonto so, dass der Zugriff über **ausgewählte Netzwerke** zulässig ist. Geben Sie im **Adressbereich** der Firewall den IP-Adressbereich für die Region an, in der sich der Analysis Services-Server befindet. Die Konfiguration der Firewalleinstellungen für das Speicherkonto wird unterstützt, um den Zugriff von allen Netzwerken zuzulassen. Allerdings wird die Auswahl bestimmter Netzwerke und die Angabe eines IP-Adressbereichs bevorzugt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Netzwerkkonnektivität von Analysis Services](/azure/analysis-services/analysis-services-network-faq#backup-and-restore).
 
 Sicherungen werden mit der Erweiterung ABF gespeichert. Für tabellarische In-Memory-Modelle werden sowohl die Modelldaten als auch die Metadaten gespeichert. Für tabellarische DirectQuery-Modelle werden nur die Modellmetadaten gespeichert. Sicherungen können in Abhängigkeit von den gewählten Optionen komprimiert und verschlüsselt werden.
 
@@ -109,4 +109,4 @@ Verwenden Sie das Cmdlet [Restore-ASDatabase](/powershell/module/sqlserver/resto
 
 [Azure-Speicherkonten](../storage/common/storage-account-create.md)  
 [Hochverfügbarkeit](analysis-services-bcdr.md)      
-[Häufig gestellte Fragen zu Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.md)
+[Häufig gestellte Fragen zu Netzwerkkonnektivität von Analysis Services](analysis-services-network-faq.yml)

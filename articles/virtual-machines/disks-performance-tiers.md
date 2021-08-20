@@ -2,18 +2,18 @@
 title: Ändern der Leistung verwalteter Azure-Datenträger – CLI/PowerShell
 description: Erfahren Sie, wie Sie Leistungsstufen für vorhandene verwaltete Datenträger mithilfe des Azure PowerShell-Moduls oder der Azure CLI ändern können.
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 32f589be39740d62ef77967867522688d29a3618
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6d13f5927e31fc7f8cf412f6bba6088360af610d
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673497"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356219"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändern der Leistungsstufe mithilfe des Azure PowerShell-Moduls oder der Azure CLI
 
@@ -121,9 +121,9 @@ Sie können Ihre Leistungsstufe auch ohne Downtime ändern, damit Sie Ihre VM ni
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Ihr Datenträger muss die Anforderungen erfüllen, die im Abschnitt [Leistungsstufe ohne Downtime ändern (Vorschau)](#change-performance-tier-without-downtime-preview) beschrieben sind. Wenn dies nicht der Fall ist, kommt es beim Ändern der Leistungsstufe zu Ausfallzeiten.
+Ihr Datenträger muss die Anforderungen erfüllen, die im Abschnitt [Leistungsstufe ohne Downtime ändern (Vorschau)](#change-performance-tier-without-downtime-preview) beschrieben sind. Wenn dies nicht der Fall ist, kommt es beim Ändern der Leistungsstufe zur Downtime.
 
-Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Leistungsstufe eines Datenträgers ohne Ausfallzeiten ändern können. Führen Sie die folgenden Schritte aus, um das Feature für Ihr Abonnement zu aktivieren:
+Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Leistungsstufe eines Datenträgers ohne Downtime ändern können. Führen Sie die folgenden Schritte aus, um das Feature für Ihr Abonnement zu aktivieren:
 
 1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
 

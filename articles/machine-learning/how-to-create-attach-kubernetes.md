@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f623a5012ebd02ddf55b41541bb66cc34eaa4de8
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901605"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461231"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -128,7 +128,7 @@ Result
 1.16.13
 ```
 
-Wenn Sie die **verfügbaren Versionen programmgesteuert überprüfen** möchten, verwenden Sie die [Container Service Client – List Orchestrators](/rest/api/container-service/container%20service%20client/listorchestrators)-REST-API. Um die verfügbaren Versionen zu finden, sehen Sie sich die Einträge an, in denen `orchestratorType` den Wert `Kubernetes` hat. Die zugehörigen `orchestrationVersion`-Einträge enthalten die verfügbaren Versionen, die an Ihren Arbeitsbereich **angefügt** werden können.
+Wenn Sie die **verfügbaren Versionen programmgesteuert überprüfen** möchten, verwenden Sie die [Container Service Client – List Orchestrators](/rest/api/container-service/container-service-client/list-orchestrators)-REST-API. Um die verfügbaren Versionen zu finden, sehen Sie sich die Einträge an, in denen `orchestratorType` den Wert `Kubernetes` hat. Die zugehörigen `orchestrationVersion`-Einträge enthalten die verfügbaren Versionen, die an Ihren Arbeitsbereich **angefügt** werden können.
 
 Um die Standardversion zu ermitteln, die beim **Erstellen** eines Clusters über Azure Machine Learning verwendet wird, suchen Sie den Eintrag, bei dem `orchestratorType` den Wert `Kubernetes` und `default` den Wert `true` hat. Der zugeordnete `orchestratorVersion`-Wert ist die Standardversion. Der folgende JSON-Codeausschnitt zeigt einen Beispieleintrag:
 
@@ -198,7 +198,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 az ml computetarget create aks -n myaks
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks).
+Weitere Informationen finden Sie unter [az ml computetarget create aks](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_aks).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -225,7 +225,7 @@ Weitere Informationen zum Erstellen eines AKS-Clusters mithilfe der Azure-CLI od
 
 * [Erstellen eines AKS-Clusters (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](../aks/kubernetes-walkthrough-portal.md)
-* [Erstellen eines AKS-Clusters (ARM-Vorlage auf Azure-Schnellstartvorlagen)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
+* [Erstellen eines AKS-Clusters (ARM-Vorlage auf Azure-Schnellstartvorlagen)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aks-azml-targetcompute)
 
 Das folgende Beispiel veranschaulicht das Anfügen eines vorhandenen AKS-Clusters an Ihren Arbeitsbereich:
 
@@ -275,7 +275,7 @@ Um den vorhandenen Cluster an Ihren Arbeitsbereich anzufügen, verwenden Sie den
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Weitere Informationen finden Sie unter [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks).
+Weitere Informationen finden Sie unter [az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach_aks).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

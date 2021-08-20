@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/29/2021
-ms.openlocfilehash: 60f52a11aa1573e4d05bcdc1dd8308ec3cc96dac
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: f46f5a01765d03c521c7bbc21b51aef9f3a8f93a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316135"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347031"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – Konfigurationsoptionen für Hyperscale (Citus)
 
@@ -73,16 +73,11 @@ Für den gesamten Hyperscale (Citus)-Cluster belaufen sich die aggregierten IOPS
 | 19           | 29.184              | 58.368            | 116.812           |
 | 20           | 30.720              | 61.440            | 122.960           |
 
-### <a name="basic-tier-preview"></a>Basic-Tarif (Vorschau)
-
-> [!IMPORTANT]
-> Der Basic-Tarif von Hyperscale (Citus) ist zurzeit als Vorschauversion verfügbar.  Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Vorschaufeatures für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
+### <a name="basic-tier"></a>Basic-Tarif
 
 Beim [Basic-Tarif](concepts-hyperscale-tiers.md) von Hyperscale (Citus) handelt es sich um eine Servergruppe mit nur einem Knoten.  Da nicht zwischen Koordinator- und Workerknoten unterschieden wird, ist die Wahl von Compute- und Speicherressourcen weniger kompliziert.
 
-| Resource              | Verfügbare Optionen     |
+| Ressource              | Verfügbare Optionen     |
 |-----------------------|-----------------------|
 | Compute, virtuelle Kerne       | 2, 4, 8               |
 | Arbeitsspeicher pro V-Kern, GiB | 4                     |
@@ -113,7 +108,7 @@ Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar
     * Brasilien Süd
     * Kanada, Mitte
     * USA (Mitte)
-    * USA, Osten*
+    * East US
     * USA (Ost) 2
     * USA Nord Mitte
     * USA, Westen 2
@@ -124,12 +119,11 @@ Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar
     * Asien, Südosten
 * Europa:
     * Frankreich, Mitte
-    * Nordeuropa
+    * Deutschland, Westen-Mitte
+    * Europa, Norden
     * Schweiz, Norden
     * UK, Süden
     * Europa, Westen
-
-(\*: Unterstützt [Previewfunktionen](hyperscale-preview-features.md))
 
 Einige dieser Regionen sind anfangs möglicherweise nicht für alle Azure-Abonnements aktiviert. Öffnen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), wenn Sie eine Region aus der oben genannten Liste verwenden möchten, sie aber nicht in Ihrem Abonnement angezeigt wird, oder wenn Sie eine nicht in dieser Liste enthaltene Region verwenden möchten.
 

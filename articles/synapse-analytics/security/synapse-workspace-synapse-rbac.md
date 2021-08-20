@@ -1,19 +1,19 @@
 ---
 title: Rollenbasierte Zugriffssteuerung in Synapse
 description: In diesem Artikel wird die rollenbasierte Zugriffssteuerung in Azure Synapse Analytics erläutert.
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e96d6decba679c7a4764a77f1e9720000faf78c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dda885d55f2102f1fae478c8d214f2bca44f52f2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105146"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346570"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (RBAC) in Synapse?
 

@@ -2,17 +2,19 @@
 title: Operationalisieren von ML Services in HDInsight – Azure
 description: Erfahren Sie, wie Sie Ihr Datenmodell operationalisieren, um Vorhersagen mit ML Services in Azure HDInsight zu treffen.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb8114da913347309e6e8ad263c0bb7fcf56790f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869466"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299283"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorgenommen haben, können Sie das Modell operationalisieren, um Vorhersagen zu treffen. Dieser Artikel enthält Anweisungen zur Durchführung dieser Aufgabe.
 
@@ -164,7 +166,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 * Heben Sie die Auswahl der Workerknoten auf, und wählen Sie die Hauptknoten aus.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Alle Komponenten beenden** aus.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Serverknoten auf allen außer Betrieb gesetzten Workerknoten
+###    <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Serverknoten auf allen außer Betrieb gesetzten Workerknoten
 
 1. Stellen Sie per SSH eine Verbindung mit jedem außer Betrieb gesetzten Workerknoten her.
 

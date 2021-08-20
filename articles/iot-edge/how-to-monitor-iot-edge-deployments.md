@@ -2,20 +2,18 @@
 title: Überwachen von IoT Edge-Bereitstellungen – Azure IoT Edge
 description: Überwachung von Bereitstellungen, einschließlich der gemeldeten EdgeHub- und EdgeAgent-Eigenschaften sowie der Metriken der automatischen Bereitstellung.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 39e7bb5c151d490e79ef111589f52f260c3e6c7a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 834208d1499e83b1de5cd276a5de65c00f25e4f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483162"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345774"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Überwachen von IoT Edge-Bereitstellungen
 
@@ -45,7 +43,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
 1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
 1. Prüfen Sie die Bereitstellungsliste.  Für jede Bereitstellung können Sie die folgenden Details anzeigen:
 
-    | Column | Beschreibung |
+    | Column | BESCHREIBUNG |
     | --- | --- |
     | id | Der Name der Bereitstellung |
     | type | Der Typ der Bereitstellung – entweder **Bereitstellung** oder **Mehrstufige Bereitstellung**. |

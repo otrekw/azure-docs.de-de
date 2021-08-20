@@ -1,19 +1,20 @@
 ---
 title: Erstellen von Projekten und Hinzufügen von Videoclips mithilfe des Editors von Azure Video Analyzer for Media (früher Video Indexer)
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: In diesem Thema wird veranschaulicht, mithilfe des Editors von Azure Video Analyzer for Media (früher Video Indexer) Projekte erstellt und Videoclips hinzugefügt werden.
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: a8e996465a35583db8584d41f6aeccd847ead0ff
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b2a8ca1b446343ad040244f31a304ec2078d1ce2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385610"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115311"
 ---
 # <a name="add-video-clips-to-your-projects"></a>Hinzufügen von Videoclips zu Ihren Projekten
 

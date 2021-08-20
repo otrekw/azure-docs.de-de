@@ -9,18 +9,18 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 3126877833774f0f2e874e2a2dfd6cf5cb6181d8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bcd9758fe77f2b5623c7aba1e145de07e6396e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122347084"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migrationsleitfaden: SAP ASE zu Azure SQL-Datenbank
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In dieser Anleitung lernen Sie, wie Sie Ihre SAP Adapter Server Enterprise-Datenbanken (ASE) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey), indem Sie [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant für SAP Adapter Server Enterprise verwenden.
+In dieser Anleitung lernen Sie, wie Sie Ihre SAP Adapter Server Enterprise-Datenbanken (ASE) zu einer Azure SQL-Datenbank [migrieren](https://azure.microsoft.com/migration/migration-journey), indem Sie [SQL Server Migration](https://azure.microsoft.com/migration/sql-server/) Assistant für SAP Adapter Server Enterprise verwenden.
 
 Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](/data-migration). 
 
@@ -29,7 +29,7 @@ Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigrati
 Bevor Sie mit der Migration der Access-Datenbank zu einer SQL-Datenbank beginnen, gehen Sie folgendermaßen vor:
 
 - Überprüfen Sie, ob Ihre Quellumgebung unterstützt wird. 
-- Laden Sie den [SQL Server Migration Assistant für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) herunter.
+- Laden Sie den [SQL Server Migration Assistant für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/download/details.aspx?id=54256) herunter.
 - Stellen Sie sicher, dass Sie über Konnektivität und ausreichende Berechtigungen für den Zugriff auf Quelle und Ziel verfügen.
 
 ## <a name="pre-migration"></a>Vor der Migration
@@ -38,7 +38,7 @@ Nachdem Sie diese Voraussetzungen erfüllt haben, können Sie die Topologie Ihre
 
 ### <a name="assess"></a>Bewerten
 
-Verwenden Sie den [SQL Server Migration Assistant (SSMA) für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/en-us/download/details.aspx?id=54256), um Datenbankobjekte und Daten zu überprüfen, die Datenbanken für die Migration zu bewerten und um Sybase-Datenbankobjekte und anschließend Daten zu Azure SQL-Datenbank zu migrieren. Weitere Informationen finden Sie unter [SQL Server Migration Assistant für Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql).
+Verwenden Sie den [SQL Server Migration Assistant (SSMA) für SAP Adaptive Server Enterprise (früher SAP Sybase ASE)](https://www.microsoft.com/download/details.aspx?id=54256), um Datenbankobjekte und Daten zu überprüfen, die Datenbanken für die Migration zu bewerten und um Sybase-Datenbankobjekte und anschließend Daten zu Azure SQL-Datenbank zu migrieren. Weitere Informationen finden Sie unter [SQL Server Migration Assistant für Sybase (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql).
 
 Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen: 
 

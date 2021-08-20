@@ -8,16 +8,16 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 1ed37ebd798f7ebef59ea48ce7e2084b331d2bba
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed43f73de5296a465d1878647a80135aa95c065a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065411"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122338945"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Erstellen von Azure Machine Learning-Datasets über Azure Open Datasets
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md)-Datasets und [Azure Open Datasets](./index.yml) kuratierte Anreicherungsdaten in Ihre lokalen remote ausgeführten Machine Learning-Experimente einbringen. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md)-Datasets und [Azure Open Datasets](./index.yml) kuratierte Anreicherungsdaten in Ihre lokalen remote ausgeführten Machine Learning-Experimente einbringen. 
 
 Durch Erstellen eines [Azure Machine Learning-Datasets](../machine-learning/how-to-create-register-datasets.md) erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Da Datasets nur langsam ausgewertet werden und die Daten am vorhandenen Speicherort verbleiben, profitieren Sie von folgenden Vorteilen:
 * Es entstehen keine zusätzlichen Speicherkosten.
@@ -26,7 +26,7 @@ Durch Erstellen eines [Azure Machine Learning-Datasets](../machine-learning/how-
 
 Informationen dazu, welche Rolle Datasets im Workflow für den Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Datenzugriff in Azure Machine Learning](../machine-learning/concept-data.md#data-workflow).
 
-Azure Open Datasets sind kuratierte öffentliche Datasets, mit denen Sie szenariospezifische Features hinzufügen können, um Ihre Vorhersagelösungen anzureichern und die Genauigkeit zu verbessern. Im [Open Datasets-Katalog](https://azure.microsoft.com/en-in/services/open-datasets/catalog/) finden Sie Daten der öffentlichen Domäne, mit denen Sie Ihre Machine Learning-Modelle trainieren können, z. B. zu folgenden Themen:
+Azure Open Datasets sind kuratierte öffentliche Datasets, mit denen Sie szenariospezifische Features hinzufügen können, um Ihre Vorhersagelösungen anzureichern und die Genauigkeit zu verbessern. Im [Open Datasets-Katalog](https://azure.microsoft.com/services/open-datasets/catalog/) finden Sie Daten der öffentlichen Domäne, mit denen Sie Ihre Machine Learning-Modelle trainieren können, z. B. zu folgenden Themen:
 
 * [Wetter](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [Bevölkerung](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)

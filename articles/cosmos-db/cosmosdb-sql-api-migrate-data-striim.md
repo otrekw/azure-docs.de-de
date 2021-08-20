@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 136853182e353ad5cd71981db5935fc3babe162e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 927711efc4469d26b3aaf00d38c11ad24466dfe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355183"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -199,6 +199,6 @@ Durch Verwendung der Striim-Lösung in Azure können Sie Daten fortlaufend aus v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Migrieren von Daten zur Azure Cosmos DB-SQL-API finden Sie unter [Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim](cosmosdb-cassandra-api-migrate-data-striim.md).
+* Informationen zum Migrieren von Daten zur Azure Cosmos DB-SQL-API finden Sie unter [Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim](cassandra/migrate-data-striim.md).
 
 * [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md)

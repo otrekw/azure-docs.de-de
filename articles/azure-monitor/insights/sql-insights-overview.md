@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ca403a5fdbdaaa8b2922647d832a23e120840c6b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e69520f53cea9c6cd6eb662f4cc1acce2cab00f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142475"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356072"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Überwachen Ihrer SQL-Bereitstellungen mit SQL Insights (Vorschau)
 Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der [Azure SQ- Familie](../../azure-sql/index.yml). SQL Insights verwendet [dynamische Managementansichten](../../azure-sql/database/monitoring-with-dmvs.md), um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen.  
@@ -22,7 +22,7 @@ Es gibt keine direkten Kosten für SQL Insights. Alle Kosten werden durch die vi
 
 **Virtuelle Computer**
 
-Im Falle virtueller Maschinen werden Sie auf der Grundlage der auf der Preisseite für [virtuelle Maschinen](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/) veröffentlichten Preise belastet. Die Anzahl erforderlicher virtueller Computer variiert je nach der Anzahl der Verbindungs-Zeichenketten, die Sie überwachen möchten. Es wird empfohlen, für jeweils 100 Verbindungs-Zeichenketten 1 virtuelle Gerät der Größe Standard_B2s zuzuweisen. Weitere Informationen finden Sie unter [Anforderungen an virtuelle Azure-Computer](sql-insights-enable.md#azure-virtual-machine-requirements).
+Im Falle virtueller Maschinen werden Sie auf der Grundlage der auf der Preisseite für [virtuelle Maschinen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) veröffentlichten Preise belastet. Die Anzahl erforderlicher virtueller Computer variiert je nach der Anzahl der Verbindungs-Zeichenketten, die Sie überwachen möchten. Es wird empfohlen, für jeweils 100 Verbindungs-Zeichenketten 1 virtuelle Gerät der Größe Standard_B2s zuzuweisen. Weitere Informationen finden Sie unter [Anforderungen an virtuelle Azure-Computer](sql-insights-enable.md#azure-virtual-machine-requirements).
 
 **Log Analytics-Arbeitsbereiche**
 
@@ -123,4 +123,4 @@ Die folgenden Tabellen weisen die folgenden Spalten auf:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Anweisungen zum Aktivieren von SQL-Insights finden Sie unter [SQL-Insights aktivieren](sql-insights-enable.md)
-- Siehe [Häufig gestellte Fragen](../faq.md#sql-insights-preview) für häufig gestellte Fragen zu SQL insights
+- Siehe [Häufig gestellte Fragen](/azure/azure-monitor/faq#sql-insights-preview) für häufig gestellte Fragen zu SQL insights

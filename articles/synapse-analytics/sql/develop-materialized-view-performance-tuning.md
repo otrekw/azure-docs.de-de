@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a42f39e7c3124c2360419d6129f22c35f71b2cec
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676591"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340408"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Leistungsoptimierung mit materialisierten Sichten mithilfe des dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -81,7 +81,7 @@ Im Vergleich zu anderen Optimierungsoptionen, z. B. Skalierung und Statistikver
 
 Azure Data Warehouse ist ein verteiltes System mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP).  
 
-Synapse SQL ist ein verteiltes Abfragesystem, das es Unternehmen ermöglicht, Data Warehousing- und Datenvirtualisierungsszenarien mithilfe standardmäßiger T-SQL-Umgebungen zu implementieren, mit denen Dateningenieure vertraut sind. Darüber hinaus erweitert es die Funktionen von SQL für Streaming- und Machine Learning-Szenarien. Daten in einer Data Warehouse-Tabelle werden mit einer von drei [Verteilungsstrategien](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin oder replicated) über 60 Knoten verteilt.  
+Synapse SQL ist ein verteiltes Abfragesystem, das es Unternehmen ermöglicht, Data Warehousing- und Datenvirtualisierungsszenarien mithilfe standardmäßiger T-SQL-Umgebungen zu implementieren, mit denen Dateningenieure vertraut sind. Darüber hinaus erweitert es die Funktionen von SQL für Streaming- und Machine Learning-Szenarien. Daten in einer Data Warehouse-Tabelle werden mit einer von drei [Verteilungsstrategien](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context) (hash, round_robin oder replicated) über 60 Knoten verteilt.  
 
 Die Datenverteilung wird zum Zeitpunkt der Tabellenerstellung angegeben und bleibt so lange unverändert, bis die Tabelle gelöscht wird. Da die materialisierte Sicht eine virtuelle Tabelle auf Datenträger ist, unterstützt sie die Datenverteilungen hash und round_robin.  Benutzer können eine Datenverteilung wählen, die sich von den Basistabellen unterscheidet, aber optimal für die Leistung von Abfragen ist, die die Sichten regelmäßig verwenden.  
 

@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 6ad2bbb206d1765d4070e744eeab9708ea0db366
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 72c3f523ebc3cfef43709153c09c416d32e0b1b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633319"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469598"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>Ausführen einer Anwendung mit dem Fortanix Confidential Computing Manager
 
-Hier erfahren Sie, wie Sie Ihre Anwendung in Azure Confidential Computing mit dem [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) und dem [Node-Agent](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) von [Fortanix](https://www.fortanix.com/) ausführen.
+Hier erfahren Sie, wie Sie Ihre Anwendung in Azure Confidential Computing mit dem [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.em_managed?tab=Overview) und dem [Node-Agent](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) von [Fortanix](https://www.fortanix.com/) ausführen.
 
 
 Fortanix ist ein Software-Drittanbieter, der Produkte und Dienste bereitstellt, die mit der Azure-Infrastruktur funktionieren. Es gibt weitere Drittanbieter, die ähnliche Confidential Computing-Dienste für Azure anbieten.

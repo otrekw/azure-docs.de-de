@@ -2,33 +2,33 @@
 title: SAML-Tokenverschlüsselung in Azure Active Directory
 description: Erfahren Sie, wie Sie die SAML-Tokenverschlüsselung in Azure Active Directory konfigurieren.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mtillman
-ms.reviewer: paulgarn
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 303a6e63a429ed77d5c613bb85626c11055ba04a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2dc7169055f006ca12c2f291d20683022a27d7a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355916"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Konfigurieren der Azure AD-SAML-Tokenverschlüsselung
 
 > [!NOTE]
-> Die Tokenverschlüsselung ist ein Premium-Feature von Azure Active Directory (Azure AD). Weitere Informationen zu verfügbaren Editionen, Features und Preisen von Azure AD finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+> Die Tokenverschlüsselung ist ein Premium-Feature von Azure Active Directory (Azure AD). Weitere Informationen zu verfügbaren Editionen, Features und Preisen von Azure AD finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 Die SAML-Tokenverschlüsselung ermöglicht die Verwendung von verschlüsselten SAML-Assertionen mit einer Anwendung, die diese unterstützt. Sofern für eine Anwendung konfiguriert, verschlüsselt Azure AD die für diese Anwendung ausgegebenen SAML-Assertionen mit dem öffentlichen Schlüssel, der aus einem in Azure AD gespeicherten Zertifikat abgerufen wurde. Die Anwendung muss das Token mit dem zugehörigen privaten Schlüssel entschlüsseln, bevor es als Nachweis der Authentifizierung für den angemeldeten Benutzer verwendet werden kann.
 
 Die Verschlüsselung der SAML-Assertionen zwischen Azure AD und der Anwendung bietet zusätzlichen Schutz vor dem Abfangen von Tokeninhalten, sodass personenbezogene Daten oder Geschäftsdaten nicht gefährdet werden.
 
-Selbst ohne Tokenverschlüsselung werden Azure AD-SAML-Token niemals als Klartext über das Netzwerk weitergegeben. In Azure AD muss die Tokenanforderung/-antwort über verschlüsselte HTTPS/TLS-Kanäle durchgeführt werden, sodass die Kommunikation zwischen Identitätsanbieter, Browser und Anwendung über verschlüsselte Verbindungen erfolgt. Wägen Sie die Vorteile der Tokenverschlüsselung und den Aufwand für die Verwaltung zusätzlicher Zertifikate gegeneinander ab.   
+Selbst ohne Tokenverschlüsselung werden Azure AD-SAML-Token niemals als Klartext über das Netzwerk weitergegeben. In Azure AD muss die Tokenanforderung/-antwort über verschlüsselte HTTPS/TLS-Kanäle durchgeführt werden, sodass die Kommunikation zwischen Identitätsanbieter, Browser und Anwendung über verschlüsselte Verbindungen erfolgt. Wägen Sie die Vorteile der Tokenverschlüsselung und den Aufwand für die Verwaltung zusätzlicher Zertifikate gegeneinander ab.
 
 Um die Tokenverschlüsselung zu konfigurieren, müssen Sie eine X.509-Zertifikatsdatei mit dem öffentlichen Schlüssel in das Azure AD-Anwendungsobjekt hochladen, das die Anwendung repräsentiert. Um das X.509-Zertifikat zu erhalten, können Sie es aus der Anwendung selbst herunterladen oder vom Anwendungsanbieter beziehen, sofern der Anwendungsanbieter Verschlüsselungsschlüssel bereitstellt. Falls die Anwendung die Bereitstellung eines privaten Schlüssels anfordert, kann dieser mithilfe eines Kryptografietools erstellt werden. Hierbei wird der private Schlüssel in den Schlüsselspeicher der Anwendung hochgeladen, und das zugehörige Zertifikat mit dem öffentlichen Schlüssel wird in Azure AD hochgeladen.
 

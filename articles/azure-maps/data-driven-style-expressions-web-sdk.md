@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 851f7865553d45d8d4c4d1f86171d79a89dd8996
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680053"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091823"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -28,7 +28,7 @@ Dieses Video enthält eine Übersicht über die datengesteuerte Formatierung im 
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
-Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks im Array ist eine Zeichenfolge, mit der der Name des Ausdrucksoperators angegeben wird. Dies können beispielsweise „+“ oder „case“ sein. Die nächsten Elemente (falls vorhanden) sind die Argumente für den Ausdruck. Jedes Argument ist entweder ein Literalwert (Zeichenfolge, Zahl, boolescher Wert oder `null`) oder ein anderes Array mit Ausdrücken. Mit dem folgenden Pseudocode wird die grundlegende Struktur eines Ausdrucks definiert. 
+Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks im Array ist eine Zeichenfolge, mit der der Name des Ausdrucksoperators angegeben wird. Dies können beispielsweise „+“ oder „case“ sein. Die nächsten Elemente (falls vorhanden) sind die Argumente für den Ausdruck. Jedes Argument ist entweder ein Literalwert (Zeichenfolge, Zahl, boolescher Wert oder `null`) oder ein anderes Array mit Ausdrücken. Mit dem folgenden Pseudocode wird die grundlegende Struktur eines Ausdrucks definiert.
 
 ```javascript
 [ 
@@ -56,7 +56,7 @@ Das Azure Maps Web SDK unterstützt viele Typen von Ausdrücken. Ausdrücke kön
 | [Ausdrücke mit variabler Bindung](#variable-binding-expressions) | Mit Ausdrücken mit variabler Bindung werden die Ergebnisse einer Berechnung in einer Variablen gespeichert, und an einer anderen Stelle eines Ausdrucks kann mehrfach darauf verwiesen werden, ohne dass der gespeicherte Wert erneut berechnet werden muss. |
 | [Zoom-Ausdruck](#zoom-expression) | Ruft zur Renderzeit den aktuellen Zoomfaktor der Karte ab. |
 
-In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um die verschiedenen Möglichkeiten der Verwendung der einzelnen Ausdrücke zu veranschaulichen. 
+In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um die verschiedenen Möglichkeiten der Verwendung der einzelnen Ausdrücke zu veranschaulichen.
 
 ```json
 {
@@ -65,7 +65,7 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": { 
+    "properties": {
         "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
@@ -84,7 +84,7 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
 
 ## <a name="data-expressions"></a>Datenausdrücke
 
-Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature gewährt. 
+Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature gewährt.
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
@@ -103,7 +103,7 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 
 **Beispiele**
 
-Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. In diesem Beispiel wird der `zoneColor`-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben. 
+Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. In diesem Beispiel wird der `zoneColor`-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -134,7 +134,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Im folgenden Beispiel können sowohl `Point`- als auch `MultiPoint`-Features gerendert werden. 
+Im folgenden Beispiel können sowohl `Point`- als auch `MultiPoint`-Features gerendert werden.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -210,7 +210,7 @@ Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, u
 
 ## <a name="aggregate-expression"></a>Aggregatausdruck
 
-Ein Aggregatausdruck definiert eine Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. Die Ausgabe dieser Ausdrücke muss eine Zahl oder ein boolescher Wert sein. 
+Ein Aggregatausdruck definiert eine Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. Die Ausgabe dieser Ausdrücke muss eine Zahl oder ein boolescher Wert sein.
 
 Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert und einen Ausdruck zum Abrufen einer Eigenschaft aus jedem Feature in dem Dataset, auf das der Aggregatvorgang angewendet werden soll. Dieser Ausdruck hat folgendes Format:
 
@@ -218,9 +218,9 @@ Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- Operator: Eine Ausdrucksfunktion, die dann auf alle Werte angewendet wird, die von `mapExpression` für jeden Punkt im Cluster berechnet werden. Unterstützte Operatoren: 
-    - Bei Zahlen: `+`, `*`, `max`, `min`
-    - Bei booleschen Werten: `all`, `any`
+- Operator: Eine Ausdrucksfunktion, die dann auf alle Werte angewendet wird, die von `mapExpression` für jeden Punkt im Cluster berechnet werden. Unterstützte Operatoren:
+  - Bei Zahlen: `+`, `*`, `max`, `min`
+  - Bei booleschen Werten: `all`, `any`
 - initialValue: Ein Anfangswert, mit dem der erste berechnete Wert aggregiert wird.
 - mapExpression: Ein Ausdruck, der auf jeden Punkt im Dataset angewendet wird.
 
@@ -242,7 +242,7 @@ Mit dem `accumulated`-Ausdruck wird der Wert einer bis dahin akkumulierten Clust
 
 Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten.
 
-Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschiedlichen Typs werden immer als ungleich betrachtet. Fälle, in denen bekannt ist, dass die Typen zur Analysezeit unterschiedlich sind, werden als ungültig angesehen und führen zu einem Analysefehler. 
+Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschiedlichen Typs werden immer als ungleich betrachtet. Fälle, in denen bekannt ist, dass die Typen zur Analysezeit unterschiedlich sind, werden als ungültig angesehen und führen zu einem Analysefehler.
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
@@ -261,13 +261,13 @@ Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschie
 
 Bei bedingten Ausdrücken werden logische Vorgänge bereitgestellt, die sich wie if-Anweisungen verhalten.
 
-Mit den folgenden Ausdrücken werden bedingte Logikvorgänge für die Eingabedaten durchgeführt. Mit dem Ausdruck `case` wird beispielsweise Logik vom Typ „if/then/else“ bereitgestellt, während der Ausdruck `match` wie eine „switch-Anweisung“ funktioniert. 
+Mit den folgenden Ausdrücken werden bedingte Logikvorgänge für die Eingabedaten durchgeführt. Mit dem Ausdruck `case` wird beispielsweise Logik vom Typ „if/then/else“ bereitgestellt, während der Ausdruck `match` wie eine „switch-Anweisung“ funktioniert.
 
 ### <a name="case-expression"></a>Case-Ausdruck
 
 Ein `case`-Ausdruck ist eine Art von bedingtem Ausdruck, der die „if/then/else“-Logik bietet. Diese Art Ausdruck durchläuft eine Liste mit booleschen Bedingungen. Er gibt den Ausgabewert der ersten booleschen Bedingung zurück, die als true ausgewertet wird.
 
-Mit dem folgenden Pseudocode wird die Struktur des `case`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `case`-Ausdrucks definiert.
 
 ```javascript
 [
@@ -283,7 +283,7 @@ Mit dem folgenden Pseudocode wird die Struktur des `case`-Ausdrucks definiert.
 
 **Beispiel**
 
-Im folgenden Beispiel werden verschiedene boolesche Bedingungen durchlaufen, bis eine gefunden wird, deren Auswertung `true` ergibt. Anschließend wird der zugeordnete Wert zurückgegeben. Falls keine boolesche Bedingung `true` ergibt, wird ein Fallbackwert zurückgegeben. 
+Im folgenden Beispiel werden verschiedene boolesche Bedingungen durchlaufen, bis eine gefunden wird, deren Auswertung `true` ergibt. Anschließend wird der zugeordnete Wert zurückgegeben. Falls keine boolesche Bedingung `true` ergibt, wird ein Fallbackwert zurückgegeben.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -308,7 +308,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Ein `match`-Ausdruck ist eine Art von bedingtem Ausdruck, der eine Logik wie bei einer switch-Anweisung ermöglicht. Die Eingabe kann ein beliebiger Ausdruck sein, z. B. `['get', 'entityType']`, bei dem eine Zeichenfolge oder eine Zahl zurückgegeben wird. Jede Bezeichnung muss entweder ein einzelner Literalwert oder ein Literalwert-Array sein, das entweder nur Zeichenfolgen oder Zahlen enthält. Es ergibt sich eine Übereinstimmung mit der Eingabe, wenn einer der Werte im Array übereinstimmt. Jede Bezeichnung muss eindeutig sein. Falls der Eingabetyp nicht mit dem Typ der Bezeichnungen übereinstimmt, ist das Ergebnis der Fallbackwert.
 
-Mit dem folgenden Pseudocode wird die Struktur des `match`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `match`-Ausdrucks definiert.
 
 ```javascript
 [
@@ -368,9 +368,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="coalesce-expression"></a>COALESCE-Ausdruck
 
-Bei einem `coalesce`-Ausdruck wird eine Reihe von Ausdrücken durchlaufen, bis der erste Wert erkannt wird, der nicht null ist. Dieser Wert wird dann zurückgegeben. 
+Bei einem `coalesce`-Ausdruck wird eine Reihe von Ausdrücken durchlaufen, bis der erste Wert erkannt wird, der nicht null ist. Dieser Wert wird dann zurückgegeben.
 
-Mit dem folgenden Pseudocode wird die Struktur des `coalesce`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `coalesce`-Ausdrucks definiert.
 
 ```javascript
 [
@@ -383,7 +383,7 @@ Mit dem folgenden Pseudocode wird die Struktur des `coalesce`-Ausdrucks definier
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein `coalesce`-Ausdruck genutzt, um die Option `textField` einer Symbolebene festzulegen. Wenn die `title`-Eigenschaft für das Feature fehlt oder auf `null` festgelegt ist, versucht der Ausdruck, nach der `subTitle`-Eigenschaft zu suchen. Falls sie nicht vorhanden oder `null` festgelegt ist, wird auf eine leere Zeichenfolge zurückgegriffen. 
+Im folgenden Beispiel wird ein `coalesce`-Ausdruck genutzt, um die Option `textField` einer Symbolebene festzulegen. Wenn die `title`-Eigenschaft für das Feature fehlt oder auf `null` festgelegt ist, versucht der Ausdruck, nach der `subTitle`-Eigenschaft zu suchen. Falls sie nicht vorhanden oder `null` festgelegt ist, wird auf eine leere Zeichenfolge zurückgegriffen.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -523,9 +523,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Mit dem obigen Ausdruck wird in der Karte eine Nadel mit dem Überlagerungstext „64°F“ gerendert. Dies ist in der Abbildung unten dargestellt.
 
-<center>
-
-![Beispiel für Zeichenfolgenoperator-Ausdruck](media/how-to-expressions/string-operator-expression.png) </center>
+![Beispiel für Zeichenfolgenoperator-Ausdruck](media/how-to-expressions/string-operator-expression.png)
 
 ## <a name="interpolate-and-step-expressions"></a>Interpolations- und Schrittausdrücke
 
@@ -536,18 +534,18 @@ Interpolations- und Schrittausdrücke können verwendet werden, um Werte entlang
 Ein `interpolate`-Ausdruck kann verwendet werden, um eine fortlaufende, nahtlose Gruppe mit Werten zu berechnen, indem zwischen Stoppwerten interpoliert wird. Ein `interpolate`-Ausdruck, der Farbwerte zurückgibt, erzeugt einen Farbverlauf, in dem aus Ergebniswerten ausgewählt wird.
 
 Es gibt drei Typen von Interpolationsmethoden, die in einem `interpolate`-Ausdruck verwendet werden können:
- 
-* `['linear']` – Lineare Interpolation zwischen dem Stopp-Paar.
-* `['exponential', base]` – Exponentielle Interpolation zwischen den Stopps. Mit dem Wert `base` wird die Rate gesteuert, mit der die Ausgabe zunimmt. Bei höheren Werten nimmt die Ausgabe zum oberen Bereich hin stärker zu. Ein `base`-Wert nahe 1 führt zu einer Ausgabe, die eher linear zunimmt.
-* `['cubic-bezier', x1, y1, x2, y2]` – Interpolation per [kubischer Bézierkurve](https://developer.mozilla.org/docs/Web/CSS/timing-function), die über die vorhandenen Steuerungspunkte definiert wird.
 
-Hier ist ein Beispiel zu den unterschiedlichen Arten von Interpolationen angegeben. 
+- `['linear']` – Lineare Interpolation zwischen dem Stopp-Paar.
+- `['exponential', base]` – Exponentielle Interpolation zwischen den Stopps. Mit dem Wert `base` wird die Rate gesteuert, mit der die Ausgabe zunimmt. Bei höheren Werten nimmt die Ausgabe zum oberen Bereich hin stärker zu. Ein `base`-Wert nahe 1 führt zu einer Ausgabe, die eher linear zunimmt.
+- `['cubic-bezier', x1, y1, x2, y2]` – Interpolation per [kubischer Bézierkurve](https://developer.mozilla.org/docs/Web/CSS/timing-function), die über die vorhandenen Steuerungspunkte definiert wird.
+
+Hier ist ein Beispiel zu den unterschiedlichen Arten von Interpolationen angegeben.
 
 | Linear  | Exponentiell | Kubische Bézierkurve |
 |---------|-------------|--------------|
 | ![Graph für lineare Interpolation](media/how-to-expressions/linear-interpolation.png) | ![Graph für exponentielle Interpolation](media/how-to-expressions/exponential-interpolation.png) | ![Graph für Interpolation mit kubischer Bézierkurve](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-Mit dem folgenden Pseudocode wird die Struktur des `interpolate`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `interpolate`-Ausdrucks definiert.
 
 ```javascript
 [
@@ -582,15 +580,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 In der folgenden Abbildung wird veranschaulicht, wie die Farben für den obigen Ausdruck ausgewählt werden.
  
-<center>
-
-![Beispiel für Interpolate-Ausdruck](media/how-to-expressions/interpolate-expression-example.png) </center>
+![Beispiel für Interpolate-Ausdruck](media/how-to-expressions/interpolate-expression-example.png)
 
 ### <a name="step-expression"></a>Step-Ausdruck
 
-Ein `step`-Ausdruck kann verwendet werden, um diskrete Schrittergebniswerte zu berechnen, indem eine Treppenfunktion ([Piecewise-Constant Function](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)) genutzt wird, die über Stopps definiert wird. 
+Ein `step`-Ausdruck kann verwendet werden, um diskrete Schrittergebniswerte zu berechnen, indem eine Treppenfunktion ([Piecewise-Constant Function](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)) genutzt wird, die über Stopps definiert wird.
 
-Mit dem folgenden Pseudocode wird die Struktur des `step`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `step`-Ausdrucks definiert.
 
 ```javascript
 [
@@ -605,7 +601,7 @@ Mit dem folgenden Pseudocode wird die Struktur des `step`-Ausdrucks definiert.
 ]
 ```
 
-Bei Step-Ausdrücken wird der Ausgabewert des Stopps direkt vor dem Eingabewert zurückgegeben – oder der erste Eingabewert, wenn die Eingabe kleiner als der erste Stoppwert ist. 
+Bei Step-Ausdrücken wird der Ausgabewert des Stopps direkt vor dem Eingabewert zurückgegeben – oder der erste Eingabewert, wenn die Eingabe kleiner als der erste Stoppwert ist.
 
 **Beispiel**
 
@@ -625,11 +621,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ```
 
 In der folgenden Abbildung wird veranschaulicht, wie die Farben für den obigen Ausdruck ausgewählt werden.
- 
-<center>
 
 ![Beispiel für einen Step-Ausdruck](media/how-to-expressions/step-expression-example.png)
-</center>
 
 ## <a name="layer-specific-expressions"></a>Ebenenspezifische Ausdrücke
 
@@ -644,9 +637,9 @@ Mit einem Heatmap Density-Ausdruck wird der Wärmebilddichte-Wert für jedes Pix
 
 **Beispiel**
 
-In diesem Beispiel wird ein Ausdruck mit linearer Interpolation verwendet, um einen nahtlosen Farbverlauf zum Rendern des Wärmebilds zu erstellen. 
+In diesem Beispiel wird ein Ausdruck mit linearer Interpolation verwendet, um einen nahtlosen Farbverlauf zum Rendern des Wärmebilds zu erstellen.
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'interpolate',
@@ -662,7 +655,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Zusätzlich zur Nutzung eines nahtlosen Farbverlaufs zum Versehen eines Wärmebilds mit Farben können Farben auch in Bereichen angegeben werden, indem ein `step`-Ausdruck verwendet wird. Durch Verwenden eines `step`-Ausdrucks für die farbige Darstellung des Wärmebilds wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln.  
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'step',
@@ -681,7 +674,7 @@ Weitere Informationen finden Sie unter [Hinzufügen einer Wärmebildebene](map-a
 
 ### <a name="line-progress-expression"></a>Line Progress-Ausdruck
 
-Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1. Er wird in Kombination mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) der Linienebene verwendet werden. 
+Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1. Er wird in Kombination mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option](/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient) der Linienebene verwendet werden.
 
 > [!NOTE]
 > Für die `strokeGradient`-Option der Linienebene muss die `lineMetrics`-Option der Datenquelle auf `true` festgelegt sein.
@@ -712,10 +705,10 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 Der Text Field Format-Ausdruck kann mit der `textField`-Option der `textOptions`-Eigenschaft auf Symbolebene verwendet werden, um eine gemischte Textformatierung zu erzielen. Mit diesem Ausdruck kann ein Satz mit Eingabezeichenfolgen und Formatierungsoptionen angegeben werden. Die folgenden Optionen können für jede Eingabezeichenfolge dieses Ausdrucks angegeben werden.
 
- * `'font-scale'` – Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
- * `'text-font'` – Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
+- `'font-scale'` – Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
+- `'text-font'` – Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
 
-Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert.
 
 ```javascript
 [
@@ -764,21 +757,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 ```
 
 Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
- 
-<center>
 
-![Abbildung: Punktfeature mit formatiertem Textfeld](media/how-to-expressions/text-field-format-expression.png) </center>
+![Abbildung: Punktfeature mit formatiertem Textfeld](media/how-to-expressions/text-field-format-expression.png)
 
 ### <a name="number-format-expression"></a>Number Format-Ausdruck
 
 Der `number-format`-Ausdruck kann nur mit der `textField`-Option einer Symbolebene verwendet werden. Mit diesem Ausdruck wird die angegebene Zahl in eine formatierte Zeichenfolge konvertiert. Mit diesem Ausdruck wird die JavaScript-Funktion [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) umschlossen. Er unterstützt die folgenden Optionen.
 
- * `locale` – Geben Sie diese Option an, um Zahlen so in Zeichenfolgen zu konvertieren, dass sie für die angegebene Sprache geeignet sind. Übergeben Sie für diese Option ein [BCP 47-Sprachtag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).
- * `currency` – Dient zum Konvertieren der Zahl in eine Zeichenfolge, die für eine Währung steht. Mögliche Werte sind die [ISO 4217-Währungscodes](https://en.wikipedia.org/wiki/ISO_4217), z. B. „USD“ für US-Dollar, „EUR“ für Euro oder „CNY“ für chinesische Renminbi.
- * `'min-fraction-digits'` – Gibt die Mindestanzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
- * `'max-fraction-digits'` – Gibt die Höchstzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
+- `locale` – Geben Sie diese Option an, um Zahlen so in Zeichenfolgen zu konvertieren, dass sie für die angegebene Sprache geeignet sind. Übergeben Sie für diese Option ein [BCP 47-Sprachtag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).
+- `currency` – Dient zum Konvertieren der Zahl in eine Zeichenfolge, die für eine Währung steht. Mögliche Werte sind die [ISO 4217-Währungscodes](https://en.wikipedia.org/wiki/ISO_4217), z. B. „USD“ für US-Dollar, „EUR“ für Euro oder „CNY“ für chinesische Renminbi.
+- `'min-fraction-digits'` – Gibt die Mindestanzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
+- `'max-fraction-digits'` – Gibt die Höchstzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
 
-Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert.
 
 ```javascript
 [
@@ -813,9 +804,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
 
-<center>
-
-![Beispiel für Number Format-Ausdruck](media/how-to-expressions/number-format-expression.png) </center>
+![Beispiel für Number Format-Ausdruck](media/how-to-expressions/number-format-expression.png)
 
 ### <a name="image-expression"></a>Bildausdruck
 
@@ -823,7 +812,7 @@ Ein Bildausdruck kann mit den Optionen `image` und `textField` einer Symbolebene
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein `image`-Ausdruck verwendet, um ein Symbol innerhalb einer Textzeile in einer Symbolebene hinzuzufügen. 
+Im folgenden Beispiel wird ein `image`-Ausdruck verwendet, um ein Symbol innerhalb einer Textzeile in einer Symbolebene hinzuzufügen.
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -832,10 +821,10 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
     //Create a data source and add it to the map.
     datasource = new atlas.source.DataSource();
     map.sources.add(datasource);
-
+    
     //Create a point feature and add it to the data source.
     datasource.add(new atlas.data.Point(map.getCamera().center));
-
+    
     //Add a layer for rendering point data as symbols.
     map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
         iconOptions: {
@@ -851,9 +840,7 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 
 Diese Ebene rendert das Textfeld in der Symbolebene wie in der Abbildung unten dargestellt:
 
-<center>
-
-![Beispiel für einen Bildausdruck](media/how-to-expressions/image-expression.png)</center>
+![Beispiel für einen Bildausdruck](media/how-to-expressions/image-expression.png)
 
 ## <a name="zoom-expression"></a>Zoom-Ausdruck
 
@@ -922,10 +909,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke implementiert werden:
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Hinzufügen einer Symbolebene](map-add-pin.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Hinzufügen einer Blasenebene](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
@@ -934,22 +921,22 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Polygonebene](map-add-shape.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Hinzufügen einer Wärmebildebene](map-add-heat-map-layer.md)
 
 Weitere Informationen zu den Ebenenoptionen, die Ausdrücke unterstützen:
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [HeatMapLayerOptions-Schnittstelle](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)

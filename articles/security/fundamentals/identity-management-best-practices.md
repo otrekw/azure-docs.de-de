@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 70f318c10799c1cf30265373d8971faddfafc072
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958508"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350528"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -68,7 +68,7 @@ In den folgenden Abschnitten werden die Best Practices für die Identitäts- und
 
 ## <a name="centralize-identity-management"></a>Zentralisieren der Identitätsverwaltung
 
-In einem [Hybrididentitätsszenario](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) sollten Sie Ihre lokalen und Cloudverzeichnisse integrieren. Die Integration ermöglicht Ihrem IT-Team, Konten von einem Ort aus zu verwalten, unabhängig davon, wo ein Konto erstellt wird. Die Integration steigert auch die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird.
+In einem Hybrididentitätsszenario sollten Sie Ihre lokalen und Cloudverzeichnisse integrieren. Die Integration ermöglicht Ihrem IT-Team, Konten von einem Ort aus zu verwalten, unabhängig davon, wo ein Konto erstellt wird. Die Integration steigert auch die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird.
 
 **Bewährte Methode**: Einrichten einer einzelnen Azure AD-Instanz. Konsistenz und eine einzige autoritative Quelle verbessern die Übersichtlichkeit und vermindern Sicherheitsrisiken, die auf menschliche Fehler und Komplexität der Konfiguration zurückzuführen sind.
 **Detail**: Legen Sie ein einziges Azure AD-Verzeichnis als autoritative Quelle für Unternehmens- und Organisationskonten fest.
@@ -339,7 +339,7 @@ Ein aktives Identitätsüberwachungssystem kann schnell verdächtiges Verhalten 
 Für Organisationen, die ihre Identitätssysteme nicht aktiv überwachen, besteht das Risiko, dass Anmeldeinformationen kompromittiert werden. Ohne das Wissen, dass diese Anmeldeinformationen für verdächtige Aktivitäten genutzt werden, können Organisationen dieser Art von Bedrohung nicht begegnen.
 
 ## <a name="use-azure-ad-for-storage-authentication"></a>Verwenden von Azure AD für Speicherauthentifizierung
-[Azure Storage](../../storage/common/storage-auth-aad.md) unterstützt Authentifizierung und Autorisierung mit Azure AD für Blob-Speicher und Warteschlangenspeicher. Mit der Azure AD-Authentifizierung können Sie die rollenbasierte Zugriffssteuerung von Azure nutzen, um Benutzern, Gruppen und Anwendungen Berechtigungen bis hin zum Bereich eines einzelnen Blob-Containers oder einer einzelnen Warteschlange zu gewähren.
+[Azure Storage](../../storage/blobs/authorize-access-azure-active-directory.md) unterstützt Authentifizierung und Autorisierung mit Azure AD für Blob-Speicher und Warteschlangenspeicher. Mit der Azure AD-Authentifizierung können Sie die rollenbasierte Zugriffssteuerung von Azure nutzen, um Benutzern, Gruppen und Anwendungen Berechtigungen bis hin zum Bereich eines einzelnen Blob-Containers oder einer einzelnen Warteschlange zu gewähren.
 
 Wir empfehlen, [Azure AD für die Authentifizierung des Speicherzugriffs](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/) zu verwenden.
 

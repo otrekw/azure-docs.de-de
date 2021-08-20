@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 47f69c72fdd7b3890d22d56de3a530135cf6fcc3
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067553"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437628"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Was ist ein Regelsatz für Azure Front Door Standard/Premium (Vorschau)?
 
@@ -70,7 +70,7 @@ Weitere Informationen zu Kontingentgrenzen finden Sie unter [Grenzwerte für Azu
 
 ## <a name="arm-template-support"></a>ARM-Vorlagen-Support
 
-Regelsätze können mit Azure Resource Manager-Vorlagen konfiguriert werden. [Eine Beispielvorlage finden Sie hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Sie können das Verhalten anpassen, indem Sie die JSON-oder Bicep-Ausschnitte in den Dokumentationsbeispielen für [Vergleichsbedingungen](concept-rule-set-match-conditions.md) und [Aktionen](concept-rule-set-actions.md)verwenden.
+Regelsätze können mit Azure Resource Manager-Vorlagen konfiguriert werden. [Eine Beispielvorlage finden Sie hier](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rule-set). Sie können das Verhalten anpassen, indem Sie die JSON-oder Bicep-Ausschnitte in den Dokumentationsbeispielen für [Vergleichsbedingungen](concept-rule-set-match-conditions.md) und [Aktionen](concept-rule-set-actions.md)verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

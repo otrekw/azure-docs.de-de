@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5fed7649353c0ef6cb222c0b0c91a5203665e9fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 792197b3558a16706fee52204fa90a8ef8d0735a
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598047"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232048"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Schutz vor Datenexfiltration für Azure Synapse Analytics-Arbeitsbereiche
 Dieser Artikel enthält eine Beschreibung des Schutzes vor Datenexfiltration in Azure Synapse Analytics.
@@ -34,9 +34,7 @@ Wir verwenden ein Beispiel, um den Schutz vor Datenexfiltration für Synapse-Arb
 
 >[!IMPORTANT]
 >
-> - Für Ressourcen auf anderen Mandanten als dem Mandanten des Arbeitsbereichs dürfen keine blockierenden Firewallregeln vorhanden sein, weil die SQL-Pools ansonsten keine Verbindung damit herstellen können. Ressourcen im verwalteten virtuellen Netzwerk des Arbeitsbereichs, z. B. Spark-Cluster, können über verwaltete private Links eine Verbindung mit per Firewall geschützten Ressourcen herstellen.
->
-> - Metastore ist in Synapse-Arbeitsbereichen deaktiviert, die über ein verwaltetes virtuelles Netzwerk mit aktiviertem Schutz vor Datenexfiltration verfügen. Sie können Spark SQL in diesen Arbeitsbereichen nicht verwenden.
+> Für Ressourcen auf anderen Mandanten als dem Mandanten des Arbeitsbereichs dürfen keine blockierenden Firewallregeln vorhanden sein, weil die SQL-Pools ansonsten keine Verbindung damit herstellen können. Ressourcen im verwalteten virtuellen Netzwerk des Arbeitsbereichs, z. B. Spark-Cluster, können über verwaltete private Links eine Verbindung mit per Firewall geschützten Ressourcen herstellen.
 > >
 
 ## <a name="next-steps"></a>Nächste Schritte
