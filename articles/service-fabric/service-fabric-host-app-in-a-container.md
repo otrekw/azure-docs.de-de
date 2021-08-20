@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine vorhandene .NET-Anwendung mit Visua
 ms.topic: tutorial
 ms.date: 07/08/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b0e75d4054bc814c3e826db4519f9e882964ef4e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ae7069b155266b8fc8049b9660d38acbb1103d6c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677368"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236419"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -32,14 +32,14 @@ In diesem Tutorial lernen Sie Folgendes:
 2. Aktivieren Sie die Windows-Features **Hyper-V** und **Container**.
 3. Installieren Sie [Docker Desktop für Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), damit Sie Container unter Windows 10 ausführen können.
 4. Installieren Sie [Service Fabric-Runtime (Version 6.2 oder höher)](service-fabric-get-started.md) und das [Service Fabric SDK (Version 3.1 oder höher)](service-fabric-get-started.md).
-5. Installieren Sie [Visual Studio 2019 (Version 16.1 oder höher)](https://www.visualstudio.com/) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+5. Installieren Sie [Visual Studio](https://www.visualstudio.com/) und aktivieren Sie die **Azure-Entwicklung** und die **ASP.NET und Webentwicklung** Workloads.
 6. Installieren von [Azure PowerShell][link-azure-powershell-install]
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Herunterladen und Ausführen von Fabrikam Fiber CallCenter
 
-1. Laden Sie die Beispielanwendung [Fabrikam Fiber CallCenter][link-fabrikam-github] herunter.  Klicken Sie auf den Link **download archive** (Archiv herunterladen).  Extrahieren Sie im Verzeichnis *sourceCode* in der Datei *fabrikam.zip* die Datei *sourceCode.zip*, und extrahieren Sie anschließend das Verzeichnis *VS2015* auf Ihrem Computer.
+1. Laden Sie die Beispielanwendung [Fabrikam Fiber CallCenter][link-fabrikam-github] von GitHub herunter.
 
-2. Vergewissern Sie sich, dass die Fabrikam Fiber CallCenter-Anwendung ohne Fehler erstellt und ausgeführt wird.  Starten Sie Visual Studio als **Administrator**, und öffnen Sie die Datei [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Drücken Sie F5, um die Anwendung zu debuggen und auszuführen.
+2. Vergewissern Sie sich, dass die Fabrikam Fiber CallCenter-Anwendung ohne Fehler erstellt und ausgeführt wird.  Starten Sie Visual Studio als **Administrator** und öffnen Sie die Datei [VS2015\FabrikamFiber.CallCenter.sln][link-fabrikam-github]. Drücken Sie die Taste „F5“, um die Anwendung auszuführen zu debuggen.
 
    ![Screenshot: Startseite der auf dem lokalen Host ausgeführten Fabrikam Fiber CallCenter-Anwendung. Auf der Seite wird ein Dashboard mit einer Liste von Supportanrufen angezeigt.][fabrikam-web-page]
 
@@ -309,7 +309,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Im nächsten Teil des Tutorials erfahren Sie, wie Sie [Eine Containeranwendung mit CI/CD in einem Service Fabric-Cluster bereitstellen](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).
 
-[link-fabrikam-github]: https://aka.ms/fabrikamcontainer
+[link-fabrikam-github]: https://github.com/Azure-Samples/service-fabric-dotnet-containerize
 [link-azure-powershell-install]: /powershell/azure/install-Az-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs

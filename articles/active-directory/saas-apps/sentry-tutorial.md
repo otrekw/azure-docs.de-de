@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: c95ab589917979bd718011aa15cfaf12ba05e45b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f639c656207f94b37bbf2768b6c39fc69eb8603
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182368"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454588"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>Tutorial: Integrieren von Sentry in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -86,11 +86,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://sentry.io/organizations/<ORGANIZATION_SLUG>/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von Sentry](mailto:support@sentry.io), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Bezeichner, die Antwort-URL und die Anmelde-URL. Weitere Informationen zum Ermitteln dieser Werte finden Sie in der [Sentry-Dokumentation](https://docs.sentry.io/product/accounts/sso/azure-sso/#installation). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf das Kopiersymbol, um die **App-Metadaten-URL** Werte zu kopieren und speichern Sie sie dann auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+   ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+    
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -117,11 +118,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-sentry-sso"></a>Konfigurieren des einmaligen Anmeldens für Sentry
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Sentry** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Sentry](mailto:support@sentry.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Navigieren Sie zu den **Unternehmens-Einstellungen** >  **Authentifizierung** (oder navigieren Sie zu`https://sentry.io/settings/<YOUR_ORG_SLUG>/auth/`) und wählen Sie **Konfigurieren** von dem Active Directory, um das einmalige Anmelden auf der **Sentry** Seite zu konfigurieren. Fügen Sie die App-Verbundmetadaten-URL aus Ihrer Azure SAML-Konfiguration ein.
 
 ### <a name="create-sentry-test-user"></a>Erstellen eines Sentry-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Sentry erstellt. Sentry unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist noch kein Benutzer in Sentry vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Sentry ein Benutzer namens B. Simon erstellt. Sentry unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist noch kein Benutzer in Sentry vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -129,15 +130,17 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Sentry weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+1. Wählen Sie im Azure-Portal die Option **Diese Anwendung testen** aus. Sie werden zur Anmelde-URL für Sentry weitergeleitet, wo Sie den Anmeldeabfluss initiieren können.  
 
-1. Rufen Sie direkt die Sentry-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+1. Rufen Sie direkt die Sentry-Anmelde-URL auf, und initiieren Sie den Anmeldeabfluss.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Sentry-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Wählen Sie im Azure-Portal die Option **Diese Anwendung testen** aus. Dadurch sollten Sie automatisch bei der Sentry-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Zugriffsbereich verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie im Zugriffsbereich auf die Kachel „Sentry“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Sentry-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="either-mode"></a>Beliebiger Modus:
+
+Sie können das „Meine Apps“-Portal verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“-Portal auf die Kachel "Sentry" klicken, werden Sie, wenn Sie im SP-Modus konfiguriert sind zur Anmeldeseite der Anwendung umgeleitet, um den Anmeldeabfluss zu initiieren. Wenn Sie im IDP-Modus konfiguriert sind, sollten Sie automatisch bei der Sentry-Anwendung angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

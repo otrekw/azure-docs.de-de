@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 202cbca5795ef877794c42f1fcc57c51835e5118
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89263177"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966390"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
 
@@ -85,16 +86,20 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 In diesem Abschnitt erfahren Sie, wie Sie Ihrem virtuellen Computer Zugriff auf einen Azure-Speichercontainer gewähren. Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
-2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .
-3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
-4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser** aus.
-5. Wählen Sie in der nächsten Dropdownliste unter **Zugriff zuweisen zu** die Option **Virtueller Computer** aus.
-6. Stellen Sie im nächsten Schritt sicher, dass das richtige Abonnement in der Dropdownliste **Abonnement** aufgeführt ist, und legen Sie dann für **Ressourcengruppe** die Option **Alle Ressourcengruppen** fest.
-7. Wählen Sie unter **Auswählen** Ihren virtuellen Computer aus, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um die Seite „Rollenzuweisung hinzufügen“ zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Leser von Speicherblobdaten |
+    | Zugriff zuweisen zu | Verwaltete Identität |
+    | Systemseitig zugewiesen | Virtual Machine |
+    | Select | &lt;Ihr virtueller Computer&gt; |
 
-    ![Zuweisen von Berechtigungen](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-## <a name="access-data"></a>Zugriff auf Daten 
+## <a name="access-data"></a>Zugreifen auf Daten 
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit einer verwalteten Identität abgerufen wurden, direkt angenommen werden können. Dieser Umstand ist Teil der Azure Storage-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 

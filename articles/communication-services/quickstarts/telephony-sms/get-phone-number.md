@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwalten von Telefonnummern mithilfe von Azure Communication Services'
+title: 'Schnellstart: Abrufen und Verwalten von Telefonnummern mithilfe von Azure Communication Services'
 description: Hier erfahren Sie, wie Sie Telefonnummern mithilfe von Azure Communication Services verwalten.
 author: prakulka
 manager: nmurav
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: fb5aafa3146c2935a3092ec1660aec86d1e086a7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c03633425a962b1d67b61fc32be89d88fe08ef7b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110912"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448580"
 ---
-# <a name="quickstart-manage-phone-numbers"></a>Schnellstart: Verwalten von Telefonnummern
+# <a name="quickstart-get-and-manage-phone-numbers"></a>Schnellstart: Abrufen und Verwalten von Telefonnummern
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage)'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Spring Cloud-Cluster in einem vorhandenen virtuellen Netzwerk bereitstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Spring Cloud-Cluster mithilfe einer ARM-Vorlage in einem vorhandenen virtuellen Netzwerk bereitstellen.
 services: azure-resource-manager
 author: ryhud
 ms.service: spring-cloud
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-java
 ms.author: rhudson
 ms.date: 05/27/2021
-ms.openlocfilehash: f57e3d6d1f3f562e35d38e45a3e0ca1703730d04
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 73c24f62e2c4333cb1e8ea826792626591aa1c68
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949226"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895884"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-an-arm-template"></a>Schnellstart: Bereitstellen von Azure Spring Cloud mithilfe einer ARM-Vorlage
 
@@ -103,8 +103,8 @@ Write-Host "Press [ENTER] to continue..."
 In dieser Schnellstartanleitung haben Sie mithilfe einer ARM-Vorlage eine Azure Spring Cloud-Instanz in einem vorhandenen virtuellen Netzwerk bereitgestellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Spring Cloud und zum Azure Resource Manager finden Sie in den folgenden Ressourcen.
 
 - Stellen Sie eine der folgenden Beispielanwendungen an den folgenden Speicherorten bereit:
-   * [Pet Clinic-App mit MySQL-Integration](https://github.com/azure-samples/spring-petclinic-microservices) (Microservices mit MySQL-Back-End).
-   * [Einfaches „Hallo Welt“](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI).
+   - [Pet Clinic-App mit MySQL-Integration](https://github.com/azure-samples/spring-petclinic-microservices) (Microservices mit MySQL-Back-End).
+   - [Einfaches „Hallo Welt“](./quickstart.md?pivots=programming-language-java&tabs=Azure-CLI).
 - Verwenden Sie [benutzerdefinierte Domänen](tutorial-custom-domain.md) mit Azure Spring Cloud.
 - Machen Sie Azure Spring Cloud-Anwendungen mithilfe von [Azure Application Gateway](expose-apps-gateway-azure-firewall.md) für das Internet verfügbar.
 - Zeigen Sie die sichere [Azure Spring Cloud-Referenzarchitektur](reference-architecture.md) (End-to-End-Architektur) an, die auf dem [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/) basiert.

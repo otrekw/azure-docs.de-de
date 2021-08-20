@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca9585ab1b6d02cec5e9addbbd8ca230745a5838
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358210"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114370901"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in Concur und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Concur automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
+
+> [!WARNING]
+> Diese Bereitstellungsintegration wird nicht mehr unterstützt. Infolgedessen werden die Bereitstellungsfunktionen der SAP Concur-Anwendung im Azure Active Directory-Katalog für Unternehmens-Apps in Kürze entfernt. Die SSO-Funktionalität der Anwendung bleibt erhalten. Microsoft arbeitet zusammen mit SAP Concur an der Entwicklung einer neuen modernisierten Bereitstellungsintegration, derzeit kann jedoch noch keine Aussage zum Bereitstellungszeitpunkt gemacht werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

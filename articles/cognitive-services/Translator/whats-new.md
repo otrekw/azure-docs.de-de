@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 05/18/2021
+ms.date: 06/22/2021
 ms.author: lajanuar
-ms.openlocfilehash: ccc0f857f9377c3b82ca70a6611b8e64d352700f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8d348a57470d21f72e55fc3cbf2e66e974e3c8a4
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116486"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362735"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -22,15 +22,29 @@ ms.locfileid: "110116486"
 
 Erfahren Sie mehr zu den neuesten Updates für den Übersetzerdienst. Speichern Sie ein Lesezeichen für diese Seite, um bei Versionshinweisen, Verbesserungen von Features und Aktualisierungen der Dokumentation auf dem neuesten Stand zu bleiben.
 
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="document-translation-client-libraries-for-cnet-and-pythonnow-available-in-prerelease"></a>[Clientbibliotheken für die Dokumentübersetzung für C#/.NET und Python](document-translation/client-sdks.md) – jetzt als Vorabversion verfügbar.
+
+## <a name="may-2021"></a>Mai 2021
+
+### <a name="document-translation--now-in-general-availability"></a>[Dokumentübersetzung – jetzt allgemein verfügbar](https://www.microsoft.com/translator/blog/2021/05/25/translate-full-documents-with-document-translation-%e2%80%95-now-in-general-availability/)
+
+* **Featurerelease:** Das [Dokumentübersetzungsfeature](document-translation/overview.md) von Translator ist allgemein verfügbar. Die Dokumentübersetzung wurde entwickelt, um große Dateien und Batchdokumente mit umfangreichen Inhalten zu übersetzen und dabei die ursprüngliche Struktur und das ursprüngliche Format zu erhalten. Sie können auch benutzerdefinierte Glossare und benutzerdefinierte Modelle verwenden, die mit [benutzerdefinierten Translator](custom-translator/overview.md) erstellt wurden, um sicherzustellen, dass Ihre Dokumente schnell und präzise übersetzt werden.
+
+### <a name="translator-service-available-in-containers"></a>[Translator-Dienst in Containern verfügbar](https://www.microsoft.com/translator/blog/2021/05/25/translator-service-now-available-in-containers/)
+
+* **Neues Release:** Der Translator-Dienst ist in Containern als beschränkte Vorschauversion verfügbar. [Übermitteln Sie eine Onlineanforderung,](https://aka.ms/csgate-translator) und lassen Sie sie vor den ersten Schritte genehmigen. Container ermöglichen eine Ausführung verschiedener Translator-Dienstfeatures in Ihrer eigenen Umgebung und eignen sich hervorragend für spezifische Anforderungen bezüglich Sicherheit und Datengovernance. *Weitere Informationen finden Sie unter* [Installieren und Ausführen von Containern für die Textübersetzung (Vorschau)](containers/translator-how-to-install-container.md)
+
 ## <a name="february-2021"></a>Februar 2021
 
 ### <a name="document-translation-public-preview"></a>[Öffentliche Vorschau der Dokumentübersetzung](https://www.microsoft.com/translator/blog/2021/02/17/introducing-document-translation/)
 
 * **Neues Release**: [Dokumentübersetzung](document-translation/overview.md) ist als Vorschaufeature des Übersetzerdiensts verfügbar. Vorschaufeatures befinden sich noch in der Entwicklung und sind nicht für den Einsatz in der Produktion vorgesehen. Sie werden als „Vorschau“ zur Verfügung gestellt, damit Kunden frühzeitig Zugriff erhalten und Feedback geben können. Mit dem Feature „Dokumentübersetzung“ können Sie lange Dokumente übersetzen und Batchdateien verarbeiten und dabei die ursprüngliche Struktur und das ursprüngliche Format beibehalten. _Weitere Informationen finden Sie unter_ [Microsoft Translator-Blog: Introducing Document Translation](https://www.microsoft.com/translator/blog/2021/02/17/introducing-document-translation/) (Einführung der Dokumentübersetzung)
 
-### <a name="text-translation-support-for-9-added-languages"></a>[Unterstützung der Textübersetzung für 9 zusätzliche Sprachen](https://www.microsoft.com/translator/blog/2021/02/22/microsoft-translator-releases-nine-new-languages-for-international-mother-language-day-2021/)
+### <a name="text-translation-support-for-nine-added-languages"></a>[Unterstützung der Textübersetzung für neun zusätzliche Sprachen](https://www.microsoft.com/translator/blog/2021/02/22/microsoft-translator-releases-nine-new-languages-for-international-mother-language-day-2021/)
 
-* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md#text-translation) für die folgenden Sprachen:
+* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md) für die folgenden Sprachen:
 
   * **Albanisch**. Eine isolierte Sprache, die mit keiner anderen verwandt ist und von fast 8 Mio. Menschen gesprochen wird.
   * **Amharisch**. Eine offizielle Sprache in Äthiopien, die von etwa 32 Mio. Menschen gesprochen wird. Es ist auch die liturgische Sprache der äthiopisch-orthodoxen Kirche.
@@ -46,7 +60,7 @@ Erfahren Sie mehr zu den neuesten Updates für den Übersetzerdienst. Speichern 
 
 ### <a name="text-translation-support-for-inuktitut"></a>[Unterstützung der Textübersetzung für Inuktitut](https://www.microsoft.com/translator/blog/2021/01/27/inuktitut-is-now-available-in-microsoft-translator/)
 
-* Der Übersetzerdienst ermöglicht die [Textübersetzung](language-support.md#text-translation) für **Inuktitut**, eine der wichtigsten Inuit-Sprachen Kanadas. Inuktitut ist eine von acht offiziellen Aborigine-Sprachen in den Nordwest-Territorien.
+* Der Übersetzerdienst ermöglicht die [Textübersetzung](language-support.md) für **Inuktitut**, eine der wichtigsten Inuit-Sprachen Kanadas. Inuktitut ist eine von acht offiziellen Aborigine-Sprachen in den Nordwest-Territorien.
 
 ## <a name="november-2020"></a>November 2020
 
@@ -58,13 +72,13 @@ Erfahren Sie mehr zu den neuesten Updates für den Übersetzerdienst. Speichern 
 
 ### <a name="text-translation-support-for-canadian-french"></a>[Unterstützung der Textübersetzung für kanadisches Französisch](https://www.microsoft.com/translator/blog/2020/10/20/cest-tiguidou-ca-translator-adds-canadian-french/)
 
-* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md#text-translation) für **kanadisches Französisch**. Kanadisches und europäisches Französisch sind einander ähnlich und werden gegenseitig verstanden. Es kann jedoch erhebliche Unterschiede bei Wortschatz, Grammatik, Schrift und Aussprache geben. Über 7 Mio. Kanadier (20 % der Bevölkerung) sprechen Französisch als Muttersprache.
+* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md) für **kanadisches Französisch**. Kanadisches und europäisches Französisch sind einander ähnlich und werden gegenseitig verstanden. Es kann jedoch erhebliche Unterschiede bei Wortschatz, Grammatik, Schrift und Aussprache geben. Über 7 Mio. Kanadier (20 % der Bevölkerung) sprechen Französisch als Muttersprache.
 
 ## <a name="september-2020"></a>September 2020
 
 ### <a name="text-translation-support-for-assamese-and-axomiya"></a>[Unterstützung der Textübersetzung für Assamese und Axomiya](https://www.microsoft.com/translator/blog/2020/09/29/assamese-text-translation-is-here/)
 
-* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md#text-translation) für die Sprache **Assamese**, die auch als **Axomiya** bekannt ist.  Assamese/Axomiya wird hauptsächlich in Ostindien von ungefähr 14 Mio. Menschen gesprochen.
+* Der Übersetzerdienst unterstützt die [Textübersetzung](language-support.md) für die Sprache **Assamese**, die auch als **Axomiya** bekannt ist.  Assamese/Axomiya wird hauptsächlich in Ostindien von ungefähr 14 Mio. Menschen gesprochen.
 
 ## <a name="august-2020"></a>August 2020
 

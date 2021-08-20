@@ -7,13 +7,13 @@ ms.custom: mvc
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
-ms.date: 04/07/2021
-ms.openlocfilehash: 5f0552e09464a6b571a665cfe3895f48c3aa8c41
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 07/09/2021
+ms.openlocfilehash: 1e0f7c133a0ac0091355cba20d251333e6402212
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258451"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463537"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>Previewfunktionen für PostgreSQL – Hyperscale (Citus)
 
@@ -32,9 +32,11 @@ Nachfolgend sind die Funktionen aufgeführt, die derzeit als Previewfunktionen v
   Speichern Sie die Spalten (anstelle von Zeilen) ausgewählter Tabellen zusammenhängend auf dem Datenträger. Unterstützt die Komprimierung auf dem Datenträger. Eignet sich gut für Analyse- und Data Warehousing-Workloads.
 * **[Lesereplikate](howto-hyperscale-read-replicas-portal.md)** (derzeit nur in derselben Region): Alle Änderungen an der primären Servergruppe werden in ihrem Replikat widergespiegelt, und Abfragen für das Replikat führen nicht zu einer zusätzlichen Auslastung des ursprünglichen Replikats.
   Replikate sind ein nützliches Tool zur Verbesserung der Leistung für schreibgeschützte Workloads.
-* **[Verwaltete PgBouncer-Instanz:](concepts-hyperscale-limits.md#managed-pgbouncer-preview)**
+* **[Verwaltete PgBouncer-Instanz:](concepts-hyperscale-connection-pool.md)**
   Ein Verbindungspoolfunktion, die gleichzeitige Verbindungen zahlreicher Clients mit der Servergruppe ermöglicht und gleichzeitig die Anzahl aktiver Verbindungen begrenzt. Sie erfüllt Verbindungsanforderungen und sorgt gleichzeitig für eine reibungslose Ausführung des Koordinatorknotens.
 * **[pgAudit:](concepts-hyperscale-audit.md)** Bietet eine detaillierte Sitzungs- und Objektüberwachungsprotokollierung über die standardmäßige PostgreSQL-Protokollierungseinheit. Die Erweiterung generiert Überwachungsprotokolle, die zum Bestehen bestimmter Behörden-, Finanz- oder ISO-Zertifizierungsaudits erforderlich sind.
+* **[UDF create_extension()](concepts-hyperscale-extensions.md#use-postgresql-extensions)** .
+  Ermöglicht das Erstellen von Erweiterungen, deren Installation Administratorzugriff erfordert.
 
 ### <a name="available-regions-for-preview-features"></a>Verfügbare Regionen für Previewfunktionen
 
