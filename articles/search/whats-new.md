@@ -6,18 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/24/2021
+ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 945a11fb8d8aef3eef2d3c43a68b8c092741436e
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003780"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711045"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben. In der [Liste der Previewfunktionen](search-api-preview.md) finden Sie eine umfassende Liste der Features, die noch nicht allgemein verfügbar sind.
+
+## <a name="july-2021"></a>Juli 2021
+
+|Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
+|------------------------------------|--------------|---------------|
+| [Search-REST-API 2021-04-30-Preview](/rest/api/searchservice/index-preview) | Fügt REST-API-Unterstützung für Indexerverbindungen hinzu, die mit [verwalteten Identitäten](search-howto-managed-identities-data-sources.md) und Azure Active Directory-Authentifizierung (Azure AD) hergestellt werden. | Public Preview |
+| [Rollenbasierte Autorisierung (Vorschau)](search-security-rbac.md) | Authentifizieren Sie sich mit Azure Active Directory und neuen integrierten Rollen für den Datenebenenzugriff auf Indizes und die Indizierung, wodurch die Abhängigkeit von API-Schlüsseln vermieden oder verringert wird. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/azure-cognitive-search/rbac-preview)). Nachdem Ihr Abonnement integriert wurde, verwenden Sie das Azure-Portal oder die Verwaltungs-REST-API-Version 2021-04-01-Preview, um einen Suchdienst für die Authentifizierung auf Datenebene zu konfigurieren.|
+| [Verwaltungs-REST-API 2021-04-01-Preview](/rest/api/searchmanagement/) | Ändert [Dienst erstellen oder aktualisieren,](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) um neue [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) zu unterstützen. | Public Preview |
 
 ## <a name="may-2021"></a>Mai 2021
 

@@ -4,14 +4,14 @@ description: Wichtige Aktualisierungen für die Azure Automation-Dokumentation 
 services: automation
 ms.subservice: ''
 ms.topic: overview
-ms.date: 06/09/2021
+ms.date: 07/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b91b9bb4e1bc871ecd8cb7909718329f5c5c014
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294749"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729566"
 ---
 # <a name="whats-new-in-azure-automation"></a>Neuerungen in Azure Automation
 
@@ -22,6 +22,22 @@ Azure Automation wird kontinuierlich verbessert. Damit Sie bezüglich der neuest
 - Behebung von Programmfehlern
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
+
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="preview-support-for-user-assigned-managed-identities"></a>Vorschauunterstützung für vom Benutzer zugewiesene verwaltete Identitäten
+
+**Typ:** Neues Feature
+
+Azure Automation unterstützt jetzt [Vom Benutzer zugewiesene verwaltete Identitäten](automation-secure-asset-encryption.md) für Cloudaufträge in öffentlichen Azure-Regionen, Azure Government-Regionen und Azure China-Regionen. Weitere Informationen finden Sie in der [Ankündigung](https://azure.microsoft.com/updates/azure-automation-user-assigned-identities/).
+
+### <a name="general-availability-of-customer-managed-keys-for-azure-automation"></a>Allgemeine Verfügbarkeit von kundenseitig verwalteten Schlüsseln für Azure Automation
+
+**Typ:** Neues Feature
+
+Kunden können die Verschlüsselung von Azure Automation-Objekten mit ihren eigenen verwalteten Schlüsseln verwalten und schützen. Durch die Einführung von kundenseitig verwalteten Schlüsseln können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. Diese zusätzliche Verschlüsselung sollte Ihnen helfen, die gesetzlichen Anforderungen oder Complianceanforderungen Ihrer Organisation zu erfüllen.
+
+Weitere Informationen finden Sie unter [Verwenden von kundenseitig verwalteten Schlüsseln für ein Automation-Konto](automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account).
 
 ## <a name="june-2021"></a>Juni 2021
 
@@ -111,7 +127,7 @@ Dem [GitHub-Repository](https://github.com/azureautomation) für Azure Automatio
 
 **Typ:** Neues Feature
 
-Weitere Informationen finden Sie unter [Verwenden eines Webhooks mit einer ARM-Vorlage](./automation-webhooks.md#use-a-webhook-from-an-arm-template).
+Weitere Informationen finden Sie unter [Verwenden eines Webhooks mit einer ARM-Vorlage](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template).
 
 ### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure-Updateverwaltung unterstützt jetzt Centos 8.x, Red Hat Enterprise Linux Server 8.x und SUSE Linux Enterprise Server 15
 

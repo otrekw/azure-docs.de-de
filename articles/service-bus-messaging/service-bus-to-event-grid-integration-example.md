@@ -4,20 +4,20 @@ description: Dieser Artikel enthält Schritte zum Verarbeiten von Service Bus-Er
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 07/26/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36690973f441c80f71c1941c63cd40d91c1efd08
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999003"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719885"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Tutorial: Reagieren auf über Azure Event Grid empfangene Azure Service Bus-Ereignisse mit Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. 
 
-[!INCLUDE [service-bus-event-grid-prerequisites](../../includes/service-bus-event-grid-prerequisites.md)]
+[!INCLUDE [service-bus-event-grid-prerequisites](./includes/service-bus-event-grid-prerequisites.md)]
 
 ## <a name="receive-messages-by-using-logic-apps"></a>Empfangen von Nachrichten mithilfe von Logik-Apps
 In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse über Azure Event Grid empfängt. 
@@ -31,6 +31,8 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
     6. Klicken Sie auf **Überprüfen + erstellen**. 
     1. Wählen Sie auf der Seite **Überprüfen und erstellen** die Option **Erstellen** aus, um die Logik-App zu erstellen. 
 1. Wählen Sie auf der Seite **Designer für Logik-Apps** unter **Vorlagen** den Eintrag **Leere Logik-App** aus. 
+
+### <a name="add-a-step-receive-messages-from-service-bus-via-event-grid"></a>Hinzufügen eines Schritts zum Empfangen von Nachrichten von Service Bus über Event Grid
 1. Führen Sie im Designer folgende Schritte aus:
     1. Suchen Sie nach **Event Grid**. 
     2. Wählen Sie **Wenn ein Ressourcenereignis eintritt – Azure Event Grid** aus. 
@@ -60,8 +62,44 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
     8. Wählen Sie Ihr **Thema** und **Abonnement** aus. 
     
         ![Screenshot, der zeigt, wo Sie Ihr Thema und Ihr Abonnement auswählen.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. Wählen Sie **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus: 
-    1. Wählen Sie **Service Bus** aus.
+
+### <a name="add-a-step-to-process-and-complete-received-messages"></a>Hinzufügen eines Schritts zum Verarbeiten und Abschließen empfangener Nachrichten
+In diesem Schritt fügen Sie Schritte hinzu, um die empfangene Nachricht in einer E-Mail zu senden und die Nachricht dann abzuschließen. In einem realen Szenario verarbeiten Sie eine Nachricht in der Logik-App, bevor Sie die Nachricht abschließen.
+
+#### <a name="add-a-foreach-loop"></a>Hinzufügen einer ForEach-Schleife
+1. Wählen Sie **+ Neuer Schritt** aus.
+1. Suchen Sie nach **Steuerung**, und wählen Sie anschließend diese Kategorie aus.  
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-control.png" alt-text="Abbildung der Auswahl der Kategorie „Steuerung“":::
+1. Wählen Sie in der Liste **Aktionen** die Aktion **For each** aus.
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-for-each.png" alt-text="Abbildung der Auswahl der Steuerung „For each“":::    
+1. Wählen Sie für **Select an output from previous steps** („Ausgabe aus vorherigen Schritten auswählen“) (klicken Sie ggf. in das Textfeld) die Option **Body** („Text“) unter **Ruft Nachrichten aus einem Themenabonnement ab (Peek-Lock)** aus. 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-input-for-each.png" alt-text="Abbildung der Auswahl der Eingabe für „For each“":::    
+
+#### <a name="add-a-step-inside-the-foreach-loop-to-send-an-email-with-the-message-body"></a>Hinzufügen eines Schritts innerhalb der ForEach-Schleife zum Senden einer E-Mail mit dem Nachrichtentext
+
+1. Wählen Sie innerhalb der **ForEach**-Schleife den Befehl **Aktion hinzufügen** aus. 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-add-action.png" alt-text="Abbildung der Auswahl der Schaltfläche „Aktion hinzufügen“ innerhalb der ForEach-Schleife":::        
+1. Geben Sie in das Textfeld **Connectors und Aktionen durchsuchen** den Eintrag **Office 365** ein. 
+1. Wählen Sie in den Suchergebnissen **Office 365 Outlook** aus. 
+1. Wählen Sie in der Liste der Aktionen **E-Mail senden (V2)** aus. 
+1. Wählen Sie innerhalb des Textfelds einen Text für **Body** (Text) aus, und führen Sie die folgenden Schritte aus:
+    1. Wechseln Sie zu **Ausdruck**.
+    1. Geben Sie `base64ToString(items('For_each')?['ContentData'])` ein. 
+    1. Klicken Sie auf **OK**. 
+    
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="Abbildung des Ausdrucks für Text der Aktivität &quot;E-Mail senden&quot;":::
+1. Für **Subject** („Betreff“) geben Sie **Vom Service Bus-Themenabonnement empfangene Nachricht** ein.  
+1. Für **To** („An“) geben Sie eine E-Mail-Adresse ein. 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/send-email-configured.png" alt-text="Abbildung der konfigurierten Aktivität „E-Mail senden“":::
+
+#### <a name="add-another-action-in-the-foreach-loop-to-complete-the-message"></a>Hinzufügen einer weiteren Aktion in der ForEach-Schleife zum Abschließen der Nachricht         
+1. Wählen Sie innerhalb der **ForEach**-Schleife den Befehl **Aktion hinzufügen** aus. 
+    1. Wählen Sie **Service Bus** in der Liste **Recent** („Zuletzt verwendet“) aus.
     2. Wählen Sie in der Liste der Aktionen **Nachricht in einem Themenabonnement abschließen** aus. 
     3. Wählen Sie Ihr Service Bus-**Thema** aus.
     4. Wählen Sie das zweite **Abonnement** für das Thema aus.
@@ -71,13 +109,16 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
 8. Wählen Sie in der Symbolleiste des Designers für Logik-Apps **Speichern** aus, um die Logik-App zu speichern. 
 
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/save-logic-app.png" alt-text="Speichern der Logik-App":::
+
+## <a name="test-the-app"></a>Testen der App
 1. Falls Sie noch keine Testnachrichten an das Thema gesendet haben, sollten Sie die Anleitung im Abschnitt [Senden von Nachricht an das Service Bus-Thema](#send-messages-to-the-service-bus-topic) befolgen. 
 1. Wechseln Sie zur Seite **Übersicht** Ihrer Logik-App. Sie sehen, dass die Logik-App ausgeführt wird, im **Ausführungsverlauf** für die gesendeten Nachrichten. Es kann einige Minuten dauern, bis die Ausführungen der Logik-App angezeigt werden. Wählen Sie in der Symbolleiste die Option **Aktualisieren** aus, um die Seite zu aktualisieren. 
 
     ![Designer für Logik-Apps – Logik-App wird ausgeführt](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 1. Wählen Sie eine Ausführung der Logik-App aus, um die Details dafür anzuzeigen. Beachten Sie, dass in der for-Schleife fünf Nachrichten verarbeitet wurden. 
     
-    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-run-details.png" alt-text="Details der Logik-App-Ausführung":::    
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-run-details.png" alt-text="Details der Logik-App-Ausführung"::: 
+2. Sie sollten eine E-Mail für jede Nachricht erhalten, die von der Logik-App empfangen wird.    
 
 ## <a name="troubleshoot"></a>Problembehandlung
 Führen Sie diese Schritte aus, falls keine Aufrufe angezeigt werden, nachdem Sie etwas abgewartet und eine Aktualisierung durchgeführt haben: 

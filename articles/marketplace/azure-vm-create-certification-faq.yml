@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Behandeln von Problemen bei der Zertifizierung von virtuellen Computern für Azure Marketplace
+  title: Problembehandlung bei der Zertifizierung von VMs für Azure Marketplace
   description: Es wird beschrieben, wie Sie häufige Probleme beim Testen und Zertifizieren von VM-Images für Azure Marketplace behandeln.
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
@@ -8,12 +8,12 @@ metadata:
   author: mathapli
   ms.author: mathapli
   ms.date: 01/18/2021
-  ms.openlocfilehash: d11988cbf65b9a66e1ada1640726f2ace5fec336
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 96e8f93f38d7ba84b93fdfb4101371f426a14f37
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113598391"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114456571"
 title: Problembehandlung bei der Zertifizierung von virtuellen Computern
 summary: >
   Beim Veröffentlichen Ihres Images des virtuellen Computers (VM) in Azure Marketplace wird es vom Azure-Team überprüft, um dafür die Startfähigkeit, Sicherheit und Kompatibilität mit Azure sicherzustellen. Falls Ihr VM-Image einen der Tests zur Überprüfung der hohen Qualitätsanforderungen nicht besteht, wird es nicht veröffentlicht. Sie erhalten eine Fehlermeldung, in der das Problem beschrieben ist.
@@ -361,12 +361,17 @@ sections:
       Fehler beim Herunterladen
     answer: "In der Tabelle unten finden Sie alle Probleme, die auftreten können, wenn Sie das VM-Image mit einer SAS-URL (Shared Access Signature) herunterladen.\n\n|Fehler|`Reason`|Lösung|\n|---|---|---|\n|Nicht gefundenes Blob|Die VHD wurde entweder gelöscht oder vom angegebenen Speicherort verschoben.|| \n|Blob wird verwendet|Die VHD wird von einem anderen internen Prozess verwendet.|Die VHD muss sich beim Herunterladen über eine SAS-URL im Status „Verwendet“ befinden.|\n|Ungültige SAS-URL|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|\n|Ungültige Signatur|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|\n|Bedingter HTTP-Header|Die SAS-URL ist ungültig.|Rufen Sie die richtige SAS-URL ab.|\n|Ungültiger VHD-Name|Überprüfen Sie, ob Sonderzeichen wie das Prozentzeichen (`%`) oder Anführungszeichen (`\"`) im VHD-Namen enthalten sind.|Benennen Sie die VHD-Datei um, und entfernen Sie die Sonderzeichen.|\n|\n"
   - question: >
-      VM-Images müssen über 1 MB freien Speicherplatz verfügen
+      VM-Images müssen über 1 MB freien Speicherplatz verfügen.
     answer: >
+      >[!NOTE]
+
+      >Wenn Sie ab dem **30. September 2021** Images in Azure veröffentlichen (mit **GPT-Partition**), **stellen Sie sicher, dass die ersten 2048 Sektoren (1 MB) des Betriebssystemdatenträgers leer sind**. Andernfalls tritt bei der Veröffentlichung ein Fehler auf. Diese Anforderung dient dazu, Azure das Hinzufügen wichtiger Bits zum Image zu ermöglichen (z. B. Bits zur Verbesserung der Startzeit für Kunden, Abrechnung und andere Details).
+
+
       Wenn Sie ein [eigenes Image erstellen](azure-vm-create-using-own-image.md), stellen Sie sicher, dass die ersten 2048 Sektoren (1 MB) des Betriebssystemdatenträgers leer sind. Andernfalls tritt bei der Veröffentlichung ein Fehler auf. Diese Anforderung gilt nur für den Betriebssystemdatenträger (nicht für andere Datenträger). Wenn Sie Ihr Image von [einem genehmigten Basisimage](azure-vm-create-using-approved-base.md) erstellen, können Sie diese Anforderung ignorieren.
 
 
-      ### <a name="how-to-keep-1-mb-free-space-at-the-start-on-an-empty-vhd-2048-sectors-each-sector-of-512-bytes"></a>Anfängliches Freihalten von 1 MB freiem Speicherplatz auf einer leeren VHD (2.048 Sektoren mit jeweils 512 Byte)
+      ### <a name="how-to-keep-1-mb-free-space-at-the-start-on-an-empty-vhd-2048-sectors-each-sector-of-512-bytes"></a>So halten Sie 1 MB Speicherplatz am Anfang einer leeren VHD frei (2.048 Sektoren mit jeweils 512 Byte)
 
 
       Diese Schritte gelten nur für Linux.
@@ -434,7 +439,7 @@ sections:
       1. Trennen Sie die VHD vom virtuellen Computer, und löschen Sie den virtuellen Computer.
 
 
-      ### <a name="how-to-keep-1-mb-free-space-by-moving-existing-data-on-vhd-2048-sectors-each-sector-of-512-bytes"></a>Freihalten von 1 MB freiem Speicherplatz durch die Verschiebung von vorhandenen Daten auf der VHD (2.048 Sektoren mit jeweils 512 Byte)
+      ### <a name="how-to-keep-1-mb-free-space-by-moving-existing-data-on-vhd-2048-sectors-each-sector-of-512-bytes"></a>So erhalten Sie 1 MB freien Speicherplatz durch Verschieben existierender Daten auf einer VHD (2048 Sektoren mit jeweils 512 Byte)
 
 
       Diese Schritte gelten nur für Linux.

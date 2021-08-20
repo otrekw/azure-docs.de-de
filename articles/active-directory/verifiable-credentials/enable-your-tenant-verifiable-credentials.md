@@ -1,106 +1,108 @@
 ---
-title: Tutorial - Konfigurieren Sie Ihr Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
-description: In diesem Lernprogramm bauen Sie die Umgebung auf, die zur Bereitstellung von überprüfbaren Berechtigungsnachweisen in Ihrem Mandant erforderlich ist
+title: Tutorial – Konfigurieren Sie Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
+description: In diesem Lernprogramm bauen Sie die Umgebung auf, die zur Bereitstellung von überprüfbaren Berechtigungsnachweisen in Ihrem Mandant erforderlich ist.
 documentationCenter: ''
 author: barclayn
 manager: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
-ms.date: 05/18/2021
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4b48d23a7122c82cf149bdd80335afe0aaf896cb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7b50e17a8c6730aedbc8fea68a2ab4d8685b2fa5
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466404"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228976"
 ---
-# <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Tutorial - Konfigurieren Sie Ihr Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
+# <a name="tutorial---configure-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Tutorial – Konfigurieren Sie Azure Active Directory so, dass es überprüfbare Anmeldedaten ausgibt (Vorschau)
 
-In diesem Tutorial bauen wir auf der Arbeit, die im Rahmen des Artikels [Erste Schritte](get-started-verifiable-credentials.md) ausgeführt wurde, und richten ihre Azure Active Directory (Azure AD) mit einem eigenen [dezentralen Bezeichner](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (DID) ein. Wir verwenden den dezentralen Bezeichner, um mit der Beispiel-App und Ihrem Zertifikataussteller überprüfbare Anmeldeinformationen auszustellen; in diesem Tutorial benutzen wir jedoch weiterhin den Beispiel-Azure-B2C-Mandanten zur Authentifizierung.  In unserem nächsten Tutorial werden wir weitere Schritte durchführen, um die App so zu konfigurieren, dass sie mit Ihrem Azure AD funktioniert.
+In diesem Tutorial bauen Sie auf der Arbeit, die im Rahmen des Artikels [Erste Schritte](get-started-verifiable-credentials.md) ausgeführt wurde, und richten Azure Active Directory (Azure AD) mit einem eigenen [dezentralisierten Bezeichner](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (DID) ein. Sie verwenden den DID zum Ausstellen überprüfbarer Anmeldeinformationen mithilfe der Beispiel-App und Ihres Ausstellers. In diesem Tutorial verwenden Sie weiterhin den Azure B2C-Beispiel-Mandanten für die Authentifizierung. Im nächsten Tutorial werden Sie Schritte durchführen, um die App so zu konfigurieren, dass sie mit Azure AD funktioniert.
 
 > [!IMPORTANT]
-> Azure Active Directory überprüfbare Anmeldedaten ist derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Überprüfbare Anmeldeinformationen für Azure Active Directory-befinden sich derzeit in der öffentlichen Vorschauphase.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Artikel:
+In diesem Artikel führen Sie folgende Schritte aus:
 
 > [!div class="checklist"]
-> * Sie erstellen die notwendigen Dienste, um Ihre Azure AD für überprüfbare Anmeldeinformationen einzubinden 
-> * Ihre DID wird erstellt
-> * Die Regeln und Anzeige Dateien werden angepasst
+> * Erstellen Sie die notwendigen Dienste, um Azure AD für überprüfbare Anmeldeinformationen einzubinden.
+> * Erstellen Sie Ihren DID.
+> * Passen Sie die Regel- und Anzeigedateien an.
 > * Konfigurieren Sie die überprüfbaren Anmeldeinformationen in Azure AD.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie dieses Tutorial erfolgreich abschließen können, müssen Sie zuerst:
 
-- Vervollständigen Sie [Erste Schritte](get-started-verifiable-credentials.md).
+- Führen Sie die Schritte im Tutorial [Erste Schritte](get-started-verifiable-credentials.md) aus.
 - Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Azure AD mit einer P2- [Lizenz](https://azure.microsoft.com/pricing/details/active-directory/). Befolgen Sie unter [Erstellen eines kostenlosen Entwickler Kontos](how-to-create-a-free-developer-account.md) Wenn Sie nicht über eines verfügen.
-- Eine Instanz von [Azure Key Vault](../../key-vault/general/overview.md), in der Sie über das Recht zum Erstellen von Schlüsseln und Geheimnissen verfügen.
+- Sie benötigen Azure AD mit einer P2-[Lizenz](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing). Wenn Sie nicht darüber verfügen, befolgen Sie die Schritte unter [Erstellen eines kostenlosen Entwicklerkontos](how-to-create-a-free-developer-account.md).
+- Sie benötigen eine Instanz von [Azure Key Vault](../../key-vault/general/overview.md), in der Sie über das Recht zum Erstellen von Schlüsseln und Geheimnissen verfügen.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Bevor wir beginnen können, benötigen wir einen Azure AD Mandanten. Wenn Ihr Mandant für überprüfbare Anmeldeinformationen aktiviert ist, wird ihm ein dezentralisierter Bezeichner (DID) zugewiesen, und er wird mit einem Aussteller Dienst zum Ausstellen überprüfbarer Anmelde Informationen aktiviert. Alle überprüfbaren Anmeldeinformationen, die Sie ausgeben, werden von Ihrem Mandanten und seiner DID ausgegeben. Der DID wird auch verwendet, wenn überprüfbare Anmeldeinformationen überprüft werden.
-Wenn Sie gerade ein Test-Azure-Abonnement erstellt haben, muss Ihr Mandant nicht mit Benutzerkonten gefüllt werden, aber Sie benötigen mindestens ein Benutzer Testkonto, um spätere Tutorials zu vervollständigen.
+Bevor Sie beginnen, benötigen Sie also einen Azure AD-Mandanten. Wenn Ihr Mandant für überprüfbare Anmeldeinformationen aktiviert ist, wird ihm ein DID zugewiesen. Er wird zudem mit einem Ausstellerdienst zum Ausstellen überprüfbarer Anmeldeinformationen aktiviert. Alle überprüfbaren Anmeldeinformationen, die Sie ausgeben, werden von Ihrem Mandanten und seiner DID ausgegeben. Der DID wird auch verwendet, wenn Sie überprüfbare Anmeldeinformationen überprüfen.
+
+Wenn Sie gerade ein Test-Azure-Abonnement erstellt haben, muss Ihr Mandant nicht mit Benutzerkonten gefüllt werden. Sie benötigen mindestens ein Benutzertestkonto, um spätere Tutorials abschließen zu können.
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Wenn Sie mit überprüfbaren Anmeldeinformationen arbeiten, haben Sie die komplette Kontrolle und Verwaltung der kryptografischen Schlüssel, die Ihr Mandant zum digitalen Signieren überprüfbarer Anmelde Informationen verwendet. Zum Ausstellen und Überprüfen von Anmelde Informationen müssen Sie Azure AD mit Zugriff auf Ihre eigene Instanz von Azure Key Vault bereitstellen.
+Wenn Sie mit überprüfbaren Anmeldeinformationen arbeiten, haben Sie die komplette Kontrolle und Verwaltung der kryptografischen Schlüssel, die Ihr Mandant zum digitalen Signieren überprüfbarer Anmeldeinformationen verwendet. Zum Ausstellen und Überprüfen von Anmeldeinformationen müssen Sie Azure AD mit Zugriff auf Ihre eigene Instanz von Key Vault bereitstellen.
 
-1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-2. Geben Sie **Key Vault** in das Suchfeld ein.
-3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
-4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
-5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
+1. Wählen Sie im Azure-Portal oder auf der Startseite die Option **Ressource erstellen** aus.
+1. Geben Sie **Key Vault** in das Suchfeld ein.
+1. Wählen Sie in der Ergebnisliste **Key Vault** aus.
+1. Wählen Sie im Abschnitt **Key Vault** die Option **Erstellen** aus.
+1. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
     - **Abonnement**: Wählen Sie ein Abonnement aus.
-    - Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Ressourcengruppennamen wie beispielsweise **vc-resource-group** ein. Wir verwenden denselben Ressourcengruppen Namen in mehreren Artikeln.
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Wir verwenden " **woodgroup-VC-KV** ", um diesen Wert durch ihren eigenen eindeutigen Namen zu ersetzen.
-    - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
+    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Ressourcengruppennamen wie beispielsweise **vc-resource-group** ein. Wir verwenden denselben Ressourcengruppennamen in mehreren Artikeln.
+    - **Name**: Es ist ein eindeutiger Name erforderlich. Wir verwenden **woodgroup-vc-kv**, also ersetzen Sie diesen Wert durch Ihren eigenen eindeutigen Namen.
+    - **Standort**: Wählen Sie einen Standort aus.
     - Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.
-6. Klicken Sie nach der Angabe der obigen Informationen auf **Zugriffsrichtlinie**
+1. Wählen Sie nach der Angabe der Informationen **Zugriffsrichtlinie** aus.
 
-    ![Erstellen Sie eine Key Vault-Seite.](media/enable-your-tenant-verifiable-credentials/create-key-vault.png)
+    ![Screenshot, der den Bildschirm „Schlüsseltresor erstellen“ zeigt.](media/enable-your-tenant-verifiable-credentials/create-key-vault.png)
 
-7. Wählen Sie im Bildschirm Zugriffsrichtlinie die Option **Zugriffsrichtlinie hinzufügen** aus
+1. Wählen Sie auf dem Bildschirm **Zugriffsrichtlinie** die Option **Zugriffsrichtlinie hinzufügen** aus.
 
     >[!NOTE]
-    > Standardmäßig ist das Konto, mit dem der Key Vault erstellt wird, der einzige mit Access. Der überprüfbare Anmeldeinformationsdienst benötigt Zugriff auf Key Vault. Der Key Vault muss über eine Zugriffsrichtlinie verfügen, die es dem Administrator ermöglicht,**Schlüssel zu erstellen**,**Schlüssel zu löschen**,wenn Sie sich abmelden, und **anzumelden**, um die Dämonen Bindung für überprüfbare Anmeldeinformationen zu erstellen. Wenn Sie beim Testen dasselbe Konto verwenden, stellen Sie sicher, dass Sie die Standardrichtlinie ändern, um die Konto **Anmeldung** zusätzlich zu den Standard Berechtigungen zu erteilen, die für Vault-Ersteller erteilt wurden.
+    > Standardmäßig ist das Konto, mit dem der Schlüsseltresor erstellt wird, das einzige mit Zugriff. Der Dienst für überprüfbare Anmeldeinformationen benötigt Zugriff auf den Schlüsseltresor. Der Schlüsseltresor muss über eine Zugriffsrichtlinie verfügen, die es dem Administrator ermöglicht, Schlüssel zu erstellen und Schlüssel zu löschen, wenn Sie sich abmelden, und die den Administrator berechtigt, zu signieren, um die Domänenbindung für überprüfbare Anmeldeinformationen zu erstellen. Wenn Sie beim Testen dasselbe Konto verwenden, ändern Sie die Standardrichtlinie, um dem Konto die Berechtigung **Signieren** zusätzlich zu den Standardberechtigungen zu erteilen, die Tresorerstellern erteilt wurden.
 
-8. Stellen Sie für den Benutzer Administrator sicher, dass im Abschnitt Schlüsselberechtigungen die Berechtigungen **Erstellen**, **Löschen** und **anmelden** aktiviert sind. Standardmäßig sind Erstellen und Löschen bereits aktiviert, und Anmelden sollte die einzige Key Vault-Berechtigung sein, die aktualisiert werden muss. 
+1. Stellen Sie für den Benutzeradministrator sicher, dass im Abschnitt mit den Schlüsselberechtigungen die Berechtigungen **Erstellen**, **Löschen** und **Signieren** aktiviert sind. Standardmäßig sind **Erstellen** und **Löschen** bereits aktiviert. **Signieren** sollte die einzige Schlüsselberechtigung sein, die Sie aktualisieren müssen.
 
-    ![Key Vault-Berechtigungen](media/enable-your-tenant-verifiable-credentials/keyvault-access.png)
+    ![Screenshot, der die Schlüsseltresorberechtigungen zeigt.](media/enable-your-tenant-verifiable-credentials/keyvault-access.png)
 
-9. Klicken Sie auf **Überprüfen + erstellen**.
-10. Klicken Sie auf **Erstellen**.
-11. Gehen Sie zum Tresor, und notieren Sie sich den Tresornamen und den URI
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Erstellen**.
+1. Gehen Sie zum Tresor, und notieren Sie sich den Tresornamen und den URI.
 
 Beachten Sie die beiden folgenden Eigenschaften:
 
-- **Tresorname**: im Beispiel lautet der Value-Name **Woodgrove-VC-KV**. Sie verwenden diesen Namen noch für andere Schritte.
+- **Tresorname**: Im Beispiel lautet der Schlüsseltresorname **woodgrove-vc-kv**. Sie verwenden diesen Namen noch für andere Schritte.
 - **Tresor-URI**: in diesem Beispiel, die Value ist https://woodgrove-vc-kv.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 >[!NOTE]
-> Jede Key Vault-Transaktion führt zu zusätzlichen Kosten für Azure-Abonnements. Weitere Informationen finden Sie auf der [Seite Key Vault-Preis](https://azure.microsoft.com/pricing/details/key-vault/).
+> Jede Schlüsseltresortransaktion führt zu weiteren Kosten für Azure-Abonnements. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
 
 >[!IMPORTANT]
-> Während der Vorschau der Azure Active Directory überprüfbaren Anmeldeinformationen sollten die im Tresor erstellten Schlüssel und Geheimnisse nicht geändert werden, nachdem Sie erstellt wurden. Durch das Löschen, deaktivieren oder Aktualisieren Ihrer Schlüssel und Geheimnisse werden alle ausgestellten Anmeldeinformationen ungültig. Ändern Sie Ihre Schlüssel oder Geheimnisse während der Vorschau nicht.
+> Während der Vorschau der Azure Active Directory überprüfbaren Anmeldeinformationen ändern Sie die in Ihrem Tresor erstellten Schlüssel und Geheimnisse nicht, nachdem sie erstellt wurden. Durch das Löschen, deaktivieren oder Aktualisieren Ihrer Schlüssel und Geheimnisse werden alle ausgestellten Anmeldeinformationen ungültig.
 
-## <a name="create-a-modified-rules-and-display-file"></a>Geänderte Regeln und Anzeige Datei erstellen
+## <a name="create-modified-rules-and-display-files"></a>Erstellen von geänderten Regel- und Anzeigedateien
 
-In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispielaussteller-App](https://github.com/Azure-Samples/active-directory-verifiable-credentials/) und ändern sie geringfügig, um den ersten Nachweis Ihres Mandanten zu erstellen.
+In diesem Abschnitt verwenden Sie die Regel- und Anzeigedateien aus der [Beispielaussteller-App](https://github.com/Azure-Samples/active-directory-verifiable-credentials/) und ändern sie geringfügig, um die erste überprüfbare Anmeldeinformation Ihres Mandanten zu erstellen.
 
-1. Kopieren Sie beide  Regeln, und zeigen sie JSON-Dateien in einem temporären Ordner an, und benennen Sie sie **MyFirstVC-display.json** bzw. **MyFirstVC-rules.json**. Beide Dateien finden Sie unter **Issuer \ issuer_config**
+1. Kopieren Sie die Regel- und Anzeige-JSON-Dateien in einen temporären Ordner. Benennen Sie sie in **MyFirstVC-display.json** bzw. **MyFirstVC-rules.json** um. Beide Dateien finden Sie unter **issuer\issuer_config**.
 
-   ![Anzeigen von und Regel Dateien als Teil des Beispiel-App-Verzeichnisses](media/enable-your-tenant-verifiable-credentials/sample-app-rules-display.png)
+   ![Screenshot, der die Regel- und Anzeigedateien als Teil des Beispiel-App-Verzeichnisses zeigt.](media/enable-your-tenant-verifiable-credentials/sample-app-rules-display.png)
 
-   ![Anzeigen von und Regel Dateien in einem temporären Ordner](media/enable-your-tenant-verifiable-credentials/display-rules-files-temp.png)
+   ![Screenshot, der die Regel- und Anzeigedateien in einem temporären Ordner zeigt.](media/enable-your-tenant-verifiable-credentials/display-rules-files-temp.png)
 
-2. Öffnen Sie die Datei „MyFirstVC-rules.json“ in Ihrem Code-Editor. 
+1. Öffnen Sie die Datei **MyFirstVC-rules.json** in Ihrem Code-Editor.
 
     ```json
          {
@@ -125,7 +127,7 @@ In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispie
       
     ```
 
-   Nun ändern wir das Typfeld in "myfirstvc". 
+   Ändern Sie nun das Feld "type" in **"MyFirstVC"** .
 
    ```json
     "type": ["MyFirstVC"]
@@ -135,9 +137,9 @@ In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispie
    Diese Änderung speichern.
 
    >[!NOTE]
-   > An dieser Stelle im Tutorial ändern wir die **"Konfiguration"** oder **"client_id"** nicht. Wir verwenden weiterhin den Microsoft B2C-Mandanten, den wir in den[ Ersten Schritten ](get-started-verifiable-credentials.md) verwendet haben. Wir verwenden Ihre Azure AD im nächsten Tutorial.
+   > Sie ändern die Werte für "configuration" oder "client_id" an diesem Punkt des Tutorials nicht. Sie verwenden weiterhin den Azure-Beispielmandanten, den Sie im Tutorial [Erste Schritte](get-started-verifiable-credentials.md) verwendet haben. Sie verwenden Azure AD im nächsten Tutorial.
 
-3. Öffnen Sie die Datei „MyFirstVC-display.json“ in Ihrem Code-Editor.
+1. Öffnen Sie die Datei **MyFirstVC-display.json** in Ihrem Code-Editor.
 
    ```json
        {
@@ -172,7 +174,7 @@ In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispie
       }
    ```
 
-   Sie nehmen einige Änderungen vor, sodass sich dieser Nachweis von der Version des Beispielcodes eindeutig unterscheidet. 
+   Nehmen Sie Änderungen vor, so dass sich diese überprüfbare Anmeldeinformation von der Version des Beispielcodes sichtbar unterscheidet.
 
     ```json
          "card": {
@@ -184,197 +186,197 @@ In diesem Abschnitt verwenden Sie die Regeln und Anzeigedateien aus der [Beispie
     ```
  
    >[!NOTE]
-   > Um sicherzustellen, dass der Nachweis lesbar und zugänglich ist, wird dringend empfohlen, Text- und Hintergrundfarben mit einem [Kontrastverhältnis](https://www.w3.org/WAI/WCAG21/Techniques/general/G18) von mindestens 4,5:1 auszuwählen.  
+   > Um sicherzustellen, dass Ihre Anmeldeinformation lesbar und zugänglich ist, wählen Sie Text- und Hintergrundfarben mit einem [Kontrastverhältnis](https://www.w3.org/WAI/WCAG21/Techniques/general/G18) von mindestens 4,5:1 aus.
 
    Speichern der Änderungen.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Vor dem Erstellen der ersten überprüfbaren Anmeldeinformationen müssen wir einen BLOB Storage Container erstellen, der die Konfigurations-und Regel Dateien enthalten kann.
+Bevor Sie Ihre erste überprüfbare Anmeldeinformation erstellen, erstellen Sie einen Azure Blob Storage-Container, der Ihre Konfigurations- und Regeldateien enthalten kann.
 
-1. Erstellen Sie mithilfe der unten gezeigten Optionen ein Speicherkonto. Ausführliche Schritte finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md?tabs=azure-portal).
+1. Erstellen Sie mithilfe der gezeigten Optionen ein Speicherkonto. Ausführliche Schritte finden Sie unter [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md?tabs=azure-portal).
 
-   - **Abonnement:** Wählen Sie das Abonnement aus, das wir für diese Tutorials verwenden.
-   - **Ressourcengruppe:** Wählen Sie dieselbe Ressourcengruppe aus, die wir in früheren Tutorials verwendet haben (**VC-Resource-Group**).
-   - **Name**: Einen eindeutigen Namen.
-   - **Region**(USA) USA, Osten.
-   - Leistung: **Standard**
-   - **Kontoart:** Speicher v2.
-   - **Replication:** Lokal redundante.
+   - **Abonnement**: Das Abonnement, das Sie für diese Tutorials verwenden.
+   - **Ressourcengruppe**: Dieselbe Ressourcengruppe, die Sie in früheren Tutorials verwendet haben (**vc-resource-group**).
+   - **Name**: Ein eindeutiger Name
+   - **Standort**: (USA) USA, Osten
+   - **Leistung**: Standard
+   - **Kontoart**: Speicher V2
+   - **Replikation**: Lokal redundant
  
-   ![Erstellen eines neuen Speicherkontos](media/enable-your-tenant-verifiable-credentials/create-storage-account.png)
+   ![Screenshot, der den Bildschirm „Speicherkonto erstellen“ zeigt.](media/enable-your-tenant-verifiable-credentials/create-storage-account.png)
 
-2. Nachdem Sie das Speicherkonto erstellt haben, müssen wir einen Container erstellen. Wählen Sie unter **BLOB Storage** die Option **Container** aus, und erstellen Sie mithilfe der unten angegebenen Werte einen Container:
+1. Nachdem Sie das Speicherkonto erstellt haben, erstellen Sie einen Container. Wählen Sie unter **Blob Storage** die Option **Container** aus. Erstellen Sie einen Container mit den folgenden Werten:
 
-    - **Name:** VC-Container
-    - **Öffentliche Zugriffsebene:** Privat (kein anonymer Zugriff)
+    - **Name**: vc-container
+    - **Öffentliche Zugriffsebene**: Privat (kein anonymer Zugriff)
+  
+   Klicken Sie auf **Erstellen**.
 
-   ![Erstellen eines Containers](media/enable-your-tenant-verifiable-credentials/new-container.png)
+   ![Screenshot, der das Erstellen eines Containers zeigt.](media/enable-your-tenant-verifiable-credentials/new-container.png)
 
-3. Wählen Sie nun den neuen Container **MyFirstVC-rules.js** aus, und laden Sie beide **MyFirstVC-display.js** "neue Regeln" und "Dateien anzeigen" ein, die Sie zuvor erstellt haben.
+1. Wählen Sie nun Ihren neuen Container aus, und laden Sie die beiden neuen Regel- und Anzeigedateien **MyFirstVC-display.json** und **MyFirstVC-rules.json**, die Sie zuvor erstellt haben, hoch.
 
-   ![Regeldatei hochladen](media/enable-your-tenant-verifiable-credentials/blob-storage-upload-rules-display-files.png)
+   ![Screenshot, der das Hochladen von Regeldateien zeigt.](media/enable-your-tenant-verifiable-credentials/blob-storage-upload-rules-display-files.png)
 
-## <a name="assign-blob-role"></a>BLOB-Rolle zuweisen
+## <a name="assign-a-blob-role"></a>Zuweisen einer BLOB-Rolle
 
-Vor dem Erstellen der Anmeldeinformationen müssen wir dem angemeldeten Benutzer zuerst die richtige Rollenzuweisung zuweisen, damit sie auf die Dateien im Speicherblob zugreifen können.
+Bevor Sie die Anmeldeinformation erstellen, müssen Sie dem angemeldeten Benutzer zuerst die richtige Rollenzuweisung zuweisen, damit er oder sie auf die Dateien im Speicherblob zugreifen kann.
 
-1. Navigieren Sie zu **Speicher**  >  **Container**.
-2. Wählen Sie im linken Menü die Option **Zugriffssteuerung (IAM)** aus.
-3. Wählen Sie **Rollenzuweisung**.
-4. Wählen Sie **Hinzufügen**.
-5. Wählen Sie im Abschnitt **Rolle** die Option **Speicher-BLOB-Daten Leser** aus.
-6. Wählen Sie unter **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
-7. Unter **Auswählen**: Wählen Sie das Konto aus, das Sie zum Ausführen dieser Schritte verwenden.
-8. Wählen Sie **Speichern** aus, um den Vorgang der Rollenzuweisung abzuschließen.
+1. Wechseln Sie zu **Speicher** > **Container**.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen.
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Leser von Speicherblobdaten |
+    | Zugriff zuweisen zu | Benutzer, Gruppe oder Dienstprinzipal |
+    | Auswählen | &lt;Konto, das Sie zum Ausführen dieser Schritte verwenden&gt; |
 
-
-   ![Hinzufügen einer Rollenzuweisung](media/enable-your-tenant-verifiable-credentials/role-assignment.png)
+    ![Screenshot, der die Seite „Rollenzuweisung hinzufügen“ im Azure-Portal zeigt.](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
   >[!IMPORTANT]
-  >Standardmäßig wird die Rolle " **Besitzer** " dem Container Ersteller zugewiesen. Die Rolle " **Besitzer** " ist allein nicht ausreichend. Ihr Konto benötigt die Rolle **Speicher-BLOB-Daten Leser**. Weitere Informationen finden Sie unter [Benutzen Sie das Azure-Portal zum Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten](../../storage/common/storage-auth-aad-rbac-portal.md).
+  >Standardmäßig wird die Rolle " Besitzer " dem Container Ersteller zugewiesen. Die Rolle „Besitzer“ ist allein nicht ausreichend. Ihr Konto benötigt die Rolle „Leser von Speicherblobdaten“. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/blobs/assign-azure-role-data-access.md).
 
-## <a name="set-up-verifiable-credentials-preview"></a>Richten Sie die überprüfbare Anmeldeinformationen (Vorschau) ein.
+## <a name="set-up-verifiable-credentials-preview"></a>Einrichten der Vorschau für überprüfbare Anmeldeinformationen
 
-Nun müssen wir den letzten Schritt zum Einrichten Ihres Mandanten für überprüfbare Anmeldeinformationen ausführen.
+Nun führen Sie den letzten Schritt zum Einrichten Ihres Mandanten für überprüfbare Anmeldeinformationen aus.
 
-1. Suchen Sie im Azure-Portal nach **überprüfbaren Anmeldeinformationen**.
-2. Wählen Sie **überprüfbare Anmeldeinformationen (Vorschau)** .
-3. Wählen Sie **Erste Schritte** aus
-4. Wir müssen Ihre Organisation einrichten und den Organisationsnamen, die Domäne und den Key Vault bereitstellen. Sehen wir uns jede dieser Werte genauer an.
+1. Suchen Sie im Azure-Portal nach **Nachweise**.
+1. Wählen Sie **Nachweise (Vorschau)** aus.
+1. Klicken Sie auf **Get started** (Los geht‘s).
+1. Richten Sie Ihre Organisation ein, indem Sie die folgenden Informationen bereitstellen:
 
-      - **Organisationsname**: Dieser Name ist der Verweis auf Ihr Unternehmen innerhalb des überprüfbaren Anmeldeinformations dienstes. Dieser Wert ist nicht Kunden basiert.
-      - **Domäne:** Die eingegebene Domäne wird einem Dienst Endpunkt in Ihrem DID-Dokument hinzugefügt. [Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) und andere Geldbörsen verwenden diese Informationen, um zu überprüfen, ob Ihre DID mit [Ihrer Domäne verknüpft](how-to-dnsbind.md)ist. Wenn das Wallet die DID überprüfen kann, wird ein verifiziertes Symbol angezeigt. Wenn das Wallet die DID nicht überprüfen kann, wird der Benutzer darüber informiert, dass die Anmeldeinformationen von einer Organisation ausgestellt wurden, die Sie nicht überprüfen konnte. Die Domäne bindet Ihre DID an etwas konkretes, das der Benutzer möglicherweise über Ihr Unternehmen kennt.
-      - **Key Vault:** Geben Sie den Namen des Key Vault an, den wir zuvor erstellt haben.
- 
+      - **Organisationsname**: Geben Sie einen Namen ein, um in den überprüfbaren Anmeldeinformationen auf Ihr Unternehmen zu verweisen. Dieser Wert ist nicht kundenbasiert.
+      - **Domäne:** Geben Sie eine Domäne ein, die einem Dienstendpunkt in Ihrem DID-Dokument hinzugefügt wird. [Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) und andere Geldbörsen verwenden diese Informationen, um zu überprüfen, ob Ihre DID mit [Ihrer Domäne verknüpft](how-to-dnsbind.md)ist. Wenn das Wallet die DID überprüfen kann, wird ein verifiziertes Symbol angezeigt. Wenn das Wallet die DID nicht überprüfen kann, wird der Benutzer darüber informiert, dass die Anmeldeinformationen von einer Organisation ausgestellt wurden, die sie nicht überprüfen konnte. Die Domäne bindet Ihre DID an etwas Konkretes, das der Benutzer möglicherweise über Ihr Unternehmen kennt.
+      - **Schlüsseltresor:** Geben Sie den Namen des Schlüsseltresors ein, den Sie zuvor erstellt haben.
+
    >[!IMPORTANT]
-   > Die Domäne kann keine Umleitung sein; andernfalls können die DID-und die-Domäne nicht verknüpft werden. Stellen Sie sicher, dass Sie das https://www.domain.com Format verwenden.
-    
-5. Wählen Sie **speichern, und erstellen** aus.
+   > Die Domäne kann keine Umleitung sein. Andernfalls können DID und Domäne nicht verknüpft werden. Stellen Sie sicher, dass Sie das Format https://www.domain.com verwenden.
+  
+1. Wählen Sie **Anmeldeinformation speichern und erstellen** aus.
 
-    ![Einrichten Ihrer Organisations Identität](media/enable-your-tenant-verifiable-credentials/save-create.png)
+    ![Screenshot, der das Einrichten Ihrer Organisationsidentität zeigt.](media/enable-your-tenant-verifiable-credentials/save-create.png)
 
 Herzlichen Glückwunsch, Ihr Mandant ist jetzt für die überprüfbare Anmeldeinformationen-Vorschau aktiviert!
 
-## <a name="create-your-vc-in-the-portal"></a>Erstellen Ihres VC im Portal
+## <a name="create-your-verifiable-credential-in-the-portal"></a>Erstellen Ihrer überprüfbaren Anmeldeinformationen im Portal
 
-Im vorherigen Schritt haben Sie die Seite **Erstellen von neuen Anmeldeinformationen**  erstellt. 
+Nach dem vorherigen Schritt wird der Bildschirm **Neue Anmeldeinformation erstellen** angezeigt.
 
-   ![Überprüfbare Anmeldeinformationen starten](media/enable-your-tenant-verifiable-credentials/create-credential-after-enable-did.png)
+   ![Screenshot, der den Bildschirm "Erste Schritte" zeigt.](media/enable-your-tenant-verifiable-credentials/create-credential-after-enable-did.png)
 
-1. Fügen Sie unter Anmeldeinformationen den Namen **myfirstvc** hinzu. Dieser Name wird im Portal verwendet, um Ihre überprüfbaren Anmeldeinformationen zu identifizieren, und er ist als Teil des überprüfbare Anmeldeinformationen-Vertrags enthalten.
-2. Wählen Sie im Abschnitt Anzeige Datei die Option **Anzeige Datei konfigurieren** aus
-3. Wählen Sie im Abschnitt " **Speicherkonten** " die Option **woodgrovevcstorage** aus.
-4. Wählen Sie in der Liste der verfügbaren Container **VC-Container** aus.
-5. Wählen Sie die **MyFirstVC-display.js Datei** aus, die Sie zuvor erstellt haben.
-6. Wählen Sie im Abschnitt **Neue Anmeldeinformationen erstellen** in der **Regel Datei** die Option **Regel Datei konfigurieren**
-7. Wählen Sie in den **Speicherkonten** die Option **woodgrovevcstorage** aus
-8. Wählen Sie **VC-Container** aus.
-9. Wählen Sie **MyFirstVC-rules.json** aus
-10. Wählen Sie aus **neue Anmeldeinformationen erstellen** die Option **Erstellen** aus.
+1. Geben Sie als Anmeldeinformationsname **MyFirstVC** ein. Dieser Name wird im Portal verwendet, um Ihre überprüfbaren Anmeldeinformationen zu identifizieren. Er ist im Rahmen des Vertrags für überprüfbare Anmeldeinformationen enthalten.
+1. Wählen Sie im Abschnitt **Anzeigedatei** die Option **Anzeigedatei konfigurieren** aus.
+1. Wählen Sie im Abschnitt " **Speicherkonten** " die Option **woodgrovevcstorage** aus.
+1. Wählen Sie in der Liste der verfügbaren Container **vc-container** aus.
+1. Wählen Sie die Datei **MyFirstVC-display.json** aus, die Sie zuvor erstellt haben.
+1. Wählen Sie auf dem Bildschirm **Neue Anmeldeinformation erstellen** im Abschnitt **Regeldatei** die Option **Regeldatei konfigurieren** aus.
+1. Wählen Sie im Abschnitt **Speicherkonten** die Option **woodgrovecstorage** aus.
+1. Wählen Sie **vc-container** aus.
+1. Wählen Sie **MyFirstVC-rules.json** aus.
+1. Wählen Sie auf dem Bildschirm **Neue Anmeldeinformation erstellen** die Option **Erstellen** aus.
 
-   ![Erstellen von neuen Anmeldeinformationen](media/enable-your-tenant-verifiable-credentials/create-my-first-vc.png)
+   ![Screenshot, der das Erstellen einer neuen Anmeldeinformation zeigt.](media/enable-your-tenant-verifiable-credentials/create-my-first-vc.png)
 
 ### <a name="credential-url"></a>Anmeldeinformation-URL
 
 Nachdem Sie nun über neue Anmeldeinformationen verfügen, kopieren Sie die Anmeldeinformationen-URL.
 
-   ![Die Ausgabe der Anmeldeinformationen-URL](media/enable-your-tenant-verifiable-credentials/issue-credential-url.png)
+   ![Screenshot, der die Anmeldeinformation-URL zeigt.](media/enable-your-tenant-verifiable-credentials/issue-credential-url.png)
 
 >[!NOTE]
->Die Anmeldeinformationen-URL ist die Kombination der Regeln und Anzeige Dateien. Dies ist die URL, die vom Authenticator ausgewertet wird, bevor den Benutzer überprüfbare Anmeldeinformationen Ausgabeanforderungen angezeigt werden.  
+>Die Anmeldeinformationen-URL ist die Kombination der Regeln und Anzeige Dateien. Dies ist die URL, die vom Authenticator ausgewertet wird, bevor dem Benutzer Ausstellungsvoraussetzungen für überprüfbare Anmeldeinformationen angezeigt werden.
 
 ## <a name="update-the-sample-app"></a>Aktualisieren der Beispiel-App
 
-Nun nehmen wir Änderungen am Issuer-Code der Beispiel-App vor, um ihn mit Ihrer überprüfbaren Anmeldeinformationen-URL zu aktualisieren. Dies ermöglicht es Ihnen, überprüfbare Anmeldeinformationen mit Ihrem eigenen Mandanten auszugeben.
+Nun nehmen Sie Änderungen am Aussteller-Code der Beispiel-App vor, um ihn mit Ihrer URL für die überprüfbaren Anmeldeinformationen zu aktualisieren. Dieser Schritt ermöglicht es Ihnen, überprüfbare Anmeldeinformationen mit Ihrem eigenen Mandanten auszugeben.
 
 1. Gehen Sie zu dem Ordner, in den Sie die Dateien der Beispiel-App eingefügt haben.
-2. Öffnen Sie den Issuer-Ordner, und öffnen Sie dann app.js in Visual Studio Code.
-3. Aktualisieren Sie die Konstante "Anmeldeinformationen" mit ihrer neuen Anmeldeinformationen-URL, und setzen Sie die Konstante Anmeldeinformationsart auf 'MyFirstVC' und speichern Sie die Datei.
+1. Öffnen Sie den Ausstellerordner, und öffnen Sie dann app.js in Visual Studio Code.
+1. Aktualisieren Sie die Konstante **credential** mit Ihrer neuen Anmeldeinformation-URL. Legen Sie die Konstante **credentialType** auf **'MyFirstVC'** fest, und speichern Sie die Datei.
 
-    ![Abbildung von Visual Studio Code mit hervorgehobenen relevanten Bereichen](media/enable-your-tenant-verifiable-credentials/sample-app-vscode.png)
+    ![Screenshot, der Visual Studio Code mit relevanten Bereichen hervorgehoben zeigt.](media/enable-your-tenant-verifiable-credentials/sample-app-vscode.png)
 
-4. Öffnen Sie eine Eingabeaufforderung und navigieren Sie zum Ordner .
-5. Führen Sie das aktualisierte Skript aus.
+1. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie zum Ausstellerordner.
+1. Führen Sie das aktualisierte Skript aus.
 
     ```terminal
     node app.js
     ```
 
-6. Führen Sie mit einer anderen Eingabeaufforderung ngrok aus, um eine URL an 8081 einzurichten. Sie können ngrok global mithilfe des [npm-Pakets ngrok](https://www.npmjs.com/package/ngrok/) installieren.
+1. Führen Sie mit einer anderen Eingabeaufforderung ngrok aus, um eine URL an 8081 einzurichten. Sie können ngrok global mithilfe des [npm-Pakets ngrok](https://www.npmjs.com/package/ngrok/) installieren.
 
     ```terminal
     ngrok http 8081
     ```
-    
+
     >[!IMPORTANT]
-    > Möglicherweise bemerken Sie auch eine Warnung, dass diese APP oder Website riskant sein kann. Die Meldung wird zu diesem Zeitpunkt erwartet, da Ihr DID noch nicht mit Ihrer Domäne verknüpft wurde. Befolgen Sie die Anweisungen der [DNS-Bindung](how-to-dnsbind.md), um dies zu konfigurieren.
+    > Möglicherweise wird eine Warnung mit dem Hinweis angezeigt, dass diese App oder Website riskant ist. Diese Meldung wird zu diesem Zeitpunkt erwartet, da Sie Ihren DID nicht mit Ihrer Domäne verknüpft haben. Konfigurationsanweisungen finden Sie unter [DNS-Bindung](how-to-dnsbind.md).
 
+1. Öffnen Sie die HTTPS-URL, die von ngrok generiert wird.
+
+    ![Screenshot, der NGROK-Weiterleitungsendpunkte zeigt.](media/enable-your-tenant-verifiable-credentials/ngrok-url-screen.png)
+
+1. Wählen Sie **ANMELDEINFORMATION ERHALTEN** aus.
+1. Scannen Sie den QR-Code in Authenticator.
+1. Wählen Sie auf dem Bildschirm **Diese App oder Website weist möglicherweise Risiken auf.** die Option **Erweitert** aus.
+
+   ![Screenshot, der die erste Warnung zeigt.](media/enable-your-tenant-verifiable-credentials/site-warning.png)
+
+1. Wählen Sie auf dem nächsten Bildschirm **Diese App oder Website weist möglicherweise Risiken auf.** die Option **Trotzdem fortfahren (unsicher)** aus.
+
+   ![Screenshot, der die zweite Warnung zum Aussteller zeigt.](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
+
+1. Beachten Sie auf dem Bildschirm **Anmeldeinformation hinzufügen** Folgendes:
+    1. Am oberen Bildschirmrand sehen Sie eine rot angezeigte Meldung **Nicht verifiziert**.
+    1. Die Anmeldeinformation wird auf der Grundlage der Änderungen angepasst, die Sie an der Anzeigedatei vorgenommen haben.
+    1. Die Option **Bei Ihrem Konto anmelden** verweist auf didplayground.b2clogin.com.
     
-7. Öffnen Sie die HTTPS-URL, die von ngrok generiert wird.
+      ![Screenshot, der den Bildschirm „Anmeldeinformation hinzufügen“ mit Warnung anzeigt.](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
 
-    ![Ngrok-Weiterleitungs Endpunkte](media/enable-your-tenant-verifiable-credentials/ngrok-url-screen.png)
+1. Wählen Sie **Bei Ihrem Konto anmelden** aus, und authentifizieren Sie sich mit den Anmeldeinformationen, die Sie im Tutorial [Erste Schritte](get-started-verifiable-credentials.md) angegeben haben.
+1. Nach erfolgreicher Authentifizierung wird nun die Schaltfläche **Hinzufügen** aktiviert. Wählen Sie **Hinzufügen**.
 
-8. Wählen Sie  **ANMELDEINFORMATIONEN ERHALTEN**
-9. Scannen Sie in den Authentifikator den QR-Code.
-10. Bei **dieser APP oder Website ist möglicherweise eine riskant** Warnmeldung, wählen Sie **erweitert** aus.
+    ![Screenshot, der den Bildschirm „Anmeldeinformation hinzufügen“ nach der Authentifizierung zeigt.](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-  ![Anfängliche Warnung](media/enable-your-tenant-verifiable-credentials/site-warning.png)
+   Sie erhalten jetzt eine überprüfbare Anmeldeinformation, indem Sie unseren Mandanten verwenden, um eine überprüfbare Anmeldeinformation zu generieren, während Sie weiterhin den Azure B2C-Beispiel-Mandanten für die Authentifizierung verwenden.
 
-11. Wählen Sie unter der Warnung riskante Website die Option **trotzdem fortsetzen (unsicher)**
+     ![Screenshot, der eine überprüfbare Anmeldeinformation zeigt, die von Azure AD ausgestellt und vom Azure B2C-Beispiel-Mandanten authentifiziert wird.](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
-  ![Zweite Warnung zum Aussteller](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
+## <a name="verify-the-verifiable-credential-by-using-the-sample-app"></a>Überprüfen der überprüfbaren Anmeldeinformation mithilfe der Beispiel-App
 
-
-12. Beachten Sie auf dem Bildschirm **Anmeldeinformationen Hinzufügen** einige Dinge: 
-    1. Am oberen Bildschirmrand sehen Sie eine rote **nicht verifizierte** Meldung
-    1. Die Anmeldeinformationen werden auf der Grundlage der Änderungen angepasst, die wir an der Anzeige Datei vorgenommen haben.
-    1. Die Option **Anmeldung zu Ihrem Konto** verweist auf **didplayground.b2clogin.com**.
-    
-   ![Bildschirm-Anmeldeinformationen mit Warnung hinzufügen](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
-
-13. Wählen Sie **Anmeldung zu Ihrem Konto aus,** und Authentifizieren Sie sich mit den Anmeldeinformationen, die Sie im [Tutorial Erste Schritte](get-started-verifiable-credentials.md) angegeben haben.
-14. Nach der erfolgreichen Authentifizierung ist die Schaltfläche **Hinzufügen** nicht mehr abgeblendet. Wählen Sie **Hinzufügen**.
-
-  ![Bildschirm-Anmeldeinformationen nach der Authentifizierung hinzufügen](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
-
-Wir haben jetzt überprüfbare Anmeldeinformationen mit unserem Mandanten zum Generieren unserer VC ausgestellt, während wir weiterhin unseren B2C-Mandanten für die Authentifizierung verwenden.
-
-  ![VC ausgestellt von Ihrer Azure AD und authentifiziert von unserer Azure B2C-Instanz](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
-
-
-## <a name="test-verifying-the-vc-using-the-sample-app"></a>Testen der VC-Überprüfung mithilfe der Beispiel-App
-
-Nachdem wir nun die überprüfbaren Anmeldeinformationen aus unserem eigenen Mandanten ausgegeben haben, überprüfen wir sie mit unserer Beispiel-App.
+Nachdem Sie nun die überprüfbare Anmeldeinformation von unserem Mandanten erhalten haben, überprüfen Sie sie mithilfe der Beispiel-App.
 
 >[!IMPORTANT]
-> Verwenden Sie beim Testen dieselbe e-Mail-Adresse und dasselbe Kennwort wie während des [Erste Schritte](get-started-verifiable-credentials.md) Artikel. Während Ihr Mandant den VC ausgibt, stammt die Eingabe von einem ID-Token, das vom Microsoft B2C-Mandanten ausgegeben wurde. In Tutorial 2 wird die Tokenausstellung auf ihren Mandanten umgestellt
+> Verwenden Sie beim Testen dieselbe E-Mail-Adresse und dasselbe Kennwort wie während des Tutorials [Erste Schritte](get-started-verifiable-credentials.md). Während Ihr Mandant die überprüfbare Anmeldeinformation ausgibt, stammt die Eingabe von einem ID-Token, das vom Azure B2C-Beispiel-Mandanten ausgestellt wurde. Im zweiten Tutorial wechseln Sie für die Tokenausstellung zu Ihrem Mandanten.
 
-1. Öffnen Sie die **Einstellungen** auf dem Blatt überprüfbare Anmeldeinformationen im Azure-Portal. Kopieren Sie den dezentralisierten Bezeichner (DID).
+1. Wählen Sie im Azure-Portal im Bereich **Überprüfbare Anmeldeinformationen** die Option **Einstellungen** aus. Kopieren Sie den DID.
 
-   ![Kopieren Sie den DID](media/enable-your-tenant-verifiable-credentials/issuer-identifier.png)
+   ![Screenshot, der das Kopieren des DID zeigt.](media/enable-your-tenant-verifiable-credentials/issuer-identifier.png)
 
-2. Öffnen Sie jetzt den Überprüfungsordner Teil der Beispiel-APP-Dateien. Wir müssen die app.js Datei im Verifizierungs-Beispielcode aktualisieren und die folgenden Änderungen vornehmen:
+1. Öffnen Sie jetzt den Überprüfungsordnerteil der Beispiel-App-Dateien. Sie müssen die Datei app.js im Verifizierungs-Beispielcode aktualisieren und die folgenden Änderungen vornehmen:
 
-    - **Anmeldeinformation**: Wechseln Sie zu Ihrer Anmeldeinformationen-URL
-    - **Anmeldeinformationsart**: 'MyFirstVC'
-    - **issuerDid**: Kopieren Sie diesen Wert aus dem Azure-Portal>Überprüfbare Anmeldeinformationen (Vorschau)>Einstellungen>Dezentralisierter Bezeichner (DID)
+    - **credential**: Ändern Sie den Eintrag in Ihre Anmeldeinformation-URL.
+    - **credentialType**: Geben Sie **'MyFirstVC'** ein.
+    - **issuerDid**: Kopieren Sie diesen Wert von Azure-Portal > **Überprüfbare Anmeldeinformationen (Vorschau)**  > **Einstellungen** > **Dezentralisierter Bezeichner (DID)** .
     
-   ![Aktualisieren Sie die Konstante issuerDid, damit sie mit Ihrer Emittentenkennung übereinstimmt](media/enable-your-tenant-verifiable-credentials/editing-verifier.png)
+   ![Screenshot, der zeigt, dass die Konstante „issuerDid“ (Aussteller-DID) aktualisiert wird, damit sie Ihrem Ausstellerbezeichner entspricht.](media/enable-your-tenant-verifiable-credentials/editing-verifier.png)
 
-3. Starten Sie den ngrok-Dienst für den Aussteller nicht mehr.
+1. Starten Sie den ngrok-Dienst für den Aussteller nicht mehr.
 
     ```cmd
     control-c
     ```
 
-4. Führen Sie nun ngrok mit dem Überprüfungs-Port 8082 aus.
+1. Führen Sie nun ngrok mit dem Überprüfungs-Port 8082 aus.
 
     ```cmd
     ngrok http 8082
     ```
 
-5. Navigieren Sie in einem anderen Terminalfenster zur Verifizierzungs-App, und führen Sie es ähnlich wie wir die Aussteller-App ausgeführt haben.
+1. Wechseln Sie in einem anderen Terminalfenster zur Überprüfungs-App, und führen Sie sie in ähnlicher Weise wie die Aussteller-App aus.
 
     ```cmd
     cd ..
@@ -382,21 +384,19 @@ Nachdem wir nun die überprüfbaren Anmeldeinformationen aus unserem eigenen Man
     node app.js
     ```
 
-6. Öffnen Sie die ngrok-URL in Ihrem Browser, und Scannen Sie den QR-Code mithilfe des Authentifikators auf Ihrem mobilen Gerät.
-7. Wählen Sie auf Ihrem mobilen Gerät auf dem Bildschirm die **neue Berechtigungsanforderung** Option **zulassen** aus.
+1. Öffnen Sie die ngrok-URL in Ihrem Browser, und scannen Sie den QR-Code mithilfe von Authenticator auf Ihrem mobilen Gerät.
+1. Wählen Sie auf Ihrem mobilen Gerät auf dem Bildschirm **Neue Berechtigungsanforderung** die Option **Zulassen** aus.
 
     >[!NOTE]
-    > Der DID der diese VC zeichnet ist weiterhin Microsoft B2C. Der Verifier ist noch immer vom Mandanten der Microsoft-Beispiel-App. Da Microsoft´s DID mit einer Domäne verknüpft ist, die wir besitzen, sehen Sie die Warnung nicht wie bei der Ausgabe des Ausstellungsflusses. Dies wird im nächsten Abschnitt aktualisiert.
+    > Der DID, der diese überprüfbare Anmeldeinformation signiert, ist weiterhin der Azure B2C. Der Überprüfer-DID stammt weiterhin vom Mandanten der Microsoft-Beispiel-App. Da der Microsoft-DID mit einer Domäne verknüpft ist, die wir besitzen, wird die Warnung nicht wie während des Ausstellungsablaufs angezeigt. Diese Situation wird im nächsten Abschnitt aktualisiert.
     
-   ![Neue Berechtigungsanforderung](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
+   ![Screenshot, der den Bildschirm „Neue Berechtigungsanforderung“ zeigt.](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Sie haben ihre Anmeldeinformationen nicht erfolgreich überprüft.
+1. Sie haben nun Ihre Anmeldeinformationen erfolgreich überprüft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun über den Beispielcode verfügen, der einen VC von Ihrem Aussteller ausgibt, können Sie mit dem nächsten Abschnitt fortfahren, in dem Sie Ihren eigenen Identitäts Anbieter zum Authentifizieren von Benutzern verwenden, die versuchen, überprüfbare Anmeldeinformationen zu erhalten.
+Nachdem Sie nun über den Beispielcode verfügen, der eine überprüfbare Anmeldeinformation von Ihrem Aussteller ausstellt, fahren Sie mit dem nächsten Abschnitt fort. Sie verwenden Ihren eigenen Identitätsanbieter, um Benutzer zu authentifizieren, die versuchen, überprüfbare Anmeldeinformationen zu erhalten. Sie verwenden auch Ihren DID zum Signieren von Präsentationsanforderungen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Ausstellen und Überprüfen überprüfbarer Anmeldeinformationen mithilfe Ihres Mandanten](issue-verify-verifiable-credentials-your-tenant.md)
-
-

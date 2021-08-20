@@ -6,23 +6,19 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 3/23/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2fa9cbba571fa5603607c5efea7f49a5822726e9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3a4f842f096f6f8c283934b67808bb33b20f8fc1
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089414"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360197"
 ---
-# <a name="ensure-high-quality-media-in-azure-communication-services"></a>Sicherstellen von hoher Qualität für Medien in Azure Communication Services
+# <a name="network-recommendations"></a>Netzwerkempfehlungen
 
-Dieses Dokument enthält eine Übersicht über die Faktoren und bewährten Methoden, die Sie beim Entwickeln von qualitativ hochwertigen Umgebungen für die Multimediakommunikation mit Azure Communication Services berücksichtigen sollten.
-
-## <a name="factors-that-affect-media-quality-and-reliability"></a>Faktoren, die die Qualität und Zuverlässigkeit von Medien beeinflussen
-
-Es gibt viele verschiedene Faktoren, die sich auf die Qualität von Echtzeitmedien (Audio, Video und Anwendungsfreigabe) in Azure Communication Services auswirken. Hierzu zählen Netzwerkqualität, Bandbreite, Firewall, Host und Gerätekonfigurationen.
+In diesem Dokument wird zusammengefasst, wie sich die Netzwerkumgebung auf die Qualität von Sprach- und Videoanrufen auswirkt. Es gibt viele verschiedene Faktoren, die sich auf die Qualität von Echtzeitmedien (Audio, Video und Anwendungsfreigabe) in Azure Communication Services auswirken. Hierzu zählen Netzwerkqualität, Bandbreite, Firewall, Host und Gerätekonfigurationen.
 
 
 ### <a name="network-quality"></a>Netzwerkqualität

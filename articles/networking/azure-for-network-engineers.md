@@ -1,21 +1,21 @@
 ---
-title: 'Azure ExpressRoute: Azure für Netzwerktechniker'
+title: Azure für Netzwerktechniker
 description: Auf dieser Seite erfahren traditionelle Netzwerkentwickler, wie Netzwerke in Azure funktionieren.
 documentationcenter: na
 services: networking
-author: osamaz
+author: osamazia
 manager: tracsman
 ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c73ea7c9e2f399e479f7d3f8bef5797feabb83ec
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234204"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343243"
 ---
 # <a name="azure-for-network-engineers"></a>Azure für Netzwerktechniker
 Als herkömmlicher Netzwerktechniker sind Sie mit physischen Ressourcen wie Routern, Switches, Kabeln und Firewalls zum Erstellen einer Infrastruktur umgegangen. Auf logischer Ebene haben Sie virtuelles LAN (VLAN), STP (Spanning Tree Protocol) und Routingprotokolle (RIP, OSPF, BGP) konfiguriert. Sie haben Ihr Netzwerk mithilfe von Verwaltungstools und einer Befehlszeilenschnittstelle verwaltet. Netzwerke in der Cloud unterscheiden sich darin, dass die Netzwerkendpunkte logisch sind und Routingprotokolle nur minimal zum Einsatz kommen. In Azure konfigurieren und verwalten Sie Ressourcen mit der Azure Resource Manager-API, der Azure-Befehlszeilenschnittstelle und PowerShell. Sie beginnen Ihre Netzwerkjourney, indem Sie sich über grundlegende Mandanten der Azure-Netzwerkstruktur informieren. 

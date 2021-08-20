@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 7/9/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: aaf0aab2ef600b269b9b47182aeb096ca13c7a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1472336e5244103175ec2ad837d4b503a1e5348
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943523"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721606"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Tutorial: Trainieren eines Machine Learning-Modells ohne Code
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein [Azure Synapse Analytics-Arbeitsbereich](../get-started-create-workspace.md). Er muss über ein Azure Data Lake Storage Gen2-Speicherkonto verfügen, das als Standardspeicher konfiguriert ist. Für das hier verwendete Data Lake Storage Gen2-Dateisystem müssen Sie über die Rolle *Mitwirkender an Storage-Blobdaten* verfügen.
-- Ein Apache Spark-Pool in Ihrem Azure Synapse Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe von Synapse Studio](../quickstart-create-sql-pool-studio.md).
+- Ein Apache Spark-Pool (Version 2.4) in Ihrem Azure Synapse Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines serverlosen Apache Spark-Pools mithilfe von Synapse Studio](../quickstart-create-apache-spark-pool-studio.md).
 - Ein verknüpfter Azure Machine Learning-Dienst in Ihrem Azure Synapse Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines neuen verknüpften Azure Machine Learning-Diensts in Synapse](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
@@ -55,8 +55,8 @@ Für dieses Tutorial benötigen Sie eine Spark-Tabelle. Mit dem folgenden Notebo
 
 So öffnen Sie den Assistenten:
 
-1. Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt erstellte Spark-Tabelle. Wählen Sie anschließend **Machine Learning** > **Mit neuem Modell anreichern** aus.
-![Screenshot: Spark-Tabelle mit hervorgehobenen Optionen „Machine Learning“ und „Mit neuem Modell anreichern“](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
+1. Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt erstellte Spark-Tabelle. Wählen Sie anschließend **Machine Learning** > **Neues Modell trainieren** aus.
+![Screenshot: Spark-Tabelle mit hervorgehobenen Optionen „Machine Learning“ und „Neues Modell trainieren“](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
 
 1. Geben Sie Konfigurationsdetails für die Erstellung eines automatisierten Machine Learning-Experiments an, das in Azure Machine Learning ausgeführt wird. Bei dieser Ausführung werden mehrere Modelle trainiert. Das beste Modell aus einer erfolgreichen Ausführung wird in der Azure Machine Learning-Modellregistrierung registriert.
 
@@ -80,7 +80,7 @@ So öffnen Sie den Assistenten:
 
 Wählen Sie die Art des Machine Learning-Modells für das Experiment basierend auf der zu beantwortenden Frage aus. Da `fareAmount` die Zielspalte ist und es sich um einen numerischen Wert handelt, empfiehlt es sich, hier **Regression** auszuwählen. Klicken Sie anschließend auf **Weiter**.
 
-![Screenshot: Anreichern mit neuem Modell mit hervorgehobener Option „Regression“](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
+![Screenshot: Neues Modell trainieren mit hervorgehobener Option „Regression“](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
 
 ## <a name="additional-configurations"></a>Zusätzliche Konfigurationen
 

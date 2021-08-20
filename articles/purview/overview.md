@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ca7c318dc1ac9d135c43c6d063a0f8a45276fe
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419931"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729758"
 ---
 # <a name="what-is-azure-purview"></a>Was ist Azure Purview?
 
@@ -71,7 +71,7 @@ Das Ermitteln und Verstehen von Datenquellen und ihrer Nutzung sind der Hauptzwe
 Gleichzeitig können Benutzer Beiträge zum Katalog leisten, indem sie bereits registrierte Datenquellen mit Tags versehen, dokumentieren und kommentieren. Außerdem können sie neue Datenquellen registrieren, die von der Community der Katalogbenutzer gefunden, verstanden und genutzt werden.
 
 ## <a name="in-region-data-residency"></a>Data Residency in der Region
-Azure Purview speichert Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region.
+Für Azure Purview werden bestimmte Tabellennamen, Dateipfade und Objektpfadinformationen in den USA gespeichert. Abgesehen von der oben genannten Ausnahme ist die Funktion, das Speichern aller anderen Kundendaten in einer einzelnen Region zu aktivieren, derzeit in allen geografischen Regionen verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: c0d199678aefbf2aa08f8fcbcb27376762dd39b5
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6f47e9d43008f004bc529b0a3251bf252e0039b9
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707268"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690789"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Was ist Azure SQL Managed Instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -155,7 +155,7 @@ Azure SQL Managed Instance bietet eine Reihe von erweiterten Sicherheitsfeatures
 - Mithilfe der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) (Row-Level Security, RLS) können Sie den Zugriff auf Zeilen in einer Datenbanktabelle den Merkmalen des Benutzers entsprechend steuern, der eine Abfrage ausführt (z. B. Gruppenmitgliedschaft oder Ausführungskontext). Die RLS vereinfacht das Entwerfen und Programmieren von Sicherheitsfeatures in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf die Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff ausschließlich auf die relevanten Daten beschränken.
 - [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien von SQL Managed Instance. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte Verschlüsselungstechnologie für ruhende Daten in SQL Server, die für viele Compliancestandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist.
 
-Die Migration einer verschlüsselten Datenbank zu SQL Managed Instance wird über Azure Database Migration Service oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, muss das vorhandene TDE-Zertifikat von der SQL Server-Instanz zu SQL Managed Instance migriert werden. Weitere Informationen zu den Migrationsoptionen finden Sie unter [Migration von SQL Server zu SQL Managed Instance](migrate-to-instance-from-sql-server.md).
+Die Migration einer verschlüsselten Datenbank zu SQL Managed Instance wird über Azure Database Migration Service oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, muss das vorhandene TDE-Zertifikat von der SQL Server-Instanz zu SQL Managed Instance migriert werden. Weitere Informationen zu Migrationsoptionen finden Sie in der Anleitung [SQL Server zu Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-Integration
 

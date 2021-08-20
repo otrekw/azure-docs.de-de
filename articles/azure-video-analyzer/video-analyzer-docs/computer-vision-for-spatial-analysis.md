@@ -5,13 +5,13 @@ author: Juliako
 ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: 82edf5b282f7b68a7d4d1d7909cfe653a65c175b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 0f0ee0a7288a3ef07f0aa8fa3c04660cac1ad0b5
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746559"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604184"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Tutorial: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -49,7 +49,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Modul „spatial-ana
 
 ## <a name="set-up-azure-resources"></a>Einrichten von Azure-Ressourcen
 
-1. Zum Ausführen des Containers für räumliche Analyse benötigen Sie ein Computegerät mit einer [NVIDIA Tesla T4-GPU](https://www.nvidia.com/data-center/tesla-t4/). Es empfiehlt sich zwar, [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) mit GPU-Beschleunigung zu verwenden, der Container kann jedoch auf jedem Desktopcomputer verwendet werden, sofern [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) auf dem Hostcomputer installiert ist.
+1. Zum Ausführen des Containers für räumliche Analyse benötigen Sie ein Computegerät mit einer [NVIDIA Tesla T4-GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/). Es empfiehlt sich zwar, [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) mit GPU-Beschleunigung zu verwenden, der Container kann jedoch auf jedem Desktopcomputer verwendet werden, sofern [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) auf dem Hostcomputer installiert ist.
 
    #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-Gerät](#tab/azure-stack-edge)
 
@@ -125,7 +125,7 @@ Der Knoten `CognitiveServicesVisionProcessor` fungiert als Proxy. Er wandelt die
 
 ## <a name="create-the-computer-vision-resource"></a>Erstellen der Ressource für maschinelles Sehen
 
-Sie müssen im [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen. Sie können die Ressource erstellen, nachdem Ihre Anforderung des Zugriffs auf den Container genehmigt und Ihre Azure-Abonnement-ID registriert wurde. Wechseln Sie zu https://aka.ms/csgate, um Ihren Anwendungsfall und Ihre Azure-Abonnement-ID zu übermitteln. Sie müssen die Azure-Ressource mit dem Azure-Abonnement erstellen, das im Zugriffsanforderungsformular angegeben wurde.
+Sie müssen im [Azure-Portal](../../iot-edge/how-to-deploy-modules-portal.md) oder über die Azure CLI eine Azure-Ressource vom Typ Maschinelles Sehen erstellen. 
 
 ### <a name="gathering-required-parameters"></a>Ermitteln erforderlicher Parameter
 
@@ -492,9 +492,16 @@ Beispielausgabe für „personZoneEvent“ (aus dem Vorgang `SpatialAnalysisPers
 ```
 
 ### <a name="more-operations"></a>Weitere Vorgänge:
+Das `spatialAnalysis`-Modul bietet verschiedene Vorgänge:
 
+- **personCount**
+- **personDistance**
+- **personCrossingLine**
+- **personZoneCrossing**
+- **customOperation**
+<br></br>
 <details>
-  <summary>Zum Erweitern klicken</summary>
+  <summary>Klicken Sie auf die Option, um sie zu erweitern und die verschiedenen Konfigurationsoptionen für die einzelnen Vorgänge anzuzeigen.</summary>
 
 ### <a name="person-line-crossing"></a>Linienüberquerung von Personen
 
@@ -734,8 +741,7 @@ Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource unt
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="Begrenzungsrahmensymbol":::
 
-> [!NOTE]
-> Da es sich bei der Quelle des Videos um einen Container zum Simulieren eines Kamerafeeds handelt, beziehen sich die Zeitstempel im Video auf den Zeitpunkt, zu dem Sie die Livepipeline aktiviert bzw. deaktiviert haben.
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -819,7 +825,7 @@ Sie können die von der Livepipeline erstellte Video Analyzer-Videoressource unt
 Probieren Sie verschiedene Vorgänge des Moduls `spatialAnalysis` aus. Weitere Informationen finden Sie in den folgenden Pipelinetopologien:
 
 - [personCount](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json)
-- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-pperation-topology.json)
+- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-operation-topology.json)
 - [personCrossingLine](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-line-crossing-operation-topology.json)
 - [personZoneCrossing](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-zone-crossing-operation-topology.json)
 - [customOperation](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/custom-operation-topology.json)
