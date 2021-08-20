@@ -3,12 +3,12 @@ title: Verwenden von Azure DevTest Labs durch Entwickler | Microsoft-Dokumentati
 description: Erfahren Sie mehr über Azure DevTest Labs-Features, die zum Erfüllen von Entwickleranforderungen verwendet werden können, und lernen Sie die ausführlichen Schritte kennen, die ausführt werden müssen, um ein Lab einzurichten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96b673cb750f503d531fd1a11d21b13a56397128
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89296242"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293617"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Verwenden von Azure DevTest Labs durch Entwickler
 Azure DevTest Labs kann zum Implementieren vieler wichtiger Szenarien verwendet werden. Eines der primären Szenarien stellt aber die Verwendung von DevTest Labs zum Hosten von Entwicklungscomputern für Entwickler dar. In diesem Szenario bietet DevTest Labs folgende Vorteile:
@@ -45,7 +45,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | --- | --- |
    | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images zulassen. Dabei werden nur die Images zur Auswahl zur Verfügung gestellt, die Sie für die Entwickler freigeben möchten.|
    | [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md) |Erstellen Sie ein benutzerdefiniertes Image, indem Sie die für Entwickler erforderliche Software vorinstallieren, sodass Lab-Benutzer mithilfe des benutzerdefinierten Images schnell einen virtuellen Computer erstellen können.|
-   | [Erfahren Sie mehr über Imagefactorys.](./devtest-lab-faq.md#blog-post) |Sehen Sie sich ein Video an, in dem beschrieben wird, wie Sie eine Imagefactory einrichten und verwenden.|
+   | [Erfahren Sie mehr über Imagefactorys.](/azure/devtest-labs/devtest-lab-faq#blog-post) |Sehen Sie sich ein Video an, in dem beschrieben wird, wie Sie eine Imagefactory einrichten und verwenden.|
 
 3. **Erstellen von wiederverwendbaren Vorlagen für Entwicklercomputer** 
    
@@ -87,7 +87,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
-   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Entwicklung abgeschlossen ist.|
+   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Entwicklung abgeschlossen ist.|
 
 1. **Hinzufügen eines virtuellen Netzwerks zu einem virtuellen Computer** 
    
@@ -103,7 +103,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
 
 6. **Freigeben des Labs für alle Entwickler**
    
-    Labs sind direkt über einen Link zugänglich, den Sie für Ihre Entwickler freigeben. Die Benutzer benötigen nicht einmal ein Azure-Konto, sofern sie über ein [Microsoft-Konto](devtest-lab-faq.md#what-is-a-microsoft-account) verfügen. Entwickler können die von anderen Entwicklern erstellten virtuellen Computer nicht sehen.  
+    Labs sind direkt über einen Link zugänglich, den Sie für Ihre Entwickler freigeben. Die Benutzer benötigen nicht einmal ein Azure-Konto, sofern sie über ein [Microsoft-Konto](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account) verfügen. Entwickler können die von anderen Entwicklern erstellten virtuellen Computer nicht sehen.  
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
@@ -111,7 +111,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | --- | --- |
    | [Hinzufügen eines Entwicklers zu einem Lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Verwenden Sie das Azure-Portal, um Ihrem Lab Entwickler hinzuzufügen.|
    | [Hinzufügen von Entwicklern zum Lab mithilfe eines PowerShell-Skripts](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Automatisieren Sie mithilfe von PowerShell das Hinzufügen von Entwicklern zu Ihrem Lab. |
-   | [Abrufen eines Links zum Lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Erfahren Sie, wie Entwickler über einen Link direkt auf ein Lab zugreifen können.|
+   | [Abrufen eines Links zum Lab](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) |Erfahren Sie, wie Entwickler über einen Link direkt auf ein Lab zugreifen können.|
 
 7. **Automatisieren der Lab-Erstellung für weitere Teams** 
    
@@ -121,6 +121,6 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
+   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](/azure/devtest-labs/devtest-lab-faq#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

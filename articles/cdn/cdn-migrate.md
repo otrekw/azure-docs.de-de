@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa5f2e51549baeaea6373a2d24e54f780d508bce
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92778388"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596261"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium
 
@@ -36,7 +36,7 @@ Wenn Sie ein Profil vom Typ **Azure CDN Standard von Verizon** upgraden möchten
 
 ## <a name="profile-comparison"></a>Profilvergleich
 Profile vom Typ **Azure CDN Premium von Verizon** unterscheiden sich in folgenden wichtigen Punkten von Profilen vom Typ **Azure CDN Standard von Verizon**:
-- Für bestimmte Azure CDN-Features (etwa [Komprimierung](cdn-improve-performance.md), [Cacheregeln](cdn-caching-rules.md) und [Geofilterung](cdn-restrict-access-by-country.md)) muss anstelle der Azure CDN-Schnittstelle das Verizon-Portal (über die Schaltfläche **Verwalten**) verwendet werden.
+- Für bestimmte Azure CDN-Features (etwa [Komprimierung](cdn-improve-performance.md), [Cacheregeln](cdn-caching-rules.md) und [Geofilterung](cdn-restrict-access-by-country-region.md)) muss anstelle der Azure CDN-Schnittstelle das Verizon-Portal (über die Schaltfläche **Verwalten**) verwendet werden.
 - API: Anders als bei Verizon Standard können Sie diese Features, auf die über das Verizon Premium-Portal zugegriffen wird, nicht über die API steuern. Über die API können jedoch andere allgemeine Features gesteuert werden – beispielsweise das Erstellen/Löschen eines Endpunkts, das Bereinigen/Laden zwischengespeicherter Assets und das Aktivieren/Deaktivieren einer benutzerdefinierten Domäne.
 - Preise: Die Verizon Premium-Preisstruktur für Datenübertragungen unterscheidet sich von der Preisstruktur für Verizon Standard. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 

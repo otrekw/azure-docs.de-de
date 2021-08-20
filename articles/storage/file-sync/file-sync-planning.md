@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: ffff2c1831aab09a1c622ced98cfe180fe0ec5d7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679199"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118596"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -310,11 +310,6 @@ Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie 
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Aktivieren von Standarddateifreigaben für bis zu 100 TiB
-
-Standardmäßig können Standarddateifreigaben nur bis zu 5 TiB umfassen. Der Freigabegrenzwert kann jedoch auf 100 TiB erhöht werden. Informationen zum Erhöhen des Freigabelimits finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json).
-
 
 #### <a name="regional-availability"></a>Regionale Verfügbarkeit
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

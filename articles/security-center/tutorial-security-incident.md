@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453443"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236875"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutorial: Selektieren, Untersuchen und Beantworten von Sicherheitswarnungen
 Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor potenziell schädlichen Aktivitäten auf Ihren Cloudressourcen warnen zu können. Sie können auch Warnungen aus anderen Sicherheitsprodukten und -diensten in Security Center integrieren. Nach der Auslösung einer Warnung muss schnell gehandelt werden, um das potenzielle Sicherheitsproblem zu untersuchen und zu beheben. 
@@ -60,7 +60,7 @@ Gehen Sie wie folgt vor, sobald Sie entschieden haben, welche Warnung Sie zuerst
 1. Wählen Sie auf der Seite mit der Übersicht über die Warnungen die Ressource aus, die zuerst untersucht werden soll.
 1. Beginnen Sie mit der Untersuchung im linken Bereich, in dem allgemeine Informationen zur Sicherheitswarnung angezeigt werden.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Linker Bereich der Seite „Warnungsdetails“, in der die allgemeinen Informationen hervorgehoben sind":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Linker Bereich der Seite „Warnungsdetails“, in der die allgemeinen Informationen hervorgehoben sind":::.
 
     In diesem Bereich wird Folgendes angezeigt:
     - Schweregrad, Status und Aktivitätszeit der Warnung
@@ -80,7 +80,7 @@ Nachdem Sie eine Warnung untersucht und ihr Ausmaß ermittelt haben, können Sie
 
 1.  Öffnen Sie die Registerkarte **Aktion ausführen**, um die empfohlenen Reaktionen anzuzeigen.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Registerkarte „Maßnahme ergreifen“ zu Sicherheitswarnungen" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Registerkarte „Maßnahme ergreifen“ zu Sicherheitswarnungen." lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  Im Abschnitt **Auswirkungen der Bedrohung minimieren**, finden Sie die manuellen Schritte zur Behebung des Problems.
 1.  Um Ihre Ressourcen zu sichern und zukünftige Angriffe dieser Art zu verhindern, setzen Sie die Sicherheitsempfehlungen im Abschnitt **Künftige Angriffe verhindern** um.
@@ -97,7 +97,7 @@ Nachdem Sie eine Warnung untersucht und ihr Ausmaß ermittelt haben, können Sie
     1. Markieren Sie die Warnung als **Hilfreich** oder **Nicht hilfreich**.
     1. Wählen Sie einen Grund aus und fügen Sie einen Kommentar hinzu.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Feedback zur Nützlichkeit einer Warnung an Microsoft":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Feedback zur Nützlichkeit einer Warnung an Microsoft.":::
 
     > [!TIP]
     > Wir berücksichtigen Ihr Feedback, um unsere Algorithmen zu verbessern und bessere Sicherheitswarnungen bereitzustellen.

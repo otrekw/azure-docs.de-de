@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 67d29dcf0ea4e68354f7b0fad2be7e57e85f8fe7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b01595353dd9857409c75ab95271452fb3cee7b0
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962208"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228565"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -75,7 +75,7 @@ Nachdem Sie über eine VM verfügen, die als Azure AD-Anwendungsproxyconnector v
         > Wenn die Azure AD-Domäne beispielsweise *contoso.com* lautet, muss sich der globale Administrator als `admin@contoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
 
    * Falls auf der VM, auf der Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für Internet Explorer“ aktiviert ist, ist der Registrierungsbildschirm möglicherweise blockiert. Zum Zulassen des Zugriffs befolgen Sie die Anweisungen in der Fehlermeldung, um „Verstärkte Sicherheitskonfiguration für Internet Explorer“ während des Installationsvorgangs zu deaktivieren.
-   * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](/azure/active-directory/app-proxy/application-proxy-troubleshoot) weiter.
+   * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/app-proxy/application-proxy-troubleshoot.md) weiter.
 1. Am Ende des Setupprozesses wird ein Hinweis zu Umgebungen mit einem ausgehenden Proxy angezeigt. Um den Azure AD-Anwendungsproxyconnector so zu konfigurieren, dass er mit dem ausgehenden Proxy funktioniert, führen Sie das bereitgestellte Skript aus, z. B. `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
 1. Auf der Azure-Portalseite mit Anwendungsproxys wird der neue Connector mit dem Status *Aktiv* aufgeführt, wie im folgenden Beispiel gezeigt:
 

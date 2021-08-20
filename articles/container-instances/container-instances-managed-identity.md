@@ -3,12 +3,12 @@ title: Aktivieren einer verwalteten Identität in einer Containergruppe
 description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f8f3c646487d86f4e1bce13ccbf28992b8b1497a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 44f4e15e6e11fac884c2d117aae351615420ba43
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763985"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219278"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -278,13 +278,13 @@ az container exec \
 
 Führen Sie die folgenden Befehle in der Bash-Shell im Container aus. Melden Sie sich zuerst mithilfe der verwalteten Identität bei der Azure CLI an:
 
-```bash
+```azurecli
 az login --identity
 ```
 
 Rufen Sie aus dem ausgeführten Container heraus das Geheimnis aus dem Schlüsseltresor ab:
 
-```bash
+```azurecli
 az keyvault secret show \
   --name SampleSecret \
   --vault-name mykeyvault --query value
@@ -292,7 +292,7 @@ az keyvault secret show \
 
 Der Wert des Geheimnisses wird abgerufen:
 
-```bash
+```output
 "Hello Container Instances"
 ```
 

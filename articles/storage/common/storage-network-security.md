@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6922eaec624141c8acab2d8d8e133db5becd66d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dacf5814ee487c008e343347f7ab1319fd578597
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950041"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729000"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -378,9 +378,9 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
 
 ## <a name="grant-access-from-azure-resource-instances-preview"></a>Gewähren von Zugriff über Azure-Ressourceninstanzen (Vorschau)
 
-Manchmal ist eine Anwendung unter Umständen auf Azure-Ressourcen angewiesen, die nicht über ein virtuelles Netzwerk oder über eine IP-Adressregel isoliert werden können. Trotzdem soll der Zugriff auf das Speicherkonto geschützt und auf die Azure-Ressourcen Ihrer Anwendung beschränkt werden. In diesem Fall können Sie eine Ressourceninstanzregel erstellen, um Speicherkonten so zu konfigurieren, dass der Zugriff auf bestimmte Ressourceninstanzen einiger Azure-Dienste zugelassen wird. 
+Manchmal ist eine Anwendung unter Umständen auf Azure-Ressourcen angewiesen, die nicht über ein virtuelles Netzwerk oder über eine IP-Adressregel isoliert werden können. Trotzdem soll der Zugriff auf das Speicherkonto geschützt und auf die Azure-Ressourcen Ihrer Anwendung beschränkt werden. In diesem Fall können Sie eine Ressourceninstanzregel erstellen, um Speicherkonten so zu konfigurieren, dass der Zugriff auf bestimmte Ressourceninstanzen einiger Azure-Dienste zugelassen wird.
 
-Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodaten ausgeführt werden können, werden durch die [Azure-Rollenzuweisungen](storage-auth-aad.md#assign-azure-roles-for-access-rights) der Ressourceninstanz bestimmt. Ressourceninstanzen müssen aus dem gleichen Mandanten stammen wie Ihr Speicherkonto, können aber zu einem beliebigen Abonnement im Mandanten gehören.
+Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodaten ausgeführt werden können, werden durch die Azure-Rollenzuweisungen der Ressourceninstanz bestimmt. Ressourceninstanzen müssen aus dem gleichen Mandanten stammen wie Ihr Speicherkonto, können aber zu einem beliebigen Abonnement im Mandanten gehören.
 
 > [!NOTE]
 > Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar.
@@ -586,9 +586,9 @@ Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert
 
 ### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität
 
-Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Speicherkontodaten haben, wenn den Ressourceninstanzen dieser Dienste die entsprechende Berechtigung erteilt wird. 
+Die folgende Tabelle enthält eine Liste mit Diensten, die Zugriff auf Ihre Speicherkontodaten haben, wenn den Ressourceninstanzen dieser Dienste die entsprechende Berechtigung erteilt wird.
 
-Wenn für Ihr Konto das Feature für hierarchische Namespaces nicht aktiviert ist, können Sie keine Berechtigung erteilen, indem Sie explizit der [systemseitig zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) pro Ressourceninstanz eine [Azure-Rolle zuweisen](storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist. 
+Wenn für Ihr Konto das Feature für hierarchische Namespaces nicht aktiviert ist, können Sie keine Berechtigung erteilen, indem Sie explizit der systemseitig zugewiesenen verwalteten Identität pro Ressourceninstanz eine [Azure-Rolle zuweisen](../../active-directory/managed-identities-azure-resources/overview.md). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
 
 Sie können dieselbe Methode für ein Konto verwenden, für das das Feature für hierarchische Namespaces aktiviert wurde. Sie müssen jedoch keine Azure-Rolle zuweisen, wenn Sie die systemseitig zugewiesene verwaltete Identität der Zugriffssteuerungsliste (ACL) eines Verzeichnisses oder Blobs zuweisen, das bzw. der sich im Speicherkonto befindet. In diesem Fall entspricht der Zugriffsbereich der Instanz dem Verzeichnis oder der Datei, auf das bzw. die der systemseitig zugewiesenen verwalteten Identität Zugriff gewährt wurde. Sie können Azure-Rollen und ACLs auch miteinander kombinieren. Wenn Sie mehr dazu erfahren möchten, wie Sie sie miteinander kombinieren, um Zugriff zu gewähren, können Sie den Artikel [Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control-model.md) lesen.
 

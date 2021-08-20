@@ -1,22 +1,22 @@
 ---
 ms.service: hpc-cache
 ms.topic: include
-ms.date: 03/15/2021
+ms.date: 06/17/2021
 author: ekpgh
 ms.author: v-erkel
-ms.openlocfilehash: 2804b3bb36a31c9cfbf4cce8db94b7469c8975c7
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 37f2895ed476cc0dbe0bdb3def034a17448d8dca
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563237"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587221"
 ---
 | Nutzungsmodell | Cachemodus | Back-End-Überprüfung | Maximale Zurückschreibverzögerung |
 |--|--|--|--|
-| Leseintensiv, unregelmäßige Schreibvorgänge | Lesen | Nie | Keine |
-| Mehr als 15 % Schreibvorgänge | Lesen/Schreiben | 8 Stunden | 20 Minuten |
-| Clients umgehen den Cache | Lesen | 30 Sekunden | Keine |
-| Mehr als 15 % Schreibvorgänge, regelmäßige Back-End-Überprüfungen (30 Sekunden) | Lesen/Schreiben | 30 Sekunden | 20 Minuten |
-| Mehr als 15 % Schreibvorgänge, regelmäßige Back-End-Überprüfungen (60 Sekunden) | Lesen/Schreiben | 60 Sekunden | 20 Minuten |
-| Mehr als 15 % Schreibvorgänge, regelmäßiges Zurückschreiben | Lesen/Schreiben | 30 Sekunden | 30 Sekunden |
-| Viele Lesezugriffe, Überprüfung des Sicherungsservers alle 3 Stunden | Lesen | 3 Stunden | Keine |
+| Leseintensiv, unregelmäßige Schreibvorgänge <!--read_heavy_infreq-->| Lesen | Nie | Keine |
+| Mehr als 15 % Schreibvorgänge <!--write_workload_15-->| Lesen/Schreiben | 8 Stunden | 1 Stunde |
+| Clients umgehen den Cache <!--write_around-->| Lesen | 30 Sekunden | Keine |
+| Mehr als 15 % Schreibvorgänge, regelmäßige Back-End-Überprüfungen (30 Sekunden) <!--write_workload_check_30-->| Lesen/Schreiben | 30 Sekunden | 1 Stunde |
+| Mehr als 15 % Schreibvorgänge, regelmäßige Back-End-Überprüfungen (60 Sekunden) <!--write_workload_check_60-->| Lesen/Schreiben | 60 Sekunden | 1 Stunde |
+| Mehr als 15 % Schreibvorgänge, regelmäßiges Zurückschreiben <!--write_workload_cloudws-->| Lesen/Schreiben | 30 Sekunden | 30 Sekunden |
+| Viele Lesezugriffe, Überprüfung des Sicherungsservers alle 3 Stunden <!--read_heavy_check_180-->| Lesen | 3 Stunden | Keine |

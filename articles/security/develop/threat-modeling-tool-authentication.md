@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 717142f5e97d68b844bc15a2f335390d1951ec0c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 8bc827605147f229ea82475d98eac35dec2d6a22
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487509"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290355"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen
 
@@ -457,7 +457,7 @@ Melden Sie sich bei Ihrer lokalen, durch OIDC geschützten Anwendung an, und erf
 | **SDL-Phase**               | Entwickeln |
 | **Zutreffende Technologien** | Allgemein, C#, Node.js  |
 | **Attribute**              | N/V, Wahl des Gateways – Azure IoT Hub |
-| **Referenzen**              | N/V, [Erste Schritte mit Azure IoT Hub (.NET)](../../iot-hub/quickstart-send-telemetry-dotnet.md), [Erste Schritte mit Azure IoT Hub (Node)](../../iot-hub/quickstart-send-telemetry-node.md), [Securing IoT with SAS and certificates](../../iot-hub/iot-hub-dev-guide-sas.md) (Schützen von IoT mit SAS und Zertifikaten), [Git-Repository](https://github.com/Azure/azure-iot-sdks/) |
+| **Referenzen**              | N/V, [Erste Schritte mit Azure IoT Hub (.NET)](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp), [Erste Schritte mit Azure IoT Hub (Node)](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs), [Securing IoT with SAS and certificates](../../iot-hub/iot-hub-dev-guide-sas.md) (Schützen von IoT mit SAS und Zertifikaten), [Git-Repository](https://github.com/Azure/azure-iot-sdks/) |
 | **Schritte** | <ul><li>**Allgemein:** Authentifizieren Sie das Gerät mittels TLS (Transport Layer Security) oder IPsec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzen Sie Azure AD, OAuth.</li><li>**C#:** Beim Erstellen einer DeviceClient-Instanz erstellt die Create-Methode standardmäßig eine DeviceClient-Instanz, die das AMQP-Protokoll für die Kommunikation mit dem IoT Hub verwendet. Wenn Sie das HTTPS-Protokoll verwenden möchten, verwenden Sie die Überschreibung der Create-Methode, mit der Sie das Protokoll angeben können. Bei Verwendung des HTTPS-Protokolls müssen Sie Ihrem Projekt auch das NuGet-Paket `Microsoft.AspNet.WebApi.Client` hinzufügen, um den Namespace `System.Net.Http.Formatting` einzuschließen.</li></ul>|
 
 ### <a name="example"></a>Beispiel

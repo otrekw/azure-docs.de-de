@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 58344a385a8ad4d409748c039f8f1e7807e290b7
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744465"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228377"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure AD Multi-Factor Authentication bei älteren Anwendungen mithilfe von App-Kennwörtern
 
@@ -103,7 +103,7 @@ Wenn Benutzer ihre anfängliche Registrierung für Azure AD Multi-Factor Authen
 
 Benutzer können auch App-Kennwörter nach der Registrierung erstellen. Weitere Informationen und ausführliche Schritte für Ihre Benutzer finden Sie in den folgenden Ressourcen:
 * [Welchen Zweck erfüllen App-Kennwörter bei Azure AD Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
-* [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
+* [Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“](../user-help/security-info-app-passwords.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: Dieser Artikel enthält die Hauptszenarien zur Verwendung von Azure
 ms.topic: article
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6508bc4fdcb5f6dfae877fcdb8d407350f1047f
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481594"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293577"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Gängige Szenarien für die Verwendung von Azure DevTest Labs
 Basierend auf den jeweiligen Anforderungen eines Unternehmens kann DevTest Labs so konfiguriert werden, dass die unterschiedlichen Bedürfnisse erfüllt werden.  In diesem Artikel werden die gängigen Szenarien beschrieben. In jedem Szenario geht es um die Vorteile, die sich durch die Verwendung von DevTest Labs und der entsprechenden Ressourcen zur Implementierung der Szenarien ergeben.  
@@ -59,9 +59,9 @@ Ein Lab in Azure DevTest Labs fungiert als idealer Container für zeitlich begre
 
 - Mit [Richtlinien](devtest-lab-set-lab-policy.md) wird sichergestellt, dass Benutzer nur die Anzahl von Ressourcen erhalten, die sie auch wirklich benötigen, z. B. virtuelle Computer.
 - Für Benutzer ist nur eine Aktion erforderlich, um vorkonfigurierte und erstellte Computer [anzufordern](devtest-lab-add-claimable-vm.md).
-- Labs werden für Benutzer freigegeben, indem auf die [URL für das Lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) zugegriffen wird.
+- Labs werden für Benutzer freigegeben, indem auf die [URL für das Lab](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) zugegriffen wird.
 - Mit [Ablaufdaten](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) auf virtuellen Computern wird sichergestellt, dass Computer gelöscht werden, wenn sie nicht mehr benötigt werden.
-- Das [Löschen eines Labs](devtest-lab-delete-lab-vm.md#delete-a-lab) und aller [zugehörigen Ressourcen](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) nach Abschluss der Schulung ist einfach.
+- Das [Löschen eines Labs](devtest-lab-delete-lab-vm.md#delete-a-lab) und aller [zugehörigen Ressourcen](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) nach Abschluss der Schulung ist einfach.
 
 Weitere Informationen finden Sie unter [Verwenden von Azure DevTest Labs zu Schulungszwecken](devtest-lab-training-lab.md).  
 
@@ -76,5 +76,4 @@ Bei einer **Proof of Concept**-Bereitstellung geht es um einen konzentrierten Ei
 Lesen Sie die folgenden Artikel:
 
 - [DevTest Labs-Konzepte](devtest-lab-concepts.md)
-- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.md)
-
+- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.yml)

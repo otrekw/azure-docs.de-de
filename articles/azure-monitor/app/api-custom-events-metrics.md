@@ -4,12 +4,12 @@ description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, We
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75576056162bf869c20706bed22c31785a8ea2a0
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 648c9ee1de00ef638354a287e43fa234610e9dc7
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060298"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291490"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -177,7 +177,7 @@ So senden Sie einen einzelnen Metrikwert:
 *JavaScript*
 
 ```javascript
-appInsights.trackMetric("queueLength", 42.0);
+appInsights.trackMetric({name: "queueLength", average: 42});
 ```
 
 *C#*
@@ -1087,7 +1087,6 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
   * **ID:** Ein generierter Wert, der verschiedene Ereignisse korreliert, sodass Sie beim Untersuchen eines Ereignisses in der Diagnosesuche verwandte Elemente finden können.
   * **Name**: Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
   * **SyntheticSource:** Wenn diese Zeichenfolge nicht NULL oder leer ist, wird damit angegeben, dass die Quelle der Anforderung als Roboter oder Webtest identifiziert wurde. Standardmäßig wird sie von Berechnungen im Metrik-Explorer ausgeschlossen.
-* **Properties:** Eigenschaften, die mit allen Telemetriedaten gesendet werden. Kann in einzelnen Track*-Aufrufen außer Kraft gesetzt werden.
 * **Sitzung (Session)** : Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
 * **Benutzer:** Benutzerinformationen.
 
@@ -1126,4 +1125,4 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 ## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
 * [Durchsuchen von Ereignissen und Protokollen](./diagnostic-search.md)
-* [Problembehandlung](../faq.md)
+* [Problembehandlung](../faq.yml)

@@ -3,12 +3,12 @@ title: Azure Lighthouse und verwaltete Azure-Anwendungen
 description: Verstehen Sie, wie Azure Lighthouse und verwaltete Azure-Anwendungen gemeinsam verwendet werden können.
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: b2bca71973dd22e566c5fb330206d37cc2854d6c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 09e07aca77fc53cb9eab2ba0c980b6c838ef6726
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788605"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962638"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse und verwaltete Azure-Anwendungen
 
@@ -45,7 +45,7 @@ Bei einer verwalteten Anwendung werden die von der Anwendung verwendeten Ressour
 
 Verwaltete Anwendungen unterstützen [angepasste Azure-Portal-Erfahrungen](../../azure-resource-manager/managed-applications/concepts-view-definition.md) und die [Integration in benutzerdefinierte Anbieter](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md). Diese Optionen können verwendet werden, um eine stärker angepasste und integrierte Erfahrung bereitzustellen, sodass Kunden einige Verwaltungsaufgaben leichter selbst ausführen können.
 
-Verwaltete Anwendungen können [im Azure Marketplace veröffentlicht werden](../../marketplace/create-new-azure-apps-offer.md), entweder als privates Angebot für die Verwendung durch einen bestimmten Kunden oder als öffentliches Angebot, das von mehreren Kunden erworben werden kann. Sie können auch Benutzern in Ihrer Organisation bereitgestellt werden, indem [verwaltete Anwendungen in Ihrem Dienstkatalog veröffentlicht werden](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Sie können sowohl Dienstkatalog- als auch Marketplace-Instanzen mithilfe von ARM-Vorlagen bereitstellen, die den eindeutigen Bezeichner eines kommerziellen Marketplace-Partners zum Nachverfolgen der [Zuordnung der Nutzung durch Kunden](../../marketplace/azure-partner-customer-usage-attribution.md) enthalten können.
+Verwaltete Anwendungen können [im Azure Marketplace veröffentlicht werden](../../marketplace/azure-app-offer-setup.md), entweder als privates Angebot für die Verwendung durch einen bestimmten Kunden oder als öffentliches Angebot, das von mehreren Kunden erworben werden kann. Sie können auch Benutzern in Ihrer Organisation bereitgestellt werden, indem [verwaltete Anwendungen in Ihrem Dienstkatalog veröffentlicht werden](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md). Sie können sowohl Dienstkatalog- als auch Marketplace-Instanzen mithilfe von ARM-Vorlagen bereitstellen, die den eindeutigen Bezeichner eines kommerziellen Marketplace-Partners zum Nachverfolgen der [Zuordnung der Nutzung durch Kunden](../../marketplace/azure-partner-customer-usage-attribution.md) enthalten können.
 
 Verwaltete Azure-Anwendungen werden in der Regel für einen bestimmten Kundenbedarf verwendet, was durch eine sofort einsatzbereite Lösung erzielt werden kann, die vollständig verwaltet vom Dienstanbieter verwaltet wird.
 

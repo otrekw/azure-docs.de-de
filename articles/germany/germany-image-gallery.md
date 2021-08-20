@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 90258a20c0f763ec427a80bff7075974af1e95f4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: dd43ef428426037696fb2fcfdf6bac58c9b27dc4
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127515"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077669"
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 
@@ -240,7 +240,7 @@ Informationen zu Abweichungen, die bei der Programmierung von Endpunkten für Az
 Weitere Informationen zur Bereitstellung aus dem Marketplace oder zum Erstellen einer eigenen VHD finden Sie in folgenden Ressourcen:  
 
 * [Erstellen einer Windows-VM im Azure-Portal](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Häufig gestellte Fragen zu virtuellen Windows-Computern](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Häufig gestellte Fragen zu virtuellen Windows-Computern](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Erstellen eines benutzerdefinierten Linux-VM-Images](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 

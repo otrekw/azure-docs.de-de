@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0e1d7bba91ca9283b00432a06e24d1b8beaa49fc
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 8627a8989a4fbd64c66d8af7299baacacee22b56
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811313"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285056"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -59,7 +59,7 @@ login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizi
 
 ## <a name="outbound-connectivity-using-service-tags"></a>Ausgehende Konnektivität mithilfe von Diensttags
 
-Neben der Steuerung von URLs können Sie auch Diensttags verwenden, um die Konnektivität zu steuern. Hierzu müssen Sie zunächst eine [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/network-security-group-how-it-works) in Azure erstellen. Nach der Erstellung müssen Sie unsere vorhandenen Diensttags verwenden und eine NSG-Regel erstellen, um den Zugriff auf Azure Site Recovery-Dienste zuzulassen. 
+Neben der Steuerung von URLs können Sie auch Diensttags verwenden, um die Konnektivität zu steuern. Hierzu müssen Sie zunächst eine [Netzwerksicherheitsgruppe](../virtual-network/network-security-group-how-it-works.md) in Azure erstellen. Nach der Erstellung müssen Sie unsere vorhandenen Diensttags verwenden und eine NSG-Regel erstellen, um den Zugriff auf Azure Site Recovery-Dienste zuzulassen. 
 
 Der Vorteil der Verwendung von Diensttags zum Steuern der Konnektivität im Vergleich zur Steuerung der Konnektivität mithilfe von IP-Adressen besteht darin, dass keine feste Abhängigkeit von einer bestimmten IP-Adresse besteht, um mit unseren Diensten verbunden zu bleiben. Wenn sich in einem solchen Szenario die IP-Adresse eines unserer Dienste ändert, wird die laufende Replikation für Ihre Computer nicht beeinträchtigt. Dagegen führt eine Abhängigkeit von hartcodierten IP-Adressen dazu, dass der Replikationsstatus kritisch wird und Ihre Systeme gefährdet werden. Darüber hinaus sorgen Diensttags für eine bessere Sicherheit, Stabilität und Resilienz als hartcodierte IP-Adressen.
 

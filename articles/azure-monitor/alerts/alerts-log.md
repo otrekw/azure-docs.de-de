@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 03c6697f07f66cd1d12cae55ddc5f4c73db70505
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9fa0e633c92300e0932200725aa1fa82de46f359
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461688"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221473"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -317,7 +317,7 @@ In den vorangegangenen Abschnitten haben Sie erfahren, wie Sie über das Azure-P
 1. Mithilfe des folgenden Befehls können Sie eine Protokollwarnungsregel deaktivieren:
 
     ```azurecli
-    az monitor scheduled-query update -g {ResourceGroup} -n {AlertRuleName} --enabled false
+    az monitor scheduled-query update -g {ResourceGroup} -n {AlertRuleName} --disabled false
     ```
 
 1. Mithilfe des folgenden Befehls können Sie eine Protokollwarnungsregel löschen:

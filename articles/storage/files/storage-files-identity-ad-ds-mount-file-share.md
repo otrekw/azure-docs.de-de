@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d71526fea23e3a440428266addfc497b1a89c63c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586997"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117150"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Teil 4: Einbinden einer Dateifreigabe von einer in eine Domäne eingebundenen VM
 
@@ -23,6 +23,13 @@ Mit dem in diesem Artikel beschriebenen Prozess wird überprüft, ob Ihre Dateif
 Melden Sie sich mithilfe der Anmeldeinformationen beim Client an, denen Sie die Berechtigungen erteilt haben (siehe folgende Abbildung).
 
 ![Screenshot mit dem Azure AD-Anmeldebildschirm für die Benutzerauthentifizierung](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="mounting-prerequisites"></a>Voraussetzungen für die Einbindung
 

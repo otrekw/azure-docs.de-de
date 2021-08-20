@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 2ca7eec3bcc40d5c0f93c43cc32b9395feb1e5d0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3552a8191fc5482f8a58cc3365302f44f2f364a3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790413"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284323"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>Herstellen einer Verbindung mithilfe von Speicher mit identitätsbasiertem Datenzugriff (Vorschau)
 
@@ -59,7 +59,7 @@ Bei bestimmten Machine Learning-Szenarien werden Modelle auch mit privaten Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+- Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://azure.microsoft.com/free/) aus.
 
 - Ein Azure Storage-Konto mit einem unterstützten Speichertyp. Diese Speichertypen werden für die Vorschauversion unterstützt: 
     - [Azure Blob Storage](../storage/blobs/storage-blobs-overview.md)
@@ -84,7 +84,7 @@ Beim identitätsbasierten Datenzugriff werden nur Verbindungen mit den folgenden
 * Azure Data Lake Storage Gen2
 * Azure SQL-Datenbank
 
-Für den Zugriff auf diese Speicherdienste benötigen Sie mindestens die Zugriffsberechtigung [Leser von Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Nur Speicherkontobesitzer können [Ihre Zugriffsebene über das Azure-Portal ändern](../storage/common/storage-auth-aad-rbac-portal.md).
+Für den Zugriff auf diese Speicherdienste benötigen Sie mindestens die Zugriffsberechtigung [Leser von Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Nur Speicherkontobesitzer können [Ihre Zugriffsebene über das Azure-Portal ändern](../storage/blobs/assign-azure-role-data-access.md).
 
 Wenn Sie ein Modell auf einem Remotecomputeziel trainieren, muss der Compute-Identität vom Speicherdienst mindestens die Rolle „Leser von Speicherblobdaten“ gewährt werden. Informieren Sie sich über das [Einrichten einer verwalteten Identität auf einem Computecluster](how-to-create-attach-compute-cluster.md#managed-identity).
 

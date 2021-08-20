@@ -4,12 +4,12 @@ description: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d786af9eeb9b3c01dad2c3954ebe127d3811819f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 36e57cce27ed07da2a17f1fe2af8d3be0186a175
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703789"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284660"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -51,7 +51,7 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>Hinzufügen eines Besitzers oder Benutzers auf der Lab-Ebene
-Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Bei einem Benutzer kann es sich um einen externen Benutzer mit gültigem [Microsoft-Konto (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) handeln.
+Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Bei einem Benutzer kann es sich um einen externen Benutzer mit gültigem [Microsoft-Konto (MSA)](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account) handeln.
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
 1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4591253e1a305632b7f41afe692f297d71366382
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32f140ae27501b9f4f3b66e5f5815b8f3f20b3ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98744016"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445109"
 ---
 # <a name="enable-monitoring-for-cloud-services-extended-support-using-the-azure-portal"></a>Aktivieren der Überwachung für Cloud Services (erweiterter Support) mithilfe des Azure-Portals
 
@@ -40,5 +40,5 @@ In diesem Artikel wird erläutert, wie Sie Warnungen für vorhandene Bereitstell
 6. Wenn Sie das Einrichten von Warnungen abgeschlossen haben, speichern Sie die Änderungen. Basierend auf den konfigurierten Metriken wird das Blatt **Warnungen** im Laufe der Zeit mit Daten aufgefüllt.
 
 ## <a name="next-steps"></a>Nächste Schritte 
-- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Sehen Sie sich die [häufig gestellten Fragen](faq.yml) zu Cloud Services (erweiterter Support) an.
 - Stellen Sie eine Cloud Service-Instanz (erweiterter Support) über das [Azure-Portal](deploy-portal.md), mit [PowerShell](deploy-powershell.md), einer [Vorlage](deploy-template.md) oder [Visual Studio](deploy-visual-studio.md) bereit.

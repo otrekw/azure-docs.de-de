@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 03/08/2021
-ms.openlocfilehash: 77ed41299d9b4d8bc0ba3c6d2b998cb63258fd5c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: c3e509a67eaf4bcc921032e762f54402f650ae3e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887880"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971232"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
@@ -196,14 +196,14 @@ Einzelne Preise (die, je nachdem, wie sie festgelegt wurden, möglicherweise dur
 
 Ausführliche Informationen zum Eingen von Preisen für bestimmte Angebotstypen finden Sie in den folgenden Artikeln:
 
-- [Erstellen eines Azure-Anwendungsangebots](create-new-azure-apps-offer.md)
+- [Erstellen eines Azure-Anwendungsangebots](azure-app-offer-setup.md)
 - [Erstellen eines Azure-Containerangebots](azure-container-offer-setup.md)
 - [Erstellen eines Angebots für virtuelle Azure-Computer](azure-vm-create.md)
 - [Erstellen eines Beratungsdienstangebots](./create-consulting-service-offer.md)
 - [Erstellen eines Angebots für Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md)
-- [Erstellen eines Angebots für Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
-- [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
-- [Erstellen eines IoT Edge-Modulangebots](partner-center-portal/azure-iot-edge-module-creation.md)
+- [Erstellen eines Angebots für Dynamics 365 for Operations](dynamics-365-operations-offer-setup.md)
+- [Erstellen eines Angebots für Dynamics 365 Business Central](dynamics-365-business-central-offer-setup.md)
+- [Erstellen eines IoT Edge-Modulangebots](iot-edge-offer-setup.md)
 - [Erstellen eines Angebots für einen verwalteten Dienst](./plan-managed-service-offer.md)
-- [Erstellen einer Power BI-App](partner-center-portal/create-power-bi-app-offer.md)
+- [Erstellen einer Power BI-App](./power-bi-app-offer-setup.md)
 - [Erstellen eines SaaS-Angebots](./create-new-saas-offer.md)

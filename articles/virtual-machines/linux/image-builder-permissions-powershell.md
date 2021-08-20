@@ -1,20 +1,20 @@
 ---
 title: Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe von PowerShell
 description: Konfigurieren von Anforderungen für den Azure VM Image Builder-Dienst einschließlich Berechtigungen und Rechten mithilfe von PowerShell
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6eb802d560e168d64a1f9abe0301f8038203ee54
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a7d32bdb2ea1897a0458708425cd7af025818fd8
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028485"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596333"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe von PowerShell
 

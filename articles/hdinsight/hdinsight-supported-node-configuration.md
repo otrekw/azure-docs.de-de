@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
-ms.openlocfilehash: d41ee2554d30a56bc2e025bbe2c93aee143d75e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d65f68802f332092fbf2fa3676880d6263b2cab1
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931654"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291077"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Was sind die Standard- und die empfohlenen Knotenkonfigurationen für Azure HDInsight?
 
@@ -50,31 +50,28 @@ Weitere Informationen zu Spezifikationen jedes VM-Typs finden Sie in den folgend
 > [!Note]
 > Um den SKU-Bezeichner für die Verwendung in PowerShell und anderen Skripts zu erhalten, fügen Sie `Standard_` am Anfang aller VM-SKUs in den folgenden Tabellen hinzu. Beispielsweise wird `D12_v2` zu `Standard_D12_v2`.
 
-| Clustertyp | Hadoop | hbase | Interactive Query | Storm | Spark | ML Server | Kafka |
-|---|---|---|---|---|---|---|---|
-| Head – Standard-VM-Größe | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| Head – mindestens erforderliche empfohlene VM-Größen | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| Worker – Standard-VM-Größe | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2 mit 2 S30-Datenträgern pro Broker |
-| Worker – mindestens erforderliche empfohlene VM-Größen | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
-| Zookeeper – Standard-VM-Größen |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper – mindestens erforderliche empfohlene VM-Größen |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
-| ML Services: VM-Standardgröße |  |  |  |  |  | D4_v2 |  |
-| ML Services – mindestens erforderliche empfohlene VM-Größen |  |  |  |  |  | D4_v2 |  |
+| Clustertyp                            | Hadoop | hbase  | Interactive Query | Storm | Spark                | Kafka                                |
+|-----------------------------------------|--------|--------|-------------------|-------|----------------------|--------------------------------------|
+| Head – Standard-VM-Größe                   | D12_v2 | D12_v2 | D13_v2            | A4_v2 | D12_v2, <br/>D13_v2* | D3_v2                                |
+| Head – mindestens erforderliche empfohlene VM-Größen      | D5_v2  | D3_v2  | D13_v2            | A4_v2 | D12_v2, <br/>D13_v2* | D3_v2                                |
+| Worker – Standard-VM-Größe                 | D4_v2  | D4_v2  | D14_v2            | D3_v2 | D13_v2               | 4 D12_v2 mit 2 S30-Datenträgern pro Broker |
+| Worker – mindestens erforderliche empfohlene VM-Größen    | D5_v2  | D3_v2  | D13_v2            | D3_v2 | D12_v2               | D3_v2                                |
+| Zookeeper – Standard-VM-Größen              |        | A4_v2  | A4_v2             | A4_v2 |                      | A4_v2                                |
+| ZooKeeper – mindestens erforderliche empfohlene VM-Größen |        | A4_v2  | A4_v2             | A2_v2 |                      | A4_v2                                |
 
 \* = die VM-Größen für die Cluster des Spark-Enterprise-Sicherheitspakets (ESP)
 
 ### <a name="brazil-south-and-japan-west-only"></a>Nur „Brasilien, Süden“ und „Japan, Westen“
 
-| Clustertyp | Hadoop | hbase | Interactive Query | Storm | Spark | ML Services |
-|---|---|---|---|---|---|---|
-| Head – Standard-VM-Größe | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| Head – mindestens erforderliche empfohlene VM-Größen | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
-| Worker – Standard-VM-Größe | D4 | D4 | D14 | D3 | D13 | D4 |
-| Worker – mindestens erforderliche empfohlene VM-Größen | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
-| Zookeeper – Standard-VM-Größen |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper – mindestens erforderliche empfohlene VM-Größen |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ML Services: VM-Standardgrößen |  |  |  |  |  | D4 |
-| ML Services – mindestens erforderliche empfohlene VM-Größen |  |  |  |  |  | D4_v2 |
+| Clustertyp                            | Hadoop | hbase | Interactive Query | Storm | Spark  |
+|-----------------------------------------|--------|-------|-------------------|-------|--------|
+| Head – Standard-VM-Größe                   | D12    | D12   | D13               | A4_v2 | D12    |
+| Head – mindestens erforderliche empfohlene VM-Größen      | D5_v2  | D3_v2 | D13_v2            | A4_v2 | D12_v2 |
+| Worker – Standard-VM-Größe                 | D4     | D4    | D14               | D3    | D13    |
+| Worker – mindestens erforderliche empfohlene VM-Größen    | D5_v2  | D3_v2 | D13_v2            | D3_v2 | D12_v2 |
+| Zookeeper – Standard-VM-Größen              |        | A4_v2 | A4_v2             | A4_v2 |        |
+| ZooKeeper – mindestens erforderliche empfohlene VM-Größen |        | A4_v2 | A4_v2             | A4_v2 |        |
+
 
 > [!NOTE]
 > - Head wird für den Storm-Clustertyp als *Nimbus* bezeichnet.

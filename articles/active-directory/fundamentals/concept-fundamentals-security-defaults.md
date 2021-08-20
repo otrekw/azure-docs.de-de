@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 07/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762549"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730296"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -137,7 +137,7 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 - ** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
 
 > [!WARNING]
-> Deaktivieren Sie keine Methoden für Ihre Organisation, wenn Sie Sicherheitsstandards verwenden. Das Deaktivieren von Methoden kann dazu führen, dass Sie sich von Ihrem Mandanten abmelden. Lassen Sie alle **Methoden für Benutzer verfügbar** im [Portal für MFA-Diensteinstellungen](../authentication/howto-mfa-getstarted.md#choose-verification-options) aktiviert.
+> Deaktivieren Sie keine Methoden für Ihre Organisation, wenn Sie Sicherheitsstandards verwenden. Das Deaktivieren von Methoden kann dazu führen, dass Sie sich von Ihrem Mandanten abmelden. Lassen Sie alle **Methoden für Benutzer verfügbar** im [Portal für MFA-Diensteinstellungen](../authentication/howto-mfa-getstarted.md#choose-authentication-methods-for-mfa) aktiviert.
 
 ### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
 
@@ -145,7 +145,7 @@ Wenn Ihre Organisation früher benutzerbasierte Azure AD Multi-Factor Authentic
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 
-Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, die mit den Sicherheitsstandards vergleichbar sind, aber eine höhere Granularität (einschließlich Benutzerausschlüsse) bieten, welche bei Sicherheitsstandards nicht verfügbar ist. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards solange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren. Weitere Informationen zur Azure AD-Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+Sie können den bedingten Zugriff zum Konfigurieren von Richtlinien verwenden, die mit den Sicherheitsstandards vergleichbar sind, aber eine höhere Granularität (einschließlich Benutzerausschlüsse) bieten, welche bei Sicherheitsstandards nicht verfügbar ist. Wenn Sie mit dem bedingtem Zugriff arbeiten und in Ihrer Umgebung die Richtlinien für bedingten Zugriff aktiviert sind, stehen Ihnen die Sicherheitsstandards nicht zur Verfügung. Wenn Sie über eine Lizenz für die Bereitstellung des bedingten Zugriffs verfügen, aber keine Richtlinien für bedingten Zugriff in Ihrer Umgebung aktiviert sind, können Sie die Sicherheitsstandards solange nutzen, bis Sie Richtlinien für bedingten Zugriff aktivieren. Weitere Informationen zur Azure AD-Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 ![Warnmeldung mit dem Hinweis, dass Sicherheitsstandards und bedingter Zugriff nicht gleichzeitig verwendet werden können](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

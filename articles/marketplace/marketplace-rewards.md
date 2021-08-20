@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/28/2021
-ms.openlocfilehash: 0be8e50ef500f746d26605048d577c5e806e7b9c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 665f91147bca5ed209d426d3864f5baa68b15d43
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110709355"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289625"
 ---
 # <a name="marketplace-rewards"></a>Marketplace-Prämien
 
@@ -36,7 +36,7 @@ In Partner Center können Sie auf der Seite [Marketplace-Prämien](https://partn
 Die Schritte für den Einstieg sind einfach:
 
 1. Veröffentlichen Sie ein Angebot bei Microsoft AppSource oder im Azure Marketplace.
-1. Navigieren Sie im Partner Center zur Seite für [Marketplace-Prämien](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace), und wählen Sie die Registerkarte für **Verkaufs- und Marketingvorteile** aus, um die Liste der Vorteile anzuzeigen.
+1. Navigieren Sie im Partner Center zur Seite für [Marketplace-Prämien](https://go.microsoft.com/fwlink/?linkid=2165388), und wählen Sie die Registerkarte für **Verkaufs- und Marketingvorteile** aus, um die Liste der Vorteile anzuzeigen.
 1. Um einen Verkaufs- und Marketingvorteil zu aktivieren, müssen Sie zunächst einen Marketingkontakt zuweisen. Dieser Kontakt erhält dann weitere Informationen zu Ihren Marketplace-Prämien.
 1. Zum Hinzufügen oder Aktualisieren Ihrer Marketingkontaktinformationen navigieren Sie auf der Seite für Marketplace-Prämien zum oberen Bereich der Registerkarte für Verkaufs- und Marketingvorteile, und wählen Sie dann **Hinzufügen, aktualisieren oder ändern** aus.  Gehen Sie anschließend wie folgt vor:
 
@@ -51,6 +51,6 @@ Die Schritte für den Einstieg sind einfach:
 1. Informationen zur Nutzung der Vorteile von Azure Sponsorship erhalten Sie per E-Mail, sobald Sie diese Vorteile entsperren.
 
 >[!NOTE]
->Wenn Ihr Angebot seit mehr als vier Wochen live geschaltet ist und Sie keine Nachricht erhalten haben, informieren Sie sich im Partner Center, wer der Besitzer des Angebots in Ihrem Unternehmen ist. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, öffnen Sie ein [Supportticket](https://aka.ms/marketplacepublishersupport).
+>Wenn Ihr Angebot seit mehr als vier Wochen live geschaltet ist und Sie keine Nachricht erhalten haben, informieren Sie sich im Partner Center, wer der Besitzer des Angebots in Ihrem Unternehmen ist. Dieser sollte die Kommunikation und die nächsten Schritte erhalten haben. Wenn Sie den Besitzer nicht ermitteln können oder dieser Ihr Unternehmen verlassen hat, öffnen Sie ein [Supportticket](https://go.microsoft.com/fwlink/?linkid=2165533).
 
 Der Umfang der für Sie verfügbaren Aktivitäten erweitert sich mit der Anzahl Ihrer Angebote auf dem Markt. Alle Angebote erhalten im Rahmen einer Self-Service-E-Mail mit Ressourcen und bewährten Methoden eine Basisebene von Optimierungsempfehlungen und Werbung.

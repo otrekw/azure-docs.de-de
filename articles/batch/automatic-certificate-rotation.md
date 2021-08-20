@@ -2,23 +2,17 @@
 title: Aktivieren der automatischen Zertifikatrotation in einem Batch-Pool
 description: Sie können einen Batch-Pool mit einer verwalteten Identität und einem Zertifikat erstellen, das automatisch erneuert wird.
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: e8bea49b2980deb8f20258ab7ea5619ece8cd2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 9a8f4d785c9a411df6c867724f057b1dc9b29722
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104962303"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362416"
 ---
 # <a name="enable-automatic-certificate-rotation-in-a-batch-pool"></a>Aktivieren der automatischen Zertifikatrotation in einem Batch-Pool
 
  Sie können einen Batch-Pool mit einem Zertifikat erstellen, das automatisch erneuert wird. Zu diesem Zweck muss der Pool mit einer [benutzerseitig zugewiesenen verwalteten Identität](managed-identity-pools.md) erstellt werden, die in [Azure Key Vault](../key-vault/general/overview.md) auf das Zertifikat zugreifen kann.
-
-> [!IMPORTANT]
-> Die Unterstützung von Azure Batch-Pools mit benutzerseitig zugewiesenen verwalteten Identitäten befindet sich derzeit für die folgenden Regionen in der öffentlichen Vorschau: USA, Westen 2; USA, Süden-Mitte; USA, Osten; US Gov Arizona; US Gov Virginia.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-user-assigned-identity"></a>Erstellen einer benutzerseitig zugewiesenen Identität
 

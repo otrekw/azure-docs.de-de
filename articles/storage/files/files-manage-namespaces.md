@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a8f1b8c54ad4fd42cc8ebda4965aaf1233143f39
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 0676639523a0b1ebd23ff0e5082e6cccbd641f4a
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741258"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117297"
 ---
 # <a name="how-to-use-dfs-namespaces-with-azure-files"></a>Verwenden von DFS-Namespaces mit Azure Files
-[DFS-Namespaces (Distributed File Systems Namespaces)](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview) oder DFS-N bezeichnet eine Windows Server-Serverrolle, die vielfach verwendet wird, um die Bereitstellung und Wartung von SMB-Dateifreigaben in der Produktion zu vereinfachen. DFS-Namespaces ist eine Technologie für die Virtualisierung von Speichernamespaces, mit deren Hilfe Sie eine indirekte Ebene zwischen dem UNC-Pfad Ihrer Dateifreigaben und den eigentlichen Dateifreigaben bereitstellen können. DFS-Namespaces funktionieren mit SMB-Dateifreigaben, wobei es keine Rolle spielt, wo diese Dateifreigaben gehostet werden: Sie können SMB-Freigaben verwenden, die auf einem lokalen Windows-Dateiserver mit oder ohne Azure-Dateisynchronisierung gehostet werden, direkte Azure-Dateifreigaben, SMB-Dateifreigaben mit Hosting in Azure NetApp Files oder anderen Drittanbieterangeboten oder sogar Dateifreigaben, die in anderen Clouds gehostet werden. 
+[DFS-Namespaces (Distributed File Systems Namespaces)](/windows-server/storage/dfs-namespaces/dfs-overview) oder DFS-N bezeichnet eine Windows Server-Serverrolle, die vielfach verwendet wird, um die Bereitstellung und Wartung von SMB-Dateifreigaben in der Produktion zu vereinfachen. DFS-Namespaces ist eine Technologie für die Virtualisierung von Speichernamespaces, mit deren Hilfe Sie eine indirekte Ebene zwischen dem UNC-Pfad Ihrer Dateifreigaben und den eigentlichen Dateifreigaben bereitstellen können. DFS-Namespaces funktionieren mit SMB-Dateifreigaben, wobei es keine Rolle spielt, wo diese Dateifreigaben gehostet werden: Sie können SMB-Freigaben verwenden, die auf einem lokalen Windows-Dateiserver mit oder ohne Azure-Dateisynchronisierung gehostet werden, direkte Azure-Dateifreigaben, SMB-Dateifreigaben mit Hosting in Azure NetApp Files oder anderen Drittanbieterangeboten oder sogar Dateifreigaben, die in anderen Clouds gehostet werden. 
 
 Im Kern bietet DFS-Namespaces eine Zuordnung zwischen einem benutzerfreundlichen UNC-Pfad wie `\\contoso\shares\ProjectX` und dem zugrunde liegenden UNC-Pfad der SMB-Freigabe, z. B. `\\Server01-Prod\ProjectX` oder `\\storageaccount.file.core.windows.net\projectx`. Wenn der Endbenutzer zu seiner Dateifreigabe navigieren möchte, gibt er den benutzerfreundlichen UNC-Pfad ein, aber der zugehörige SMB-Client greift auf den zugrunde liegenden SMB-Pfad der Zuordnung zu. Es ist zudem möglich, dieses grundlegende Konzept zu erweitern, um einen Namen eines vorhandenen Dateiservers wie beispielsweise `\\MyServer\ProjectX` zu übernehmen. Sie können diese Funktion verwenden, um die folgenden Szenarien zu unterstützen:
 
@@ -32,6 +32,13 @@ Ein Beispiel für die Verwendung von DFS-Namespaces mit Ihrer Azure Files-Bereit
 > Wechseln Sie zu Position 10:10 im Video, um zu erfahren, wie DFS-Namespaces eingerichtet wird.
 
 Wenn Sie bereits über DFS-Namespace verfügen, sind für die Verwendung mit Azure Files und die Dateisynchronisierung keine besonderen Schritte erforderlich. Wenn Sie lokal auf Ihre Azure-Dateifreigabe zugreifen, gelten die üblichen Überlegungen zum Netzwerkbetrieb. Weitere Informationen finden Sie unter [Azure Files – Überlegungen zum Netzwerkbetrieb](./storage-files-networking-overview.md).
+
+## <a name="applies-to"></a>Gilt für:
+| Dateifreigabetyp | SMB | NFS |
+|-|:-:|:-:|
+| Standard-Dateifreigaben (GPv2), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Standard-Dateifreigaben (GPv2), GRS/GZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Dateifreigaben (FileStorage), LRS/ZRS | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
 ## <a name="namespace-types"></a>Namespacetypen
 DFS-Namespaces bietet zwei grundlegende Arten von Namespaces:
@@ -207,7 +214,7 @@ New-DfsnFolder -Path $sharePath -TargetPath $targetUNC
 
 Nachdem Sie nun einen Namespace, einen Ordner und ein Ordnerziel erstellt haben, sollten Sie Ihre Dateifreigabe über DFS-Namespaces einbinden können. Wenn Sie einen domänenbasierten Namespace verwenden, sollte der vollständige Pfad für Ihre Freigabe `\\<domain-name>\<namespace>\<share>` lauten. Bei Verwendung eines eigenständigen Namespace sollte der vollständige Pfad für Ihre Freigabe `\\<DFS-server>\<namespace>\<share>` lauten. Wenn Sie einen eigenständigen Namespace mit Stammkonsolidierung verwenden, können Sie direkt über Ihren alten Servernamen zugreifen, z. B. `\\<old-server>\<share>`.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 - Bereitstellen einer Azure-Dateifreigabe: [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) und [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md)
 - Konfigurieren des Zugriffs auf Dateifreigaben: [Identitätsbasierte Authentifizierung](storage-files-active-directory-overview.md) und [Azure Files – Überlegungen zum Netzwerkbetrieb](storage-files-networking-overview.md)
-- [Übersicht über DFS-Namespaces](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)
+- [Übersicht über DFS-Namespaces](/windows-server/storage/dfs-namespaces/dfs-overview)
