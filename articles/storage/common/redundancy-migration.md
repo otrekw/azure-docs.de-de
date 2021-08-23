@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 06/09/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 222518f21cb9940efd4fbf266b9248e4b0414f43
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d060a066c80f10fb9d887db90bde434cc89922a5
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316321"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901628"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -46,7 +45,6 @@ Die folgende Tabelle bietet eine Übersicht über die Möglichkeiten zum Wechsel
 
 <sup>1</sup> Hierbei fällt eine einmalige Gebühr für ausgehende Daten an.<br />
 <sup>2</sup> Die Migration von LRS zu GRS wird nicht unterstützt, wenn das Speicherkonto Blobs auf der Archivebene enthält.<br />
-<sup>3</sup> Konvertierung aus ZRS in GZRS/RA-GZRS oder umgekehrt wird in den folgenden Regionen nicht unterstützt: „USA, Osten 2“, „USA, Osten“, „Europa, Westen“.
 
 > [!CAUTION]
 > Wenn Sie ein [Kontofailover](storage-disaster-recovery-guidance.md) für Ihr (RA-)GRS- oder (RA-)GZRS-Konto durchgeführt haben, ist das Konto in der neuen primären Region nach dem Failover lokal redundant (LRS). Livemigration zu ZRS oder GZRS für ein LRS-Konto, das sich aus einem Failover ergibt, wird nicht unterstützt. Dies gilt sogar für sogenannte Failbackvorgänge. Wenn Sie z. B. ein Kontofailover von RA-GZRS zum LRS-Konto in der sekundären Region durchführen und das Konto dann erneut für RA-GRS konfigurieren und ein weiteres Kontofailover zur ursprünglichen primären Region durchführen, können Sie sich nicht an den Support wenden, um die ursprüngliche Livemigration zu RA-GZRS in der primären Region durchzuführen. Stattdessen müssen Sie eine manuelle Migration zu ZRS oder GZRS durchführen.
@@ -148,7 +146,7 @@ Folgen Sie diesen Schritten, um eine Live-Migration anzufordern:
 1. Füllen Sie die zusätzlichen erforderlichen Informationen auf der Registerkarte **Details** aus, und wählen Sie dann **überprüfen + erstellen** aus, um Ihr Supportticket zu prüfen und zu übermitteln. Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen, um Sie nach Bedarf und Wunsch unterstützen.
 
 > [!NOTE]
-> Premium-Dateifreigaben (FileStorage-Konten) sind nur für LRS und ZRS verfügbar.
+> Premium-Dateifreigaben sind nur für LRS und ZRS verfügbar.
 >
 > GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md) finden Sie weitere Details.
 >
@@ -197,7 +195,7 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 Die Kosten für eine Änderung der Datenreplikation richten sich nach der Quell- und der Zieloption für den Wechsel. Die Reihenfolge der Azure Storage-Redundanzangebote vom kostengünstigsten bis zum kostenintensivsten: LRS, ZRS, GRS, RA-GRS, GZRS und RA-GZRS.
 
-Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Replikationstyp zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Beim Wechsel *zu* GRS oder RA-GRS fallen Kosten für eine ausgehende Bandbreite an, da Ihre Daten (in Ihrer primären Region) in Ihre sekundäre Remoteregion repliziert werden. Dies sind einmalige Kosten bei der ersten Einrichtung. Nachdem die Daten kopiert sind, fallen keine weiteren Kosten für die Migration an. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Beispielsweise fallen beim Wechsel *von* LRS zu einem beliebigen anderen Replikationstyp zusätzliche Kosten an, da Sie in eine komplexere Redundanzebene wechseln. Bei der Migration *zu* GRS oder RA-GRS wird zum Zeitpunkt der Migration eine Gebühr für ausgehende Bandbreite berechnet, da Ihr gesamtes Speicherkonto in die sekundäre Region repliziert wird. Für alle nachfolgenden Schreibvorgänge in die primäre Region entstehen ebenfalls Gebühren für ausgehende Bandbreite, um den Schreibzugriff in die sekundäre Region zu replizieren. Ausführliche Informationen zu Bandbreitengebühren finden Sie auf der [Seite mit Informationen zu Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 Wenn Sie Ihr Speicherkonto von GRS zu LRS migrieren, entstehen keine zusätzlichen Kosten, aber Ihre replizierten Daten werden am sekundären Standort gelöscht.
 

@@ -7,20 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2552b9ee4ba37ad6062229958557d81e871fbe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904753"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355201"
 ---
 # <a name="azure-maps-mobility-services-preview-coverage"></a>Abdeckung von Azure Maps-Mobilitätsdiensten (Vorschau)
 
 > [!IMPORTANT]
-> Mobilitätsdienste von Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+> Die Vorschauversion von Azure Maps Mobility Services wurde eingestellt. Nach dem 5. Oktober 2021 ist sie nicht mehr verfügbar und wird nicht mehr unterstützt. Alle anderen Azure Maps-APIs und -Dienste sind von dieser Einstellungsankündigung nicht betroffen.
+> Weitere Informationen finden Sie unter [Azure Maps Mobility – Einstellung der Vorschauversion](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/).
 
 Die [Mobilitätsdienste](/rest/api/maps/mobility) von Azure Maps verkürzen die Entwicklungszeit für Anwendungen mit Features für den öffentlichen Nahverkehr, z. B. bei der Verkehrsroutenplanung und Suche nach nahe gelegenen Haltestellen des öffentlichen Nahverkehrs. Benutzer können ausführliche Informationen zu Haltestellen, Linien und Fahrplänen abrufen. Die Mobilitätsdienste ermöglichen Benutzern außerdem das Abrufen von Geometrien für Haltestellen und Fahrpläne, Benachrichtigungen für Haltestellen, Linien und Betriebsbereiche sowie Ankunfts- und Betriebsbenachrichtigungen in Echtzeit für den öffentlichen Nahverkehr. Darüber hinaus bieten die Mobilitätsdienste Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Optionen für Fußgänger und Fahrradfahrer sowie öffentliche Verkehrsmittel für eine Strecke berücksichtigt. Benutzer können auf detaillierte und multimodale ausführliche Routen zugreifen.
 

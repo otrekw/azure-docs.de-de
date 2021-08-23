@@ -7,14 +7,13 @@ ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a548d516213b65406a2f47c27c9a1a82cfb6f4b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896394"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356037"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Hinzufügen einer Symbolleiste mit Zeichentools zu einer Karte
 
@@ -69,7 +68,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="change-drawing-rendering-style"></a>Ändern des Zeichnungsrenderingstils
 
-Der Stil der gezeichneten Formen kann angepasst werden, indem mithilfe der `drawingManager.getLayers()`-Funktion die zugrundeliegenden Ebenen des Zeichnungs-Managers abgerufen und dann Optionen in den einzelnen Ebenen festgelegt werden. Die Ziehpunkte, die für Koordinaten beim Bearbeiten einer Form angezeigt werden, stellen HTML-Marker dar. Der Stil der Ziehpunkte kann angepasst werden, indem HTML-Markeroptionen an die Optionen `dragHandleStyle` und `secondaryDragHandleStyle` des Zeichnungs-Managers übergeben werden.  
+Der Stil der gezeichneten Formen kann angepasst werden, indem mithilfe der Funktionen `drawingManager.getLayers()` und `drawingManager.getPreviewLayers()` die zugrundeliegenden Ebenen des Zeichnungs-Managers abgerufen und dann Optionen in den einzelnen Ebenen festgelegt werden. Die Ziehpunkte, die für Koordinaten beim Bearbeiten einer Form angezeigt werden, stellen HTML-Marker dar. Der Stil der Ziehpunkte kann angepasst werden, indem HTML-Markeroptionen an die Optionen `dragHandleStyle` und `secondaryDragHandleStyle` des Zeichnungs-Managers übergeben werden.  
 
 Der folgende Code ruft die Renderingebenen aus dem Zeichnungs-Manager ab und ändert die zugehörigen Optionen, um den Renderingstil für das Zeichnen zu ändern. In diesem Fall werden die Punkte mit einem blauen Markersymbol gerendert. Die Linien werden rot und vier Pixel breit sein. Polygone haben eine grüne Füllfarbe und eine orangefarbene Kontur. Anschließend wird der Stil der Ziehpunkte in quadratische Symbole geändert. 
 
@@ -100,6 +99,12 @@ layers.polygonOutlineLayer.setOptions({
     strokeColor: 'orange'
 });
 
+
+//Get preview rendering layers from the drawing manager and modify line styles to be dashed.
+var previewLayers = drawingManager.getPreviewLayers();
+previewLayers.lineLayer.setOptions({ strokeColor: 'red', strokeWidth: 4, strokeDashArray: [3,3] });
+previewLayers.polygonOutlineLayer.setOptions({ strokeColor: 'orange', strokeDashArray: [3, 3] });
+
 //Update the style of the drag handles that appear when editting.
 drawingManager.setOptions({
     //Primary drag handle that represents coordinates in the shape.
@@ -126,6 +131,8 @@ Nachstehend finden Sie das vollständige, ausführbare Codebeispiel für die obe
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Change drawing rendering style</a> (Ändern des Zeichnungsrenderingstils) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+> [!NOTE]
+> Im Bearbeitungsmodus können Formen gedreht werden. Die Drehung wird von den Geometrien MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon und Rectangle unterstützt. Punkt- und Kreisgeometrien können nicht gedreht werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Mandantenübergreifende Verwaltung in Azure Security Center | Microsoft-Dokumentation
-description: Erfahren Sie, wie mandantenübergreifende Verwaltung für den Sicherheitsstatus mehrerer Mandanten in Security Center unter Verwendung delegierter Azure-Ressourcenverwaltung eingerichtet wird.
+description: Erfahren Sie, wie die mandantenübergreifende Verwaltung zum Verwalten des Sicherheitsstatus mehrerer Mandanten in Security Center unter Verwendung von Azure Lighthouse eingerichtet wird.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ab3d1e6229d3d6fad752b1bc336d0ad749b597
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099487"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787993"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
-Mithilfe der mandantenübergreifenden Verwaltung können Sie den Sicherheitsstatus mehrerer Mandanten in Security Center unter Verwendung der [delegierten Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md) anzeigen und verwalten. Verwalten Sie effizient mehrere Mandanten aus einer einzigen Ansicht heraus, ohne sich bei den einzelnen Mandantenverzeichnissen anmelden zu müssen.
+Die mandantenübergreifende Verwaltung ermöglicht Ihnen die Anzeige und Verwaltung des Sicherheitsstatus mehrerer Mandanten in Security Center mithilfe von [Azure Lighthouse](../lighthouse/overview.md). Verwalten Sie effizient mehrere Mandanten aus einer einzigen Ansicht heraus, ohne sich bei den einzelnen Mandantenverzeichnissen anmelden zu müssen.
 
 - Dienstanbieter können den Sicherheitsstatus von Ressourcen für mehrere Kunden innerhalb ihres eigenen Mandanten verwalten.
 
@@ -30,7 +30,7 @@ Mithilfe der mandantenübergreifenden Verwaltung können Sie den Sicherheitsstat
 
 ## <a name="set-up-cross-tenant-management"></a>Einrichten der mandantenübergreifenden Verwaltung
 
-Die delegierte Azure-Ressourcenverwaltung ist eine der Hauptkomponenten von Azure Lighthouse. Richten Sie die mandantenübergreifende Verwaltung ein, indem Sie den Zugriff auf Ressourcen verwalteter Mandanten anhand der folgenden Anweisungen aus der Azure Lighthouse-Dokumentation an Ihren eigenen Mandanten delegieren: [Delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md).
+Die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/architecture.md) ist eine der Hauptkomponenten von Azure Lighthouse. Richten Sie die mandantenübergreifende Verwaltung ein, indem Sie den Zugriff auf Ressourcen verwalteter Mandanten anhand der folgenden Anweisungen aus der Azure Lighthouse-Dokumentation an Ihren eigenen Mandanten delegieren: [Onboarding eines Kunden in Azure Lighthouse durchführen](../lighthouse/how-to/onboard-customer.md).
 
 
 ## <a name="how-does-cross-tenant-management-work-in-security-center"></a>Funktionsweise der mandantenübergreifenden Verwaltung in Azure Security Center

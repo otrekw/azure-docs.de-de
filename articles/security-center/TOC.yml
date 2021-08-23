@@ -68,10 +68,6 @@
       href: tutorial-security-policy.md
     - name: Untersuchen der Integrität Ihrer Ressourcen
       href: investigate-resource-health.md
-- name: Beispiele
-  items:
-    - name: Azure Resource Graph-Abfragen
-      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Konzepte von Cloud Security Posture Management

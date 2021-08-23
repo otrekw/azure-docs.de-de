@@ -324,7 +324,7 @@
       items:
         - name: Schutzmatrizen
           items:
-            - name: Schutzmatrix für MABS V3 UR1 (und höher)
+            - name: MABS V3 UR1-Schutzmatrix
               href: backup-mabs-protection-matrix.md
             - name: MABS V3 RTM-Schutzmatrix
               href: microsoft-azure-backup-server-protection-v3.md
@@ -338,16 +338,12 @@
               href: backup-mabs-whats-new-mabs.md
             - name: Versionshinweise für MABS
               href: backup-mabs-release-notes-v3.md
-            - name: Einstellungen zum Aktivieren bzw. Deaktivieren der Telemetrie
-              href: manage-telemetry.md
             - name: Unbeaufsichtigte Installation
               href: backup-mabs-unattended-install.md
         - name: Schützen von Workloads
           items:
             - name: Sichern von virtuellen Hyper-V-Computern
               href: back-up-hyper-v-virtual-machines-mabs.md
-            - name: Sichern von virtuellen Azure Stack HCI-Computern
-              href: back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md
             - name: VMware-Server
               href: backup-azure-backup-server-vmware.md
             - name: Exchange
@@ -554,7 +550,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -459,10 +459,6 @@
         - name: Netzwerk
           href: flexible-server/concepts-networking.md
           displayName: 'virtual networks, vnet, IP address, public access'
-        - name: Firewallregeln
-          href: flexible-server/concepts-firewall-rules.md
-        - name: Sicherheit
-          href: flexible-server/concepts-security.md
         - name: Einschränkungen
           href: flexible-server/concepts-limits.md
         - name: Erweiterungen
@@ -649,8 +645,6 @@
               href: concepts-hyperscale-high-availability.md
         - name: Replikation
           href: concepts-hyperscale-read-replicas.md
-        - name: Verbindungspooling
-          href: concepts-hyperscale-connection-pool.md
         - name: Überwachen und Optimieren
           items:
             - name: Überwachen und Optimieren

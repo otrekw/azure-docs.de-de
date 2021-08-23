@@ -3,21 +3,21 @@ title: Sichern des Zugriffs und der Daten
 description: Schützen des Zugriffs auf Eingaben, Ausgaben, anforderungsbasierte Trigger, Verlaufsprotokolle, Verwaltungsaufgaben und des Zugriffs auf andere Ressourcen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla, rarayudu
+ms.reviewer: rarayudu, azla
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: 7b082c226b38633d6c34ee2fe4d5227252b2bfcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/01/2021
+ms.openlocfilehash: 50087ed6066ba97a866cc2fd40901397a3825e37
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556382"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983922"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
 Azure Logic Apps nutzt [Azure Storage](../storage/index.yml) zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../security/fundamentals/encryption-atrest.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
-Um den Zugriff stärker zu steuern und vertrauliche Daten in Azure Logic Apps zu schützen, können Sie zusätzliche Sicherheit in diesen Bereichen einrichten:
+Für eine stärkere Steuerung des Zugriffs und einen verbesserten Schutz von vertraulichen Daten in Azure Logic Apps können Sie in den folgenden Bereichen zusätzliche Sicherheit einrichten:
 
 * [Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](#secure-inbound-requests)
 * [Zugriff auf Logik-App-Vorgänge](#secure-operations)
@@ -51,7 +51,7 @@ Eingehende Anrufe unterstützen die folgenden Cipher Suites:
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-Im Folgenden finden Sie weitere Möglichkeiten zum Einschränken des Zugriffs auf Trigger, die eingehende Aufrufe Ihrer Logik-App empfangen, sodass nur autorisierte Clients Ihre Logik-App aufrufen können:
+In der folgenden Liste finden Sie weitere Möglichkeiten für eine Einschränkung des Zugriffs auf Trigger, die eingehende Aufrufe Ihrer Logik-App empfangen, sodass nur autorisierte Clients Ihre Logik-App aufrufen können:
 
 * [Generieren von Shared Access Signatures (SAS)](#sas)
 * [Aktivieren der Azure Active Directory Open Authentication (Azure AD OAuth)](#enable-oauth)
@@ -218,9 +218,7 @@ Fügen Sie im [Azure-Portal](https://portal.azure.com) mindestens eine Autorisie
 
 1. Informationen, wie Sie den `Authorization`-Header aus dem Zugriffstoken in die anforderungsbasierten Triggerausgaben aufnehmen, finden Sie unter [Aufnehmen des „Authorization“-Headers in Anforderungstriggerausgaben](#include-auth-header).
 
-
-Workfloweigenschaften wie Richtlinien werden nicht in der Codeansicht Ihrer Logik-App im Azure-Portal angezeigt. Um programmgesteuert auf Ihre Richtlinien zuzugreifen, rufen Sie die folgende API über Azure Resource Manager (ARM) auf: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820`. Stellen Sie sicher, dass Sie die Platzhalterwerte für Ihre Azure-Abonnement-ID, den Ressourcengruppennamen und den Workflownamen ersetzen.
-
+Workfloweigenschaften wie Richtlinien werden nicht in der Codeansicht Ihrer Logik-App im Azure-Portal angezeigt. Rufen Sie für einen programmgesteuerten Zugriff auf Ihre Richtlinien die folgende API über Azure Resource Manager auf: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820`. Stellen Sie sicher, dass Sie die Platzhalterwerte für Ihre Azure-Abonnement-ID, den Ressourcengruppennamen und den Workflownamen ersetzen.
 
 <a name="define-authorization-policy-template"></a>
 
@@ -310,7 +308,14 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 ### <a name="expose-your-logic-app-with-azure-api-management"></a>Verfügbarmachen Ihrer Logik-App mit Azure API Management
 
-Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/develop/authentication-vs-authorization.md) hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie Azure AD OAuth, [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App aufrufen kann, können Sie [die eingehenden IP-Adressen Ihrer Logik-App einschränken](#restrict-inbound-ip).
+Für weitere Authentifizierungsprotokolle und Optionen sollten Sie Ihre Logik-App mithilfe von Azure API Management als API verfügbar machen. Dieser Dienst bietet umfangreiche Funktionen für Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Zur Autorisierung des Zugriffs auf diesen Endpunkt können Sie Azure Active Directory Open Authentication (Azure AD OAuth), Clientzertifikate oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, wird diese an Ihre Logik-App gesendet, wobei alle erforderlichen Transformationen oder Einschränkungen umgesetzt werden. Damit nur API Management Ihre Logik-App aufrufen kann, können Sie [die eingehenden IP-Adressen Ihrer Logik-App einschränken](#restrict-inbound-ip).
+
+Weitere Informationen finden Sie in der folgenden Dokumentation:
+
+* [Informationen zu API Management](../api-management/api-management-key-concepts.md)
+* [Schützen eines Web-API-Back-Ends in Azure API Management mithilfe der OAuth 2.0-Autorisierung mit Azure AD](../api-management/api-management-howto-protect-backend-with-aad.md)
+* [Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [API Management-Authentifizierungsrichtlinien](../api-management/api-management-authentication-policies.md)
 
 <a name="restrict-inbound-ip"></a>
 
@@ -641,7 +646,7 @@ Fügen Sie in der zugrunde liegenden Trigger- oder Aktionsdefinition das Array `
 
 ## <a name="access-to-parameter-inputs"></a>Zugriff auf Parametereingaben
 
-Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie die Werte in Ihrer Workflowdefinition parametrisieren, die je nach Umgebung variieren. Auf diese Weise können Sie hartcodierte Daten vermeiden, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) verwenden, um Ihre Logikanwendung bereitzustellen, sensible Daten durch die Definition abgesicherter Parameter zu schützen und diese Daten als separate Eingaben durch die [Parameter der Vorlage](../azure-resource-manager/templates/template-parameters.md) mithilfe einer [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) zu übergeben.
+Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie die Werte in Ihrer Workflowdefinition parametrisieren, die je nach Umgebung variieren. Auf diese Weise können Sie hartcodierte Daten vermeiden, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) verwenden, um Ihre Logikanwendung bereitzustellen, sensible Daten durch die Definition abgesicherter Parameter zu schützen und diese Daten als separate Eingaben durch die [Parameter der Vorlage](../azure-resource-manager/templates/parameters.md) mithilfe einer [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) zu übergeben.
 
 Wenn Sie z. B. HTTP-Aktionen mit [Azure Active Directory Open Authentication](#azure-active-directory-oauth-authentication) (Azure AD OAuth) authentifizieren, können Sie die Parameter definieren und verbergen, die die Client-ID und das Clientgeheimnis akzeptieren, die für die Authentifizierung verwendet werden. Um diese Parameter für Ihre Logik-App zu definieren, verwenden Sie den Abschnitt `parameters` innerhalb der Workflowdefinition Ihrer Logik-App und eine Resource Manager-Vorlage zur Bereitstellung. Um die Parameterwerte zu schützen, die beim Bearbeiten der Logik-App oder beim Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` oder `secureobject` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich. Um zur Laufzeit auf diese Parameterwerte zuzugreifen, verwenden Sie den Ausdruck `@parameters('<parameter-name>')` in Ihrer Workflowdefinition. Dieser Ausdruck wird nur zur Laufzeit ausgewertet und durch die [Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben.
 
@@ -654,7 +659,7 @@ Weitere Informationen finden in diesem Artikel in diesen Abschnitten:
 * [Schützen von Parameter in Workflowdefinitionen](#secure-parameters-workflow)
 * [Sichern von Daten im Ausführungsverlauf mittels Obfuskation](#obfuscate)
 
-Wenn Sie die [Bereitstellung für Logik-Apps mithilfe von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie geschützte [Vorlagenparameter](../azure-resource-manager/templates/template-parameters.md) definieren, die beim Bereitstellen ausgewertet werden, indem Sie die Typen `securestring` und `secureobject` verwenden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/templates/parameter-files.md).
+Wenn Sie die [Bereitstellung für Logik-Apps mithilfe von Resource Manager-Vorlagen automatisieren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie geschützte [Vorlagenparameter](../azure-resource-manager/templates/parameters.md) definieren, die beim Bereitstellen ausgewertet werden, indem Sie die Typen `securestring` und `secureobject` verwenden. Um Vorlagenparameter zu definieren, verwenden Sie den Abschnitt `parameters` auf der obersten Ebene Ihrer Vorlage, der vom Abschnitt `parameters` Ihrer Workflowdefinition getrennt ist und anders lautet. Um die Werte für Vorlagenparameter bereitzustellen, verwenden Sie eine separate [Parameterdatei](../azure-resource-manager/templates/parameter-files.md).
 
 Wenn Sie beispielsweise Geheimnisse verwenden, können Sie sichere Vorlagenparameter definieren und verwenden, die diese Geheimnisse bei der Bereitstellung aus [Azure Key Vault](../key-vault/general/overview.md) abrufen. Anschließend können Sie auf den Schlüsseltresor und das Geheimnis in Ihrer Parameterdatei verweisen. Weitere Informationen finden Sie in den folgenden Themen:
 
@@ -856,7 +861,11 @@ Basierend auf den Funktionen des Zielendpunkts unterstützen ausgehende Aufrufe,
 
 Im Folgenden finden Sie Informationen zu selbst signierten TLS/SSL-Zertifikaten:
 
-* Für Logik-Apps in der globalen Azure-Umgebung mit mehren Mandanten lässt der HTTP-Connector keine selbstsignierten TLS/SSL-Zertifikate zu. Wenn Ihre Logik-App per HTTP einen Server aufruft und ein selbstsigniertes TLS/SSL-Zertifikat vorlegt, schlägt der HTTP-Aufruf mit einem `TrustFailure`-Fehler fehl.
+* Für Logik-Apps in der globalen Azure Logic Apps-Umgebung mit mehreren Mandanten lassen HTTP-Vorgänge keine selbstsignierten TLS/SSL-Zertifikate zu. Wenn Ihre Logik-App per HTTP einen Server aufruft und ein selbstsigniertes TLS/SSL-Zertifikat vorlegt, schlägt der HTTP-Aufruf mit einem `TrustFailure`-Fehler fehl.
+
+* Für Logik-Apps in der Azure Logic Apps-Umgebung mit nur einem Mandanten unterstützen HTTP-Vorgänge selbstsignierte TLS/SSL-Zertifikate. Für diesen Authentifizierungstyp sind jedoch einige zusätzliche Schritte erforderlich. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [TSL/SSL-Zertifikatauthentifizierung für Azure Logic Apps mit nur einem Mandanten](../connectors/connectors-native-http.md#tsl-ssl-certificate-authentication).
+
+  Wenn Sie stattdessen ein Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Zertifikat“ verwenden möchten, müssen Sie ebenfalls einige weitere Schritte ausführen. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Zertifikat“ für Azure Logic Apps mit nur einem Mandanten](../connectors/connectors-native-http.md#client-certificate-authentication).
 
 * Für Logik-Apps in einer [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erlaubt der HTTP-Connector hingegen selbstsignierte Zertifikate bei TLS/SSL-Handshakes. Sie müssen jedoch zunächst die [Unterstützung für selbstsignierte Zertifikate für eine vorhandene oder eine neue ISE mithilfe der Logic Apps-REST-API aktivieren](../logic-apps/create-integration-service-environment-rest-api.md#request-body) und das öffentliche Zertifikat am `TrustedRoot`-Speicherort installieren.
 
@@ -998,6 +1007,9 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 }
 ```
 
+> [!IMPORTANT]
+> Wenn Sie über eine Ressource vom Typ **Logik-App (Standard)** in Azure Logic Apps mit nur einem Mandanten verfügen und einen HTTP-Vorgang mit einem TSL/SSL-Zertifikat, einem Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp `Certificate` verwenden möchten, müssen Sie weitere Schritte zum Einrichten dieses Authentifizierungstyps ausführen. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [Authentifizierung in einer Einzelmandantenumgebung](../connectors/connectors-native-http.md#single-tenant-authentication).
+
 Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatauthentifizierung finden Sie in den folgenden Themen:
 
 * [Erhöhen der Sicherheit von APIs mithilfe von Clientzertifikatauthentifizierung in API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
@@ -1046,6 +1058,9 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 }
 ```
 
+> [!IMPORTANT]
+> Wenn Sie über eine Ressource vom Typ **Logik-App (Standard)** in Azure Logic Apps mit nur einem Mandanten verfügen und einen HTTP-Vorgang mit einem TSL/SSL-Zertifikat, einem Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp `Certificate` verwenden möchten, müssen Sie weitere Schritte zum Einrichten dieses Authentifizierungstyps ausführen. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [Authentifizierung in einer Einzelmandantenumgebung](../connectors/connectors-native-http.md#single-tenant-authentication).
+
 <a name="raw-authentication"></a>
 
 #### <a name="raw-authentication"></a>Raw-Authentifizierung
@@ -1093,7 +1108,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 #### <a name="managed-identity-authentication"></a>Authentifizierung der verwalteten Identität
 
-Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [Trigger oder eine Aktion verfügbar ist, der oder die die Authentifizierung der verwalteten Identitäten unterstützt,](#add-authentication-outbound) kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne* manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf Azure-Ressourcen, die von Azure Active Directory (Azure AD) und nicht durch Anmeldeinformationen, Geheimnisse oder Azure AD-Token geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse verwalten und Azure AD-Token nicht direkt verwenden müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [Trigger oder eine Aktion verfügbar ist, der oder die die Authentifizierung der verwalteten Identitäten unterstützt,](#add-authentication-outbound) kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne* manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf Azure-Ressourcen, die von Azure Active Directory (Azure AD) und nicht durch Anmeldeinformationen, Geheimnisse oder Azure AD-Token geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und erleichtert den Schutz Ihrer Anmeldeinformationen, da Sie weder Geheimnisse verwalten noch Azure AD-Token direkt verwenden müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Bevor Ihre Logik-App eine verwaltete Identität verwenden kann, führen Sie die Schritte in [Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md) aus. Diese Schritte aktivieren die verwaltete Identität in Ihrer Logik-App und richten den Zugriff dieser Identität auf die Zielressource in Azure ein.
 
@@ -1153,7 +1168,7 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
 
   Um z. B. Anforderungen der Auswirkungsstufe 5 zu erfüllen, erstellen Sie Ihre Funktions-App mit dem [App Service Plan](../azure-functions/dedicated-plan.md), der den Tarif [**Isoliert**](../app-service/overview-hosting-plans.md) zusammen mit einer [App Service-Umgebung (ASE)](../app-service/environment/intro.md) verwendet, die ebenfalls den Tarif **Isoliert** verwendet. In dieser Umgebung werden Funktions-Apps auf dedizierte Azure-VMs und in dedizierten virtuellen Azure-Netzwerken ausgeführt, die zusätzlich zur Computeisolation eine Netzwerkisolation für Ihre Apps bieten sowie maximale horizontale Skalierungsmöglichkeiten. Weitere Informationen finden Sie unter [Azure Government-Auswirkungsstufe 5-Isolationsanleitung – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
 
-  Weitere Informationen finden Sie in den folgenden Themen:<p>
+  Weitere Informationen finden Sie in der folgenden Dokumentation:
 
   * [Azure App Service-Pläne](../app-service/overview-hosting-plans.md)
   * [Netzwerkoptionen von Azure Functions](../azure-functions/functions-networking-options.md)
@@ -1161,13 +1176,19 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
   * [Isolation von virtuellen Computern in Azure](../virtual-machines/isolation.md)
   * [Bereitstellen von dedizierten Azure-Diensten in virtuellen Netzwerken](../virtual-network/virtual-network-for-azure-services.md)
 
-* Um Logik-Apps zu erstellen, die auf dedizierten Ressourcen ausgeführt werden und die auf Ressourcen zugreifen können, die von einem virtuellen Azure-Netzwerk geschützt werden, können Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen.
+* Je nachdem, ob Sie [Azure Logic Apps mit einem oder mehreren Mandanten](logic-apps-overview.md#resource-environment-differences) verwenden, haben Sie folgende Optionen:
 
-  * Einige virtuelle Azure-Netzwerke verwenden private Endpunkte ([Azure Private Link](../private-link/private-link-overview.md)), um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Falls Ihre Logik-Apps Zugriff auf virtuelle Netzwerke mit privaten Endpunkten benötigen, müssen diese Logik-Apps in einer ISE erstellt, bereitgestellt und ausgeführt werden.
+  * Bei Azure Logic Apps mit nur einem Mandanten können Sie privat und sicher zwischen Logik-App-Workflows und einem virtuellen Azure-Netzwerk kommunizieren, indem Sie für eingehenden Datenverkehr private Endpunkte einrichten und für ausgehenden Datenverkehr die Integration virtueller Netzwerke verwenden. Weitere Informationen finden Sie unter [Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte](secure-single-tenant-workflow-virtual-network-private-endpoint.md).
 
-  * Für mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet. Weitere Informationen finden Sie unter [Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md).
+  * Bei Azure Logic Apps mit mehreren Mandanten können Sie Ihre Logik-Apps in einer [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) erstellen und ausführen. Auf diese Weise werden Ihre Logik-Apps auf dedizierten Ressourcen ausgeführt und können auf Ressourcen zugreifen, die von einem virtuellen Azure-Netzwerk geschützt werden. Für mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet. Weitere Informationen finden Sie unter [Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md).
 
-Weitere Informationen finden Sie in den folgenden Themen:
+  > [!IMPORTANT]
+  > Einige virtuelle Azure-Netzwerke verwenden private Endpunkte ([Azure Private Link](../private-link/private-link-overview.md)), um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden.
+  >
+  > Wenn Ihre Workflows Zugriff auf virtuelle Netzwerke benötigen, die private Endpunkte verwenden, und Sie diese Workflows mithilfe des Ressourcentyps **Logik-App (Verbrauch)** entwickeln möchten, müssen Sie *Ihre Logik-Apps in einer Integrationsdienstumgebung erstellen und ausführen*. Wenn Sie die Workflows jedoch mithilfe des Ressourcentyps **Logik-App (Standard)** entwickeln möchten, *benötigen Sie keine Integrationsdienstumgebung*. 
+  > Stattdessen können Ihre Workflows privat und sicher mit virtuellen Netzwerken kommunizieren, indem für eingehenden Datenverkehr private Endpunkte und für ausgehenden Datenverkehr die Integration virtueller Netzwerke verwendet werden. Weitere Informationen finden Sie unter [Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte](secure-single-tenant-workflow-virtual-network-private-endpoint.md).
+
+Weitere Informationen zur Isolation finden Sie in der folgenden Dokumentation:
 
 * [Isolation in der öffentlichen Azure-Cloud](../security/fundamentals/isolation-choices.md)
 * [Sicherheit für höchst sensible IaaS-Apps in Azure](/azure/architecture/reference-architectures/n-tier/high-security-iaas)

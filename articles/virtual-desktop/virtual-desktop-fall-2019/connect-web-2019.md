@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b028635b3b58d8f0a771616dac7036428e7a8fe4
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: e604e5de1a5abd46961c0ec447f7d3fb29aa3b49
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031155"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749955"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-web-client"></a>Herstellen einer Verbindung mit Azure Virtual Desktop (klassisch) mithilfe des Webclients
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../user-documentation/connect-web.md) weiter.
+>Dieser Inhalt gilt für Azure Virtual Desktop (klassisch). Der Dienst unterstützt keine Azure Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Azure Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-web.md) weiter.
 
 Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Azure Virtual Desktop zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
 

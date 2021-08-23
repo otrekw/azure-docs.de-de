@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: b4549978925f2e7016b54ce3004eabadaa8e985f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: d00ec82b5b66b2c413337f0c4efe803fc1013ab9
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113134346"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847869"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problembehandlung bei Timeouts bei Azure Cache for Redis
 
@@ -50,7 +50,7 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 | wr |Es ist ein aktiver Writer vorhanden (d. h., die 6 noch nicht gesendeten Anforderungen werden nicht ignoriert); Bytes/aktive Writer. |
 | in |Es sind keine aktiven Reader vorhanden, und null Bytes sind zum Lesen auf der NIC (Network Interface Card, Netzwerkschnittstellenkarte) vorhanden; Bytes/aktive Reader |
 
-Im vorherigen Ausnahmebeispiel enthalten die Abschnitte `IOCP` und `WORKER` jeweils einen `Busy`-Wert, der größer als der `Min`-Wert ist. Der Unterschied bedeutet, dass Sie Ihre `ThreadPool`-Einstellungen anpassen sollten. Sie können Ihre [ThreadPool-Einstellungen](cache-management-faq.yml#important-details-about-threadpool-growth) so konfigurieren, dass sichergestellt ist, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
+Im vorherigen Ausnahmebeispiel enthalten die Abschnitte `IOCP` und `WORKER` jeweils einen `Busy`-Wert, der größer als der `Min`-Wert ist. Der Unterschied bedeutet, dass Sie Ihre `ThreadPool`-Einstellungen anpassen sollten. Sie können Ihre [ThreadPool-Einstellungen](cache-management-faq.md#important-details-about-threadpool-growth) so konfigurieren, dass sichergestellt ist, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
 
 Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
@@ -123,5 +123,5 @@ Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
 
 - [Behandeln von clientseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-client.md)
 - [Behandeln von serverseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-server.md)
-- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
+- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md)

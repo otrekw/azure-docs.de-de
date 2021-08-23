@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550777"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953640"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -164,7 +164,7 @@ Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem A
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](../manage-apps/application-proxy.md) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](../app-proxy/application-proxy.md) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -185,6 +185,11 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](/windows/client-management/connect-to-remote-aadj-pc).
 
 Ab dem Windows 10-Update 2004 können Benutzer auch eine Remotedesktopverbindung auf einem bei Azure AD registrierten Windows 10-Gerät mit einem in Azure AD eingebundenen Gerät verwenden. 
+
+### <a name="radius-and-wi-fi-authentication"></a>RADIUS- und WLAN-Authentifizierung
+
+Derzeit unterstützen Azure AD-eingebundene Geräte keine RADIUS-Authentifizierung zum Herstellen einer Verbindung mit WLAN-Zugangspunkten, da RADIUS auf das Vorhandensein eines lokalen Computerobjekts angewiesen ist. Alternativ können Sie über Intune gepushte Zertifikate oder Benutzeranmeldeinformationen verwenden, um sich beim WLAN zu authentifizieren. 
+
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
 **Hinweis**: In Azure AD eingebundene Geräte können nicht mit einem Tool für die Systemvorbereitung (Sysprep) oder mit ähnlichen Abbilderstellungstools bereitgestellt werden.
@@ -239,7 +244,7 @@ Wählen Sie **Ja** aus, wenn Benutzer beim Einbinden von Geräten in Azure AD di
 
 ![Multi-factor Auth zum Hinzufügen von Geräten erforderlich](./media/azureadjoin-plan/03.png)
 
-**Empfehlung:** Erzwingen Sie mit der Benutzeraktion [Geräte registrieren oder einbinden](/conditional-access/concept-conditional-access-cloud-apps#user-actions) in bedingtem Zugriff die Verwendung von MFA für das Einbinden von Geräten.
+**Empfehlung:** Erzwingen Sie mit der Benutzeraktion [Geräte registrieren oder einbinden](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) in bedingtem Zugriff die Verwendung von MFA für das Einbinden von Geräten.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurieren Ihrer Mobilitätseinstellungen
 

@@ -106,8 +106,6 @@
           href: howto-private-endpoints.md
         - name: Verwalten der Netzwerkzugriffssteuerung
           href: howto-network-access-control.md
-        - name: Schützen von ausgehendem Datenverkehr über freigegebene private Endpunkte
-          href: howto-shared-private-endpoints.md
         - name: Verwenden der verwalteten Identität
           href: howto-use-managed-identity.md
     - name: Integrieren

@@ -390,11 +390,11 @@ additionalContent:
         - title: Datenschutz und DSGVO
           links:
             - text: Checklists
-              url: /compliance/regulatory/gdpr-arc-azure-dynamics-windows
+              url: /compliance/regulatory/gdpr-arc-azure-dynamics
             - text: Anträge betroffener Personen
               url: /compliance/regulatory/gdpr-dsr-Azure
             - text: Benachrichtigung bei Sicherheitsverletzungen
-              url: /compliance/regulatory/gdpr-breach-azure-dynamics-windows
+              url: /compliance/regulatory/gdpr-breach-azure-dynamics
             - text: Datenschutz-Folgenabschätzung
               url: /microsoft-365/compliance/gdpr-dpia-azure
             - text: Datenresidenz in Azure

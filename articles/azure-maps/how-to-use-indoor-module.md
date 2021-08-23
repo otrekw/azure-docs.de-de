@@ -3,18 +3,17 @@ title: Verwenden des Moduls „Gebäudepläne“ von Azure Maps mit Microsoft Cr
 description: Erfahren Sie, wie Sie das Modul „Gebäudepläne“ von Microsoft Azure Maps verwenden, um Karten durch Einbetten der JavaScript-Bibliotheken des Moduls zu rendern.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/20/2020
+ms.date: 07/13/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 59521aa0be652ef37c39f45bb323fbc49a93b99d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 32df2b3805d5c79504380676a72d43467ff2092d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030411"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346018"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Verwenden des Moduls „Gebäudepläne“ von Azure Maps
 
@@ -50,8 +49,8 @@ Um die global gehostete Azure Content Delivery Network-Version des Moduls *Azure
   2. Verweisen Sie auf das JavaScript und Stylesheet des Moduls *Azure Maps Indoor* im `<head>`-Element der HTML-Datei:
 
       ```html
-      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
-      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
+      <link rel="stylesheet" href="node_modules/azure-maps-indoor/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-indoor/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>Instanziieren des Kartenobjekts
@@ -103,6 +102,14 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
+```
+
+## <a name="geographic-settings-optional"></a>Geografische Einstellungen (optional)
+
+In diesem Leitfaden wird davon ausgegangen, dass Sie Ihren Creator-Dienst in den USA erstellt haben. Wenn dies der Fall ist, können Sie diesen Abschnitt überspringen. Wenn Ihr Creator-Dienst jedoch in Europa erstellt wurde, fügen Sie den folgenden Code hinzu:
+
+```javascript
+  indoorManager.setOptions({ geography: 'eu' });.
 ```
 
 ## <a name="indoor-level-picker-control"></a>Steuerelement „Indoor-Ebenenauswahl“

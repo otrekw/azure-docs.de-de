@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b79b2d9767112d95f6ea0388bfc7ef577ef8d7ba
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6435fbffc6a78d82129443f15a9ebcc41ab52ce8
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073537"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635191"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -33,7 +33,7 @@ Sie können Ihre Kontozugriffsschlüssel mit dem Azure-Portal, PowerShell oder d
 Führen Sie folgende Schritte durch, um die Zugriffsschlüssel oder Verbindungszeichenfolge Ihres Speicherkontos aus dem Azure-Portal anzuzeigen oder zu kopieren:
 
 1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+1. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
 1. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche zum **Kopieren**, um den Kontoschlüssel zu kopieren.
 1. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
 
@@ -90,7 +90,7 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel im Azure-Porta
 
 1. Aktualisieren Sie die Verbindungszeichenfolgen im Anwendungscode, sodass sie auf den sekundären Zugriffsschlüssel des Speicherkontos verweisen.
 1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+1. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus.
 1. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Zugriffsschlüssel, um den primären Zugriffsschlüssel für Ihr Speicherkonto neu zu generieren.
 1. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
 1. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.

@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b9de22a3209a75cec680ae3ea04d2e1f54c956c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566025"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453265"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen
 
@@ -35,18 +35,18 @@ Weitere Informationen zu Windows Virtual Desktop-Umgebungen finden Sie unter [Wi
 
 Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen Zugriff auf mehrere vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) haben, um ordnungsgemäß funktionieren zu können. Azure Firewall bietet ein FQDN-Tag für WVD, um diese Konfiguration zu vereinfachen. Führen Sie die folgenden Schritte aus, um ausgehenden Plattformdatenverkehr für Windows Virtual Desktop zuzulassen:
 
-- Stellen Sie Azure Firewall bereit, und konfigurieren Sie die benutzerdefinierte Route (User Defined Route, UDR) für das Subnetz des Windows Virtual Desktop-Hostpools, um den gesamten Datenverkehr über Azure Firewall zu leiten. Die Standardroute zeigt nun auf die Firewall.
+- Stellen Sie Azure Firewall bereit, und konfigurieren Sie die benutzerdefinierte Route (User Defined Route, UDR) für das Subnetz des Windows Virtual Desktop-Hostpools, um den Standarddatenverkehr (0.0.0.0/0) über Azure Firewall zu leiten. Die Standardroute zeigt nun auf die Firewall.
 - Erstellen Sie eine Sammlung für Anwendungsregeln, und fügen Sie eine Regel hinzu, um das FQDN-Tag *WindowsVirtualDesktop* zu aktivieren. Der Quell-IP-Adressbereich ist das virtuelle Netzwerk des Hostpools, das Protokoll ist **https**, und das Ziel ist **WindowsVirtualDesktop**.
 
 - Aufgrund des erforderlichen Speichers und der erforderlichen Service Bus-Instanzen muss Ihr Windows Virtual Desktop-Hostpool bereitstellungsspezifisch sein. Deshalb ist er noch nicht im FQDN-Tag „WindowsVirtualDesktop“ enthalten. Sie haben die folgenden Möglichkeiten, um dies zu ändern:
 
-   - Lassen Sie HTTPS-Zugriff aus Ihrem Hostpoolsubnetz auf *xt.blob.core.windows.net, *eh.servicebus.windows.net und *xt.table.core.windows.net zu. Diese Platzhalter-FQDNs ermöglichen den erforderlichen Zugriff, sind aber weniger restriktiv.
-   - Verwenden Sie die folgende Log Analytics-Abfrage, um die erforderlichen FQDNs aufzulisten, und lassen Sie sie dann explizit in den Firewallanwendungsregeln zu:
+   - Lassen Sie HTTPS-Zugriff aus Ihrem Hostpoolsubnetz auf *xt.blob.core.windows.net und *eh.servicebus.windows.net zu. Diese Platzhalter-FQDNs ermöglichen den erforderlichen Zugriff, sind aber weniger restriktiv.
+   - Verwenden Sie die folgende Log Analytics-Abfrage, um die erforderlichen FQDNs nach der Bereitstellung des WVD-Hostpools aufzulisten, und lassen Sie sie dann explizit in den Firewallanwendungsregeln zu:
    ```
    AzureDiagnostics
    | where Category == "AzureFirewallApplicationRule"
    | search "Deny"
-   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net" or "gsm*xt.table.core.windows.net"
+   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net"
    | parse msg_s with Protocol " request from " SourceIP ":" SourcePort:int " to " FQDN ":" *
    | project TimeGenerated,Protocol,FQDN
    ```

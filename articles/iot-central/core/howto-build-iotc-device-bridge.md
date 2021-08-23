@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 3fd74e0fddedba5f69176c83aea5a5522bc54c2a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f32f36399eec2b54b872ae9750ea2ddf2fb5a218
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757999"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683783"
 ---
 # <a name="use-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Verwenden der Azure IoT Central-Geräte-Bridge, um andere IoT-Clouds mit IoT Central zu verbinden
 
@@ -91,13 +91,13 @@ Jeder Schlüssel im Objekt `measurements` muss mit dem Namen eines Telemetrietyp
 
 Sie können ein Feld vom Typ `timestamp` in den Text einschließen, um das UTC-Datum und die UTC-Uhrzeit der Nachricht anzugeben. Für dieses Feld muss das ISO 8601-Format verwendet werden. Beispiel: `2020-06-08T20:16:54.602Z`. Wenn Sie keinen Zeitstempel einschließen, werden das aktuelle Datum und die aktuelle Uhrzeit verwendet.
 
-Sie können ein Feld vom Typ `modelId` in den Text einschließen. Mithilfe dieses Felds kann das Gerät während der Bereitstellung einer Gerätevorlage zugeordnet werden. Diese Funktion wird nur von [V3-Anwendungen](howto-faq.yml#how-do-i-get-information-about-my-application-) unterstützt.
+Sie können ein Feld vom Typ `modelId` in den Text einschließen. Mithilfe dieses Felds kann das Gerät während der Bereitstellung einer Gerätevorlage zugeordnet werden. Diese Funktion wird nur von [V3-Anwendungen](howto-get-app-info.md) unterstützt.
 
 Die Geräte-ID (`deviceId`) muss alphanumerisch sein und darf nur Kleinbuchstaben und ggf. Bindestriche enthalten.
 
-Wenn Sie das Feld `modelId` nicht einschließen oder die Modell-ID von IoT Central nicht erkannt wird, wird im Falle einer Nachricht mit einer unbekannten Geräte-ID (`deviceId`) in IoT Central ein neues _nicht zugeordnetes Gerät_ erstellt. Ein Operator kann das Gerät manuell zur richtigen Gerätevorlage migrieren. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung > Migrieren von Geräten zu einer Vorlage](howto-manage-devices-individually.md).
+Wenn Sie das Feld `modelId` nicht einschließen oder die Modell-ID von IoT Central nicht erkannt wird, wird im Falle einer Nachricht mit einer unbekannten Geräte-ID (`deviceId`) in IoT Central ein neues _nicht zugeordnetes Gerät_ erstellt. Ein Operator kann das Gerät manuell zur richtigen Gerätevorlage migrieren. Weitere Informationen finden Sie unter [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung > Migrieren von Geräten zu einer Vorlage](howto-manage-devices.md).
 
-In [V2-Anwendungen](howto-faq.yml#how-do-i-get-information-about-my-application-) wird das neue Gerät im Geräte-Explorer auf der Seite **Nicht zugeordnete Geräte** angezeigt. Wählen Sie **Zuordnen** und anschließend eine Gerätevorlage aus, um eingehende Telemetriedaten vom Gerät zu empfangen.
+In [V2-Anwendungen](howto-get-app-info.md) wird das neue Gerät im Geräte-Explorer auf der Seite **Nicht zugeordnete Geräte** angezeigt. Wählen Sie **Zuordnen** und anschließend eine Gerätevorlage aus, um eingehende Telemetriedaten vom Gerät zu empfangen.
 
 > [!NOTE]
 > Solange das Gerät keiner Vorlage zugeordnet ist, wird bei allen HTTP-Aufrufen für die Funktion der Fehlerstatus 403 zurückgegeben.
@@ -283,4 +283,4 @@ Von der Geräte-Bridge werden nur Nachrichten an IoT Central weitergeleitet. Es
 Nachdem Sie sich hier mit der Bereitstellung der IoT Central-Geräte-Bridge vertraut gemacht haben, können Sie mit dem folgenden Schritt fortfahren:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Geräten](howto-manage-devices-individually.md)
+> [Verwalten von Geräten](howto-manage-devices.md)
