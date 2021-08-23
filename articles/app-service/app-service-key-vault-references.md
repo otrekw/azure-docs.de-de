@@ -3,15 +3,15 @@ title: Verwenden von Key Vault-Verweisen
 description: Erfahren Sie, wie Sie Azure App Service und Azure Functions einrichten, um Azure Key Vault-Verweise zu verwenden. Machen Sie Key Vault-Geheimnisse für den Anwendungscode verfügbar.
 author: mattchenderson
 ms.topic: article
-ms.date: 05/25/2021
+ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 3300f5fbb5613672d7979f161ca0c92126f26a83
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 15b5974aff53303ca0245fc6100ea22eebc70c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349816"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -23,26 +23,43 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie einen Schlüsseltresor anhand dieser [Key Vault-Schnellstartanleitung](../key-vault/secrets/quick-create-cli.md).
 
-1. Erstellen Sie eine [systemseitig zugewiesene verwaltete Identität](overview-managed-identity.md) für Ihre App.
+1. Erstellen Sie eine [verwaltete Identität](overview-managed-identity.md) für Ihre App.
 
-   > [!NOTE] 
-   > Key Vault-Verweise unterstützen derzeit nur systemseitig zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene Identitäten können nicht verwendet werden.
+    Key Vault-Verweise verwenden standardmäßig die systemseitig zugewiesene Identität der App, Sie können aber [eine benutzerseitig zugewiesene Identität angeben](#access-vaults-with-a-user-assigned-identity).
 
 1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/security-features.md#privileged-access) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
 ### <a name="access-network-restricted-vaults"></a>Zugriff auf Werte mit Netzwerkeinschränkungen
 
-> [!NOTE]
-> Linux-basierte Anwendungen können derzeit keine Geheimnisse aus einem Schlüsseltresor mit Netzwerkeinschränkungen auflösen, es sei denn, die App wird in einer [App Service-Umgebung](./environment/intro.md) gehostet.
-
 Wenn Ihr Tresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) konfiguriert ist, müssen Sie auch sicherstellen, dass die Anwendung über Netzwerkzugriff verfügt.
 
 1. Stellen Sie sicher, dass für die Anwendung ausgehende Netzwerkfunktionen konfiguriert sind, wie in [App Service-Netzwerkfunktionen](./networking-features.md) und [Azure Functions-Netzwerkoptionen](../azure-functions/functions-networking-options.md) beschrieben.
 
+    Linux-Anwendungen, die versuchen, private Endpunkte zu verwenden, erfordern außerdem, dass die App explizit so konfiguriert wird, dass der gesamte Datenverkehr über das virtuelle Netzwerk geleitet wird. Diese Anforderung entfällt in einem bevorstehenden Update. Um diese festzulegen, verwenden Sie den folgenden CLI-Befehl:
+
+    ```azurecli
+    az webapp config set --subscription <sub> -g <rg> -n <appname> --generic-configurations '{"vnetRouteAllEnabled": true}'
+    ```
+
 2. Stellen Sie sicher, dass die Konfiguration des Tresors das Netzwerk oder Subnetz berücksichtigt, über das Ihre App darauf zugreifen wird.
 
-> [!IMPORTANT]
-> Der Zugriff auf einen Tresor über die Integration von virtuellen Netzwerken ist zurzeit nicht mit [automatischen Updates für Geheimnisse ohne eine angegebene Version](#rotation) kompatibel.
+### <a name="access-vaults-with-a-user-assigned-identity"></a>Zugriff auf Tresore mit einer benutzerseitig zugewiesenen Identität
+
+Einige Apps müssen zum Erstellungszeitpunkt auf Geheimnisse verweisen, wenn eine systemseitig zugewiesene Identität noch nicht verfügbar wäre. In diesen Fällen kann eine benutzerseitig zugewiesene Identität erstellt und im Voraus Zugriff auf den Tresor gewährt werden.
+
+Nachdem Sie der benutzerseitig zugewiesenen Identität Berechtigungen erteilt haben, führen Sie die folgenden Schritte aus:
+
+1. [Weisen Sie die Identität](./overview-managed-identity.md#add-a-user-assigned-identity) Ihrer Anwendung zu, sofern noch nicht erfolgt.
+
+1. Konfigurieren Sie die App so, dass sie diese Identität für Key Vault-Verweisvorgänge verwendet, indem Sie die Eigenschaft `keyVaultReferenceIdentity` auf die Ressourcen-ID der benutzerseitig zugewiesenen Identität festlegen.
+
+    ```azurecli-interactive
+    userAssignedIdentityResourceId=$(az identity show -g MyResourceGroupName -n MyUserAssignedIdentityName --query id -o tsv)
+    appResourceId=$(az webapp show -g MyResourceGroupName -n MyAppName --query id -o tsv)
+    az rest --method PATCH --uri "${appResourceId}?api-version=2021-01-01" --body "{'properties':{'keyVaultReferenceIdentity':'${userAssignedIdentityResourceId}'}}"
+    ```
+
+Diese Konfiguration gilt für alle Verweise für die App.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 
@@ -67,9 +84,6 @@ Alternativ:
 ```
 
 ## <a name="rotation"></a>Drehung
-
-> [!IMPORTANT]
-> [Der Zugriff auf einen Tresor über die Integration von virtuellen Netzwerken](#access-network-restricted-vaults) ist zurzeit nicht mit automatischen Updates für Geheimnisse ohne eine angegebene Version kompatibel.
 
 Wenn in der Referenz keine Version angegeben ist, verwendet die App die neueste in Key Vault vorhandene Version. Sobald neuere Versionen verfügbar werden, z. B. bei einem Rotationsereignis, wird die App automatisch aktualisiert und beginnt innerhalb eines Tages mit der Nutzung der neuesten Version. Jede Konfigurationsänderung in der App führt zu einer sofortigen Aktualisierung auf die neuesten Versionen aller referenzierten Geheimnisse.
 
@@ -201,7 +215,7 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
 ```
 
 > [!NOTE] 
-> In diesem Beispiel hängt die Bereitstellung der Quellcodeverwaltung von den Anwendungseinstellungen ab. Dies ist normalerweise ein unsicheres Verhalten, da sich das App-Einstellungsupdate asynchron verhält. Da wir aber die Anwendungseinstellung `WEBSITE_ENABLE_SYNC_UPDATE_SITE` integriert haben, verläuft das Update synchron. Dies bedeutet, dass die Bereitstellung der Quellcodeverwaltung erst dann beginnt, wenn die Anwendungseinstellungen vollständig aktualisiert wurden.
+> In diesem Beispiel hängt die Bereitstellung der Quellcodeverwaltung von den Anwendungseinstellungen ab. Dies ist normalerweise ein unsicheres Verhalten, da sich das App-Einstellungsupdate asynchron verhält. Da wir aber die Anwendungseinstellung `WEBSITE_ENABLE_SYNC_UPDATE_SITE` integriert haben, verläuft das Update synchron. Dies bedeutet, dass die Bereitstellung der Quellcodeverwaltung erst dann beginnt, wenn die Anwendungseinstellungen vollständig aktualisiert wurden. Weitere App-Einstellungen finden Sie unter [Umgebungsvariablen und App-Einstellungen in Azure App Service](reference-app-settings.md).
 
 ## <a name="troubleshooting-key-vault-references"></a>Problembehandlung von Key Vault-Verweisen
 

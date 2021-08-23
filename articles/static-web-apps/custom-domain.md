@@ -5,14 +5,14 @@ services: static-web-apps
 author: burkeholland
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 08/04/2021
 ms.author: buhollan
-ms.openlocfilehash: fd8df4e162b33aef8a0e929da818e8b961953d9b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 07da31c48d70f25a2364b4af242bc0d1331d7036
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066111"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355992"
 ---
 # <a name="set-up-a-custom-domain-with-free-certificate-in-azure-static-web-apps"></a>Einrichten einer benutzerdefinierten Domäne mit kostenlosem Zertifikat in Azure Static Web Apps
 
@@ -174,13 +174,13 @@ Sie müssen einen TXT-Eintrag mit Ihrem Domänenanbieter konfigurieren. Azure DN
 
 1. Erstellen Sie einen neuen **TXT**-Eintragssatz mit den folgenden Werten.
 
-   | Einstellung  | Wert                                       |
-   | -------- | ------------------------------------------- |
-   | Name     | `@` für Stammdomäne, oder geben Sie die Unterdomäne ein. |
-   | Typ     | TXT                                         |
-   | TTL      | Standardwert übernehmen                      |
-   | TTL-Einheit | Standardwert übernehmen                      |
-   | Wert    | Fügen Sie den Code aus der Zwischenablage ein.          |
+   | Einstellung  | Wert                                                                           |
+   | -------- | ------------------------------------------------------------------------------- |
+   | Name     | `@` für die Stammdomäne, oder geben Sie `_dnsauth.<YOUR_SUBDOMAIN>` als Unterdomäne ein         |
+   | Typ     | TXT                                                                             |
+   | TTL      | Standardwert übernehmen                                                          |
+   | TTL-Einheit | Standardwert übernehmen                                                          |
+   | Wert    | Fügen Sie den Code aus der Zwischenablage ein.                                              |
 
 1. Wählen Sie **OK** aus.
 
@@ -211,15 +211,15 @@ Sie müssen einen TXT-Eintrag mit Ihrem Domänenanbieter konfigurieren. Azure DN
 
 1. Erstellen Sie einen neuen **TXT**-Eintragssatz mit den folgenden Werten:
 
-   | Einstellung             | Wert                                       |
-   | ------------------- | ------------------------------------------- |
-   | Typ                | TXT                                         |
-   | Host                | `@` für Stammdomäne, oder geben Sie die Unterdomäne ein. |
-   | Wert               | Fügen Sie den Code aus der Zwischenablage ein.          |
-   | TTL (falls zutreffend) | Standardwert übernehmen                      |
+   | Einstellung             | Wert                                                                        |
+   | ------------------- | ---------------------------------------------------------------------------- |
+   | Typ                | TXT                                                                          |
+   | Host                | `@` für die Stammdomäne, oder geben Sie `_dnsauth.<YOUR_SUBDOMAIN>` als Unterdomäne ein      |
+   | Wert               | Fügen Sie den Code aus der Zwischenablage ein.                                           |
+   | TTL (falls zutreffend) | Standardwert übernehmen                                                       |
 
 > [!NOTE]
-> Einige DNS-Anbieter ändern das „@“ automatisch in Ihre Stammdomäne (d.h. „mydomain.com“). Dies ist ein erwartetes Verhalten, und der Validierungsprozess funktioniert weiterhin.
+> Einige DNS-Anbieter verwenden eine andere Konvention als „@" to indicate a root domain or they change the "@“ automatisch in Ihre Stammdomäne (d. h. „mydomain.com“). Dies ist ein erwartetes Verhalten, und der Validierungsprozess funktioniert weiterhin.
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-validate-txt.md)]
 
@@ -292,6 +292,38 @@ Nachdem die Stammdomäne nun konfiguriert wurde, kann es mehrere Stunden dauern,
 Nachdem die Stammdomäne nun konfiguriert wurde, kann es mehrere Stunden dauern, bis die Änderungen vom DNS-Anbieter an alle weltweiten Standorte weitergegeben wurden.
 
 ---
+
+## <a name="redirect-requests-to-a-default-domain"></a>Umleiten von Anforderungen an eine Standarddomäne
+
+Auf Ihre statische Web-App kann über ihre automatisch generierte Domäne und alle benutzerdefinierten Domänen zugegriffen werden, die Sie konfiguriert haben. Optional können Sie Ihre App so konfigurieren, dass der gesamte Datenverkehr an eine Standarddomäne umgeleitet wird.
+
+### <a name="set-a-default-domain"></a>Festlegen einer Standarddomäne
+
+Wenn Sie eine benutzerdefinierte Domäne als Standarddomäne Ihrer App festlegen, werden Anforderungen an andere Domänen automatisch an die Standarddomäne umgeleitet. Es kann nur eine benutzerdefinierte Domäne als Standarddomäne festgelegt werden.
+
+Führen Sie die folgenden Schritte aus, um eine benutzerdefinierte Domäne als Standardeinstellung festzulegen.
+
+1. Wählen Sie mit Ihrer im Azure-Portal geöffneten statischen Web-App im Menü **Benutzerdefinierte Domänen** aus.
+
+1. Wählen Sie die benutzerdefinierte Domäne aus, die Sie als Standarddomäne konfigurieren möchten.
+
+1. Wählen Sie **Als Standard festlegen** aus.
+
+   :::image type="content" source="media/custom-domain/set-default.png" alt-text="Festlegen einer benutzerdefinierten Domäne als Standarddomäne":::
+
+1. Aktualisieren Sie nach Abschluss des Vorgangs die Tabelle, um sich zu vergewissern, dass Ihre Domäne als „Standard“ markiert ist.
+
+### <a name="unset-a-default-domain"></a>Aufheben der Festlegung einer Standarddomäne
+
+Um die Umleitung von Domänen zu einer Standarddomäne zu beenden, führen Sie die folgenden Schritte aus.
+
+1. Wählen Sie mit Ihrer im Azure-Portal geöffneten statischen Web-App im Menü **Benutzerdefinierte Domänen** aus.
+
+1. Wählen Sie die benutzerdefinierte Domäne aus, die Sie als Standarddomäne konfiguriert haben.
+
+1. Wählen Sie **Standardfestlegung aufheben** aus.
+
+1. Aktualisieren Sie nach Abschluss des Vorgangs die Tabelle, um sich zu vergewissern, dass keine Domänen als „Standard“ markiert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

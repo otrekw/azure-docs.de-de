@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 0c2725ff58e40bc56aac528a17fe4d66a128d475
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cede3018f8922c6771f81470a714eed430cd5cdf
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146939"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291870"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
@@ -115,6 +115,9 @@ Das vorherige Beispiel gibt folgende Antwort zurück:
   }
 }
 ```
+> [!NOTE]
+> - Die oben verwendete API [Network Watcher – Datenflussprotokollkonfiguration festlegen](/rest/api/network-watcher/network-watchers/set-flow-log-configuration) ist alt, und könnte bald auslaufen.
+> - Es wird empfohlen, stattdessen die neue REST-API [Datenflussprotokolle – Erstellen oder Aktualisieren](/rest/api/network-watcher/flow-logs/create-or-update) zu verwenden.
 
 ## <a name="disable-network-security-group-flow-logs"></a>Deaktivieren von Flowprotokollen für Netzwerksicherheitsgruppen
 
@@ -167,6 +170,10 @@ Das vorherige Beispiel gibt folgende Antwort zurück:
 }
 ```
 
+> [!NOTE]
+> - Die oben verwendete API [Network Watcher – Datenflussprotokollkonfiguration festlegen](/rest/api/network-watcher/network-watchers/set-flow-log-configuration) ist alt, und könnte bald auslaufen.
+> - Es wird empfohlen, die neue REST-API [Datenflussprotokolle – Erstellen oder Aktualisieren](/rest/api/network-watcher/flow-logs/create-or-update) zu verwenden, um Datenflussprotokolle zu deaktivieren, und die API [Datenflussprotokolle – Löschen](/rest/api/network-watcher/flow-logs/delete), um die Datenflussprotokollressource zu löschen.
+
 ## <a name="query-flow-logs"></a>Abfragen von Flowprotokollen
 
 Der folgende REST-Aufruf fragt den Status von Flowprotokollen in einer Netzwerksicherheitsgruppe ab.
@@ -204,6 +211,10 @@ Die zurückgegebene Antwort könnte z.B. wie folgt lauten:
   }
 }
 ```
+
+> [!NOTE]
+> - Die oben verwendete API [Network Watcher – Datenflussprotokollstatus abrufen](/rest/api/network-watcher/network-watchers/get-flow-log-status) erfordert eine zusätzliche „Leser“-Berechtigung in der Ressourcengruppe des Network Watchers. Außerdem ist diese API veraltet und läuft möglicherweise bald aus.
+> - Es wird empfohlen, stattdessen die neue REST-API [Datenflussprotokolle – Abrufen](/rest/api/network-watcher/flow-logs/get) zu verwenden.
 
 ## <a name="download-a-flow-log"></a>Herunterladen eines Flowprotokolls
 
