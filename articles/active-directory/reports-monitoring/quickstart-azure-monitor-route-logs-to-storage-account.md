@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 05/05/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd278968eeb430bf57f279bb8b7e5d4ee9248ce1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a50ef779dd65696ae62b6b08b04e65ca19291944
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965709"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113233404"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto
 
@@ -40,38 +40,38 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
-2. Klicken Sie auf **Azure Active Directory** > **Aktivität** > **Überwachungsprotokolle**. 
+2. Wählen Sie **Azure Active Directory** > **Überwachung** > **Überwachungsprotokolle** aus. 
 
-3. Klicken Sie auf **Einstellungen exportieren**. 
+3. Wählen Sie **Einstellungen für das Exportieren von Daten** aus. 
 
 4. Führen Sie im Bereich **Diagnoseeinstellungen** einen der folgenden Schritte aus:
-   * Klicken Sie zum Ändern vorhandener Einstellungen auf **Einstellung bearbeiten**.
-   * Klicken Sie zum Hinzufügen neuer Einstellungen auf **Diagnoseeinstellungen hinzufügen**.  
-     Sie können maximal drei Einstellungen verwenden. 
+    1. Um die vorhandene Einstellung zu ändern, wählen Sie **Einstellung bearbeiten** neben der Diagnoseeinstellung, die Sie aktualisieren möchten.
+    1. Klicken Sie zum Hinzufügen neuer Einstellungen auf **Diagnoseeinstellung hinzufügen**.  
+
+    Sie können maximal drei Einstellungen verwenden.
 
      ![Exporteinstellungen](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
-5. Geben Sie einen Anzeigenamen für die Einstellung ein, der den Zweck der Einstellung wiedergibt (beispielsweise *An Azure Storage-Konto senden*). 
+5. Wenn Sie eine neue Einstellung erstellen, geben Sie im Bereich **Diagnoseeinstellung** einen Namen für die Einstellung ein, der ihren Zweck näher beschreibt (z. B. *An Azure-Speicherkonto senden*). Der Name einer vorhandenen Einstellung kann später nicht geändert werden.
 
-6. Aktivieren Sie das Kontrollkästchen **In ein Speicherkonto archivieren**, und wählen Sie dann **Speicherkonto** aus. 
+6. Aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren** unter **Zieldetails**. 
 
-7. Wählen Sie das Azure-Abonnement und das Speicherkonto aus, an das Sie die Protokolle weiterleiten möchten.
- 
-8. Klicken Sie auf **OK**, um die Konfiguration zu beenden.
+7. Wählen Sie im Dropdownmenü **Abonnement** das Azure-Abonnement und im Dropdownmenü **Speicherkonto** das Speicherkonto aus, an das Sie die Protokolle weiterleiten möchten.
 
-9. Führen Sie einen oder beide der folgenden Schritte aus:
-    * Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an das Speicherkonto zu senden. 
-    * Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an das Speicherkonto zu senden.
+8. Wählen Sie unter **Kategoriedetails** alle relevanten Kategorien aus:
 
-10. Verwenden Sie den Schieberegler, um die Aufbewahrungsdauer für Ihre Protokolldaten festzulegen. Standardmäßig ist dieser Wert auf *0* festgelegt, d.h. die Protokolle werden im Speicherkonto unbegrenzt beibehalten. Wenn Sie einen anderen Wert festlegen, werden Ereignisse, die älter als die ausgewählte Anzahl von Tagen sind, automatisch bereinigt.
-
-11. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
+    Führen Sie einen oder beide der folgenden Schritte aus:
+    1. Aktivieren Sie das Kontrollkästchen **AuditLogs**, um Überwachungsprotokolle an das Speicherkonto zu senden.
+    
+    1. Aktivieren Sie das Kontrollkästchen **SignInLogs**, um Anmeldeprotokolle an das Speicherkonto zu senden.
 
     ![Diagnoseeinstellungen](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. Überprüfen Sie nach ungefähr 15 Minuten, ob die Protokolle in Ihr Speicherkonto gepusht werden. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), klicken Sie auf **Speicherkonten**, wählen Sie das Speicherkonto aus, das Sie zuvor verwendet haben, und klicken Sie dann auf **BLOBs**. Wählen Sie für **Überwachungsprotokolle** die Option **insights-log-audit** aus. Wählen Sie für **Anmeldeprotokolle** die Option **insights-logs-signin** aus.
+9. Nachdem die Kategorien ausgewählt wurden, geben Sie im Feld **Aufbewahrung in Tagen** die Anzahl der Tage ein, die Sie Ihre Protokolldaten aufbewahren müssen. Standardmäßig ist dieser Wert auf *0* festgelegt, d.h. die Protokolle werden im Speicherkonto unbegrenzt beibehalten. Wenn Sie einen anderen Wert festlegen, werden Ereignisse, die älter als die ausgewählte Anzahl von Tagen sind, automatisch bereinigt.
+ 
+10. Klicken Sie auf **Speichern**, um die Einstellung zu speichern.
 
-    ![Speicherkonto](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
+11. Schließen Sie das Fenster, um zum Bereich „Diagnoseeinstellungen“ zurückzukehren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

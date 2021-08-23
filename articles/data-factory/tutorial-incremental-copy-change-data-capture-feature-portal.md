@@ -5,13 +5,13 @@ ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/18/2021
-ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/05/2021
+ms.openlocfilehash: 927d913122203383b4279d68059040b6bf4be5e7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905772"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436764"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 
@@ -127,11 +127,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    ![Screenshot mit einer Meldung, dass die Bereitstellung abgeschlossen ist, und einer Option zum Wechseln zur Ressource](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
-   ![Screenshot der von Ihnen bereitgestellten Data Factory](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
-10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
-11. Wechseln Sie im linken Bereich der Seite **Erste Schritte** zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt:
+      :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
 
-    ![Schaltfläche „Create pipeline“ (Pipeline erstellen)](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
+10. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um das Data Factory Benutzerinterface (UI) in einem separaten Tab zu starten.
+11. Wechseln Sie am linken Rand der Homepage zur Registerkarte **Verwalten** wie in der folgenden Abbildung gezeigt:
+
+    ![Screenshot der Schaltfläche „Manage“ (Verwalten)](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt werden Dienste erstellt, die mit Ihrem Azure Storage-Konto und mit Azure SQL Managed Instance verknüpft sind.

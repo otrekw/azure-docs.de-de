@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen (ARM-Vorlagen) mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: 9a1ead39ed680921f444068e8e52136247272ac5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/16/2021
+ms.openlocfilehash: ee60651da5cee986a19cba9940c068679b342c53
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959928"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343223"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -185,6 +185,12 @@ Sie definieren Ressourcen mit der folgenden Struktur:
           "<tag-name1>": "<tag-value1>",
           "<tag-name2>": "<tag-value2>"
       },
+      "identity": {
+        "type": "<system-assigned-or-user-assigned-identity>",
+        "userAssignedIdentities": {
+          "<resource-id-of-identity>": {}
+        }
+      },
       "sku": {
           "name": "<sku-name>",
           "tier": "<sku-tier>",
@@ -234,6 +240,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | location |Varies |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts](resource-location.md). |
 | dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Anleitungen zum Festlegen von Abhängigkeiten finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md). |
 | tags |Nein |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
+| Identität | Nein | Einige Ressourcen unterstützen [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Diese Ressourcen verfügen über ein Identitätsobjekt auf der Stammebene der Ressourcendeklaration. Sie können festlegen, ob die Identität benutzerseitig oder systemseitig zugewiesen sein soll. Für benutzerseitig zugewiesene Identitäten geben Sie eine Liste mit Ressourcen-IDs für die Identitäten an. Legen Sie den Schlüssel auf die Ressourcen-ID fest und den Wert auf ein leeres Objekt. Weitere Informationen finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von Vorlagen](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md). |
 | sku | Nein | Einige Ressourcen lassen Werte zu, die die bereitzustellende SKU definieren. Beispielsweise können Sie den Typ der Redundanz für ein Speicherkonto angeben. |
 | kind | Nein | Einige Ressourcen lassen einen Wert zu, der den Typ der Ressource definiert, die Sie bereitstellen. Beispielsweise können Sie den Typ der zu erstellenden Cosmos DB angeben. |
 | scope | Nein | Die Bereichseigenschaft ist nur für [Erweiterungsressourcentypen](../management/extension-resource-types.md) verfügbar. Verwenden Sie sie, wenn Sie einen Bereich angeben, der sich vom Bereitstellungsbereich unterscheidet. Siehe [Festlegen des Bereichs für Erweiterungsressourcen in Azure Resource Manager-Vorlagen](scope-extension-resources.md). |
@@ -284,9 +291,7 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden.
 
 > [!NOTE]
 >
-> Verwenden Sie zum Bereitstellen von Vorlagen mit Kommentaren Azure PowerShell oder Azure CLI. Verwenden Sie für die CLI die Version 2.3.0 oder höher und geben Sie die Option `--handle-extended-json-format` an.
->
-> Kommentare werden nicht unterstützt, wenn Sie die Vorlage über das Azure-Portal, eine DevOps-Pipeline oder die REST-API bereitstellen.
+> Wenn Sie Azure CLI verwenden, um Vorlagen mit Kommentaren bereitzustellen, verwenden Sie Version 2.3.0 oder höher, und geben Sie den Switch `--handle-extended-json-format` an.
 
 ```json
 {
@@ -406,8 +411,8 @@ Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
+* Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 * Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
 * Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](./best-practices.md).
-* Antworten auf gängige Fragen finden Sie unter [Häufig gestellte Fragen zu ARM-Vorlagen](frequently-asked-questions.md).
+* Antworten auf gängige Fragen finden Sie unter [Häufig gestellte Fragen zu ARM-Vorlagen](frequently-asked-questions.yml).

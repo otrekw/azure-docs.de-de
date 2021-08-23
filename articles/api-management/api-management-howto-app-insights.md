@@ -7,14 +7,14 @@ author: mikebudzynski
 ms.service: api-management
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/25/2021
+ms.date: 08/04/2021
 ms.author: apimpm
-ms.openlocfilehash: 97f4eb34b88b3454d65b65d236833e1256c98671
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f67da2c2090dd99730324512248854d5e2fee259
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564271"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122342979"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -31,9 +31,12 @@ Bevor Sie Application Insights verwenden können, müssen Sie zunächst eine Ins
 
 1. Navigieren Sie im **Azure-Portal** zu Ihrer **Azure API Management-Dienstinstanz**.
 1. Wählen Sie **Application Insights** im Menü auf der linken Seite aus.
-1. Klicken Sie auf **+ Hinzufügen**.  
+1. Wählen Sie **+ Hinzufügen**.  
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-1.png" alt-text="Screenshot, der zeigt, wo eine neue Verbindung hinzugefügt wird":::
 1. Wählen Sie die zuvor erstellte **Application Insights**-Instanz aus, und geben Sie eine kurze Beschreibung.
+1. Aktivieren Sie das Kontrollkästchen **Verfügbarkeitsmonitor hinzufügen**, um die [Verfügbarkeitsüberwachung](../azure-monitor/app/monitor-web-app-availability.md) Ihrer API Management-Instanz in Application Insights zu aktivieren.
+
+    Mit dieser Einstellung wird regelmäßig überprüft, ob der API Management-Dienstendpunkt antwortet. Die Ergebnisse werden im Bereich **Verfügbarkeit** der Application Insights-Instanz angezeigt.
 1. Klicken Sie auf **Erstellen**.
 1. Sie haben gerade eine Application Insights-Protokollierung mit einem Instrumentierungsschlüssel erstellt. Sie sollte jetzt in der Liste angezeigt werden.  
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-2.png" alt-text="Screenshot, der zeigt, wo die neu erstellte Application Insights-Protokollierung mit Instrumentierungsschlüssel angezeigt wird":::
@@ -58,7 +61,7 @@ Bevor Sie Application Insights verwenden können, müssen Sie zunächst eine Ins
 > Überschreiben des Standardwerts **0** in der Einstellung **Anzahl der zu protokollierenden Nutzlastbytes** kann die Leistung Ihrer APIs erheblich beeinträchtigen.
 
 > [!NOTE]
-> Im Hintergrund wird eine [Diagnoseentität](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) namens „applicationinsights“ auf API-Ebene erstellt.
+> Im Hintergrund wird eine [Diagnose](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate)entität namens „applicationinsights“ auf API-Ebene erstellt.
 
 | Einstellungsname                        | Werttyp                        | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -87,13 +90,18 @@ Bevor Sie Application Insights verwenden können, müssen Sie zunächst eine Ins
 
 Application Insights empfängt:
 
-+ Ein *Anforderungstelemetrieereignis* für jede eingehende Anforderung (*Front-End-Anforderung*, *Front-End-Antwort*),
-+ ein *Abhängigkeitstelemetrieereignis* für jede an einen Back-End-Dienst weitergeleitete Anforderung (*Back-End-Anforderung*, *Back-End-Antwort*),
++ *Anforderungs* telemetrieereignis, für jede eingehende Anforderung:
+    + *Front-End-Anforderung*, *Front-End-Antwort*
++ *Abhängigkeits* telemetrieereignis, für jede an einen Back-End-Dienst weitergeleitete Anforderung:
+    + *Back-End-Anforderung*, *Back-End-Antwort*
 + ein *Ausnahmetelemetrieereignis* für jede fehlerhafte Anforderung:
     + Sie ist aufgrund einer geschlossenen Clientverbindung fehlerhaft
     + sie wurde im *bei Fehler*-Abschnitt der API-Richtlinien ausgelöst
-    + sie verfügt über einen mit 4xx oder 5xx übereinstimmenden Antwort-HTTP-Statuscode.
-+ Telemetrieelement zur *Ablaufverfolgung*, wenn Sie eine Richtlinie zur [Ablaufverfolgung](api-management-advanced-policies.md#Trace) konfigurieren. In der Application Insights-Protokollierung muss die `severity`-Einstellung in der `trace`-Richtlinie größer als die `verbosity`-Einstellung oder gleich sein.
+    + sie verfügt über einen mit 4xx oder 5xx übereinstimmenden Antwort-HTTP-Statuscode
++ Telemetrieelement zur *Ablaufverfolgung*, wenn Sie eine Richtlinie zur [Ablaufverfolgung](api-management-advanced-policies.md#Trace) konfigurieren. 
+    + In der Application Insights-Protokollierung muss die `severity`-Einstellung in der `trace`-Richtlinie größer als die `verbosity`-Einstellung oder gleich sein.
+
+Sie können auch benutzerdefinierte Metriken ausgeben, indem Sie die Richtlinie [`emit-metric`](api-management-advanced-policies.md#emit-metrics) konfigurieren.
 
 > [!NOTE]
 > Unter [Application Insights](../azure-monitor/service-limits.md#application-insights) finden Sie Informationen zur maximalen Größe und Anzahl von Metriken und Ereignissen pro Application Insights-Instanz.

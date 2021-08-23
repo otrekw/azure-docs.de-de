@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 55f34ec9416bdca81d025efb0910b10a7fa48736
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 1f8f8d81af6fb06bba9c48f5ae7d1fbb7f5d2e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355088"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -19,7 +19,7 @@ In diesem Artikel wird erläutert, wie Sie allgemeine Einstellungen für Web-App
 
 ## <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 
-In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen.
+In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen. In beiden Fällen werden sie beim Start der App in Ihre App-Umgebung eingeschleust. Wenn Sie App-Einstellungen hinzufügen, entfernen oder bearbeiten, löst App Service einen App-Neustart aus.
 
 Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. 
 
@@ -202,9 +202,9 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:
     - **Bitanzahl**: 32-Bit oder 64-Bit. (Der Standardwert ist 32-Bit für einen im Portal erstellten App Service.)
     - **WebSocket-Protokoll**: Z.B. für [ASP.NET SignalR] oder [socket.io](https://socket.io/).
-    - **Always On**: Hält die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
-      > [!NOTE]
-      > Mit der Always On-Funktion sendet der Front-End-Lastenausgleich eine Anforderung an den Anwendungsstamm. Dieser Anwendungsendpunkt des App Service kann nicht konfiguriert werden.
+    - **Always On**: Hält die App auch dann geladen, wenn kein Datenverkehr stattfindet. Wenn **Always On** nicht aktiviert ist (Standardeinstellung), wird die App nach 20 Minuten ohne eingehende Anforderungen entladen. Die entladene App kann aufgrund ihrer Aufwärmzeit zu hoher Latenz für neue Anforderungen führen. Wenn **Always On** aktiviert ist, sendet der Front-End-Lastenausgleich alle fünf Minuten eine GET-Anforderung an den Anwendungsstamm. Der fortlaufende Ping verhindert, dass die App entladen wird.
+    
+        AlwaysOn ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]
@@ -285,6 +285,7 @@ Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)
 - [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]
 - [Einrichten von Stagingumgebungen in Azure App Service]
 - [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS/SSL-Bindung in Azure App Service](configure-ssl-bindings.md)

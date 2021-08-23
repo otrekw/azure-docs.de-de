@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 80de6651d59b26b596633b8ba775c774dcfea62e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6ecfd3fd9f426676fe0b5c9a69af26b1245b7824
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970339"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339839"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -72,8 +72,10 @@ Die Angabe „.x“ steht symbolisch für neue Nebenversionen von Linux-Distribu
 |Microsoft|Windows Server|2012–2019|
 |Microsoft|Windows-Client|Windows 10|
 |OpenLogic|CentOS|7.3 -8.x|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 8.x|
+|Red Hat|Red Hat Enterprise Linux\*|7.4 - 8.x|
 |SUSE|SLES|12 SP3-SP5, 15.x|
+
+\* Red Hat CoreOS wird nicht unterstützt.
 
 Benutzerdefinierte Images von virtuellen Computern werden von Richtliniendefinitionen der Gastkonfiguration unterstützt, sofern es sich um eines der Betriebssysteme in der obigen Tabelle handelt.
 
@@ -85,7 +87,7 @@ Azure Arc-Computer stellen mithilfe der lokalen Netzwerkinfrastruktur eine Verbi
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>Kommunizieren über virtuelle Netzwerke in Azure
 
-Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Das [Diensttag](../../../virtual-network/service-tags-overview.md) „AzureArcInfrastructure“ kann verwendet werden, um auf den Gästekonfigurationsdienst zu verweisen, anstatt die [Liste der IP-Bereiche](https://www.microsoft.com/en-us/download/details.aspx?id=56519) für Azure-Rechenzentren manuell zu führen.
+Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Die [Diensttags](../../../virtual-network/service-tags-overview.md) „AzureArcInfrastructure“ und „Storage“ kann verwendet werden, um auf die Gästekonfigurations- und Speicherdienste zu verweisen, anstatt die [Liste der IP-Bereiche](https://www.microsoft.com/download/details.aspx?id=56519) für Azure-Rechenzentren manuell zu führen. Beide Tags sind erforderlich, da Gastkonfigurations-Inhaltspakete von Azure Storage gehostet werden.
 
 ### <a name="communicate-over-private-link-in-azure"></a>Kommunizieren über Private Link in Azure
 
@@ -167,6 +169,11 @@ Kunden, die eine hochverfügbare Lösung entwerfen, sollten die Anforderungen an
 Wenn Sie eine Architektur für hochverfügbare Anwendungen in Betracht ziehen, insbesondere wenn virtuelle Computer in [Verfügbarkeitsgruppen](../../../virtual-machines/availability.md#availability-sets) hinter einer Lastenausgleichslösung bereitgestellt werden, um Hochverfügbarkeit zu gewährleisten, wird empfohlen, allen Computern in der Lösung dieselben Richtliniendefinitionen mit denselben Parametern zu zuweisen. Wenn möglich, würde eine einzelne Richtlinienzuweisung, die alle Computer umfasst, den geringsten Verwaltungsaufwand bieten.
 
 Stellen Sie für Computer, die von [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) geschützt werden, sicher, dass die Computer an einem sekundären Standort innerhalb des Bereichs von Azure Policy-Zuweisungen für dieselben Definitionen liegen, die dieselben Parameterwerte wie Computer am primären Standort verwenden.
+
+## <a name="data-residency"></a>Datenresidenz
+
+Die Gastkonfiguration speichert/verarbeitet Kundendaten. Standardmäßig werden Kundendaten in die [gekoppelte Region](../../../best-practices-availability-paired-regions.md) repliziert.
+Für eine einzelne gebietsansässige Region werden alle Kundendaten in der Region gespeichert und verarbeitet.
 
 ## <a name="troubleshooting-guest-configuration"></a>Problembehandlung bei der Gastkonfiguration
 

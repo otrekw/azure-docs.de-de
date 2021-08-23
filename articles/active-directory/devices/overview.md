@@ -1,97 +1,59 @@
 ---
 title: Was ist die Geräteidentität in Azure Active Directory?
-description: Erfahren Sie, wie Sie mithilfe der Geräteidentitätsverwaltung die Geräte verwalten können, die auf Ressourcen in Ihrer Umgebung zugreifen.
+description: Geräteidentitäten und deren Anwendungsfälle
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 07/20/2020
+ms.date: 06/09/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sandeo
+ms.reviewer: sandeo, ravenn, spunukol, jogro, jploegert
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ccb47e7600b50223ea0247c678a73ced4c86be3
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87025590"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302972"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
-Aufgrund der steigenden Zahl von Geräten aller Art und Größe und dem BYOD-Konzept (Bring Your Own Device) gelten für IT-Spezialisten zwei eigentlich gegensätzliche Zielsetzungen:
-
-- Schaffen von Bedingungen für Benutzer, unter denen sie an jedem Ort und zu jeder Zeit produktiv sein können
-- Schützen der Ressourcen einer Organisation
-
-Zum Schutz dieser Ressourcen müssen IT-Mitarbeiter zunächst die Geräteidentitäten verwalten. IT-Mitarbeiter können mit Tools wie Microsoft Intune auf der Geräteidentität aufbauen, um sicherzustellen, dass die Standards für Sicherheit und Konformität erfüllt werden. Azure Active Directory (Azure AD) ermöglicht das einmalige Anmelden bei Geräten, Apps und Diensten an jedem Ort über diese Geräte.
-
-- Ihre Benutzer erhalten Zugriff auf die benötigten Ressourcen Ihrer Organisation. 
-- Ihre IT-Mitarbeiter erhalten die Kontrolle, die sie benötigen, um Ihre Organisation zu schützen.
-
-Die Geräteidentitätsverwaltung stellt die Grundlage für [gerätebasierten bedingten Zugriff](../conditional-access/require-managed-devices.md) dar. Mit Richtlinien für gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit verwalteten Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.
-
-## <a name="getting-devices-in-azure-ad"></a>Aufnehmen von Geräten in Azure AD
-
-Um ein Gerät in Azure AD aufzunehmen, haben Sie mehrere Möglichkeiten:
-
-- **Bei Azure AD registriert**
-   - Geräte, die bei Azure AD registriert sind, sind normalerweise persönliche oder mobile Geräte und werden mit einem persönlichen Microsoft-Konto oder einem anderen lokalen Konto angemeldet.
-      - Windows 10
-      - iOS
-      - Android
-      - MacOS
-- **In Azure AD eingebunden**
-   - Geräte, die in Azure AD eingebunden sind, gehören einer Organisation und werden mit einem Azure AD-Konto angemeldet, das zu der Organisation gehört. Sie sind nur in der Cloud vorhanden.
-      - Windows 10 
-      - [Virtuelle Computer mit Windows Server 2019, die in Azure ausgeführt werden](howto-vm-sign-in-azure-ad-windows.md) (Server Core wird nicht unterstützt.)
-- **eingebunden in Hybrid Azure AD**
-   - Geräte, die in Hybrid Azure AD eingebunden sind, gehören einer Organisation und werden mit einem Active Directory Domain Services-Konto angemeldet, das zu der Organisation gehört. Sie sind in der Cloud und lokal vorhanden.
-      - Windows 7, 8.1 oder 10
-      - Windows Server 2008 oder höher
+Eine [Geräteidentität](/graph/api/resources/device?view=graph-rest-1.0) ist ein Objekt in Azure Active Directory (Azure AD). Dieses Geräteobjekt ähnelt Benutzern, Gruppen oder Anwendungen. Eine Geräteidentität liefert Administratoren Informationen, die sie als Grundlage für Zugriffs- oder Konfigurationsentscheidungen verwenden können.
 
 ![Auf dem Blatt „Azure AD-Geräte“ angezeigte Geräte](./media/overview/azure-active-directory-devices-all-devices.png)
 
-> [!NOTE]
-> Ein Hybridzustand ist mehr als nur der Zustand eines Geräts. Für einen gültigen Hybridzustand ist zudem ein gültiger Azure AD-Benutzer erforderlich.
+Es gibt drei Möglichkeiten, eine Geräteidentität abzurufen:
 
-## <a name="device-management"></a>Geräteverwaltung
+- Azure AD-Registrierung
+- Azure AD-Einbindung
+- Azure AD-Hybrideinbindung
 
-Geräte in Azure AD können mithilfe von Tools für die mobile Geräteverwaltung (Mobile Device Management, MDM) wie z. B. Microsoft Intune, Microsoft Endpoint Configuration Manager, Gruppenrichtlinie (eingebunden in Hybrid Azure AD), Tools für die mobile Anwendungsverwaltung (Mobile Application Management, MAM) oder anderen Tools von Drittanbietern verwaltet werden.
+Geräteidentitäten sind eine Voraussetzung für Szenarien wie [gerätebasierte Richtlinien für bedingten Zugriff](../conditional-access/require-managed-devices.md) und die [Verwaltung mobiler Geräte (MDM) mit Microsoft Endpoint Manager](/mem/endpoint-manager-overview).
+
+## <a name="modern-device-scenario"></a>Szenario mit modernen Geräten
+
+Das Szenario mit modernen Geräten stützt sich auf zwei der folgenden Methoden: 
+
+- [Azure AD-Registrierung](concept-azure-ad-register.md) 
+   - Bring Your Own Device (BYOD)
+   - Mobiles Gerät (Mobiltelefon und Tablet)
+- [Azure AD-Einbindung](concept-azure-ad-register.md)
+   - Windows 10-Geräte, die sich im Besitz Ihrer Organisation befinden
+   - [Windows Server 2019 und neuere Server in Ihrer Organisation, die als VMs in Azure ausgeführt werden](howto-vm-sign-in-azure-ad-windows.md)
+
+[Azure AD Hybrid Join](concept-azure-ad-join-hybrid.md) wird als Zwischenschritt auf dem Weg zur Azure AD-Einbindung betrachtet. Azure AD Hybrid Join bietet Organisationen Unterstützung für kompatible Windows-Versionen bis Windows 7 und Server 2008. Alle drei Szenarien können gleichzeitig in einer einzelnen Organisation auftreten.
 
 ## <a name="resource-access"></a>Zugriff auf Ressourcen
 
-Das Registrieren und Hinzufügen von Geräten zu Azure AD ermöglicht Ihren Benutzern eine nahtlose Anmeldung (Seamless Sign-On, SSO) bei Cloudressourcen. Mit diesem Prozess können Administratoren außerdem Richtlinien für den bedingten Zugriff auf Ressourcen abhängig von dem Gerät anwenden, von dem aus darauf zugegriffen wird. 
+Das Registrieren und Hinzufügen von Geräten zu Azure AD ermöglicht Benutzern eine nahtlose Anmeldung (Seamless Sign-On, SSO) bei cloudbasierten Ressourcen.
 
-> [!NOTE]
-> Gerätebasierte Richtlinien für den bedingten Zugriff erfordern entweder hybride in Azure AD eingebundene Geräte oder kompatible in Azure AD eingebundene oder bei Azure AD registrierte Geräte.
-
-Das primäre Aktualisierungstoken (Primary Refresh Token, PRT) enthält Informationen zum Gerät und ist für einmaliges Anmelden erforderlich. Wenn Sie für eine Anwendung eine gerätebasierte Richtlinie für bedingten Zugriff festgelegt haben, wird der Zugriff ohne PRT verweigert. Für Richtlinien für bedingten Hybridzugriff sind ein Gerät mit Hybridzustand und ein gültiger angemeldeter Benutzer erforderlich.
-
-Für Geräte, die in Azure AD oder in Hybrid Azure AD eingebunden sind, kann das einmalige Anmelden für die lokalen Ressourcen sowie die Cloudressourcen Ihrer Organisation genutzt werden. Weitere Informationen finden Sie unter [Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten](azuread-join-sso.md).
-
-## <a name="device-security"></a>Gerätesicherheit
-
-- **Bei Azure AD registrierte Geräte** nutzen ein vom Endbenutzer verwaltetes Konto. Bei diesem Konto handelt es sich entweder um ein Microsoft-Konto oder um andere lokale Anmeldeinformationen, die durch eines oder mehrere der folgenden Elemente gesichert sind.
-   - Kennwort
-   - PIN
-   - Muster
-   - Windows Hello
-- **In Azure AD oder in Hybrid Azure AD eingebundene Geräte** nutzen ein Organisationskonto in Azure AD, das durch eines oder mehrere der folgenden Elemente gesichert ist.
-   - Kennwort
-   - Windows Hello for Business
+Geräte, die in Azure AD eingebunden sind, profitieren vom [einmaligen Anmelden (SSO) bei lokalen Ressourcen Ihrer Organisation](azuread-join-sso.md).
 
 ## <a name="provisioning"></a>Bereitstellung
 
-Die Bereitstellung von Geräten in Azure AD kann im Self-Service-Modus oder über einen von Administratoren gesteuerten Bereitstellungsprozess erfolgen.
-
-## <a name="summary"></a>Zusammenfassung
-
-Mit der Geräteidentitätsverwaltung in Azure AD haben Sie folgende Möglichkeiten:
-
-- Vereinfachen des Prozesses zum Aufnehmen und Verwalten von Geräten in Azure AD
-- Benutzerfreundlicher Zugriff auf die cloudbasierten Ressourcen Ihres Unternehmens für Ihre Benutzer
+Die Bereitstellung von Geräten in Azure AD kann im Self-Service-Modus oder über einen von Administratoren gesteuerten Prozess erfolgen.
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 

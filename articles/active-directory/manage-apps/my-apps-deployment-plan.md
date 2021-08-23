@@ -2,25 +2,26 @@
 title: Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 description: Planungsleitfaden für die effektive Verwendung von „Meine Apps“ in Ihrem Unternehmen.
 services: active-directory
-author: barbaraselden
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/29/2020
-ms.author: baselden
-ms.openlocfilehash: 8cf1a671eeb4861919a389b02f45fee998d880e3
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 07/25/2021
+ms.author: davidmu
+ms.reviewer: lenalepa
+ms.openlocfilehash: 36da44521169c516888489bd0ac60015adcc432f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317215"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355216"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
 > [!NOTE]
-> Dieser Artikel richtet sich an IT-Experten, die in ihrer Organisation die Konfiguration des Portals „Meine Apps“ planen müssen. 
+> Dieser Artikel richtet sich an IT-Experten, die in ihrer Organisation die Konfiguration des Portals „Meine Apps“ planen müssen.
 >
 > **Die Dokumentation für Endbenutzer finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md)** .
 
@@ -30,17 +31,16 @@ ms.locfileid: "108317215"
 
 ## <a name="why-configure-my-apps"></a>Warum muss das Portal „Meine Apps“ konfiguriert werden?
 
-Das Portal „Meine Apps“ ist standardmäßig für Benutzer verfügbar und kann nicht deaktiviert werden. Es ist wichtig, es zu konfigurieren, um die bestmögliche Benutzererfahrung zu realisieren und den Nutzen des Portals zu erhalten. 
+Das Portal „Meine Apps“ ist standardmäßig für Benutzer verfügbar und kann nicht deaktiviert werden. Es ist wichtig, es zu konfigurieren, um die bestmögliche Benutzererfahrung zu realisieren und den Nutzen des Portals zu erhalten.
 
 Eine Anwendung in der Liste der Azure Active Directory-Unternehmensanwendungen wird angezeigt, wenn die beiden folgenden Bedingungen erfüllt sind:
 
-* Die Sichtbarkeitseigenschaft für die App ist auf TRUE eingestellt. 
+* Die Sichtbarkeitseigenschaft für die App ist auf TRUE eingestellt.
 
 * Die App ist einem Benutzer oder einer Gruppe zugewiesen. Sie wird den zugewiesenen Benutzern angezeigt.
 
 Durch das Konfigurieren des Portals wird gewährleistet, dass die richtigen Personen problemlos die richtigen Apps finden können.
 
- 
 ### <a name="how-is-the-my-apps-portal-used"></a>Warum wird das Portal „Meine Apps“ verwendet?
 
 Benutzer greifen zu folgenden Zwecken auf das Portal „Meine Apps“ zu:
@@ -69,11 +69,9 @@ Administratoren können Folgendes konfigurieren:
 
 * Im Portal „Meine Apps“ angezeigtes Unternehmensbranding
 
- 
-
 ## <a name="plan-consent-configuration"></a>Planen der Zustimmungskonfiguration
 
-### <a name="user-consent-for-applications"></a>Benutzerzustimmung für Anwendungen 
+### <a name="user-consent-for-applications"></a>Benutzerzustimmung für Anwendungen
 
 Damit sich ein Benutzer bei einer Anwendung anmelden kann und die Anwendung auf die Daten Ihrer Organisation zugreifen kann, muss ein Benutzer oder Administrator die Anwendungsberechtigungen erteilen. Sie können konfigurieren, ob die Zustimmung des Benutzers zulässig ist, und unter welchen Bedingungen. **Microsoft empfiehlt Ihnen, die Zustimmung des Benutzers nur für Anwendungen von verifizierten Verlegern zuzulassen.**
 
@@ -81,7 +79,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Zustimmung von Endbenu
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Gruppenbesitzereinwilligung für Apps, die auf Daten zugreifen
 
-Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
+Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams).
 
 Sie können konfigurieren, ob Sie diese Funktion aktivieren oder deaktivieren möchten.
 
@@ -97,13 +95,11 @@ Obwohl „Meine Apps“ in der Regel keine Benutzerprobleme verursacht, ist es w
 
 Microsoft stellt [anpassbare Vorlagen für E-Mails und andere Kommunikationsformen](https://aka.ms/APTemplates) für „Meine Apps“ zur Verfügung. Sie können diese Ressourcen für die Nutzung in anderen Kommunikationskanälen entsprechend Ihrer Unternehmenskultur anpassen.
 
- 
-
 ## <a name="plan-your-sso-configuration"></a>Planen der SSO-Konfiguration
 
 Es empfiehlt sich, für alle Apps im Portal „Meine Apps“ einmaliges Anmelden (SSO) zu aktivieren, um Benutzern eine nahtlose Benutzererfahrung ohne erneute Eingabe der Anmeldeinformationen zu ermöglichen.
 
-Azure AD unterstützt mehrere SSO-Optionen. 
+Azure AD unterstützt mehrere SSO-Optionen.
 
 * Weitere Informationen hierzu finden Sie unter [Optionen für einmaliges Anmelden in Azure AD](sso-options.md).
 
@@ -111,16 +107,16 @@ Azure AD unterstützt mehrere SSO-Optionen.
 
 ### <a name="use-federated-sso-if-possible"></a>Verwenden von Verbund-SSO (sofern möglich)
 
-Zugunsten einer optimalen Benutzererfahrung auf der Seite „Meine Apps“ sollten Sie zunächst Cloudanwendungen integrieren, die für Verbund-SSO (OpenID Connect oder SAML) verfügbar sind. Verbund-SSO ermöglicht Benutzern über App-Startoberflächen hinweg eine einheitliche 1-Klick-Umgebung und ist hinsichtlich der Konfigurationssteuerung tendenziell stabiler.
+Zugunsten einer optimalen Benutzererfahrung auf der Seite „Meine Apps“ sollten Sie zunächst Cloudanwendungen integrieren, die für einmaliges Verbundanmelden (SSO) wie OpenID Connect oder SAML verfügbar sind. Verbund-SSO ermöglicht Benutzern bei der Anmeldung bei Anwendungen eine einheitliche 1-Klick-Umgebung und ist hinsichtlich der Konfigurationssteuerung tendenziell stabiler.
 
-Weitere Informationen zum Konfigurieren von SaaS-Anwendungen (Software-as-a-Service) für einmaliges Anmelden (SSO) finden Sie unter [SaaS-SSO-Bereitstellungsplan]../Desktop/plan-sso-deployment.md).
+Weitere Informationen zum Konfigurieren des einmaligen Anmeldens (SSO) für Ihre Anwendung finden Sie unter [Planen einer Bereitstellung mit einmaligen Anmelden](plan-sso-deployment.md).
 
 ### <a name="considerations-for-special-sso-circumstances"></a>Überlegungen zu besonderen SSO-Bedingungen
 
 > [!TIP]
 > Verwenden Sie zugunsten einer besseren Benutzererfahrung Verbund-SSO mit Azure AD (OpenID Connect/SAML) anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.
 
-Zum Anmelden bei Anwendungen mit kennwortbasierter einmaliger Anmeldung oder Anwendungen mit Zugriff über Azure AD-Anwendungsproxy müssen Benutzer die Erweiterung „Meine Apps“ für die sichere Anmeldung installieren und verwenden. Beim ersten Start der Anwendung mit kennwortbasierter einmaliger Anmeldung oder Anwendungsproxy werden die Benutzer aufgefordert, die Erweiterung zu installieren. 
+Zum Anmelden bei Anwendungen mit kennwortbasierter einmaliger Anmeldung oder Anwendungen mit Zugriff über Azure AD-Anwendungsproxy müssen Benutzer die Erweiterung „Meine Apps“ für die sichere Anmeldung installieren und verwenden. Beim ersten Start der Anwendung mit kennwortbasierter einmaliger Anmeldung oder Anwendungsproxy werden die Benutzer aufgefordert, die Erweiterung zu installieren.
 
 ![Screenshot](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
@@ -138,7 +134,7 @@ Die Erweiterung ermöglicht den Benutzern, jede App über die Suchleiste zu star
 
 #### <a name="plan-for-mobile-access"></a>Planen des mobilen Zugriffs
 
-Bei Anwendungen, die kennwortbasiertes einmaliges Anmelden verwenden, oder auf die über den [Microsoft Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) zugegriffen wird, müssen Sie Microsoft Edge für Mobilgeräte verwenden. Bei anderen Anwendungen kann jeder mobile Browser verwendet werden. 
+Bei Anwendungen, die kennwortbasiertes einmaliges Anmelden verwenden, oder auf die über den [Microsoft Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md) zugegriffen wird, müssen Sie Microsoft Edge für Mobilgeräte verwenden. Bei anderen Anwendungen kann jeder mobile Browser verwendet werden.
 
 ### <a name="linked-sso"></a>Verknüpftes einmaliges Anmelden
 
@@ -150,7 +146,7 @@ Standardmäßig werden alle Anwendungen, auf die der Benutzer Zugriff hat, und a
 
 ### <a name="plan-my-apps-collections"></a>Planen von „Meine Apps“-Sammlungen
 
-Jede Azure AD-Anwendung, auf die ein Benutzer Zugriff hat, wird in „Meine Apps“ in der Sammlung „Alle Apps“ angezeigt. Zum Gruppieren verwandter Anwendungen sollten Sie Sammlungen verwenden und diese auf einer separaten Registerkarte anordnen, damit sie leichter zu finden sind. So können Sie mit Sammlungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. 
+Jede Azure AD-Anwendung, auf die ein Benutzer Zugriff hat, wird in „Meine Apps“ in der Sammlung **Apps** angezeigt. Zum Gruppieren verwandter Anwendungen sollten Sie Sammlungen verwenden und diese auf einer separaten Registerkarte anordnen, damit sie leichter zu finden sind. So können Sie mit Sammlungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen.
 
 Endbenutzer können ihre Oberfläche auf folgende Weise ebenfalls anpassen:
 
@@ -163,19 +159,19 @@ Endbenutzer können ihre Oberfläche auf folgende Weise ebenfalls anpassen:
 Es gibt eine Option, mit der Sie Apps aus dem Portal „Meine Apps“ ausblenden, auf die Apps aber trotzdem noch an anderen Stellen (z. B. im Microsoft 365-Portal) zugreifen können. Weitere Informationen: [Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory](hide-application-from-user-portal.md)
 
 > [!IMPORTANT]
-> Über das Portal „Meine Apps“ können nur 950 Apps aufgerufen werden, auf die der Benutzer Zugriff hat. Dazu zählen auch die Apps, die durch den Benutzer oder den Administrator ausgeblendet wurden. 
+> Über das Portal „Meine Apps“ können nur 950 Apps aufgerufen werden, auf die der Benutzer Zugriff hat. Dazu zählen auch die Apps, die durch den Benutzer oder den Administrator ausgeblendet wurden.
 
 ### <a name="plan-self-service-group-management-membership"></a>Planen von Self-Service-Gruppenverwaltung und Mitgliedschaft
 
 Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgruppen oder Microsoft 365-Gruppen in Azure AD ermöglichen. Der Besitzer der Gruppe kann Mitgliedschaftsanforderungen genehmigen oder ablehnen sowie die Steuerung der Gruppenmitgliedschaft delegieren. Funktionen für die Self-Service-Gruppenverwaltung sind nicht für E-Mail-aktivierte Sicherheitsgruppen oder Verteilerlisten verfügbar.
 
-Zum Planen der Self-Service-Gruppenmitgliedschaft legen Sie fest, ob Sie allen Benutzern in Ihrem Unternehmen oder nur einer Teilmenge von Benutzern erlauben, Gruppen zu erstellen und zu verwalten. Wenn Sie nur eine Teilmenge von Benutzern auswählen, müssen Sie eine Gruppe einrichten, der diese Personen hinzugefügt werden. 
+Zum Planen der Self-Service-Gruppenmitgliedschaft legen Sie fest, ob Sie allen Benutzern in Ihrem Unternehmen oder nur einer Teilmenge von Benutzern erlauben, Gruppen zu erstellen und zu verwalten. Wenn Sie nur eine Teilmenge von Benutzern auswählen, müssen Sie eine Gruppe einrichten, der diese Personen hinzugefügt werden.
 
 Weitere Informationen zum Aktivieren dieser Szenarien finden Sie unter [Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory](../enterprise-users/groups-self-service-management.md).
 
 ### <a name="plan-self-service-application-access"></a>Planen des Self-Service-Anwendungszugriff
 
-Sie können Benutzern ermöglichen, Anwendungen über den Bereich „Meine Apps“ zu ermitteln und Zugriff auf diese Anwendungen anzufordern. Dazu müssen Sie zuerst folgende Schritte ausführen: 
+Sie können Benutzern ermöglichen, Anwendungen über den Bereich „Meine Apps“ zu ermitteln und Zugriff auf diese Anwendungen anzufordern. Dazu müssen Sie zuerst folgende Schritte ausführen:
 
 * Aktivieren der Self-Service-Gruppenverwaltung
 
@@ -196,7 +192,6 @@ Azure AD stellt [Berichte mit technischen und geschäftlichen Erkenntnissen](..
 | Berichtstypen| Anwendungsberechtigungen und -nutzung| Kontobereitstellungsaktivität| Überprüfen, wer auf die Anwendungen zugreift |
 | Mögliche Aktionen| Überwachen des Zugriffs, Widerrufen von Berechtigungen| Beheben von Bereitstellungsfehlern| Widerrufen des Zugriffs |
 
-
 Azure AD speichert die meisten Überwachungsdaten für 30 Tage. Die Daten stehen über das Azure-Verwaltungsportal oder die API zur Verfügung, die Sie in Ihre Analysesysteme herunterladen können.
 
 #### <a name="auditing"></a>Überwachung
@@ -213,7 +208,6 @@ Führen Sie die folgenden Tests sowohl mit firmeneigenen als auch mit privaten G
 
 #### <a name="application-sso-access-test-case-examples"></a>Beispiele für Testfälle mit SSO-Zugriff auf die Anwendung:
 
-
 | Geschäftsszenario| Erwartetes Ergebnis |
 | - | - |
 | Benutzer meldet sich beim „Meine Apps“-Portal an| Benutzer kann sich anmelden und seine Anwendungen anzeigen |
@@ -223,15 +217,12 @@ Führen Sie die folgenden Tests sowohl mit firmeneigenen als auch mit privaten G
 | Benutzer startet eine App über das Microsoft 365-Portal| Benutzer wird automatisch bei der Anwendung angemeldet |
 | Benutzer startet eine App über den verwalteten Browser| Benutzer wird automatisch bei der Anwendung angemeldet |
 
-
 #### <a name="application-self-service-capabilities-test-case-examples"></a>Beispiele für Testfälle mit Self-Service-Funktionen für Anwendungen
-
 
 | Geschäftsszenario| Erwartetes Ergebnis |
 | - | - |
 | Benutzer kann die Mitgliedschaft für die Anwendung verwalten| Benutzer kann Mitglieder hinzufügen/entfernen, die Zugriff auf die App haben |
 | Benutzer kann die Anwendung bearbeiten| Benutzer kann die Beschreibung und Anmeldeinformationen für Kennwort-SSO-Anwendungen bearbeiten |
-
 
 ### <a name="rollback-steps"></a>Rollbackschritte
 
@@ -248,7 +239,6 @@ Verwenden Sie die am wenigsten privilegierte Rolle, um eine erforderliche Aufgab
 | Anwendungsadministrator| Benutzernachweis in Anwendung, Konfiguration für Benutzer mit Berechtigungen| Keine |
 | Infrastrukturadministratoren| Besitzer des Zertifikatrollovers| Globaler Administrator |
 | Geschäftsbesitzer/Beteiligter| Benutzernachweis in Anwendung, Konfiguration für Benutzer mit Berechtigungen| Keine |
-
 
 Sie können Ihre Rollen mithilfe von [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) verwalten, um zusätzliche Überwachung, Kontrolle und Zugriffsprüfungen für Benutzer mit Verzeichnisberechtigungen bereitzustellen.
 

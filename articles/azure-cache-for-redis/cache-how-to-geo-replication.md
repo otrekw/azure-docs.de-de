@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 534efc4723c0a526bd8d607299bbf3ec4effaa86
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c1d6d7fbac720a6a0f8793e75d08733ce01e0707
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895008"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322348"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 
@@ -38,6 +38,7 @@ Um die Georeplikation zwischen zwei Caches zu konfigurieren, müssen die folgend
 
 Einige Funktionen werden für die Georeplikation nicht unterstützt:
 
+- Für die Georeplikation wird Zonenredundanz nicht unterstützt.
 - Für die Georeplikation wird Persistenz nicht unterstützt.
 - Das Clustering wird unterstützt, wenn für beide Caches das Clustering aktiviert ist und jeweils die gleiche Anzahl von Shards vorhanden ist.
 - Caches in demselben VNET werden unterstützt.
@@ -45,7 +46,7 @@ Einige Funktionen werden für die Georeplikation nicht unterstützt:
 
 Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für Ihr verknüpftes Cachepaar:
 
-- Der sekundäre verknüpfte Cache ist schreibgeschützt: Sie können nur Daten lesen, jedoch keine Daten darin schreiben. Falls Sie Daten aus der sekundären Geoinstanz lesen möchten, beachten Sie Folgendes: Wenn zwischen der primären und der sekundären Geoinstanz eine vollständige Datensynchronisierung stattfindet (was bei einer Aktualisierung der primären oder sekundären Geoinstanz und auch in einigen Neustartszenarien geschieht), werden von der sekundären Geoinstanz bei jedem für sie ausgeführten Redis-Vorgang Fehler mit einem Hinweis auf die vollständige Datensynchronisierung ausgelöst, bis die vollständige Datensynchronisierung zwischen der primären und der sekundären Geoinstanz abgeschlossen ist. Anwendungen, die Daten aus der sekundären Geoinstanz lesen, müssen so gestaltet sein, dass sie auf die primäre Geoinstanz ausweichen, wenn von der sekundären Geoinstanz solche Fehler ausgelöst werden. 
+- Der sekundäre verknüpfte Cache ist schreibgeschützt: Sie können nur Daten lesen, jedoch keine Daten darin schreiben. Falls Sie Daten aus der sekundären Geoinstanz lesen möchten, beachten Sie Folgendes: Wenn zwischen der primären und der sekundären Geoinstanz eine vollständige Datensynchronisierung stattfindet (was bei einer Aktualisierung der primären oder sekundären Geoinstanz und auch in einigen Neustartszenarien geschieht), werden von der sekundären Geoinstanz bei jedem für sie ausgeführten Redis-Vorgang Fehler mit einem Hinweis auf die vollständige Datensynchronisierung ausgelöst, bis die vollständige Datensynchronisierung zwischen der primären und der sekundären Geoinstanz abgeschlossen ist. Anwendungen, die Daten aus der sekundären Geoinstanz lesen, müssen so gestaltet sein, dass sie auf die primäre Geoinstanz ausweichen, wenn von der sekundären Geoinstanz solche Fehler ausgelöst werden.
 - Alle Daten, die vor dem Hinzufügen der Verknüpfung im sekundären verknüpften Cache enthalten waren, werden entfernt. Wenn die Georeplikation aber später entfernt wird, verbleiben die replizierten Daten im sekundären verknüpften Cache.
 - Sie können keinen dieser Caches [skalieren](cache-how-to-scale.md), während die Caches verknüpft sind.
 - Sie können die [Anzahl von Shards nicht ändern](cache-how-to-premium-clustering.md), wenn für den Cache das Clustering aktiviert ist.
@@ -58,27 +59,27 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 ## <a name="add-a-geo-replication-link"></a>Hinzufügen einer Verknüpfung für die Georeplikation
 
-1. Klicken Sie zum Verknüpfen von zwei Caches für die Georeplikation zuerst im Menü „Ressource“ des Caches, der als primärer verknüpfter Cache verwendet werden soll, auf **Georeplikation**. Klicken Sie anschließend auf dem Blatt **Georeplikation** auf **Link für Cachereplikation hinzufügen**.
+1. Klicken Sie zum Verknüpfen von zwei Caches für die Georeplikation zuerst im Menü „Ressource“ des Caches, der als primärer verknüpfter Cache verwendet werden soll, auf **Georeplikation**. Klicken Sie anschließend links unter **Georeplikation** auf **Link für Cachereplikation hinzufügen**.
 
     ![Hinzufügen einer Verknüpfung](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. Klicken Sie in der Liste **Kompatible Caches** auf den Namen des gewünschten sekundären Caches. Wenn der sekundäre Cache nicht in der Liste angezeigt wird, sollten Sie sicherstellen, dass die [Voraussetzungen für die Georeplikation](#geo-replication-prerequisites) für den sekundären Cache erfüllt sind. Klicken Sie zum Filtern der Caches nach Region auf der Karte auf die Region, um nur Caches in der Liste **Kompatible Caches** anzuzeigen.
+1. Klicken Sie in der Liste **Kompatible Caches** auf den Namen des gewünschten sekundären Caches. Wenn der sekundäre Cache nicht in der Liste angezeigt wird, sollten Sie sicherstellen, dass die [Voraussetzungen für die Georeplikation](#geo-replication-prerequisites) für den sekundären Cache erfüllt sind. Klicken Sie zum Filtern der Caches nach Region auf der Karte auf die Region, um nur Caches in der Liste **Kompatible Caches** anzuzeigen.
 
     ![Für die Georeplikation kompatible Caches](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
-    
+
     Sie können mithilfe des Kontextmenüs auch den Verknüpfungsvorgang starten oder Details zum sekundären Cache anzeigen.
 
     ![Kontextmenü für die Georeplikation](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Klicken Sie auf **Verknüpfen**, um zwei Caches zu verknüpfen und den Replikationsvorgang zu starten.
+1. Klicken Sie auf **Verknüpfen**, um zwei Caches zu verknüpfen und den Replikationsvorgang zu starten.
 
     ![Verknüpfen von Caches](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. Auf dem Blatt **Georeplikation** können Sie den Status des Replikationsvorgangs sehen.
+1. Links mittels **Georeplikation** können Sie den Status des Replikationsvorgangs sehen.
 
     ![Verknüpfungsstatus](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    Auf dem Blatt **Übersicht** können Sie auch den Verknüpfungsstatus für den primären und sekundären Cache anzeigen.
+    Links unter **Übersicht** können Sie auch den Verknüpfungsstatus für den primären und sekundären Cache anzeigen.
 
     ![Screenshot: Anzeigen des Verknüpfungsstatus für den primären Cache und sekundäre Caches.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
@@ -90,8 +91,8 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 ## <a name="remove-a-geo-replication-link"></a>Entfernen einer Verknüpfung für die Georeplikation
 
-1. Um die Verknüpfung zwischen zwei Caches zu entfernen und die Georeplikation zu beenden, klicken Sie auf dem Blatt **Georeplikation** auf **Verknüpfung von Caches aufheben**.
-    
+1. Um die Verknüpfung zwischen zwei Caches zu entfernen und die Georeplikation zu beenden, klicken Sie links unter **Georeplikation** auf **Verknüpfung von Caches aufheben**.
+
     ![Aufheben der Verknüpfung von Caches](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
     Wenn der Vorgang zur Aufhebung der Verknüpfung abgeschlossen ist, ist der sekundäre Cache für Lese- und Schreibvorgänge verfügbar.
@@ -201,5 +202,5 @@ Ja, Sie können eine [Firewall](./cache-configure.md#firewall) mit Georeplikatio
 
 Erfahren Sie mehr über Azure Cache for Redis-Features.
 
-* [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)
-* [Hochverfügbarkeit für Azure Cache for Redis](cache-high-availability.md)
+- [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)
+- [Hochverfügbarkeit für Azure Cache for Redis](cache-high-availability.md)

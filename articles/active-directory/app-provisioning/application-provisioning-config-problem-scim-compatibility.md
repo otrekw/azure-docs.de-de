@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 0e369a6ab857b95035b0aaca28525e54e15835e8
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f74e9a4f99523e26feb703f5ed2bedf33366f8d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783259"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355486"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -50,71 +50,40 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
 
-* Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften). Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
+Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen. Das Flag ändert die folgenden Verhalten:                
+- Anforderungen zum Deaktivieren von Benutzern
+- Anforderungen zum Hinzufügen eines Zeichenfolgenattributs mit einem einzelnen Wert
+- Anforderungen zum Ersetzen mehrerer Attribute
+- Anforderungen zum Entfernen eines Gruppenmitglieds        
+                                                                                     
+Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
   * **URL (SCIM-konform):** aadOptscim062020
   * **SCIM-RFC-Verweise:** 
-    * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **Verhalten:**
+    * https://tools.ietf.org/html/rfc7644#section-3.5.2    
+
+Im Folgenden finden Sie Beispielanforderungen, die darlegen sollen, was die Synchronisierungs-Engine derzeit sendet, im Vergleich zu den Anforderungen, die gesendet werden, nachdem das Featureflag aktiviert wurde. 
+                           
+**Anforderungen zum Deaktivieren von Benutzern:**
+
+**Ohne Featureflag**
   ```json
-   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-   {
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            "op": "Replace",
+            "path": "active",
+            "value": "False"
         }
     ]
-   }
+}
+  ```
 
-    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "add",
-            "path": "members",
-            "value": [
-                {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
-                }
-            ]
-        }
-    ]
-    } 
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
-        },
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
-        },
-        {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
-            }
-        }
-    ]
-    }
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
+**Mit Featureflag**
+  ```json
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
@@ -125,23 +94,153 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
             "value": false
         }
     ]
-    }
+}
+  ```
 
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
+**Anforderungen zum Hinzufügen eines Zeichenfolgenattributs mit einem einzelnen Wert:**
+
+**Ohne Featureflag**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Add",
+            "path": "nickName",
+            "value": [
+                {
+                    "value": "Babs"
+                }
+            ]
+        }
+    ]
+}   
+  ```
+
+**Mit Featureflag**
+  ```json
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
             "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            "value": {
+                "nickName": "Babs"
+            }
         }
     ]
-    }
-   
+}
   ```
+
+**Anforderungen zum Ersetzen mehrerer Attribute:**
+
+**Ohne Featureflag**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "displayName",
+            "value": "Pvlo"
+        },
+        {
+            "op": "Replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestBcwqnm@test.microsoft.com"
+        },
+        {
+            "op": "Replace",
+            "path": "name.givenName",
+            "value": "Gtfd"
+        },
+        {
+            "op": "Replace",
+            "path": "name.familyName",
+            "value": "Pkqf"
+        },
+        {
+            "op": "Replace",
+            "path": "externalId",
+            "value": "Eqpj"
+        },
+        {
+            "op": "Replace",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber",
+            "value": "Eqpj"
+        }
+    ]
+}
+  ```
+
+**Mit Featureflag**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestMhvaes@test.microsoft.com"
+        },
+        {
+            "op": "replace",
+            "value": {
+                "displayName": "Bjfe",
+                "name.givenName": "Kkom",
+                "name.familyName": "Unua",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber": "Aklq"
+            }
+        }
+    ]
+} 
+  ```
+
+**Anforderungen zum Entfernen eines Gruppenmitglieds:**
+
+**Ohne Featureflag**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Remove",
+            "path": "members",
+            "value": [
+                {
+                    "value": "u1091"
+                }
+            ]
+        }
+    ]
+} 
+  ```
+
+**Mit Featureflag**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"7f4bc1a3-285e-48ae-8202-5accb43efb0e\"]"
+        }
+    ]
+}
+  ```
+
 
   * **Downgrade-URL:** Sobald das neue SCIM-konforme Verhalten bei nicht im Katalog enthaltenen Anwendungen zum Standardverhalten wird, können Sie mit der folgenden URL ein Rollback auf das alte, nicht SCIM-konforme Verhalten durchführen: AzureAdScimPatch2017
   

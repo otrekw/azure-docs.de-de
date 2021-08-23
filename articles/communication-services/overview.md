@@ -5,24 +5,32 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6dae6e7ef5a442392972a39f75bbea8046b4beff
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324723"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360917"
 ---
 # <a name="what-is-azure-communication-services"></a>Was ist Azure Communication Services?
 
-Mit Azure Communication Services können Sie Ihren Anwendungen mühelos Funktionen für die Sprach-, Video- und Telefonkommunikation in Echtzeit hinzufügen. Communication Services-SDKs ermöglichen zudem das Hinzufügen von SMS-Funktionen zu Ihren Kommunikationslösungen. Azure Communication Services ist identitätsunabhängig, und Sie haben uneingeschränkte Kontrolle über die Identifizierung und Authentifizierung von Endbenutzern. Sie können Menschen mit der Kommunikationsdatenebene oder mit entsprechenden Diensten (Bots) verbinden.
+Azure Communication Services sind cloudbasierte Dienste mit REST-APIs und Clientbibliothek-SDKs, die Sie dabei unterstützen, Ihre Anwendungen mit Kommunikationsfunktionen auszustatten. Sie können Ihren Anwendungen Kommunikationsfunktionen hinzufügen, ohne sich mit Kommunikationstechnologien wie Mediencodierung und Echtzeitnetzwerken auskennen zu müssen. Azure Communication Services unterstützt verschiedene Kommunikationsformate:
 
-Dies können diese Arten von Anwendungen sein:
+1. Sprach- und Videoanrufe
+1. Rich-Text-Chat
+1. sms
 
-- **B2C (Business-to-Consumer):** Die Mitarbeiter und Dienste eines Unternehmens können mit Kunden über Sprach-, Video- und Rich-Text-Chats in einem benutzerdefinierten Browser oder einer mobilen Anwendung interagieren. Eine Organisation kann SMS-Nachrichten senden und empfangen oder ein IVR-System (Interactive Voice Response, interaktive Sprachantwort) mit einer über Azure bezogenen Telefonnummer betreiben. Dank [Microsoft Teams-Integration](./quickstarts/voice-video-calling/get-started-teams-interop.md) können Kunden an Teams-Besprechungen teilnehmen, die von Mitarbeitern gehostet werden – perfekt für Remoteszenarien im Gesundheitsbereich, im Bankwesen und im Produktsupport, wo Mitarbeiter ggf. bereits mit Teams vertraut sind.
-- **C2C (Consumer-to-Consumer):** Erstellen Sie ansprechende soziale Bereiche für die Interaktion zwischen Verbrauchern mit Sprach-, Video- und Rich-Text-Chats. Auf der Grundlage von Azure Communication Services SDKs kann jede beliebige Art von Benutzeroberfläche erstellt werden. Für einen schnellen Einstieg stehen jedoch vollständige Anwendungsbeispiele und Benutzeroberflächenressourcen zur Verfügung.
+Sie können benutzerdefinierte Clientendpunkte, benutzerdefinierte Dienste und das Telefonfestnetz (Public Switched Telephone Network, PSTN) mit Ihrer Kommunikationsanwendung verbinden. Sie können Telefonnummern direkt über Azure Communication Services REST-APIs, SDKs oder das Azure-Portal abrufen und diese Nummern für SMS- oder Anrufanwendungen nutzen. Über das direkte Routing von Azure Communication Services können Sie SIP- und Session Border Controller verwenden, um Ihre eigenen Telefonfestnetzbetreiber zu verbinden und Ihre eigenen Telefonnummern zu nutzen.
+
+Zusätzlich zu REST-APIs sind [Azure Communication Services-Clientbibliotheken](./concepts/sdk-options.md) für verschiedene Plattformen und Programmiersprachen verfügbar, einschließlich Webbrowser (JavaScript), iOS (Swift), Java (Android) und Windows (.NET). Eine [Benutzeroberflächenbibliothek für Webbrowser](https://aka.ms/acsstorybook) kann die Entwicklung für mobile Browser und Desktopbrowser beschleunigen. Azure Communication Services ist unabhängig von Identitäten, Sie legen also selbst fest, wie Endbenutzer identifiziert und authentifiziert werden.
+
+Zu den Szenarien für Azure Communication Services gehören:
+
+- **B2C (Business-to-Consumer):** Die Mitarbeiter und Dienste eines Unternehmens können mit Kunden über Sprach-, Video- und Rich-Text-Chats in einem benutzerdefinierten Browser oder einer mobilen Anwendung interagieren. Eine Organisation kann SMS-Nachrichten senden und empfangen oder ein [IVR-System (Interactive Voice Response, interaktive Sprachantwort)](https://github.com/microsoft/botframework-telephony/blob/main/EnableTelephony.md) mit einer über Azure bezogenen Telefonnummer betreiben. Dank [Microsoft Teams-Integration](./quickstarts/voice-video-calling/get-started-teams-interop.md) können Kunden an Teams-Besprechungen teilnehmen, die von Mitarbeitern gehostet werden – perfekt für Remoteszenarien im Gesundheitsbereich, im Bankwesen und im Produktsupport, wo Mitarbeiter ggf. bereits mit Teams vertraut sind.
+- **C2C (Consumer-to-Consumer):** Erstellen Sie ansprechende soziale Bereiche für die Interaktion zwischen Verbrauchern mit Sprach-, Video- und Rich-Text-Chats. Auf der Grundlage von Azure Communication Services-SDKs kann jede beliebige Art von Benutzeroberfläche erstellt werden. Für einen schnellen Einstieg stehen jedoch vollständige Anwendungsbeispiele und ein Open-Source-Toolkit zur Benutzeroberflächengestaltung zur Verfügung.
 
 Weitere Informationen finden Sie in unserem [Microsoft Mechanics-Video](https://www.youtube.com/watch?v=apBX7ASurgM) sowie in den unten verlinkten Ressourcen.
 
@@ -34,17 +42,19 @@ Weitere Informationen finden Sie in unserem [Microsoft Mechanics-Video](https:/
 |---                                    |---                                   |
 |**[Erstellen einer Communication Services-Ressource](./quickstarts/create-communication-resource.md)**|Beginnen Sie mit der Verwendung von Azure Communication Services, indem Sie das Azure-Portal oder das Communication Services SDK verwenden, um Ihre erste Communication Services-Ressource bereitzustellen. Sobald Sie über die Communication Services-Verbindungszeichenfolge verfügen, können Sie Ihre ersten Benutzerzugriffstoken bereitstellen.|
 |**[Beschaffen einer Telefonnummer](./quickstarts/telephony-sms/get-phone-number.md)**|Verwenden Sie Azure Communication Services zum Bereitstellen und Freigeben von Telefonnummern. Diese Telefonnummern können zum Initiieren oder Entgegennehmen von Anrufen sowie zum Erstellen von SMS-Lösungen verwendet werden.|
-|**[Versenden einer SMS von Ihrer App](./quickstarts/telephony-sms/send.md)**|Das Azure Communication Services SMS SDK dient zum Senden und Empfangen von SMS-Nachrichten von Dienstanwendungen.|
+|**[Versenden einer SMS von Ihrer App](./quickstarts/telephony-sms/send.md)**| Die Azure Communication Services-SMS-REST-APIs und -SDKs dienen zum Senden und Empfangen von SMS-Nachrichten von Dienstanwendungen.|
 
 Nach dem Erstellen einer Communication Services-Ressource können Sie mit dem Erstellen von Clientszenarien beginnen, etwa für Sprach- und Videoanrufe oder Textchats:
 
 | Resource                               |BESCHREIBUNG                           |
 |---                                    |---                                   |
-|**[Erstellen Ihrer ersten Benutzerzugriffstoken](./quickstarts/access-tokens.md)**|Benutzerzugriffstoken werden verwendet, um Clients gegenüber Ihrer Azure Communication Services-Ressource zu authentifizieren. Diese Token werden mithilfe des Communication Services SDK bereitgestellt und erneut ausgestellt.|
+|**[Erstellen Ihrer ersten Benutzerzugriffstoken](./quickstarts/access-tokens.md)**|Mithilfe von Benutzerzugriffstoken werden Clients gegenüber Ihrer Azure Communication Services-Ressource authentifiziert. Diese Token werden mithilfe der Communication Services-Identitäts-APIs und -SDKs bereitgestellt und erneut ausgestellt.|
 |**[Erste Schritte mit Sprach- und Videoanrufen](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Mit Azure Communication Services können Sie Ihren browserbasierten oder nativen Apps unter Verwendung des Calling SDK Sprach- und Videoanrufe hinzufügen. |
 |**[Hinzufügen von Telefonanrufen zu Ihrer App](./quickstarts/voice-video-calling/pstn-call.md)**|Mit Azure Communication Services können Sie Ihrer Anwendung Telefonanruffunktionen hinzufügen.|
 |**[Beitreten mit einer Telefonie-App zu einer Teams-Besprechung](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services kann dazu verwendet werden, benutzerdefinierte Besprechungsumgebungen zu erstellen, die mit Microsoft Teams interagieren. Benutzer Ihrer Communication Services-Lösung(en) können mit den Teams-Teilnehmern über Sprache, Video, Chat und Bildschirmfreigabe interagieren.|
 |**[Erste Schritte mit dem Chat](./quickstarts/chat/get-started.md)**|Mit dem Azure Communication Services Chat SDK können Sie Ihre Anwendungen mit umfangreichen Funktionen für Echtzeittextchats ausstatten.|
+|**[Verbinden eines Microsoft-Bots mit einer Telefonnummer](https://github.com/microsoft/botframework-telephony)**|Der Telefoniekanal ist ein Kanal in Microsoft Bot Framework, der es dem Bot ermöglicht, mit Benutzern über das Telefon zu interagieren. Er nutzt die Leistungsfähigkeit von Microsoft Bot Framework in Kombination mit Azure Communication Services und den Azure Speech-Diensten.  |
+
 
 ## <a name="samples"></a>Beispiele
 

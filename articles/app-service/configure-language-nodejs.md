@@ -6,16 +6,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 97db865f2c590a9d7700ee53a0380604885a8155
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: da7d617ab92ed0e9c7564813006e3a0c044a48b6
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076651"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343175"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Node.js-App für Azure App Service
 
-Node.js-Apps müssen mit allen erforderlichen NPM-Abhängigkeiten bereitgestellt werden. Die App Service-Bereitstellungs-Engine führt automatisch `npm install --production` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) mit aktivierter Buildautomatisierung bereitstellen. Wenn Sie Ihre Dateien jedoch mit [FTP/S](deploy-ftp.md) bereitstellen, müssen Sie die erforderlichen Pakete manuell hochladen.
+Node.js-Apps müssen mit allen erforderlichen NPM-Abhängigkeiten bereitgestellt werden. Die App Service-Bereitstellungs-Engine führt automatisch `npm install --production` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen. Wenn Sie Ihre Dateien jedoch mit [FTP/S](deploy-ftp.md) bereitstellen, müssen Sie die erforderlichen Pakete manuell hochladen.
 
 Diese Anleitung enthält die wichtigsten Konzepte und Anweisungen für Node.js-Entwickler, die in App Service bereitstellen. Wenn Sie Azure App Service noch nie verwendet haben, befolgen Sie zunächst den [Node.js-Schnellstart](quickstart-nodejs.md) und das Tutorial [Node.js mit dem MongoDB](tutorial-nodejs-mongodb-app.md).
 
@@ -29,7 +29,7 @@ Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, 
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
-Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, um alle unterstützten Node.js-Versionen anzuzeigen:
+Um alle unterstützten Node.js-Versionen anzuzeigen, navigieren Sie zu `https://<sitename>.scm.azurewebsites.net/api/diagnostics/runtime`, oder führen Sie den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus.
 
 ```azurecli-interactive
 az webapp list-runtimes | grep node
@@ -63,7 +63,7 @@ Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, 
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_NODE_DEFAULT_VERSION="10.15"
 ```
 
-Diese Einstellung legt die zu verwendende Version von Node.js fest, sowohl zur Laufzeit als auch während der automatischen Paketwiederherstellung bei der App Service-Buildautomatisierung.
+Diese Einstellung legt die zu verwendende Version von Node.js fest, sowohl zur Laufzeit als auch während der automatischen Paketwiederherstellung bei der App Service-Buildautomatisierung. Diese Einstellung erkennt nur Haupt-/Nebenversionen, der _LTS_-Moniker wird nicht unterstützt.
 
 > [!NOTE]
 > Sie sollten die Node.js-Version in der `package.json` des Projekts festlegen. Die Bereitstellungs-Engine wird in einem separaten Prozess ausgeführt, der alle unterstützten Node.js-Versionen enthält.
@@ -119,7 +119,7 @@ app.listen(port, () => {
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
 1. Ausführen von `npm install` ohne Flags, was npm `preinstall` und `postinstall`-Skripts einschließt und auch `devDependencies` installiert.
@@ -241,7 +241,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>Run Grunt/Bower/Gulp
 
-Standardmäßig führt die App Service-Buildautomatisierung `npm install --production` aus, wenn sie erkennt, dass eine Node.js-App über Git bereitgestellt wird (oder über eine ZIP-Bereitstellung mit aktivierter Buildautomatisierung). Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
+Standardmäßig führt die App Service-Buildautomatisierung `npm install --production` aus, wenn sie erkennt, dass eine Node.js-App über Git oder mit einer ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitgestellt wird. Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
 
 Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
@@ -320,7 +320,7 @@ fi
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [TLS/SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded-*` in Ihrem App-Standardmuster. In [Express](https://expressjs.com/) können Sie [trust proxies](https://expressjs.com/guide/behind-proxies.html) (Proxys vertrauen) verwenden. Beispiel:
 
@@ -384,6 +384,6 @@ Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder F
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)
 
 ::: zone-end

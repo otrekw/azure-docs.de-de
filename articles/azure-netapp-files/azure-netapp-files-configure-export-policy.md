@@ -7,17 +7,17 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 05/07/2021
-ms.openlocfilehash: 35bcff2615ab9b31f077a13c1cae7fbe38518575
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.date: 08/06/2021
+ms.openlocfilehash: f930c52c4b913e9411c6f619231fb50d0bb6cc5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628246"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346371"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>Konfigurieren Sie die Exportrichtlinie für NFS- oder Dualprotokollvolumes
 
-Sie können die Exportrichtlinie konfigurieren, um den Zugriff auf ein Azure NetApp Files Volume zu steuern, das das NFS-Protokoll (NFSv3 und NFSv4.1) oder das duale Protokoll (NFSv3 und SMB) verwendet. 
+Sie können die Exportrichtlinie konfigurieren, um den Zugriff auf ein Azure NetApp Files Volume zu steuern, das das NFS-Protokoll (NFSv3 und NFSv4.1) oder das duale Protokoll (NFSv3 und SMB oder NFSv4.1 und SMB) verwendet. 
 
 Sie können bis zu fünf Exportrichtlinienregeln erstellen.
 
@@ -48,6 +48,16 @@ Sie können bis zu fünf Exportrichtlinienregeln erstellen.
 
       ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
+    * **Chown-Modus**: Ändern Sie den Modus zum Ändern des Besitzers nach Bedarf, um die Besitzverwaltungsfunktionen von Dateien und Verzeichnissen festzulegen.  Es stehen zwei Optionen zur Verfügung:   
+
+      * `Restricted` (Standardeinstellung): Nur der Stammbenutzer (root) kann den Besitz von Dateien und Verzeichnissen ändern.
+      * `Unrestricted`: Nichtstammbenutzer können den Besitz für Dateien und Verzeichnisse ändern, deren Besitzer sie sind.  
+
+        Registrierungsanforderungen und -überlegungen gelten für das Festlegen von **`Chown Mode`** . Befolgen Sie die Anweisungen unter [Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers](configure-unix-permissions-change-ownership-mode.md).  
+
+      ![Screenshot der Option für den Modus zum Ändern des Besitzers.](../media/azure-netapp-files/chown-mode-export-policy.png) 
+
 ## <a name="next-steps"></a>Nächste Schritte 
 * [Mounten oder unmounten eines Volumes](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Konfigurieren von Unix-Berechtigungen und des Modus zum Ändern des Besitzers](configure-unix-permissions-change-ownership-mode.md) 
 * [Verwalten von Momentaufnahmen](azure-netapp-files-manage-snapshots.md)

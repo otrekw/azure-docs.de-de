@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: c0be8241b438a010a44c4b9dbabbb05d5ac290b3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670657"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217087"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Tutorial: Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -195,9 +196,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Nachdem nun zwei Datenrahmen vorhanden sind, besteht die nächste Aufgabe darin, die Modellformel zu erstellen und für den Trainingsdatenrahmen auszuführen. Anschließend können Sie eine Überprüfung anhand des Testdatenrahmens ausführen. Experimentieren Sie mit verschiedenen Versionen der Modellformel, um die Auswirkungen verschiedener Kombinationen zu ermitteln.
 
 > [!Note]
-> Um das Modell speichern zu können, müssen Sie über die Azure-Rolle *Mitwirkender an Storage-Blobdaten* verfügen. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem Azure SQL-Datenbank-Server die Rolle „Mitwirkender an Storage-Blobdaten“ zu. Dieser Schritt kann nur von Mitgliedern mit Besitzerrechten ausgeführt werden. 
->
->Informationen zu diversen integrierten Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md).
+> Um das Modell zu speichern, weisen Sie dem Ressourcenbereich des Azure SQL-Datenbank-Servers die Rolle *Mitwirkender an Storage-Blobdaten* zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md). Dieser Schritt kann nur von Mitgliedern mit Besitzerrechten ausgeführt werden.
 
 ```python
 ## Create a new logistic regression object for the model

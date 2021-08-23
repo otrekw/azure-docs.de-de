@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: b8e70b1450aa7c121c88e508667dc37ad01d212e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 618fc8258c2e34c482b6c11cac469de503fa0179
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536887"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346901"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren der Unterstützung virtueller Netzwerke einer Azure Cache for Redis-Instanz vom Typ „Premium“
 
@@ -19,6 +19,10 @@ Die Bereitstellung über [Azure Virtual Network](https://azure.microsoft.com/ser
 
 > [!NOTE]
 > Azure Cache for Redis unterstützt sowohl das klassische Bereitstellungsmodell als auch virtuelle Netzwerke unter Azure Resource Manager.
+>
+
+> [!IMPORTANT]
+> Azure Cache for Redis unterstützt jetzt Azure Private Link, wodurch die Netzwerkarchitektur vereinfacht und die Verbindung zwischen Endpunkten in Azure geschützt wird. Sie können aus Ihrem virtuellen Netzwerk über einen privaten Endpunkt, dem eine private IP-Adresse in einem Subnetz innerhalb des virtuellen Netzwerks zugewiesen ist, eine Verbindung mit einer Azure Cache-Instanz herstellen. Azure Private Link wird in allen unseren Tarifen angeboten, umfasst Azure Policy-Unterstützung sowie eine vereinfachte Netzwerksicherheitsgruppen-Regelverwaltung. Weitere Informationen finden Sie unter [Dokumentation zu Private Link](cache-private-link.md). Informationen zum Migrieren Ihrer in das VNet eingeschleusten Caches zu Private Link finden Sie [hier](cache-vnet-migration.md).
 >
 
 ## <a name="set-up-virtual-network-support"></a>Einrichten der Unterstützung für virtuelle Netzwerke

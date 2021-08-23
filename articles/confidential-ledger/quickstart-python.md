@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 92014d161d0ef70b163494b617545287c7e39818
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 552e8a4565710cb22f65ee5abf493c5471d89f3c
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855006"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585517"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Schnellstart: Microsoft Azure Confidential Ledger Clientbibliothek für Python
 
@@ -22,7 +22,7 @@ Microsoft Azure Confidential Ledger ist ein neuer und äußerst sicherer Dienst 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[API-Referenzdokumentation](/python/api/overview/azure/keyvault-secrets-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [Paket (Python-Paketindex)](https://pypi.org/project/azure-keyvault-secrets/)
+[API-Referenzdokumentation](/python/api/overview/azure/keyvault-secrets-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/confidentialledger) | [Paketverwaltungsbibliothek (Python-Paketindex)](https://pypi.org/project/azure-mgmt-confidentialledger/)| [Paketclientbibliothek (Python-Paketindex)](https://pypi.org/project/azure-confidentialledger/)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -107,7 +107,7 @@ ledger_name = "<your-unique-ledger-name>"
 subscription_id = "<azure-subscription-id>"
 
 identity_url = "https://identity.confidential-ledger.core.azure.com"
-ledger_url = "https://" + ledger_name + ".eastus.cloudapp.azure.com"
+ledger_url = "https://" + ledger_name + ".confidential-ledger.azure.com"
 ```
 
 ### <a name="use-the-control-plane-client-library"></a>Verwenden der Steuerungsebene-Clientbibliothek
@@ -148,7 +148,7 @@ confidential_ledger_mgmt.ledger.begin_create(resource_group, ledger_name, ledger
 Um zu überprüfen, ob Ihr Ledger erfolgreich erstellt wurde, zeigen Sie seine Details mithilfe der `get`-Funktion an.
 
 ```python
-myledger = ledger = confidential_ledger_mgmt.ledger.get(resource_group, ledger_name)
+myledger = confidential_ledger_mgmt.ledger.get(resource_group, ledger_name)
 
 print("Here are the details of your newly created ledger:")
 print (f"- Name: {myledger.name}")

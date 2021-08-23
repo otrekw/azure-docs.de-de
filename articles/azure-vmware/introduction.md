@@ -3,12 +3,12 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure. Die SLA für Azure VMware Solution garantiert, dass Azure VMware-Verwaltungstools (vCenter Server und NSX Manager) mindestens 99,9 Prozent der Zeit verfügbar sind.
 ms.topic: overview
 ms.date: 04/20/2021
-ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 79739f230b057b030da7a90501e9fb3fb2630eba
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950872"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433578"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
@@ -18,7 +18,7 @@ Bei Azure VMware Solution handelt es sich um eine von VMware geprüfte Lösung, 
 
 Das Diagramm zeigt die Adjazenz zwischen privaten Clouds und VNETs in Azure, Azure-Diensten und lokalen Umgebungen. Der Netzwerkzugriff von privaten Clouds auf Azure-Dienste oder VNETs ermöglicht eine SLA-basierte Integration von Azure-Dienstendpunkten. Über ExpressRoute Global Reach wird Ihre lokale Umgebung mit Ihrer privaten Azure VMware Solution-Cloud verbunden. 
 
-![Abbildung: Adjazenz zwischen privater Azure VMware Solution-Cloud, Azure und lokaler Umgebung](./media/adjacency-overview-drawing-final.png)
+:::image type="content" source="media/adjacency-overview-drawing-final.png" alt-text="Diagram: Adjazenz zwischen privater Azure VMware Solution-Cloud, Azure und lokaler Umgebung" border="false":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, Cluster und private Clouds
 
@@ -66,5 +66,4 @@ Machen Sie sich als Nächstes mit zentralen [Konzepten privater Clouds und Clust
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
-
 

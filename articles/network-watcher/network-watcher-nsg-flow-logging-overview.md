@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4f46dc092776e73556a67fee705a98fa883dfbc6
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 23960e112dd03a711027c2364f648f60f23d0c8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810694"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355604"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -66,7 +66,7 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 - - Verweigerungsregeln von Netzwerksicherheitsgruppen sind beendende Regeln. Die Netzwerksicherheitsgruppe, die Datenverkehr ablehnt, protokolliert dies in Flussprotokollen, und die Verarbeitung wird in diesem Fall beendet, wenn eine NSG den Datenverkehr abgelehnt hat. 
 - - NSG-Zulassungsregeln sind nicht beendende Regeln, was bedeutet, dass die Verarbeitung mit der nächsten NSG fortgesetzt wird, selbst wenn eine NSG den Datenverkehr zulässt. Die letzte NSG, die Datenverkehr zulässt, protokolliert den Datenverkehr in Flussprotokollen.
 - NSG-Datenflussprotokolle werden in Speicherkonten geschrieben, von wo aus auf sie zugegriffen werden kann.
-- Sie können Datenflussprotokolle mithilfe von Tools wie TA, Splunk, Grafana, Stealthwatch usw. exportieren, verarbeiten, analysieren und visualisieren.
+- Sie können Datenflussprotokolle mithilfe von Tools wie Traffic Analytics, Splunk, Grafana, Stealthwatch usw. exportieren, verarbeiten, analysieren und visualisieren.
 
 ## <a name="log-format"></a>Protokollformat
 
@@ -374,6 +374,8 @@ Darüber hinaus wird beim Löschen einer NSG standardmäßig die zugeordnete Dat
 
 **Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
 
+**Netzwerksicherheitsgruppe in ExpressRoute-Gatewaysubnetz**: Es wird nicht empfohlen, Flüsse im ExpressRoute-Gatewaysubnetz zu protokollieren, weil der Datenverkehr das ExpressRoute-Gateway umgehen kann (Beispiel: [FastPath](../expressroute/about-fastpath.md)). Wenn also eine Netzwerksicherheitsgruppe mit einem ExpressRoute-Gatewaysubnetz verknüpft ist und Netzwerksicherheitsgruppen-Flussprotokolle aktiviert sind, werden ausgehende Flüsse zu virtuellen Computern möglicherweise nicht erfasst. Solche Flüsse müssen im Subnetz oder der NIC des virtuellen Computers erfasst werden. 
+
 **Problem mit der Netzwerksicherheitsgruppe des Application Gateway V2-Subnetzes:** Datenflussprotokollierung wird für die NSG des Application Gateway V2-Subnetzes derzeit [nicht unterstützt](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet). Dieses Problem wirkt sich nicht auf Application Gateway V1 aus.
 
 **Inkompatible Dienste**: Aufgrund der derzeitigen Plattformeinschränkungen wird eine kleine Anzahl von Azure-Diensten nicht von NSG-Datenflussprotokollen unterstützt. Die aktuelle Liste der inkompatiblen Dienste lautet:
@@ -415,7 +417,7 @@ In einigen Fällen werden keine Protokolle angezeigt, weil Ihre VMs nicht aktiv 
 
 **Ich möchte NSG-Flussprotokolle automatisieren**
 
-Die Unterstützung der Automatisierung über ARM-Vorlagen ist derzeit für NSG-Datenflussprotokolle nicht verfügbar. Weitere Informationen finden Sie in der [Featureankündigung](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/).
+Die Unterstützung der Automatisierung über ARM-Vorlagen ist nun für NSG-Datenflussprotokolle verfügbar. Weitere Informationen finden Sie in der [Featureankündigung](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) und dem [Schnellstart aus dem ARM-Vorlagendokument](quickstart-configure-network-security-group-flow-logs-from-arm-template.md).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

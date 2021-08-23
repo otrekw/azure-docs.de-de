@@ -12,18 +12,18 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 66b5918b945c8f098e52b115f2fc74c75d953ff5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072350"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550604"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
 Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung natürlicher Sprache, z. B. Textmining und -analyse, einschließlich Stimmungsanalysen, Opinion Mining, Schlüsselbegriffserkennung, Spracherkennung und Erkennung benannter Entitäten.
 
-Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Funktionen mit [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) oder [Version 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/) der REST-API oder mit der [Clientbibliothek](quickstarts/client-libraries-rest-api.md) verwenden.
+Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Funktionen mit [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) oder [Version 3.1](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1) der REST-API oder mit der [Clientbibliothek](quickstarts/client-libraries-rest-api.md) verwenden.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -35,15 +35,15 @@ Diese Dokumentation enthält die folgenden Arten von Artikeln:
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Ermitteln Sie anhand der [Stimmungsanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md), was Menschen von Ihrer Marke oder Ihrem Thema halten, indem Sie unformatierten Text auf Hinweise einer positiven oder negativen Stimmung analysieren. 
+Ermitteln Sie anhand der [Stimmungsanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) (SA), was Menschen von Ihrer Marke oder Ihrem Thema halten, indem Sie unformatierten Text auf Hinweise einer positiven oder negativen Stimmung analysieren. 
 
 Bei diesem Feature werden Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) basierend auf der höchsten Zuverlässigkeitsbewertung angegeben, die vom Dienst auf Satz- und Dokumentebene gefunden wird. Darüber hinaus werden bei diesem Feature Zuverlässigkeitsbewertungen zwischen 0 und 1 für jedes Dokument und jeden darin enthaltenen Satz zurückgegeben (positive, neutrale und negative Stimmung). Sie können den Dienst auch lokal ausführen, indem Sie [einen Container verwenden](how-tos/text-analytics-how-to-install-containers.md).
 
-Opinion Mining ist ab Version 3.1 Preview ein Feature der Stimmungsanalyse. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Wörter (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
+Opinion Mining (OM) ist ab Version 3.1 ein Feature der Stimmungsanalyse. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Wörter (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-Verwenden Sie die [Schlüsselbegriffserkennung](how-tos/text-analytics-how-to-keyword-extraction.md), um schnell die Hauptkonzepte eines Texts zu identifizieren. Im Text „Das Essen war köstlich, und es gab hervorragendes Personal“ gibt die Schlüsselbegriffserkennung beispielsweise die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
+Verwenden Sie die [Schlüsselbegriffserkennung](how-tos/text-analytics-how-to-keyword-extraction.md) (Key Phrase Extraction, KPE), um schnell die Hauptkonzepte eines Texts zu identifizieren. Im Text „Das Essen war köstlich, und es gab hervorragendes Personal“ gibt die Schlüsselbegriffserkennung beispielsweise die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
 
 ## <a name="language-detection"></a>Spracherkennung
 
@@ -53,6 +53,10 @@ Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sow
 
 Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
 
+## <a name="text-analytics-for-health"></a>Textanalyse für Gesundheit
+
+Text Analytics for Health ist ein Feature des Textanalyse-API-Diensts, der relevante medizinische Informationen aus unstrukturierten Texten wie Arztbriefen, Entlassungszusammenfassungen, klinischen Dokumenten und elektronischen Gesundheitsakten extrahiert und bezeichnet. 
+
 ## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
 [Verwenden Sie Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um API-Features lokal bereitzustellen. Mithilfe dieser Docker-Container können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. Die Textanalyse bietet folgende Container:
@@ -60,11 +64,11 @@ Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifi
 * Stimmungsanalyse
 * Schlüsselbegriffserkennung (Vorschauversion)
 * Sprachenerkennung (Vorschauversion)
-* Textanalyse für Gesundheit (Vorschauversion)
+* Textanalyse für Gesundheit
 
 ## <a name="asynchronous-operations"></a>Asynchrone Vorgänge
 
-Der Endpunkt `/analyze` ermöglicht die [asynchrone](how-tos/text-analytics-how-to-call-api.md) Verwendung ausgewählter Features der Textanalyse-API. Hierzu zählen beispielsweise die Erkennung benannter Entitäten und die Schlüsselbegriffserkennung.
+Der Endpunkt `/analyze` ermöglicht die [asynchrone](how-tos/text-analytics-how-to-call-api.md) Verwendung mehrerer Features der Textanalyse-API. Die Erkennung benannter Entitäten (NER), die Schlüsselbegriffserkennung (KPE), die Stimmungsanalyse (SA) und Opinion Mining (OM) sind als Teil des `/analyze`-Endpunkts verfügbar. Er ermöglicht die gemeinsame Nutzung dieser Features in einem einzigen Aufruf. Er ermöglicht das Senden von bis zu 125.000 Zeichen pro Dokument. Die Preise entsprechen denen der regulären Textanalyse.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 

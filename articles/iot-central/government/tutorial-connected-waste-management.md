@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 42a82a59483a582e0d395092558665b12e1cd5a3
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: bc83af43fab3871bf693635ddbdd446c2f4bb2e2
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684359"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586507"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>Tutorial: Erstellen einer App für die vernetzte Abfallwirtschaft
 
@@ -22,7 +22,7 @@ Dabei wird insbesondere Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Verwenden der Azure IoT Central-Vorlage *Vernetzte Abfallwirtschaft* für die App-Erstellung
-> * Erkunden und Anpassen des Operatordashboards 
+> * Erkunden und Anpassen des Dashboards 
 > * Erkunden der Gerätevorlage für vernetzte Abfallbehälter
 > * Erkunden von simulierten Geräten
 > * Erkunden und Konfigurieren von Regeln
@@ -47,7 +47,7 @@ In diesem Abschnitt wird die Vorlage für vernetzte Abfallwirtschaft verwendet, 
 
     ![Screenshot: Erstellungsseite in Azure IoT Central](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
-1. Wählen Sie die Anwendungsvorlage **Vernetzte Abfallwirtschaft** aus. Diese Vorlage enthält eine exemplarische Gerätevorlage für vernetzte Abfallbehälter, ein simuliertes Gerät, ein Operatordashboard und vorkonfigurierte Überwachungsregeln.    
+1. Wählen Sie die Anwendungsvorlage **Vernetzte Abfallwirtschaft** aus. Diese Vorlage enthält eine exemplarische Gerätevorlage für vernetzte Abfallbehälter, ein simuliertes Gerät, ein Dashboard und vorkonfigurierte Überwachungsregeln.    
 
 1. Wählen Sie **App erstellen** aus. Daraufhin wird das Dialogfeld **Neue Anwendung** geöffnet. Geben Sie Informationen für die folgenden Felder an:
     * **Anwendungsname**: Standardmäßig wird für die Anwendung der Name **Vernetzte Abfallwirtschaft** verwendet, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Sie können optional einen benutzerfreundlichen Anzeigenamen wählen. Der Anwendungsname kann auch später noch geändert werden.
@@ -62,7 +62,7 @@ In diesem Abschnitt wird die Vorlage für vernetzte Abfallwirtschaft verwendet, 
 
  
 Ihre neu erstellte Anwendung ist bereits vorkonfiguriert und verfügt über folgende Elemente:
-* Beispieldashboards für Operatoren
+* Beispiele für Dashboards
 * Vordefinierte Beispielgerätevorlagen für vernetzte Abfallbehälter
 * Simulierte Geräte für vernetzte Abfallbehälter
 * Regeln und Aufträge
@@ -70,7 +70,7 @@ Ihre neu erstellte Anwendung ist bereits vorkonfiguriert und verfügt über folg
 
 Sie können Ihre Anwendung jederzeit ändern. Wir erkunden nun die Anwendung und nehmen einige Anpassungen vor.  
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Erkunden und Anpassen des Bedienerdashboards 
+## <a name="explore-and-customize-the-dashboard"></a>Erkunden und Anpassen des Dashboards 
 
 Sehen Sie sich das **Wide World-Dashboard für die Abfallwirtschaft** an, das nach dem Erstellen Ihrer App angezeigt wird.
 
@@ -89,7 +89,7 @@ Das Dashboard umfasst verschiedene Kacheln:
 
 * **KPI-Kachel für Füllstand:** Auf dieser Kachel wird ein Wert angezeigt, der von einem *Füllstandssensor* in einem Abfallbehälter gemeldet wird. Der Füllstandssensor sowie andere Abfallbehältersensoren für *Geruchsmessung* oder *Gewicht* können remote überwacht werden. Ein Operator kann dann geeignete Maßnahmen ergreifen und beispielsweise ein Fahrzeug der Stadtreinigung losschicken. 
 
-* **Umgebungskarte für die Abfallüberwachung:** Diese Kachel basiert auf Azure Maps und kann direkt in Azure IoT Central konfiguriert werden. Auf der Kartenkachel wird der Gerätestandort angezeigt. Bewegen Sie den Mauszeiger auf die Karte, und probieren Sie die Steuerelemente wie „Vergrößern“, „Verkleinern“ und „Erweitern“ aus.
+* **Umgebungskarte für die Abfallüberwachung:** Diese Kachel basiert auf Azure Maps und kann direkt in Azure IoT Central konfiguriert werden. Auf der Kartenkachel wird der [Gerätestandort](../core/howto-use-location-data.md) angezeigt. Bewegen Sie den Mauszeiger auf die Karte, und probieren Sie die Steuerelemente wie „Vergrößern“, „Verkleinern“ und „Erweitern“ aus.
 
      ![Screenshot: Vorlage für vernetzte Abfallwirtschaft: Karte auf dem Dashboard](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 

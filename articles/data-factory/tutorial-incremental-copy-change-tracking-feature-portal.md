@@ -6,13 +6,13 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: c79d96e016459732ce71019511fa429d62d91f9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 07/05/2021
+ms.openlocfilehash: 9dbeeaa10fc755b978a1819a0af181da47149921
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740136"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436836"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung und dem Azure-Portal
 
@@ -179,11 +179,12 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
-   ![Data Factory-Startseite](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
-10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
-11. Wechseln Sie im linken Bereich der Seite **Erste Schritte** zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt:
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
 
-    ![Schaltfläche „Create pipeline“ (Pipeline erstellen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
+10. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um das Data Factory Benutzerinterface (UI) in einem separaten Tab zu starten.
+11. Wechseln Sie am linken Rand der Homepage zur Registerkarte **Verwalten** wie in der folgenden Abbildung gezeigt:
+
+    ![Screenshot der Schaltfläche „Manage“ (Verwalten)](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt erstellen Sie verknüpfte Dienste mit Ihrem Azure Storage-Konto und mit Ihrer Datenbank in Azure SQL-Datenbank.
@@ -414,7 +415,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
     2. Wählen Sie die Option **Import parameter** (Importparameter).
     3. Geben Sie im Abschnitt **Parameter der gespeicherten Prozedur** die folgenden Werte für den Parameter an:
 
-        | Name | type | Wert |
+        | Name | Typ | Wert |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

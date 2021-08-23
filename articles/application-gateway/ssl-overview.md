@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422064"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761450"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway
 
@@ -126,9 +126,9 @@ In den folgenden Tabellen werden die SNI-Unterschiede zwischen der v1-SKU und de
 ---
 Szenario | v1 | V2 |
 | --- | --- | --- |
-| Der Client gibt den SNI-Header an, und alle Listener für mehrere Standorte sind mit dem Flag „Require SNI“ (SNI anfordern) aktiviert. | Gibt das entsprechende Zertifikat zurück. Wenn die Site nicht vorhanden ist (entsprechend server_name), wird die Verbindung zurückgesetzt. | Gibt das entsprechende Zertifikat zurück, falls verfügbar. Andernfalls wird das Zertifikat des ersten konfigurierten HTTPS-Listeners (in angegebener Reihenfolge) zurückgegeben.|
-| Der Client gibt keinen SNI-Header an, und alle Header für mehrere Standorte sind mit „Require SNI“ (SNI anfordern) aktiviert: | Setzt die Verbindung zurück | Gibt das Zertifikat des ersten konfigurierten HTTPS-Listeners (in angegebener Reihenfolge) zurück
-| Der Client gibt keinen SNI-Header an, und ein mit einem Zertifikat konfigurierter Basislistener ist vorhanden: | Gibt das im Basislistener konfigurierte Zertifikat (Standard- oder Fallbackzertifikat) an den Client zurück | Gibt das Zertifikat des ersten konfigurierten HTTPS-Listeners (in angegebener Reihenfolge) zurück |
+| Der Client gibt den SNI-Header an, und alle Listener für mehrere Standorte sind mit dem Flag „Require SNI“ (SNI anfordern) aktiviert. | Gibt das entsprechende Zertifikat zurück. Wenn die Site nicht vorhanden ist (entsprechend „server_name“), wird die Verbindung zurückgesetzt. | Gibt das entsprechende Zertifikat zurück, falls verfügbar, andernfalls wird das Zertifikat des ersten HTTPS-Listeners entsprechend der Reihenfolge zurückgegeben, die durch die den HTTPS-Listenern zugeordneten Anforderungsroutingregeln vorgegeben ist.|
+| Der Client gibt keinen SNI-Header an, und alle Header für mehrere Standorte sind mit „Require SNI“ (SNI anfordern) aktiviert: | Setzt die Verbindung zurück | Gibt das Zertifikat des ersten HTTPS-Listeners entsprechend der Reihenfolge zurück, die durch die den HTTPS-Listenern zugeordneten Anforderungsroutingregeln vorgegeben ist.
+| Der Client gibt keinen SNI-Header an, und ein mit einem Zertifikat konfigurierter Basislistener ist vorhanden: | Gibt das im Basislistener konfigurierte Zertifikat (Standard- oder Fallbackzertifikat) an den Client zurück | Gibt das im Basislistener konfigurierte Zertifikat zurück |
 
 ### <a name="backend-tls-connection-application-gateway-to-the-backend-server"></a>Back-End-TLS-Verbindung (Application Gateway zum Back-End-Server)
 

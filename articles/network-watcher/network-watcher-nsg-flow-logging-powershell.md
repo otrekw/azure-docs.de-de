@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c3685928544d3e3edee9a864c004cae7f595eaef
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8ee289e069aed9f405463bba6392bbffc2dd2b24
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678304"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291903"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit PowerShell
 
@@ -31,6 +31,11 @@ ms.locfileid: "110678304"
 Datenflussprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Datenflussprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
 Die ausführliche Spezifikation aller Befehle der NSG-Datenflussprotokollierung für verschiedene Versionen von AzPowerShell finden Sie [hier](/powershell/module/az.network/#network-watcher).
+
+> [!NOTE]
+> - Die in diesem Dokument verwendeten Befehle [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) und [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) erfordern eine zusätzliche „Leser“-Berechtigung in der Ressourcengruppe des Network Watchers. Außerdem sind diese Befehle alt und laufen möglicherweise bald aus.
+> - Es wird empfohlen, stattdessen die neuen Befehle [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) und [Set-AzNetworkWatcherFlowLog](/powershell/module/az.network/set-aznetworkwatcherflowlog) zu verwenden.
+> - Der neue Befehl [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) bietet aus Gründen der Flexibilität vier Varianten. Wenn Sie die Variante „Standort <String>„ dieses Befehls verwenden, ist eine zusätzliche „Leser“-Berechtigung in der Ressourcengruppe des Network Watchers erforderlich. Für andere Varianten sind keine zusätzlichen Berechtigungen erforderlich. 
 
 ## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
