@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 237de7e75007de85054501ed76b253a6eedf4346
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112523058"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528368"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -53,12 +53,12 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Virtueller Azure SQL-Computer** | SQL Server | ✔ | Allgemein verfügbar |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure DB for MySQL – Single Server** | MySQL | ✔ | Allgemein verfügbar  |
-|   | RDS MySQL | ✔ | Allgemein verfügbar  |
-|   | Azure DB for MySQL* | ✔ | Allgemein verfügbar  |
-| **Azure DB for MySQL – Flexible Server** | MySQL | ✔ | Allgemein verfügbar  |
-|   | RDS MySQL | ✔ | Allgemein verfügbar  |
-|   | Azure DB for MySQL* | ✔ | Allgemein verfügbar  |
+| **Azure DB for MySQL – Single Server** | MySQL | ✔ | Öffentliche Vorschau  |
+|   | RDS MySQL | ✔ | Öffentliche Vorschau  |
+|   | Azure DB for MySQL* | ✔ | Öffentliche Vorschau  |
+| **Azure DB for MySQL – Flexible Server** | MySQL | ✔ | Öffentliche Vorschau  |
+|   | RDS MySQL | ✔ | Öffentliche Vorschau  |
+|   | Azure DB for MySQL* | ✔ | Öffentliche Vorschau  |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 | **Azure DB for PostgreSQL – Flexible Server** | PostgreSQL | X |
@@ -81,8 +81,8 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 | **Virtueller Azure SQL-Computer** | SQL Server | X |   |
 |   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Allgemein verfügbar |
-| **Azure-Datenbank für MySQL** | MySQL | X |  |
-|   | RDS MySQL | X |  |
+| **Azure-Datenbank für MySQL** | MySQL | ✔ | Allgemein verfügbar |
+|   | RDS MySQL | ✔ | Allgemein verfügbar |
 | **Azure DB for PostgreSQL – Einzelserver** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | Azure DB for PostgreSQL – Einzelserver* | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |

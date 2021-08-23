@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: 1a6a9080a8957b56d12eca289a500fd45f0e709b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310817"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062296"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -33,14 +33,14 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 
 ## <a name="availability"></a>Verfügbarkeit
 
-|Aspekt|Details|
-|----|:----|
-|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|Kostenlos|
-|Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Sicherheitsadministrator** zum Bearbeiten einer Zuweisung<br>**Leser** zum Anzeigen der Empfehlungen|
-|Umgebungsanforderungen:|Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
-|||
+| Aspekt                          | Details                                                                                                                                      |
+|---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+| Status des Release:                  | Allgemeine Verfügbarkeit (General Availability, GA)                                                                                                                    |
+| Preise:                        | Kostenlos                                                                                                                                         |
+| Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Sicherheitsadministrator** zum Bearbeiten einer Zuweisung<br>**Leser** zum Anzeigen der Empfehlungen                                              |
+| Umgebungsanforderungen:       | Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt. |
+| Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov) |
+|                                 |                                                                                                                                              |
 
 
 ## <a name="set-up-your-workload-protection"></a>Einrichten des Workloadschutzes
@@ -69,7 +69,7 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Detailseite der Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**":::
 
-### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>Schritt 2: Anzeigen und Konfigurieren des Pakets aus 13 Empfehlungen
+### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>Schritt 2: Anzeigen und Konfigurieren des Empfehlungspakets
 
 1. Ungefähr 30 Minuten nach Abschluss der Installation des Add-Ons zeigt Security Center den Integritätsstatus der Cluster für die folgenden Empfehlungen an (jeweils in der relevanten Sicherheitskontrolle):
 
@@ -253,5 +253,5 @@ In diesem Artikel haben Sie erfahren, wie Sie den Kubernetes-Workloadschutz konf
 Weitere verwandte Informationen finden Sie auf den folgenden Seiten: 
 
 - [Security Center-Empfehlungen für Compute](recommendations-reference.md#recs-compute)
-- [Warnungen auf AKS-Clusterebene](alerts-reference.md#alerts-akscluster)
+- [Warnungen auf AKS-Clusterebene](alerts-reference.md#alerts-k8scluster)
 - [Warnungen auf Containerhostebene](alerts-reference.md#alerts-containerhost)

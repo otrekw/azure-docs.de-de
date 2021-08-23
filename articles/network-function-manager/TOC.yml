@@ -25,7 +25,7 @@
     - name: Produktseite für den Netzwerkfunktionsmanager
       href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
     - name: Dokumentation zu privatem MEC in Azure
-      href: ../private-multi-access-edge-compute-mec/index.yml
+      href: 'https://go.microsoft.com/fwlink/?linkid=2165316'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog

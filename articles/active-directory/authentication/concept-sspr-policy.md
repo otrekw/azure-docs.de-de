@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/25/2021
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff0e43570b9bf30b84538cfeca841a69d025b26b
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b66ab52a65dd848997d8f13dde7bfba944ad520b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090383"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744393"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -69,32 +69,30 @@ Mit einer Zwei-Gate-Richtlinie haben Administratoren nicht die Möglichkeit, Sic
 Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elementen bestehen, z. B. E-Mail-Adresse, Authentifikator-App oder Telefonnummer. Eine Zwei-Gate-Richtlinie gilt in folgenden Situationen:
 
 * Alle folgenden Administratorrollen sind betroffen:
-  * Anwendungsadministrator
-  * Anwendungsproxy-Dienstadministrator
-  * Authentifizierungsadministrator
-  * Lokaler Administrator für in Azure AD eingebundenes Gerät
-  * Rechnungsadministrator
-  * Complianceadministrator
-  * Geräteadministratoren
-  * Konten zur Verzeichnissynchronisierung
-  * Verzeichnis schreiben
-  * Dynamics 365-Administrator
-  * Exchange-Administrator
-  * Globaler Administrator oder Unternehmensadministrator
   * Helpdesk-Administrator
-  * Intune-Administrator
-  * Postfachadministrator
+  * Dienstunterstützungsadministrator
+  * Rechnungsadministrator
   * Partnersupport der Ebene 1
   * Partnersupport der Ebene 2
-  * Kennwortadministrator
-  * Power BI-Dienstadministrator
-  * Privilegierter Authentifizierungsadministrator
-  * Administrator für privilegierte Rollen
-  * SharePoint-Administrator
-  * Sicherheitsadministrator
-  * Dienstunterstützungsadministrator
+  * Exchange-Administrator
+  * Postfachadministrator
   * Skype for Business-Administrator
   * Benutzeradministrator
+  * Verzeichnis schreiben
+  * Globaler Administrator oder Unternehmensadministrator
+  * SharePoint-Administrator
+  * Complianceadministrator
+  * Anwendungsadministrator
+  * Sicherheitsadministrator
+  * Administrator für privilegierte Rollen
+  * Intune-Administrator
+  * Lokaler Administrator für in Azure AD eingebundenes Gerät
+  * Anwendungsproxy-Dienstadministrator
+  * Dynamics 365-Administrator
+  * Power BI-Dienstadministrator
+  * Authentifizierungsadministrator
+  * Kennwortadministrator
+  * Privilegierter Authentifizierungsadministrator
 
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder
 * eine benutzerdefinierte Domäne für Ihren Azure AD-Mandanten konfiguriert wurde, z. B. *contoso.com*, oder
@@ -119,7 +117,7 @@ Sie können auch PowerShell-Cmdlets verwenden, um die Konfiguration für niemals
 Diese Anleitung gilt für andere Anbieter wie Intune und Microsoft 365, die ebenfalls auf Azure AD als Identitäts- und Verzeichnisdienste zurückgreifen. Kennwortablauf ist der einzige Teil der Richtlinie, der geändert werden kann.
 
 > [!NOTE]
-> Standardmäßig können nur Kennwörter für Benutzerkonten, die nicht über Azure AD Connect synchronisiert werden, so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/how-to-connect-password-hash-synchronization.md#password-expiration-policy).
+> Standardmäßig können nur Kennwörter für Benutzerkonten, die nicht über Azure AD Connect synchronisiert werden, so konfiguriert werden, dass sie nicht ablaufen. Weitere Informationen zur Verzeichnissynchronisierung finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization#password-expiration-policy).
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
 

@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.author: helohr
 ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: 41ee917602ed67af40f3244ad7215cae4d3a93c8
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: c8df5cbcc241877e5637abd89804071b4dcbf938
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032452"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753087"
 ---
 # <a name="proxy-server-guidelines-for-azure-virtual-desktop"></a>Proxyserverrichtlinien für Azure Virtual Desktop
 
@@ -115,7 +115,7 @@ In der folgenden Tabelle sind die Azure Virtual Desktop-Clients aufgeführt, die
 | macOS | Ja |
 | Windows Store | Ja |
 
-Weitere Informationen zur Proxyunterstützung auf Linux-basierten Thin Clients finden Sie unter [Thin Client-Unterstützung](./user-documentation/linux-overview.md).
+Weitere Informationen zur Proxyunterstützung auf Linux-basierten Thin Clients finden Sie unter [Thin Client-Unterstützung](linux-overview.md).
 
 ## <a name="support-limitations"></a>Einschränkungen bei der Unterstützung
 

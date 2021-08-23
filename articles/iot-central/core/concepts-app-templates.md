@@ -7,16 +7,16 @@ ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8309a567436d1526c1341f3d7db774acf4879dc2
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 885c9d5a14eed7bdd518865344a9a41820fd7db7
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600618"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683951"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
-Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Lösungsentwickler beim Einstieg in die IoT-Lösungsentwicklung unterstützt. App-Vorlagen sind vielseitig einsetzbar. Sie können sich beispielsweise einen ersten Eindruck von den Möglichkeiten verschaffen oder Ihre Anwendung für den Weiterverkauf an Ihre Kunden vollständig anpassen.
+Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Sie beim Einstieg in die IoT-Lösungsentwicklung unterstützt. App-Vorlagen sind vielseitig einsetzbar. Sie können sich beispielsweise einen ersten Eindruck von den Möglichkeiten verschaffen oder Ihre Anwendung für den Weiterverkauf an Ihre Kunden vollständig anpassen.
 
 Anwendungsvorlagen bestehen aus:
 
@@ -30,28 +30,13 @@ Sie wählen die Anwendungsvorlage aus, wenn Sie Ihre Anwendung erstellen. Sie k�
 
 ## <a name="custom-templates"></a>Benutzerdefinierte Vorlagen
 
-Wenn Sie Ihre Anwendung von Grund auf neu erstellen möchten, wählen Sie eine der **benutzerdefinierten Anwendungsvorlagen** aus.
+Wenn Sie Ihre Anwendung von Grund auf neu erstellen möchten, wählen Sie die Vorlage **Benutzerdefinierte Anwendung** aus. Die ID der Vorlage „Benutzerdefinierte Anwendung“ lautet `iotc-pnp-preview`.
 
 ## <a name="industry-focused-templates"></a>Branchenorientierten Vorlagen
 
-Azure IoT Central ist eine branchenunabhängige Anwendungsplattform. Anwendungsvorlagen sind branchenspezifische Beispiele, die heute für diese Branchen verfügbar sind, und für die Zukunft ist noch mehr zu erwarten:
+Azure IoT Central ist eine branchenunabhängige Anwendungsplattform. Anwendungsvorlagen sind branchenspezifische Beispiele, die heute für diese Branchen verfügbar sind:
 
-- [Retail (Einzelhandel)](../retail/overview-iot-central-retail.md)
-  - Vernetzte Logistik
-  - Digitales Verteilzentrum
-  - In-Store-Analyse – Bedingungsüberwachung
-  - In-Store-Analyse – Auschecken
-  - Intelligente Bestandsverwaltung
-  - Videoanalyse: Objekt- und Bewegungserkennung
-- [Energieversorgung](../energy/overview-iot-central-energy.md)
-  - Intelligente Messgerätüberwachung
-  - Überwachung von Solarpaneln
-- [Behörden](../government/overview-iot-central-government.md)
-  - Vernetzte Abfallwirtschaft
-  - Überwachung des Wasserverbrauchs
-  - Überwachung der Wasserqualität
-- [Gesundheitswesen](../healthcare/overview-iot-central-healthcare.md)
-  - Fortlaufende Patientenüberwachung
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

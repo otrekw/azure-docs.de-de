@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 02/11/2021
-ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 05/08/2021
+ms.openlocfilehash: 61f10707231e88130cffbfffa1c06f33084bfbbd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461707"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792138"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -25,6 +25,17 @@ In diesem Artikel wird beschrieben, wie Sie in Azure Purview Anmeldeinformatione
 ## <a name="introduction"></a>Einführung
 
 Bei Anmeldeinformationen handelt es sich um Informationen für die Authentifizierung, die von Azure Purview für die Authentifizierung bei Ihren registrierten Datenquellen genutzt werden können. Ein Objekt mit Anmeldeinformationen kann für verschiedene Arten von Authentifizierungsszenarien erstellt werden, z. B. die Standardauthentifizierung mit Benutzername und Kennwort. In den Anmeldeinformationen werden spezifische Informationen erfasst, die je nach der ausgewählten Authentifizierungsmethode für die Authentifizierung erforderlich sind. Für die Anmeldeinformationen werden Ihre vorhandenen Azure Key Vault-Geheimnisse verwendet, um bei der Erstellung der Anmeldeinformationen vertrauliche Authentifizierungsinformationen abzurufen.
+
+In Azure Purview gibt es einige Authentifizierungsmethoden zum Überprüfen von Datenquellen, z. B. folgende:
+
+- Verwaltete Identität von Azure Purview
+- Kontoschlüssel (mit Key Vault)
+- SQL-Authentifizierung (mit Key Vault)
+- Dienstprinzipal (mit Key Vault)
+
+Entscheiden Sie zunächst unter Berücksichtigung Ihrer Datenquellentypen und Netzwerkanforderungen, welche Authentifizierungsmethode für Ihr Szenario erforderlich ist. Ermitteln Sie anhand des folgenden Entscheidungsbaums, welche Anmeldeinformationen am besten geeignet sind:
+
+   :::image type="content" source="media/manage-credentials/manage-credentials-decision-tree-small.png" alt-text="Entscheidungsbaum zum Management von Anmeldeinformationen" lightbox="media/manage-credentials/manage-credentials-decision-tree.png":::
 
 ## <a name="use-purview-managed-identity-to-set-up-scans"></a>Verwenden einer verwalteten Purview-Identität zum Einrichten von Überprüfungen
 
@@ -57,13 +68,26 @@ Bevor Sie Anmeldeinformationen erstellen können, müssen Sie Ihrem Azure Purvie
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Gewähren des Zugriffs auf Ihre Azure Key Vault-Instanz für die verwaltete Purview-Identität
 
+Derzeit unterstützt Azure Key Vault zwei Berechtigungsmodelle:
+
+- Option 1: Zugriffsrichtlinien 
+- Option 2: rollenbasierte Zugriffssteuerung 
+
+Identifizieren Sie Ihr Azure Key Vault-Berechtigungsmodell unter den Key Vault-**Ressourcenzugriffsrichtlinien** im Menü, bevor Sie der verwalteten Purview-Identität Zugriffsrechte zuweisen. Führen Sie die folgenden, für das jeweilige Berechtigungsmodell relevanten Schritte aus.  
+
+:::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure Key Vault-Berechtigungsmodell"::: 
+
+### <a name="option-1---assign-access-using-using-key-vault-access-policy"></a>Option 1: Zuweisen des Zugriffs durch eine Key Vault-Zugriffsrichtlinie  
+
+Führen Sie diese Schritte nur aus, wenn das Berechtigungsmodell in Ihrer Azure Key Vault Ressource als **Tresorzugriffsrichtlinie** festgelegt ist:
+
 1. Navigieren Sie zu Ihrer Azure Key Vault-Instanz.
 
 2. Wählen Sie die Seite **Zugriffsrichtlinien** aus.
 
 3. Wählen Sie **Zugriffsrichtlinie hinzufügen** aus.
 
-   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="Hinzufügen des MSI für Purview zu AKV":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv-2.png" alt-text="Hinzufügen des MSI für Purview zu AKV":::
 
 4. Wählen Sie in der Dropdownliste **Secrets permissions** (Geheimnisberechtigungen) die Berechtigungen **Get** und **List** aus.
 
@@ -76,6 +100,21 @@ Bevor Sie Anmeldeinformationen erstellen können, müssen Sie Ihrem Azure Purvie
 7. Wählen Sie **Speichern** aus, um die Zugriffsrichtlinie zu speichern.
 
    :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Speichern der Zugriffsrichtlinie":::
+
+### <a name="option-2---assign-access-using-key-vault-azure-role-based-access-control"></a>Option 2: Zuweisen des Zugriffs durch die rollenbasierte Zugriffssteuerung in Azure Key Vault 
+
+Führen Sie diese Schritte nur aus, wenn das Berechtigungsmodell in Ihrer Azure Key Vault-Ressource als **Rollenbasierte Zugriffssteuerung in Azure** festgelegt ist:
+
+1. Navigieren Sie zu Ihrer Azure Key Vault-Instanz.
+
+2. Wählen Sie im linken Navigationsmenü **Zugriffssteuerung (IAM)** aus.
+
+3. Klicken Sie auf **+ Hinzufügen**.
+
+4. Stellen Sie die **Rolle** auf **Key Vault-Geheimnisbenutzer**, und geben Sie im Eingabefeld **Auswählen** Ihren Azure Purview-Kontonamen ein. Wählen Sie dann Speichern aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
+
+   :::image type="content" source="media/manage-credentials/akv-add-rbac.png" alt-text="Azure Key Vault-RBAC":::
+
 
 ## <a name="create-a-new-credential"></a>Erstellen von neuen Anmeldeinformationen
 

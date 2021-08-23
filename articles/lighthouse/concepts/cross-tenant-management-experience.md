@@ -1,21 +1,21 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
-description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 03/29/2021
+description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 005d8f15c20749dff7d45385124a08a64b213afb
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f482c4738fd0bec8f32eaeb540b2d0ef2e0d4b15
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139037"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790431"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
-Als Dienstanbieter können Sie mit [Azure Lighthouse](../overview.md) Ressourcen für mehrere Kunden in Ihrem eigenen Azure AD-Mandanten (Azure Active Directory) verwalten. Die meisten Aufgaben und Dienste können mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) über verwaltete Mandanten ausgeführt werden.
+Als Dienstanbieter können Sie mit [Azure Lighthouse](../overview.md) Ressourcen für mehrere Kunden in Ihrem eigenen Azure AD-Mandanten (Azure Active Directory) verwalten. Die meisten Aufgaben und Dienste können mit der [delegierten Azure-Ressourcenverwaltung](../concepts/architecture.md) über verwaltete Mandanten ausgeführt werden.
 
 > [!TIP]
-> Die delegierte Azure-Ressourcenverwaltung kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
+> Azure Lighthouse kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Azure AD-Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
 
 ## <a name="understanding-tenants-and-delegation"></a>Grundlegendes zu Mandanten und Delegierung
 
@@ -88,7 +88,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Verwalten gehosteter Kubernetes-Umgebungen und Bereitstellen und Verwalten von Containeranwendungen innerhalb von Kundenmandanten
 - Bereitstellen und Verwalten von Clustern in Kundenmandanten
--   Verwenden von Azure Monitor für Container zum Überwachen der Leistung in Kundenmandanten
+- Verwenden von Azure Monitor für Container zum Überwachen der Leistung in Kundenmandanten
 
 [Azure Migrate](../../migrate/index.yml):
 
@@ -175,7 +175,7 @@ Supportanfragen:
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
 - Von Azure Resource Manager verarbeitete Anforderungen können mithilfe von Azure Lighthouse durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (etwa Zugriff auf Key Vault-Geheimnisse oder auf Speicherdaten), werden von Azure Lighthouse nicht unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge.
-- Rollenzuweisungen müssen [integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
+- Rollenzuweisungen müssen [integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md) verwenden. Alle integrierten Rollen werden derzeit mit Azure Lighthouse unterstützt, ausgenommen „Besitzer“ sowie alle integrierten Rollen mit der Berechtigung [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 - Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
 - Sie können zwar ein Onboarding für Abonnements und Ressourcengruppen mit Ressourcensperren durchführen, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
 - Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.

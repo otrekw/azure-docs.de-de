@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02cd3f54823b80ae201316fee29c02616b9d8502
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9d1d5e1b9a159d8084c3bf93d00611af72f2b21
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012036"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085867"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Zuweisen einer Rolle zu einer Gruppe mithilfe von Privileged Identity Management
 
@@ -27,9 +27,18 @@ In diesem Artikel wird beschrieben, wie Sie einer Gruppe mithilfe von Azure AD 
 > [!NOTE]
 > Sie müssen die aktualisierte Version von Privileged Identity Management verwenden, um einer Azure AD-Rolle mithilfe von PIM eine Gruppe zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, wenn Ihre Azure AD-Organisation die Privileged Identity Management-API nutzt. Wenden Sie sich in diesem Fall an den Alias pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und Features in PIM](../privileged-identity-management/azure-ad-roles-features.md).
 
-## <a name="using-azure-ad-admin-center"></a>Mithilfe von Azure AD Admin Center
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Melden Sie sich bei [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) als Administrator für privilegierte Rollen oder als globaler Administrator in Ihrer Organisation an.
+- Azure AD Premium P2-Lizenz
+- „Administrator für privilegierte Rollen“ oder „Globaler Administrator“
+- AzureADPreview-Modul bei Verwendung von PowerShell
+- Administratorzustimmung bei Verwendung von Graph-Tester für die Microsoft Graph-API
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Verwendung von PowerShell oder Graph-Tester](prerequisites.md).
+
+## <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich bei [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) an.
 
 1. Wählen Sie **Privileged Identity Management** > **Azure AD-Rollen** > **Rollen** > **Zuweisungen hinzufügen** aus.
 
@@ -41,22 +50,7 @@ In diesem Artikel wird beschrieben, wie Sie einer Gruppe mithilfe von Azure AD 
 
     ![Auswählen des Benutzers, dem Sie die Rolle zuweisen](./media/groups-pim-eligible/set-assignment-settings.png)
 
-## <a name="using-powershell"></a>Mithilfe von PowerShell
-
-### <a name="download-the-azure-ad-preview-powershell-module"></a>Herunterladen des Azure AD PowerShell-Vorschaumoduls
-
-Verwenden Sie die folgenden Cmdlets, um das Azure AD PowerShell-Modul zu installieren:
-
-```powershell
-Install-Module -Name AzureADPreview
-Import-Module -Name AzureADPreview
-```
-
-Überprüfen Sie mithilfe des folgenden Cmdlets, ob das Modul verwendet werden kann:
-
-```powershell
-Get-Module -Name AzureADPreview
-```
+## <a name="powershell"></a>PowerShell
 
 ### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>Zuweisen einer Gruppe als berechtigtes Mitglied einer Rolle
 
@@ -68,7 +62,7 @@ $schedule.endDateTime = "2019-07-25T20:49:11.770Z"
 Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId aadRoles -Schedule $schedule -ResourceId "[YOUR TENANT ID]" -RoleDefinitionId "9f8c1837-f885-4dfd-9a75-990f9222b21d" -SubjectId "[YOUR GROUP ID]" -AssignmentState "Eligible" -Type "AdminAdd"
 ```
 
-## <a name="using-microsoft-graph-api"></a>Mithilfe der Microsoft Graph-API
+## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 ```http
 POST

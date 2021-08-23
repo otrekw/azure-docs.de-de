@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d17bd46d8036ff2535b0dede9ab95121ad3bf7a8
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104177"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713430"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
@@ -86,14 +86,16 @@ Wenn Ihre App nicht in einem Mandanten registriert ist, wird nur die Option zum 
 
 1. Klicken Sie auf die Schaltfläche **Domäne überprüfen und speichern**.
 
+Sie müssen keine Ressourcen verwalten, die für die Überprüfung verwendet werden, nachdem eine Domäne überprüft wurde. Nach Abschluss der Überprüfung können Sie die gehostete Datei entfernen.
+
 ### <a name="to-select-a-verified-domain"></a>So wählen Sie eine verifizierte Domäne aus
 
-- Wenn der Mandant über überprüfte Domänen verfügt, wählen Sie eine der Domänen in der Dropdownliste **Verifizierte Domäne auswählen** aus.
+Wenn der Mandant über überprüfte Domänen verfügt, wählen Sie eine der Domänen in der Dropdownliste **Verifizierte Domäne auswählen** aus.
 
->[!Note]
-> Der erwartete „Content-Type“-Header, der zurückgegeben werden soll, lautet `application/json`. Sie erhalten möglicherweise eine Fehlermeldung wie unten angegeben, wenn Sie etwas anderes verwenden als `application/json; charset=utf-8`. 
+> [!NOTE]
+> Der erwartete `Content-Type`-Header, der zurückgegeben werden soll, lautet `application/json`. Sie erhalten möglicherweise eine Fehlermeldung wie unten angegeben, wenn Sie etwas anderes als `application/json; charset=utf-8` verwenden:
 > 
->``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+> `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Auswirkungen auf die Zustimmungsaufforderung der App

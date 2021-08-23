@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2aefa7ed7ce63b1ecbe735f21d372133ba4c7825
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298172"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592410"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -164,9 +164,9 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
 ## <a name="deploy-your-application"></a>Bereitstellen der Anwendung
 
-Die Verwendung verwalteter Identitäten erfordert, dass Sie Ihre App in einem Azure-Dienst bereitstellen. Verwaltete Identitäten können nicht für die Authentifizierung lokal ausgeführter Apps verwendet werden. Um die .NET Core-App bereitzustellen, die Sie im Schnellstart [Erstellen einer ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md) erstellt und zur Verwendung verwalteter Identitäten geändert haben, befolgen Sie die Anleitung unter [Veröffentlichen Ihrer Web-App](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app).
+Die Verwendung verwalteter Identitäten erfordert, dass Sie Ihre App in einem Azure-Dienst bereitstellen. Verwaltete Identitäten können nicht für die Authentifizierung lokal ausgeführter Apps verwendet werden. Um die .NET Core-App bereitzustellen, die Sie im Schnellstart [Erstellen einer ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md) erstellt und zur Verwendung verwalteter Identitäten geändert haben, befolgen Sie die Anleitung unter [Veröffentlichen Ihrer Web-App](/azure/app-service/quickstart-dotnetcore?tabs=netcore31&pivots=development-environment-vs#publish-your-web-app).
 
-Neben App Service unterstützen viele andere Azure-Dienste verwaltete Identitäten. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
+Neben App Service unterstützen viele andere Azure-Dienste verwaltete Identitäten. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

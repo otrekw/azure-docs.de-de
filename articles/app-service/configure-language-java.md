@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: fed4081aaea965e54f229e673718a6d523f82870
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2711950a875542b36ce95f3b77387feeb7f00648
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080558"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537000"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -81,7 +81,7 @@ Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-En
 
 Um WAR-Dateien in JBoss bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
 
-Zum Bereitstellen von EAR-Dateien [verwenden Sie FTP](deploy-ftp.md).
+Zum Bereitstellen von EAR-Dateien [verwenden Sie FTP](deploy-ftp.md). Ihre .ear-Anwendung wird im Kontextstamm bereitgestellt, der in der Konfiguration Ihrer Anwendung definiert ist. Wenn der Kontextstamm Ihrer App beispielsweise `<context-root>myapp</context-root>` ist, können Sie die Site unter diesem `/myapp`-Pfad durchsuchen: `http://my-app-name.azurewebsites.net/myapp`. Wenn Sie möchten, dass Ihre Web-App im Stammpfad bedient wird, stellen Sie sicher, dass Ihre App den Kontextstamm auf den Stammpfad festlegt: `<context-root>/</context-root>`. Weitere Informationen finden Sie unter [Festlegen des Kontextstamms einer Webanwendung](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html).
 
 ::: zone-end
 
@@ -156,7 +156,7 @@ Während des 30-sekündigen Intervalls können Sie durch Ausführung von `jcmd 1
 
 #### <a name="continuous-recording"></a>Fortlaufende Aufzeichnung
 
-Sie können Zulu Flight Recorder einsetzen, um Ihre Java-Anwendung mit minimalen Auswirkungen auf die Laufzeitleistung zu profilieren ([Quelle](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Führen Sie dafür den folgenden Azure CLI-Befehl aus, um eine App-Einstellung namens JAVA_OPTS mit der notwendigen Konfiguration zu erschaffen. Der Inhalt der JAVA_OPTS-App-Einstellung wird an den `java`-Befehl übermittelt, wenn Ihre App gestartet wird.
+Sie können Zulu Flight Recorder einsetzen, um ein Profil Ihrer Java-Anwendung mit minimalen Auswirkungen auf die Laufzeitleistung zu erstellen. Führen Sie dafür den folgenden Azure CLI-Befehl aus, um eine App-Einstellung namens JAVA_OPTS mit der notwendigen Konfiguration zu erschaffen. Der Inhalt der JAVA_OPTS-App-Einstellung wird an den `java`-Befehl übermittelt, wenn Ihre App gestartet wird.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -361,7 +361,54 @@ Sie können mit dem Java-Schlüsseltool interagieren oder Debuggingschritte ausf
 
 ## <a name="configure-apm-platforms"></a>Konfigurieren von APM-Plattformen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure App Service für Linux bereitgestellt werden, mit den Plattformen NewRelic und AppDynamics für die Überwachung der Anwendungsleistung (Application Performance Monitoring, APM) verbinden.
+In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure App Service mit Azure Monitor Application Insights bereitgestellt werden, mit den Plattformen NewRelic und AppDynamics für die Überwachung der Anwendungsleistung (Application Performance Monitoring, APM) verbinden.
+
+### <a name="configure-application-insights"></a>Application Insights konfigurieren
+
+Azure Monitor Application Insights ist ein cloudnativer Anwendungsüberwachungsdienst, mit dem Kunden Fehler, Engpässe und Nutzungsmuster beobachten können, um die Anwendungsleistung zu verbessern und die durchschnittliche Auflösungszeit (Mean Time To Resolution, MTTR) zu reduzieren. Mit wenigen Klicks oder CLI-Befehlen können Sie die Überwachung für Ihre Node.js- oder Java-Apps aktivieren, wobei Protokolle, Metriken und verteilte Ablaufverfolgungen automatisch erfasst werden, sodass kein SDK in Ihre App eingeschlossen werden muss.
+
+#### <a name="azure-portal"></a>Azure-Portal
+
+Um Application Insights über das Azure-Portal zu aktivieren, wechseln Sie im Menü auf der linken Seite zu **Application Insights**, und wählen Sie **Application Insights aktivieren** aus. Standardmäßig wird eine neue Application Insights-Ressource mit demselben Namen wie Ihre Web-App verwendet. Sie können eine vorhandene Application Insights-Ressource verwenden oder den Namen ändern. Klicken Sie unten auf **Anwenden**.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Zum Aktivieren über die Azure CLI müssen Sie eine Application Insights-Ressource erstellen und ein paar App-Einstellungen im Portal festlegen, um Application Insights mit Ihrer Web-App zu verbinden.
+
+1. Aktivieren der Applications Insights-Erweiterung
+
+    ```bash
+    az extension add -n application-insights
+    ```
+
+2. Erstellen Sie eine Application Insights-Ressource mit dem unten gezeigten CLI-Befehl. Ersetzen Sie die Platzhalter durch Ihren gewünschten Ressourcennamen und die Gruppe.
+
+    ```bash
+    az monitor app-insights component create --app <resource-name> -g <resource-group> --location westus2  --kind web --application-type web
+    ```
+
+    Notieren Sie sich die Werte für `connectionString` und `instrumentationKey`. Sie benötigen diese Werte im nächsten Schritt.
+
+    > Um eine Liste anderer Standorte abzurufen, führen Sie `az account list-locations` aus.
+
+::: zone pivot="platform-windows"
+    
+3. Legen Sie den Instrumentierungsschlüssel, die Verbindungszeichenfolge und die Version des Überwachungs-Agents als App-Einstellungen für die Web-App fest. Ersetzen Sie `<instrumentationKey>` und `<connectionString>` durch die Werte aus dem vorherigen Schritt.
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default" "XDT_MicrosoftApplicationInsights_Java=1"
+    ```
+
+::: zone-end
+::: zone pivot="platform-linux"
+    
+3. Legen Sie den Instrumentierungsschlüssel, die Verbindungszeichenfolge und die Version des Überwachungs-Agents als App-Einstellungen für die Web-App fest. Ersetzen Sie `<instrumentationKey>` und `<connectionString>` durch die Werte aus dem vorherigen Schritt.
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default"
+    ```
+
+::: zone-end
 
 ### <a name="configure-new-relic"></a>Konfigurieren von NewRelic
 
@@ -956,13 +1003,18 @@ Um sich zu vergewissern, dass die Datenquelle dem JBoss-Server hinzugefügt wurd
 
 ## <a name="choosing-a-java-runtime-version"></a>Auswählen einer Java Runtime-Version
 
-App Service ermöglicht es Benutzern, die Hauptversion der JVM (z. B. Java 8 oder Java 11) sowie die Nebenversion (z. B. 1.8.0 _232 oder 11.0.5) auszuwählen. Sie können auch auswählen, dass die Nebenversion automatisch aktualisiert wird, sobald neue Nebenversionen verfügbar werden. In den meisten Fällen sollten Produktionsstandorte angeheftete JVM-Nebenversionen verwenden. Dadurch werden unerwartete Ausfälle während einer automatischen Aktualisierung einer Nebenversion verhindert.
+App Service ermöglicht es Benutzern, die Hauptversion der JVM (z. B. Java 8 oder Java 11) sowie die Nebenversion (z. B. 1.8.0 _232 oder 11.0.5) auszuwählen. Sie können auch auswählen, dass die Nebenversion automatisch aktualisiert wird, sobald neue Nebenversionen verfügbar werden. In den meisten Fällen sollten Produktionsstandorte angeheftete JVM-Nebenversionen verwenden. Dadurch werden unerwartete Ausfälle während einer automatischen Aktualisierung einer Nebenversion verhindert. Alle Java-Web-Apps verwenden 64-Bit-JVMs, was nicht konfigurierbar ist.
 
 Wenn Sie sich für das Anheften der Nebenversion entscheiden, müssen Sie die JVM-Nebenversion in regelmäßigen Abständen am Standort aktualisieren. Um sicherzustellen, dass Ihre Anwendung mit der neueren Nebenversion funktioniert, erstellen Sie einen Stagingslot, und erhöhen Sie die Nebenversion am Stagingstandort. Nachdem Sie bestätigt haben, dass die Anwendung in der neuen Nebenversion ordnungsgemäß ausgeführt wird, können Sie den Stagingbereich gegen den Produktionsslot austauschen.
 
-## <a name="jboss-eap-hardware-options"></a>JBoss EAP-Hardwareoptionen
+::: zone pivot="platform-linux"
 
-JBoss EAP ist nur bei den Hardwareoptionen „Premium“ und „Isoliert“ (Isolated) verfügbar. Kunden, die während der öffentlichen Vorschauphase eine JBoss-EAP-Website im Tarif „Free“, „Shared“, „Basic“ oder „Standard“ erstellt haben, sollten auf die Hardwareebene „Premium“ oder „Isoliert“ hochskalieren, um unerwartetes Verhalten zu vermeiden.
+## <a name="jboss-eap-app-service-plans"></a>JBoss EAP App Service-Pläne
+<a id="jboss-eap-hardware-options"></a>
+
+JBoss EAP ist nur für die App Service-Plantypen „Premium v3“ und „Isoliert v2“ verfügbar. Kunden, die während der öffentlichen Vorschauphase eine JBoss EAP-Site in einem anderen Tarif erstellt haben, sollten auf die Hardwareebene „Premium“ oder „Isoliert“ hochskalieren, um unerwartetes Verhalten zu vermeiden.
+
+::: zone-end
 
 ## <a name="java-runtime-statement-of-support"></a>Unterstützungserklärung für die Java-Runtime
 

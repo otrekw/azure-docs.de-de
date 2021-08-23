@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f7c0af3ef2992fdd2c337ff6d1172f6da6db5f56
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 7b997f817e8e430d6f2985f73e4005da86dcda10
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708774"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745527"
 ---
 # <a name="using-the-msixmgr-tool"></a>Verwenden des MSIXMGR-Tools
 
@@ -48,7 +48,7 @@ So erweitern Sie eine MSIX-Datei:
     msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
     ```
 
-    Denken Sie daran, die Platzhalterwerte durch die jeweils relevanten Werte zu ersetzen. Zum Beispiel:
+    Denken Sie daran, die Platzhalterwerte durch die jeweils relevanten Werte zu ersetzen. Beispiel:
 
     ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\%username%\Desktop\packageName_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\packageName.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
@@ -84,4 +84,4 @@ Weitere Informationen zum Einrichten der App-Anfügung finden Sie in den folgend
 - [Vorbereiten eines MSIX-Images für Azure Virtual Desktop](app-attach-image-prep.md)
 - [Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps](app-attach-file-share.md)
 
-Wenn Sie Fragen zum MSIX-Feature zum Anfügen von Apps haben, finden Sie Antworten unter [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.yml) und im [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md).
+Wenn Sie Fragen zum MSIX-Feature zum Anfügen von Apps haben, finden Sie Antworten unter [Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps](app-attach-faq.md) und im [Glossar des MSIX-Features zum Anfügen von Apps](app-attach-glossary.md).

@@ -245,22 +245,6 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Beispiel: Cisco ASA-Gerät (IKEv2/kein BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-    - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
-      items:
-        - name: Azure-Portal
-          href: ipsec-ike-policy-howto.md
-        - name: PowerShell
-          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Konfigurieren von Aktiv/Aktiv-Gateways
-      items:
-        - name: Azure-Portal
-          href: active-active-portal.md
-        - name: PowerShell
-          href: vpn-gateway-activeactive-rm-powershell.md
-    - name: Konfigurieren von zonenredundanten Gateways
-      href: create-zone-redundant-vnet-gateway.md
-    - name: Konfigurieren von Paketerfassungen
-      href: packet-capture.md
     - name: Systemüberwachung
       items:
         - name: "Überwachen von VPN\_Gateway"
@@ -269,6 +253,22 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: Einrichten von Warnungen auf der Grundlage von Ressourcenprotokollen
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+    - name: Konfigurieren von Paketerfassungen
+      href: packet-capture.md
+    - name: Zonenredundante Gateways
+      items:
+        - name: Erstellen eines zonenredundanten Gateways
+          href: create-zone-redundant-vnet-gateway.md
+    - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
+      items:
+        - name: Azure-Portal
+          href: ipsec-ike-policy-howto.md
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: Konfigurieren von Aktiv/Aktiv-Verbindungen
+      items:
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
     - name: Problembehandlung
       href: vpn-gateway-troubleshoot.md
       items:

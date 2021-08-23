@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: bd77d8fe2e934ebfe9d4fad994e8aa9c6644ef8e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 20798fc438f037ca7372822ea8bd54117b8936ee
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165657"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456567"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -97,7 +97,7 @@ Beim Ein- und Ausschließen von Pfaden begegnen Ihnen unter Umständen folgende 
 
 - `dataType` kann entweder `String` oder `Number` sein. Hiermit werden die Arten von JSON-Eigenschaften angegeben, die indiziert werden.
 
-Ohne Angabe haben diese Eigenschaften die folgenden Standardwerte:
+Diese Eigenschaften müssen nicht mehr festgelegt werden. Ohne Angabe haben diese Eigenschaften die folgenden Standardwerte:
 
 | **Eigenschaftenname**     | **Standardwert** |
 | ----------------------- | -------------------------------- |

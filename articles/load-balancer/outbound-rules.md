@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: cbc5ff51a576cf2c784192bc33b06018c6f116c8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375864"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472091"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Ausgangsregeln – Azure Load Balancer
 
@@ -45,6 +45,9 @@ Mit Ausgangsregeln können Sie steuern:
      * Wenn zeitintensive Verbindungen mit Keepalives vorhanden sind, reservieren Sie für zeitintensive Verbindungen bis zu 120 Minuten lang Ports mit Leerlauf. Gehen Sie davon aus, dass veraltete Verbindungen eingestellt werden, und geben Sie Ports innerhalb von 4 Minuten für neue Verbindungen frei. 
 * **Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird.**
      * Wenn bei Verbindungen im Leerlauf ein Timeout auftritt, senden wir TCP RST an den Client und Server, damit diese wissen, dass der Datenfluss eingestellt wird?
+
+>[!Important]
+> Wenn ein Back-End-Pool über eine IP-Adresse konfiguriert wird, verhält er sich wie ein Load Balancer im Tarif „Basic“ mit aktivierter Standardeinstellung für ausgehenden Datenverkehr. Konfigurieren Sie den Back-End-Pool nach NIC, um standardmäßig eine sichere Konfiguration zu gewährleisten und Anwendungen mit hohen Anforderungen für ausgehenden Datenverkehr nutzen zu können.
 
 ## <a name="outbound-rule-definition"></a>Definition der Ausgangsregel
 

@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: a1f7d8584aada19e565aa4eff40c44f94b1bbaba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6025451779ba04b3a20307d35ca8a939c7762d64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752973"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474368"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -508,7 +508,7 @@ Wenn ein Alias angegeben wird, werden die folgenden zusätzlichen Überprüfunge
 Wenn eine dieser Überprüfungen fehlschlägt, greift die Richtlinienauswertung auf den angegebenen **conflictEffect** zurück.
 
 > [!IMPORTANT]
-> Es wird empfohlen, dass Definitionen von „Modify“, die Aliase enthalten, _audit_ **conflict effect** verwenden, um fehlerhafte Anforderungen unter Verwendung von API-Versionen zu vermeiden, deren zugeordnete Eigenschaft nicht „Modifiable“ lautet. Wenn sich derselbe Alias zwischen API-Versionen unterschiedlich verhält, können bedingte Modify-Vorgänge verwendet werden, um den für die einzelnen API-Versionen verwendeten Modify-Vorgang zu bestimmen.
+> Es wird empfohlen, dass Definitionen von „Ändern“, die Aliase enthalten, _Überprüfung_ **Konfliktauswirkung** verwenden. Damit wird vermieden, dass Anfragen mit API-Versionen fehlschlagen, bei denen die zugeordnete Eigenschaft nicht änderbar ist. Wenn sich derselbe Alias zwischen API-Versionen unterschiedlich verhält, können bedingte Modify-Vorgänge verwendet werden, um den für die einzelnen API-Versionen verwendeten Modify-Vorgang zu bestimmen.
 
 Wenn eine Richtliniendefinition mit Auswirkung „Modify“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
 

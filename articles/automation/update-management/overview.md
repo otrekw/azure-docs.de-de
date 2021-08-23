@@ -3,137 +3,64 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2021
+ms.date: 06/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: f04334b4b9704d1048d03ed82aaef400806b219f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 576bc21791d088a736044a0111c25dc97c57b059
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787023"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854808"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
-Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupdates für Ihre Windows- und Linux-VMs in Azure, in lokalen Umgebungen und in anderen Cloudumgebungen verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupdates für Ihre virtuellen Windows- und Linux-Computer in Azure, in lokalen Umgebungen und in anderen Cloudumgebungen verwalten. Sie können den Status der verfügbaren Updates schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren. 
 
-Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Azure Lighthouse ermöglicht es Ihnen, Operationen im Maßstab über mehrere Azure Active Directory (Azure AD) Anker gleichzeitig durchzuführen, wodurch Verwaltungsaufgaben wie die Aktualisierungsverwaltung über die Anker, für die Sie verantwortlich sind, effizienter werden.
+Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../../lighthouse/overview.md) integriert. Die Updateverwaltung kann verwendet werden, um Updatebereitstellungen auf Computern in mehreren Abonnements im gleichen Azure Active Directory-Mandanten (Azure AD) oder mandantenübergreifend mithilfe von Azure Lighthouse zu planen.
 
-> [!NOTE]
-> Auf einem Computer, der mit der Updateverwaltung konfiguriert ist, können Sie keine benutzerdefinierten Skripts aus Azure Automation ausführen. Auf diesem Computer kann nur das von Microsoft signierte Updateskript ausgeführt werden.
+Microsoft bietet weitere Funktionen, mit denen Sie Updates für Ihre Azure-VMs oder für Ihre Azure-VM-Skalierungsgruppen verwalten können. Diese sollten Sie in Ihre gesamte Updateverwaltungsstrategie integrieren. 
 
-> [!NOTE]
-> Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
+- Wenn Sie Ihre virtuellen Azure-Computer automatisch bewerten und aktualisieren möchten, um die Sicherheitskonformität mit den monatlichen *kritischen Updates* und *Sicherheitsupdates* zu gewährleisten, lesen Sie [Automatische VM-Gastpatches](../../virtual-machines/automatic-vm-guest-patching.md) (Vorschau). Hierbei handelt es sich um eine alternative Updateverwaltungslösung für Ihre Azure-VMs, damit diese außerhalb der Spitzenzeiten automatisch aktualisiert werden können. Auch VMs innerhalb einer Verfügbarkeitsgruppe, deren Updatebereitstellungen normalerweise manuell über die Updateverwaltung in Azure Automation verwaltet werden müssen, können so automatisch aktualisiert werden. 
 
-Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/automatic-vm-guest-patching.md) für Windows-VMs.
+- Wenn Sie Azure-VM-Skalierungsgruppen verwalten, informieren Sie sich darüber, wie Sie [automatische Upgrades für Betriebssystemimages](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) durchführen, um den Betriebssystemdatenträger für alle Instanzen der Skalierungsgruppe sicher und automatisch zu aktualisieren. 
 
 Machen Sie sich mit den Informationen in den folgenden Abschnitten vertraut, bevor Sie die Updateverwaltung bereitstellen und die Verwaltung auf Ihren Computern ermöglichen.
 
 ## <a name="about-update-management"></a>Informationen zur Updateverwaltung
 
-Computer, die von der Updateverwaltung verwaltet werden, sind bei der Durchführung der Bewertung und Bereitstellung von Updates auf Folgendes angewiesen:
-
-* [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md) für Windows oder Linux
-* PowerShell Desired State Configuration (DSC) für Linux
-* Automation Hybrid Runbook Worker (wird automatisch installiert, wenn Sie die Updateverwaltung auf dem Computer aktivieren)
-* Microsoft Update oder [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) für Windows-Computer
-* Privates oder öffentliches Updaterepository für Linux-Computer
-
-Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Server eines Arbeitsbereichs bewertet und Sicherheitsupdates darauf anwendet:
+Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Server bewertet und Sicherheitsupdates darauf anwendet.
 
 ![Updateverwaltungs-Workflow](./media/overview/update-mgmt-updateworkflow.png)
 
-Die Aktualisierungsverwaltung kann zur nativen Bereitstellung auf Maschinen in mehreren Abonnements im selben Anker oder über Anker hinweg unter Verwendung von [Azure Lighthouse](../../lighthouse/overview.md) verwendet werden.
+Die Updateverwaltung kann in Azure Monitor-Protokolle integriert werden, um Updatebewertungen und -bereitstellungsergebnisse als Protokolldaten von zugewiesenen Azure- und Nicht-Azure-Computern zu speichern. Um diese Daten zu sammeln, werden das Automation-Konto und der Log Analytics-Arbeitsbereich miteinander verknüpft. Darüber hinaus ist der Log Analytics-Agent für Windows und Linux auf dem Computer erforderlich, der so konfiguriert werden muss, dass er an diesen Arbeitsbereich meldet. Die Updateverwaltung unterstützt das Sammeln von Informationen über Systemupdates von Agents in einer System Center Operations Manager-Verwaltungsgruppe, die mit dem Arbeitsbereich verbunden ist. Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Analytics-Arbeitsbereichen (auch als „Multi-Homing“ bezeichnet) wird nicht unterstützt.
 
-Nachdem ein Paket veröffentlicht wurde, dauert es zwei bis drei Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet.
+In der folgenden Tabelle sind die von der Updateverwaltung unterstützten verbundenen Quellen zusammengefasst.
 
-Darüber hinaus wird der Update-Konformitätsscan innerhalb von 15 Minuten nach dem Neustart des Log Analytics-Agents sowie vor und nach der Updateinstallation gestartet.
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
+| --- | --- | --- |
+| Windows |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Windows-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates. |
+| Linux |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Linux-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates auf unterstützten Distributionen. |
+| Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Softwareupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/><br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor-Protokollen erforderlich. Protokolldaten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
 
-Die Updateverwaltung meldet basierend auf der für die Synchronisierung konfigurierten Quelle, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository).
+Die Computer, die der Updateverwaltung zugeordnet sind, melden, auf welchem aktuellen Stand sie sind, und zwar basierend auf der Quelle, mit der sie sich synchronisieren sollen. Windows-Computer können so konfiguriert werden, dass sie an Windows Server Update Services oder an Microsoft Update melden. Linux-Computer können so konfiguriert werden, dass sie an ein lokales oder öffentliches Repository melden. Sie können die Updateverwaltung ebenfalls mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen dazu finden Sie unter [Integrieren der Updateverwaltung mit Windows Endpoint Configuration Manager](mecmintegration.md). 
 
-> [!NOTE]
-> Damit Meldungen an den Dienst ordnungsgemäß erfolgen können, erfordert die Updateverwaltung, dass bestimmte URLs und Ports aktiviert werden. Weitere Informationen zu diesen Anforderungen finden Sie unter [Netzwerkkonfiguration](../automation-hybrid-runbook-worker.md#network-planning).
+Wenn der Windows Update Agent (WUA) für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository). Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. 
 
-Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als optional klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten.
+Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten.
 
 Die geplante Bereitstellung definiert, welche Zielcomputer die anwendbaren Updates erhalten. Hierzu werden entweder explizit bestimmte Computer angegeben, oder es wird eine [Computergruppe](../../azure-monitor/logs/computer-groups.md) ausgewählt, die auf Protokollsuchvorgängen einer bestimmten Gruppe von Computern basiert (oder auf einer [Azure-Abfrage](query-logs.md), die virtuelle Azure-Computer auf der Grundlage bestimmter Kriterien dynamisch auswählt). Diese Gruppen unterscheiden sich von der [Bereichskonfiguration](../../azure-monitor/insights/solution-targeting.md), mit der die Zielcomputer gesteuert werden, die die Konfiguration erhalten sollen, um die Updateverwaltung zu aktivieren. Dies verhindert, dass sie die Updatekonformität prüfen und melden und genehmigte erforderliche Updates installieren.
 
 Beim Definieren einer Bereitstellung geben Sie außerdem einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. 20 Minuten des Wartungsfensters sind für Neustarts reserviert (sofern ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben). Wenn das Patchen länger dauert als erwartet und im Wartungsfenster weniger als 20 Minuten verbleiben, wird kein Neustart durchgeführt.
 
-Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für diese Runbooks ist keine Konfiguration erforderlich. Bei der Erstellung einer Updatebereitstellung wird ein Zeitplan erstellt, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Masterrunbook startet ein untergeordnetes Runbook für jeden Agent, um die erforderlichen Updates zu installieren.
+Nachdem die Bereitstellung eines Updatepakets geplant wurde, dauert es 2 bis 3 Stunden, bis das Update bei Linux-Computern zur Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis das Update nach der Veröffentlichung für die Bewertung angezeigt wird. Vor und nach der Updateinstallation wird eine Überprüfung der Updatekonformität durchgeführt und die Protokolldatenergebnisse werden an den Arbeitsbereich weitergeleitet.
+
+Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für diese Runbooks ist keine Konfiguration erforderlich. Bei der Erstellung einer Updatebereitstellung wird ein Zeitplan erstellt, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Master-Runbook startet auf jedem Agent ein untergeordnetes Runbook, das die Installation der erforderlichen Updates mit dem Windows Update-Agent (unter Windows) oder über den entsprechenden Befehl für die unterstützte Linux-Distribution initiiert.
 
 Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führen die Zielcomputer die Bereitstellung parallel aus. Vor der Installation wird ein Scan ausgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind. Für WSUS-Clientcomputer tritt ein Fehler bei der Updatebereitstellung auf, wenn die Updates in WSUS nicht genehmigt wurden.
-
-Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Analytics-Arbeitsbereichen (auch als „Multi-Homing“ bezeichnet) wird nicht unterstützt.
 
 ## <a name="limits"></a>Grenzwerte
 
 Grenzwerte, die für Updateverwaltung gelten, finden Sie unter [Azure Automation Dienstgrenzwerte](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management).
-
-## <a name="clients"></a>Clients
-
-### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-
-Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen und -patching. Das Patchen erfordert einen System Hybrid Runbook Worker, der automatisch installiert wird, wenn Sie den virtuellen Computer oder Server für die Verwaltung durch Updateverwaltung aktivieren. Informationen zu den Systemanforderungen für Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) und [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
-
-> [!NOTE]
-> Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt, die in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich aufgeführt sind.
-
-|Betriebssystem  |Notizen  |
-|---------|---------|
-|Windows Server 2019 (Datacenter/Standard mit Server Core)<br><br>Windows Server 2016 (Datacenter/Standard ohne Server Core)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 | |
-|Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
-|CentOS 6, 7 und 8 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6, 7 und 8 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
-|SUSE Linux Enterprise Server 12, 15 und 15.1 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für SUSE 15.x ist Python 3 auf dem Computer erforderlich.      |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
-
-> [!NOTE]
-> Die Updateverwaltung unterstützt keine sichere Automatisierung der Updateverwaltung über alle Instanzen in einer Azure-VM-Skalierungsgruppe. [Automatische Upgrades von Betriebssystemimages](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ist die empfohlene Methode zum Verwalten von Betriebssystemimage-Upgrades in Ihrer Skalierungsgruppe.
-
-### <a name="unsupported-operating-systems"></a>Nicht unterstützte Betriebssysteme
-
-In der folgenden Tabelle werden Betriebssysteme aufgelistet, die von der Updateverwaltung nicht unterstützt werden:
-
-|Betriebssystem  |Notizen  |
-|---------|---------|
-|Windows-Client     | Clientbetriebssysteme (z.B. Windows 7 und Windows 10) werden nicht unterstützt.<br> Für Azure Windows Virtual Desktop (WVD) ist die empfohlene Methode<br> zum Verwalten von Updates [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) für die Patchverwaltung von Windows 10-Clientcomputern. |
-|Windows Server 2016 Nano Server     | Wird nicht unterstützt.       |
-|Azure Kubernetes Service-Knoten | Wird nicht unterstützt. Verwenden Sie den unter [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)](../../aks/node-updates-kured.md) beschriebenen Patchprozess.|
-
-### <a name="system-requirements"></a>Systemanforderungen
-
-Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Anforderungen. Weitere Informationen finden Sie unter [Netzwerkplanung](#ports). Informationen zu den Anforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
-
-#### <a name="windows"></a>Windows
-
-Softwareanforderungen:
-
-- .NET Framework 4.6 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers).)
-- Windows PowerShell 5.1 ist erforderlich. ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616).)
-
-Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert sein oder erfordern Zugriff auf Microsoft Update. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie [Log Analytics-Agent für Windows Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
-
-Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/agents/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden.
-
-Über Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates vom Windows Update-Dienst erhalten. Dieses Verhalten ändert sich nicht, wenn Sie Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe der Updateverwaltung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
-
-> [!NOTE]
-> Sie können die Gruppenrichtlinie so ändern, dass Computerneustarts nur vom Benutzer durchgeführt werden können, nicht aber vom System. Verwaltete Computer bleiben ggf. hängen, wenn die Updateverwaltung nicht berechtigt ist, den Computer ohne manuelle Benutzerinteraktion neu zu starten. Weitere Informationen finden Sie unter [Konfigurieren der Gruppenrichtlinieneinstellungen für automatische Updates](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
-
-#### <a name="linux"></a>Linux
-
-Softwareanforderungen:
-
-- Der Computer benötigt Zugriff auf ein Updaterepository, entweder privat oder öffentlich.
-- Für die Interaktion mit der Updateverwaltung ist TLS 1.1 oder TLS 1.2 erforderlich.
-- Python 2.x-Installation
-
-> [!NOTE]
-> Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt. Informationen finden Sie in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich.
-
-Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Linux zu installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie [Log Analytics-Agent für Linux-Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
-
-Virtuelle Computer, die auf der Grundlage der über Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md) registriert. Alle anderen Linux-Distributionen müssen über das jeweilige Onlinedateirepository der Distributionen mithilfe der von der jeweiligen Distribution unterstützten Methoden aktualisiert werden.
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -153,33 +80,21 @@ Sie können die Windows-Computer einer System Hybrid Runbook Worker-Gruppe in Ih
 
 ### <a name="management-packs"></a>Management Packs
 
-Wenn Ihre Operations Manager-Verwaltungsgruppe [mit einem Log Analytics-Arbeitsbereich verbunden](../../azure-monitor/agents/om-agents.md) ist, werden in Operations Manager die folgenden Management Packs installiert. Diese Management Packs werden auch für die Updateverwaltung auf direkt verbundenen Windows-Computern installiert. Für diese Management Packs fällt kein Konfigurations- oder Verwaltungsaufwand an.
+Die folgenden Management Packs werden auf den Computern installiert, die von der Updateverwaltung verwaltet werden. Wenn Ihre Operations Manager-Verwaltungsgruppe [mit einem Log Analytics-Arbeitsbereich verbunden](../../azure-monitor/agents/om-agents.md) ist, werden die Management Packs in der Operations Manager-Verwaltungsgruppe installiert. Für diese Management Packs fällt kein Konfigurations- oder Verwaltungsaufwand an.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Update Deployment MP
 
 > [!NOTE]
-> Wenn Sie über eine Operations Manager 1807- oder 2019-Verwaltungsgruppe verfügen, die mit einem Log Analytics-Arbeitsbereich verbunden ist, und in der Verwaltungsgruppe Agents für die Erfassung von Protokolldaten konfiguriert sind, müssen Sie den Parameter `IsAutoRegistrationEnabled` außer Kraft setzen und in der Regel **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** auf „True“ festlegen.
+> Wenn Sie über eine Operations Manager 1807- oder 2019-Verwaltungsgruppe verfügen, die mit einem Log Analytics-Arbeitsbereich verbunden ist, und in der Verwaltungsgruppe Agents für die Erfassung von Protokolldaten konfiguriert sind, müssen Sie den Parameter `IsAutoRegistrationEnabled` außer Kraft setzen und in der Regel **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** auf `True` festlegen.
 
 Weitere Informationen zu Updates der Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor-Protokollen](../../azure-monitor/agents/om-agents.md).
 
 > [!NOTE]
 > Damit die Updateverwaltung Computer mit dem Log Analytics-Agent vollständig verwalten kann, müssen Sie auf den Log Analytics-Agent für Windows oder den Log Analytics-Agent für Linux aktualisieren. Informationen zum Aktualisieren des Agents finden Sie unter [Aktualisieren eines Operations Manager-Agents](/system-center/scom/deploy-upgrade-agents). In Umgebungen, in denen Operations Manager verwendet wird, muss mindestens System Center Operations Manager 2012 R2 UR14 ausgeführt werden.
 
-## <a name="data-collection"></a>Datensammlung
-
-### <a name="supported-sources"></a>Unterstützte Quellen
-
-In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Updateverwaltung unterstützt werden:
-
-| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
-| --- | --- | --- |
-| Windows-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Windows-Agents und startet dann die Installation von erforderlichen Updates. |
-| Linux-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und startet dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
-| Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/><br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor-Protokollen erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
-
-### <a name="collection-frequency"></a>Sammlungshäufigkeit
+## <a name="data-collection-frequency"></a>Häufigkeit der Datensammlung
 
 Die Updateverwaltung überprüft verwaltete Computer auf Daten mithilfe der folgenden Regeln. Es kann zwischen 30 Minuten und 6 Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
@@ -188,18 +103,6 @@ Die Updateverwaltung überprüft verwaltete Computer auf Daten mithilfe der folg
 * Für jeden Linux-Computer: Die Updateverwaltung führt jede Stunde eine Überprüfung durch.
 
 Die durchschnittliche Datennutzung von Azure Monitor-Protokollen für einen Computer mit Updateverwaltung beträgt etwa 25 MB pro Monat. Dieser Wert ist lediglich eine Schätzung und kann sich abhängig von Ihrer Umgebung ändern. Es empfiehlt sich, die Umgebung zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/logs/manage-cost-storage.md).
-
-## <a name="network-planning"></a><a name="ports"></a>Netzwerkplanung
-
-Überprüfen Sie die [Netzwerkkonfiguration von Azure Automation](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration), um ausführliche Informationen zu den Ports, URLs und anderen Netzwerkdetails zu erhalten, die für die Updateverwaltung erforderlich sind.
-
-Bei Windows-Computern müssen Sie auch Datenverkehr zu allen Endpunkten zulassen, die für Windows Update erforderlich sind. Sie finden eine aktualisierte Liste der erforderlichen Endpunkte unter [Probleme im Zusammenhang mit HTTP/Proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Wenn Sie über einen lokalen [Windows Update-Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment) verfügen, müssen Sie auch Datenverkehr zu dem in Ihrem [WSUS-Schlüssel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) angegebenen Server zulassen.
-
-Informationen zu den erforderlichen Endpunkten für Red Hat Linux-Computer finden Sie unter [IP-Adressen der Server für die RHUI-Inhaltsübermittlung](../../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers). Informationen zu anderen Linux-Distributionen finden Sie in der jeweiligen Dokumentation des Anbieters.
-
-Weitere Informationen zu Ports, die für den Hybrid Runbook Worker erforderlich sind, finden Sie unter [Updateverwaltungsadressen für Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker).
-
-Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetverbindung herstellen können, können Sie ein [Log Analytics-Gateway](../../azure-monitor/agents/gateway.md) einrichten und den Computer so konfigurieren, dass er die Verbindung mit Azure Automation und Azure Monitor über das Gateway herstellt.
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 
@@ -223,8 +126,8 @@ In der nächsten Tabelle sind die für Linux-Updates unterstützten Klassifizier
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
 
->[!NOTE]
->Die Updateklassifizierung für Linux-Computer ist nur verfügbar, wenn sie in den unterstützten öffentlichen Azure-Cloudregionen verwendet wird. Es gibt keine Klassifizierung von Linux-Updates bei Verwendung der Updateverwaltung in den folgenden Regionen mit nationalen Clouds:
+> [!NOTE]
+> Die Updateklassifizierung für Linux-Computer ist nur verfügbar, wenn sie in den unterstützten öffentlichen Azure-Cloudregionen verwendet wird. Es gibt keine Klassifizierung von Linux-Updates bei Verwendung der Updateverwaltung in den folgenden Regionen mit nationalen Clouds:
 >
 >* Azure US Government
 >* 21Vianet in China
@@ -255,25 +158,8 @@ Kunden, die in Microsoft Endpoint Configuration Manager investiert haben, um PCs
 
 In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu aktualisieren, entweder WSUS oder Windows Update. Mit Tools wie [System Center Updates Publisher](/configmgr/sum/tools/updates-publisher) können Sie benutzerdefinierte Updates mit WSUS importieren und veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern aktualisieren. Informationen zum Konfigurieren von Updates Publisher finden Sie unter [Installieren von Updates Publisher](/configmgr/sum/tools/install-updates-publisher).
 
-## <a name="enable-update-management"></a>Aktivieren der Updateverwaltung
-
-Hier finden Sie die Möglichkeiten, wie Sie die Updateverwaltung aktivieren und zu verwaltende Computer auswählen können:
-
-- Verwendung einer [Azure Resource Manager-Vorlage](enable-from-template.md) für die Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Azure Monitor Log Analytics-Arbeitsbereich in Ihrem Abonnement. Sie konfiguriert nicht den Bereich der Computer, die verwaltet werden sollen. Dies erfolgt als gesonderter Schritt nach der Verwendung der Vorlage.
-
-- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Server mit Arc-Unterstützung
-
-- Verwenden Sie die [Runbook](enable-from-runbook.md)-Methode **enable-automationsolution**.
-
-- Für eine [ausgewählte Azure-VM](enable-from-vm.md) über die Seite **Virtuelle Computer** im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
-
-- Für [mehrere virtuelle Azure-Computer](enable-from-portal.md), indem Sie sie auf der Seite **Virtuelle Computer** im Azure-Portal auswählen.
-
-> [!NOTE]
-> Die Updateverwaltung erfordert, dass ein Log Analytics Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](../how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ausführliche Informationen zur Arbeit mit der Updateverwaltung finden Sie unter [Verwalten von Updates für Ihre VMs](manage-updates-for-vm.md).
+* Bevor Sie die Updateverwaltung aktivieren und verwenden, lesen Sie [Planen Ihrer Bereitstellung der Updateverwaltung](plan-deployment.md).
 
 * Lesen Sie häufig gestellte Fragen zur Updateverwaltung unter [Häufig gestellte Fragen zu Azure Automation](../automation-faq.md).

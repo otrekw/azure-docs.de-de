@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f714a70a0d9eb971498fc2f9fe648804a59b5136
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627330"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475012"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB-Ressourcenmodell
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB ist ein vollständig verwalteter PaaS-Dienst (Platform-as-a-Service, PaaS). Damit Sie Azure Cosmos DB verwenden können, müssen Sie in Ihrem Azure-Abonnement zunächst ein Azure Cosmos-Konto erstellen und darin dann Datenbanken, Container und Elemente. In diesem Artikel werden das Azure Cosmos DB-Ressourcenmodell und verschiedene Entitäten in der Ressourcenmodellhierarchie beschrieben.
+Azure Cosmos DB ist ein vollständig verwalteter PaaS-Dienst (Platform-as-a-Service, PaaS). Damit Sie Azure Cosmos DB verwenden können, müssen Sie in Ihrer Azure-Ressourcengruppe im erforderlichen Abonnement zunächst ein Azure Cosmos-Konto und darin dann Datenbanken, Container und Elemente erstellen. In diesem Artikel werden das Azure Cosmos DB-Ressourcenmodell und verschiedene Entitäten in der Ressourcenmodellhierarchie beschrieben.
 
 Das Azure Cosmos-Konto ist die grundlegende Einheit für globale Verteilung und Hochverfügbarkeit. Ihr Azure Cosmos-Konto enthält einen eindeutigen DNS-Namen, und für die Kontoverwaltung können Sie das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder verschiedene sprachspezifische SDKs verwenden. Weitere Informationen finden Sie unter [Verwalten von Datenbankkonten in Azure Cosmos DB](how-to-manage-database-account.md). Sie können Ihrem Konto jederzeit Azure-Regionen hinzufügen oder Azure-Regionen daraus entfernen, um Ihre Daten und Ihren Durchsatz global auf mehrere Azure-Regionen zu verteilen. Ihr Konto kann mit einer einzelnen Schreibregion oder mit mehreren Schreibregionen konfiguriert werden. Weitere Informationen finden Sie unter [Verwalten eines Azure Cosmos-Kontos](how-to-manage-database-account.md). Sie können die [Standardkonsistenz](consistency-levels.md) eines Kontos konfigurieren.
 

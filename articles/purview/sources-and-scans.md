@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677925"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738462"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Unterstützte Datenquellen und Dateitypen in Azure Purview
 
@@ -21,23 +21,7 @@ In diesem Artikel sind die Datenquellen, Dateitypen und Überprüfungskonzepte e
 
 ## <a name="supported-data-sources"></a>Unterstützte Datenquellen
 
-Azure Purview unterstützt die folgenden Quellen:
-
-| Speichertyp | Unterstützter Authentifizierungstyp | Einrichten von Überprüfungen über UX/PowerShell |
-| ---------- | ------------------- | ------------------------------ |
-| Lokaler SQL Server                   | SQL-Auth.                        | UX                                |
-| Azure Synapse Analytics (ehemals SQL DW)            | SQL-Auth., Dienstprinzipal, MSI               | UX                             |
-| Azure SQL-Datenbank (DB)                  | SQL-Auth., Dienstprinzipal, MSI               | UX |
-| Verwaltete Azure SQL-Datenbank-Instanz      | SQL-Auth., Dienstprinzipal, MSI               | UX    |
-| Azure Blob Storage                       | Kontoschlüssel, Dienstprinzipal, MSI | UX            |
-| Azure-Daten-Explorer                      | Dienstprinzipal                              | UX            |
-| Azure Data Lake Storage Gen1 (ADLS Gen1) | Dienstprinzipal, MSI                              | UX            |
-| Azure Data Lake Storage Gen2 (ADLS Gen2) | Kontoschlüssel, Dienstprinzipal, MSI            | UX            |
-| Azure Cosmos DB                          | Kontoschlüssel                                    | UX            |
-
-
-> [!Note]
-> Azure Data Lake Storage Gen2 ist jetzt allgemein verfügbar. Es wird empfohlen, ab sofort diese SKU zu verwenden. Weitere Informationen hierzu finden Sie auf der [Produktseite](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
+Purview unterstützt alle [hier aufgeführten Datenquellen](purview-connector-overview.md).
 
 ## <a name="file-types-supported-for-scanning"></a>Dateitypen, die für Überprüfungen unterstützt werden
 
@@ -48,7 +32,10 @@ Die folgenden Dateitypen werden für Überprüfungen, Schemaextraktion und Klass
 - Purview unterstützt auch benutzerdefinierte Dateierweiterungen und benutzerdefinierte Parser.
  
 > [!Note]
-> Jede GZIP-Datei muss einer einzelnen enthaltenen CSV-Datei zugeordnet werden. GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. 
+> Jede GZIP-Datei muss einer einzelnen enthaltenen CSV-Datei zugeordnet werden. GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. Darüber hinaus unterstützt der Purview-Scanner das Scannen von mit Snappy komprimierten PARQUET- und AVRO-Dateitypen für die Schemaextraktion und -klassifizierung.
+
+> [!Note]
+> Der Purview-Scanner unterstützt keine komplexen Datentypen in AVRO-, ORC- und PARQUET-Dateitypen für die Schemaextraktion.   
 
 ## <a name="sampling-within-a-file"></a>Sampling (Überprüfung) innerhalb einer Datei
 
@@ -74,28 +61,6 @@ Dateiüberprüfung für Ressourcensätze nach Dateitypen:
 - **Andere strukturierte Dateitypen (JSON, XML, TXT)** : 1 aus 100 Dateien wird in einem Ordner oder einer Gruppe von Partitionsdateien, die als „ Ressourcensatz“' angesehen werden, überprüft (L3-Überprüfung).
 - **SQL-Objekte und CosmosDB-Entitäten**: Jede Datei wird einer L3-Überprüfung unterzogen.
 - **Dokumentdateitypen**: Jede Datei wird einer L3-Überprüfung unterzogen. Ressourcensatzmuster gelten für diese Dateitypen nicht.
-
-## <a name="scan-regions"></a>Überprüfungsregionen
-Im Folgenden finden Sie eine Liste aller Azure-Datenquellregionen (Rechenzentren), in denen die Purview-Überprüfung ausgeführt wird. Wenn sich Ihre Azure-Datenquelle in einer Region befindet, die nicht in der Liste aufgeführt ist, erfolgt die Überprüfung in der Region Ihrer Purview-Instanz.
- 
-### <a name="purview-scanner-regions"></a>Regionen der Purview-Überprüfung
-
-- EastUs
-- EastUs2 
-- USA, Süden-Mitte
-- WestUs
-- WestUs2
-- SoutheastAsia
-- Europa, Westen
-- Europa, Norden
-- UkSouth
-- Australien, Osten
-- CanadaCentral
-- Brasilien, Süden
-- CentralIndia
-- JapanEast
-- Südafrika, Nord
-- Frankreich, Mitte
 
 ## <a name="classification"></a>Klassifizierung
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 1c71c6b55049d81d5c1ff3e26cba3436f0e2dd23
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: d184569fd28e23b14ff3cb24a0c8e68477b9842d
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890742"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888732"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
 
-Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
+Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob Storage finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Schritt 1: Registrieren des NFS 3.0-Protokollfeatures in Ihrem Abonnement
 
@@ -124,10 +124,10 @@ Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 
 |Einstellung | Premium-Leistung | Standardleistung  
 |----|---|---|
-|Ort|Alle verfügbaren Regionen |Eine der folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“, „USA, Osten“ und „USA, Süden-Mitte“   
+|Ort|Alle verfügbaren Regionen |Alle verfügbaren Regionen    
 |Leistung|Premium| Standard
 |Kontoart|BlockBlobStorage| Allgemein v2
-|Replikation|Lokal redundanter Speicher (LRS)| Lokal redundanter Speicher (LRS)
+|Replikation|Lokal redundanter Speicher (LRS)| Lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS)
 |Konnektivitätsmethode|Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt |Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt
 |Sichere Übertragung erforderlich|Disabled|Disabled
 |Hierarchischer Namespace|Aktiviert|Aktiviert
@@ -178,4 +178,4 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md)
+[Unterstützung für das Network File System (NFS) 3.0-Protokoll in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md)

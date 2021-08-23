@@ -4,12 +4,12 @@ metadata:
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von virtuellen Azure-Computern mit dem Azure Backup-Dienst.
   ms.topic: conceptual
   ms.date: 06/02/2021
-  ms.openlocfilehash: fc7d9ff7770cdd60ac1a30ccbcb2758b67ec2a35
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: b829855ad97e702f4a005375a1e70bd0869289ad
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111968650"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112467333"
 title: Häufig gestellte Fragen – Sicherung von Azure-VMs
 summary: >
   Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](./backup-overview.md).
@@ -215,7 +215,7 @@ sections:
     answer: Azure VM Backup verwendet [HTTPS-Kommunikation für die Verschlüsselung während der Übertragung](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest). Die Datenübertragung verwendet Azure-Fabric (und keine öffentlichen Endpunkte). Dafür ist kein Internetzugriff für die VM-Sicherung erforderlich.
   - question: Wie kann ich die Option Dateiwiederherstellung deaktivieren?
     answer: >-
-      [Diese API](/rest/api/backup/itemlevelrecoveryconnections/provision) bietet ein Skript zum Aufrufen einer **iSCSI-Verbindung** für die Dateiwiederherstellung von Azure Backup.
+      [Diese API](/rest/api/backup/2021-02-10/item-level-recovery-connections/provision) bietet ein Skript zum Aufrufen einer **iSCSI-Verbindung** für die Dateiwiederherstellung von Azure Backup.
 
       - Sie können diese Option mithilfe **benutzerdefinierter Rollendefinitionen** deaktivieren, indem Sie die API-Aktion ausschließen.
 

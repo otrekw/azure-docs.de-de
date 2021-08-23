@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie in Azure AD veraltete Benutzerkonten e
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -13,22 +13,25 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/21/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535095"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088172"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Anleitung: Verwalten inaktiver Benutzerkonten in Azure AD
 
 In umfangreichen Umgebungen werden Benutzerkonten nicht immer gelöscht, wenn Mitarbeiter eine Organisation verlassen. Als IT-Administrator sollten Sie diese veralteten Benutzerkonten erkennen und entfernen, da sie ein Sicherheitsrisiko darstellen.
 
 In diesem Artikel wird ein Verfahren zum Umgang mit veralteten Benutzerkonten in Azure AD beschrieben. 
+
+> [!IMPORTANT]
+> APIs in der `/beta`-Version in Microsoft Graph ändern sich möglicherweise noch. Die Verwendung dieser APIs in Produktionsanwendungen wird nicht unterstützt. Verwenden Sie den Selektor **Version**, um zu ermitteln, ob eine API in v1.0 verfügbar ist.
 
 ## <a name="what-are-inactive-user-accounts"></a>Was sind inaktive Benutzerkonten?
 
@@ -65,14 +68,14 @@ Nein.
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>Welche Edition von Azure AD benötige ich zum Zugreifen auf die Eigenschaft?
 
-Sie können mit allen Editionen von Azure AD auf diese Eigenschaft zugreifen.
+Für den Zugriff auf diese Eigenschaft benötigen Sie eine Azure Active Directory Premium-Edition.
 
 ### <a name="what-permission-do-i-need-to-read-the-property"></a>Welche Berechtigung benötige ich zum Lesen der Eigenschaft?
 
 Zum Lesen dieser Eigenschaft müssen Sie die folgenden Rechte gewähren: 
 
 - AuditLogs.Read.All
-- Organisation.Read.All  
+- Organization.Read.All  
 
 
 ### <a name="when-does-azure-ad-update-the-property"></a>Wann wird die Eigenschaft von Azure AD aktualisiert?
@@ -92,3 +95,4 @@ Zum Generieren eines „lastSignInDateTime“-Zeitstempels ist eine erfolgreiche
 * [Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten](tutorial-access-api-with-certificates.md)
 * [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit) 
 * [Referenz zur Anmeldeaktivitätsbericht-API](/graph/api/resources/signin)
+

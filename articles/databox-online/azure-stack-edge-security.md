@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: b2c6ee6e1bc494f0bef4a04b07115c400c8ce1ec
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 7019a1cde8548083834d467031a09ae0072ee478
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914047"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460529"
 ---
-# <a name="azure-stack-edge-security-and-data-protection"></a>Azure Stack Edge-Sicherheit und -Datenschutz
+# <a name="azure-stack-edge-pro-fpga-security-and-data-protection"></a>Azure Stack Edge Pro FPGA: Sicherheit und Datenschutz
 
-Sicherheit ist bei der Einführung neuer Technologien immer ein zentrales Anliegen. Das gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Azure Stack Edge trägt dazu bei, dass Ihre Daten nur von autorisierten Entitäten angezeigt, geändert oder gelöscht werden können.
+Sicherheit ist bei der Einführung neuer Technologien immer ein zentrales Anliegen. Das gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Mit Azure Stack Edge Pro FPGA können Sie sicherstellen, dass nur autorisierten Entitäten Ihre Daten anzeigen, ändern oder löschen können.
 
-In diesem Artikel werden die Sicherheitsfeatures von Azure Stack Edge beschrieben, mit denen die einzelnen Komponenten der Lösung und die darin gespeicherten Daten geschützt werden.
+In diesem Artikel werden die Azure Stack Edge Pro FPGA-Sicherheitsfunktionen beschrieben, mit denen die einzelnen Lösungskomponenten und die darin gespeicherten Daten geschützt werden.
 
-Azure Stack Edge besteht aus vier Hauptkomponenten, die miteinander interagieren:
+Azure Stack Edge Pro FPGA besteht aus vier Hauptkomponenten, die miteinander interagieren:
 
 - **In Azure gehosteter Azure Stack Edge-Dienst**. Die Verwaltungsressource zum Erstellen des Geräteauftrags, zum Konfigurieren des Geräts sowie zum anschließenden Nachverfolgen des Auftrags bis zur Erfüllung
 - **Azure Stack Edge Pro FPGA-Gerät**. Das Übertragungsgerät, das an Sie gesendet wird, um Ihre lokalen Daten in Azure zu importieren
@@ -34,9 +34,9 @@ Der Azure Stack Edge-Dienst ist ein in Azure gehosteter Verwaltungsdienst. Der D
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="azure-stack-edge-device-protection"></a>Schutz des Azure Stack Edge-Geräts
+## <a name="azure-stack-edge-pro-fpga-device-protection"></a>Schutz des Azure Stack Edge Pro FPGA-Geräts
 
-Das Azure Stack Edge-Gerät ist ein lokales Gerät, das Sie bei der Transformation Ihrer Daten unterstützt. Hierzu werden die Daten lokal verarbeitet und dann an Azure gesendet. Für Ihr Gerät gilt Folgendes:
+Das Azure Stack Edge Pro FPGA-Gerät ist ein lokales Gerät, das Sie bei der Transformation Ihrer Daten unterstützt. Hierzu werden die Daten lokal verarbeitet und dann an Azure gesendet. Für Ihr Gerät gilt Folgendes:
 
 - Es benötigt einen Aktivierungsschlüssel für den Zugriff auf den Azure Stack Edge-Dienst.
 - Es ist jederzeit durch ein Gerätekennwort geschützt.
@@ -46,7 +46,7 @@ Das Azure Stack Edge-Gerät ist ein lokales Gerät, das Sie bei der Transformati
 
 ### <a name="protect-the-device-via-activation-key"></a>Schützen des Geräts mittels Aktivierungsschlüssel
 
-Dem Azure Stack Edge-Dienst, den Sie in Ihrem Azure-Abonnement erstellt haben, können nur autorisierte Azure Stack Edge-Geräte hinzugefügt werden. Um ein Gerät zu autorisieren, müssen Sie es mithilfe eines Aktivierungsschlüssels für den Azure Stack Edge-Dienst aktivieren.
+Dem in Ihrem Azure-Abonnement erstellten Azure Stack Edge-Dienst kann nur ein autorisiertes Azure Stack Edge Pro FPGA-Gerät hinzugefügt werden. Um ein Gerät zu autorisieren, müssen Sie es mithilfe eines Aktivierungsschlüssels für den Azure Stack Edge-Dienst aktivieren.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
@@ -54,7 +54,7 @@ Weitere Informationen finden Sie unter [Abrufen des Aktivierungsschlüssels](azu
 
 ### <a name="protect-the-device-via-password"></a>Schützen des Geräts mittels Kennwort
 
-Mit Kennwörtern wird sichergestellt, dass nur autorisierte Benutzer Zugriff auf Ihre Daten haben. Azure Stack Edge-Geräte sind nach dem Start gesperrt.
+Mit Kennwörtern wird sichergestellt, dass nur autorisierte Benutzer Zugriff auf Ihre Daten haben. Azure Stack Edge Pro FPGA-Geräte sind nach dem Start gesperrt.
 
 Ihre Möglichkeiten:
 
