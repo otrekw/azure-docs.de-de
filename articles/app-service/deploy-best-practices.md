@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: ac4e8d93e2e729db387b0f9cf81017b6c58b6750
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10fe758bf11f0452ef07d30329d7d48914fbb4bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951333"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355408"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -157,3 +157,7 @@ Unter [Übersicht über die Azure App Service-Diagnose](./overview-diagnostics.m
 - Klicken Sie auf **Best Practices for Availability & Performance** (Bewährte Methoden für Verfügbarkeit und Leistung) oder **Best Practices for Optimal Configuration** (Bewährte Methoden für die optimale Konfiguration), um den aktuellen Zustand Ihrer App in Bezug auf diese bewährten Methoden anzuzeigen.
 
 Sie können auch den folgenden Link nutzen, um die App Service-Diagnose für Ihre Ressource direkt zu öffnen: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.
+
+## <a name="more-resources"></a>Weitere Ressourcen
+
+[Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

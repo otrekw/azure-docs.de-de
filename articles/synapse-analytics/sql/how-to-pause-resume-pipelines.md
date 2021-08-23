@@ -4,15 +4,17 @@ description: Erfahren Sie, wie Sie das Anhalten und Fortsetzen für einen dedizi
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
+ms.reviewer: wiassaf
+ms.subservice: sql
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 454c25891759d99b3f622d66920f20d2ec0f1a6c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 01fd517be7e60a5ab16e7844d8c149ddac2dcb3e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081638"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340406"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Anhalten und Fortsetzen dedizierter SQL-Pools mit Synapse-Pipelines
 
@@ -22,21 +24,21 @@ Die folgenden Schritte führen Sie durch das Einrichten des automatisierten Anha
 
 1. Erstellen einer Pipeline.
 1. Einrichten von Parametern in Ihrer Pipeline.
-1. Identifizieren der Liste dedizierter SQL-Pools in Ihrem Synapse-Arbeitsbereich.
+1. Identifizieren der Liste dedizierter SQL-Pools in Ihrem Azure Synapse-Arbeitsbereich.
 1. Filtern aller dedizierten SQL-Pools aus der Liste, die nicht angehalten oder fortgesetzt werden sollen. 
 1. Durchlaufen jedes dedizierten SQL-Pools in einer Schleife, und:
     1. Überprüfen des Zustands des dedizierten SQL-Pools.
     1. Auswerten des Zustands des dedizierten SQL-Pools.
     1. Anhalten oder Fortsetzen des dedizierten SQL-Pools.
 
-Diese Schritte werden in einer einfachen Pipeline in Synapse beschrieben:
+Diese Schritte werden in einer einfachen Pipeline in Azure Synapse beschrieben:
 
 ![Einfache Synapse-Pipeline](./media/how-to-pause-resume-pipelines/simple-pipeline.png)
 
 
 Je nach Art Ihrer Umgebung ist der gesamte hier beschriebene Prozess möglicherweise nicht gültig, und Sie sollten eventuell nur die passenden Schritte auswählen. Der hier beschriebene Prozess kann verwendet werden, um alle Instanzen in einer Entwicklungs-, Test- oder PoC-Umgebung anzuhalten oder fortzusetzen. Für eine Produktionsumgebung ist es wahrscheinlicher, das Sie das Anhalten oder Fortsetzen auf Instanzbasis planen, sodass nur die Schritte 5a bis 5c erforderlich sind.
 
-In den obigen Schritten werden die REST-APIs für Synapse und Azure SQL verwendet:
+In den obigen Schritten werden die REST-APIs für Azure Synapse und Azure SQL verwendet:
 
 - [Dedizierte SQL-Pool: Vorgänge](/rest/api/synapse/sqlpools)
  
@@ -62,10 +64,10 @@ Synapse-Pipelines ermöglichen die Automatisierung des Anhaltens und Fortsetzens
 Die Pipeline, die Sie erstellen, wird von Parametern gesteuert. Mit Parametern können Sie eine generische Pipeline erstellen, die Sie über mehrere Abonnements, Ressourcengruppen oder dedizierte SQL-Pools hinweg verwenden können. Wählen Sie die Registerkarte **Parameter** am unteren Rand des Pipelinebildschirms aus. Wählen Sie **+Neu** aus, um jeden der folgenden Parameter zu erstellen:
 
     
-|Name  |Typ  |Standardwert  |BESCHREIBUNG|
+|Name  |type  |Standardwert  |BESCHREIBUNG|
 |---------|---------|---------|-----------|
 |ResourceGroup    |Zeichenfolge        |Synapse          |Name der Ressourcengruppe für Ihre dedizierten SQL-Pools|
-|SubscriptionID   |Zeichenfolge        |<SubscriptionID> |Abonnement-ID für Ihre Ressourcengruppe|
+|SubscriptionID   |Zeichenfolge        |`<SubscriptionID>` |Abonnement-ID für Ihre Ressourcengruppe|
 |WorkspaceName    |Zeichenfolge        |Synapse          |Name Ihres Arbeitsbereichs|
 |SQLPoolName      |Zeichenfolge        |SQLPool1         |Name Ihres dedizierten SQL-Pools|
 |PauseorResume    |Zeichenfolge        |Anhalten            |Der gewünschte Zustand am Ende der Pipelineausführung|
@@ -225,5 +227,5 @@ Weitere Informationen zur verwalteten Identität für Azure Synapse und dazu, wi
 
 [Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)](../security/how-to-grant-workspace-managed-identity-permissions.md)
 
-[SQL-Zugriffssteuerung für Synapse-Pipelineausführungen](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-synapse-pipeline-runs)
+[SQL-Zugriffssteuerung für Synapse-Pipelineausführungen](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-azure-synapse-pipeline-runs)
 

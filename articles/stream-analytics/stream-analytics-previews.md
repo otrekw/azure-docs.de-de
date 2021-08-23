@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 55745c022038fa85f5b114f2bc347ed7292665eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f6b46425954d8befaef396c66b023565310ec36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589649"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339793"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics – Vorschaufeatures
 
@@ -32,6 +32,14 @@ Entwickler können von der Leistung von Azure Stream Analytics profitieren und D
 
 Entwickler, die Stream Analytics-Module in der Cloud oder in IoT Edge erstellen, können benutzerdefinierte C#-Funktionen schreiben oder wiederverwenden und diese über [benutzerdefinierte Funktionen](stream-analytics-edge-csharp-udf-methods.md) direkt in der Abfrage abrufen.
 
+## <a name="debug-queries-locally-using-job-diagram-in-visual-studio-code"></a>Lokales Debuggen von Abfragen mithilfe eines Auftragsdiagramms in Visual Studio Code
+
+Sie können das Auftragsdiagramm verwenden, während Sie Ihre Abfrage lokal testen, um das Zwischenresultset und die Zwischenmetriken für jeden Schritt zu überprüfen.
+
+## <a name="explore-jobs-in-visual-studio-code"></a>Erkunden von Aufträgen in Visual Studio Code
+
+Stream Analytics-Explorer in Visual Studio Code bietet Entwicklern eine einfache Verwaltung ihrer Stream Analytics-Aufträge. Im Stream Analytics-Explorer können Sie Ihre Aufträge problemlos verwalten, das Auftragsdiagramm anzeigen und im Auftragsmonitor debuggen.
+
 ## <a name="debug-query-steps-in-visual-studio"></a>Schritte zum Debuggen von Abfragen in Visual Studio
 
 Sie können auf einfache Weise eine Vorschau des Zwischenrowsets für ein Datendiagramm aufrufen, wenn Sie lokale Tests in Azure Stream Analytics-Tools für Visual Studio ausführen. 
@@ -41,11 +49,4 @@ Sie können auf einfache Weise eine Vorschau des Zwischenrowsets für ein Datend
 
 Visual Studio-Tools für Azure Stream Analytics erweitern die lokale Testfunktion, mit der Sie Ihre Abfragen anhand von Liveereignisstreams aus Cloudquellen wie Event Hub oder IoT Hub testen können. Erfahren Sie mehr über [Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio](stream-analytics-live-data-local-testing.md).
 
-## <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code für Azure Stream Analytics
-
-Azure Stream Analytics-Aufträge können in Visual Studio Code erstellt werden. Siehe [Visual Studio Code-Schnellstart](./quick-create-visual-studio-code.md).
-
-## <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokales Testen mit Livedaten in Visual Studio Code
-
-Sie können Ihre Abfragen mit Livedaten auf dem lokalen Computer testen, bevor Sie den Auftrag an Azure senden. Jede Testiteration dauert durchschnittlich zwei bis drei Sekunden, wodurch ein höchst effizienter Entwicklungsprozess sichergestellt ist.
 

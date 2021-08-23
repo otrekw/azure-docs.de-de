@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c4fdf78096f6f8b46c601440db6604cec6c61c99
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a6adf67eb10d276fc7484c088e7238ab8b72c1b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074365"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339259"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei
 
@@ -40,7 +40,7 @@ Um die Schritte in diesem Artikel durchzuführen, [erstellen Sie eine App Servic
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-Der oben erwähnte Endpunkt funktioniert zurzeit nicht für App Services unter Linux. Verwenden Sie stattdessen FTP oder die [ZIP Deploy-API](faq-app-service-linux.md#continuous-integration-and-deployment).
+Der oben erwähnte Endpunkt funktioniert zurzeit nicht für App Services unter Linux. Verwenden Sie stattdessen FTP oder die [ZIP Deploy-API](/azure/app-service/faq-app-service-linux#continuous-integration-and-deployment).
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Bereitstellen einer ZIP-Datei mit der Azure-Befehlszeilenschnittstelle
 
@@ -53,6 +53,8 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 ```
 
 Mit diesem Befehl werden die Dateien und Verzeichnisse aus der ZIP-Datei in Ihrem Standardordner der App Service-Anwendung (`\home\site\wwwroot`) bereitgestellt, und die App wird neu gestartet.
+
+## <a name="enable-build-automation"></a>Aktivieren der Buildautomatisierung
 
 Standardmäßig geht die Bereitstellungs-Engine davon aus, dass eine ZIP-Datei ohne weitere Maßnahmen ausführungsfähig ist, und führt deshalb auch keine Buildautomatisierung aus. Um dieselbe Buildautomatisierung wie bei einer [Git-Bereitstellung](deploy-local-git.md) zu aktivieren, legen Sie die App-Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` fest, indem Sie in den folgenden Befehl in [Cloud Shell](https://shell.azure.com) ausführen:
 
@@ -98,3 +100,4 @@ Für komplexere Bereitstellungsszenarien versuchen Sie die [Bereitstellung in Az
 
 * [Kudu: Bereitstellen aus einer ZIP-Datei](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Anmeldeinformationen für die Azure App Service-Bereitstellung](deploy-ftp.md)
+* [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

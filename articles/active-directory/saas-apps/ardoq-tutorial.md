@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 525a15e90b77a06a3a64a244b46010664767ff18
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b515fb22a81952794ac0914076fec67724759863
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964662"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457334"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ardoq"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Ardoq
 
@@ -83,9 +83,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     |------------|
     | `https://<CustomerName>.us.ardoq.com/saml/v2` |
     | `https://<CustomerName>.ardoq.com/saml/v2` |
-    |
-
-
+    
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<CustomerName>.ardoq.com/saml/v2`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
@@ -96,7 +94,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     |-------------|
     | `https://<CustomerName>.ardoq.com/saml/v2` |
     | `https://<CustomerName>.us.ardoq.com/saml/v2` |
-    |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Ardoq-Client](mailto:support@ardoq.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -113,10 +110,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | assignedRoles | user.assignedroles |
     | mail | user.mail |
 
-    > [!NOTE]
-    > Ardoq erwartet, dass der Anwendung Rollen für Benutzer zugewiesen werden. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Informationen zum Konfigurieren von Rollen in Azure AD finden Sie [hier](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui).
-
-
+  > [!NOTE]
+  > Ardoq erwartet, dass der Anwendung Rollen für Benutzer zugewiesen werden. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Ihre Rollen sollten mit den Werten „admin“, „writer“, „reader“ und/oder „contributor“ eingerichtet werden.
+  >
+  > Erfahren Sie mehr zum [Konfigurieren von Rollen in Azure AD](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui).    
+ 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)

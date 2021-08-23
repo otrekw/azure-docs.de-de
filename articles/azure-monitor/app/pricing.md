@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/05/2021
+ms.date: 6/24/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: 1ed9fc345b1c8afe416b4b98c621fc1c9b48a557
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 39109106a100d2af8a9dad4e6009f4c73fea8f59
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795256"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122343166"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -33,7 +33,7 @@ Die Application Insights-Option zum [Aktivieren von Warnungen für benutzerdefin
 
 ### <a name="workspace-based-application-insights"></a>Arbeitsbereichsbasierte Application Insights-Instanz
 
-Für Application Insights-Ressourcen, die ihre Daten an einen Log Analytics-Arbeitsbereich senden (als [arbeitsbereichsbasierte Application Insights-Ressourcen](create-workspace-resource.md) bezeichnet), erfolgt die Abrechnung für die Datenerfassung und -aufbewahrung über den Arbeitsbereich, in dem sich die Application Insights-Daten befinden. Auf diese Weise können Kunden alle Optionen des[Preismodells](../logs/manage-cost-storage.md#pricing-model) von Log Analytics nutzen, z. B. Kapazitätsreservierung und nutzungsbasierte Zahlung. Log Analytics verfügt auch noch über weitere Optionen für die Datenaufbewahrung, z. B. [Aufbewahrung nach Datentyp](../logs/manage-cost-storage.md#retention-by-data-type). Für Application Insights-Datentypen im Arbeitsbereich gilt eine gebührenfreie Aufbewahrungsdauer von 90 Tagen. Die Nutzung von Webtests und die Aktivierung von Warnungen für benutzerdefinierte Metrikdimensionen wird weiterhin über Application Insights gemeldet. Machen Sie sich damit vertraut, wie Sie die Kosten für die Datenerfassung und -aufbewahrung in Log Analytics nachverfolgen können, indem Sie die Informationen unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Anzeigen des Log Analytics-Verbrauchs auf Ihrer Azure-Rechnung](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) und zu [Log Analytics-Abfragen](#data-volume-for-workspace-based-application-insights-resources) lesen. 
+Für Application Insights-Ressourcen, die ihre Daten an einen Log Analytics-Arbeitsbereich senden (als [arbeitsbereichsbasierte Application Insights-Ressourcen](create-workspace-resource.md) bezeichnet), erfolgt die Abrechnung für die Datenerfassung und -aufbewahrung über den Arbeitsbereich, in dem sich die Application Insights-Daten befinden. Auf diese Weise können Sie alle Optionen des [Preismodells](../logs/manage-cost-storage.md#pricing-model) von Log Analytics nutzen, einschließlich **Mindestabnahmetarifen**, zusätzlich zur nutzungsbasierten Bezahlung. Mindestabnahmetarife bieten bis zu 30 % niedrigere Preise als bei nutzungsbasierter Bezahlung. Log Analytics verfügt auch noch über weitere Optionen für die Datenaufbewahrung, z. B. [Aufbewahrung nach Datentyp](../logs/manage-cost-storage.md#retention-by-data-type). Für Application Insights-Datentypen im Arbeitsbereich gilt eine gebührenfreie Aufbewahrungsdauer von 90 Tagen. Die Nutzung von Webtests und die Aktivierung von Warnungen für benutzerdefinierte Metrikdimensionen wird weiterhin über Application Insights gemeldet. Machen Sie sich damit vertraut, wie Sie die Kosten für die Datenerfassung und -aufbewahrung in Log Analytics nachverfolgen können, indem Sie die Informationen unter [Verstehen Ihrer Nutzung und Schätzen von Kosten](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs), [Anzeigen des Log Analytics-Verbrauchs auf Ihrer Azure-Rechnung](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) und zu [Log Analytics-Abfragen](#data-volume-for-workspace-based-application-insights-resources) lesen. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung
 
@@ -180,7 +180,7 @@ union (AppAvailabilityResults),
 
 Azure bietet im Hub [Azure Cost Management und Abrechnung](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json) eine Vielzahl nützlicher Funktionen. Mithilfe der Funktion „Kostenanalyse“ können Sie beispielsweise Ihre Ausgaben für Azure-Ressourcen überprüfen. Wenn Sie einen Filter nach Ressourcentyp („microsoft.insights/components“ für Application Insights) hinzufügen, können Sie Ihre Ausgaben nachverfolgen. Wählen Sie anschließend unter „Gruppieren nach“ die Option „Kategorie der Verbrauchseinheit“ oder „Verbrauchseinheit“ aus.  Für Application Insights-Ressourcen mit den aktuellen Tarifen wird ein Großteil der Nutzung als Log Analytics-Daten für die Kategorie „Verbrauchseinheit“ angezeigt, da ein zentrales Protokoll-Back-End für alle Azure Monitor-Komponenten vorhanden ist. 
 
-Ein umfassenderes Verständnis Ihres Verbrauchs erlangen Sie, indem Sie [Ihre Verbrauchsdaten aus dem Azure-Portal herunterladen](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal).
+Ein umfassenderes Verständnis Ihres Verbrauchs erlangen Sie, indem Sie [Ihre Verbrauchsdaten aus dem Azure-Portal herunterladen](../../cost-management-billing/understand/download-azure-daily-usage.md).
 In der heruntergeladenen Tabelle ist der Verbrauch pro Azure-Ressource pro Tag aufgeführt. In dieser Excel-Tabelle können Sie den Verbrauch für Ihre Application Insights-Ressourcen ermitteln, indem Sie zuerst nach der Spalte „Kategorie der Verbrauchseinheit“ filtern, um „Application Insights“ und „Log Analytics“ anzuzeigen und dann in der Spalte „Instanz-ID“ einen Filter namens „contains microsoft.insights/components“ hinzufügen.  Die meiste Application Insights-Nutzung wird in Verbrauchseinheiten der entsprechenden Kategorie von Log Analytics gemeldet, da für alle Azure Monitor-Komponenten ein einzelnes Protokoll-Back-End vorhanden ist.  Nur Application Insights-Ressourcen zu Legacytarifen und mehrstufige Webtests werden in der Kategorie der Verbrauchseinheit von Application Insights gemeldet.  Der Verbrauch wird in der Spalte „Verbrauchte Menge“ aufgeführt, und die Einheit für jeden Eintrag wird in der Spalte „Maßeinheit“ angegeben.  Es sind weitere Einzelheiten verfügbar, anhand derer Sie [Ihre Microsoft Azure-Rechnung verstehen](../../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="managing-your-data-volume"></a>Verwalten des Datenvolumens
@@ -233,7 +233,7 @@ Wenn Sie [die tägliche Obergrenze über Azure Resource Manager](./powershell.md
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Erstellen von Warnungen für die tägliche Obergrenze
 
-Bei der täglichen Obergrenze von Application Insights wird ein Ereignis im Azure-Aktivitätsprotokoll erstellt, wenn für das erfasste Datenvolumen die Warnstufe oder die tägliche Obergrenze erreicht wird.  Sie können [basierend auf diesen Aktivitätsprotokollereignissen eine Warnung erstellen](../alerts/alerts-activity-log.md#create-with-the-azure-portal). Die Signalnamen für diese Ereignisse lauten:
+Bei der täglichen Obergrenze von Application Insights wird ein Ereignis im Azure-Aktivitätsprotokoll erstellt, wenn für das erfasste Datenvolumen die Warnstufe oder die tägliche Obergrenze erreicht wird.  Sie können [basierend auf diesen Aktivitätsprotokollereignissen eine Warnung erstellen](../alerts/alerts-activity-log.md#azure-portal). Die Signalnamen für diese Ereignisse lauten:
 
 * Warnungsschwellenwert für Tageslimit der Application Insights-Komponente erreicht
 

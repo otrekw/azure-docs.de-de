@@ -3,16 +3,16 @@ title: Empfangen und Beantworten von Aufrufen mit HTTPS
 description: Hier erfahren Sie, wie Sie eingehende HTTPS-Anforderungen externer Dienste mit Azure Logic Apps behandeln.
 services: logic-apps
 ms.suite: integration
-ms.reviewers: jonfan, logicappspm
+ms.reviewers: estfan, azla
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8efcbac4b2cdd93c2646ad75a024df79cf5f2623
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353668"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -152,6 +152,23 @@ Ihre Logik-App hält eine eingehende Anforderung nur für [begrenzte Zeit](../lo
       ```
 
 1. Gehen Sie folgendermaßen vor, um zu überprüfen, ob der eingehende Aufruf einen Anforderungstext enthält, der dem angegebenen Schema entspricht:
+
+   1. Um zu erzwingen, dass die eingehende Nachricht genau die Felder enthält, die ihr Schema beschreibt, fügen Sie in Ihrem Schema die Eigenschaft `required` hinzu, und geben Sie die erforderlichen Felder an. Fügen Sie die `addtionalProperties` hinzu, und legen Sie den Wert auf `false` fest. 
+   
+      Das folgende Schema gibt beispielsweise an, dass die eingehende Nachricht das Feld `msg` und keine anderen Felder enthalten muss:
+
+      ```json
+      {
+         "properties": {
+           "msg": {
+              "type": "string"
+           }
+         },
+         "type": "object",
+         "required": ["msg"],
+         "additionalProperties": false
+      }
+      ```
 
    1. Klicken Sie auf der Titelleiste des Anforderungstriggers auf die Schaltfläche mit den Auslassungspunkten ( **...** ).
 

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: Datei einfügen
 services: cognitive-services
 manager: nitinme
@@ -8,19 +8,19 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 551b6901b60e55e9496cf5c4483aa3a05dfd72a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: feb9a43b68d668e19e1fcb4b2a978f113d9ef436
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382272"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255691"
 ---
 [Referenzdokumentation](/javascript/api/@azure/cognitiveservices-personalizer/) | [Multi-Slot-Konzept](..\concept-multi-slot-personalization.md) | [Beispiele](https://aka.ms/personalizer/ms-nodejs)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
-* Die aktuelle Version von [Node.js](https://nodejs.org) und npm
+* Installieren von [Node.js](https://nodejs.org) und NPM (überprüft mit Node.js v14.16.0 und NPM 6.14.11).
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="Erstellen einer Personalisierungsressource"  target="_blank"> im Azure-Portal eine Personalisierungsressource </a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Personalisierungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
@@ -30,6 +30,8 @@ ms.locfileid: "110382272"
 [!INCLUDE [Upgrade Personalizer instance to Multi-Slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
 
@@ -55,7 +57,7 @@ const { v4: uuidv4 } = require('uuid');
 const readline = require('readline-sync');
 // The endpoint specific to your personalization service instance; 
 // e.g. https://<your-resource-name>.cognitiveservices.azure.com
-const PersonalizationBaseUrl = 'https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com';
+const PersonalizationBaseUrl = '<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>';
 // The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
 const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ```
@@ -63,14 +65,14 @@ const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ### <a name="install-the-npm-packages-for-quickstart"></a>Installieren der NPM-Pakete für den Schnellstart
 
 ```console
-npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid axios --save
+npm install readline-sync uuid axios --save
 ```
 
 ## <a name="object-model"></a>Objektmodell
 
-Um das beste Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine [rankRequest] und senden Sie dann eine Postanforderung an den [multislot/rank]-Endpunkt (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank). Die Antwort wird dann in eine [rankResponse] analysiert.
+Um das beste Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine **rankRequest** und senden Sie dann eine Postanforderung an [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank). Die Antwort wird dann in eine **rankResponse** analysiert.
 
-Um einen Belohnungsbewertung an den Personalizer zu senden, erstellen Sie eine [rewards] und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward).
+Um eine Relevanzbewertung an den Personalizer zu senden, erstellen Sie eine **rewards** und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward).
 
 Im Rahmen dieser Schnellstartanleitung ist die Bestimmung der Relevanzbewertung ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](../concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Diese Entwurfsentscheidung sollte eine der wichtigsten Entscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur sein.
 
@@ -85,11 +87,7 @@ In diesen Codeausschnitten wird gezeigt, wie Sie die folgenden Aufgaben ausführ
 
 ## <a name="create-base-urls"></a>Erstellen von Basis-URLs
 
-In diesem Abschnitt führen Sie zwei Aktionen aus:
-* Erstellen der Rangfolge- und Belohnungs-URLs
-* Erstellen der Rang-/Belohnungsanforderungsheader
-
-Erstellen Sie die Rangfolge-/Belohnungs-URLs mithilfe der Basis-URL und der Anforderungsheader mithilfe des Ressourcenschlüssels.
+In diesem Abschnitt erstellen Sie die Rangfolge-/Relevanz-URLs mithilfe der Basis-URL und die Anforderungsheader mithilfe des Ressourcenschlüssels.
 
 ```javascript
 const MultiSlotRankUrl = PersonalizationBaseUrl.concat('personalizer/v1.1-preview.1/multislot/rank');
@@ -221,7 +219,7 @@ function getSlots() {
 
 ## <a name="make-http-requests"></a>Übermitteln von HTTP-Anforderungen
 
-Senden Sie Postanforderungen an den Personalizer-Endpunkt für das Einstufen nach Rangfolge und Belohnen von Aufrufen mit mehreren Slots.
+Fügen Sie diese Funktionen hinzu, um Postanforderungen für Rangfolge- und Relevanzaufrufe mit mehreren Slots an den Personalizer-Endpunkt zu senden.
 
 ```javascript
 async function sendMultiSlotRank(rankRequest) {
@@ -230,7 +228,12 @@ async function sendMultiSlotRank(rankRequest) {
         return response.data;
     }
     catch (err) {
-        console.log(err);
+        if(err.response)
+        {
+            throw err.response.data
+        }
+        console.log(err)
+        throw err;
     }
 }
 ```
@@ -243,6 +246,7 @@ async function sendMultiSlotReward(rewardRequest, eventId) {
     }
     catch (err) {
         console.log(err);
+        throw err;
     }
 }
 ```
@@ -275,7 +279,7 @@ Die Lernschleife der Personalisierung ist ein Zyklus aus [Rangfolge-](#request-t
 Der folgende Code durchläuft einen Zyklus durch eine Schleife: Der Benutzer wird an der Befehlszeile nach seinen Präferenzen befragt, die Angaben werden zur Wahl der besten Aktion für jeden Slot an die Personalisierung gesendet, die Auswahl wird dem Kunden in einer Auswahlliste angezeigt, und anschließend wird eine Relevanzbewertung an die Personalisierung gesendet, die angibt, wie gut die Wahl des Diensts war.
 
 ```javascript
-runLoop = true;
+let runLoop = true;
 
 (async () => {
     do {
@@ -296,39 +300,36 @@ runLoop = true;
 
         multiSlotRankRequest.deferActivation = false;
 
-        //Rank the actions for each slot
         try {
-            var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
-        }
-        catch (err) {
-            console.log(err);
-        }
-
-        let multiSlotrewards = {};
-        multiSlotrewards.reward = [];
-
-        for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
-            console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
-
-            let slotReward = {};
-            slotReward.slotId = multiSlotRankResponse.slots[i].id;
-            // User agrees or disagrees with Personalizer decision for slot
-            slotReward.value = getRewardForSlot();
-            multiSlotrewards.reward.push(slotReward);
-        }
-
-        // Send the rewards for the event
-        try {
+            //Rank the actions for each slot
+            let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+            let multiSlotrewards = {};
+            multiSlotrewards.reward = [];
+    
+            for (let i = 0; i < multiSlotRankResponse.slots.length; i++) {
+                console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
+    
+                let slotReward = {};
+                slotReward.slotId = multiSlotRankResponse.slots[i].id;
+                // User agrees or disagrees with Personalizer decision for slot
+                slotReward.value = getRewardForSlot();
+                multiSlotrewards.reward.push(slotReward);
+            }
+    
+            // Send the rewards for the event
             await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
+    
+            let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
+            if (answer === 'Q') {
+                runLoop = false;
+            }
         }
         catch (err) {
             console.log(err);
+            throw err;
         }
 
-        let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
-        if (answer === 'Q') {
-            runLoop = false;
-        }
+
 
     } while (runLoop);
 })()
@@ -347,7 +348,7 @@ Fügen Sie die folgenden Methoden hinzu, die [die Inhaltsauswahl abrufen](#get-c
 
 ## <a name="request-the-best-action"></a>Anfordern der besten Aktion
 
-Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Anforderungstext enthält die Kontextfeatures, Aktionen und ihre Features, Slots und ihre Features sowie eine eindeutige Ereignis-ID, um die Antwort zu empfangen. Die `sendMultiSlotRank`-Methode benötigt rankRequest, um die Rangfolgeanforderung mit mehreren Slots zu senden.
+Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Anforderungstext enthält den Ausführungskontext, Aktionen und Slots mit ihren jeweiligen Funktionen. Die `sendMultiSlotRank`-Methode verarbeitet einen rankRequest und führt die Rangfolgeanforderung mit mehreren Slots aus.
 
 In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszeit“ und „Gerätewunsch des Benutzers“ verwendet. In Produktionssystemen kann die Bestimmung und [Auswertung](../concept-feature-evaluation.md) von [Aktionen und Merkmalen](../concepts-features.md) allerdings eine komplexe Angelegenheit sein.
 
@@ -370,16 +371,17 @@ multiSlotRankRequest.deferActivation = false;
 
 //Rank the actions for each slot
 try {
-    var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+    let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
 }
 catch (err) {
     console.log(err);
+    throw err;
 }
 ```
 
 ## <a name="send-a-reward"></a>Senden einer Relevanz
 
-Um die Relevanzbewertung zu erhalten, die in der Belohnungsanforderung gesendet wird, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Relevanzbewertung für jeden Slot als numerischen Wert an die `sendMultiSlotReward`-Methode. Eine Belohnung muss nicht für jeden Slot definiert werden.
+Um die Relevanzbewertung für die Relevanzanforderung zu erhalten, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Relevanzbewertung für jeden Slot an die `sendMultiSlotReward`-Methode. Eine Belohnung muss nicht für jeden Slot definiert werden.
 
 In dieser Schnellstartanleitung wird als Relevanzbewertung eine einfache Zahl (0 oder 1) zugewiesen. In Produktionssystemen ist die Entscheidung, was wann an den [Relevanzaufruf](../concept-rewards.md) gesendet werden soll (abhängig von Ihren spezifischen Anforderungen), unter Umständen etwas komplizierter.
 
@@ -398,12 +400,7 @@ for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
 }
 
 // Send the rewards for the event
-try {
-    await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
-}
-catch (err) {
-    console.log(err);
-}
+await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
 ```
 
 ## <a name="run-the-program"></a>Ausführen des Programms
@@ -417,4 +414,4 @@ node sample.js
 ![Das Schnellstartprogramm stellt ein paar Fragen zum Sammeln von Benutzereinstellungen – auch bekannt als Features – und stellt dann die am besten bewertete Aktion bereit.](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-Der [Quellcode für diese Schnellstartanleitung](https://aka.ms/personalizer/ms-nodejs) ist verfügbar.
+Der [Quellcode für diese Schnellstartanleitung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer/multislot-quickstart) ist verfügbar.

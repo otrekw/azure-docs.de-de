@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c49409472c8ce9c5b9dab25cbb66df8e1b30f410
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e8bc2d0ed29cbac171e1d03bc9a6806b1ef64f1f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695156"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465310"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Tutorial: Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell
 > [!div class="op_single_selector"]
@@ -102,6 +102,12 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
+      
+   Wenn Sie IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, legen Sie die IP-SKU auf „Standard“ und die AllocationMethod auf „Statisch“ fest:
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Static -SKU Standard
+   ```
+   
 1. Erstellen Sie die Konfiguration für Ihr Gateway. Die Gatewaykonfiguration definiert das zu verwendende Subnetz und die zu verwendende öffentliche IP-Adresse. In diesem Schritt geben Sie die Konfiguration an, die beim Erstellen des Gateways verwendet wird. Verwenden Sie das folgende Beispiel, um Ihre Gatewaykonfiguration zu erstellen.
 
    ```azurepowershell-interactive
@@ -113,7 +119,7 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
 > [!IMPORTANT]
-> Wenn Sie das IPv6-basierte private Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt eine AZ-SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) für **-GatewaySku** aus.
+> Wenn Sie IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, stellen Sie sicher, dass Sie eine AZ-SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) als **-GatewaySku** auswählen oder die Nicht-AZ-SKU (Standard, HighPerformance, UltraPerformance) als -GatewaySKU mit Standard-IP und statischer öffentlicher IP verwenden.
 > 
 > 
 

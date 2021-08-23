@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc565a886698466fce8eaa6ac5ff47ae44be4c9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581812"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458828"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
 Logic Apps unterstützt Sie beim Erstellen und Ausführen von automatisierten wiederkehrenden Aufgaben und Prozessen nach einem bestimmten Zeitplan. Mit einem Logik-App-Workflow, der mit einem integrierten Trigger vom Typ „Serie“ oder „Gleitendes Fenster“ (beides Zeitplantrigger) beginnt, können Sie Aufgaben sofort, zu einem späteren Zeitpunkt oder in sich wiederholenden Intervallen ausführen. Sie können Dienste innerhalb und außerhalb von Azure aufrufen (z.B. über HTTP- oder HTTPS-Endpunkte), Nachrichten in Azure-Diensten wie Azure Storage und Azure Service Bus posten oder Dateien in eine Dateifreigabe hochladen. Mit dem Serientrigger können Sie auch komplexe Zeitpläne und Wiederholungseinstellungen für die Ausführung von Aufgaben einrichten. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Zeitplantrigger](#schedule-triggers) bzw. unter [Zeitplanaktionen](#schedule-actions). 
 
 > [!TIP]
-> Sie können wiederkehrende Workloads planen und ausführen, ohne eine separate Logik-App für jeden geplanten Auftrag zu erstellen. Dadurch umgehen Sie auch das [Limit für Workflows pro Region und Abonnement](../logic-apps/logic-apps-limits-and-config.md#definition-limits). Stattdessen können Sie das Logik-App-Muster verwenden, das durch die [Azure-Schnellstartvorlage „Logic App job scheduler“ (Logik-App-Auftragsplaner)](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/) erstellt wird.
+> Sie können wiederkehrende Workloads planen und ausführen, ohne eine separate Logik-App für jeden geplanten Auftrag zu erstellen. Dadurch umgehen Sie auch das [Limit für Workflows pro Region und Abonnement](../logic-apps/logic-apps-limits-and-config.md#definition-limits). Stattdessen können Sie das Logik-App-Muster verwenden, das durch die [Azure-Schnellstartvorlage „Logic App job scheduler“ (Logik-App-Auftragsplaner)](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logicapps-jobscheduler/) erstellt wird.
 >
 > Die Vorlage „Logic App job scheduler“ (Logik-App-Auftragsplaner) erstellt die Logik-App „CreateTimerJob“, die wiederum die Logik-App „TimerJob“ aufruft. Anschließend können Sie die Logik-App „CreateTimerJob“ als API aufrufen, indem Sie eine HTTP-Anforderung ausführen und dabei einen Zeitplan als Eingabe übergeben. Bei jedem Aufruf der Logik-App „CreateTimerJob“ wird auch die Logik-App „TimerJob“ aufgerufen. Dadurch wird eine neue TimerJob-Instanz erstellt, die kontinuierlich auf der Grundlage des angegebenen Zeitplans oder bis zum Erreichen eines bestimmten Limits ausgeführt wird. Auf diese Weise können Sie beliebig viele TimerJob-Instanzen ausführen, ohne sich Gedanken über die Workflowlimits machen zu müssen, da Instanzen keine einzelnen Logik-App-Workflowdefinitionen oder -ressourcen sind.
 
@@ -199,6 +199,27 @@ Wenn Sie Ihre Logik-App nur einmal in der Zukunft ausführen möchten, können S
 ![Auswählen der Vorlage „Scheduler: Einmalige Aufträge ausführen](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
 
 Wenn Sie Ihre Logik-App mit dem Trigger **Beim Empfang einer HTTP-Anforderung – Anforderung** starten, können Sie die Startzeit als Parameter für den Trigger übergeben. Verwenden Sie **Verzögern bis – Zeitplan** als erste Aktion, und geben Sie die Uhrzeit ein, zu der die nächste Aktion ausgeführt wird.
+
+<a name="run-once-last-day-of-the-month"></a>
+
+## <a name="run-once-at-last-day-of-the-month"></a>Einmalige Ausführung am letzten Tag des Monats
+
+Um den Wiederholungstrigger (recurrence) nur einmalig am letzten Tag des Monats auszuführen, müssen Sie den Trigger in der dem Workflow zugrunde liegenden JSON-Definition mithilfe der Codeansicht bearbeiten, nicht über den Designer. Sie können jedoch das folgende Beispiel verwenden:
+
+```json
+"triggers": {
+    "Recurrence": {
+        "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "schedule": {
+                "monthDays": [-1]
+            }
+        },
+        "type": "Recurrence"
+    }
+}
+```
 
 <a name="example-recurrences"></a>
 

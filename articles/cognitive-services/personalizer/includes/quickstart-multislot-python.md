@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: Datei einfügen
 services: cognitive-services
 manager: nitinme
@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: e772182cfd1ba656c730f423a7b4b8f0a5d709a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da6a271275c0b3b4f8d412bf622e6171609b3128
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382271"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255853"
 ---
 [Multi-Slot-Konzepte](..\concept-multi-slot-personalization.md) | [Beispiele](https://aka.ms/personalizer/ms-python)
 
@@ -31,6 +31,8 @@ ms.locfileid: "110382271"
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
 
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
+
 ### <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
 
 Erstellen Sie eine neue Python-Datei sowie Variablen für den Endpunkt und den Abonnementschlüssel Ihrer Ressource.
@@ -38,22 +40,22 @@ Erstellen Sie eine neue Python-Datei sowie Variablen für den Endpunkt und den A
 [!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
 ```python
-import datetime, json, os, time, uuid, requests
+import json, uuid, requests
 
 # The endpoint specific to your personalization service instance; 
 # e.g. https://<your-resource-name>.cognitiveservices.azure.com
-PERSONALIZATION_BASE_URL = "https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com"
+PERSONALIZATION_BASE_URL = "<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>"
 # The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
 RESOURCE_KEY = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>"
 ```
 
 ## <a name="object-model"></a>Objektmodell
 
-Um das beste Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine [rank_request] und senden Sie dann eine Postanforderung an den [multislot/rank]-Endpunkt (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank). Die Antwort wird dann in eine [rank_response] analysiert.
+Um das beste Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine **rank_request** und senden Sie dann eine Postanforderung an [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank). Die Antwort wird dann in eine **rank_response** analysiert.
 
-Um einen Belohnungsbewertung an den Personalizer zu senden, erstellen Sie eine [rewards] und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward).
+Um eine Relevanzbewertung an den Personalizer zu senden, erstellen Sie eine **rewards** und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward).
 
-Im Rahmen dieser Schnellstartanleitung ist die Bestimmung der Relevanzbewertung ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](../concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Diese Entwurfsentscheidung sollte eine der wichtigsten Entscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur sein.
+In dieser Schnellstartanleitung ist die Bestimmung der Relevanzbewertung ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](../concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Diese Entwurfsentscheidung sollte eine der wichtigsten Entscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur sein.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -65,17 +67,13 @@ In diesen Codeausschnitten wird gezeigt, wie Sie die folgenden Aufgaben ausführ
 
 ## <a name="create-base-urls"></a>Erstellen von Basis-URLs
 
-In diesem Abschnitt führen Sie zwei Aktionen aus:
-* Erstellen der Rangfolge- und Belohnungs-URLs
-* Erstellen der Rang-/Belohnungsanforderungsheader
-
-Erstellen Sie die Rangfolge-/Belohnungs-URLs mithilfe der Basis-URL und der Anforderungsheader mithilfe des Ressourcenschlüssels.
+In diesem Abschnitt erstellen Sie die Rangfolge-/Relevanz-URLs mithilfe der Basis-URL und die Anforderungsheader mithilfe des Ressourcenschlüssels.
 
 ```python
 MULTI_SLOT_RANK_URL = '{0}personalizer/v1.1-preview.1/multislot/rank'.format(PERSONALIZATION_BASE_URL)
 MULTI_SLOT_REWARD_URL_BASE = '{0}personalizer/v1.1-preview.1/multislot/events/'.format(PERSONALIZATION_BASE_URL)
 HEADERS = {
-    'ocp-apim-subscription-key.': RESOURCE_KEY,
+    'ocp-apim-subscription-key': RESOURCE_KEY,
     'Content-Type': 'application/json'
 }
 ```
@@ -201,12 +199,14 @@ def get_slots():
 
 ## <a name="make-http-requests"></a>Übermitteln von HTTP-Anforderungen
 
-Senden Sie Postanforderungen an den Personalizer-Endpunkt für das Einstufen nach Rangfolge und Belohnen von Aufrufen mit mehreren Slots.
+Fügen Sie diese Funktionen hinzu, um Postanforderungen für Rangfolge- und Relevanzaufrufe mit mehreren Slots an den Personalizer-Endpunkt zu senden.
 
 ```python
 def send_multi_slot_rank(rank_request):
-    multi_slot_response = requests.post(MULTI_SLOT_RANK_URL, data=json.dumps(rank_request), headers=HEADERS )
-    return json.loads(multi_slot_response.text)
+multi_slot_response = requests.post(MULTI_SLOT_RANK_URL, data=json.dumps(rank_request), headers=HEADERS)
+if multi_slot_response.status_code != 201:
+    raise Exception(multi_slot_response.text)
+return json.loads(multi_slot_response.text)
 ```
 
 ```python
@@ -289,7 +289,7 @@ Fügen Sie die folgenden Methoden hinzu, die [die Inhaltsauswahl abrufen](#get-c
 
 ## <a name="request-the-best-action"></a>Anfordern der besten Aktion
 
-Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Anforderungstext enthält die Kontextfeatures, Aktionen und ihre Features, Slots und ihre Features sowie eine eindeutige Ereignis-ID, um die Antwort zu empfangen. Die `send_multi_slot_rank`-Methode benötigt rank_request, um die Rangfolgeanforderung mit mehreren Slots zu senden.
+Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um Inhaltsoptionen zu erstellen. Der Anforderungstext enthält den Ausführungskontext, Aktionen und Slots mit ihren jeweiligen Funktionen. Die `send_multi_slot_rank`-Methode verarbeitet einen rankRequest und führt die Rangfolgeanforderung mit mehreren Slots aus.
 
 In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszeit“ und „Gerätewunsch des Benutzers“ verwendet. In Produktionssystemen kann die Bestimmung und [Auswertung](../concept-feature-evaluation.md) von [Aktionen und Merkmalen](../concepts-features.md) allerdings eine komplexe Angelegenheit sein.
 
@@ -313,7 +313,7 @@ multi_slot_rank_response = send_multi_slot_rank(rank_request)
 
 ## <a name="send-a-reward"></a>Senden einer Relevanz
 
-Um die Relevanzbewertung zu erhalten, die in der Belohnungsanforderung gesendet wird, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Relevanzbewertung für jeden Slot als numerischen Wert an die `send_multi_slot_reward`-Methode. Eine Belohnung muss nicht für jeden Slot definiert werden.
+Um die Relevanzbewertung für die Relevanzanforderung zu erhalten, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Relevanzbewertung für jeden Slot an die `send_multi_slot_reward`-Methode. Eine Belohnung muss nicht für jeden Slot definiert werden.
 
 In dieser Schnellstartanleitung wird als Relevanzbewertung eine einfache Zahl (0 oder 1) zugewiesen. In Produktionssystemen ist die Entscheidung, was wann an den [Relevanzaufruf](../concept-rewards.md) gesendet werden soll (abhängig von Ihren spezifischen Anforderungen), unter Umständen etwas komplizierter.
 
@@ -343,4 +343,4 @@ python sample.py
 ![Das Schnellstartprogramm stellt ein paar Fragen zum Sammeln von Benutzereinstellungen – auch bekannt als Features – und stellt dann die am besten bewertete Aktion bereit.](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-Der [Quellcode für diese Schnellstartanleitung](https://aka.ms/personalizer/ms-python) ist verfügbar.
+Der [Quellcode für diese Schnellstartanleitung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer/multislot-quickstart) ist verfügbar.

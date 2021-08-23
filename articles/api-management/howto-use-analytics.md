@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 11/24/2020
 ms.author: apimpm
-ms.openlocfilehash: ca7bd70bbf99a6d0079717a7a02328b11528d2e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da8b462eba7b5f68e345ffe5e73bd4096831935f
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96839682"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114713044"
 ---
 # <a name="get-api-analytics-in-azure-api-management"></a>Abrufen von API-Analysen in Azure API Management
 
@@ -25,6 +25,9 @@ Azure API Management bietet integrierte Analysen für Ihre APIs. Analysieren Sie
 * Abonnements
 * Benutzer
 * Requests
+
+> [!NOTE]
+> Geografiewerte basieren ungefähr auf der IP-Adresszuordnung.
 
 :::image type="content" source="media/howto-use-analytics/analytics-report-portal.png" alt-text="Zeitachsenanalysen im Portal":::
 
@@ -46,7 +49,7 @@ Verwenden Sie das Azure-Portal, um die Analysedaten auf einen Blick für Ihre AP
 
 ## <a name="analytics---rest-api"></a>Analysen – REST-API
 
-Verwenden Sie [Berichte](/rest/api/apimanagement/2019-12-01/reports)vorgänge in der API Management REST-API, um Analysedaten für Ihre API Management-Instanz abzurufen und zu filtern.
+Verwenden Sie [Berichte](/rest/api/apimanagement/2020-12-01/reports)vorgänge in der API Management REST-API, um Analysedaten für Ihre API Management-Instanz abzurufen und zu filtern.
 
 Verfügbare Vorgänge geben Berichtsdatensätze nach API, Geografie, API-Vorgängen, Produkt, Anforderung, Abonnement, Uhrzeit oder Benutzer zurück.
 

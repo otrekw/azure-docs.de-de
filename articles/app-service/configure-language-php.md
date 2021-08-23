@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7d663345a5980d32a59d3185226e48dc75ef96c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829438"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339559"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -119,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Committen Sie alle Änderungen, und stellen Sie Ihren Code mithilfe der Git- oder ZIP-Bereitstellung mit aktivierter Buildautomatisierung bereit. Composer sollte jetzt als Teil der Bereitstellungsautomatisierung ausgeführt werden.
+Committen Sie alle Änderungen, und stellen Sie Ihren Code mithilfe der Git- oder ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereit. Composer sollte jetzt als Teil der Bereitstellungsautomatisierung ausgeführt werden.
 
 ## <a name="run-gruntbowergulp"></a>Run Grunt/Bower/Gulp
 
-Wenn App Service zum Bereitstellungszeitpunkt eines der beliebten Automationstools wie Grunt, Bower oder Gulp ausführen soll, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) angeben. App Service führt dieses Skript bei der Git- oder [ZIP-Bereitstellung](deploy-zip.md) mit aktivierter Buildautomatisierung aus. 
+Wenn App Service zum Bereitstellungszeitpunkt eines der beliebten Automationstools wie Grunt, Bower oder Gulp ausführen soll, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) angeben. App Service führt dieses Skript bei der Git- oder [ZIP-Bereitstellung](deploy-zip.md) mit [aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) aus. 
 
 Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
@@ -206,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+Wenn Sie Ihre App mithilfe von Git oder mit ZIP-Paketen [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation) bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausführen eines benutzerdefinierten Skripts, falls durch `PRE_BUILD_SCRIPT_PATH` angegeben
 1. Führen Sie `php composer.phar install` aus.
@@ -279,7 +279,7 @@ Falls Sie die Umschreibung per *.htaccess* nicht nutzen möchten, können Sie Ih
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [TLS/SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 ```php
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
@@ -495,6 +495,10 @@ Wenn sich eine funktionierende PHP-App in App Service anders verhält oder Fehle
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.yml)
 
 ::: zone-end
+
+Oder siehe in zusätzlichen Ressourcen:
+
+[Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

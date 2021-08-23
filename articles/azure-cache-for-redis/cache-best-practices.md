@@ -2,16 +2,17 @@
 title: Bewährte Methoden für Azure Cache for Redis
 description: Erfahren Sie, wie Sie Azure Cache for Redis anhand dieser bewährten Methoden effektiv verwenden.
 author: carldc
+reviewer: shpathak
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: cadaco
-ms.openlocfilehash: b7a3a723af2b23b657a21f1df772fae13f050ca7
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 98382cef7e9cc1de5c7c66f0465dc621fde6e841
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413823"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291611"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis
 
@@ -43,8 +44,10 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
 
 * **Verwenden Sie die TLS-Verschlüsselung**: Azure Cache for Redis setzt standardmäßig eine von TLS verschlüsselte Kommunikation voraus.  Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt.  Die Unterstützung von TLS 1.0 und 1.1 wird jedoch branchenweit eingestellt werden. Verwenden Sie daher nach Möglichkeit TLS 1.2.  Wenn die Clientbibliothek oder das Tool TLS nicht unterstützt, kann die Aktivierung unverschlüsselter Verbindungen [über das Azure-Portal](cache-configure.md#access-ports) oder über [Verwaltungs-APIs](/rest/api/redis/redis/update) vorgenommen werden.  Wenn verschlüsselte Verbindungen nicht möglich sind, empfiehlt es sich, den Cache und die Clientanwendung in ein virtuelles Netzwerk einzubinden.  Weitere Informationen zu den im virtuellen Netzwerkcache-Szenario verwendeten Ports finden Sie in dieser [Tabelle](cache-how-to-premium-vnet.md#outbound-port-requirements).
 
-* **Leerlaufzeitüberschreitung:** Azure Cache for Redis weist derzeit ein Leerlauftimeout von 10 Minuten auf. Daher sollten Sie diesen Wert auf weniger als 10 Minuten einstellen. Die meisten gängigen Clientbibliotheken verfügen über eine Keep-Alive-Konfiguration, die Azure Redis automatisch anpingt. Bei Clients ohne Keep-Alive-Einstellung sind jedoch die Kundenanwendungen für das Aufrechterhalten der Verbindung verantwortlich.
+* **Leerlaufzeitüberschreitung:** Azure Cache for Redis weist derzeit ein Leerlauftimeout von 10 Minuten auf. Daher sollten Sie diesen Wert auf weniger als 10 Minuten einstellen. Die meisten gängigen Clientbibliotheken verfügen über eine Konfigurationseinstellung, mit der Clientbibliotheken `PING`-Befehle von Redis automatisch und in regelmäßigen Abständen an einen Redis-Server senden können. Wenn Sie jedoch Clientbibliotheken ohne diese Art von Einstellung verwenden, sind Kundenanwendungen selbst dafür verantwortlich, die Verbindung aktiv zu halten.
 
+<!-- Most common client libraries have keep-alive configuration that pings Azure Redis automatically. However, in clients that don't have a keep-alive setting, customer applications are responsible for keeping the connection alive.
+ -->
 ## <a name="memory-management"></a>Speicherverwaltung
 
 Es gibt mehrere Dinge im Zusammenhang mit der Speicherauslastung in Ihrer Redis-Serverinstanz, die Sie ggf. berücksichtigen sollten.  Hier sind einige Beispiele:
@@ -82,14 +85,14 @@ Wenn Sie die Funktionsweise Ihres Codes unter Fehlerbedingungen testen möchten,
 * **Es wird empfohlen, die Dv2-VM-Serie für Ihren Client zu verwenden**, da sie über bessere Hardware verfügt und die besten Ergebnisse liefert.
 * Stellen Sie sicher, dass die verwendete Client-VM über **mindestens so viel Computeleistung und Bandbreite* wie der getestete Cache verfügt.
 * **Testen Sie unter Failoverbedingungen** in Ihrem Cache. Sie müssen sicherstellen, dass Sie die Leistung Ihres Caches nicht nur unter den Bedingungen eines stabilen Zustands testen. Testen Sie außerdem unter Failoverbedingungen, und messen Sie währenddessen die CPU-/Serverauslastung Ihres Caches. Sie können ein Failover auslösen, indem Sie [den primären Knoten neu starten](cache-administration.md#reboot). Durch Tests unter Failoverbedingungen können Sie sehen, wie sich Ihre Anwendung im Hinblick auf Durchsatz und Latenz im Zusammenhang mit den Failoverbedingungen verhält. Ein Failover kann im Rahmen eines Updates oder eines ungeplanten Ereignisses erfolgen. Idealerweise sollte die CPU-/Serverauslastungsspitze selbst während eines Failovers nicht mehr als 80 % betragen, da dies Auswirkungen auf die Leistung haben kann.
-* **Einige Cachegrößen** werden auf VMs mit mindestens vier Kernen gehostet. Verteilen Sie die Workloads der TLS-Verschlüsselung/-Entschlüsselung sowie der TLS-Verbindung/-Verbindungstrennung auf mehrere Kerne, um die CPU-Gesamtauslastung der Cache-VMs zu senken.  [Weitere Informationen zu VM-Größen und Kernen finden Sie hier.](cache-planning-faq.md#azure-cache-for-redis-performance)
+* **Einige Cachegrößen** werden auf VMs mit mindestens vier Kernen gehostet. Verteilen Sie die Workloads der TLS-Verschlüsselung/-Entschlüsselung sowie der TLS-Verbindung/-Verbindungstrennung auf mehrere Kerne, um die CPU-Gesamtauslastung der Cache-VMs zu senken.  [Weitere Informationen zu VM-Größen und Kernen finden Sie hier.](./cache-planning-faq.yml#azure-cache-for-redis-performance)
 * **Aktivieren Sie VRSS** auf dem Clientcomputer, wenn Sie unter Windows arbeiten.  [Ausführliche Informationen finden Sie hier](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  PowerShell-Beispielskript:
    >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (  Get-NetAdapter).Name
 
 * **Erwägen Sie die Verwendung von Redis-Instanzen im Premium-Tarif**.  Diese Cachegrößen verfügen über eine bessere Netzwerklatenz und einen höheren Durchsatz, weil sowohl die CPU als auch das Netzwerk auf besserer Hardware ausgeführt werden.
 
    > [!NOTE]
-   > Als Referenz haben wir unsere beobachteten Leistungsergebnisse [hier veröffentlicht](cache-planning-faq.md#azure-cache-for-redis-performance).   Bedenken Sie außerdem, dass SSL/TLS einen gewissen Overhead hinzufügt, wodurch Sie bei Verwendung von Transportverschlüsselung abweichende Latenzen und/oder einen anderen Durchsatz erhalten.
+   > Als Referenz haben wir unsere beobachteten Leistungsergebnisse [hier veröffentlicht](./cache-planning-faq.yml#azure-cache-for-redis-performance).   Bedenken Sie außerdem, dass SSL/TLS einen gewissen Overhead hinzufügt, wodurch Sie bei Verwendung von Transportverschlüsselung abweichende Latenzen und/oder einen anderen Durchsatz erhalten.
 
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark-Beispiele
 

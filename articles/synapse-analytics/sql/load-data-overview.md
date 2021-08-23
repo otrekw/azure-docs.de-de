@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: fcad6b0079a612e6e30861fa9af17704e43231f8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 79be8f9d98816690171476d9c5764884e1b4e0f7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356109"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Entwerfen einer Strategie zum Laden von PolyBase-Daten für einen dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -84,8 +84,8 @@ Um die Daten in Azure Storage zu verschieben, können Sie sie in [Azure Blob Sto
 Tools und Dienste, mit denen Sie Daten in Azure Storage verschieben können:
 
 - Der [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)-Dienst verbessert Netzwerkdurchsatz, Leistung und Vorhersagbarkeit. ExpressRoute ist ein Dienst, der Ihre Daten über eine dedizierte private Verbindung zu Azure weiterleitet. Bei ExpressRoute-Verbindungen werden Daten nicht über das öffentliche Internet weitergeleitet. Die Verbindungen bieten mehr Zuverlässigkeit, eine höhere Geschwindigkeit, niedrigere Latenzzeiten und mehr Sicherheit als herkömmliche Verbindungen über das öffentliche Internet.
-- Das Hilfsprogramm [AzCopy](../../storage/common/storage-use-azcopy-v10.md) verschiebt Daten über das öffentliche Internet in Azure Storage. Dies funktioniert, wenn Ihre Datenmengen weniger als 10 TB umfassen. Wenn Sie Ladevorgänge in regelmäßigen Abständen mit AzCopy ausführen möchten, testen Sie die Netzwerkgeschwindigkeit, um festzustellen, ob sie geeignet ist.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verfügt über ein Gateway, das Sie auf dem lokalen Server installieren können. Anschließend können Sie eine Pipeline erstellen, um Daten vom lokalen Server in Azure Storage zu verschieben. Weitere Informationen zum Verwenden der Data Factory mit dem dedizierten SQL-Pool finden Sie unter [Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Das Hilfsprogramm [AzCopy](../../storage/common/storage-use-azcopy-v10.md) verschiebt Daten über das öffentliche Internet in Azure Storage. Dies funktioniert, wenn Ihre Datenmengen weniger als 10 TB umfassen. Wenn Sie Ladevorgänge in regelmäßigen Abständen mit AzCopy ausführen möchten, testen Sie die Netzwerkgeschwindigkeit, um festzustellen, ob diese geeignet ist.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md) verfügt über ein Gateway, das Sie auf dem lokalen Server installieren können. Anschließend können Sie eine Pipeline erstellen, um Daten vom lokalen Server in Azure Storage zu verschieben. Weitere Informationen zum Verwenden der Data Factory mit dem dedizierten SQL-Pool finden Sie unter [Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. Vorbereiten der Daten für das Laden
 
@@ -120,7 +120,7 @@ Um Daten mit PolyBase zu laden, können Sie eine der folgenden Ladeoptionen nutz
 
 - [PolyBase mit T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) funktioniert gut, wenn sich Ihre Daten in Azure Blob Storage oder Azure Data Lake Store befinden. Es bietet Ihnen die größtmögliche Kontrolle über den Ladevorgang, erfordert aber auch die Definition externer Datenobjekte. Die anderen Methoden definieren diese Objekte im Hintergrund, wenn Sie Quelltabellen zu Zieltabellen zuordnen.  Zum Orchestrieren von T-SQL-Ladevorgängen können Sie Azure Data Factory-, SSIS- oder Azure-Funktionen verwenden.
 - [PolyBase mit SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) funktioniert gut, wenn sich die Quelldaten in SQL Server befinden. SSIS definiert die Zuordnung von Quell- zu Zieltabellen und orchestriert zudem die Workload. Wenn Sie bereits über SSIS-Pakete verfügen, können Sie die Pakete so ändern, dass sie mit dem neuen Data Warehouse-Ziel funktionieren.
-- [PolyBase mit Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ist ein weiteres Orchestrierungstool.  Es definiert eine Pipeline und plant Aufträge.
+- [PolyBase mit Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md) ist ein weiteres Orchestrierungstool.  Es definiert eine Pipeline und plant Aufträge.
 - [PolyBase mit Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) überträgt Daten aus einer Azure Synapse Analytics-Tabelle in einen Databricks-Datenrahmen und/oder schreibt Daten aus einem Databricks-Datenrahmen in eine Azure Synapse Analytics-Tabelle, die PolyBase verwendet.
 
 ### <a name="non-polybase-loading-options"></a>Nicht von PolyBase stammende Ladeoptionen
@@ -139,7 +139,7 @@ Versuchen Sie beim Entwerfen eines ETL-Prozesses, den Prozess für ein kleines T
 
 ## <a name="partner-loading-solutions"></a>Ladelösungen von Partnern
 
-Viele unserer Partner stellen Ladelösungen bereit. Weitere Informationen finden Sie in der Liste mit unseren [Lösungspartnern](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Viele unserer Partner stellen Ladelösungen bereit. Weitere Informationen finden Sie in der Liste mit unseren [Lösungspartnern](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

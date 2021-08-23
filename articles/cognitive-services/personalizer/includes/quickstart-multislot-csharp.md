@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: Datei einfügen
 services: cognitive-services
 manager: nitinme
@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 17c4114214bcff79ced57da4fb58d4de8bc05107
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e21dab310c41cf6aae0e201d7d1b8e78a8540a30
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382265"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255495"
 ---
 [Referenzdokumentation](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer) | [Multi-Slot-Konzept](..\concept-multi-slot-personalization.md) | [Beispiele](https://aka.ms/personalizer/ms-dotnet)
 
@@ -30,6 +30,8 @@ ms.locfileid: "110382265"
 [!INCLUDE [Upgrade Personalizer instance to multi-slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
@@ -72,9 +74,9 @@ using System.Threading.Tasks;
 
 ## <a name="object-model"></a>Objektmodell
 
-Um das beste einzelne Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine [MultiSlotRankRequest], und senden Sie dann eine Postanforderung an den [multislot/rank]-Endpunkt (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank). Die Antwort wird dann in eine [MultiSlotRankResponse] analysiert.
+Um das beste einzelne Element des Inhalts für jeden Slot zu erfragen, erstellen Sie eine **MultiSlotRankRequest**, und senden Sie dann eine Postanforderung an [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank). Die Antwort wird dann in eine **MultiSlotRankResponse** analysiert.
 
-Um eine Belohnungsbewertung an die Personalisierung zu senden, erstellen Sie eine [MultiSlotReward] und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward).
+Um eine Relevanzbewertung an die Personalisierung zu senden, erstellen Sie eine **MultiSlotReward** und senden dann eine Postanforderung an [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward).
 
 Im Rahmen dieser Schnellstartanleitung ist die Bestimmung der Relevanzbewertung ganz einfach. In einem Produktionssystem kann die Bestimmung der Einflussfaktoren für die [Relevanzbewertung](../concept-rewards.md) sowie deren jeweilige Gewichtung allerdings eine komplexe Angelegenheit sein und muss unter Umständen im Laufe der Zeit überarbeitet werden. Diese Entwurfsentscheidung sollte eine der wichtigsten Entscheidungen im Zusammenhang mit Ihrer Personalisierungsarchitektur sein.
 
@@ -98,8 +100,9 @@ Fügen Sie zunächst der Program-Klasse die unten angegebenen Zeilen hinzu. Füg
 [!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
 ```csharp
-private static readonly string ResourceKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
-private static readonly string PersonalizationBaseUrl = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+//Replace 'PersonalizationBaseUrl' and 'ResourceKey' with your valid endpoint values.
+private const string PersonalizationBaseUrl = "<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>";
+private const string ResourceKey = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>";
 ```
 
 Erstellen Sie als Nächstes die Rangfolge- und Belohnungs-URLs.
@@ -177,95 +180,6 @@ private static IList<Slot> GetSlots()
     };
 
     return slots;
-}
-```
-
-## <a name="get-user-preferences-for-context"></a>Abrufen von Benutzerwünschen für den Kontext
-
-Fügen Sie der Program-Klasse die folgenden Methoden hinzu, um die Eingabe eines Benutzers über die Befehlszeile für die Tageszeit und den Gerätetyp des Benutzers zu erhalten. Diese werden als Kontextfeatures verwendet.
-
-```csharp
-static string GetTimeOfDayForContext()
-{
-    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
-
-    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
-    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
-        timeIndex = 1;
-    }
-
-    return timeOfDayFeatures[timeIndex - 1];
-}
-```
-
-```csharp
-static string GetDeviceForContext()
-{
-    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
-
-    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
-    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
-        deviceIndex = 1;
-    }
-
-    return deviceFeatures[deviceIndex - 1];
-}
-```
-
-Bei beiden Methoden wird die Methode `GetKey` verwendet, um die Auswahl des Benutzers aus der Befehlszeile zu lesen.
-
-```csharp
-private static string GetKey()
-{
-    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
-}
-```
-
-```csharp
-private static IList<Context> GetContext(string time, string device)
-{
-    IList<Context> context = new List<Context>
-    {
-        new Context
-        {
-            Features = new {timeOfDay = time, device = device }
-        }
-    };
-
-    return context;
-}
-```
-
-## <a name="make-http-requests"></a>Übermitteln von HTTP-Anforderungen
-
-Senden Sie Postanforderungen an den Personalizer-Endpunkt für das Einstufen nach Rangfolge und Belohnen von Aufrufen mit mehreren Slots.
-
-```csharp
-private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
-{
-    var rankBuilder = new UriBuilder(new Uri(rankUrl));
-    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
-    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
-
-    HttpResponseMessage response = await client.SendAsync(rankRequest);
-    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
-    return rankResponse;
-}
-```
-
-```csharp
-private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
-{
-    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
-    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
-    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
-    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
-
-    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -367,6 +281,104 @@ private class SlotReward
 
     [JsonPropertyName("value")]
     public float Value { get; set; }
+}
+```
+
+## <a name="get-user-preferences-for-context"></a>Abrufen von Benutzerwünschen für den Kontext
+
+Fügen Sie der Program-Klasse die folgenden Methoden hinzu, um die Eingabe eines Benutzers über die Befehlszeile für die Tageszeit und den Gerätetyp des Benutzers zu erhalten. Diese werden als Kontextfeatures verwendet.
+
+```csharp
+static string GetTimeOfDayForContext()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
+
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetDeviceForContext()
+{
+    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
+
+    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
+    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
+        deviceIndex = 1;
+    }
+
+    return deviceFeatures[deviceIndex - 1];
+}
+```
+
+Bei beiden Methoden wird die Methode `GetKey` verwendet, um die Auswahl des Benutzers aus der Befehlszeile zu lesen.
+
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
+
+```csharp
+private static IList<Context> GetContext(string time, string device)
+{
+    IList<Context> context = new List<Context>
+    {
+        new Context
+        {
+            Features = new {timeOfDay = time, device = device }
+        }
+    };
+
+    return context;
+}
+```
+
+## <a name="make-http-requests"></a>Übermitteln von HTTP-Anforderungen
+
+Fügen Sie diese Funktionen hinzu, um Postanforderungen für Rangfolge- und Relevanzaufrufe mit mehreren Slots an den Personalizer-Endpunkt zu senden.
+
+```csharp
+private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
+{
+    try
+    {
+    var rankBuilder = new UriBuilder(new Uri(rankUrl));
+    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
+    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
+    HttpResponseMessage response = await client.SendAsync(rankRequest);
+    response.EnsureSuccessStatusCode();
+    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
+    return rankResponse;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("\n" + e.Message);
+        Console.WriteLine("Please make sure multi-slot feature is enabled. To do so, follow multi-slot Personalizer documentation to update your loop settings to enable multi-slot functionality.");
+        throw;
+    }
+}
+```
+
+```csharp
+private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
+{
+    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
+    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
+    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
+    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
+
+    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -485,7 +497,7 @@ Fügen Sie die folgenden Klassen hinzu, die [die Texte der Rangfolge-/Belohnungs
 
 ## <a name="request-the-best-action"></a>Anfordern der besten Aktion
 
-Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um für die Inhaltsoptionen ein Element vom Typ `context` zu erstellen. Der Anforderungstext enthält die Kontextfeatures, Aktionen und ihre Features sowie eine eindeutige Ereignis-ID, um die Antwort zu empfangen. Die `SendMultiSlotRank`-Methode benötigt den HTTP-Client, den Anforderungstext und die URL, um die Anforderung zu senden.
+Für die Rangfolgeanforderung erfragt das Programm die Präferenzen des Benutzers, um für die Inhaltsoptionen ein Element vom Typ `context` zu erstellen. Der Anforderungstext enthält den Ausführungskontext, Aktionen und Slots mit ihren jeweiligen Funktionen. Die `SendMultiSlotRank`-Methode verwendet einen HTTP-Client, den Anforderungstext und die URL, um die Anforderung zu senden.
 
 In dieser Schnellstartanleitung werden die einfachen Kontextmerkmale „Tageszeit“ und „Gerätewunsch des Benutzers“ verwendet. In Produktionssystemen kann die Bestimmung und [Auswertung](../concept-feature-evaluation.md) von [Aktionen und Merkmalen](../concepts-features.md) allerdings eine komplexe Angelegenheit sein.
 
@@ -512,7 +524,7 @@ MultiSlotRankResponse multiSlotRankResponse = await SendMultiSlotRank(client, ra
 
 ## <a name="send-a-reward"></a>Senden einer Relevanz
 
-Um die Belohnungsbewertung zu erhalten, die in der Belohnungsanforderung gesendet wird, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Belohnungsbewertung für jeden Slot als numerischen Wert an die Belohnungs-API. Eine Belohnung muss nicht für jeden Slot definiert werden.
+Um die Relevanzbewertung für die Relevanzanforderung zu erhalten, ruft das Programm die Auswahl des Benutzers für jeden Slot über die Befehlszeile ab, weist der Auswahl einen numerischen Wert (Relevanzbewertung) zu und sendet dann die eindeutige Ereignis-ID, Slot-ID und die Relevanzbewertung für jeden Slot als numerischen Wert an die Relevanz-API. Eine Belohnung muss nicht für jeden Slot definiert werden.
 
 In dieser Schnellstartanleitung wird als Relevanzbewertung eine einfache Zahl (0 oder 1) zugewiesen. In Produktionssystemen ist die Entscheidung, was wann an den [Relevanzaufruf](../concept-rewards.md) gesendet werden soll (abhängig von Ihren spezifischen Anforderungen), unter Umständen etwas komplizierter.
 
@@ -567,4 +579,4 @@ dotnet run
 ![Das Schnellstartprogramm stellt ein paar Fragen zum Sammeln von Benutzereinstellungen – auch bekannt als Features – und stellt dann die am besten bewertete Aktion bereit.](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-Der [Quellcode für diese Schnellstartanleitung](https://aka.ms/personalizer/ms-dotnet) ist verfügbar.
+Der [Quellcode für diese Schnellstartanleitung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer/multislot-quickstart) ist verfügbar.

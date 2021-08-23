@@ -1,19 +1,19 @@
 ---
 title: Überprüfen von Synapse RBAC-Rollenzuweisungen in Synapse Studio
 description: In diesem Artikel erfahren Sie, wie Sie Synapse RBAC-Rollenzuweisungen in Synapse Studio überprüfen.
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: acc1ed8cece087628f6f8deb41696acefe124874
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 11e5ed746215df4518e9bd6af2c0c92539067e47
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340061"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Überprüfen von Synapse RBAC-Rollenzuweisungen
 
@@ -28,7 +28,7 @@ Sie können für jede Synapse RBAC-Rolle die Synapse RBAC-Rollenzuweisungen für
 
 ## <a name="open-synapse-studio"></a>Öffnen von Synapse Studio  
 
-Öffnen Sie zum Überprüfen der Rollenzuweisungen zunächst [Synapse Studio](https://web.azuresynapse.net/), und wählen Sie Ihren Arbeitsbereich aus. 
+Öffnen Sie zum Überprüfen der Rollenzuweisungen zunächst [Synapse Studio](https://web.azuresynapse.net/), und wählen Sie Ihren Arbeitsbereich aus. Um sich bei Ihrem Arbeitsbereich anzumelden, gibt es zwei **Kontoauswahlmethoden**. Eine stammt aus dem **Azure-Abonnement** und die andere ist die **manuelle Eingabe**. Wenn Sie über die Synapse Azure-Rolle oder Azure-Rollen auf höherer Ebene verfügen, können Sie beide Methoden verwenden, um sich beim Arbeitsbereich anzumelden. Wenn Sie nicht über eine der zugehörigen Azure-Rollen verfügen und Ihnen eine RBAC-Rolle von Synapse gewährt wurde, können Sie sich nur mit der **manuellen Eingabe** beim Arbeitsbereich anmelden.
 
 ![Anmelden beim Arbeitsbereich](./media/common/login-workspace.png) 
  

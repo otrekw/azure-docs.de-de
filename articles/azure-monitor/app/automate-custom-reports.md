@@ -1,17 +1,17 @@
 ---
-title: Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
-description: Automatisieren von benutzerdefinierten täglichen, wöchentlichen oder monatlichen Berichten mit Azure Application Insights-Daten
+title: Automatisieren von benutzerdefinierten Berichten mit Application Insights-Daten
+description: Automatisieren von benutzerdefinierten täglichen, wöchentlichen oder monatlichen Berichten mit Azure Monitor Application Insights-Daten
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1579874f77a41abbfef6a9ba44f997d1ec06bb76
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590033"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122356435"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
+# <a name="automate-custom-reports-with-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Application Insights-Daten
 
 Regelmäßig erstellte Berichte halten ein Team darüber im Laufenden, wie sich ihre unternehmenskritischen Dienste entwickeln. Dank automatisierter Berichte, die zuverlässig Informationen liefern, ohne dass sich alle beim Portal anmelden müssen, können Entwickler, DevOps/SRE-Teams und deren Vorgesetzte produktiv arbeiten. Derartige Berichte können auch dabei unterstützen, allmähliche Erhöhungen bei Latenzen, Lasten oder Fehlerraten zu ermitteln, die möglicherweise keine Warnungsregeln auslösen.
 

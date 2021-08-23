@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie durch die Aktivierung von Zonenredundanz
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/11/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 6e8352a93575ec6222be463daea14aee28f08a7c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634813"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349819"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>Unterstützung von Verfügbarkeitszonen für Azure API Management 
 
@@ -29,19 +29,26 @@ Das Konfigurieren von API Management für Zonenredundanz wird derzeit in den fol
 * Australien (Osten)
 * Brasilien Süd
 * Kanada, Mitte
-* Indien, Mitte
-* USA (Mitte)
+* Indien, Mitte (*)
+* USA, Mitte
 * East US
 * USA (Ost) 2
 * Frankreich, Mitte
+* Deutschland, Westen-Mitte
 * Japan, Osten
-* Nordeuropa
+* Südkorea, Mitte (*)
+* Europa, Norden
+* Norwegen, Osten (*)
+* Südafrika, Norden (*)
 * USA Süd Mitte
 * Asien, Südosten
 * UK, Süden
 * Europa, Westen
 * USA, Westen 2
 * USA, Westen 3
+
+> [!IMPORTANT]
+> Die Regionen mit * verfügen über restriktiven Zugriff in einem Azure-Abonnement, um die Unterstützung von Verfügbarkeitszonen zu aktivieren. Arbeiten Sie mit Ihrem Microsoft-Vertriebs- oder -Kundendienstmitarbeiter zusammen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,6 +77,6 @@ Aktivieren Sie im Portal optional Zonenredundanz, wenn Sie ihrem API Management
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr darüber, wie Sie eine [Azure API Management-Dienstinstanz für mehrere Azure-Regionen bereitstellen](api-management-howto-deploy-multi-region.md).
-* Sie können Zonenredundanz auch mithilfe einer [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-api-management-simple-zones) aktivieren.
+* Sie können Zonenredundanz auch mithilfe einer [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-simple-zones) aktivieren.
 * Informieren Sie sich über [Azure-Dienste mit Unterstützung für Verfügbarkeitszonen](../availability-zones/az-region.md).
-* Weitere Informationen zum Erstellen für [Zuverlässigkeit](/azure/architecture/framework/resiliency/overview) in Azure.
+* Weitere Informationen zum Erstellen für [Zuverlässigkeit](/azure/architecture/framework/resiliency/app-design) in Azure.

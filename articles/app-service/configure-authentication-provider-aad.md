@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung 
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078314"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397095"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
@@ -31,14 +31,14 @@ Mit der APP Service-Authentifizierungsfunktion kann automatisch eine APP-Registr
 Diese Option ist so konzipiert, dass die Authentifizierung ganz einfach und mit nur wenigen Klicks aktiviert werden kann.
 
 1. Melden Sie sich am [Azure-Portal] an und navigieren Sie zu Ihrer App.
-1. Wählen Sie im Menü auf der linken Seite die Option **Authentifizierung** aus. Klicken Sie auf **Identitätsanbieter hinzufügen**.
+1. Wählen Sie **Authentifizierung** im Menü auf der linken Seite. Klicken Sie auf **Identitätsanbieter hinzufügen**.
 1. Wählen Sie **Microsoft** in der Dropdown-Liste der Identitätsanbieter aus. Die Option zum Erstellen einer neuen Registrierung ist standardmäßig ausgewählt. Sie können den Namen der Registrierung oder die unterstützten Kontotypen ändern.
 
     Ein Client-Geheimnis wird erstellt und als eine Slot-Sticky-[Anwendungseinstellung](./configure-common.md#configure-app-settings) namens `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` gespeichert. Sie können diese Einstellung später aktualisieren, um [Key Vault Verweise](./app-service-key-vault-references.md) zu verwenden, wenn Sie den geheimen Schlüssel in Azure Key Vault verwalten möchten.
 
 1. Wenn dies der erste Identitätsanbieter ist, der für die Anwendung konfiguriert wurde, wird auch ein Abschnitt mit den **Einstellungen für die App-Dienst-Authentifizierung** angezeigt. Andernfalls können Sie mit dem nächsten Schritt fortfahren.
     
-    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Fluss](overview-authentication-authorization.md#authentication-flow).
+    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Fluss](overview-authentication-authorization.md#authentication-flow).
 
 1. (Fakultativ) Klicken Sie auf **Fortfahren: Berechtigungen** und fügen Sie alle von der Anwendung benötigten Umfänge hinzu. Diese werden der APP-Registrierung hinzugefügt, Sie können Sie jedoch später auch ändern.
 1. Klicken Sie auf **Hinzufügen**.
@@ -85,7 +85,7 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivieren von Azure Active Directory in Ihrer App Service-App
 
 1. Melden Sie sich am [Azure-Portal] an und navigieren Sie zu Ihrer App.
-1. Wählen Sie im Menü auf der linken Seite die Option **Authentifizierung** aus. Klicken Sie auf **Identitätsanbieter hinzufügen**.
+1. Wählen Sie **Authentifizierung** im Menü auf der linken Seite. Klicken Sie auf **Identitätsanbieter hinzufügen**.
 1. Wählen Sie **Microsoft** in der Dropdown-Liste der Identitätsanbieter aus.
 1. Für den **App-Registrierungstyp** können Sie **eine vorhandene App-Registrierung in diesem Verzeichnis** auswählen, die automatisch die erforderlichen App-Informationen erfasst. Wenn Ihre Registrierung von einem anderen Mandanten aus erfolgt oder Sie nicht über die Berechtigung zum Anzeigen des Registrierungs-Objekts verfügen, wählen Sie **Details zu einer vorhandenen APP-Registrierung angeben** aus. Für diese Option müssen Sie die folgenden Konfigurationsdetails ausfüllen:
 
@@ -100,7 +100,7 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
 
 1. Wenn dies der erste Identitätsanbieter ist, der für die Anwendung konfiguriert wurde, wird auch ein Abschnitt mit den **Einstellungen für die App-Dienst-Authentifizierung** angezeigt. Andernfalls können Sie mit dem nächsten Schritt fortfahren.
     
-    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Fluss](overview-authentication-authorization.md#authentication-flow).
+    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Verlauf](overview-authentication-authorization.md#authentication-flow).
 
 1. Klicken Sie auf **Hinzufügen**.
 
@@ -149,7 +149,7 @@ Im Moment ermöglicht dies _jeder_ Clientanwendung in Ihrem Azure AD-Mandanten, 
 1. Wählen Sie unter **Anwendungsberechtigungen** die zuvor erstellte App-Rolle aus, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 1. Stellen Sie sicher, dass Sie auf **Administratoreinwilligung erteilen**, um die Clientanwendung zum Anfordern der Berechtigung zu autorisieren.
 1. Ähnlich wie im vorherigen Szenario (vor dem Hinzufügen jeglicher Rollen) können Sie jetzt [ein Zugriffstoken anfordern](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) für dieselbe Ziel-`resource`, woraufhin das Zugriffstoken einen `roles`-Anspruch aufnimmt, der die App-Rollen enthält, die für die Clientanwendung autorisiert wurden.
-1. Im Code der App Service- oder Funktions-Ziel-App können Sie jetzt überprüfen, ob die erwarteten Rollen im Token vorhanden sind (dies wird nicht von der App Service-Authentifizierung/-Autorisierung durchgeführt). Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims).
+1. Im Code der App Service- oder Funktions-Ziel-App können Sie jetzt überprüfen, ob die erwarteten Rollen im Token vorhanden sind (dies wird nicht von der App Service-Authentifizierung/-Autorisierung durchgeführt). Weitere Informationen finden Sie unter [Zugriff auf Benutzeransprüche](configure-authentication-user-identities.md#access-user-claims-in-app-code).
 
 Sie haben nun eine Daemon-Clientanwendung konfiguriert, die unter Verwendung der eigenen Identität auf Ihre App Service-App zugreifen kann.
 

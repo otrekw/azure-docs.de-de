@@ -3,27 +3,29 @@ title: Verwaltete Connectors für Azure Logic Apps
 description: Verwenden Sie von Microsoft verwaltete Trigger und Aktionen, um automatisierte Workflows zu erstellen, die andere Apps, Daten, Dienste und Systeme mithilfe von Azure Logic Apps integrieren.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: 857c0e41f52c99d83142b3db7471b51b55316b5e
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/16/2021
+ms.openlocfilehash: 9461baebfad58f848b27fe689ed8dbd26c9dd07e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339094"
 ---
 # <a name="managed-connectors-for-logic-apps"></a>Verwaltete Connectors für Azure Logic Apps
 
 Mit [verwalteten Connectors](apis-list.md) können Sie auf andere Dienste und Systeme zugreifen, in denen keine [integrierten Trigger und Aktionen](built-in.md) verfügbar sind. Sie können diese Trigger und Aktionen verwenden, um Workflows zu erstellen, die Daten, Apps, cloudbasierte Dienste und lokale Systeme integrieren. Anders als integrierte Trigger und Aktionen sind diese Connectors in der Regel an einen bestimmten Dienst oder ein bestimmtes System wie Azure Blob Storage, Office 365, SQL, Salesforce oder SFTP-Server gebunden. Verwaltete Connectors werden von Microsoft verwaltet und in Azure gehostet und erfordern normalerweise, dass Sie zuerst eine Verbindung in Ihrem Workflow erstellen und Ihre Identität authentifizieren. Es sind sowohl auf Serien als auch auf Webhooks basierende Trigger verfügbar. Wenn Sie einen Trigger verwenden, der auf einer Serie beruht, sollten Sie die [Übersicht über das Wiederholungsverhalten](apis-list.md#recurrence-behavior) lesen.
 
-Für einige Dienste, Systeme und Protokolle wie Azure Service Bus, Azure Functions, SQL, Applicability Statement 2 (AS2) usw. bietet Logic Apps auch integrierte Versionen. Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
+Für eine kleinere Anzahl von Diensten, Systemen und Protokollen, wie z. B. Azure Service Bus, Azure Functions, Azure Blob, Azure App Services, Azure API Management, SQL, AS2 usw., bietet Logic Apps auch integrierte Vorgänge. Die Anzahl und der Bereich variieren abhängig davon, ob Sie eine Logik-App mit mehreren oder einem einzigen Mandanten erstellen. In einigen Fällen sind sowohl eine integrierte Version als auch eine verwaltete Connectorversion verfügbar. In den meisten Fällen bietet die integrierte Version eine höhere Leistung, bessere Funktionen, niedrigere Preise usw. Zum [Austauschen von B2B-Nachrichten mithilfe des AS2-Protokolls](../logic-apps/logic-apps-enterprise-integration-as2.md) sollten Sie beispielsweise die integrierte Version auswählen, es sei denn, Sie benötigen Nachverfolgungsfunktionen, die nur in der (veralteten) verwalteten Connectorversion verfügbar sind.
 
 Einige verwaltete Connectors für Logic Apps gehören mehreren Unterkategorien an. Der SAP-Connector ist beispielsweise sowohl ein [Unternehmensconnector](#enterprise-connectors) als auch ein [lokaler Connector](#on-premises-connectors).
 
 * [Standardconnectors](#standard-connectors) bieten Zugriff auf Dienste wie Azure Blob Storage, Office 365, SharePoint, Salesforce, Power BI, OneDrive und viele mehr.
+* [Unternehmensconnectors](#enterprise-connectors) bieten Zugriff auf Unternehmenssysteme wie SAP, IBM MQ und IBM 3270.
 * [Lokale Connectors](#on-premises-connectors) bieten Zugriff auf lokale Systeme wie SQL Server, SharePoint Server, SAP, Oracle DB, Dateifreigaben usw.
-* [Integrationskonto-Connectors](#integration-account-connectors) ermöglichen Ihnen das Transformieren und Validieren von XML, Codieren und Decodieren von Flatfiles sowie das Verarbeiten von Business-to-Business-Nachrichten (B2B) mit AS2-, EDIFACT- und X12-Protokollen. 
+* [Integrationskonto-Connectors](#integration-account-connectors) ermöglichen Ihnen das Transformieren und Validieren von XML, Codieren und Decodieren von Flatfiles sowie das Verarbeiten von Business-to-Business-Nachrichten (B2B) mit AS2-, EDIFACT- und X12-Protokollen.
+* [Connectors für Integrationsdienstumgebungen](#ise-connectors) sind speziell für die Ausführung in einer ISE konzipiert und bieten Vorteile gegenüber ihren Nicht-ISE-Versionen.
 
 ## <a name="standard-connectors"></a>Standardconnectors
 
@@ -54,7 +56,7 @@ Einige Standardconnectors für Logic Apps unterstützen auch [lokale Systeme](#
         [![Symbol für den verwalteten Azure Blob Storage-Connector in Logic Apps][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
-        [**Azure Blog Storage**][azure-blob-storage-doc]
+        [**Azure Blob Storage**][azure-blob-storage-doc]
         \
         \
         Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, damit Sie Blobinhalte erstellen und verwalten können.
@@ -145,7 +147,6 @@ Einige Standardconnectors für Logic Apps unterstützen auch [lokale Systeme](#
         Herstellen einer Verbindung mit Ihrem Salesforce-Konto, sodass Sie Elemente wie Datensätze, Aufträge, Objekte usw. erstellen und verwalten können.
     :::column-end:::
 :::row-end:::
-
 
 ## <a name="on-premises-connectors"></a>Lokale Connectors
 

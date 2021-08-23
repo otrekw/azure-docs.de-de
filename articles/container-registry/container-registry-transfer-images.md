@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a82bee4c0750004db11753c56f06b2ef19badf1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353666"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -434,11 +434,12 @@ az resource delete \
   * Die Pipelineausführung wurde möglicherweise nicht abgeschlossen. Die Export- oder Importausführung kann einige Zeit in Anspruch nehmen. 
   * Stellen Sie bei anderen Pipelineproblemen dem Azure Container Registry-Team die [Korrelations-ID](../azure-resource-manager/templates/deployment-history.md) der Bereitstellung der Export- oder Importausführung zur Verfügung.
 * **Probleme beim Abrufen des Images in einer physisch isolierten Umgebung**
-  * Wenn bei dem Versuch, ein Image in einer physisch isolierten Umgebung abzurufen, Fehler im Zusammenhang mit fremden Ebenen oder der Auflösung von mcr.microsoft.com auftreten, weist das Imagemanifest wahrscheinlich nicht verteilbare Ebenen auf. Diese Images können in einer physisch isolierten Umgebung naturgemäß häufig nicht abgerufen werden. Sie können bestätigen, ob dies der Fall ist, indem Sie das Imagemanifest auf Verweise auf externe Registrierungen überprüfen. Wenn dies der Fall ist, müssen Sie die nicht verteilbaren Ebenen vor dem Bereitstellen einer Exportpipelineausführung für das Image in die Public Cloud-ACR überführen. Anleitungen hierzu finden Sie unter [Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+  * Wenn bei dem Versuch, ein Image in einer physisch isolierten Umgebung abzurufen, Fehler im Zusammenhang mit fremden Ebenen oder der Auflösung von mcr.microsoft.com auftreten, weist das Imagemanifest wahrscheinlich nicht verteilbare Ebenen auf. Diese Images können in einer physisch isolierten Umgebung naturgemäß häufig nicht abgerufen werden. Sie können bestätigen, ob dies der Fall ist, indem Sie das Imagemanifest auf Verweise auf externe Registrierungen überprüfen. Wenn dies der Fall ist, müssen Sie die nicht verteilbaren Ebenen vor dem Bereitstellen einer Exportpipelineausführung für das Image in die Public Cloud-ACR überführen. Anleitungen hierzu finden Sie unter [Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?](./container-registry-faq.yml#how-do-i-push-non-distributable-layers-to-a-registry-)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie einzelne Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure Container Registry importieren möchten, finden Sie weitere Informationen in der Befehlsreferenz zu [az acr import][az-acr-import].
+* Wenn Sie einzelne Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure Container Registry importieren möchten, finden Sie weitere Informationen in der Befehlsreferenz zu [az acr import][az-acr-import].
+* Erfahren Sie, wie [Sie die Erstellung von Exportpipelines aus](data-loss-prevention.md) einer netzwerkbeschränkten Containerregistrierung blockieren.
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

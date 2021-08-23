@@ -5,23 +5,20 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12c9466a4bee6adb77a0e46e63767c2b22fcc01d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73511523"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339197"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Konfigurieren von Bot-Schutz für Web Application Firewall (WAF) in Azure Application Gateway (Vorschau)
+# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway"></a>Konfigurieren des Bot-Schutzes für Web Application Firewall (WAF) in Azure Application Gateway
 
 In diesem Artikel erfahren Sie, wie Sie eine Bot-Schutzregel in Azure Web Application Firewall (WAF) für Application Gateway über das Azure-Portal konfigurieren. 
 
 Sie können einen verwalteten Bot-Schutzregelsatz für Ihre WAF aktivieren, um Anforderungen von IP-Adressen, die als schädlich bekannt sind, zu blockieren oder zu protokollieren. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf Intelligent Security Graph und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
-
-> [!NOTE]
-> Der Bot-Schutzregelsatz befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter  [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

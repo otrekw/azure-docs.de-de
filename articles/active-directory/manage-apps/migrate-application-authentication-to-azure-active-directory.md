@@ -2,22 +2,22 @@
 title: Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
 description: In diesem Whitepaper werden die Planung und die Vorteile einer Migration Ihrer Anwendungsauthentifizierung zu Azure AD ausführlich erläutert.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/05/2021
-ms.author: mtillman
-ms.reviewer: baselden
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a70392c6236591d803b4c3823677ba6788072ff
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 365283ebc45c0f85a56d27d4cc90807de9a88fb4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076994"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339857"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
 
@@ -555,11 +555,9 @@ Nachdem Sie die Apps migriert haben, können Sie die Benutzererfahrung auf viele
 
 **Verweisen Sie die Benutzer** auf die Portalfunktion [Meine Apps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Hier haben die Benutzer Zugriff auf alle cloudbasierten Apps, Apps, die Sie über [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) zur Verfügung stellen, und Apps, die den [Anwendungsproxy](../app-proxy/application-proxy.md) verwenden, sofern die Benutzer über Berechtigungen für den Zugriff auf diese Apps verfügen.
 
-
 Sie können den Benutzern Hilfen zum Entdecken ihrer Apps bereitstellen:
 
 - Verwenden Sie das Feature [Vorhandenes einmaliges Anmelden](./view-applications-portal.md), um **Ihre Benutzer mit einer beliebigen App zu verknüpfen**.
-
 
 - Ermöglichen Sie den [Self-Service-Anwendungszugriff](./manage-self-service-access.md) auf eine App, und **lassen Sie Benutzer von Ihnen bereitgestellte Apps hinzufügen**.
 
@@ -573,7 +571,7 @@ Benutzer können einen **Intune Managed Browser** herunterladen:
 
 - **Für Android-Geräte** im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune)
 
-- **Für Apple-Geräte** im [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8), oder sie können die [mobile App für „Meine Apps" für iOS](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653) herunterladen
+- **Für Apple-Geräte** im [Apple App Store](https://apps.apple.com/us/app/intune-company-portal/id719171358), oder sie können die [mobile App für „Meine Apps" für iOS](https://appadvice.com/app/my-apps-azure-active-directory/824048653) herunterladen
 
 **Ermöglichen Sie Benutzern das Öffnen ihrer Apps über eine Browsererweiterung.**
 
@@ -603,7 +601,7 @@ Azure AD bietet einen zentralen Zugriffsort zur Verwaltung Ihrer migrierten App
 
 Sie können das [Azure-Portal](https://portal.azure.com/) auch verwenden, um alle Ihre Apps von einem zentralen Ort aus zu überwachen:
 
-- **App-Überwachung** mithilfe von **Unternehmensanwendungen, Überwachung, oder Zugriff auf die gleichen Informationen über die [Azure AD-Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md), um eine Integration mit Ihren bevorzugten Tools durchzuführen
+- **App-Überwachung** mithilfe von **Unternehmensanwendungen, Überwachung** oder Zugriff auf die gleichen Informationen über die [Azure AD-Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md), um eine Integration mit Ihren bevorzugten Tools durchzuführen.
 
 - **Anzeigen der Berechtigungen für eine App** mithilfe von **Unternehmensanwendungen, Berechtigungen** für Apps über OAuth/OpenID Connect
 

@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1c458508dbf8d98349ec8549af32e3dd48bbd09b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78be49efd75db5a0bbff7f01734b418c9a0a7685
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966427"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290767"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Einführung in die variable Paketerfassung in Azure Network Watcher
 
 Mithilfe der variablen Paketerfassung in Network Watcher können Sie Paketerfassungssitzungen erstellen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr.
 
-Paketerfassung ist eine Erweiterung des virtuellen Computers, die remote über Network Watcher gestartet wird. Diese Funktion erleichtert die manuelle Ausführung einer Paketerfassung auf dem gewünschten virtuellen Computer. So sparen Sie wertvolle Zeit. Paketerfassung kann über Portal, PowerShell, CLI oder REST-API ausgelöst werden. Ein Beispiel dafür, wie die Paketerfassung ausgelöst werden kann, ist die Auslösung mit VM-Warnungen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Filter basieren auf 5-Tupel-Informationen (Protokoll, lokale IP-Adresse, Remote-IP-Adresse, lokaler Port und Remoteport). Die aufgezeichneten Daten werden auf dem lokalen Datenträger oder in einem Speicherblob gespeichert. Es sind maximal 10 Paketerfassungssitzungen pro Region und Abonnement zulässig. Dieser Grenzwert bezieht sich lediglich auf die Sitzungen und gilt nicht für die Paketerfassungsdateien, die entweder lokal auf dem virtuellen Computer oder in einem Speicherkonto gespeichert werden.
+Paketerfassung ist eine Erweiterung des virtuellen Computers, die remote über Network Watcher gestartet wird. Diese Funktion erleichtert die manuelle Ausführung einer Paketerfassung auf dem gewünschten virtuellen Computer. So sparen Sie wertvolle Zeit. Paketerfassung kann über Portal, PowerShell, CLI oder REST-API ausgelöst werden. Ein Beispiel dafür, wie die Paketerfassung ausgelöst werden kann, ist die Auslösung mit VM-Warnungen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Filter basieren auf 5-Tupel-Informationen (Protokoll, lokale IP-Adresse, Remote-IP-Adresse, lokaler Port und Remoteport). Die aufgezeichneten Daten werden auf dem lokalen Datenträger oder in einem Speicherblob gespeichert. 
 
 > [!IMPORTANT]
 > Für die Paketerfassung ist die VM-Erweiterung `AzureNetworkWatcherExtension` erforderlich. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/extensions/network-watcher-windows.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/extensions/network-watcher-linux.md).
@@ -46,6 +46,10 @@ Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, kön
 |**Lokaler Port** | Dieser Wert filtert bei der Paketerfassung Pakete, deren lokaler Port mit diesem Filterwert übereinstimmt.|
 |**Remote-IP-Adresse** | Dieser Wert filtert bei der Paketerfassung Pakete, deren Remote-IP-Adresse mit diesem Filterwert übereinstimmt.|
 |**Remoteport** | Dieser Wert filtert bei der Paketerfassung Pakete, deren Remoteport mit diesem Filterwert übereinstimmt.|
+
+
+## <a name="considerations"></a>Weitere Überlegungen
+Es sind maximal 10.000 parallele Paketerfassungssitzungen pro Region und Abonnement zulässig. Dieser Grenzwert bezieht sich lediglich auf die Sitzungen und gilt nicht für die Paketerfassungsdateien, die entweder lokal auf dem virtuellen Computer oder in einem Speicherkonto gespeichert werden. Eine vollständige Liste der Grenzwerte finden Sie auf der [Seite mit den Grenzwerten für den Network Watcher-Dienst](../azure-resource-manager/management/azure-subscription-service-limits.md#network-watcher-limits). 
 
 ### <a name="next-steps"></a>Nächste Schritte
 

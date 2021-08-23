@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7654e3a405d8baeb2e8fc598d49cc7fff014efed
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: c2006c71a9ba9ff24662f27a9f2e4015786197e7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653918"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355636"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Verwalten von Azure Cache for Redis
 
@@ -24,15 +24,15 @@ In diesem Artikel erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#re
 
 Auf der linken Seite können Sie mit **Neu starten** einen oder mehrere Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
 
-![Screenshot, auf dem die Menüoption "Neustart" hervorgehoben ist](./media/cache-administration/redis-cache-administration-reboot.png)
+:::image type="content" source="media/cache-administration/cache-administration-reboot-2.png" alt-text="Screenshot, auf dem die Menüoption „Neustart“ hervorgehoben ist":::
 
 Wählen Sie die Knoten aus, die neu gestartet werden sollen, und klicken Sie auf **Neu starten**.
 
-![Screenshot: Knoten, die neu gestartet werden können](./media/cache-administration/redis-cache-reboot.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-2.png" alt-text="Screenshot: Knoten, die neu gestartet werden können":::
 
 Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können Sie die Shards des Caches auswählen, die neu gestartet werden sollen.
 
-![Reboot](./media/cache-administration/redis-cache-reboot-cluster.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-cluster-2.png" alt-text="Screenshot der Shardoptionen":::
 
 Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die Knoten aus und klicken auf **Neu starten**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neu starten**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die nur wenige Minuten später wieder online sind.
 
@@ -83,11 +83,11 @@ Auf der linken Seite können Sie mit **Updates planen** ein Wartungsfenster für
 > Derzeit ist keine Option zum Konfigurieren eines Neustarts oder geplanter Updates für einen Cache im Enterprise-Tarif verfügbar.
 >
 
-![Planen von Updates](./media/cache-administration/redis-schedule-updates.png)
+:::image type="content" source="media/cache-administration/redis-schedule-updates-2.png" alt-text="Screenshot mit Zeitplanaktualisierungen":::
 
 Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gewünschten Tage, und geben Sie jeweils die Startzeit des Wartungsfensters an. Wählen Sie anschließend **OK** aus. Das Wartungsfenster wird als UTC angegeben.
 
-Das Standardwartungsfenster für Updates beträgt fünf Stunden (Mindestdauer). Der Wert kann nicht über das Azure-Portal konfiguriert werden. Sie können ihn jedoch in PowerShell mithilfe des `MaintenanceWindow`-Parameters des Cmdlets [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) konfigurieren. Weitere Informationen finden Sie unter „Kann ich geplante Updates mit PowerShell, der CLI oder anderen Verwaltungstools verwalten?“.
+Das Standardwartungsfenster für Updates beträgt fünf Stunden (Mindestdauer). Der Wert kann nicht über das Azure-Portal konfiguriert werden. Sie können ihn jedoch in PowerShell mithilfe des `MaintenanceWindow`-Parameters des Cmdlets [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) konfigurieren. Weitere Informationen finden Sie unter [Kann ich geplante Updates mit PowerShell, der CLI oder anderen Verwaltungstools verwalten?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools).
 
 ## <a name="schedule-updates-faq"></a>Häufig gestellte Fragen zum Planen von Updates
 

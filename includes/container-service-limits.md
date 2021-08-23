@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: container-service
 author: mlearned
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: da22991b9a1c4b69d3a3d6eb6f76b0925a6ad3d4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d9566564c168e37477d8a0a8238c93dfb8be054d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107799996"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336154"
 ---
 | Resource                                                                                                           | Begrenzung                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,6 +26,9 @@ ms.locfileid: "107799996"
 | Vorschau des OSM-AKS-Add-Ons (Open Service Mesh)                                                                          | Kubernetes-Clusterversion: 1.19+<sup>1</sup><br />OSM-Controller pro Cluster: 1<sup>1</sup><br />Pods pro OSM-Controller: 500<sup>1</sup><br />Von OSM verwaltete Kubernetes-Dienstkonten: 50<sup>1</sup> |
 
 <sup>1</sup>Das OSM-Add-On für AKS befindet sich in der Vorschauphase und wird noch weiter optimiert, bevor es allgemein verfügbar wird. Während der Vorschauphase wird empfohlen, die angezeigten Grenzwerte nicht zu überschreiten.<br />
+
+> [!IMPORTANT]
+> Kunden wird empfohlen, die SLA-Ebene „Uptime“ für Produktions- und Leistungs-/Auslastungstestworkloads zu aktivieren. Die SLA-Ebene „Uptime“ ermöglicht die automatische Skalierung der Kubernetes-Steuerungsebene und ist erforderlich, um Cluster mit Produktionsworkloads innerhalb der [Uptime-SLA](../articles/aks/uptime-sla.md) zu unterstützen.
 
 <!-- LINKS - Internal -->
 

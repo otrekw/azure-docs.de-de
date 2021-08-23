@@ -2,14 +2,14 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5278408ac1adf1e12adf8f7facebd26e6d96d6d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 9dc4b87713d5b397b900f19e83c297130a10be3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813905"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356022"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -843,12 +843,13 @@ Für Tags gelten folgende Einschränkungen:
 * Jede Ressource, jede Ressourcengruppe und jedes Abonnement kann maximal 50 Tagname-Wert-Paare enthalten. Wenn Sie mehr Tags als die maximal zulässige Anzahl anwenden müssen, verwenden Sie für den Tagwert eine JSON-Zeichenfolge. Die JSON-Zeichenfolge kann zahlreiche Werte enthalten, die auf einen einzelnen Tagnamen angewendet werden. Eine Ressourcengruppe oder ein Abonnement kann zahlreiche Ressourcen mit jeweils 50 Tagname-Wert-Paaren enthalten.
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 * Tags können nicht auf klassische Ressourcen wie Cloud Services angewendet werden.
+* Azure-IP-Gruppen und Azure Firewall-Richtlinien unterstützen keine PATCH-Vorgänge, was bedeutet, dass sie das Aktualisieren von Tags über das Portal nicht unterstützen. Verwenden Sie stattdessen die update-Befehle für diese Ressourcen. Beispielsweise können Sie Tags für eine IP-Gruppe mit dem Befehl [az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) aktualisieren. 
 * Tag-Namen dürfen die folgenden Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `\`, `?`, `/`
 
    > [!NOTE]
    > * Azure DNS-Zonen und Traffic Manager unterstützen die Verwendung von Leerzeichen im Tag oder ein Tag, das mit einer Zahl beginnt, nicht.
    >
-   > * Die Verwendung von `#` im Tagnamen wird in Azure Front Door nicht unterstützt.
+   > * Die Verwendung von `#` oder `:` im Tagnamen wird in Azure Front Door nicht unterstützt.
    >
    > * Die folgenden Azure-Ressourcen unterstützen nur 15 Tags:
    >     * Azure-Automatisierung 

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: babd628280ebaee408d44dfacfaf6a5e14f57019
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ea3bc751d91e72c68bd9900f07c3c2e8aae38212
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481820"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339200"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -41,7 +41,7 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 
 * Erstellen Sie benutzerdefinierte WAF-Richtlinien für verschiedene Websites hinter derselben WAF. 
 
-* Schützen Sie Ihre Webanwendungen mithilfe des Regelsatzes für die IP-Zuverlässigkeit (Vorschauversion) vor schädlichen Bots.
+* Schützen Sie Ihre Webanwendungen mithilfe des Regelsatzes für die IP-Zuverlässigkeit vor schädlichen Bots.
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -69,8 +69,8 @@ In diesem Abschnitt werden die wichtigsten Vorteile der WAF für Application Gat
 - Konfigurierbare Einschränkungen der Anforderungsgröße mit Unter- und Obergrenzen.
 - Mit Ausschlusslisten können Sie bestimmte Anforderungsattribute in einer WAF-Auswertung weglassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für Authentifizierungs- oder Kennwortfelder verwendet werden.
 - Erstellen Sie benutzerdefinierte Regeln, um die spezifischen Anforderungen Ihrer Anwendungen zu erfüllen.
-- Führen Sie für Ihren Datenverkehr eine Geofilterung durch, um für bestimmte Länder/Regionen den Zugriff auf Ihre Anwendungen zuzulassen bzw. zu blockieren. (Vorschauversion)
-- Schützen Sie Ihre Anwendungen vor Bots, indem Sie den Regelsatz für die Risikominderung für Bots verwenden. (Vorschauversion)
+- Führen Sie für Ihren Datenverkehr eine Geofilterung durch, um für bestimmte Länder/Regionen den Zugriff auf Ihre Anwendungen zuzulassen bzw. zu blockieren.
+- Schützen Sie Ihre Anwendungen vor Bots, indem Sie den Regelsatz für die Risikominderung für Bots verwenden.
 - Untersuchen von JSON und XML im Textteil der Anforderung
 
 ## <a name="waf-policy-and-rules"></a>WAF-Richtlinien und -Regeln
@@ -99,19 +99,13 @@ Weitere Informationen finden Sie unter [CRS-Regelgruppen und -Regeln der Web App
 
 Application Gateway unterstützt auch benutzerdefinierte Regeln. Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln. Diese werden für jede Anforderung ausgewertet, die die WAF durchlaufen. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Wenn eine Reihe von Bedingungen erfüllt ist, erfolgt eine Zulassen- oder Blockieren-Aktion. 
 
-Der geomatch-Operator ist nun als Public Preview für benutzerdefinierte Regeln verfügbar. Weitere Informationen finden Sie unter [Benutzerdefinierte geomatch-Regeln](custom-waf-rules-overview.md#geomatch-custom-rules-preview).
-
-> [!NOTE]
-> Der geomatch-Operator für benutzerdefinierte Regeln befindet sich derzeit in der Public Preview und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Der geomatch-Operator ist nun für benutzerdefinierte Regeln verfügbar. Weitere Informationen finden Sie unter [Benutzerdefinierte geomatch-Regeln](custom-waf-rules-overview.md#geomatch-custom-rules).
 
 Weitere Informationen zu benutzerdefinierten Regeln finden Sie unter [Benutzerdefinierte Regeln für Application Gateway](custom-waf-rules-overview.md).
 
-### <a name="bot-mitigation-preview"></a>Risikominderung für Bots (Vorschau)
+### <a name="bot-mitigation"></a>Bot-Risikominderung
 
 Neben dem verwalteten Regelsatz kann für Ihre WAF ein verwalteter Bot-Schutzregelsatz aktiviert werden, damit Anforderungen von als schädlich bekannten IP-Adressen blockiert oder protokolliert werden. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf Intelligent Security Graph und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
-
-> [!NOTE]
-> Bot-Schutzregelsatz befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bei aktiviertem Bot-Schutz werden eingehende Anforderungen, die von Client-IP-Adressen schädlicher Bots stammen, im Firewallprotokoll protokolliert. Weitere Informationen finden Sie weiter unten. Sie können auf WAF-Protokolle über ein Speicherkonto, über Event Hub oder über Log Analytics zugreifen. 
 

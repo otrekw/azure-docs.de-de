@@ -1,23 +1,20 @@
 ---
-title: Azure Application Insights-Nutzungskohorten | Microsoft-Dokumentation
+title: Application Insights-Nutzungskohorten | Microsoft-Dokumentation
 description: Analysieren unterschiedlicher Gruppen von Benutzern, Sitzungen, Ereignissen oder Vorgängen, die eine Gemeinsamkeit aufweisen
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 04/10/2018
-ms.reviewer: mbullwin
-ms.openlocfilehash: 2c35356951560b11a605334aba4c26dbc38086de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: de5a452f15cd19c97fec727307b33fc469166459
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100583542"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349691"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
-Eine Kohorte ist eine Gruppe von Benutzern, Sitzungen, Ereignissen oder Vorgängen, die eine Gemeinsamkeit aufweisen. In Azure Application Insights werden Kohorten durch eine Analyseabfrage definiert. Für den Fall, dass Sie eine bestimmte Gruppe von Benutzern oder Ereignissen wiederholt analysieren müssen, bieten Ihnen Kohorten mehr Flexibilität, um genau die gewünschte Gruppe anzugeben.
-
-![Bereich „Kohorten“](./media/usage-cohorts/001.png)
+Eine Kohorte ist eine Gruppe von Benutzern, Sitzungen, Ereignissen oder Vorgängen, die eine Gemeinsamkeit aufweisen. In Application Insights werden Kohorten durch eine Analyseabfrage definiert. Für den Fall, dass Sie eine bestimmte Gruppe von Benutzern oder Ereignissen wiederholt analysieren müssen, bieten Ihnen Kohorten mehr Flexibilität, um genau die gewünschte Gruppe anzugeben.
 
 ## <a name="cohorts-versus-basic-filters"></a>Kohorten im Vergleich zu einfachen Filtern
 
@@ -32,7 +29,7 @@ Sie können beispielsweise eine Kohorte aus Benutzern definieren, die alle ein n
 
 Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem bestimmten Monat mindestens fünfmal verwendet. In diesem Abschnitt definieren Sie eine Kohorte dieser aktiven Benutzer.
 
-1. Öffnen Sie das Tool „Cohorts“ (Kohorten).
+1. Wählen Sie **Kohorte erstellen** aus.
 
 2. Wählen Sie die Registerkarte **Template Gallery** (Vorlagenkatalog) aus. Sie sehen eine Sammlung von Vorlagen für verschiedene Kohorten.
 
@@ -45,8 +42,7 @@ Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem
 
 4. Ändern Sie **UsedAtleastCustom** in **5+ days** (5+ Tage), und behalten Sie für **Period** (Zeitraum) den Standardwert von 28 Tagen bei.
 
-    ![Aktive Benutzer](./media/usage-cohorts/003.png)
-
+  
     Diese Kohorte stellt nun alle Benutzer-IDs dar, die mit einem benutzerdefinierten Ereignis oder einer benutzerdefinierten Seitenansicht an 5 verschiedenen Tagen in den letzten 28 Tagen gesendet wurden.
 
 5. Wählen Sie **Speichern** aus.
@@ -60,9 +56,8 @@ Ihr Team definiert jede Person als „aktiven Benutzer“, die Ihre App in einem
 
 Öffnen Sie das Tool „Users“ (Benutzer). Wählen Sie in der Dropdownliste **Show** (Anzeigen) die Kohorte aus, die Sie unter **Engaged Users (5+ Days)** erstellt haben.
 
-Das Tool „Benutzer“ wird nach dieser Kohorte von Benutzern gefiltert:
 
-![Bereich „Benutzer“, gefiltert nach einer bestimmten Kohorte](./media/usage-cohorts/004.png)
+:::image type="content" source="./media/usage-cohorts/cohort-2.png" alt-text="Screenshot des Dropdowns „Anzeigen“ mit angezeigter Kohorte.":::
 
 Folgende wichtige Punkte sind zu berücksichtigen:
 
@@ -75,13 +70,11 @@ Diese Filter unterstützen komplexere Fragen, die sich nicht mit dem Abfrage-Gen
 
 Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definieren Sie eine Kohorte der Ereignisse und Seitenansichten. Anschließend wird gezeigt, wie Sie die Kohorten in den anderen Tools verwenden können. In dieser Kohorte könnte eine Gruppe von Ereignissen, die Ihr Team als _aktive Verwendung_ einstuft, oder eine Gruppe definiert sein, die mit einem bestimmten neuen Feature zu tun hat.
 
-1. Öffnen Sie das Tool „Cohorts“ (Kohorten).
+1. Wählen Sie **Kohorte erstellen** aus.
 
 2. Wählen Sie die Registerkarte **Template Gallery** (Vorlagenkatalog) aus. Sie sehen eine Sammlung von Vorlagen für verschiedene Kohorten.
 
 3. Wählen Sie **Events picker** (Ereignisauswahl) aus.
-
-    ![Screenshot von „Events picker“ (Ereignisauswahl)](./media/usage-cohorts/006.png)
 
 4. Wählen Sie in der Dropdownliste **Activities** (Aktivitäten) die Ereignisse aus, die in der Kohorte enthalten sein sollen.
 
@@ -91,11 +84,10 @@ Sie können auch Kohorten von Ereignissen erstellen. In diesem Abschnitt definie
 
 Die beiden vorherigen Kohorten wurden durch Verwenden von Dropdownlisten definiert. Sie können Kohorten aber auch definieren, indem Sie, um vollkommen flexibel zu sein, Analyseabfragen verwenden. Zur Veranschaulichung erstellen Sie eine Kohorte von Benutzern aus Großbritannien.
 
-![Animierte Grafik zur Verwendung des Tools „Kohorten“](./media/usage-cohorts/cohorts0001.gif)
 
 1. Öffnen Sie das Tool „Kohorten“, wählen Sie die Registerkarte **Template Gallery** (Vorlagenkatalog) aus, und wählen Sie **Blank Users cohort** (Leere Kohorte für Benutzer) aus.
 
-    ![Blank users cohort (Leere Kohorte für Benutzer)](./media/usage-cohorts/001.png)
+   :::image type="content" source="./media/usage-cohorts/cohort.png" alt-text="Screenshot des Vorlagenkatalogs für Kohorten." lightbox="./media/usage-cohorts/cohort.png":::
 
     Drei Abschnitte stehen zur Verfügung:
    * Ein Abschnitt für Markdown-Text, in dem Sie die Kohorte ausführlicher für andere Teammitglieder beschreiben.
@@ -107,7 +99,7 @@ Die beiden vorherigen Kohorten wurden durch Verwenden von Dropdownlisten definie
      Im Abschnitt für Abfragen [schreiben Sie eine Analyseabfrage](/azure/kusto/query). In der Abfrage wird genau die Gruppe von Zeilen ausgewählt, die die Kohorte beschreiben, die Sie definieren möchten. Im Tool „Kohorten“ wird dann der Abfrage implizit die Klausel „| summarize by user_Id“ hinzugefügt. Diese Daten werden als Vorschau in einer Tabelle unterhalb der Abfrage angezeigt, sodass Sie überprüfen können, ob die Abfrage Ergebnisse zurückgibt.
 
      > [!NOTE]
-     > Wenn die Abfrage nicht zu sehen ist, vergrößern Sie den Abschnitt, sodass die Abfrage angezeigt wird. In der animierten GIF-Datei am Anfang dieses Abschnitts wird das Verhalten bei der Größenanpassung veranschaulicht.
+     > Wenn die Abfrage nicht zu sehen ist, vergrößern Sie den Abschnitt, sodass die Abfrage angezeigt wird. 
 
 2. Kopieren Sie den folgenden Text, und fügen Sie ihn im Abfrage-Editor ein:
 

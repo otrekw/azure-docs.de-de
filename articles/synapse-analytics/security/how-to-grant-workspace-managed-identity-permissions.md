@@ -1,19 +1,20 @@
 ---
 title: Gewähren von Berechtigungen für die verwaltete Identität in einem Synapse-Arbeitsbereich
 description: In diesem Artikel wird erläutert, wie Berechtigungen für die verwaltete Identität im Azure Synapse-Arbeitsbereich konfiguriert werden.
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 10244038ca2dee9551def5e0abcd102d42daa235
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459010"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346152"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
@@ -72,41 +73,26 @@ Die verwaltete Identität sollte über Datenzugriff auf den Container (das Datei
 Wählen Sie denselben Container oder dasselbe Dateisystem aus, um der verwalteten Identität die Rolle *Mitwirkender an Storage-Blobdaten* zu gewähren.
 ![Screenshot, der den Container oder das Dateisystem zeigt, den/das Sie auswählen sollten.](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
-#### <a name="step-3-navigate-to-access-control"></a>Schritt 3: Navigieren zur Zugriffssteuerung
+#### <a name="step-3-open-access-control-and-add-role-assignment"></a>Schritt 3: Öffnen der Zugriffssteuerung und Hinzufügen der Rollenzuweisung
 
-Wählen Sie **Access Control (IAM)** aus.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 
-![Zugriffssteuerung (IAM)](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-8.png)
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
 
-#### <a name="step-4-add-a-new-role-assignment"></a>Schritt 4: Hinzufügen einer neuen Rollenzuweisung
+1. Weisen Sie die folgende Rolle zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+    
+    | Einstellung | Wert |
+    | --- | --- |
+    | Role | Mitwirkender an Storage-Blob |
+    | Zugriff zuweisen zu | MANAGEDIDENTITY |
+    | Member | Name der verwalteten Identität  |
 
-Wählen Sie **+ Hinzufügen**.
+    > [!NOTE]
+    > Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs.
 
-![Neue Rollenzuweisung hinzufügen](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
+    ![Seite „Rollenzuweisung hinzufügen“ im Azure-Portal](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-#### <a name="step-5-select-the-azure-role"></a>Schritt 5: Auswählen der Azure-Rolle
-
-Wählen Sie die Rolle **Mitwirkender an Storage-Blobdaten** aus.
-
-![Auswählen der Azure-Rolle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
-
-#### <a name="step-6-select-the-azure-ad-security-principal"></a>Schritt 6: Auswählen des Azure AD-Sicherheitsprinzipals
-
-Wählen Sie in der Dropdownliste **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
-
-![AAD-Sicherheitsprinzipal auswählen](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-11.png)
-
-#### <a name="step-7-search-for-the-managed-identity"></a>Schritt 7: Suchen der verwalteten Identität
-
-Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs. Suchen Sie nach Ihrer verwalteten Identität, indem Sie den Namen Ihres Azure Synapse-Arbeitsbereichs in **Auswählen** eingeben. Die verwaltete Identität sollte aufgeführt werden.
-
-![Die verwaltete Identität suchen](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-12.png)
-
-#### <a name="step-8-select-the-managed-identity"></a>Schritt 8: Auswählen der verwalteten Identität
-
-Wählen Sie die verwaltete Identität für **Ausgewählte Mitglieder** aus. Klicken Sie auf **Speichern**, um die Rollenzuweisung hinzuzufügen.
-
-![Auswählen der verwalteten Identität](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
+1. Klicken Sie auf **Speichern**, um die Rollenzuweisung hinzuzufügen.
 
 #### <a name="step-9-verify-that-the-storage-blob-data-contributor-role-is-assigned-to-the-managed-identity"></a>Schritt 9: Überprüfen, ob die Rolle „Mitwirkender an Storage-Blobdaten“ der verwalteten Identität für das Speicherkonto zugewiesen ist
 

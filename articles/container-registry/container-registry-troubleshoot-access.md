@@ -2,13 +2,13 @@
 title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
-ms.date: 03/30/2021
-ms.openlocfilehash: d9cfa0aa902fca1afd1033d40b33ccdf5baa56d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 05/10/2021
+ms.openlocfilehash: 7ea4eb698f855a98df22e2e0426a0004c890290c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066674"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122353664"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -34,7 +34,7 @@ Beispiele für Symptome sind:
 
 * Eine Clientfirewall oder ein Proxy verhindert den Zugriff ([Lösung](#configure-client-firewall-access)).
 * Regeln für den Zugriff auf das öffentliche Netzwerk in der Registrierung verhindern den Zugriff ([Lösung](#configure-public-access-to-registry)).
-* Die Konfiguration des virtuellen Netzwerks verhindert den Zugriff ([Lösung](#configure-vnet-access)).
+* Die Konfiguration des virtuellen Netzwerks oder privaten Endpunkts verhindert den Zugriff ([Lösung](#configure-vnet-access)).
 * Sie versuchen, Azure Security Center oder bestimmte andere Azure-Dienste in eine Registrierung zu integrieren, die über einen privaten Endpunkt, Dienstendpunkt oder Zugriffsregeln für öffentliche IP-Adressen verfügt ([Lösung](#configure-service-access)).
 
 ## <a name="further-diagnosis"></a>Weitere Diagnose 
@@ -87,7 +87,11 @@ Verwandte Links:
 
 Vergewissern Sie sich, dass für das virtuelle Netzwerk entweder ein privater Endpunkt für Private Link oder ein Dienstendpunkt (Vorschau) konfiguriert ist. Ein Azure Bastion-Endpunkt wird derzeit nicht unterstützt.
 
-Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst. Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`. Stellen Sie sicher, dass [DNS-Einträge](container-registry-private-link.md#dns-configuration-options) für den Registrierungs-FQDN und für jeden der Datenendpunkt-FQDNs konfiguriert sind.
+Wenn ein privater Endpunkt konfiguriert ist, vergewissern Sie sich, dass das DNS den öffentlichen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Registrierung (z. B. *myregistry.azurecr.io*) in die private IP-Adresse der Registrierung auflöst.
+
+  * Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az_acr_check_health) mit dem Parameter `--vnet` aus, um das DNS-Routing an den privaten Endpunkt im virtuellen Netzwerk sicherzustellen.
+  * Verwenden Sie für das DNS-Lookup ein Netzwerkhilfsprogramm, z. B. `dig` oder `nslookup`. 
+  * Stellen Sie sicher, dass [DNS-Einträge](container-registry-private-link.md#dns-configuration-options) für den Registrierungs-FQDN und für jeden der Datenendpunkt-FQDNs konfiguriert sind. 
 
 Überprüfen Sie die NSG-Regeln und die Diensttags, mit denen der Datenverkehr von anderen Ressourcen im Netzwerk zur Registrierung eingeschränkt wird. 
 
@@ -130,8 +134,8 @@ Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrieru
 
 Verwandte Links:
 
-* [Überwachen von Azure Container Registry](monitor-service.md)
-* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.md)
+* [Protokolle für die Diagnoseauswertung und -überwachung](./monitor-service.md)
+* [Häufig gestellte Fragen (FAQ) zur Containerregistrierung](container-registry-faq.yml)
 * [Azure-Sicherheitsbaseline für Azure Container Registry](security-baseline.md)
 * [Bewährte Methoden für Azure Container Registry](container-registry-best-practices.md)
 

@@ -7,12 +7,12 @@ ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: f6bec32fa928e840569ed95c35a056db91ea9737
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 46ccfd04722cb9333a8f6e546505ed1e10f657af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349815"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Google-Anmeldung
 
@@ -35,19 +35,20 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Hinzufügen von Google-Informationen zu Ihrer Anwendung
 
 1. Melden Sie sich am [Azure-Portal] an und navigieren Sie zu Ihrer App.
-1. Wählen Sie im Menü auf der linken Seite die Option **Authentifizierung** aus. Klicken Sie auf **Identitätsanbieter hinzufügen**.
+1. Wählen Sie **Authentifizierung** im Menü auf der linken Seite. Klicken Sie auf **Identitätsanbieter hinzufügen**.
 1. Wählen Sie **Google** in der Dropdown-Liste der Identitätsanbieter aus. Fügen Sie die Werte für App-ID und den geheimen App-Schlüssel ein, die Sie zuvor abgerufen haben.
 
-    Der geheime Schlüssel wird als Slot-persistente [Anwendungs-Einstellung](./configure-common.md#configure-app-settings) mit dem Namen `GOOGLE_PROVIDER_AUTHENTICATION_SECRET` gespeichert. Sie können diese Einstellung später aktualisieren, um [Key Vault Verweise](./app-service-key-vault-references.md) zu verwenden, wenn Sie den geheimen Schlüssel in Azure Key Vault verwalten möchten.
+    Der geheime Schlüssel wird als Slot-persistente [Anwendungs-Einstellung](./configure-common.md#configure-app-settings) mit dem Namen `GOOGLE_PROVIDER_AUTHENTICATION_SECRET` gespeichert. Sie können diese Einstellung später aktualisieren, um [Schlüsseltresor-Verweise](./app-service-key-vault-references.md) zu verwenden, wenn Sie den geheimen Schlüssel im Azure Schlüsseltresor verwalten möchten.
 
 1. Wenn dies der erste Identitätsanbieter ist, der für die Anwendung konfiguriert wurde, wird auch ein Abschnitt mit den **Einstellungen für die App-Dienst-Authentifizierung** angezeigt. Andernfalls können Sie mit dem nächsten Schritt fortfahren.
     
-    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Fluss](overview-authentication-authorization.md#authentication-flow).
+    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Verlauf](overview-authentication-authorization.md#authentication-flow).
 
-1. (Optional) Klicken Sie auf **Fortfahren: Umfänge** und fügen Sie alle von der Anwendung benötigten Umfänge hinzu. Diese werden zum Zeitpunkt der Anmeldung für browserbasierte Flows angefordert.
 1. Klicken Sie auf **Hinzufügen**.
 
-Sie können nun Google für die Authentifizierung in Ihrer App verwenden. Der Anbieter wird auf dem Bildschirm **Authentifizierung** aufgeführt. Von dort aus können Sie diese Anbieterkonfiguration bearbeiten oder löschen.
+> [Hinweis] Zum Hinzufügen des Bereichs: Sie können definieren, über welche Berechtigungen Ihre Anwendung im Registrierungsportal des Anbieters verfügt. Die App kann Bereiche zum Zeitpunkt der Anmeldung anfordern, die diese Berechtigungen nutzen.
+
+Sie können nun Google für die Authentifizierung in Ihrer App verwenden. Der Anbieter wird auf dem Bildschirm **Authentifizierung** aufgeführt. Von dort aus können Sie diese Anbieter-Konfiguration bearbeiten oder löschen.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
