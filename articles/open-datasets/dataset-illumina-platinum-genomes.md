@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 03e6bf1e30410092be9665053d808d13eb7f4c28
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0a1b9d5a41a0dcc45bea0456c2c3714b787a5af8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038746"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284235"
 ---
 # <a name="illumina-platinum-genomes"></a>Illumina Platinum Genomes
 
@@ -36,11 +36,11 @@ Dieses Dataset wird in den Azure-Regionen „USA, Westen 2“ und „USA, Westen
 
 ## <a name="data-access"></a>Datenzugriff
 
-USA, Westen 2: https://datasetplatinumgenomes.blob.core.windows.net/dataset
+USA, Westen 2: https://datasetplatinumgenomes.blob.core.windows.net/dataset
 
 USA, Westen-Mitte: https://datasetplatinumgenomes-secondary.blob.core.windows.net/dataset
 
-[SAS Token](/azure/storage/common/storage-sas-overview): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=FFfZ0QaDcnEPQmWsshtpoYOjbzd4jtwIWeK%2Fc4i9MqM%3D
+[SAS Token](../storage/common/storage-sas-overview.md): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=FFfZ0QaDcnEPQmWsshtpoYOjbzd4jtwIWeK%2Fc4i9MqM%3D
 
 ## <a name="use-terms"></a>Nutzungsbedingungen
 

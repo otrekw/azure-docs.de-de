@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 0cbd7415f3b6f79a6c7231c7caa7ed947b9bdc24
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d5c77ff37d2585161009f1b023634cde2876110
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110162923"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339590"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der multivariaten Clientbibliothek für die Anomalieerkennung für Python. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Die neuen APIs für die multivariate Anomalieerkennung ermöglichen Entwicklern die einfache Integration fortschrittlicher KI zur Erkennung von Anomalien in Metrikgruppen ganz ohne Machine Learning-Kenntnisse oder gekennzeichnete Daten. Abhängigkeiten und Interkorrelationen zwischen verschiedenen Signalen werden automatisch als Schlüsselfaktoren gewertet. Dadurch können Sie Ihre komplexen Systeme leichter proaktiv vor Fehlern schützen.
 
@@ -23,7 +23,7 @@ Die Clientbibliothek für die multivariate Anomalieerkennung für Python kann f�
 * Betrachten sämtlicher Signale, um ein Problem zu erkennen, wenn die Betrachtung einzelner Zeitreihen nicht ausreicht
 * Prädikative Wartung teurer physischer Ressourcen mit dutzenden bis hunderten verschiedenen Arten von Sensoren zur Messung diverser Aspekte der Systemintegrität
 
-[Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [Beispielcode](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
+[Referenzdokumentation der Bibliothek](/python/api/azure-ai-anomalydetector/azure.ai.anomalydetector) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [Beispielcode](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -270,4 +270,4 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist die Anomalieerkennungs-API?](../../overview-multivariate.md)
-* [Bewährte Methoden bei der Verwendung der Anomalieerkennungs-API](../../concepts/best-practices-multivariate.md) 
+* [Bewährte Methoden bei der Verwendung der Anomalieerkennungs-API](../../concepts/best-practices-multivariate.md)

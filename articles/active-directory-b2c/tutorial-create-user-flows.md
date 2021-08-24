@@ -11,12 +11,12 @@ ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fb04dbe5cdfab523e8af9a057cc4477f58b1b525
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 26bd2a4e39f2698f47a27a08716dc3049c7b70f8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565336"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106819"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -53,7 +53,7 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie eine Webanwendung](tutorial-register-applications.md), und [aktivieren Sie die implizite Gewährung von ID-Token](tutorial-register-applications.md#enable-id-token-implicit-grant).
-- [Erstellen einer Facebook-Anwendung.](identity-provider-facebook.md#create-a-facebook-application) Überspringen Sie die Voraussetzungen und die Zurücksetzung der Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+- [Erstellen einer Facebook-Anwendung.](identity-provider-facebook.md#create-a-facebook-application) Überspringen Sie die Voraussetzungen und die übrigen Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
 
 ::: zone-end
 

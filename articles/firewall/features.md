@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5acb23767f8c766de80961fb8e76297f4b31a5c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278183"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339596"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-Features
 
@@ -35,7 +35,7 @@ Azure Firewall bietet die folgenden Features:
 - Mehrere öffentliche IP-Adressen
 - Azure Monitor-Protokollierung
 - Tunnelerzwingung
-- Webkategorien (Vorschau)
+- Webkategorien
 - Zertifizierungen
 
 ## <a name="built-in-high-availability"></a>Integrierte Hochverfügbarkeit
@@ -59,7 +59,7 @@ Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Was sind Verfüg
 
 ## <a name="unrestricted-cloud-scalability"></a>Uneingeschränkte Cloudskalierbarkeit
 
-Azure Firewall kann entsprechend Ihren Anforderungen hochskaliert werden, um einem sich ändernden Netzwerkdatenverkehr zu entsprechen, sodass Sie nicht für Ihre Spitzenlasten budgetieren müssen.
+Azure Firewall kann entsprechend Ihren Anforderungen aufskaliert werden, um einem sich ändernden Netzwerkdatenverkehr zu entsprechen, sodass Sie nicht für Ihre Spitzenlasten budgetieren müssen.
 
 ## <a name="application-fqdn-filtering-rules"></a>FQDN-Anwendungsfilterregeln
 
@@ -68,6 +68,8 @@ Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr auf 
 ## <a name="network-traffic-filtering-rules"></a>Filterregeln für den Netzwerkdatenverkehr
 
 Sie können Netzwerkfilterregeln zum *Zulassen* oder *Verweigern* nach Quell- und Ziel-IP-Adresse, Port und Protokoll zentral erstellen. Azure Firewall ist vollständig zustandsbehaftet, sodass zwischen legitimen Paketen für verschiedene Arten von Verbindungen unterschieden werden kann. Regeln werden übergreifend für mehrere Abonnements und virtuelle Netzwerke erzwungen und protokolliert.
+
+Azure Firewall unterstützt die zustandsbehaftete Filterung von Layer 3- und Layer 4-Netzwerkprotokollen. Layer 3-IP-Protokolle können gefiltert werden, indem Sie in der Netzwerkregel ein **Beliebiges** Protokoll und dann den Platzhalter **\*** für den Port auswählen.
 
 ## <a name="fqdn-tags"></a>FQDN-Tags
 
@@ -114,9 +116,9 @@ Azure Firewall Workbook bietet einen flexiblen Bereich für die Azure Firewall-
 
 Sie können Azure Firewall so konfigurieren, dass der gesamte Internetdatenverkehr an den festgelegten nächsten Hop weitergeleitet wird, statt dass er direkt ins Internet verläuft. So verfügen Sie vielleicht beispielsweise über eine lokale Edgefirewall oder ein anderes virtuelles Netzwerkgerät (Network Virtual Appliance, NVA), die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung](forced-tunneling.md).
 
-## <a name="web-categories-preview"></a>Webkategorien (Vorschau)
+## <a name="web-categories"></a>Webkategorien
 
-Mithilfe von Webkategorien können Administratoren den Benutzerzugriff auf Websitekategorien, z. B. Glücksspiel- oder Social Media-Websites, zulassen oder verweigern. Webkategorien sind in Azure Firewall Standard enthalten. Die Vorschauversion von Azure Firewall Premium bietet jedoch feinere Anpassungsmöglichkeiten. Im Gegensatz zu den Funktionen für Webkategorien in der Standard-SKU, bei denen der Abgleich der Kategorie anhand des FQDN erfolgt, werden die Kategorien bei der Premium-SKU anhand der gesamten URL abgeglichen (sowohl HTTP- als auch HTTPS-Datenverkehr). Weitere Informationen zur Azure Firewall Premium-Vorschau finden Sie unter [Features der Azure Firewall Premium-Vorschau](premium-features.md).
+Mithilfe von Webkategorien können Administratoren den Benutzerzugriff auf Websitekategorien, z. B. Glücksspiel- oder Social Media-Websites, zulassen oder verweigern. Webkategorien sind in Azure Firewall Standard enthalten. Azure Firewall Premium bietet jedoch feinere Anpassungsmöglichkeiten. Im Gegensatz zu den Funktionen für Webkategorien in der Standard-SKU, bei denen der Abgleich der Kategorie anhand des FQDN erfolgt, werden die Kategorien bei der Premium-SKU anhand der gesamten URL abgeglichen (sowohl HTTP- als auch HTTPS-Datenverkehr). Weitere Informationen zu Azure Firewall Premium finden Sie unter [Features von Azure Firewall Premium](premium-features.md).
 
 Wenn Azure Firewall z. B. eine HTTPS-Anforderung für `www.google.com/news` abfängt, wird die folgende Kategorisierung erwartet: 
 
@@ -125,18 +127,6 @@ Wenn Azure Firewall z. B. eine HTTPS-Anforderung für `www.google.com/news` abf
 - Firewall Premium: Die gesamte URL wird untersucht, sodass `www.google.com/news` als *News* kategorisiert wird.
 
 Die Kategorien werden basierend auf dem Schweregrad in **Haftung**, **Hohe Bandbreite**, **Geschäftliche Nutzung**, **Produktivitätsverlust**, **Allgemeines Surfen** und **Nicht kategorisiert** unterteilt.
-
-### <a name="categorization-change"></a>Kategorisierungsänderung
-
-In folgenden Fällen können Sie eine Kategorisierungsänderung anfordern:
-
- - Wenn sich ein FQDN oder eine URL in einer anderen Kategorie befinden sollte 
- 
-oder 
-
-- Wenn Sie über eine vorgeschlagene Kategorie für einen nicht kategorisierten FQDN bzw. nicht kategorisierte URL verfügen
-
-Sie können gerne eine Anforderung über [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) senden.
 
 ### <a name="category-exceptions"></a>Kategorieausnahmen
 
@@ -150,4 +140,4 @@ Azure Firewall ist mit PCI (Payment Card Industry), SOC (Service Organization Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Features der Azure Firewall Premium-Vorschau](premium-features.md)
+- [Azure Firewall Premium-Features](premium-features.md)

@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/18/2021
+ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: af5e0e6a8f019d0b35d73b49f6efb45c2195d62d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: a9411d044a8c176387d8b9900ca56a7512c4a0de
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072629"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458324"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
 
@@ -123,7 +123,15 @@ Jedes Playbook muss mit einem Trigger beginnen. Der Trigger definiert die Aktion
 
    Wählen Sie den passenden Trigger für die Art des Playbooks aus, das Sie erstellen.
 
+    > [!NOTE]
+    > Denken Sie daran, dass nur Playbooks, die auf dem **Incidenttrigger** basieren, von Automatisierungsregeln aufgerufen werden können. Playbooks, die auf dem **Warnungstrigger** basieren, müssen für die direkte Ausführung in [Analyseregeln](tutorial-detect-threats-custom.md#set-automated-responses-and-create-the-rule) definiert werden und können auch manuell ausgeführt werden.
+    > 
+    > Weitere Informationen zum zu verwendenden Trigger finden Sie unter [**Verwenden von Triggern und Aktionen in Azure Sentinel Playbooks**](playbook-triggers-actions.md).
+
     :::image type="content" source="./media/tutorial-respond-threats-playbook/choose-trigger.png" alt-text="Auswählen eines Triggers für Ihr Playbook":::
+
+> [!NOTE]
+> Wenn Sie einen Trigger oder eine nachfolgende Aktion auswählen, werden Sie aufgefordert, sich bei dem Ressourcenanbieter zu authentifizieren, mit dem Sie interagieren. In diesem Fall ist der Anbieter Azure Sentinel. Sie können verschiedene Ansätze für die Authentifizierung verwenden. Weitere Informationen und Anweisungen finden Sie unter [**Authentifizieren von Playbooks für Azure Sentinel**](authenticate-playbooks-to-sentinel.md).
 
 ### <a name="add-actions"></a>Hinzufügen von Aktionen
 

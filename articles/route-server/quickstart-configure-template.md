@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 80a78e7538dfe5a0cb87215b1f46cd59f5ea366b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 79ff9d8464aa15cac8928a9f5ed4d8863f27400d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690743"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567414"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Route Servers mit einer ARM-Vorlage
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Azure Resource Ma
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-route-server%2Fazuredeploy.json)
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Froute-server%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,11 +31,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-route-server).
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/route-server).
 
 In dieser Schnellstartanleitung stellen Sie einen Azure Route Server in einem neuen oder vorhandenen virtuellen Netzwerk bereit. Ein dediziertes Subnetz mit dem Namen `RouteServerSubnet` wird erstellt, um den Route Server zu hosten. Um BGP-Peering einzurichten, wird der Route Server zudem mit der Peer-ASN und der Peer-IP-Adresse konfiguriert.
 
-:::code language="json" source="~/quickstart-templates/101-route-server/azuredeploy.json" range="001-145" highlight="105-142":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/route-server/azuredeploy.json" range="001-145" highlight="105-142":::
 
 In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 
@@ -55,7 +55,7 @@ Weitere Vorlagen zu ExpressRoute finden Sie unter [Azure-Schnellstartvorlagen](h
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-route-server/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/route-server/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

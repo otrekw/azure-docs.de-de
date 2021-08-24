@@ -1,14 +1,14 @@
 ---
 title: Azure Arc-fähigen Server zu Azure migrieren
 description: Erfahren Sie, wie Sie Ihre Azure Arc-fähigen Server, die lokal oder in einer anderen Cloudumgebung ausgeführt werden, zu Azure migrieren können.
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4c8a5ea1974e251ba147fb7ee09b9ac49c364876
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109629492"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390234"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>Migrieren Ihres lokalen oder anderen Arc-fähigen Cloudservers zu Azure
 
@@ -52,7 +52,7 @@ Löschen Sie die Ressourcen-ID des Arc-fähigen Servers in Azure mit einer der f
 
    * Ausführen des Befehls `azcmagent disconnect` auf dem Computer oder dem Server
 
-   * Durch Auswählen des registrierten Servers im Azure-Portal und Klicken auf **Löschen** in der oberen Leiste
+   * Durch Auswählen des registrierten Servers im Azure-Portal und Klicken auf **Löschen** in der oberen Leiste.
 
    * Mithilfe der [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) oder mithilfe von [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) Verwenden Sie `Microsoft.HybridCompute/machines` für den Parameter `ResourceType`.
 

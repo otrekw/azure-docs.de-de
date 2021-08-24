@@ -1,14 +1,14 @@
 ---
 title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
-ms.date: 04/21/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c37b6dbe4233afd691c0da7743973b5956f2f720
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831976"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114391742"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Arc-Unterstützung
 
@@ -65,9 +65,9 @@ In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktio
 
 <sup>1</sup> Ein wichtiger Aspekt bei der Bewertung des Entwurfs Ihres Log Analytics-Arbeitsbereichs ist die Integration in Azure Automation zur Unterstützung der Funktionen „Updateverwaltung“ und „Änderungsnachverfolgung und Bestand“ sowie Azure Security Center und Azure Sentinel. Wenn Ihre Organisation bereits über ein Automation-Konto verfügt und dessen Verwaltungsfeatures aktiviert hat, die mit einem Log Analytics-Arbeitsbereich verknüpft sind, bewerten Sie, ob Sie Verwaltungsvorgänge zentralisieren und optimieren und die Kosten minimieren können, indem Sie diese vorhandenen Ressourcen nutzen, um zum Vergleich ein doppeltes Konto, einen doppelten Arbeitsbereich usw. zu erstellen.
 
-## <a name="phase-2-deploy-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Arc-Unterstützung
+## <a name="phase-2-deploy-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Arc-Unterstützung
 
-Als Nächstes ergänzen wir die in Phase 1 gelegte Grundlage, indem wir den Connected Computer-Agent für die Server mit Arc-Unterstützung vorbereiten und bereitstellen.
+Als Nächstes ergänzen wir die in Phase 1 gelegte Grundlage, indem wir den Connected Computer-Agent für die Server mit Arc-Unterstützung vorbereiten und bereitstellen.
 
 |Aufgabe |Detail |Duration |
 |-----|-------|---------|

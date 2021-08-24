@@ -1,22 +1,22 @@
 ---
 title: Metriken für Azure Spring Cloud
 description: Hier erfahren Sie, wie Sie Metriken in Azure Spring Cloud überprüfen.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d7b9f068eef38a7567e5b595277ee92493a6c16
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d09b2aff00d32dc3865c13e2aaab94a0a86464e3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129259"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122350572"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Metriken für Azure Spring Cloud
 
-Der Metrik-Explorer von Azure ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, das visuelle Korrelieren von Trends und das Untersuchen von Spitzen und Tiefen in Metriken ermöglicht. Verwenden Sie den Metrik-Explorer zum Untersuchen der Integrität und Auslastung Ihrer Ressourcen. 
+Der Metrik-Explorer von Azure ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, das visuelle Korrelieren von Trends und das Untersuchen von Spitzen und Tiefen in Metriken ermöglicht. Verwenden Sie den Metrik-Explorer zum Untersuchen der Integrität und Auslastung Ihrer Ressourcen.
 
 In Azure Spring Cloud gibt es zwei Ansichten für Metriken.
 * Übersichtsseite mit Diagrammen für jede Anwendung
@@ -27,13 +27,14 @@ In Azure Spring Cloud gibt es zwei Ansichten für Metriken.
 Über die Diagramme auf der Seite **Übersicht** einer Anwendung kann der Status einer Anwendung schnell überprüft werden. Auf der allgemeinen Seite **Metriken** können alle Metriken eingesehen werden. Sie können auf der allgemeinen Seite „Metriken“ Ihre eigenen Diagramme erstellen und an das Dashboard anheften.
 
 ## <a name="application-overview-page"></a>Übersichtsseite der Anwendung
-Wählen Sie in **Apps** eine App aus, damit Diagramme für sie auf der Seite „Übersicht“ angezeigt werden.  
 
- ![Anwendungsmetriken in der App-Verwaltung](media/metrics/metrics-2.png)
+Wählen Sie in **Apps** eine App aus, damit Diagramme für sie auf der Seite „Übersicht“ angezeigt werden.
 
-Die Seite **Anwendungsübersicht** jeder Anwendung enthält ein Metrikdiagramm, das eine schnelle Überprüfung des Anwendungsstatus ermöglicht.  
+![Anwendungsmetriken in der App-Verwaltung](media/metrics/metrics-2.png)
 
- ![Die Seite „Übersicht“ der Anwendungsmetriken](media/metrics/metrics-3.png)
+Die Seite **Anwendungsübersicht** jeder Anwendung enthält ein Metrikdiagramm, das eine schnelle Überprüfung des Anwendungsstatus ermöglicht.
+
+![Die Seite „Übersicht“ der Anwendungsmetriken](media/metrics/metrics-3.png)
 
 In Azure Spring Cloud stehen Ihnen diese fünf Metrikdiagramme zur Verfügung, die minütlich aktualisiert werden:
 
@@ -60,6 +61,7 @@ Wählen Sie dann für jede Metrik einen Aggregationstyp aus:
 ![Metrikaggregation](media/metrics/metrics-5.png)
 
 Der Aggregationstyp gibt an, wie metrische Punkte im Diagramm nach Zeit aggregiert werden können. Jede Minute gibt es einen Rohmetrikpunkt, und der Vorabaggregationstyp innerhalb einer Minute ist durch den Metriktyp vordefiniert.
+
 * Summe: Summieren aller Werte als Zielausgabe.
 * Durchschnitt: Verwenden des Durchschnittswerts im Zeitraum als Zielausgabe
 * Maximum/Minimum: Verwenden des maximalen/minimalen Werts im Zeitraum als Zielausgabe
@@ -68,9 +70,10 @@ Der Zeitbereich kann auch von den letzten 30 Minuten bis zu den letzten 30 Tag
 
 ![Ändern des Zeitbereichs für Metriken](media/metrics/metrics-6.png)
 
-In der Standardansicht werden die Metriken aller Anwendungen des Azure Spring Cloud-Diensts angezeigt. Für die Anzeige können dann Metriken für eine App oder Instanz gefiltert werden.  Klicken Sie auf **Filter hinzufügen**, legen Sie die Eigenschaft auf **App** fest, und wählen Sie im Textfeld **Werte** die zu überwachende Zielanwendung aus. 
+In der Standardansicht werden die Metriken aller Anwendungen des Azure Spring Cloud-Diensts angezeigt. Für die Anzeige können dann Metriken für eine App oder Instanz gefiltert werden. Klicken Sie auf **Filter hinzufügen**, legen Sie die Eigenschaft auf **App** fest, und wählen Sie im Textfeld **Werte** die zu überwachende Zielanwendung aus.
 
 Sie können zwei Arten von Filtern (Eigenschaften) verwenden:
+
 * App: Nach App-Namen filtern
 * Instanz: Nach App-Instanz filtern
 
@@ -88,18 +91,22 @@ Sie können auch die Option **Apply splitting** (Aufteilung anwenden) verwenden.
 Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen aufgeführt.
 
 ### <a name="error"></a>Fehler
+
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
 >|----|----|----|------------|
 >| tomcat.global.error | tomcat.global.error | Anzahl | Anzahl der bei der Verarbeitung von Anforderungen aufgetretenen Fehler |
 
 ### <a name="performance"></a>Leistung
+
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
 >|----|----|----|------------|
 >| system.cpu.usage | system.cpu.usage | Percent | Aktuelle CPU-Auslastung für das gesamte System (veraltet und sollte nicht verwendet werden). Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass sich alle CPUs während des aktuell beobachteten Zeitraums im Leerlauf befanden. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv ausgeführt wurden.|
 >| process.cpu.usage | Prozentualer Anteil der App-CPU-Auslastung | Percent | Aktuelle CPU-Auslastung für den Java Virtual Machine-Prozess (veraltet und sollte nicht verwendet werden). Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
->| AppCpuUsage | App-CPU-Auslastung | Percent | Aktuelle CPU-Auslastung des JVM-Prozesses für die CPU, die dieser App zugeordnet ist, Wert vom Typ Double zwischen [0.0,1.0]. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
+>| App-CPU-Auslastung | | Percent | Aktuelle CPU-Auslastung des JVM-Prozesses gegenüber der CPU, die dieser App zugeordnet ist. Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass keine der CPUs während des aktuell beobachteten Zeitraums Threads des JVM-Prozesses ausgeführt hat. Ein Wert von 1.0 bedeutet, dass alle CPUs während 100 Prozent der Zeit des aktuell beobachteten Zeitraums aktiv JVM-Threads ausgeführt haben. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
+>| App-CPU-Auslastung (veraltet) | | Percent | Veraltete Metrik der App-CPU-Auslastung. Verwenden Sie stattdessen die neue Metrik „App-CPU-Auslastung“.|
+>| App-Speicherauslastung | | Percent | Aktuelle Arbeitsspeicherauslastung des JVM-Prozesses gegenüber dem Arbeitsspeicher, der dieser App zugeordnet ist. Dieser Wert ist im [0.0,1.0]-Intervall ein Double. Ein Wert von 0.0 bedeutet, dass kein Arbeitsspeicher während des aktuell beobachteten Zeitraums von Threads des JVM-Prozesses zugeordnet wurde. Ein Wert von 1.0 bedeutet, dass der gesamte Arbeitsspeicher während 100 % der Zeit des aktuell beobachteten Zeitraums von JVM-Threads zugeordnet wurde. Zu den JVM-Threads gehören Anwendungsthreads sowie interne JVM-Threads.|
 >| jvm.memory.committed | jvm.memory.committed | Byte | Die Menge des Arbeitsspeichers, die garantiert für die Verwendung durch die JVM zur Verfügung steht. Die JVM gibt möglicherweise Arbeitsspeicher für das System frei, und „Zugesichert“ könnte niedriger als „Init“ sein. „Zugesichert“ ist immer größer oder gleich „Verwendet“. |
 >| jvm.memory.used | jvm.memory.used | Byte | Die derzeit verwendete Arbeitsspeichermenge in Byte. |
 >| jvm.memory.max | jvm.memory.max | Byte | Die maximale Speichermenge, die für die Arbeitsspeicherverwaltung verwendet werden kann. Die Menge des verwendeten und zugesicherten Arbeitsspeichers ist immer kleiner oder gleich dem maximalen Wert, wenn er definiert ist. Eine Speicherzuordnung kann jedoch fehlschlagen, wenn sie versucht, den verwendeten Arbeitsspeicher so zu vergrößern, dass „Verwendet“ > „Zugesichert“ ist, selbst wenn „Verwendet <= „Max“ weiterhin zutrifft, z. B. wenn dem System der virtuelle Arbeitsspeicher ausgeht. |
@@ -138,6 +145,7 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/core/diagnostics/dotnet-counters).
 
 ### <a name="request"></a>Anforderung
+
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
 >|----|----|----|------------|
@@ -159,6 +167,7 @@ Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/cor
 Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/core/diagnostics/dotnet-counters).
 
 ### <a name="session"></a>Sitzung
+
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
 >|----|----|----|------------|
@@ -169,16 +178,10 @@ Weitere Informationen finden Sie unter [dotnet-Leistungsindikatoren](/dotnet/cor
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | Anzahl | Anzahl der Sitzungen, die nicht erstellt wurden, da die maximal mögliche Anzahl aktiver Sitzungen bereits erreicht war. |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Anzahl | Tomcat Session Active Count (Maximale Anzahl aktiver Tomcat-Sitzungen) |
 
-## <a name="see-also"></a>Weitere Informationen
-
-* [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](./quickstart-logs-metrics-tracing.md)
-
-* [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md)
-
-* [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](./diagnostic-services.md)
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](./quickstart-logs-metrics-tracing.md)
+* [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/essentials/metrics-getting-started.md)
+* [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](./diagnostic-services.md)
 * [Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen](./tutorial-alerts-action-groups.md)
-
 * [Kontingente und Servicepläne für Azure Spring Cloud](./quotas.md)

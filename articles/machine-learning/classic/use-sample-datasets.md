@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 8a848f6589902c2eabf5b4e14a4d000dc4ed081e
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 815b43e88118a67f4e1c0f86ab0e7a10dcc70407
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518435"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583484"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)
+# <a name="use-the-sample-datasets-in-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Machine Learning Studio (klassisch)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [top]: #machine-learning-sample-datasets
 
-Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio (klassisch) ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure KI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
+Beim Erstellen eines neuen Arbeitsbereichs in Machine Learning Studio (klassisch) ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure KI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
 Einige dieser Datasets sind in Azure Blob Storage verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 
@@ -172,7 +172,7 @@ Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäude
   <td>
 Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
 <p></p>
-Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
+Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Es wurde gefiltert, damit nur die 70 verkehrsreichsten Flughäfen in Kontinental-USA enthalten waren.</li>
   <li>Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.</li>
@@ -332,7 +332,7 @@ Beachten Sie außerdem, dass die Anzahl der Hintergrundereignisse (h für hadron
   <td>
 Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">zusammengeführte Daten von 201304 bis 201310</a>).
 <p></p>
-Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
+Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li>
   <li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li>
@@ -347,7 +347,7 @@ Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für d
   <td>
 Die Daten stammen aus Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.
 <p></p>
-Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio (klassisch) wie folgt verarbeitet:
+Das Dataset wurde vor dem Hochladen in Machine Learning Studio (klassisch) wie folgt verarbeitet:
 <ul>
   <li>Extrahieren der Textinhalte für die einzelnen Unternehmen</li>
   <li>Entfernen der Wiki-Formatierung</li>

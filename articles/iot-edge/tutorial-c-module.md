@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3778361d066543325672f37cf163e58329f04abe
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 5149d33052f3ad8783ed35d03b4f3760790f5ee5
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221567"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438420"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Tutorial: Entwickeln eines C-IoT Edge-Moduls mit Linux-Containern
 
@@ -49,7 +49,7 @@ Informieren Sie sich anhand der nachstehenden Tabelle über Ihre Optionen zum En
 Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial durchgearbeitet haben, um Ihre Entwicklungsumgebung für die Entwicklung von Linux-Containern einzurichten: [Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben:
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
-* Ein Gerät, auf dem Azure IoT Edge mit Linux Containern ausgeführt wird. Mithilfe der Schnellstarts können Sie ein [Linux-Gerät](quickstart-linux.md) oder ein [Windows-Gerät](quickstart.md) einrichten.
+* Ein Gerät, auf dem Azure IoT Edge mit Linux-Containern läuft. Mithilfe der Schnellstarts können Sie ein [Linux-Gerät](quickstart-linux.md) oder ein [Windows-Gerät](quickstart.md) einrichten.
 * Eine Containerregistrierung wie [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio Code](https://code.visualstudio.com/), der mit den [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) konfiguriert wurde.
 * [Docker CE](https://docs.docker.com/install/), das zur Ausführung von Linux-Containern konfiguriert wurde.
@@ -93,6 +93,9 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 1. Öffnen Sie im VS Code-Explorer die ENV-Datei.
 2. Aktualisieren Sie die Felder mit den Werten für **Benutzername** und **Kennwort**, die Sie aus der Azure-Containerregistrierung kopiert haben.
 3. Speichern Sie diese Datei.
+
+>[!NOTE]
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

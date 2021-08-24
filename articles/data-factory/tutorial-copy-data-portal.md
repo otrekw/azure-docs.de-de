@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: aa8ccdde19dadeb1864037ed13082e42a27b8f59
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 766572462c2596856258f2f154845b940c6b5c1c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483315"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436800"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -96,7 +96,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 8. Wählen Sie oben die Registerkarte **Git-Konfiguration** aus, und aktivieren Sie das Kontrollkästchen **Git später konfigurieren**.
 9. Wählen Sie **Überprüfen und erstellen** und nach erfolgreicher Prüfung **Erstellen** aus.
 10. Nach Abschluss der Erstellung wird der Hinweis im Benachrichtigungscenter angezeigt. Wählen Sie **Zu Ressource wechseln** aus, um zur Data Factory-Seite zu navigieren.
-11. Wählen Sie **Erstellen und überwachen** aus, um die Azure Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
+11. Wählen Sie auf der Kachel **Azure Data Factory Studio öffnen** die Option **Öffnen** aus, um die Azure Data Factory-Benutzeroberfläche in einer separaten Registerkarte zu starten.
 
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
@@ -108,9 +108,9 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Copy-Aktivität in der D
 
 In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dienste und Datasets erstellen Sie, wenn Sie sie zum Konfigurieren der Pipeline benötigen.
 
-1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus.
+1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
-   ![Erstellen der Pipeline](./media/doc-common-process/get-started-page.png)
+   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
 
 1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **CopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 

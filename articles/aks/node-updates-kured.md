@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Servic
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81d778b8346a03622ef837b6732e7d50e807652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88164239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355851"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 
@@ -39,6 +39,12 @@ Einige Sicherheitsupdates, z.B. Kernelupdates, erfordern einen Knotenneustart, d
 
 Sie können eigene Workflows und Prozesse für Neustarts von Knoten nutzen oder `kured` verwenden, um den Prozess zu orchestrieren. Mit `kured` wird ein [DaemonSet][DaemonSet] bereitgestellt, das einen Pod auf jedem Linux-Knoten im Cluster ausführt. Diese Pods im DaemonSet suchen nach dem Vorhandensein der Datei */var/run/reboot-required* und initiieren dann einen Prozess, um die Knoten neu zu starten.
 
+### <a name="node-image-upgrades"></a>Upgrades für Knotenimages
+
+Unbeaufsichtigte Upgrades wenden Updates auf das Betriebssystem des Linux-Knotens an, aber das Image, das zum Erstellen von Knoten für Ihren Cluster verwendet wird, bleibt unverändert. Wenn Ihrem Cluster ein neuer Linux-Knoten hinzugefügt wird, wird das ursprüngliche Image zum Erstellen des Knotens verwendet. Dieser neue Knoten empfängt alle Sicherheits- und Kernelupdates, die während der automatischen Überprüfung jede Nacht verfügbar sind, bleibt jedoch ungepatcht, bis alle Überprüfungen und Neustarts abgeschlossen sind.
+
+Alternativ können Sie das Knotenimageupgrade verwenden, um nach Knotenimages zu suchen und diese zu aktualisieren, die von Ihrem Cluster verwendet werden. Ausführlichere Informationen zu Knotenimageupgrades finden Sie unter [Upgrade für AKS-Knotenimages (Azure Kubernetes Service)][node-image-upgrade].
+
 ### <a name="node-upgrades"></a>Knotenupgrades
 
 In AKS gibt es einen weiterer Prozess, mit dem Sie ein *Upgrade* eines Clusters durchführen können. Ein Upgrade ist in der Regel der Wechsel zu einer neueren Version von Kubernetes, nicht nur das Anwenden von Sicherheitsupdates auf Knoten. Ein AKS-Upgrade führt folgende Aktionen aus:
@@ -65,7 +71,7 @@ helm repo update
 kubectl create namespace kured
 
 # Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
-helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install kured kured/kured --namespace kured --set nodeSelector."kubernetes\.io/os"=linux
 ```
 
 Sie können auch zusätzliche Parameter für `kured` konfigurieren, z.B. die Integration in Prometheus oder Slack. Weitere Informationen zu zusätzlichen Konfigurationsparametern finden Sie im [Kured Helm-Chart][kured-install].
@@ -118,3 +124,4 @@ Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, fin
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[node-image-upgrade]: node-image-upgrade.md

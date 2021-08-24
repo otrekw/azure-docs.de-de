@@ -2,13 +2,13 @@
 title: Authentifizieren bei Azure-Ressourcen mit Arc-fähigen Servern
 description: In diesem Artikel wird die Unterstützung von Azure Instance Metadata Service für Arc-fähige Server beschrieben und wie Sie sich bei Azure-Ressourcen und lokal mithilfe eines Geheimnisses authentifizieren können.
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 76f7174792f751322545b1d30bb51476c5339e26
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96939031"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389908"
 ---
 # <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Authentifizieren bei Azure-Ressourcen mit Arc-fähigen Servern
 
@@ -30,7 +30,7 @@ Beim Onboarding Ihres Servers auf Azure Arc-fähigen Servern werden mehrere Akti
 
 Die Umgebung eines Servers mit aktivierter verwalteter Identität wird mit den folgenden Variablen auf einem Arc-fähigen Windows-Server eingerichtet:
 
-- **IMDS_ENDPOINT:** IP-Adresse des IMDS-Endpunkts `http://localhost:40342` für Arc-fähige Server
+- **IMDS_ENDPOINT**: Die IP-Adresse des IMDS-Endpunkts `http://localhost:40342` für Arc-fähige Server.
 
 - **IDENTITY_ENDPOINT:** der Localhost-Endpunkt, der der verwalteten Identität des Diensts (`http://localhost:40342/metadata/identity/oauth2/token`) entspricht.
 

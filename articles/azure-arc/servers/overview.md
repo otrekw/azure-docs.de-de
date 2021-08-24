@@ -1,19 +1,19 @@
 ---
-title: 'Azure Arc-fähige Server: Übersicht'
+title: 'Server mit Azure Arc-Unterstützung: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
-ms.date: 05/26/2021
+ms.date: 07/16/2021
 ms.topic: overview
-ms.openlocfilehash: 2cf70cbf20d024d92a3a2025ca6b659ffdd8bffa
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: ed764b3eb743f29c3df033fa36893e8b3eebbc43
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294677"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457503"
 ---
-# <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
+# <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Unterstützung?
 
-Mit Servern mit Azure Arc-Unterstützung können Sie Ihre physischen Server und virtuellen Computer unter Windows und Linux verwalten, die *außerhalb* von Azure in Ihrem Unternehmensnetzwerk oder bei einem anderen Cloudanbieter gehostet werden. Diese Verwaltungsfunktion ist so konzipiert, dass sie mit der Verwaltung nativer virtueller Azure-Computer konsistent ist. Wenn ein Hybridcomputer mit Azure verbunden wird, wird er zu einem verbundenen Computer und in Azure wie eine Ressource behandelt. Jeder verbundene Computer verfügt über eine Ressourcen-ID, befindet sich in einer Ressourcengruppe und profitiert von Azure-Standardkonstrukten wie Azure Policy und Tagging. Dienstanbieter, die die lokale Infrastruktur eines Kunden verwalten, können ihre Hybridcomputer genau wie heute mit [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) mit Azure Arc mit nativen Azure-Ressourcen über mehrere Kundenumgebungen hinweg verwalten.
+Server mit Azure Arc-Unterstützung bieten die Möglichkeit, physische Server und virtuelle Computer unter Windows und Linux zu verwalten, die *außerhalb* von Azure in Ihrem Unternehmensnetzwerk oder bei einem anderen Cloudanbieter gehostet werden. Diese Verwaltungsfunktion ist so konzipiert, dass sie mit der Verwaltung nativer virtueller Azure-Computer konsistent ist. Wenn ein Hybridcomputer mit Azure verbunden wird, wird er zu einem verbundenen Computer und in Azure wie eine Ressource behandelt. Jeder verbundene Computer verfügt über eine Ressourcen-ID, befindet sich in einer Ressourcengruppe und profitiert von Azure-Standardkonstrukten wie Azure Policy und Tagging. Dienstanbieter, die die lokale Infrastruktur eines Kunden verwalten, können ihre Hybridcomputer genau wie heute mit [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) mit Azure Arc mit nativen Azure-Ressourcen über mehrere Kundenumgebungen hinweg verwalten.
 
 Um diese Möglichkeit für Ihre außerhalb von Azure gehosteten Hybridcomputer nutzen zu können, muss auf jedem Computer, den Sie mit Azure verbinden möchten, der Azure Connected Machine-Agent installiert werden. Dieser Agent bietet keine weiteren Funktionen und ist kein Ersatz für den [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md) von Azure. Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) verwenden möchten.
 
@@ -23,18 +23,18 @@ Um diese Möglichkeit für Ihre außerhalb von Azure gehosteten Hybridcomputer n
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, können Sie die folgenden Aufgaben für die Konfigurationsverwaltung und Überwachungsaufgaben ausführen:
-- Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Arc-fähigen Servern finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
+- Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Servern mit Azure-Arc-Unterstützung finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 - Erstellen Sie mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) in Azure Automation und mit der [Überwachung der Dateiintegrität in Azure Security Center ](../../security-center/security-center-file-integrity-monitoring.md) für Server, auf denen [Azure Defender für Server](../../security-center/defender-for-servers-introduction.md) aktiviert ist, Berichte zu Konfigurationsänderungen an installierter Software, an Microsoft-Diensten, an der Windows-Registrierung und Windows-Dateien sowie an Linux-Daemons auf überwachten Servern.
 
 - Überwachen Sie die Leistung des Gastbetriebssystems des verbundenen Computers, und ermitteln Sie Anwendungskomponenten, um deren Prozesse und Abhängigkeiten mit anderen, von der Anwendung kommunizierten Ressourcen über [Azure Insights](../../azure-monitor/vm/vminsights-overview.md) zu überwachen.
 
-- Vereinfachen Sie die Bereitstellung mit anderen Azure-Diensten wie Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) und Azure Monitor Log Analytics-Arbeitsbereich unter Verwendung der unterstützten [Azure-VM-Erweiterungen](manage-vm-extensions.md) für Ihren Azure-fremden Windows- oder Linux-Computer. Dies schließt die Konfiguration nach der Bereitstellung oder die Softwareinstallation unter Verwendung der benutzerdefinierten Skripterweiterung mit ein.
+- Vereinfachen Sie die Bereitstellung mit anderen Azure-Diensten wie Azure Monitor Log Analytics-Arbeitsbereich unter Verwendung der unterstützten [Azure-VM-Erweiterungen](manage-vm-extensions.md) für Ihren Azure-fremden Windows- oder Linux-Computer. Dies schließt die Konfiguration nach der Bereitstellung oder die Softwareinstallation unter Verwendung der benutzerdefinierten Skripterweiterung mit ein.
 
 - Verwalten Sie Betriebssystemupdates für Ihre Windows- und Linux-Server mithilfe der [Updateverwaltung](../../automation/update-management/overview.md) in Azure Automation.
 
     > [!NOTE]
-    > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
+    > Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Server mit Azure Arc-Unterstützung aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
 
 - Schließen Sie Ihren Azure-fremden Server in die erweiterte Bedrohungserkennung ein, und überwachen Sie proaktiv potenzielle Sicherheitsbedrohungen mit [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Defender](../../security-center/azure-defender.md).
 
@@ -46,7 +46,7 @@ Erfasste und in einem Log Analytics-Arbeitsbereich gespeicherte Protokolldaten 
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Eine definitive Liste der unterstützten Regionen mit Azure Arc-fähigen Servern finden Sie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
+Eine definitive Liste der unterstützten Regionen mit Servern mit Azure Arc-Unterstützung finden Sie auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).
 
 In den meisten Fällen sollte der Standort, den Sie beim Erstellen des Installationsskripts auswählen, die Azure-Region sein, die dem Standort Ihres Computers geografisch am nächsten ist. Ruhende Daten werden innerhalb der geografischen Azure-Region gespeichert, in der sich die von Ihnen angegebene Region befindet, was ggf. auch Auswirkungen auf die Wahl der Region hat, wenn Data Residency-Anforderungen erfüllt werden müssen. Wenn die Azure-Region, mit der Ihr Computer eine Verbindung herstellt, von einem Ausfall betroffen ist, wird der verbundene Computer zwar nicht beeinträchtigt, es kann jedoch sein, dass Verwaltungsvorgänge mit Azure nicht abgeschlossen werden können. Wenn Sie über mehrere Standorte verfügen, die einen geografisch redundanten Dienst unterstützen, empfiehlt es sich im Falle eines regionalen Ausfalls, die Computer an den einzelnen Standorten jeweils mit einer anderen Azure-Region zu verbinden.
 
@@ -72,4 +72,6 @@ Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen, technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+* Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+
+* Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.

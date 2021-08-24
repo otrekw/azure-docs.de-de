@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b534924be82d7ab6118f0b01b42bfd5e7242082
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548460"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460587"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -48,7 +48,7 @@ In Spark stehen zwei Arten von Tabellen zur Verfügung, die von Azure Synapse au
 
   Spark ermöglicht auch die Erstellung externer Tabellen auf der Grundlage vorhandener Daten – entweder durch Angabe der Option `LOCATION`oder durch Verwendung des Hive-Formats. Solche externen Tabellen können auf einer Vielzahl von Datenformaten basieren (einschließlich Parquet).
 
-Azure Synapse gibt aktuell nur verwaltete und externe Spark-Tabellen mit im Parquet-Format gespeicherten Daten für die SQL-Engines frei. Auf anderen Formaten basierende Tabellen werden nicht automatisch synchronisiert. Solche Tabellen können Sie ggf. explizit selbst als externe Tabelle in Ihrer eigenen SQL-Datenbank synchronisieren, sofern die SQL-Engine das zugrunde liegende Format der Tabelle unterstützt.
+Azure Synapse gibt aktuell nur verwaltete und externe Spark-Tabellen mit im Parquet- oder CSV-Format gespeicherten Daten für die SQL-Engines frei. Auf anderen Formaten basierende Tabellen werden nicht automatisch synchronisiert. Solche Tabellen können Sie ggf. explizit selbst als externe Tabelle in Ihrer eigenen SQL-Datenbank synchronisieren, sofern die SQL-Engine das zugrunde liegende Format der Tabelle unterstützt.
 
 ### <a name="share-spark-tables"></a>Gemeinsames Nutzen von Spark-Tabellen
 

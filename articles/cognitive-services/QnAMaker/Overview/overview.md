@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, Chatbots mit wenig Code, Konversationen mit Mehrfachdurchläufen
-ms.openlocfilehash: 84678e0472284f6a9acfec53fbe31ff550775446
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b3e780393b911697d17ca1873201720c0bc628be
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292664"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322600"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
 
@@ -21,6 +21,13 @@ QnA Maker ist ein cloudbasierter NLP-Dienst (Natural Language Processing, Verar
 QnA Maker wird häufig mithilfe von Clientanwendungen für die Konversation erstellt, darunter Anwendungen für soziale Medien, Chatbots und sprachaktivierte Desktopanwendungen.
 
 QnA Maker speichert keine Kundendaten. Alle Kundendaten (Antworten auf Fragen und Chatprotokolle) werden in der Region gespeichert, in der der Kunde die abhängigen Dienstinstanzen bereitstellt. Weitere Informationen zu abhängigen Diensten finden Sie [hier](../concepts/plan.md?tabs=v1).
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+
+* In den [Schnellstarts](../quickstarts/create-publish-knowledge-base.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
+* Die [Anleitungen](../how-to/set-up-qnamaker-service-azure.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* Die [konzeptionellen Artikel](../concepts/plan.md) enthalten ausführliche Erläuterungen der Funktionen und Features eines Diensts.
+* [**Tutorials**](../tutorials/create-faq-bot-with-azure-bot-service.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="when-to-use-qna-maker"></a>Einsatzgebiete von QnA Maker
 

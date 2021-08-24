@@ -1,29 +1,29 @@
 ---
-title: Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
-titleSuffix: Deploy Azure Arc enabled Managed Instance with high availability
-description: Hier erfahren Sie, wie Sie eine verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit bereitstellen.
+title: SQL Managed Instance mit Azure Arc-Unterstützung und Hochverfügbarkeit
+titleSuffix: Deploy Azure Arc-enabled SQL Managed Instance with high availability
+description: Hier erfahren Sie, wie Sie eine SQL Managed Instance mit Azure Arc-Unterstützung und Hochverfügbarkeit bereitstellen.
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: conceptual
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: 2214fa45650e1c68ec0d286e26cc91f7e8f6a2b3
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 89cce59f1e68d1398a6907c3a4b2b3bee50502cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339553"
 ---
-# <a name="azure-arc-enabled-managed-instance-high-availability"></a>Verwaltete Instanz mit Azure Arc-Unterstützung und Hochverfügbarkeit
+# <a name="azure-arc-enabled-sql-managed-instance-high-availability"></a>SQL Managed Instance mit Azure Arc-Unterstützung und Hochverfügbarkeit
 
-Eine verwaltete Instanz mit Azure Arc-Unterstützung wird in Kubernetes als Containeranwendung bereitgestellt und verwendet Kubernetes-Konstrukte wie StatefulSet-Objekte und persistenten Speicher, um integrierte Integritätsüberwachung, Fehlererkennung und Failovermechanismen zur Aufrechterhaltung der Dienstintegrität bereitzustellen. Zur Verbesserung der Zuverlässigkeit können Sie auch eine verwaltete Instanz mit Azure Arc-Unterstützung für die Bereitstellung mit zusätzlichen Replikaten in einer Hochverfügbarkeitskonfiguration konfigurieren. Überwachung, Fehlererkennung und automatisches Failover werden durch den Datencontroller der Arc-Datendienste verwaltet. Dieser Dienst wird ohne Benutzereingriff bereitgestellt – vom Einrichten der Verfügbarkeitsgruppe, Konfigurieren von Endpunkten für die Datenbankspiegelung, Hinzufügen von Datenbanken zur Verfügbarkeitsgruppe bis hin zur Failover- und Upgradekoordination. In diesem Dokument werden beide Arten von Hochverfügbarkeit betrachtet.
+Eine SQL Managed Instance mit Azure Arc-Unterstützung wird in Kubernetes als Containeranwendung bereitgestellt und verwendet Kubernetes-Konstrukte wie StatefulSet-Objekte und persistenten Speicher, um integrierte Integritätsüberwachung, Fehlererkennung und Failovermechanismen zur Aufrechterhaltung der Dienstintegrität bereitzustellen. Zur Verbesserung der Zuverlässigkeit können Sie auch eine SQL Managed Instance mit Azure Arc-Unterstützung für die Bereitstellung mit zusätzlichen Replikaten in einer Hochverfügbarkeitskonfiguration konfigurieren. Überwachung, Fehlererkennung und automatisches Failover werden durch den Datencontroller der Arc-Datendienste verwaltet. Dieser Dienst wird ohne Benutzereingriff bereitgestellt – vom Einrichten der Verfügbarkeitsgruppe, Konfigurieren von Endpunkten für die Datenbankspiegelung, Hinzufügen von Datenbanken zur Verfügbarkeitsgruppe bis hin zur Failover- und Upgradekoordination. In diesem Dokument werden beide Arten von Hochverfügbarkeit betrachtet.
 
 ## <a name="built-in-high-availability"></a>Integrierte Hochverfügbarkeit 
 
-Integrierte Hochverfügbarkeit wird von Kubernetes bereitgestellt, wenn persistenter Remotespeicher konfiguriert und gemeinsam von Knoten genutzt wird, die von der Arc-Datendienstbereitstellung verwendet werden. In dieser Konfiguration spielt Kubernetes die Rolle des Clusterorchestrators. Sollte die verwaltete Instanz in einem Container oder der zugrunde liegende Knoten ausfallen, wird durch den Orchestrator eine neue Instanz des Containers gestartet und an den gleichen persistenten Speicher angefügt. Dieser Typ ist standardmäßig aktiviert, wenn Sie eine verwaltete Instanz mit Azure Arc-Unterstützung bereitstellen.
+Integrierte Hochverfügbarkeit wird von Kubernetes bereitgestellt, wenn persistenter Remotespeicher konfiguriert und gemeinsam von Knoten genutzt wird, die von der Arc-Datendienstbereitstellung verwendet werden. In dieser Konfiguration spielt Kubernetes die Rolle des Clusterorchestrators. Sollte die verwaltete Instanz in einem Container oder der zugrunde liegende Knoten ausfallen, wird durch den Orchestrator eine neue Instanz des Containers gestartet und an den gleichen persistenten Speicher angefügt. Dieser Typ ist standardmäßig aktiviert, wenn Sie eine SQL Managed Instance mit Azure Arc-Unterstützung bereitstellen.
 
 ### <a name="verify-built-in-high-availability"></a>Überprüfen der integrierten Hochverfügbarkeit
 
@@ -32,7 +32,7 @@ In diesem Abschnitt wird die von Kubernetes bereitgestellte integrierte Hochverf
 ### <a name="prerequisites"></a>Voraussetzungen
 
 - Kubernetes-Cluster mit [freigegebenem Remotespeicher](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration) 
-- Eine verwaltete Instanz mit Azure Arc-Unterstützung, bereitgestellt mit einem einzelnen Replikat (Standard)
+- Eine SQL Managed Instance mit Azure Arc-Unterstützung, bereitgestellt mit einem einzelnen Replikat (Standard)
 
 1. Zeigen Sie die Pods an. 
 
@@ -71,11 +71,11 @@ Nachdem alle Container im Pod wiederhergestellt wurden, können Sie eine Verbind
 
 ## <a name="deploy-with-always-on-availability-groups"></a>Bereitstellen mit Always On-Verfügbarkeitsgruppen
 
-Zur Verbesserung der Zuverlässigkeit können Sie eine verwaltete Instanz mit Azure Arc-Unterstützung für die Bereitstellung mit zusätzlichen Replikaten in einer Hochverfügbarkeitskonfiguration konfigurieren. 
+Zur Verbesserung der Zuverlässigkeit können Sie eine SQL Managed Instance mit Azure Arc-Unterstützung für die Bereitstellung mit zusätzlichen Replikaten in einer Hochverfügbarkeitskonfiguration konfigurieren. 
 
 Verfügbarkeitsgruppen ermöglichen Folgendes:
 
-- Bei der Bereitstellung mit mehreren Replikaten wird eine einzelne Verfügbarkeitsgruppe namens `containedag` erstellt. Standardmäßig gibt es für `containedag` drei Replikate, einschließlich des primären Replikats. Alle CRUD-Vorgänge für die Verfügbarkeitsgruppe werden intern verwaltet – auch die Erstellung der Verfügbarkeitsgruppe oder die Verknüpfung von Replikaten mit der erstellten Verfügbarkeitsgruppe. In der verwalteten Instanz mit Azure Arc-Unterstützung können keine zusätzlichen Verfügbarkeitsgruppen erstellt werden.
+- Bei der Bereitstellung mit mehreren Replikaten wird eine einzelne Verfügbarkeitsgruppe namens `containedag` erstellt. Standardmäßig gibt es für `containedag` drei Replikate, einschließlich des primären Replikats. Alle CRUD-Vorgänge für die Verfügbarkeitsgruppe werden intern verwaltet – auch die Erstellung der Verfügbarkeitsgruppe oder die Verknüpfung von Replikaten mit der erstellten Verfügbarkeitsgruppe. In der SQL Managed Instance mit Azure Arc-Unterstützung können keine zusätzlichen Verfügbarkeitsgruppen erstellt werden.
 
 - Alle Datenbanken werden automatisch zur Verfügbarkeitsgruppe hinzugefügt, einschließlich aller Benutzer- und Systemdatenbanken wie `master` und `msdb`. Diese Funktion bietet eine Einzelsystemansicht zu den Replikaten der Verfügbarkeitsgruppen. Beachten die beiden Datenbanken `containedag_master` und `containedag_msdb`, wenn Sie eine direkte Verbindung mit der Instanz herstellen. Die `containedag_*`-Datenbanken repräsentieren die Elemente `master` und `msdb` innerhalb der Verfügbarkeitsgruppe.
 
@@ -85,27 +85,27 @@ Verfügbarkeitsgruppen ermöglichen Folgendes:
 
 Führen Sie den folgenden Befehl aus, um eine verwaltete Instanz mit Verfügbarkeitsgruppen bereitzustellen:
 
-```console
-azdata arc sql mi create -n <name of instance> --replicas 3
+```azurecli
+az sql mi-arc create -n <name of instance> --replicas 3 --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="check-status"></a>Status überprüfen
 Führen Sie nach der Bereitstellung der Instanz die folgenden Befehle aus, um den Status Ihrer Instanz zu überprüfen:
 
-```console
-azdata arc sql mi list
-azdata arc sql mi show -n <name of instance>
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
+az sql mi-arc show -n <name of instance> --k8s-namespace <namespace> --use-k8s
 ```
 
 Beispielausgabe:
 
 ```output
-user@pc:/# azdata arc sql mi list
+user@pc:/# az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ExternalEndpoint    Name    Replicas    State
 ------------------  ------  ----------  -------
 20.131.31.58,1433   sql2    3/3         Ready
 
-user@pc:/#  azdata arc sql mi show -n sql2
+user@pc:/#  az sql mi-arc show -n sql2 --k8s-namespace <namespace> --use-k8s
 {
 ...
   "status": {
@@ -219,8 +219,8 @@ Für die Wiederherstellung einer Datenbank in einer Verfügbarkeitsgruppe müsse
 
 ### <a name="limitations"></a>Einschränkungen
 
-Für Verfügbarkeitsgruppen einer verwalteten Instanz mit Azure Arc-Unterstützung gelten die gleichen [Einschränkungen wie für Verfügbarkeitsgruppen eines Big Data-Clusters. Klicken Sie hier, um weitere Informationen zu erhalten.](/sql/big-data-cluster/deployment-high-availability#known-limitations)
+Für Verfügbarkeitsgruppen einer SQL Managed Instance mit Azure Arc-Unterstützung gelten dieselben [Einschränkungen wie für Verfügbarkeitsgruppen eines Big Data-Clusters. Klicken Sie hier, um weitere Informationen zu erhalten.](/sql/big-data-cluster/deployment-high-availability#known-limitations)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Features und Funktionen von Azure Arc-aktivierten SQL Managed Instance-Instanzen](managed-instance-features.md)
+Erfahren Sie mehr über [Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen](managed-instance-features.md)

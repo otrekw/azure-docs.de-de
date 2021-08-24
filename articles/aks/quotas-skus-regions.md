@@ -5,12 +5,12 @@ description: Erfahren Sie mehr über Standardkontingente, eingeschränkte SKU-Gr
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 3e1e74834153584525d2093d2a1bb8ba8e991e5a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011463"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762306"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)
 
@@ -38,16 +38,34 @@ Jeder Knoten in einem AKS-Cluster umfasst eine feste Menge von Computeressourcen
 - Standard_A0
 - Standard_A1
 - Standard_A1_v2
+- Standard_B1ls
 - Standard_B1s
 - Standard_B1ms
 - Standard_F1
 - Standard_F1s
+- Standard_A2
+- Standard_D1
+- Standard_D1_v2
+- Standard_DS1
+- Standard_DS1_v2
 
 Weitere Informationen zu VM-Typen und ihren Computeressourcen finden Sie unter [Größen für virtuelle Computer in Azure][vm-skus].
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
 Die aktuelle Liste der Regionen, in denen Sie Cluster bereitstellen und ausführen können, finden Sie unter [Regionale Verfügbarkeit von AKS][region-availability].
+
+## <a name="cluster-configuration-presets-in-the-azure-portal"></a>Voreinstellungen für die Clusterkonfiguration im Azure-Portal
+
+Wenn Sie einen Cluster über das Azure-Portal erstellen, können Sie eine voreingestellte Konfiguration auswählen, um auf Grundlage Ihres Szenarios schnell Anpassungen vorzunehmen. Sie können jeden der voreingestellten Werte jederzeit ändern.
+
+| Voreinstellung           | BESCHREIBUNG                                                            |
+|------------------|------------------------------------------------------------------------|
+| Standard         | Optimal, wenn Sie nicht sicher sind, was Sie auswählen sollten. Funktioniert gut mit den meisten Anwendungen. |
+| Dev/Test         | Optimal zum Experimentieren mit AKS oder zum Bereitstellen einer Testanwendung. |
+| Kostenoptimiert   | Optimal zum Senken der Kosten für Produktionsworkloads, die Unterbrechungen tolerieren können. |
+| Batchverarbeitung | Optimal für Machine Learning-Workloads, rechenintensive und grafikintensive Workloads. Geeignet für Anwendungen, die schnelles Hoch- und Aufskalieren des Clusters erfordern. |
+| Gehärteter Zugriff  | Optimal für große Unternehmen, die vollständige Kontrolle über Sicherheit und Stabilität benötigen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

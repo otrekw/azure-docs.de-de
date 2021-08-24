@@ -3,12 +3,12 @@ title: 'Tutorial: Vergrößern oder Verkleinern von Clustern in einer privaten C
 description: In diesem Tutorial wird das Azure-Portal verwendet, um eine private Azure VMware Solution-Cloud zu skalieren.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 23fa38f41a1effab212896e59118978202ef17a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79368483c7edd3ebf6811eeca1853b4bcb4ecec9
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769289"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433992"
 ---
 # <a name="tutorial-expand-or-shrink-clusters-in-a-private-cloud"></a>Tutorial: Vergrößern oder Verkleinern von Clustern in einer privaten Cloud
 
@@ -28,11 +28,11 @@ Sie benötigen eine vorhandene private Cloud für dieses Tutorial. Wenn Sie noch
 
 1. Wählen Sie in der Übersicht einer vorhandenen privaten Cloud unter **Verwalten** die Option **Scale private cloud** (Private Cloud skalieren) aus. Wählen Sie als Nächstes **+ Add a cluster** (+ Cluster hinzufügen) aus.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="Auswählen von „Add a cluster“ (Cluster hinzufügen)" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="Screenshot: Hinzufügen eines Clusters zu einer privaten Azure VMware Solution-Cloud." border="true":::
 
 1. Wählen Sie auf der Seite **Cluster hinzufügen** mithilfe des Schiebereglers die Anzahl von Hosts aus. Wählen Sie **Speichern** aus.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Wählen Sie auf der Seite „Cluster hinzufügen“ mithilfe des Schiebereglers die Anzahl von Hosts aus. Wählen Sie „Speichern“ aus." border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="Screenshot: Konfigurieren eines neuen Clusters." border="true":::
 
    Die Bereitstellung des neuen Clusters beginnt.
 
@@ -40,11 +40,9 @@ Sie benötigen eine vorhandene private Cloud für dieses Tutorial. Wenn Sie noch
 
 1. Wählen Sie in der Übersicht einer vorhandenen privaten Cloud die Option **Scale private cloud** (Private Cloud skalieren) und anschließend das Stiftsymbol aus, um den Cluster zu bearbeiten.
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Auswählen von „Scale private cloud“ (Private Cloud skalieren) in der Übersicht" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="Screenshot, der zeigt, wo ein vorhandener Cluster bearbeitet werden soll." border="true":::
 
 1. Wählen Sie auf der Seite **Cluster bearbeiten** mithilfe des Schiebereglers die Anzahl von Hosts aus. Wählen Sie **Speichern** aus.
-
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="Wählen Sie auf der Seite „Cluster bearbeiten“ mithilfe des Schiebereglers die Anzahl von Hosts aus. Wählen Sie „Speichern“ aus." border="true":::
 
    Die Hosts werden dem Cluster hinzugefügt.
 

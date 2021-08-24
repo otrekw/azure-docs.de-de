@@ -4,12 +4,12 @@ description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Az
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890303"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345883"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -63,7 +63,7 @@ AKS baut auf einer Reihe von Azure-Infrastrukturressourcen auf, einschließlich 
 Um diese Architektur zu ermöglichen, umfass jede AKS-Bereitstellung zwei Ressourcengruppen:
 
 1. Die erste Ressourcengruppe wird von Ihnen erstellt. Diese Gruppe enthält nur die Kubernetes-Dienstressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe. *MC_myResourceGroup_myAKSCluster_eastus* ist ein Beispiel für die zweite Ressourcengruppe. Informationen dazu, wie Sie den Namen dieser zweiten Ressourcengruppe angeben, finden Sie im nächsten Abschnitt.
-1. Die zweite Ressourcengruppe, als *Knotenressourcengruppe* bezeichnet, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Standardmäßig lautet der Name der Knotenressourcengruppe z. B. *MC_myResourceGroup_myAKSCluster_eastus*. AKS löscht automatisch die Knotenressource, wenn der Cluster gelöscht wird. Sie sollte daher nur für Ressourcen verwendet werden, die den gleichen Lebenszyklus wie der Cluster haben.
+1. Die zweite Ressourcengruppe, als *Knotenressourcengruppe* bezeichnet, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Standardmäßig lautet der Name der Knotenressourcengruppe z. B. *MC_myResourceGroup_myAKSCluster_eastus*. AKS löscht automatisch die Knotenressourcengruppe, wenn der Cluster gelöscht wird. Sie sollte daher nur für Ressourcen verwendet werden, die den gleichen Lebenszyklus wie der Cluster haben.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kann ich einen eigenen Namen für die AKS-Knotenressourcengruppe angeben?
 
@@ -286,6 +286,11 @@ Das Problem wurde mit Kubernetes v1.20 behoben. Weitere Informationen finden Si
 ## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>Kann ich kryptografische FIPS-Bibliotheken bei Bereitstellungen in AKS verwenden?
 
 FIPS-fähige Knoten stehen zurzeit in der Vorschauversion für Linux-basierte Knotenpools zur Verfügung. Weitere Informationen finden Sie unter [Hinzufügen eines FIPS-fähigen Knotenpools (Vorschau)](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview).
+
+## <a name="can-i-configure-nsgs-with-aks"></a>Kann ich Netzwerksicherheitsgruppen mit AKS konfigurieren?
+
+Wenn Sie Ihr eigenes Subnetz bereitstellen, müssen Sie die Netzwerksicherheitsgruppen (NSG) verwalten, die diesem Subnetz zugeordnet sind. AKS ändert nur die Netzwerksicherheitsgruppen auf NIC-Ebene und keine der Netzwerksicherheitsgruppen, die diesem Subnetz zugeordnet sind. Wenn Sie CNI verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Bereichen der Knoten und Pods zulassen. Wenn Sie kubenet verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen dem CIDR der Knoten und Pods zulassen.
+
 
 <!-- LINKS - internal -->
 

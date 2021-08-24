@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90505ef7ed5219c4eda6e70ee549b1d99e0e7a5b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182154"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>Tutorial: Azure Active Directory-Integration mit TigerConnect Secure Messenger
 
-In diesem Tutorial erfahren Sie, wie Sie TigerConnect Secure Messenger in Azure Active Directory (Azure AD) integrieren.
-
-Die Integration von TigerConnect Secure Messenger in Azure AD bietet folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie TigerConnect Secure Messenger in Azure Active Directory (Azure AD) integrieren. Die Integration von TigerConnect Secure Messenger in Azure AD ermöglicht Ihnen Folgendes:
 
 * Sie können in Azure AD steuern, wer Zugriff auf TigerConnect Secure Messenger haben soll.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei TigerConnect Secure Messenger anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
-
-Details zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei TigerConnect Secure Messenger anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,53 +38,52 @@ Um die TigerConnect Secure Messenger-Integration in Azure AD konfigurieren zu k
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung und integrieren TigerConnect Secure Messenger in Azure AD.
 
 * TigerConnect Secure Messenger unterstützt **SP**-initiiertes einmaliges Anmelden.
-* Nach dem Konfigurieren von TigerConnect Secure Messenger können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="adding-tigerconnect-secure-messenger-from-the-gallery"></a>Hinzufügen von TigerConnect Secure Messenger über den Katalog
+## <a name="add-tigerconnect-secure-messenger-from-the-gallery"></a>Hinzufügen von TigerConnect Secure Messenger über den Katalog
 
 Zum Konfigurieren der Integration von TigerConnect Secure Messenger in Azure AD müssen Sie TigerConnect Secure Messenger aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **TigerConnect Secure Messenger** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **TigerConnect Secure Messenger** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-tigerconnect-secure-messenger"></a>Konfigurieren und Testen von Azure AD SSO für TigerConnect Secure Messenger
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei TigerConnect Secure Messenger mithilfe einer Testbenutzerin namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Verknüpfung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TigerConnect Secure Messenger eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei TigerConnect Secure Messenger müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei TigerConnect Secure Messenger müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Konfigurieren des einmaligen Anmeldens für TigerConnect Secure Messenger](#configure-tigerconnect-secure-messenger-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    * **[Erstellen eines TigerConnect Secure Messenger-Testbenutzers](#create-a-tigerconnect-secure-messenger-test-user)** , damit eine Benutzerin namens Britta Simon in TigerConnect Secure Messenger verfügbar ist, der mit der Azure AD-Benutzerin namens Britta Simon verknüpft ist.
+    1. **[Erstellen eines TigerConnect Secure Messenger-Testbenutzers](#create-a-tigerconnect-secure-messenger-test-user)** , damit eine Benutzerin namens Britta Simon in TigerConnect Secure Messenger verfügbar ist, der mit der Azure AD-Benutzerin namens Britta Simon verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei TigerConnect Secure Messenger zu konfigurieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **TigerConnect Secure Messenger** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **TigerConnect Secure Messenger** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Anmelde-URL** eine URL ein:
+    1. Geben Sie im Textfeld **Anmelde-URL** die URL ein:
 
        `https://home.tigertext.com`
 
     1. Geben Sie im Feld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
 
-       `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
+       `https://saml-lb.tigertext.me/v1/organization/<INSTANCE_ID>`
 
     > [!NOTE]
     > Der **Bezeichner (Entitäts-ID)**-Wert ist nicht korrekt. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für TigerConnect Secure Messenger](mailto:prosupport@tigertext.com), um den Wert zu erhalten. Sie können sich auch die Muster im Bereich **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -121,13 +116,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **TigerConnect Secure Messenger** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
@@ -142,18 +131,14 @@ In diesem Abschnitt wird in TigerConnect Secure Messenger eine Benutzerin namens
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Bei Auswahl von **TigerConnect Secure Messenger** im Portal „Meine Apps“ sollten Sie automatisch bei dem TigerConnect Secure Messenger-Abonnement angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für TigerConnect Secure Messenger weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Rufen Sie direkt die Anmelde-URL für TigerConnect Secure Messenger auf, und initiieren Sie den Anmeldeflow von dort aus.
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die TigerConnect Secure Messenger-Kachel klicken, werden Sie zur Anmelde-URL für TigerConnect Secure Messenger weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
-
-- [Ausprobieren von TigerConnect Secure Messenger mit Azure AD](https://aad.portal.azure.com/)
-
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+Nach dem Konfigurieren von TigerConnect Secure Messenger können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

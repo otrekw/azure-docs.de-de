@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 7f754aa8d454949c74ccd31e3f52423f755b2fa4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf589591ae1c4f9fa3dca2b16cc5382def0740e7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372392"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349916"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -58,11 +58,9 @@ Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten 
 ### <a name="node-security-patches"></a>Sicherheitspatches für Knoten
 
 #### <a name="linux-nodes"></a>Linux-Knoten
-Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Linux-Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate für Linux einen Neustart des Hosts erfordert, erfolgt der Neustart nicht automatisch. Sie haben folgende Möglichkeiten:
-* Starten Sie die Linux-Knoten manuell neu.
-* Verwenden Sie [Kured][kured], einen Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf eine Datei, die angibt, dass ein Neustart erforderlich ist. 
+Jeden Abend werden über die Sicherheitsupdate-Verteilungskanäle Sicherheitspatches für Linux-Knoten in AKS zur Verfügung gestellt. Dieses Verhalten wird im Rahmen der Bereitstellung von Knoten in einem AKS-Cluster automatisch konfiguriert. Neustarts werden für Knoten nicht automatisch ausgeführt, wenn ein Sicherheitspatch oder Kernelupdate es erfordern würde, um Störungen und eventuelle negative Einflüsse auf ausgeführte Workloads zu minimieren. Weitere Informationen zum Umgang mit Knotenneustarts finden Sie im Artikel [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)][aks-kured].
 
-Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
+Nächtliche Updates wenden Sicherheitsupdates auf das Betriebssystem auf dem Knoten an, aber das Knotenimage, das zum Erstellen von Knoten für Ihren Cluster verwendet wird, bleibt unverändert. Wenn Ihrem Cluster ein neuer Linux-Knoten hinzugefügt wird, wird das ursprüngliche Image zum Erstellen des Knotens verwendet. Dieser neue Knoten empfängt alle Sicherheits- und Kernelupdates, die während der automatischen Überprüfung jede Nacht verfügbar sind, bleibt jedoch ungepatcht, bis alle Überprüfungen und Neustarts abgeschlossen sind. Sie können das Knotenimageupgrade verwenden, um nach Knotenimages zu suchen und diese zu aktualisieren, die von Ihrem Cluster verwendet werden. Ausführlichere Informationen zu Knotenimageupgrades finden Sie unter [Upgrade für AKS-Knotenimages (Azure Kubernetes Service)][node-image-upgrade].
 
 #### <a name="windows-server-nodes"></a>Windows Server-Knoten
 
@@ -113,7 +111,7 @@ Für Konnektivität und Sicherheit bei lokalen Netzwerken können Sie Ihren AKS-
 
 Zum Filtern des Datenverkehrsflusses in virtuellen Netzwerken verwendet Azure Netzwerksicherheitsgruppen-Regeln. Diese Regeln bestimmen die Quell- und Ziel-IP-Adressbereiche, Ports und Protokolle, denen der Zugriff auf Ressourcen gewährt oder verweigert wird. Standardregeln werden erstellt, um TLS-Datenverkehr zum Kubernetes-API-Server zu ermöglichen. Sie erstellen Dienste mit Lastenausgleichsmodulen, Portzuordnungen oder Eingangsrouten. AKS ändert automatisch die Netzwerksicherheitsgruppe für den Datenverkehrsfluss.
 
-Wenn Sie Ihr eigenes Subnetz für Ihren AKS-Cluster bereitstellen, ändern Sie **nicht** die von AKS verwaltete Netzwerksicherheitsgruppe auf Subnetzebene. Erstellen Sie stattdessen weitere Netzwerksicherheitsgruppen auf Subnetzebene, um den Datenverkehrsfluss zu ändern. Stellen Sie sicher, dass diese nicht den für die Verwaltung des Clusters erforderlichen Datenverkehr beeinträchtigen, z. B. den Zugriff auf das Lastenausgleichsmodul, die Kommunikation mit der Steuerungsebene und den [ausgehenden][aks-limit-egress-traffic] Datenverkehr.
+Wenn Sie Ihr eigenes Subnetz für Ihren AKS-Cluster (egal ob Azure CNI oder Kubenet) bereitstellen, ändern Sie **nicht** die von AKS verwaltete Netzwerksicherheitsgruppe auf NIC-Ebene. Erstellen Sie stattdessen weitere Netzwerksicherheitsgruppen auf Subnetzebene, um den Datenverkehrsfluss zu ändern. Stellen Sie sicher, dass diese nicht den für die Verwaltung des Clusters erforderlichen Datenverkehr beeinträchtigen, z. B. den Zugriff auf das Lastenausgleichsmodul, die Kommunikation mit der Steuerungsebene und den [ausgehenden][aks-limit-egress-traffic] Datenverkehr.
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes-Netzwerkrichtlinie
 
@@ -166,6 +164,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-kured]: node-updates-kured.md
 [aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
@@ -174,3 +173,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [authorized-ip-ranges]: api-server-authorized-ip-ranges.md
 [private-clusters]: private-clusters.md
 [network-policy]: use-network-policies.md
+[node-image-upgrade]: node-image-upgrade.md

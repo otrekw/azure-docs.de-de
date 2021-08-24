@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 8e7d024d4d5b1e058e7a0b895faae5d2e7425f44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2e6918e6cdc6eb87fe80e9110183ed5a0a3693b
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472125"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106711"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Tutorial: Bereitstellen mehrerer X.509-Geräte mit Registrierungsgruppen
 
@@ -248,6 +248,10 @@ So erstellen Sie die Gerätezertifikate, die vom Zwischenzertifikat in der Kette
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Überprüfen der Eigentümerschaft des Stammzertifikats
 
+> [!NOTE]
+> Ab dem 1. Juli 2021 können Sie die automatische Überprüfung des Zertifikats über die [automatische Überprüfung](how-to-verify-certificates.md#automatic-verification-of-intermediate-or-root-ca-through-self-attestation) durchführen.
+>
+
 1. Verwenden Sie die Anleitung unter [Registrieren des öffentlichen Teils eines X.509-Zertifikats und Abrufen eines Prüfcodes](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code), um das Stammzertifikat (`./certs/azure-iot-test-only.root.ca.cert.pem`) hochzuladen und einen Prüfcode aus DPS abzurufen.
 
 2. Führen Sie nach dem Erhalt eines Prüfcodes von DPS für das Stammzertifikat den folgenden Befehl aus dem Arbeitsverzeichnis Ihres Zertifikatskripts aus, um ein Verifizierungszertifikat zu generieren.
@@ -328,7 +332,7 @@ Ihre Signaturzertifikate werden auf dem Windows-basierten Gerät jetzt als vertr
     | **Nachweistyp** | Wählen Sie die Option **Zertifikat** aus. |
     | **IoT Edge-Gerät** | Wählen Sie **False** aus. |
     | **Zertifikattyp** | Wählen Sie **Zwischenzertifikat** aus. |
-    | **Primäres Zertifikat (PEM- oder CER-Datei)** | Navigieren Sie zum zuvor erstellten Zwischenzertifikat ( *./certs/azure-iot-test-only.intermediate.cert.pem*). |
+    | **Primäres Zertifikat (PEM- oder CER-Datei)** | Navigieren Sie zum zuvor erstellten Zwischenzertifikat ( *./certs/azure-iot-test-only.intermediate.cert.pem*). Dieses Zwischenzertifikat wird vom Stammzertifikat signiert, das Sie bereits hochgeladen und überprüft haben. DPS vertraut diesem Stammzertifikat, sobald es überprüft wurde. DPS kann überprüfen, ob das mit dieser Registrierungsgruppe bereitgestellte Zwischenzertifikat tatsächlich vom vertrauenswürdigen Stammzertifikat signiert ist. DPS vertraut jedem Zwischenzertifikat, das tatsächlich von diesem Stammzertifikat signiert wurde, und kann daher untergeordnete Zertifikate, die vom Zwischenzertifikat signiert wurden, überprüfen und vertrauen.  |
 
 
 ## <a name="configure-the-provisioning-device-code"></a>Konfigurieren des Codes für die Bereitstellung des Geräts

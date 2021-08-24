@@ -2,13 +2,13 @@
 title: Sicherheitsübersicht
 description: Sicherheitsinformationen zu Azure Arc-fähigen Servern.
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 113eaaf779409cd77e66b253074146dfaa0ff0ab
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98117026"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390217"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Sicherheitsübersicht über Azure Arc für Server
 
@@ -16,7 +16,7 @@ In diesem Artikel werden die Sicherheitskonfiguration und entsprechenden Aspekte
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-Jeder Azure Arc-fähige Server hat eine verwaltete Identität als Teil einer Ressourcengruppe innerhalb eines Azure-Abonnements, wobei diese Identität den Server darstellt, der lokal oder in einer anderen Cloudumgebung ausgeführt wird. Der Zugriff auf diese Ressource wird durch die standardmäßige [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) gesteuert. Auf der Seite [**Zugriffssteuerung (IAM)**](../../role-based-access-control/role-assignments-portal.md) im Azure-Portal können Sie überprüfen, wer Zugriff auf Ihren Azure Arc-fähigen Server hat.
+Jeder Azure Arc-fähige Server hat eine verwaltete Identität als Teil einer Ressourcengruppe innerhalb eines Azure-Abonnements, wobei diese Identität den Server darstellt, der lokal oder in einer anderen Cloudumgebung ausgeführt wird. Der Zugriff auf diese Ressource wird durch die standardmäßige [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) gesteuert. Auf der Seite [**Zugriffssteuerung (IAM)** ](../../role-based-access-control/role-assignments-portal.md) im Azure-Portal können Sie überprüfen, wer Zugriff auf Ihren Azure Arc-fähigen Server hat.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Zugriffssteuerung bei Azure Arc-fähigem Server" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
@@ -56,4 +56,6 @@ Der Azure Connected Machine-Agent verwendet die Authentifizierung mit öffentli
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen, technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+* Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+
+* Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.

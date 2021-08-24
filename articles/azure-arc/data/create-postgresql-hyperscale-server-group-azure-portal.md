@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 905bfa7093fc21dfe472742e03d938cbfcaee43a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 382e4e855b0a4925cfaae2f7746587a7ab2fd951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355979"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group-from-the-azure-portal"></a>Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung über das Azure-Portal
 
@@ -39,8 +39,8 @@ Wenn Sie es vorziehen, dies auszuprobieren, ohne selbst eine vollständige Umgeb
 
 Anforderung: Bevor Sie eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitstellen, die Sie über das Azure-Portal betreiben, müssen Sie zunächst einen Azure Arc-Datencontroller bereitstellen, der für die Verwendung des Konnektivitätsmodus *Direkt* konfiguriert ist.
 Führen Sie zum Bereitstellen eines Arc-Datencontrollers die Anweisungen in den folgenden Artikeln aus:
-1. [Bereitstellen des Datencontrollers: Direkter Verbindungsmodus (Voraussetzungen)](deploy-data-controller-direct-mode-prerequisites.md)
-1. [Bereitstellen eines Azure Arc-Datencontrollers | Direkter Verbindungsmodus](deploy-data-controller-direct-mode.md)
+1. [Bereitstellen des Datencontrollers: Direkter Verbindungsmodus (Voraussetzungen)](create-data-controller-direct-prerequisites.md)
+1. [Bereitstellen eines Azure Arc-Datencontrollers im direkten Konnektivitätsmodus über das Azure-Portal](create-data-controller-direct-azure-portal.md)
 
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>Vorläufiger und temporärer Schritt nur für OpenShift-Benutzer
@@ -73,7 +73,7 @@ Nachdem Sie einen zum direkten Konnektivitätsmodus fähigen Arc-Datencontroller
 
 ### <a name="option-2-deploy-from-the-azure-database-for-postgresql-deployment-option-page"></a>Option 2: Bereitstellen über die Azure Database for PostgreSQL-Bereitstellungsoptionenseite
 1. Öffnen Sie folgende URL in einem Browser: https://ms.portal.azure.com/#create/Microsoft.PostgreSQLServer
-2. Klicken Sie unten rechts auf die Kachel. Ihr Titel lautet: PostgreSQL Hyperscale mit Azure Arc-Unterstützung (Vorschauversion)
+2. Klicken Sie unten rechts auf die Kachel. Ihr Titel lautet: PostgreSQL Hyperscale mit Azure Arc-Unterstützung (Vorschauversion).
 3. Füllen Sie das Formular wie beim Bereitstellen einer anderen Azure-Ressource aus.
 
 ### <a name="option-3-deploy-from-the-azure-arc-center"></a>Option 3: Bereitstellen über das Azure Arc-Center
@@ -100,14 +100,14 @@ Nachdem Sie einen zum direkten Konnektivitätsmodus fähigen Arc-Datencontroller
 - **Speicherklassen**, die von der Servergruppe verwendet werden sollen. Es ist wichtig, dass Sie die Speicherklasse direkt beim Bereitstellen einer Servergruppe festlegen, da diese nach der Bereitstellung nicht mehr geändert werden kann. Um die Speicherklasse nach der Bereitstellung zu ändern, müssten Sie die Daten extrahieren, Ihre Servergruppe löschen, eine neue Servergruppe erstellen und die Daten importieren. Sie können die Speicherklassen angeben, die für die Daten, Protokolle und Sicherungen verwendet werden sollen. Wenn Sie keine Speicherklassen angeben, werden standardmäßig die Speicherklassen des Datencontrollers verwendet.
     - Um die Speicherklasse für die Daten festzulegen, geben Sie den Parameter `--storage-class-data` oder `-scd` gefolgt vom Namen der Speicherklasse an.
     - Um die Speicherklasse für die Protokolle festzulegen, geben Sie den Parameter `--storage-class-logs` oder `-scl` gefolgt vom Namen der Speicherklasse an.
-    - Um die Speicherklasse für die Sicherungen festzulegen: In dieser Vorschauversion von PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt es je nach Sicherungs-/Wiederherstellungsvorgängen, die Sie ausführen möchten, zwei Möglichkeiten zum Festlegen von Speicherklassen. Wir arbeiten daran, diese Funktion zu vereinfachen. Sie geben entweder eine Speicherklasse oder eine Volumeanspruchseinbindung an. Bei einer Volumeanspruchseinbindung handelt es sich um ein durch einen Doppelpunkt getrenntes Paar, das aus einem Anspruch auf ein vorhandenes persistentes Volume (Persistent Volume Claim, PVC) im selben Namespace und dem Volumetyp (sowie je nach Volumetyp optionalen Metadaten) besteht. Das persistente Volume wird in jedem Pod für die PostgreSQL-Servergruppe eingebunden.
+    - Um die Speicherklasse für die Sicherungen festzulegen: In dieser Vorschauversion von PostgreSQL Hyperscale mit Azure Arc-Unterstützung gibt es je nach Sicherungs-/Wiederherstellungsvorgängen, die Sie ausführen möchten, zwei Möglichkeiten zum Festlegen von Speicherklassen. Wir arbeiten daran, diese Funktion zu vereinfachen. Sie geben entweder eine Speicherklasse oder eine Volumeanspruchseinbindung an. Bei einer Volumeanspruchseinbindung handelt es sich um ein durch einen Doppelpunkt getrenntes Paar, das aus einem Anspruch auf ein vorhandenes persistentes Volume (Persistent Volume Claim, PVC) im selben Namespace und dem Volumetyp (sowie je nach Volumetyp optionalen Metadaten) besteht. Das persistente Volume wird in jedem Pod für die PostgreSQL-Servergruppe eingebunden.
         - Wenn Sie nur vollständige Datenbankwiederherstellungen ausführen möchten, geben Sie den Parameter `--storage-class-backups` oder `-scb` gefolgt vom Namen der Speicherklasse an.
-        - Wenn Sie sowohl vollständige Datenbankwiederherstellungen als auch Zeitpunktwiederherstellungen ausführen möchten, geben Sie den Parameter `--volume-claim-mounts` oder `-vcm` gefolgt vom Namen eines Volumeanspruchs und eines Volumetyps an.
+        - Wenn Sie sowohl vollständige Datenbankwiederherstellungen als auch Zeitpunktwiederherstellungen ausführen möchten, geben Sie den Parameter `--volume-claim-mounts` oder `--volume-claim-mounts` gefolgt vom Namen eines Volumeanspruchs und eines Volumetyps an.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Verbinden Sie sich mit Ihrem Azure Arc-fähigen PostgreSQL Hyperscale: lesen Sie [Verbindungsendpunkte und Verbindungsstrings abrufen](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
+- Verbinden mit Ihrem PostgreSQL Hyperscale mit Azure Arc-Unterstützung: Lesen Sie hierzu [Verbindungsendpunkte und Verbindungsstrings abrufen](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
 - Lesen Sie die Konzepte und Schrittanleitungen zu Azure Database for PostgreSQL Hyperscale, um Ihre Daten auf mehrere PostgreSQL Hyperscale-Knoten zu verteilen und so von einer besseren Leistung zu profitieren:
     * [Knoten und Tabellen](../../postgresql/concepts-hyperscale-nodes.md)
     * [Festlegen des Anwendungstyps](../../postgresql/concepts-hyperscale-app-type.md)
@@ -117,7 +117,7 @@ Nachdem Sie einen zum direkten Konnektivitätsmodus fähigen Arc-Datencontroller
     * [Entwerfen einer Datenbank mit mehreren Mandanten](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [Entwerfen eines Dashboards für Echtzeitanalysen](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \* Überspringen Sie die Abschnitte **Anmelden am Azure-Portal** und **Erstellen einer Azure Database for PostgreSQL-Instanz für Hyperscale (Citus)** in den oben aufgeführten Dokumenten. Implementieren Sie die restlichen Schritte in Ihrer Azure Arc-Bereitstellung. Diese Abschnitte sind speziell für den PaaS-Dienst „Azure Database for PostgreSQL Hyperscale (Citus)“ in der Azure-Cloud vorgesehen. Die anderen Abschnitte der Dokumente sind jedoch direkt auf Ihre Azure Arc-fähige PostgreSQL Hyperscale-Instanz übertragbar.
+    > \* Überspringen Sie die Abschnitte **Anmelden am Azure-Portal** und **Erstellen einer Azure Database for PostgreSQL-Instanz für Hyperscale (Citus)** in den oben aufgeführten Dokumenten. Implementieren Sie die restlichen Schritte in Ihrer Azure Arc-Bereitstellung. Diese Abschnitte sind speziell für den PaaS-Dienst „Azure Database for PostgreSQL Hyperscale (Citus)“ in der Azure-Cloud vorgesehen. Die anderen Abschnitte der Dokumente sind jedoch direkt auf Ihre Instanz von PostgreSQL Hyperscale mit Azure Arc-Unterstützung übertragbar.
 
 - [Aufskalieren der PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung](scale-out-in-postgresql-hyperscale-server-group.md)
 - [Speicherkonfiguration und Kubernetes-Speicherkonzepte](storage-configuration.md)

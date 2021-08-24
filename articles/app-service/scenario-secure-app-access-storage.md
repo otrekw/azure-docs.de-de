@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a37b189ae98332b2d6c557b6bdfad98266002e9e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833902"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290018"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutorial: Zugreifen auf Azure-Speicher über eine Web-App
 
@@ -172,11 +172,9 @@ Sie müssen Ihrer Web-App Zugriff auf das Speicherkonto gewähren, bevor Sie Blo
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, um für Ihre Web-App Zugriff zu gewähren. Wählen Sie im linken Bereich die Option **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** aus. Es wird eine Liste mit den Benutzern angezeigt, die Zugriff auf das Speicherkonto haben. Nun möchten Sie eine Rollenzuweisung einem Roboter hinzufügen (der App Service-Instanz, die Zugriff auf das Speicherkonto benötigt). Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, um für Ihre Web-App Zugriff zu gewähren. Wählen Sie im linken Bereich die Option **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** aus. Es wird eine Liste mit den Benutzern angezeigt, die Zugriff auf das Speicherkonto haben. Nun möchten Sie eine Rollenzuweisung einem Roboter hinzufügen (der App Service-Instanz, die Zugriff auf das Speicherkonto benötigt). Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen.
 
-Wählen Sie unter **Rolle** die Option **Mitwirkender an Storage-Blobdaten** aus, um Ihrer Web-App Lesezugriff auf Speicherblobs zu gewähren. Wählen Sie unter **Zugriff zuweisen zu** die Option **App Service** aus. Wählen Sie unter **Abonnement** Ihr Abonnement aus. Wählen Sie anschließend den App-Dienst aus, für den Sie Zugriff gewähren möchten. Wählen Sie **Speichern** aus.
-
-:::image type="content" alt-text="Screenshot: Bildschirm „Rollenzuweisung hinzufügen“" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+Weisen Sie die Rolle **Mitwirkender an Storage-Blobdaten** dem **App Service** im Abonnementbereich zu.  Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 Ihre Web-App verfügt jetzt über Zugriff auf Ihr Speicherkonto.
 

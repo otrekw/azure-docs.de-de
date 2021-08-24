@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 6e389cf58b5761d4069cf8a8b1e336d58db7a787
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff65a473391f8a2435b20b88cacb6a0e18b90ba3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459294"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360737"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
@@ -53,7 +53,7 @@ SecurityEvent
 Die oben gezeigte Abfrage gibt in keiner bestimmten Reihenfolge 10 Ergebnisse aus der *SecurityEvent*-Tabelle zurück. Dies ist eine gängige Methode, um eine Tabelle zu untersuchen und sich mit deren Struktur und Inhalt vertraut zu machen. Werfen wir einen Blick darauf, wie sie erstellt wird:
 
 * Die Abfrage beginnt mit dem Tabellennamen *SecurityEvent*, dem Teil, der den Gültigkeitsbereich der Abfrage definiert.
-* Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls in der Eingabe vom folgenden Befehl. Sie können eine beliebige Anzahl von durch senkrechte Striche getrennten Elementen hinzufügen.
+* Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls ist die Eingabe des folgenden Befehls. Sie können eine beliebige Anzahl von durch senkrechte Striche getrennten Elementen hinzufügen.
 * Nach dem senkrechten Strich folgt der **take**-Befehl, der eine bestimmte Anzahl von beliebigen Datensätzen aus der Tabelle zurückgibt.
 
 Die Abfrage könnte sogar ohne Hinzufügen von `| take 10` ausgeführt werden. Dies wäre zwar eine gültige Abfrage, könnte jedoch bis zu 10.000 Ergebnisse zurückgeben.
@@ -89,7 +89,7 @@ SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-Die Standardsortierreihenfolge ist absteigend. Daher wird das **desc**-Argument in der Regel ausgelassen. Die Ausgabe sieht wie folgt aus:
+Die Standardsortierreihenfolge ist absteigend. Daher wird das **desc**-Argument in der Regel ausgelassen. Die Ausgabe sieht dann wie folgt aus:
 
 ![Die ersten 10 Ergebnisse](media/get-started-queries/top10.png)
 

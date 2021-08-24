@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivi
 ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3cf4b75d3e2ade6803d2950fa13ee2e01d99de6d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cbcd4185507423d488f1ffc348740647881fda81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751911"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457387"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -48,7 +48,7 @@ Um die Azure-Befehlszeilenschnittstelle für die Abfrage von Azure Resource Grap
 
 ## <a name="run-your-first-resource-graph-query"></a>Ausführen Ihrer ersten Resource Graph-Abfrage
 
-Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück.
+Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, können Sie eine einfache mandantenbasierte Resource Graph-Abfrage ausprobieren. Die Abfrage gibt die ersten fünf Azure-Ressourcen mit dem **Namen** und **Ressourcentyp** der einzelnen Ressourcen zurück. Verwenden Sie für eine Abfrage nach [Verwaltungsgruppe](../management-groups/overview.md) oder Abonnement die Argumente `--managementgroups` oder `--subscriptions`.
 
 1. Führen Sie Ihre erste Azure Resource Graph-Abfrage mit der `graph`-Erweiterung und dem `query`-Befehl aus:
 

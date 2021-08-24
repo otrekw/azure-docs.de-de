@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef92a0f8c560dd20edf8711fba36cdf005ef15be
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554189"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443692"
 ---
 # <a name="confidential-computing-on-azure"></a>Confidential Computing unter Azure
 
@@ -85,7 +85,7 @@ Erstellen Sie Anwendungen, die auf Confidential Computing-IaaS-Angeboten in Azu
 ### <a name="azure-security"></a>Azure Security 
 Gewährleisten Sie die Sicherheit Ihrer Workloads durch Überprüfungsmethoden und hardwaregebundene Schlüsselverwaltung. 
 - Nachweis: [Microsoft Azure Attestation (Vorschau)](../attestation/overview.md)
-- Schlüsselverwaltung: Verwaltetes HSM (Vorschauversion)
+- Schlüsselverwaltung: Verwaltetes HSM
 
 ### <a name="develop"></a>Entwickeln
 Beginnen Sie mit der Verwendung/Entwicklung enklavefähiger Anwendungen, und stellen Sie vertrauliche Algorithmen über das Framework für vertrauliches Rückschließen bereit.

@@ -6,40 +6,50 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/25/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: b7740fa1f6a54dcfcc1181dddedcdd5fdb50402c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 0140166ac173e51f9b9d4e9617de3b70d24e1474
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378226"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215059"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Tutorial: Nachweis des Besitzes eines ZS-Zertifikats
 
-Nachdem Sie das Zertifikat der Stamm Zertifizierungsstelle oder das Zertifikat der untergeordneten Zertifizierungsstelle in ihren IOT Hub hochgeladen haben, müssen Sie nachweisen, dass Sie das Zertifikat besitzen:
+Wenn Sie das Zertifikat der Stammzertifizierungsstelle oder das Zertifikat der untergeordneten Zertifizierungsstelle in Ihren IoT-Hub hochladen, können Sie es automatisch überprüfen lassen, oder manuell bestätigen, dass Sie das Zertifikat besitzen.
+
+## <a name="verify-certificate-automatically"></a>Automatische Überprüfung des Zertifikats 
 
 1. Navigieren Sie im Azure-Portalzu IoTHub und wählen Sie **Einstellungen > Zertifikate**.
 
 2. Wählen Sie **Hinzufügen** aus, um ein neues ZS-Zertifikat hinzuzufügen.
 
-3. Geben Sie im Feld **Zertifikat Name** einen anzeigen Amen ein, und wählen Sie das hinzu zufügende PEM-Zertifikat aus.
+3. Geben Sie im Feld **Zertifikatname** einen Anzeigenamen ein, und wählen Sie das hinzuzufügende PEM-Zertifikat aus.
 
-4. Wählen Sie **Speichern** aus. Ihr Zertifikat wird in der Zertifikat Liste mit dem Status nicht überprüft **angezeigt.** Bei diesem Überprüfungs Vorgang wird nachgewiesen, dass Sie über das Zertifikat verfügen.
+4. Um das Zertifikat automatisch zu überprüfen, aktivieren Sie das Kontrollkästchen neben **Zertifikatstatus beim Hochladen auf überprüft festlegen**.
 
-5. Wählen Sie das Zertifikat aus, um das Dialogfeld **Zertifikat Details** anzuzeigen.
+  :::image type="content" source="media/tutorial-x509-prove-possession/skip-pop.png" alt-text="Screenshot, der zeigt, wo sich das Kontrollkästchen zum Überspringen des Besitznachweises befindet":::
 
-6. Wählen Sie im Dialogfeld **Überprüfungs Code generieren** aus.
+5. Wählen Sie **Speichern** aus.  Ihr Zertifikat wird in der Zertifikatliste mit dem Status **Überprüft** angezeigt.
+
+## <a name="verify-certificate-manually-after-upload"></a>Manuelles Überprüfen des Zertifikats nach dem Upload
+
+1. Wenn Sie das Zertifikat während des Uploads nicht automatisch überprüfen möchten, wird Ihr Zertifikat in der Zertifikatliste mit dem Status **Nicht überprüft** angezeigt. 
+
+2. Wählen Sie das Zertifikat aus, um das Dialogfeld **Zertifikat Details** anzuzeigen.
+
+3. Wählen Sie im Dialogfeld **Überprüfungs Code generieren** aus.
 
   :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="{Zertifikatdetails Dialogfeld}":::
 
-7. Kopieren Sie den Prüfcode in die Zwischenablage. Sie müssen den Überprüfungs Code als Zertifikat Antragsteller festlegen. Wenn der Überprüfungs Code beispielsweise 75b86466da34d2b04c0c4c9557a119687adae7d4732bddb3 ist, fügen Sie diesen als Betreff des Zertifikats hinzu, wie im nächsten Schritt gezeigt.
+4. Kopieren Sie den Prüfcode in die Zwischenablage. Sie müssen den Überprüfungs Code als Zertifikat Antragsteller festlegen. Wenn der Überprüfungs Code beispielsweise 75b86466da34d2b04c0c4c9557a119687adae7d4732bddb3 ist, fügen Sie diesen als Betreff des Zertifikats hinzu, wie im nächsten Schritt gezeigt.
 
-8. Es gibt drei Möglichkeiten, ein Überprüfungs Zertifikat zu generieren:
+5. Es gibt drei Möglichkeiten, ein Überprüfungs Zertifikat zu generieren:
 
     * Wenn Sie das von Microsoft bereitgestellte PowerShell-Skript verwenden, führen Sie aus, `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` um ein Zertifikat mit dem Namen zu erstellen `VerifyCert4.cer`. Weitere Informationen finden Sie unter [Verwenden der von Microsoft bereitgestellten Skripts](tutorial-x509-scripts.md).
 
@@ -77,6 +87,6 @@ Nachdem Sie das Zertifikat der Stamm Zertifizierungsstelle oder das Zertifikat d
 
     Weitere Informationen finden Sie unter [Verwenden von OpenSSL zum Erstellen von Test Zertifikaten](tutorial-x509-openssl.md).
 
-10. Wählen Sie in der Ansicht **Zertifikat Details** das neue Zertifikat aus.
+6. Wählen Sie in der Ansicht **Zertifikat Details** das neue Zertifikat aus.
 
-11. Klicken Sie nach dem Hochladen des Zertifikats auf **überprüfen**. Der Status des Zertifizierungsstellen Zertifikats sollte in **überprüft** geändert werden.
+7. Klicken Sie nach dem Hochladen des Zertifikats auf **überprüfen**. Der Status des Zertifizierungsstellen Zertifikats sollte in **überprüft** geändert werden.

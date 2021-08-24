@@ -5,24 +5,24 @@ description: Hier erfahren Sie, wie Sie mithilfe von Postman Anforderungen signi
 author: ProbablePrime
 services: azure-communication-services
 ms.author: rifox
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7691bb6ffd93c3c87872659417f91de1599a81e8
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044293"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767154"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Tutorial: Signieren und Senden von Anforderungen mit Postman
-In diesem Tutorial wird Postman eingerichtet und dazu verwendet, eine HTTP-Anforderung an Azure Communication Services (ACS) zu senden. Am Ende dieses Tutorials haben Sie mithilfe von ACS und Postman erfolgreich eine SMS gesendet und können mit Postman weitere APIs in ACS erkunden.
+In diesem Tutorial wird Postman eingerichtet und dazu verwendet, eine HTTP-Anforderung an Azure Communication Services zu senden. Am Ende dieses Tutorials werden Sie erfolgreich eine SMS-Nachricht mit Communication Services und Postman gesendet haben. Sie können dann mit Postman andere APIs in Azure Communication Services untersuchen.
 
 Dieses Tutorial umfasst Folgendes:
 > [!div class="checklist"]
 > * Herunterladen von Postman
 > * Einrichten von Postman zum Signieren von HTTP-Anforderungen
-> * Senden von Anforderungen an die SMS-API von ACS, um eine Nachricht zu senden
+> * Senden einer Anforderung an die SMS-API von Communication Services, eine Nachricht zu senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,15 +46,15 @@ Anforderungen können von Postman auf verschiedene Arten strukturiert werden. Im
 
 Klicken Sie anschließend auf „Create new Collection“ (Neue Sammlung erstellen), um den Erstellungsprozess zu starten. Im mittleren Bereich von Postman wird eine neue Registerkarte geöffnet. Geben Sie der Sammlung einen Namen Ihrer Wahl. In diesem Beispiel hat die Sammlung den Namen „ACS“:
 
-:::image type="content" source="media/postman/acs-collection.png" alt-text="Postman mit geöffneter ACS-Sammlung und hervorgehobenem Namen der Sammlung":::
+:::image type="content" source="media/postman/acs-collection.png" alt-text="Postman mit geöffneter Communication Services-Sammlung und hervorgehobenem Namen der Sammlung.":::
 
 Nachdem Sie Ihre Sammlung erstellt und benannt haben, können Sie sie konfigurieren.
 
 ### <a name="adding-collection-variables"></a>Hinzufügen von Sammlungsvariablen
 
-Für die Authentifizierung sowie zur Vereinfachung von Anforderungen geben wir in der neu erstellten ACS-Sammlung zwei Sammlungsvariablen an. Diese Variablen sind für alle Anforderungen in Ihrer ACS-Sammlung verfügbar. Öffnen Sie die Registerkarte „Variables“ (Variablen) der Sammlung, um mit der Erstellung von Variablen zu beginnen.
+Für die Authentifizierung sowie zur Vereinfachung von Anforderungen geben wir in der neu erstellten Communication Services-Sammlung zwei Sammlungsvariablen an. Diese Variablen sind für alle Anforderungen in Ihrer Communication Services-Sammlung verfügbar. Öffnen Sie die Registerkarte „Variables“ (Variablen) der Sammlung, um mit der Erstellung von Variablen zu beginnen.
 
-:::image type="content" source="media/postman/variable-stab.png" alt-text="Postman mit der Registerkarte „Variables“ (Variablen) einer ACS-Sammlung":::
+:::image type="content" source="media/postman/variable-stab.png" alt-text="Postman mit der Registerkarte „Variablen“ einer Communication Services-Sammlung.":::
 
 Erstellen Sie auf der Registerkarte der Sammlung zwei Variablen:
 - „key“ (Schlüssel): Bei dieser Variablen handelt es sich um einen Ihrer Schlüssel auf der Schlüsselseite von Azure Communication Services im Azure-Portal. Beispiel: `oW...A==`.
@@ -62,17 +62,17 @@ Erstellen Sie auf der Registerkarte der Sammlung zwei Variablen:
 
 Geben Sie diese Werte in die Spalte „Initial Value“ (Anfangswert) des Variablenbildschirms ein. Klicken Sie nach der Eingabe auf die Schaltfläche „Persist All“ (Alle speichern), die sich auf der rechten Seite direkt über der Tabelle befindet. Nach ordnungsgemäßer Konfiguration sollte der Postman-Bildschirm in etwa wie folgt aussehen:
 
-:::image type="content" source="media/postman/acs-variables-set.png" alt-text="Postman mit korrekt eingerichteten Variablen einer ACS-Sammlung":::
+:::image type="content" source="media/postman/acs-variables-set.png" alt-text="Postman mit den ordnungsgemäß festgelegten Variablen einer Communication Services-Sammlung.":::
 
 Weitere Informationen zu Variablen finden Sie in der [entsprechenden Postman-Dokumentation](https://learning.postman.com/docs/sending-requests/variables).
 
 ### <a name="creating-a-pre-request-script"></a>Erstellen eines Voranforderungsskripts
 
-Als Nächstes erstellen wir in Postman ein Voranforderungsskript. Ein Voranforderungsskript ist ein Skript, das vor jeder Anforderung in Postman ausgeführt wird, um Anforderungsparameter für Sie zu ändern oder anzupassen. Wir verwenden dieses Skript, um die HTTP-Anforderungen zu signieren, damit sie von ACS autorisiert werden können. Weitere Informationen zu den Signaturanforderungen finden Sie in [unserem Leitfaden zur Authentifizierung](/rest/api/communication/authentication).
+Als Nächstes erstellen wir in Postman ein Voranforderungsskript. Ein Voranforderungsskript ist ein Skript, das vor jeder Anforderung in Postman ausgeführt wird, um Anforderungsparameter für Sie zu ändern oder anzupassen. Wir verwenden dieses Skript, um die HTTP-Anforderungen zu signieren, damit sie von Azure Communication Services autorisiert werden können. Weitere Informationen zu den Signaturanforderungen finden Sie in [unserem Leitfaden zur Authentifizierung](/rest/api/communication/authentication).
 
 Dieses Skript wird innerhalb der Sammlung erstellt, sodass es für jede Anforderung in der Sammlung ausgeführt wird. Klicken Sie hierzu auf der Registerkarte „Collection“ (Sammlung) auf die Unterregisterkarte „Pre-request Script“ (Voranforderungsskript).
 
-:::image type="content" source="media/postman/start-pre-request-script.png" alt-text="Postman mit ausgewählter Unterregisterkarte „Pre-request Script“ (Voranforderungsskript) einer ACS-Sammlung":::
+:::image type="content" source="media/postman/start-pre-request-script.png" alt-text="Postman mit Auswahl der Unterregisterkarte „Voranforderungsskript“ einer Communication Services-Sammlung.":::
 
 Auf dieser Unterregisterkarte können Sie ein Voranforderungsskript erstellen, indem Sie es im Textbereich darunter eingeben. Es ist unter Umständen einfacher, das Skript zunächst in einem vollwertigen Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/) zu schreiben und es anschließend einzufügen. In diesem Tutorial werden die einzelnen Komponenten des Skripts näher erläutert. Falls Sie das Skript einfach nur in Postman kopieren und loslegen möchten, überspringen Sie diesen Abschnitt. Beginnen wir nun damit, das Skript zu schreiben.
 
@@ -117,7 +117,7 @@ const url = pm.request.url.toString().replace('{{endpoint}}','');
 const stringToSign = pm.request.method + '\n' + url + '\n' + dateStr + ';' + hostStr + ';' + hashedBodyStr;
 ```
 
-Zum Schluss müssen wir diese Zeichenfolge noch mit unserem ACS-Schlüssel signieren und der Anforderung im Header `Authorization` hinzufügen:
+Zum Schluss müssen wir diese Zeichenfolge noch mit unserem Communication Services-Schlüssel signieren und der Anforderung im Header `Authorization` hinzufügen:
 
 ```JavaScript
 // Decode our access key from previously created variables, into bytes from base64.
@@ -182,13 +182,13 @@ Drücken Sie nach der Eingabe STRG+S, oder klicken Sie auf die Schaltfläche „
 
 ## <a name="creating-a-request-in-postman"></a>Erstellen einer Anforderung in Postman
 
-Nachdem nun alles eingerichtet ist, können wir in Postman eine ACS-Anforderung erstellen. Klicken Sie zunächst auf das Plussymbol (+) neben der ACS-Sammlung:
+Nachdem nun alles eingerichtet ist, können wir in Postman eine Communication Services-Anforderung erstellen. Klicken Sie zunächst auf das Plussymbol (+) neben der Communication Services-Sammlung:
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Plusschaltfläche in Postman":::
 
 Dadurch wird in Postman eine neue Registerkarte für die Anforderung erstellt. Als Nächstes müssen wir uns um die Konfiguration kümmern. Wir senden eine Anforderung an die API zum Senden von SMS. Hilfreiche Informationen zu dieser API finden Sie in [dieser Dokumentation](/rest/api/communication/sms/send). Gehen Sie zum Konfigurieren der Anforderung von Postman wie folgt vor:
 
-Legen Sie zunächst den Anforderungstyp auf `POST` fest, und geben Sie `{{endpoint}}/sms?api-version=2021-03-07` in das Feld für die Anforderungs-URL ein. Diese URL enthält die zuvor von uns erstellte Variable `endpoint`, um sie automatisch an Ihre ACS-Ressource zu senden.
+Legen Sie zunächst den Anforderungstyp auf `POST` fest, und geben Sie `{{endpoint}}/sms?api-version=2021-03-07` in das Feld für die Anforderungs-URL ein. Diese URL enthält die zuvor von uns erstellte Variable `endpoint`, um sie automatisch an Ihre Communication Services-Ressource zu senden.
 
 :::image type="content" source="media/postman/post-request-and-url.png" alt-text="Postman-Anforderung mit dem Typ „POST“ und korrekt festgelegter URL":::
 
@@ -212,15 +212,15 @@ Geben Sie im Textbereich darunter einen Anforderungstext im folgenden Format ein
 }
 ```
 
-Für den Wert „from“ (Von) müssen Sie wie bereits erwähnt über das ACS-Portal [eine Telefonnummer beschaffen](../quickstarts/telephony-sms/get-phone-number.md). Geben Sie sie ohne Leerzeichen und mit vorangestellter Landeskennzahl ein. Beispiel: `+15555551234`. Unter „message“ (Nachricht) können Sie eine beliebige Nachricht eingeben, die Sie senden möchten (beispielsweise `Hello from ACS`). Der Wert „to“ (An) muss ein Telefon sein, auf das Sie Zugriff haben und das SMS-Nachrichten empfangen kann. Verwenden Sie beispielsweise Ihr eigenes Mobiltelefon.
+Für den Wert „from“ (Von) müssen Sie wie bereits erwähnt über das Azure Communication Services-Portal [eine Telefonnummer beschaffen](../quickstarts/telephony-sms/get-phone-number.md). Geben Sie sie ohne Leerzeichen und mit vorangestellter Landeskennzahl ein. Beispiel: `+15555551234`. Unter „message“ (Nachricht) können Sie eine beliebige Nachricht eingeben, die Sie senden möchten (beispielsweise `Hello from ACS`). Der Wert „to“ (An) muss ein Telefon sein, auf das Sie Zugriff haben und das SMS-Nachrichten empfangen kann. Verwenden Sie beispielsweise Ihr eigenes Mobiltelefon.
 
-Nach Abschluss der Eingabe muss die Anforderung in der zuvor erstellten ACS-Sammlung gespeichert werden. Dadurch wird sichergestellt, dass die zuvor erstellten Variablen und das zuvor erstellte Voranforderungsskript angewendet werden. Klicken Sie hierzu in der rechten oberen Ecke des Anforderungsbereichs auf die Schaltfläche „Save“ (Speichern).
+Nach Abschluss der Eingabe muss die Anforderung in der zuvor erstellten Communication Services-Sammlung gespeichert werden. Dadurch wird sichergestellt, dass die zuvor erstellten Variablen und das zuvor erstellte Voranforderungsskript angewendet werden. Klicken Sie hierzu in der rechten oberen Ecke des Anforderungsbereichs auf die Schaltfläche „Save“ (Speichern).
 
 :::image type="content" source="media/postman/postman-save.png" alt-text="Schaltfläche „Save“ (Speichern) für eine Postman-Anforderung":::
 
-Daraufhin wird ein Dialogfenster angezeigt, in dem Sie zur Angabe des Namens und des Speicherorts der Anforderung aufgefordert werden. Sie können einen beliebigen Namen verwenden. Wichtig ist jedoch, dass Sie in der unteren Hälfte des Dialogfelds Ihre ACS-Sammlung auswählen:
+Daraufhin wird ein Dialogfenster angezeigt, in dem Sie zur Angabe des Namens und des Speicherorts der Anforderung aufgefordert werden. Sie können einen beliebigen Namen verwenden. Wichtig ist jedoch, dass Sie in der unteren Hälfte des Dialogfelds Ihre Communication Services-Sammlung auswählen:
 
-:::image type="content" source="media/postman/postman-save-to-acs.png" alt-text="Postman-Dialogfeld zum Speichern der Anforderung mit ausgewählter ACS-Sammlung":::
+:::image type="content" source="media/postman/postman-save-to-acs.png" alt-text="Das Postman-Dialogfeld „Anforderung speichern“ mit ausgewählter Communication Services Sammlung.":::
 
 ## <a name="sending-a-request"></a>Senden einer Anforderung
 
@@ -228,17 +228,17 @@ Nachdem nun alles eingerichtet ist, sollten Sie die Anforderung senden können u
 
 :::image type="content" source="media/postman/postman-send.png" alt-text="Postman-Anforderung mit hervorgehobener Schaltfläche „Send“ (Senden)":::
 
-Wenn alles funktioniert, sollte nun die Antwort von ACS (Statuscode 202) angezeigt werden:
+Wenn alles funktioniert, sollte nun die Antwort von Communication Services (Statuscode 202) angezeigt werden:
 
 :::image type="content" source="media/postman/postman-202.png" alt-text="Erfolgreich gesendete Postman-Anforderung mit Statuscode 202":::
 
-Bei dem Mobiltelefon, zu dem die Nummer gehört, die Sie im Wert „to“ (An) angegeben haben, sollte außerdem eine SMS eingegangen sein. Sie verfügen nun über ein funktionierendes Postman-Setup, das mit ACS kommunizieren und SMS-Nachrichten senden kann.
+Bei dem Mobiltelefon, zu dem die Nummer gehört, die Sie im Wert „to“ (An) angegeben haben, sollte außerdem eine SMS eingegangen sein. Sie verfügen nun über eine funktionsfähige Postman-Konfiguration, die mit Azure Communication Services kommunizieren und SMS-Nachrichten senden kann.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkunden von ACS-APIs](/rest/api/communication/)
+> [Erkunden von Azure Communication Services-APIs](/rest/api/communication/)
 > [Weitere Informationen zur Authentifizierung](/rest/api/communication/authentication)
 > [Weitere Informationen zu Postman](https://learning.postman.com/)
 

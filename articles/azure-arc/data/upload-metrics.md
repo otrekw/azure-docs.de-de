@@ -7,24 +7,20 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56eed522dc28b29f24e97a94a03e848d5cf58898
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575686"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345940"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Hochladen von Metriken in Azure Monitor
 
 Sie können in regelmäßigen Abständen Überwachungsmetriken exportieren und diese dann in Azure hochladen. Beim Exportieren und Hochladen von Daten werden auch die Ressourcen des Datencontrollers, der verwalteten SQL-Instanz und der PostgreSQL Hyperscale-Servergruppe in Azure erstellt und aktualisiert.
 
-> [!NOTE] 
-> Während der Vorschauphase fallen keine Kosten für die Verwendung Azure Arc-fähiger Datendienste an.
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -113,14 +109,17 @@ Zum Hochladen von Metriken für Ihre Azure Arc-fähigen verwalteten SQL-Instanze
  
 1. Exportieren Sie alle Metriken in die angegebene Datei:
 
-   ```console
-   azdata arc dc export --type metrics --path metrics.json
+> [!NOTE]
+> Das Exportieren von Nutzungs-/Abrechnungsinformationen, Metriken und Protokollen mithilfe des Befehls `az arcdata dc export` erfordert vorerst die Umgehung der SSL-Überprüfung.  Sie werden aufgefordert, die SSL-Überprüfung zu umgehen, oder Sie können die Umgebungsvariable `AZDATA_VERIFY_SSL=no` festlegen, um Aufforderungen zu vermeiden.  Derzeit gibt es keine Möglichkeit, ein SSL-Zertifikat für die Datencontroller-Export-API zu konfigurieren.
+
+   ```azurecli
+   az arcdata dc export --type metrics --path metrics.json
    ```
 
 2. Laden Sie die Metriken in Azure Monitor hoch:
 
-   ```console
-   azdata arc dc upload --path metrics.json
+   ```azurecli
+   az arcdata dc upload --path metrics.json
    ```
 
    >[!NOTE]
@@ -131,8 +130,8 @@ Zum Hochladen von Metriken für Ihre Azure Arc-fähigen verwalteten SQL-Instanze
 
 Wenn beim Exportieren Fehler vom Typ „Failure to get metrics“ (Fehler beim Abrufen der Metriken) angezeigt werden, überprüfen Sie, ob die Datensammlung auf `true` festgelegt ist, indem Sie den folgenden Befehl ausführen:
 
-```console
-azdata arc dc config show
+```azurecli
+az arcdata dc config show
 ```
 
 Sehen Sie sich den Abschnitt „security“ an.
@@ -174,9 +173,9 @@ Wenn Sie Metriken und Protokolle nach einem Zeitplan hochladen möchten, können
 
 Fügen Sie in Ihrem bevorzugten Text-Editor oder Code-Editor das folgende Skript in eine Datei ein, und speichern Sie die Datei als ausführbare Skriptdatei, z. B. als SH-Datei (Linux/Mac) oder als CMD-, BAT- oder PS1-Datei.
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type metrics --path metrics.json --force
+az arcdata dc upload --path metrics.json
 ```
 
 Ausführen der Skriptdatei
@@ -197,7 +196,7 @@ Sie können auch einen Auftragsplaner wie cron oder den Windows-Taskplaner bzw. 
 
 Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge – sogenannte CRUD-Vorgänge (Create, Read, Update, Delete) – in Azure Arc-fähigen Datendiensten werden zu Abrechnungs- und Überwachungszwecken protokolliert. Hintergrunddienste überwachen diese CRUD-Vorgänge und berechnen den Verbrauch entsprechend. Die tatsächliche Berechnung der Nutzung oder des Verbrauchs erfolgt nach einem Zeitplan und wird im Hintergrund durchgeführt. 
 
-Während der Vorschauphase erfolgt dieser Vorgang in der Nacht. Allgemein wird empfohlen, die Nutzungsdaten nur einmal täglich hochzuladen. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
+Laden Sie die Nutzung nur einmal pro Tag hoch. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
 
 Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
 

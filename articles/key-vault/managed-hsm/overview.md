@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/01/2021
+ms.date: 06/21/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: bccb9427f29f9982ca70f2551c48e462cfa16e00
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815322"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112522067"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Was ist verwaltetes HSM von Azure Key Vault?
 
-Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der es Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit **FIPS 140-2 Level 3** validiert sind. Informationen zu den Preisen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/) im Abschnitt „Verwaltete HSM-Pools“. 
+Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfügbarer und standardkonformer Einzelmandanten-Clouddienst, der Ihnen ermöglicht, kryptografische Schlüssel für Ihre Cloudanwendungen über HSMs zu schützen, die mit **FIPS 140-2 Level 3** validiert sind. Informationen zu den Preisen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/) im Abschnitt „Verwaltete HSM-Pools“. 
 
 ## <a name="why-use-managed-hsm"></a>Gründe für die Verwendung von verwaltetem HSM
 
@@ -34,7 +34,8 @@ Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfü
 
 - **Zentrale Schlüsselverwaltung:** Verwalten Sie kritische Schlüssel mit hohem Wert für Ihre gesamte Organisation an einem zentralen Ort. Dank präziser schlüsselspezifischer Berechtigungen können Sie den Zugriff auf die einzelnen Schlüssel gemäß dem Prinzip der möglichst geringen Zugriffsberechtigungen steuern.
 - **Isolierte Zugriffssteuerung:** Mit dem Zugriffssteuerungsmodell der lokalen RBAC für verwaltete HSMs haben designierte HSM-Clusteradministratoren die volle Kontrolle über die HSMs und damit sogar Vorrang vor Verwaltungsgruppen-, Abonnement- und Ressourcengruppenadministratoren.
-- **FIPS 140-2 Level 3-zertifizierte HSMs:** Schützen Sie Ihre Daten, und erfüllen Sie Complianceanforderungen mit FIPS 140-2 Level 3-zertifizierten HSMs (Federal Information Protection Standard). Verwaltete HSMs verwenden HSM-Adapter von Marvell LiquidSecurity.
+- **Private Endpunkte**: Verwenden Sie private Endpunkte, um von Ihrer Anwendung, die in einem virtuellen Netzwerk ausgeführt wird, eine sichere und private Verbindung mit dem verwalteten HSM herzustellen.
+- **FIPS 140-2 Level 3-zertifizierte HSMs**: Schützen Sie Ihre Daten, und erfüllen Sie Complianceanforderungen mit FIPS 140-2 Level 3-zertifizierten HSMs (Federal Information Protection Standard). Verwaltete HSMs verwenden HSM-Adapter von Marvell LiquidSecurity.
 - **Überwachen und Überprüfen:** Profitieren Sie von der vollständigen Azure Monitor-Integration. Erhalten Sie umfassende Protokolle aller Aktivitäten über Azure Monitor. Verwenden Sie Azure Log Analytics für Analysen und Warnungen.
 - **Datenresidenz:** Von verwaltetem HSM werden Kundendaten nicht außerhalb der Region gespeichert oder verarbeitet, in der der Kunde die HSM-Instanz bereitstellt.
 
@@ -54,3 +55,6 @@ Verwaltetes HSM von Azure Key Vault ist ein vollständig verwalteter, hochverfü
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM erstellen und aktivieren.
 - Informieren Sie sich über [bewährte Methoden bei der Verwendung verwalteter HSMs von Azure Key Vault](best-practices.md).
+- [Verwaltetes HSM: Status](https://status.azure.com)
+- [SLA für Verwaltetes HSM](https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/)
+- [Regionale Verfügbarkeit von verwaltetem HSM](https://azure.microsoft.com/global-infrastructure/services/?products=key-vault)
