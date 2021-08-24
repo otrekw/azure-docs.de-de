@@ -2,23 +2,23 @@
 title: 'Erstellen einer JavaScript-Funktion mit Visual Studio Code: Azure Functions'
 description: Erfahren Sie, wie Sie eine JavaScript-Funktion erstellen und dann das lokale Node.js-Projekt für serverloses Hosting in Azure Functions unter Verwendung der Azure Functions-Erweiterung in Visual Studio Code veröffentlichen.
 ms.topic: quickstart
-ms.date: 11/03/2020
+ms.date: 07/01/2021
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-node_uiex
-ms.openlocfilehash: f22a847be5fc750cb3a3d9e6736d08940f30e4fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09c028d71d7cef4b83220a7c93a24c6bc3c256d4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954461"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732575"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer JavaScript-Funktion in Azure mit Visual Studio Code
 
 [!INCLUDE [functions-language-selector-quickstart-vs-code](../../includes/functions-language-selector-quickstart-vs-code.md)]
 
-In diesem Artikel wird mithilfe von Visual Studio Code eine JavaScript-Funktion erstellt, die auf HTTP-Anforderungen reagiert. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt.
+Verwenden Sie Visual Studio Code zum Erstellen einer JavaScript-Funktion, die auf HTTP-Anforderungen reagiert. Testen Sie den Code lokal, und stellen Sie ihn anschließend in der serverlosen Umgebung von Azure Functions bereit.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -30,7 +30,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/): Active LTS- und Maintenance LTS-Versionen (Empfehlung: 10.14.1). Verwenden Sie den Befehl `node --version`, um Ihre Version zu überprüfen.  
++ [Node.js 10.14.1+](https://nodejs.org/). Verwenden Sie den Befehl `node --version`, um Ihre Version zu überprüfen.  
 
 + [Visual Studio Code](https://code.visualstudio.com/) auf einer der [unterstützten Plattformen](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
 
@@ -51,17 +51,15 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie nach entsprechender Aufforderung Folgendes ein:
 
-    + **Select a language for your function project** (Wählen Sie eine Sprache für Ihr Funktionsprojekt aus.): Wählen Sie die Option `JavaScript`.
+    |Prompt|Auswahl|
+    |--|--|
+    |**Auswählen einer Sprache für Ihr Funktionsprojekt**|Klicken Sie auf die Option `JavaScript`.|
+    |**Auswählen einer Vorlage für die erste Funktion Ihres Projekts**|Klicken Sie auf die Option `HTTP trigger`.|
+    |**Angeben eines Funktionsnamens**|Geben Sie `HttpExample`ein.|
+    |**Autorisierungsstufe**|Wählen Sie `Anonymous` aus, damit Ihr Funktionsendpunkt von jedem Benutzer aufgerufen werden kann. Weitere Informationen zur Autorisierungsstufe finden Sie unter [Autorisierungsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys).|
+    |**Auswählen, wie Sie Ihr Projekt öffnen möchten**|Klicken Sie auf die Option `Add to workspace`.|
 
-    + **Select a template for your project's first function** (Wählen Sie die Vorlage für die erste Funktion Ihres Projekts aus.): Wählen Sie die Option `HTTP trigger`.
-
-    + **Provide a function name** (Geben Sie einen Funktionsnamen an.): Geben Sie `HttpExample`ein.
-
-    + **Autorisierungsstufe:** Wählen Sie `Anonymous` aus, damit Ihr Funktionsendpunkt von jedem Benutzer aufgerufen werden kann. Weitere Informationen zur Autorisierungsstufe finden Sie unter [Autorisierungsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys).
-
-    + **Select how you would like to open your project** (Wählen Sie aus, wie Sie Ihr Projekt öffnen möchten.): Wählen Sie die Option `Add to workspace`.
-
-1. Auf der Grundlage dieser Informationen generiert Visual Studio Code ein Azure Functions-Projekt mit einem HTTP-Trigger. Die lokalen Projektdateien können im Explorer angezeigt werden. Weitere Informationen zu den erstellten Dateien finden Sie unter [Generierte Projektdateien](functions-develop-vs-code.md#generated-project-files). 
+    Auf der Grundlage dieser Informationen generiert Visual Studio Code ein Azure Functions-Projekt mit einem HTTP-Trigger. Die lokalen Projektdateien können im Explorer angezeigt werden. Weitere Informationen zu den erstellten Dateien finden Sie unter [Generierte Projektdateien](functions-develop-vs-code.md#generated-project-files). 
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -69,12 +67,14 @@ Nachdem Sie sich vergewissert haben, dass die Funktion auf Ihrem lokalen Compute
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
-## <a name="publish-the-project-to-azure"></a>Veröffentlichen des Projekts in Azure
+<a name="Publish the project to Azure"></a>
+
+## <a name="deploy-the-project-to-azure"></a>Bereitstellen des Projekts in Azure
 
 In diesem Abschnitt erstellen Sie eine Funktions-App sowie zugehörige Ressourcen in Ihrem Azure-Abonnement und stellen anschließend Ihren Code bereit. 
 
 > [!IMPORTANT]
-> Beim Veröffentlichen in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben. 
+> Bei der Bereitstellung in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben. 
 
 
 1. Wählen Sie auf der Aktivitätsleiste das Azure-Symbol und anschließend im Bereich **Azure: Funktionen** die Schaltfläche **Deploy to function app...** (In Funktions-App bereitstellen...) aus.
@@ -83,27 +83,22 @@ In diesem Abschnitt erstellen Sie eine Funktions-App sowie zugehörige Ressource
 
 1. Geben Sie nach entsprechender Aufforderung Folgendes ein:
 
-    + **Wählen Sie einen Ordner aus:** Wählen Sie einen Ordner in Ihrem Arbeitsbereich aus, oder navigieren Sie zu einem Ordner, der Ihre Funktions-App enthält. Diese Option wird nicht angezeigt, wenn Sie bereits eine gültige Funktions-App geöffnet haben.
-
-    + **Wählen Sie das Abonnement aus:** Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur über ein Abonnement verfügen, wird diese Option nicht angezeigt.
-
-    + **Select Function App in Azure:** (Wählen Sie die Funktions-App in Azure aus:) Wählen Sie die Option `+ Create new Function App`. (Wählen Sie nicht die Option `Advanced` aus, diese wird im vorliegenden Artikel nicht behandelt.)
-
-    + **Enter a globally unique name for the function app:** (Geben Sie einen global eindeutigen Namen für die Funktions-App ein:) Geben Sie einen Namen ein, der in einem URL-Pfad gültig ist. Der eingegebene Name wird überprüft, um sicherzustellen, dass er in Azure Functions eindeutig ist.
-
-    + **Select a runtime:** (Wählen Sie eine Runtime aus:) Wählen Sie die lokal ausgeführte Node.js-Version aus. Sie können den Befehl `node --version` ausführen, um Ihre Version zu überprüfen.
-
-    + **Wählen Sie einen Speicherort für neue Ressourcen aus:**  Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus, um eine bessere Leistung zu erzielen. 
+    |Prompt| Auswahl|
+    |--|--|
+    |**Auswählen einer Funktions-App in Azure**|Klicken Sie auf die Option `+ Create new Function App`. (Wählen Sie nicht die Option `Advanced` aus, diese wird im vorliegenden Artikel nicht behandelt.)|
+    |**Eingeben eines global eindeutigen Namens für die Funktions-App**|Geben Sie einen Namen ein, der in einem URL-Pfad gültig ist. Der eingegebene Name wird überprüft, um sicherzustellen, dass er in Azure Functions eindeutig ist.|
+    |**Auswählen einer Runtime**|Wählen Sie die lokal ausgeführte Node.js-Version aus. Sie können den Befehl `node --version` ausführen, um Ihre Version zu überprüfen.|
+    |**Auswählen eines Standorts für neue Ressourcen**|Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus, um eine bessere Leistung zu erzielen.|
 
     Die Erweiterung zeigt den Status einzelner Ressourcen an, während diese in Azure im Benachrichtigungsbereich erstellt werden.
 
     :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Benachrichtigung über die Erstellung von Azure-Ressourcen":::
 
-1. Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Ressourcen erstellt, deren Namen auf dem Namen Ihrer Funktions-App basieren:
+    Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Ressourcen erstellt, deren Namen auf dem Namen Ihrer Funktions-App basieren:
 
     [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
-    Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. 
+1. Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. 
 
     [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
 
@@ -113,7 +108,80 @@ In diesem Abschnitt erstellen Sie eine Funktions-App sowie zugehörige Ressource
 
 [!INCLUDE [functions-vs-code-run-remote](../../includes/functions-vs-code-run-remote.md)]
 
-[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+## <a name="change-the-code-and-redeploy-to-azure"></a>Ändern des Codes und erneutes Bereitstellen in Azure
+
+1. Wählen Sie in der Ansicht VSCode-Explorer die Datei `./HttpExample/index.js` aus. 
+1. Ersetzen Sie die Datei durch den folgenden Code, um ein JSON-Objekt zu erstellen und zurückzugeben.
+
+    ```javascript
+    module.exports = async function (context, req) {
+        
+        try {
+            context.log('JavaScript HTTP trigger function processed a request.');
+    
+            // Read incoming data
+            const name = req.query.name;
+            const sport = req.query.sport;
+        
+            // fail if incoming data is required
+            if (!name || !sport) {
+    
+                context.res = {
+                    status: 400
+                };
+                return;
+            }
+            
+            // Add or change code here
+            const message = `${name} likes ${sport}`;
+        
+            // Construct response
+            const responseJSON = {
+                "name": name,
+                "sport": sport,
+                "message": message,
+                "success": true
+            }
+    
+            context.res = {
+                // status: 200, /* Defaults to 200 */
+                body: responseJSON,
+                contentType: 'application/json'
+            };
+        } catch(err) {
+            context.res = {
+                status: 500
+            };
+        }
+    }
+    ```
+1. [Erneutes lokales Ausführen der Funktions-App](#run-the-function-locally)
+1. Ändern Sie in der Eingabeaufforderung **Anforderungstext eingeben** den Text der Anforderungsnachricht in { „name“: „Tom“,„sport“:„basketball“ }. Drücken Sie die EINGABETASTE, um diese Anforderungsnachricht an Ihre Funktion zu senden.
+1. Zeigen Sie die Antwort in der Benachrichtigung an:
+
+    ```json
+    {
+      "name": "Tom",
+      "sport": "basketball",
+      "message": "Tom likes basketball",
+      "success": true
+    }
+    ```
+
+1. [Erneutes Bereitstellen der Funktion](#deploy-the-project-to-azure) in Azure.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Nutzen Sie die folgende Tabelle, um die häufigsten Probleme zu beheben, die bei der Verwendung dieser Schnellstartanleitung auftreten.
+
+|Problem|Lösung|
+|--|--|
+|Sie können kein lokales Funktionsprojekt erstellen?|Stellen Sie sicher, dass die [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) installiert ist.|
+|Die Funktion kann nicht lokal ausgeführt werden?|Stellen Sie sicher, dass die [Azure Functions Core Tools](functions-run-local.md?tabs=windows%2Ccsharp%2Cbash) installiert sind. <br/>Sollten bei der Ausführung unter Windows Probleme auftreten, vergewissern Sie sich, dass die Standardshell des Terminals für Visual Studio Code nicht auf „WSL Bash“ festgelegt ist.|
+|Können Sie die Funktion nicht in Azure bereitstellen?|Überprüfen Sie die Ausgabe auf Fehlerinformationen. Das Glockensymbol in der unteren rechten Ecke ist eine weitere Möglichkeit zum Anzeigen der Ausgabe. Haben Sie die Veröffentlichung in einer vorhandenen Funktions-App durchgeführt? Diese Aktion überschreibt den Inhalt dieser App in Azure.|
+|Konnte die cloudbasierte Funktions-App nicht ausgeführt werden?|Denken Sie daran, die Abfragezeichenfolge für das Senden von Parametern zu verwenden.|
+
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code-extension.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -123,6 +191,7 @@ Sie haben [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) gen
 > [Herstellen einer Verbindung mit einer Datenbank](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-javascript)
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit einer Azure Storage-Warteschlange](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-javascript)
+> [Sichern Ihrer Funktion](security-concepts.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

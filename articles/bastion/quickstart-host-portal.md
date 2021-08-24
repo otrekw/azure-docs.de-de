@@ -1,23 +1,23 @@
 ---
-title: 'Schnellstart: Konfigurieren von Azure Bastion und Herstellen einer Verbindung mit einer VM über eine private IP-Adresse und einen Browser'
+title: 'Schnellstart: Konfigurieren von Bastion über VM-Einstellungen'
 titleSuffix: Azure Bastion
-description: Hier erfahren Sie, wie Sie einen Azure Bastion-Host über einen virtuellen Computer erstellen und mit Ihrem Browser über eine private IP-Adresse eine sichere Verbindung mit der VM herstellen können.
+description: Hier erfahren Sie, wie Sie einen Azure Bastion-Host über VM-Einstellungen erstellen und mit Ihrem Browser über eine private IP-Adresse eine sichere Verbindung mit der VM herstellen können.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 06/29/2021
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: 67211215b3dac9ad8774dc4e3c67a869bd031646
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 7598b2908365061ae789ce2ffafb6088dc5c2a68
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111265"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733356"
 ---
-# <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Schnellstart: Herstellen einer sicheren Verbindung mit einer VM über einen Browser und eine private IP-Adresse
+# <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Schnellstart: Konfigurieren von Azure Bastion über VM-Einstellungen
 
-Sie können mit Ihrem Browser mithilfe des Azure-Portals und Azure Bastion eine Verbindung mit einem virtuellen Computer (VM) herstellen. In diesem Schnellstartartikel wird gezeigt, wie Sie Azure Bastion auf der Grundlage Ihrer VM-Einstellungen konfigurieren. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Wenn Sie die öffentliche IP-Adresse auf Ihrer VM für keine anderen Zwecke benötigen, können Sie sie entfernen. Stellen Sie anschließend über das Portal mithilfe der privaten IP-Adresse eine Verbindung mit Ihrer VM her. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
+In diesem Artikel erfahren Sie, wie Sie Azure Bastion basierend auf Ihren VM-Einstellungen im Azure-Portal konfigurieren und dann über eine private IP-Adresse eine Verbindung mit einer VM herstellen können. Nachdem der Dienst bereitgestellt wurde, ist die RDP/SSH-Umgebung für alle virtuellen Computer des jeweiligen virtuellen Netzwerks verfügbar. Die VM benötigt weder öffentliche IP-Adressen, Clientsoftware, Agents noch eine spezielle Konfiguration. Wenn Sie die öffentliche IP-Adresse auf Ihrer VM für keine anderen Zwecke benötigen, können Sie sie entfernen. Stellen Sie anschließend über das Portal mithilfe der privaten IP-Adresse eine Verbindung mit Ihrer VM her. Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
 
 ## <a name="prerequisites"></a><a name="prereq"></a>Voraussetzungen
 
@@ -62,7 +62,8 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 | --- | --- |
 | Name | VNet1-bastion |
 | + Subnetzname | AzureBastionSubnet |
-| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNet-Adressraums mit einer /27-Subnetzmaske. Beispiel: 10.1.1.0/27.  |
+| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNet-Adressraums mit einer Subnetzmaske von „/27“ oder mehr.<br> Beispiel: 10.1.1.0/26.  |
+| Tarif/SKU | Standard |
 | Öffentliche IP-Adresse |  Neu erstellen |
 | Name der öffentlichen IP-Adresse | VNet1-ip  |
 | SKU der öffentlichen IP-Adresse |  Standard  |
@@ -72,7 +73,9 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 
 Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den folgenden Schritten erstellen Sie direkt über Ihre VM einen Bastionhost im Azure-Portal. Wenn Sie einen Host über eine VM erstellen, werden verschiedene Einstellungen automatisch entsprechend Ihres virtuellen Computers und/oder Ihres virtuellen Netzwerks ausgefüllt.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
+
+1. Melden Sie sich beim Azure-Portal an.
 1. Navigieren Sie zur VM, mit der Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**.
 
    :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="Screenshot der VM-Einstellungen" lightbox="./media/quickstart-host-portal/vm-connect.png":::
@@ -83,25 +86,26 @@ Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den 
 
    :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Screenshot von „Bastion verwenden“":::
 
-1. Konfigurieren Sie die Werte auf der Seite **Verbindung herstellen über Azure Bastion**.
+1. **Schritt 1**: Auf der Seite **Verbindung über Azure Bastion herstellen** werden die Werte vorausgefüllt, weil Sie den Bastionhost direkt auf der VM erstellen.
 
-   * **Schritt 1**: Die Werte werden vorab aufgefüllt, weil Sie den Bastionhost direkt auf der VM erstellen.
+   :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="Screenshot der in Schritt 1 vorausgefüllten Einstellungen" lightbox="./media/quickstart-host-portal/create-step-1.png":::
 
-   * **Schritt 2**: Der Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe „/27“ oder mehr (/26, /25 usw.) verfügen.
+1. **Schritt 2**: Konfigurieren Sie die Subnetz-Werte auf der Seite **Verbindung herstellen über Azure Bastion**. Der AzureBastionSubnet-Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe „/27“ oder mehr (/26, /25 usw.) verfügen. Es wird empfohlen, „/26“ zu verwenden, damit die Hostskalierung uneingeschränkt möglich ist. Nachdem Sie die Konfiguration dieser Einstellung abgeschlossen haben, klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
 
-   :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Screenshot der Erstellung des Subnetzes für Bastion":::
+     :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Screenshot der Erstellung des Subnetzes für Bastion":::
 
-1. Klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
 1. Nach dem Erstellen des Subnetzes geht die Seite automatisch zu **Schritt 3** über. Verwenden Sie für Schritt 3 die folgenden Werte:
 
    * **Name**: Name des Bastionhosts.
+   * **Ebene:** Die Ebene ist die SKU. Wählen Sie für diese Übung in der Dropdown-Liste **Standard** aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
+   * **Anzahl der Instanzen:** Dies ist die Einstellung für die Hostskalierung. Verwenden Sie den Schieberegler für die Konfiguration. Mit der Basic-Tarif-SKU sind Sie auf zwei Instanzen beschränkt und können diese Einstellung nicht konfigurieren. Weitere Informationen finden Sie unter [Konfigurationseinstellungen - Hostskalierung](configuration-settings.md#instance). Die Anzahl der Instanzen befindet sich in der Vorschauversion und basiert auf der Standard-SKU. In dieser Schnellstartanleitung können Sie die gewünschte Anzahl der Instanzen auswählen. Berücksichtigen Sie dabei jedoch die [Preis](https://azure.microsoft.com/pricing/details/azure-bastion)-Überlegungen für Skalierungseinheiten.
    * **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen**.
    * **Name der öffentlichen IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
    * **SKU der öffentlichen IP-Adresse**: Vorkonfiguriert als **Standard**.
    * **Zuweisung**: Vorkonfiguriert als **Statisch**. Sie können keine dynamische Zuweisung für Azure Bastion verwenden.
    * **Ressourcengruppe:** dieselbe Ressourcengruppe wie die VM
 
-   :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="Screenshot von Schritt 3":::
+   :::image type="content" source="./media/quickstart-host-portal/create-step-3.png" alt-text="Screenshot von Schritt 3":::
 1. Nachdem Sie die Werte angegeben haben, wählen Sie **Azure Bastion mit Standardwerten erstellen** aus. Azure überprüft Ihre Einstellungen und erstellt anschließend den Host. Die Erstellung und Bereitstellung des Hosts und der zugehörigen Ressourcen dauert ungefähr fünf Minuten.
 
 ## <a name="remove-vm-public-ip-address"></a><a name="remove"></a>Entfernen einer öffentlichen IP-Adresse einer VM
@@ -115,7 +119,7 @@ Nachdem Bastion im virtuellen Netzwerk bereitgestellt wurde, wird die Seite „V
 1. Geben Sie den Benutzernamen und das Kennwort für Ihren virtuellen Computer ein. Wählen Sie dann **Verbinden** aus.
 
    :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="Screenshot: Dialogfeld „Verbindung über Azure Bastion herstellen“":::
-1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet. 
+1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet. Klicken Sie auf **Zulassen**, wenn Sie nach Berechtigungen für die Zwischenablage gefragt werden. Auf diese Weise können Sie die Remotepfeile der Zwischenablage auf der linken Bildschirmseite verwenden.
 
    * Wenn Sie eine Verbindung herstellen, sieht der Desktop der VM möglicherweise anders aus als im Beispielscreenshot. 
    * Tastenkombinationen während der Verbindung mit einer VM weisen möglicherweise ein anderes Verhalten als Tastenkombinationen auf einem lokalen Computer auf. Wenn Sie beispielsweise über einen Windows-Client eine Verbindung mit einer Windows-VM hergestellt haben, ist STRG+ALT+ENDE die Tastenkombination für STRG+ALT+ENTF auf einem lokalen Computer. Wenn Sie dieselbe Aktion bei einer Verbindung von einem Mac aus mit einer Windows-VM ausführen möchten, lautet die Tastenkombination Fn+STRG+ALT+RÜCKTASTE.

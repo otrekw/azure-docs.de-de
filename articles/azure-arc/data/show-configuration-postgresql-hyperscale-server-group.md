@@ -1,6 +1,6 @@
 ---
 title: Anzeigen der Konfiguration einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Anzeigen der Konfiguration einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
@@ -8,21 +8,21 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 12631adea948c6a59f935ba409dcc925268c6319
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 727c792daa20c392a87f7c57100b72ae79a971f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355206"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Anzeigen der Konfiguration einer Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
 In diesem Artikel wird erläutert, wie Sie die Konfiguration Ihrer Servergruppe(n) anzeigen. Dies geschieht durch die Beantwortung einiger Fragen, die Sie sich möglicherweise bereits selbst gestellt haben. Manchmal gibt es mehrere gültige Antworten. In diesem Artikel werden die gängigsten oder nützlichsten Artikel erläutert. Diese Fragen werden nach Themen gruppiert:
 
 - Aus Sicht von Kubernetes
-- aus Sicht eines Azure Arc-fähigen Datendiensts
+- Aus Sicht eines Azure Arc-fähigen Datendiensts
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -155,12 +155,12 @@ Verwenden Sie einen der folgenden Befehle.
 
    Jede Servergruppe wird auf 3 Knoten/Pods ausgeführt: 1 Koordinator und 2 Worker.
 
-- **Mit azdata:**
+- **Mit Azure CLI (az):**
 
 Führen Sie den folgenden Befehl aus. Die Ausgabe zeigt ähnliche Informationen wie kubectl an:
 
-   ```console
-   azdata arc postgres server list
+   ```azurecli
+   az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
    `output
    Name        State    Workers
@@ -281,18 +281,18 @@ Benennen wir einige bestimmte relevante Punkte in der Beschreibung der oben geze
    >  State:              Ready
    > ```
 
-**Mit azdata:**
+**Mit Azure CLI (az):**
 
 Das allgemeine Format des Befehls lautet:
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name>  --k8s-namespace <namespace> --use-k8s
 ```
 
 Zum Beispiel:
 
-```console
-azdata arc postgres server show -n postgres02
+```azurecli
+az postgres arc-server show -n postgres02 --k8s-namespace <namespace> --use-k8s
 ```
 
 Gibt die folgende Ausgabe in einem Format und mit Inhalt zurück, der der von kubectl zurückgegebenen Ausgabe sehr ähnlich ist.
@@ -367,4 +367,4 @@ Gibt die folgende Ausgabe in einem Format und mit Inhalt zurück, der der von ku
 - [Informationen zur Speicherkonfiguration](storage-configuration.md)
 - [Informationen zum Überwachen einer Datenbankinstanz](monitor-grafana-kibana.md)
 - [Verwenden von PostgreSQL-Erweiterungen in Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppen](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [Konfigurieren der Sicherheit für eine Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe](configure-security-postgres-hyperscale.md)
+- [Konfigurieren der Sicherheit für Ihre Azure Arc-fähige PostgreSQL Hyperscale-Servergruppe](configure-security-postgres-hyperscale.md)

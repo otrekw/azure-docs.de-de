@@ -1,20 +1,20 @@
 ---
 title: Binden von Azure Cache for Redis an Ihre Azure Spring Cloud-Anwendung
 description: Hier erfahren Sie, wie Sie Azure Cache for Redis an Ihre Azure Spring Cloud-Anwendung binden.
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/31/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: dda826b50a74c109609fc7eec734b1d0de927ab3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 31cb033bad3a6b356b447754670fd88bf0ee4663
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349927"
 ---
-# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Binden von Azure Cache for Redis an Ihre Azure Spring Cloud-Anwendung 
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Binden von Azure Cache for Redis an Ihre Azure Spring Cloud-Anwendung
 
 **Dieser Artikel gilt für:** ✔️ Java
 
@@ -28,7 +28,7 @@ Mit Azure Spring Cloud können Sie ausgewählte Azure-Dienste automatisch an Ihr
 
 Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, folgen Sie den Schritten in diesem [Schnellstart zum Bereitstellen einer Azure Spring Cloud-App](./quickstart.md).
 
-## <a name="bind-azure-cache-for-redis"></a>Binden von Azure Cache for Redis
+## <a name="prepare-your-java-project"></a>Vorbereiten des Java-Projekts
 
 1. Fügen Sie der Datei „pom.xml“ Ihres Projekts die folgende Abhängigkeit hinzu:
 
@@ -38,10 +38,14 @@ Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, 
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
+
 1. Entfernen Sie alle Eigenschaften vom Typ `spring.redis.*` aus der Datei `application.properties`.
 
 1. Aktualisieren Sie die aktuelle Bereitstellung mit `az spring-cloud app update`, oder erstellen Sie eine neue Bereitstellung mithilfe von `az spring-cloud app deployment create`.
 
+## <a name="bind-your-app-to-the-azure-cache-for-redis"></a>Binden Ihrer App an Azure Cache for Redis
+
+#### <a name="service-binding"></a>[Dienstbindung](#tab/Service-Binding)
 1. Navigieren Sie im Azure-Portal zur Seite Ihres Azure Spring Cloud-Diensts. Navigieren Sie zum **Anwendungsdashboard**, und wählen Sie die Anwendung aus, die an Azure Cache for Redis gebunden werden soll. Dabei handelt es sich um dieselbe Anwendung, die Sie im vorherigen Schritt aktualisiert oder bereitgestellt haben.
 
 1. Wählen Sie **Dienstbindung** und dann **Dienstbindung erstellen** aus. Füllen Sie das Formular aus. Wählen Sie unbedingt als **Bindungstyp** den Wert **Azure Cache for Redis**, Ihren Azure Cache for Redis-Server und die Option **Primärschlüssel** aus.
@@ -49,12 +53,83 @@ Wenn Sie nicht über eine bereitgestellte Azure Spring Cloud-Instanz verfügen, 
 1. Starten Sie die App neu. Die Bindung sollte nun funktionieren.
 
 1. Um sicherzustellen, dass die Dienstbindung richtig ist, wählen Sie den Bindungsnamen aus, und überprüfen Sie dessen Details. Das Feld `property` sollte wie folgt aussehen:
-    ```
+
+    ```properties
     spring.redis.host=some-redis.redis.cache.windows.net
     spring.redis.port=6380
     spring.redis.password=abc******
     spring.redis.ssl=true
     ```
+
+#### <a name="terraform"></a>[Terraform](#tab/Terraform)
+
+Im folgenden Terraform-Skript sehen Sie, wie Sie eine Azure Spring Cloud-App mithilfe von Azure Cache for Redis einrichten.
+
+```terraform
+provider "azurerm" {
+  features {}
+}
+
+variable "application_name" {
+  type        = string
+  description = "The name of your application"
+  default     = "demo-abc"
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_redis_cache" "redis" {
+  name                = "redis-${var.application_name}-001"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  capacity            = 0
+  family              = "C"
+  sku_name            = "Standard"
+  enable_non_ssl_port = false
+  minimum_tls_version = "1.2"
+}
+
+resource "azurerm_spring_cloud_service" "example" {
+  name                = "${var.application_name}"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+}
+
+resource "azurerm_spring_cloud_app" "example" {
+  name                = "${var.application_name}-app"
+  resource_group_name = azurerm_resource_group.example.name
+  service_name        = azurerm_spring_cloud_service.example.name
+  is_public           = true
+  https_only          = true
+}
+
+resource "azurerm_spring_cloud_java_deployment" "example" {
+  name                = "default"
+  spring_cloud_app_id = azurerm_spring_cloud_app.example.id
+  cpu                 = 2
+  memory_in_gb        = 4
+  instance_count      = 2
+  jvm_options         = "-XX:+PrintGC"
+  runtime_version     = "Java_11"
+
+  environment_variables = {
+    "spring.redis.host"     = azurerm_redis_cache.redis.hostname
+    "spring.redis.password" = azurerm_redis_cache.redis.primary_access_key
+    "spring.redis.port"     = "6380"
+    "spring.redis.ssl"      = "true"
+  }
+}
+
+resource "azurerm_spring_cloud_active_deployment" "example" {
+  spring_cloud_app_id = azurerm_spring_cloud_app.example.id
+  deployment_name     = azurerm_spring_cloud_java_deployment.example.name
+}
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

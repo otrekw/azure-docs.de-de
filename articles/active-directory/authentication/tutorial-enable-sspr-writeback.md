@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/19/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438376"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707589"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -109,6 +109,7 @@ Aktivieren Sie zum Aktivieren der SSPR zunächst die Rückschreiboption in Azure
 
     ![Konfigurieren von Azure AD Connect für das Kennwortrückschreiben](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
 
+1. Wählen Sie auf der Seite **Verzeichniserweiterungen** die Option **Weiter** aus.
 1. Wählen Sie auf der Seite **Bereit zur Konfiguration** die Option **Konfigurieren** aus, und warten Sie, bis der Vorgang abgeschlossen ist.
 1. Wenn Sie sehen, dass die Konfiguration beendet ist, wählen Sie **Beenden** aus.
 

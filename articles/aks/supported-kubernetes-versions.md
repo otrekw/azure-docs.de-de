@@ -3,19 +3,20 @@ title: Unterstützte Kubernetes-Versionen in Azure Kubernetes Service
 description: Grundlegendes zur Richtlinie zur Unterstützung der Kubernetes-Version und zum Lebenszyklus von Clustern in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f2f1c01ec323452997f5e7ab8f20e13e1d572a72
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8e883c92e2ce8d64c30aeb6c8a747c18935d36e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438196"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122349396"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
-Die Kubernetes-Community veröffentlicht etwa alle drei Monate Nebenversionen. Kürzlich hat die Kubernetes-Community das [Unterstützungsfenster für die einzelnen Versionen von 9 Monaten auf 12 Monate](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erhöht, beginnend mit Version 1.19. 
+Die Kubernetes-Community veröffentlicht etwa alle drei Monate Nebenversionen. Kürzlich hat die Kubernetes-Community das [Unterstützungsfenster für die einzelnen Versionen von 9 Monaten auf 12 Monate](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erhöht, beginnend mit Version 1.19.
 
 Nebenversionsreleases enthalten neue Features und Verbesserungen. Patchreleases kommen häufiger vor (manchmal wöchentlich) und sind für wichtige Fehlerbehebungen in einer Nebenversion gedacht. Patchreleases enthalten Fixes für Sicherheitsrisiken oder schwer wiegende Fehler.
 
@@ -100,7 +101,15 @@ Sie können eine relativ zu Ihrer *kube-apiserver*-Version niedrigere oder höhe
 
 Wenn Ihr *kube-apiserver* beispielsweise die Version *1.17* hat, können Sie die Versionen *1.16* bis *1.18* von `kubectl` mit diesem *kube-apiserver* verwenden.
 
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
 Um Ihre Version von `kubectl` zu installieren oder zu aktualisieren, führen Sie `az aks install-cli` aus.
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Um Ihre Version von `kubectl` zu installieren oder zu aktualisieren, führen Sie [Install-AzAksKubectl][install-azakskubectl] aus.
+
+---
 
 ## <a name="release-and-deprecation-process"></a>Veröffentlichen und Markieren als veraltet
 
@@ -113,7 +122,7 @@ Bei neuen **Nebenversionen** von Kubernetes:
 
     > [!NOTE]
     > Unter [Zuweisen eines Abonnementadministrators](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator) erfahren Sie, wie Sie herausfinden, wer Ihr Abonnementadministrator ist, oder wie Sie ihn ändern können.
-    
+
   * Benutzer haben nach der Entfernung einer Version **30** Tage lang Zeit, ein Upgrade auf eine unterstützte Nebenversion durchzuführen, um sicherzustellen, dass sie weiterhin Support erhalten.
 
 Bei neuen **Patchversionen** von Kubernetes:
@@ -129,7 +138,9 @@ Bestimmte Patchreleases können übersprungen oder Rollouts je nach Schweregrad 
 
 ## <a name="azure-portal-and-cli-versions"></a>Versionen für Azure-Portal and CLI
 
-Wenn Sie einen AKS-Cluster im Portal oder mit der Azure-Befehlszeilenschnittstelle bereitstellen, wird der Cluster standardmäßig auf die Nebenversion N-1 und den neuesten Patch festgelegt. Wenn AKS beispielsweise *1.17.a*, *1.17.b*, *1.16.c*, *1.16.d*, *1.15.e* und *1.15.f* unterstützt, ist die standardmäßig ausgewählte Version *1.16.c*.
+Wenn Sie einen AKS-Cluster im Portal, mit der Azure CLI oder mit Azure PowerShell bereitstellen, wird der Cluster standardmäßig auf die Nebenversion N-1 und den neuesten Patch festgelegt. Wenn AKS beispielsweise *1.17.a*, *1.17.b*, *1.16.c*, *1.16.d*, *1.15.e* und *1.15.f* unterstützt, ist die standardmäßig ausgewählte Version *1.16.c*.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Um herauszufinden, welche Versionen für Ihr Abonnement und Ihre Region derzeit verfügbar sind, verwenden Sie den Befehl [az aks get-versions][az-aks-get-versions]. Im folgenden Beispiel sind die verfügbaren Kubernetes-Versionen für die Region *EastUS* aufgelistet:
 
@@ -137,16 +148,27 @@ Um herauszufinden, welche Versionen für Ihr Abonnement und Ihre Region derzeit 
 az aks get-versions --location eastus --output table
 ```
 
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Um herauszufinden, welche Versionen für Ihr Abonnement und Ihre Region derzeit verfügbar sind, verwenden Sie das Cmdlet [Get-AzAksVersion][get-azaksversion]. Im folgenden Beispiel sind die verfügbaren Kubernetes-Versionen für die Region *EastUS* aufgelistet:
+
+```azurepowershell-interactive
+Get-AzAksVersion -Location eastus
+```
+
+---
+
 ## <a name="aks-kubernetes-release-calendar"></a>Releasekalender für AKS Kubernetes
 
 Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  Kubernetes-Version | Upstreamrelease  | AKS – Vorschau  | AKS – allgemeine Verfügbarkeit (GA)  | Ende der Lebensdauer |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | 23. März 2020  | Mai 2020   | August 2020  | *1.21 Allgemeine Verfügbarkeit | 
-| 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA | 
+| 1.18  | 23. März 2020  | Mai 2020   | August 2020  | *1.21 Allgemeine Verfügbarkeit |
+| 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
-| 1.21  | 08. April 2021 | Mai 2021   | Juni 2021  | 1.24: Allgemeine Verfügbarkeit |
+| 1.21  | 08. April 2021 | Mai 2021   | Juli 2021  | 1.24: Allgemeine Verfügbarkeit |
 | 1.22  | 04. August 21 | September 2021   | Oktober 2021  | 1.25 Allgemeine Verfügbarkeit |
 | 1.23  | Dezember 2021 | Januar 2022   | Februar 2022  | 1.26 Allgemeine Verfügbarkeit |
 
@@ -160,11 +182,11 @@ Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikip
 
 **Wie benachrichtigt mich Microsoft, wenn neue Kubernetes-Versionen vorliegen?**
 
-Das AKS-Team veröffentlicht Vorankündigungen mit geplanten Daten der neuen Kubernetes-Versionen in unserer Dokumentation, auf [GitHub](https://github.com/Azure/AKS/releases) sowie in E-Mails an Abonnementadministratoren, die Cluster besitzen, die aus dem Support herausfallen.  Zusätzlich zu Ankündigungen benachrichtigt AKS Kunden auch im Azure-Portal mit [Azure Advisor](../advisor/advisor-overview.md), um Benutzer zu warnen, wenn sie aus dem Support herausfallen, und sie vor veralteten APIs zu warnen, die sich auf ihre Anwendung oder ihren Entwicklungsprozess auswirken. 
+Das AKS-Team veröffentlicht Vorankündigungen mit geplanten Daten der neuen Kubernetes-Versionen in unserer Dokumentation, auf [GitHub](https://github.com/Azure/AKS/releases) sowie in E-Mails an Abonnementadministratoren, die Cluster besitzen, die aus dem Support herausfallen.  Zusätzlich zu Ankündigungen benachrichtigt AKS Kunden auch im Azure-Portal mit [Azure Advisor](../advisor/advisor-overview.md), um Benutzer zu warnen, wenn sie aus dem Support herausfallen, und sie vor veralteten APIs zu warnen, die sich auf ihre Anwendung oder ihren Entwicklungsprozess auswirken.
 
 **Wie oft muss ich damit rechnen, ein Upgrade auf Kubernetes-Versionen durchzuführen, um weiterhin Unterstützung zu erhalten?**
 
-Ab Kubernetes 1.19 hat die [Open-Source-Community die Unterstützung auf 1 Jahr](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erweitert. AKS führt einen Commit aus, um Patches und Unterstützung zu ermöglichen, die den Upstreamzusagen entsprechen. Für AKS-Cluster ab Version 1.19 können Sie mindestens einmal pro Jahr ein Upgrade durchführen, um bei einer unterstützten Version zu bleiben. 
+Ab Kubernetes 1.19 hat die [Open-Source-Community die Unterstützung auf 1 Jahr](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/) erweitert. AKS führt einen Commit aus, um Patches und Unterstützung zu ermöglichen, die den Upstreamzusagen entsprechen. Für AKS-Cluster ab Version 1.19 können Sie mindestens einmal pro Jahr ein Upgrade durchführen, um bei einer unterstützten Version zu bleiben.
 
 Für die Versionen 1.18 oder darunter bleibt das Supportfenster bei 9 Monaten, wobei alle 9 Monate ein Upgrade erforderlich ist, um bei einer unterstützten Version zu bleiben. Testen Sie regelmäßig neue Versionen, und seien Sie darauf vorbereitet, ein Upgrade auf neuere Versionen auszuführen, um die neuesten stabilen Verbesserungen in Kubernetes zu erhalten.
 
@@ -181,7 +203,7 @@ Downgrades werden nicht unterstützt.
 
 „Nicht unterstützt“ bedeutet:
 * Die Version, die Sie ausführen, befindet sich nicht auf der Liste der unterstützten Versionen.
-* Wenn Sie Support anfordern, werden Sie aufgefordert, für den Cluster ein Upgrade auf eine unterstützte Version vorzunehmen, sofern Sie sich nicht mehr innerhalb des 30-Tage-Zeitraums befinden, der beginnt, nachdem eine Version als veraltet gekennzeichnet wurde. 
+* Wenn Sie Support anfordern, werden Sie aufgefordert, für den Cluster ein Upgrade auf eine unterstützte Version vorzunehmen, sofern Sie sich nicht mehr innerhalb des 30-Tage-Zeitraums befinden, der beginnt, nachdem eine Version als veraltet gekennzeichnet wurde.
 
 Des Weiteren stellt AKS für Cluster mit Versionen, die nicht in der Liste der unterstützten Versionen aufgeführt sind, weder Laufzeitgarantien noch sonstige Garantien bereit.
 
@@ -216,7 +238,7 @@ Nein. Nachdem eine Version als veraltet markiert/entfernt wurde, können Sie kei
 
 **Ich bin auf einer neu veralteten Version, kann ich dennoch neue Knoten-Pools hinzufügen? Oder muss ich ein Upgrade durchführen?**
 
-Nein. Sie sind nicht berechtigt, dem Cluster Knoten-Pools der veralteten Version hinzuzufügen. Sie können Knoten-Pools einer neuen Version hinzufügen. Dies erfordert jedoch möglicherweise zuerst die Aktualisierung der Steuerungsebene. 
+Nein. Sie sind nicht berechtigt, dem Cluster Knoten-Pools der veralteten Version hinzuzufügen. Sie können Knoten-Pools einer neuen Version hinzufügen. Dies erfordert jedoch möglicherweise zuerst die Aktualisierung der Steuerungsebene.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -230,3 +252,5 @@ Weitere Informationen zum Upgrade Ihres Clusters finden Sie unter [Durchführen 
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az_aks_get_versions
 [preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[install-azakskubectl]: /powershell/module/az.aks/install-azakskubectl
+[get-azaksversion]: /powershell/module/az.aks/get-azaksversion

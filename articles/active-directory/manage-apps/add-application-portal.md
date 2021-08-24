@@ -1,23 +1,25 @@
 ---
-title: 'Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure AD-Mandanten (Azure Active Directory)'
+title: 'Schnellstart: Hinzufügen einer Anwendung zu Ihrem Mandanten'
+titleSuffix: Azure AD
 description: In dieser Schnellstartanleitung wird mithilfe des Azure-Portals eine Kataloganwendung zu Ihrem Azure Active Directory-Mandanten (Azure AD) hinzugefügt.
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/29/2019
-ms.author: mtillman
-ms.openlocfilehash: e3748734d714812a40b78ff35fd9e0a31d3fa86e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 8c1b7ea859bb3f8819fbffc9568da4c9289979f5
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077463"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669455"
 ---
-# <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure AD-Mandanten (Azure Active Directory)
+# <a name="quickstart-add-an-application-to-your-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Mandanten
 
 Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen. Viele der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich bereits im Katalog enthalten.
 
@@ -42,24 +44,19 @@ Sie benötigen Folgendes, um Ihrem Azure AD-Mandanten eine Anwendung hinzuzufüg
 
 Gehen Sie wie folgt vor, um Ihrem Azure AD-Mandanten eine Anwendung hinzuzufügen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Azure Active Directory** aus.
-2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine nach dem Zufallsprinzip ausgewählte Gruppe von Anwendungen in Ihrem Azure AD-Mandanten an.
-3. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Neue Anwendung** aus. 
-    ![Auswählen von „Neue Anwendung“ zum Hinzufügen einer Katalog-App zu Ihrem Mandanten](media/add-application-portal/new-application.png)
-4. Wechseln Sie zur neuen Vorschaubenutzeroberfläche des Katalogs: Wählen Sie auf dem Banner oben auf der Seite **Eine Anwendung hinzufügen** den Link **Klicken Sie hier, um den neuen und verbesserten App-Katalog auszuprobieren.** aus.
-5. Der Bereich **Azure AD-Katalog durchsuchen (Vorschau)** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen wird mithilfe von Symbolen angegeben, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Azure-Dienste** die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine nach dem Zufallsprinzip ausgewählte Gruppe von Anwendungen in Ihrem Azure AD-Mandanten an.
+2. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Neue Anwendung** aus.
+3. Der Bereich **Azure AD-Katalog durchsuchen** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen wird mithilfe von Symbolen angegeben, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen.
+4. Zurück zum alten App-Katalog: Wählen Sie auf dem Banner oben auf der Seite **Anwendung hinzufügen** den Link **You're in the new and improved app gallery experience. Click here to switch back to the legacy app gallery experience** (Sie befinden sich im neuen und verbesserten App-Katalog. Klicken Sie hier, um zurück zum Legacy-App-Katalog zu wechseln) aus.
     ![Suchen nach einer App anhand des Namens oder der Kategorie](media/add-application-portal/browse-gallery.png)
-6. Sie können den Katalog nach der hinzuzufügenden App durchsuchen oder nach der Anwendung suchen, indem Sie ihren Namen in das Suchfeld eingeben. Wählen Sie dann die Anwendung in den Ergebnissen aus. 
-7. Der nächste Schritt hängt davon ab, wie der Entwickler der Anwendung einmaliges Anmelden (Single Sign-On, SSO) implementiert hat. App-Entwickler haben vier verschiedene Möglichkeiten, um einmaliges Anmelden zu implementieren. Dies sind „SAML“, „OpenID Connect“, „Kennwort“ und „Verknüpft“. Beim Hinzufügen einer App können Sie den Filter nutzen, um nur die Apps anzuzeigen, für die eine bestimmte SSO-Implementierung verwendet wird (wie im Screenshot dargestellt). Ein beliebter Standard zum Implementieren von SSO ist beispielsweise SAML (Security Assertion Markup Language). Ein weiterer gängiger Standard ist OpenID Connect (OIDC). Die SSO-Konfiguration mit diesen Standards weicht von der üblichen Vorgehensweise ab. Sie sollten daher den SSO-Typ beachten, der von der hinzuzufügenden App implementiert wird.
-
-    :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Screenshot: Auswahloptionen für SSO-Typ" lightbox="media/add-application-portal/sso-types.png":::
+5. Sie können den Katalog nach der hinzuzufügenden App durchsuchen oder nach der Anwendung suchen, indem Sie ihren Namen in das Suchfeld eingeben. Wählen Sie dann die Anwendung in den Ergebnissen aus.
+6. Der nächste Schritt hängt davon ab, wie der Entwickler der Anwendung einmaliges Anmelden (Single Sign-On, SSO) implementiert hat. App-Entwickler haben vier verschiedene Möglichkeiten, um einmaliges Anmelden zu implementieren. Dies sind „SAML“, „OpenID Connect“, „Kennwort“ und „Verknüpft“. Beim Hinzufügen einer App können Sie den Filter nutzen, um nur die Apps anzuzeigen, für die eine bestimmte SSO-Implementierung verwendet wird (wie im Screenshot dargestellt). Ein beliebter Standard zum Implementieren von SSO ist beispielsweise SAML (Security Assertion Markup Language). Ein weiterer gängiger Standard ist OpenID Connect (OIDC). Die SSO-Konfiguration mit diesen Standards weicht von der üblichen Vorgehensweise ab. Sie sollten daher den SSO-Typ beachten, der von der hinzuzufügenden App implementiert wird.
 
     - Wählen Sie **Registrieren** aus, wenn der Entwickler der App den **OIDC-Standard** für SSO verwendet hat. Eine Setupseite wird angezeigt. Lesen Sie sich als Nächstes die Schnellstartanleitung zum Einrichten des OIDC-basierten einmaligen Anmeldens durch.
     :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Screenshot: Hinzufügen einer OIDC-basierten SSO-App":::
 
     - Wählen Sie **Erstellen** aus, wenn der Entwickler der App den **SAML-Standard** für SSO verwendet hat. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt. In dem Formular können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. Lesen Sie sich als Nächstes die Schnellstartanleitung zum Einrichten des SAML-basierten einmaligen Anmeldens durch.
     :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Screenshot: Hinzufügen einer SAML-basierten SSO-App":::
-
 
 > [!IMPORTANT]
 > Es gibt einige wichtige Unterschiede zwischen SAML- und OIDC-basierten SSO-Implementierungen. Bei SAML-basierten Apps können Sie mehrere Instanzen derselben App hinzufügen. Beispielsweise GitHub1, GitHub2 usw. Bei OIDC-basierten Apps können Sie nur eine Instanz einer App hinzufügen. Falls Sie bereits eine OIDC-basierte App hinzugefügt haben und dann versuchen, dieselbe App erneut hinzuzufügen und die Einwilligung zweimal zu erteilen, wird sie auf dem Mandanten nicht noch einmal hinzugefügt.

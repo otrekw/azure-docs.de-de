@@ -1,20 +1,20 @@
 ---
-title: Bereitstellen des nativen C++-Tutorials für HoloLens
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das native C++-Tutorial auf HoloLens ausführen.
+title: Bereitstellen des nativen C++-WMR-Tutorials für HoloLens
+description: In diesem Schnellstart erfahren Sie, wie Sie die native C++-Tutorialanwendung HolographicApp auf HoloLens ausführen.
 author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: eabade94b06d8689026548d6e09d6098e8da9f59
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530585"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666805"
 ---
-# <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Schnellstart: Bereitstellen des nativen C++-Beispiels für HoloLens
+# <a name="quickstart-deploy-native-c-wmr-sample-to-hololens"></a>Schnellstart: Bereitstellen des nativen C++-WMR-Beispiels für HoloLens
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie die native C++-Tutorialanwendung auf einem HoloLens 2-Gerät bereitstellen und ausführen.
+In diesem Schnellstart erfahren Sie, wie Sie die native C++-WMR-Tutorialanwendung (Windows Mixed Reality) auf einem HoloLens 2-Gerät bereitstellen und ausführen.
 
 In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
@@ -51,11 +51,11 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 Mit dem letzten Befehl wird ein Unterverzeichnis im ARR-Verzeichnis erstellt, das die unterschiedlichen Beispielprojekte für Azure Remote Rendering enthält.
 
-Das C++-HoloLens-Tutorial befindet sich im Unterverzeichnis *NativeCpp/HoloLens*.
+Das C++-HoloLens-Tutorial befindet sich im Unterverzeichnis *NativeCpp/HoloLens-Wmr*.
 
 ## <a name="build-the-project"></a>Erstellen des Projekts
 
-Öffnen Sie die Projektmappendatei *HolographicApp.sln* im Unterverzeichnis *NativeCpp/HoloLens* mit Visual Studio 2019.
+Öffnen Sie die Projektmappendatei *HolographicApp.sln* im Unterverzeichnis *NativeCpp/HoloLens-Wmr* mit Visual Studio 2019.
 
 Legen Sie die Buildkonfiguration auf *Debug* (oder *Release*) und *ARM64* fest. Stellen Sie außerdem sicher, dass der Debuggermodus auf *Gerät* und nicht auf *Remotecomputer* festgelegt ist:
 
@@ -80,7 +80,7 @@ Da die Kontoanmeldeinformationen im Quellcode des Tutorials hartcodiert sind, m�
 
 Ändern Sie die folgenden Werte:
 * `init.AccountId`, `init.AccountKey` und `init.AccountDomain`, damit Ihre Kontodaten verwendet werden. Informationen zum Abrufen von Kontoinformationen finden Sie [hier](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* Geben Sie an, wo die Remote Rendering-Sitzung erstellt werden soll, indem Sie den Regionsteil der Zeichenfolge `init.RemoteRenderingDomain` für andere Regionen als `westus2` ändern, z. B. `"westeurope.mixedreality.azure.com"`.
+* Geben Sie an, wo die Remote Rendering-Sitzung erstellt werden soll, indem Sie den Regionsteil der Zeichenfolge `init.RemoteRenderingDomain` für andere [Regionen](../../../reference/regions.md) als `westus2` ändern, z. B. `"westeurope.mixedreality.azure.com"`.
 * Darüber hinaus kann `m_sessionOverride` in eine vorhandene Sitzungs-ID geändert werden. Sitzungen können außerhalb dieses Beispiels erstellt werden, beispielsweise mit dem [PowerShell-Skript](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) oder durch direkte Verwendung der [REST-API für Sitzungen](../../../how-tos/session-rest-api.md).
 Die Erstellung einer Sitzung außerhalb des Beispiels wird empfohlen, wenn das Beispiel mehrmals ausgeführt werden soll. Wird keine Sitzung übergeben, wird bei jedem Start eine neue Sitzung erstellt, was mehrere Minuten dauern kann.
 

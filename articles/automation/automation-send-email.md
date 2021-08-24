@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2650e3a9ce58b611c1aff1a569cc1e8f0980fd4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 622bff79d48ae707e2b32556e05dad658a0322bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833488"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339250"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Senden einer E-Mail aus einem Runbook
 
@@ -20,16 +20,17 @@ Sie können unter Verwendung von PowerShell und [SendGrid](https://sendgrid.com/
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Ein SendGrid-Konto](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
+* [Ein SendGrid-Konto](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account).
+* Die Absenderüberprüfung wurde in SendGrid konfiguriert. Entweder [„Domäne“ oder „Einzelner Absender“](https://sendgrid.com/docs/for-developers/sending-email/sender-identity/) 
 * [Automation-Konto](./index.yml) mit **Az**-Modulen.
 * [Ausführendes Konto](./automation-security-overview.md#run-as-accounts) zum Speichern und Ausführen des Runbooks.
 
 ## <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
 
-Sie können eine Azure Key Vault-Instanz mit dem folgenden PowerShell-Skript erstellen. Ersetzen Sie die Variablenwerte durch die Werte für Ihre Umgebung. Verwenden Sie die eingebettete Azure Cloud Shell-Instanz, indem Sie die Schaltfläche **Ausprobieren** in der oberen rechten Ecke des Codeblocks nutzen. Sie können den Code auch lokal kopieren und ausführen, wenn die [Az-Module](/powershell/azure/install-az-ps) auf dem lokalen Computer installiert sind.
+Sie können eine Azure Key Vault-Instanz mit dem folgenden PowerShell-Skript erstellen. Ersetzen Sie die Variablenwerte durch die Werte für Ihre Umgebung. Verwenden Sie die eingebettete Azure Cloud Shell-Instanz, indem Sie die Schaltfläche **Ausprobieren** in der oberen rechten Ecke des Codeblocks nutzen. Sie können den Code auch lokal kopieren und ausführen, wenn die [Az-Module](/powershell/azure/install-az-ps) auf dem lokalen Computer installiert sind. Dieses Skript erstellt außerdem eine [Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md), die es dem ausführenden Konto gestattet, Schlüsseltresorgeheimnisse aus dem angegebenen Schlüsseltresor abzurufen bzw. dort festzulegen.
 
 > [!NOTE]
-> Führen Sie zum Abrufen Ihres API-Schlüssels die Schritte unter [Senden von E-Mails in Azure mit SendGrid](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key) aus.
+> Führen Sie zum Abrufen Ihres API-Schlüssels die Schritte unter [Senden von E-Mails in Azure mit SendGrid](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key) aus.
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -100,8 +101,8 @@ Wenn Sie einen Schlüsseltresor erstellt und Ihren `SendGrid`-API-Schlüssel ges
 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
-    $VaultName = "<Enter your vault name>&quot;
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name &quot;SendGridAPIKey").SecretValue
+    $VaultName = "<Enter your vault name>"
+    $SENDGRID_API_KEY = Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey" -AsPlainText
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 6659b515ee2d25a4b9136ccfac4cc3444e491438
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 823fb43afbd7ac51cafeff7e9e18472fe32c9aec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741174"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122339837"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>Log Analytics-Migrationshandbuch für Azure HDInsight-Cluster
 
@@ -34,6 +34,12 @@ Unter Berücksichtigung des Kundenfeedbacks hat das Azure HDInsight-Team in die 
 - Höhere Zuverlässigkeit
 - Schnellere Übermittlung der Clusterprotokolldatei
 - Ressourcenbasierte Tabellengruppierung und Standardabfragen
+
+
+
+> [!NOTE]  
+> Die neue Azure Monitor-Integration befindet sich in der öffentlichen Vorschauphase. Sie steht nur in den Regionen „USA, Osten“ und „Europa, Westen“ zur Verfügung.
+
 
 ## <a name="benefits-of-the-new-azure-monitor-integration"></a>Vorteile der neuen Azure Monitor Integration
 
@@ -59,7 +65,7 @@ In den folgenden Abschnitten wird beschrieben, wie Kunden das neue Azure Monitor
 ## <a name="activate-a-new-azure-monitor-integration"></a>Aktivieren einer neuen Azure Monitor-Integration 
 
 > [!NOTE]
-> Sie benötigen einen Log Analytics-Arbeitsbereich, der in einem Abonnement erstellt wurde, auf das Sie Zugriff haben, bevor Sie die neue Integration aktivieren. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
+> Sie benötigen einen Log Analytics-Arbeitsbereich, der in einem Abonnement erstellt wurde, auf das Sie Zugriff haben, bevor Sie die neue Integration aktivieren. Weitere Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 Aktivieren Sie die neue Integration, indem Sie zur Portalseite Ihres Clusters navigieren und im Menü auf der linken Seite nach unten scrollen, bis Sie den Abschnitt **Überwachung** erreichen. Wählen Sie im Abschnitt **Überwachung** die Option **Integration überwachen** aus. Wählen Sie dann **Aktivieren** aus, dann Sie können den Log Analytics-Arbeitsbereich auswählen, an den Ihre Protokolle gesendet werden sollen. Wählen Sie **Speichern** aus, nachdem Sie Ihren Arbeitsbereich ausgewählt haben. 
 
@@ -112,7 +118,7 @@ Sie können Ihre eigenen Abfragen im Abfrageprotokoll-Editor eingeben. Abfragen,
 
 #### <a name="insights"></a>Einblicke
 
-Erkenntnisse sind clusterspezifische Visualisierungsdashboards, die mithilfe von [Azure-Arbeitsmappen](../azure-monitor/platform/workbooks-overview.md) erstellt wurden. Diese Dashboards bieten Ihnen detaillierte Diagramme und Visualisierungen zur Ausführung Ihres Clusters. Die Dashboards verfügen über Abschnitte für jeden Clustertyp, YARN, Systemmetriken und Komponentenprotokolle. Sie können auf das Dashboard Ihres Clusters zugreifen, indem Sie die Seite Ihres Clusters im Portal aufrufen, nach unten zum Abschnitt **Überwachung** scrollen und den Bereich **Erkenntnisse** auswählen. Das Dashboard wird automatisch geladen, wenn Sie die neue Integration aktiviert haben. Warten Sie einige Sekunden, bis die Diagramme geladen werden, während sie die Protokolle abfragen.
+Erkenntnisse sind clusterspezifische Visualisierungsdashboards, die mithilfe von [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) erstellt wurden. Diese Dashboards bieten Ihnen detaillierte Diagramme und Visualisierungen zur Ausführung Ihres Clusters. Die Dashboards verfügen über Abschnitte für jeden Clustertyp, YARN, Systemmetriken und Komponentenprotokolle. Sie können auf das Dashboard Ihres Clusters zugreifen, indem Sie die Seite Ihres Clusters im Portal aufrufen, nach unten zum Abschnitt **Überwachung** scrollen und den Bereich **Erkenntnisse** auswählen. Das Dashboard wird automatisch geladen, wenn Sie die neue Integration aktiviert haben. Warten Sie einige Sekunden, bis die Diagramme geladen werden, während sie die Protokolle abfragen.
 
 :::image type="content" source="./media/log-analytics-migration/visualization-dashboard.png" lightbox="./media/log-analytics-migration/visualization-dashboard.png" alt-text="Screenshot des Dashboards des Visualisierungsdashboards.":::
 
@@ -132,7 +138,7 @@ Verwenden Sie unsere neue Arbeitsmappe im großen Stil, um eine Überwachung mit
 
 #### <a name="alerts"></a>Alerts
 
-Sie können Ihren Clustern und Arbeitsbereichen im Protokollabfrage-Editor benutzerdefinierte Warnungen hinzufügen. Wechseln Sie zum Protokollabfrage-Editor, indem Sie im Cluster- oder Arbeitsbereichsportal auf den Bereich **Protokolle** klicken. Führen Sie eine Abfrage aus und wählen Sie dann **Neue Warnungsregel** aus, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen](../azure-monitor/platform/alerts-log.md).
+Sie können Ihren Clustern und Arbeitsbereichen im Protokollabfrage-Editor benutzerdefinierte Warnungen hinzufügen. Wechseln Sie zum Protokollabfrage-Editor, indem Sie im Cluster- oder Arbeitsbereichsportal auf den Bereich **Protokolle** klicken. Führen Sie eine Abfrage aus und wählen Sie dann **Neue Warnungsregel** aus, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Konfigurieren von Warnungen](../azure-monitor/alerts/alerts-log.md).
 
 :::image type="content" source="./media/log-analytics-migration/new-rule-alert.png" alt-text="Screenshot: Fenster „Neue Warnungsregel“." border="false":::
 

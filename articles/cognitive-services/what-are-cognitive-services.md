@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 09279e476f2d130c4938937e2c9e60df863c688d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4badad1f7e22fcb82e122a56e219fc61973634a2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450604"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451262"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -25,7 +25,7 @@ Azure Cognitive Services sind cloudbasierte Dienste mit REST-APIs und Clientbibl
 
 ## <a name="categories-of-cognitive-services"></a>Kategorien von Cognitive Services
 
-Der Katalog kognitiver Dienste mit kognitivem Verständnis ist in fünf Hauptkategorien unterteilt:
+Der Cognitive Services-Katalog mit kognitivem Verständnis ist in fünf Hauptkategorien unterteilt:
 
 * Bildanalyse
 * Spracheingabe
@@ -84,7 +84,7 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 |[Benutzerdefinierte Bing-Suche](/azure/cognitive-services/bing-custom-search "Benutzerdefinierte Bing-Suche")|Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren.|
 |[Bing-Entitätssuche](/azure/cognitive-services/bing-entities-search/ "Bing-Entitätssuche")|Die Bing-Entitätssuche gibt Informationen zu Entitäten zurück, die nach Einschätzung von Bing für eine Abfrage des Benutzers relevant sind.|
 |[Bing-Bildersuche](/azure/cognitive-services/bing-image-search "Bing-Bildersuche")|Die Bing-Bildersuche gibt eine Liste von Bildern zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
-|[Visuelle Bing-Suche](/azure/cognitive-services/bing-visual-search "Visuelle Bing-Suche")|Die visuelle Bing-Suche gibt Informationen zu einem Bild zurück, z. B. visuell ähnliche Bilder, Einkaufsquellen für abgebildete Elemente und verwandte Suchvorgänge.|
+|[Visuelle Bing-Suche](/azure/cognitive-services/bing-visual-search "Visuelle Bing-Suche")|Die visuelle Bing-Suche gibt Informationen zu einem Bild zurück, z. B. visuell ähnliche Bilder, Einkaufsquellen für abgebildete Elemente und verwandte Suchvorgänge.|
 |[Bing-Suche für ortsansässige Unternehmen](/azure/cognitive-services/bing-local-business-search/ "Bing-Suche für ortsansässige Unternehmen")| Mit der Bing-API für die Suche nach ortsansässigen Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen.|
 |[Bing-Rechtschreibprüfung](/azure/cognitive-services/bing-spell-check/ "Bing-Rechtschreibprüfung")|Die Bing-Rechtschreibprüfung ermöglicht es Ihnen, kontextbezogene Grammatik- und Rechtschreibprüfungen durchzuführen.|
 

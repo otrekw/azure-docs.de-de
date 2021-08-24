@@ -1,18 +1,18 @@
 ---
 title: Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall
 description: Vorgehensweise beim Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5183fe6560e0276efb3f9db85628a814abfe9e45
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: e87ccabeb2d0e0cd837a835c5ac637bebc68b8b4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340383"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>Verfügbarmachen von Anwendungen im Internet mithilfe von Application Gateway und Azure Firewall
 
@@ -24,9 +24,9 @@ In diesem Artikel wird die Vorgehensweise beim Verfügbarmachen von Anwendungen 
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Definieren Sie die Variablen für die Ressourcengruppe und das virtuelle Netzwerk, die bzw.das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](./how-to-deploy-in-azure-virtual-network.md) beschrieben erstellt haben. Passen Sie die Werte basierend auf Ihrer realen Umgebung an.
+Definieren Sie die Variablen für die Ressourcengruppe und das virtuelle Netzwerk, die bzw.das Sie wie unter [Bereitstellen von Azure Spring Cloud in einem virtuellen Azure-Netzwerk (VNET-Injektion)](./how-to-deploy-in-azure-virtual-network.md) beschrieben erstellt haben. Passen Sie die Werte basierend auf Ihrer realen Umgebung an.  Wenn Sie die SPRING_APP_PRIVATE_FQDN definieren, entfernen Sie „https“ aus dem URI.
 
-```
+```bash
 SUBSCRIPTION='subscription-id'
 RESOURCE_GROUP='my-resource-group'
 LOCATION='eastus'
@@ -36,11 +36,11 @@ APPLICATION_GATEWAY_SUBNET_NAME='app-gw-subnet'
 APPLICATION_GATEWAY_SUBNET_CIDR='10.1.2.0/24'
 ```
 
-## <a name="login-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich bei der Azure-Befehlszeilenschnittstelle an, und wählen Sie Ihr aktives Abonnement aus.
+Melden Sie sich bei der Azure CLI an, und wählen Sie Ihr aktives Abonnement aus.
 
-```
+```azurecli
 az login
 az account set --subscription ${SUBSCRIPTION}
 ```
@@ -49,7 +49,7 @@ az account set --subscription ${SUBSCRIPTION}
 
 Das zu erstellende **Azure Application Gateway** tritt dem gleichen virtuellen Netzwerk wie die Azure Spring Cloud-Dienstinstanz bei, oder es erfolgt ein Peering. Erstellen Sie zunächst mithilfe von `az network vnet subnet create` ein neues Subnetz für das Application Gateway im virtuellen Netzwerk, und erstellen Sie außerdem mithilfe von `az network public-ip create` eine öffentliche IP-Adresse als Front-End der Application Gateway-Instanz.
 
-```
+```azurecli
 APPLICATION_GATEWAY_PUBLIC_IP_NAME='app-gw-public-ip'
 az network vnet subnet create \
     --name ${APPLICATION_GATEWAY_SUBNET_NAME} \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 Erstellen Sie ein Anwendungsgateway mit `az network application-gateway create`, und geben Sie den privaten vollqualifizierten Domänennamen (FQDN) Ihrer Anwendung als Server im Back-End-Pool an. Aktualisieren Sie anschließend die HTTP-Einstellung mithilfe von `az network application-gateway http-settings update` so, dass der Hostnamen aus dem Back-End-Pool verwendet wird.
 
-```
+```azurecli
 APPLICATION_GATEWAY_NAME='my-app-gw'
 APPLICATION_GATEWAY_PROBE_NAME='my-probe'
 APPLICATION_GATEWAY_REWRITE_SET_NAME='my-rewrite-set'
@@ -119,7 +119,7 @@ az network application-gateway rule update \
 
 Die Erstellung des Anwendungsgateways in Azure kann bis zu 30 Minuten in Anspruch nehmen. Nachdem es erstellt wurde, überprüfen Sie die Integrität des Back-Ends mithilfe von `az network application-gateway show-backend-health`.  Hiermit wird überprüft, ob das Anwendungsgateway Ihre Anwendung über seinen privaten FQDN erreicht.
 
-```
+```azurecli
 az network application-gateway show-backend-health \
     --name ${APPLICATION_GATEWAY_NAME} \
     --resource-group ${RESOURCE_GROUP}
@@ -127,7 +127,7 @@ az network application-gateway show-backend-health \
 
 Die Ausgabe gibt den fehlerfreien Status des Back-End-Pools an.
 
-```
+```output
 {
   "backendAddressPools": [
     {
@@ -152,7 +152,7 @@ Die Ausgabe gibt den fehlerfreien Status des Back-End-Pools an.
 
 Rufen Sie mit `az network public-ip show` die öffentliche IP-Adresse des Anwendungsgateways ab.
 
-```
+```azurecli
 az network public-ip show \
     --resource-group ${RESOURCE_GROUP} \
     --name ${APPLICATION_GATEWAY_PUBLIC_IP_NAME} \
@@ -162,7 +162,7 @@ az network public-ip show \
 
 Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
 
-  ![App in der öffentlichen IP-Adresse](media/spring-cloud-expose-apps-gateway-az-firewall/app-gateway-public-ip.png)
+![App in der öffentlichen IP-Adresse](media/spring-cloud-expose-apps-gateway-az-firewall/app-gateway-public-ip.png)
 
 ## <a name="see-also"></a>Weitere Informationen
 

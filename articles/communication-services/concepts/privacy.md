@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 870000e49e77475e8f8c7dcac84d470a853c8a76
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136011"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762869"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
@@ -21,7 +21,11 @@ Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anford
 
 ## <a name="data-residency"></a>Datenresidenz
 
-Bei der Erstellung einer Communication Services-Ressource geben Sie kein Azure-Rechenzentrum, sondern eine **geografische Region** an. Alle ruhenden Daten, die von Communication Services gespeichert werden, werden in dieser geografischen Region gespeichert. Das Rechenzentrum wird dabei intern von Communication Services ausgewählt. Daten können jedoch andere geografische Regionen durchlaufen oder in anderen geografischen Regionen verarbeitet werden. Diese globalen Endpunkte sind erforderlich, um Endbenutzern unabhängig von ihrem Standort eine hohe Leistung mit geringer Wartezeit zu bieten.
+Bei der Erstellung einer Communication Services-Ressource geben Sie kein Azure-Rechenzentrum, sondern eine **geografische Region** an. Alle von Communication Services gespeicherten Chatnachrichten und Ressourcendaten werden im Ruhezustand in dieser geografischen Region gespeichert. Das Rechenzentrum wird dabei intern von Communication Services ausgewählt. Daten können jedoch andere geografische Regionen durchlaufen oder in anderen geografischen Regionen verarbeitet werden. Diese globalen Endpunkte sind erforderlich, um Endbenutzern unabhängig von ihrem Standort eine hohe Leistung mit geringer Wartezeit zu bieten.
+
+## <a name="data-collection"></a>Datensammlung
+
+Azure Communication Services erfasst nur Diagnosedaten, die für die Bereitstellung des Diensts erforderlich sind. 
 
 ## <a name="data-residency-and-events"></a>Datenresidenz und Ereignisse
 
@@ -76,6 +80,10 @@ Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und m
 ### <a name="internet-voice-and-video-calling"></a>Sprach- und Videoanrufe über das Internet
 
 Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und mit Ausnahme von Azure Monitor-Protokollen werden keine Daten in Ihrer Ressource gespeichert.
+
+### <a name="call-recording"></a>Anrufaufzeichnung
+
+Anrufaufzeichnungen werden vorübergehend für 48 Stunden in der gleichen geografischen Region gespeichert, die bei der Erstellung der Ressource für ```Data Location``` ausgewählt wurde. Danach wird die Aufzeichnung gelöscht. Sie sind dann dafür verantwortlich, die Aufzeichnung an einem sicheren und konformen Speicherort zu speichern.
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor und Log Analytics
 

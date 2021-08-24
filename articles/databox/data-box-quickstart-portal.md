@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/05/2021
+ms.date: 07/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b87af97dd99fa88dc5aaa0cd5bdd8a2a23032104
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440716"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690416"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 
@@ -47,7 +47,7 @@ Vorbereitungen
 - Überprüfen Sie die [Sicherheitsrichtlinien für Ihre Data Box](data-box-safety.md).
 - Sie haben einen Hostcomputer mit den Daten, die Sie auf die Data Box kopieren möchten. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
     - Es muss ein [unterstütztes Betriebssystem](data-box-system-requirements.md) ausgeführt werden.
-    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch jedoch die Geschwindigkeit der Kopiervorgänge leidet. 
+    - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
 - Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
 - Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
     - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2)
@@ -102,9 +102,9 @@ Nach Erhalt der Data Box führen Sie die folgenden Schritte aus, um das Gerät z
 2. Bevor Sie Ihr Gerät verkabeln, vergewissern Sie sich, dass Sie die folgenden Kabel haben:
     
     - (Im Lieferumfang) geerdetes Netzkabel mit einer Nennstromstärke von mindestens 10 A mit einem IEC60320 C-13-Stecker an einem Ende zum Anschluss an das Gerät.
-    - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
-    - Zwei SFP+ Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den 10-GBit/s-Netzwerkschnittstellen DATA 1 und DATA 2)
-    - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
+    - (Nicht enthalten:) Ein Netzwerkkabel vom Typ RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
+    - (Nicht enthalten:) Zwei SFP+ Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den 10-GBit/s-Netzwerkschnittstellen DATA 1 und DATA 2)
+    - (Nicht enthalten:) Ein Netzwerkkabel vom Typ RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 
 3. Nehmen Sie das Gerät heraus, und stellen Sie es auf eine ebene Fläche. 
     

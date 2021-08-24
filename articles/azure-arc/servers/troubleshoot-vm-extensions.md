@@ -1,14 +1,14 @@
 ---
 title: Behandeln von Problemen mit VM-Erweiterungen für Server mit Azure Arc-Unterstützung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure-VM-Erweiterungen beheben, die bei Servern mit Azure Arc-Unterstützung auftreten.
-ms.date: 09/24/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 690b92389d86ca497801af79c6930677c19178fe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584675"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390199"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Behandeln von Problemen mit VM-Erweiterungen für Server mit Azure Arc-Unterstützung
 

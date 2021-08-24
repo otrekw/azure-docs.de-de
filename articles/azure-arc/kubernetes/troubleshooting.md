@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Problembehandlung bei häufigen Problemen mit Arc-fähigen Kubernetes-Clustern
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: c05e82b084e49958a8c99bc755bdf954b708d69e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: e1a04e95924f4a217cdceca383637bcee7ea368a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355657"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Problembehandlung bei Kubernetes mit Azure Arc-Aktivierung
 
@@ -90,6 +90,19 @@ Error: list: failed to list: secrets is forbidden: User "myuser" cannot list res
 ```
 
 Dem Benutzer, der den Cluster mit Azure Arc verbindet, sollte die Rolle `cluster-admin` auf dem Cluster zugewiesen sein.
+
+
+### <a name="unable-to-connect-openshift-cluster-to-azure-arc"></a>Herstellen einer Verbindung zwischen OpenShift-Cluster und Azure Arc nicht möglich
+
+Wenn beim Verbinden eines OpenShift-Clusters mit Azure Arc ein Timeout für `az connectedk8s connect` auftritt und der Befehl fehlschlägt, überprüfen Sie Folgendes:
+
+1. Der OpenShift-Cluster muss die erforderlichen Versionsvoraussetzungen erfüllen: 4.5.41 oder höher oder 4.6.35 oder höher oder 4.7.18 oder höher.
+
+1. Vor dem Ausführen von `az connectedk8s connnect` muss der folgende Befehl im Cluster ausgeführt werden:
+
+    ```console
+    oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
+    ```
 
 ### <a name="installation-timeouts"></a>Timeouts bei der Installation
 

@@ -1,18 +1,18 @@
 ---
 title: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 description: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk (VNET-Einschleusung)
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6822514e6bcbb5a232f7ee7f22ec8b0ee8a21e10
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750351"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396742"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
@@ -22,9 +22,15 @@ In diesem Tutorial wird erläutert, wie Sie eine Azure Spring Cloud-Instanz in I
 
 Die Bereitstellung ermöglicht Folgendes:
 
-* Isolation von Azure Spring Cloud-Apps und der Dienstruntime vom Internetâ€‹ in Ihrem Unternehmensnetzwerkâ€‹.
-* Azure Spring Cloud-Interaktion mit Systemen in â€‹lokalen Rechenzentren â€‹oder Azure-Diensten in anderen virtuellen Netzwerken.
+* Isolierung von Azure Spring Cloud-Apps und der Dienstruntime vom Internet in Ihrem Unternehmensnetzwerk.
+* Azure Spring Cloud-Interaktion mit Systemen in lokalen Rechenzentren oder Azure-Diensten in anderen virtuellen Netzwerken.
 * Befähigung von Kunden zum Steuern der eingehenden und ausgehenden Netzwerkkommunikation für Azure Spring Cloud.
+
+Im folgenden Video wird beschrieben, wie Sie Spring Boot-Anwendungen mithilfe verwalteter virtueller Netzwerke schützen.
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/LbHD0jd8DTQ?list=PLPeZXlCR7ew8LlhnSH63KcM0XhMKxT1k_]
 
 > [!Note]
 > Sie können Ihr virtuelles Azure-Netzwerk nur auswählen, wenn Sie eine neue Azure Spring Cloud-Dienstinstanz erstellen. Nach dem Erstellen der Azure Spring Cloud-Instanz können Sie nicht mehr zu einem anderen virtuellen Netzwerk wechseln.
@@ -88,22 +94,24 @@ Wählen Sie das virtuelle Netzwerk **azure-spring-cloud-vnet** aus, das Sie zuvo
 
     ![Screenshot: Bildschirm „Zugriffssteuerung“.](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. Weisen Sie dem **Azure Spring Cloud-Ressourcenanbieter** die Rolle *Besitzer* zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+1. Weisen Sie dem **Azure Spring Cloud-Ressourcenanbieter** die Rolle *Besitzer* zu. Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md#step-2-open-the-add-role-assignment-pane).
 
-Das gleiche Ergebnis erzielen Sie, wenn Sie den folgenden Azure CLI-Befehl ausführen:
+    ![Screenshot der Zuweisung des Besitzers zum Ressourcenanbieter.](./media/spring-cloud-v-net-injection/assign-owner-resource-provider.png)
 
-```azurecli
-VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
-    --name ${NAME_OF_VIRTUAL_NETWORK} \
-    --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
-    --query "id" \
-    --output tsv`
+    Das gleiche Ergebnis erzielen Sie, wenn Sie den folgenden Azure CLI-Befehl ausführen:
 
-az role assignment create \
-    --role "Owner" \
-    --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
-    --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
-```
+    ```azurecli
+    VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
+        --name ${NAME_OF_VIRTUAL_NETWORK} \
+        --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
+        --query "id" \
+        --output tsv`
+
+    az role assignment create \
+        --role "Owner" \
+        --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
+        --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
+    ```
 
 ## <a name="deploy-an-azure-spring-cloud-instance"></a>Bereitstellen einer Azure Spring Cloud-Instanz
 
@@ -113,7 +121,7 @@ So stellen Sie die Azure Spring Cloud-Instanz im virtuellen Netzwerk bereit:
 
 1. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud**. Wählen Sie in den Ergebnissen **Azure Spring Cloud** aus.
 
-1. Wählen Sie auf der Seite **Azure Spring Cloud** die Option **+ Hinzufügen** aus.
+1. Wählen Sie auf der Seite **Azure Spring Cloud** die Option **Hinzufügen** aus.
 
 1. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.
 
@@ -167,7 +175,7 @@ Diese Tabelle enthält die maximale Anzahl von App-Instanzen, die Azure Spring C
 | /25             | 128       | 120           | <p> App mit 1 Kern:  500<br> App mit 2 Kernen:  500<br>  App mit 3 Kernen:  480<br>  App mit 4 Kernen: 360</p> |
 | /24             | 256       | 248           | <p> App mit 1 Kern:  500<br/> App mit 2 Kernen:  500<br/>  App mit 3 Kernen: 500<br/>  App mit 4 Kernen: 500</p> |
 
-Für Subnetze werden fünf IP-Adressen von Azure reserviert, und für Azure Spring Cloud sind mindestens vier Adressen erforderlich. Mindestens neun IP-Adressen sind erforderlich, sodass /29 und /30 nicht betriebsbereit sind.
+Für Subnetze werden fünf IP-Adressen von Azure reserviert, und für Azure Spring Cloud sind mindestens drei IP-Adressen erforderlich. Mindestens acht IP-Adressen sind erforderlich, sodass /29 und /30 nicht betriebsbereit sind.
 
 Bei einem Dienstruntime-Subnetz beträgt die Mindestgröße /28. Diese Größe hat keine Auswirkungen auf die Anzahl der App-Instanzen.
 
@@ -177,9 +185,8 @@ Azure Spring Cloud unterstützt die Verwendung vorhandener Subnetze und Routingt
 
 Wenn Ihre benutzerdefinierten Subnetze keine Routingtabellen enthalten, erstellt Azure Spring Cloud diese für jedes der Subnetze und fügt ihnen während des Instanzlebenszyklus Regeln hinzu. Wenn Ihre benutzerdefinierten Subnetze Routingtabellen enthalten, erkennt Azure Spring Cloud die vorhandenen Routingtabellen bei Instanzvorgängen und fügt Und/Oder-Regeln für Vorgänge entsprechend hinzu bzw. aktualisiert sie.
 
-> [!Warning] 
+> [!Warning]
 > Benutzerdefinierte Regeln können zu benutzerdefinierten Routingtabellen hinzugefügt und aktualisiert werden. Regeln werden jedoch von Azure Spring Cloud hinzugefügt und dürfen nicht aktualisiert oder entfernt werden. Regeln wie „0.0.0.0/0“ müssen in jeder Routingtabelle enthalten und dem Ziel Ihres Internetgateways (beispielsweise einer virtuellen Netzwerkappliance oder einem anderen Ausgangsgateway) zugeordnet sein. Achten Sie beim Aktualisieren von Regeln unbedingt darauf, dass nur Ihre benutzerdefinierten Regeln geändert werden.
-
 
 ### <a name="route-table-requirements"></a>Anforderungen an die Routingtabelle
 
@@ -193,9 +200,6 @@ Die Routingtabellen, denen Ihr benutzerdefiniertes virtuelles Netzwerk zugeordne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen der Anwendung in Azure Spring Cloud in Ihrem VNET](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
-
-## <a name="see-also"></a>Weitere Informationen
-
+- [Bereitstellen der Anwendung in Azure Spring Cloud in Ihrem VNET](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 - [Problembehandlung für Azure Spring Cloud im VNET](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

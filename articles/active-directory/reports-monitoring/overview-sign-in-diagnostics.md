@@ -13,165 +13,135 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/15/2020
+ms.date: 07/07/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30ec59a2b74ffb1a9de8bbf03271bf4699c98b6b
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572288"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552609"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Was ist die Anmeldediagnose für Azure AD?
 
-Azure AD (Azure Active Directory) stellt ein flexibles Sicherheitsmodell bereit, mit dem Sie den Zugang der Benutzer zu verwalteten Ressourcen und den Berechtigungsumfang steuern können. Für den Zugriff auf diese Ressourcen wird nicht nur überprüft, um *wen* es sich handelt, sondern auch, *wie* der Zugriff erfolgt. Normalerweise weist ein flexibles Modell gleichzeitig eine gewisse Komplexität auf, weil die Anzahl von verfügbaren Konfigurationsoptionen relativ hoch ist. Und Komplexität bringt ihrerseits ein höheres Fehlerrisiko mit sich.
+Die Gründe für eine fehlgeschlagene Anmeldung zu ermitteln, kann zu einer großen Herausforderung werden. Sie müssen analysieren, was während des Anmeldeversuchs passiert ist, und anschließend die verfügbaren Empfehlungen untersuchen, um das Problem zu beheben. Im Idealfall können Sie das Problem beheben, ohne Dritte (z. B. den Microsoft-Support) hinzuzuziehen. In einer solchen Situation ist die Anmeldediagnose von Azure AD hilfreich. Hierbei handelt es sich um ein Tool, mit dem Sie Anmeldevorgänge in Azure AD überprüfen können. 
 
-Als IT-Administrator benötigen Sie eine Lösung, mit der Sie Einblicke in die Aktivitäten Ihres Systems erhalten können. Dank dieser Einblicke können Sie Probleme, die ggf. auftreten, diagnostizieren und beheben. Die Anmeldediagnose für Azure AD ist ein Beispiel für eine Lösung dieser Art. Mit der Diagnose können Sie analysieren, was bei einem Anmeldeversuch passiert ist, und Empfehlungen zur Behebung von Problemen erhalten, ohne den Microsoft-Support einzubeziehen.
+In diesem Artikel erhalten Sie eine Übersicht über die Anmeldediagnose und erfahren, wie Sie sie zur Problembehandlung von Anmeldefehlern verwenden können. 
 
-In diesem Artikel erhalten Sie einen Überblick über die Funktionsweise der Lösung und deren Verwendung.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="how-it-works"></a>Funktionsweise  
 
-Die Anmeldediagnose ist in allen Editionen von Azure AD verfügbar.
+Die Anmeldeversuche in Azure AD werden wie folgt gesteuert:
 
-Um sie verwenden zu können, müssen Sie ein globaler Administrator Ihres Azure AD-Mandanten sein.
+- **Wer:** Der Benutzer, der versucht sich anzumelden.
+- **Wie:** Wie der Anmeldeversuch ausgeführt wurde.
 
-## <a name="how-it-works"></a>Funktionsweise
+Sie können z. B. Richtlinien für den bedingten Zugriff konfigurieren, die es Administratoren ermöglichen, alle Aspekte eines Mandanten zu konfigurieren, wenn sie sich über das Unternehmensnetzwerk anmelden. Derselbe Benutzer wird unter Umständen aber blockiert, wenn er sich bei demselben Konto über ein nicht vertrauenswürdiges Netzwerk anmeldet. 
 
-In Azure AD hängt die Reaktion auf einen Anmeldeversuch davon ab, *wer* sich anmeldet und *wie* der Zugriff auf den Mandanten erfolgt. Ein Administrator kann normalerweise alle Aspekte des Mandanten konfigurieren, wenn er sich über das Unternehmensnetzwerk anmeldet. Derselbe Benutzer wird unter Umständen aber blockiert, wenn er sich mit demselben Konto über ein nicht vertrauenswürdiges Netzwerk anmeldet.
+Aufgrund der größeren Flexibilität des Systems, auf einen Anmeldeversuch zu reagieren, kann es zu Szenarien kommen, in denen Sie eine Problembehandlung für Anmeldungen durchführen müssen. Das Anmeldediagnose-Tool ermöglicht Ihnen eine Selbstdiagnose von Anmeldeproblemen, indem es:  
 
-Aufgrund der größeren Flexibilität des Systems, auf einen Anmeldeversuch zu reagieren, kann es zu Szenarien kommen, in denen Sie eine Problembehandlung für Anmeldungen durchführen müssen. Die Anmeldediagnose hat folgende Funktionen:
+- Daten von Anmeldeereignissen analysiert.  
 
-- Analysieren der Daten von Anmeldeereignissen
+- Informationen darüber anzeigt, was passiert ist.  
 
-- Anzeigen der erfolgten Vorgänge
+- Empfehlungen zum Beheben von Problemen bereitstellt.  
 
-- Bereitstellen von Empfehlungen zum Beheben von Problemen
+Um den Diagnosevorgang zu starten und auszuführen, müssen Sie folgende Schritte befolgen:   
 
-Die Anmeldediagnose für Azure AD wurde für die Selbstdiagnose von Anmeldefehlern entwickelt. Zum Ausführen des Diagnosevorgangs müssen Sie folgende Schritte ausführen:
+1. **Ereignis identifizieren:** Geben Sie Informationen über das Anmeldeereignis ein. 
 
-![Diagramm: Anmeldediagnose](./media/overview-sign-in-diagnostics/process.png)
+2. **Ereignis auswählen:** Wählen Sie basierend auf den geteilten Informationen ein Ereignis aus. 
 
-1. Definieren des Bereichs der in Frage kommenden Anmeldeereignisse
+3. **Aktion ausführen:** Überprüfen Sie die Diagnoseergebnisse und führen Sie die empfohlenen Schritte aus.
 
-2. Auswählen der zu überprüfenden Anmeldung
 
-3. Überprüfen der Diagnoseergebnisse
+### <a name="identify-event"></a>Ereignis identifizieren 
 
-4. Ergreifen von Maßnahmen
+Um die richtigen Ereignisse zu identifizieren, können Sie diese auf Grundlage der folgenden Optionen filtern:
 
-### <a name="define-scope"></a>Definieren des Bereichs
+- Name des Benutzers
+- Application 
+- Korrelations-ID oder Anforderungs-ID 
+- Datum und Uhrzeit
 
-Ziel dieses Schritts ist es, den Bereich mit den Anmeldeereignissen zu definieren, die Sie untersuchen möchten. Der Bereich basiert entweder auf einem Benutzer oder einem Bezeichner (correlationId, requestId) und einem Zeitbereich. Wenn Sie den Bereich weiter eingrenzen möchten, können Sie einen App-Namen angeben. Azure AD verwendet die Bereichsinformationen, um die richtigen Ereignisse für Sie zu finden.  
+![Screenshot des Filters](./media/overview-sign-in-diagnostics/sign-in-diagnostics.png)
 
-### <a name="select-sign-in"></a>Auswählen der Anmeldung  
 
-Anhand Ihrer Suchkriterien ruft Azure AD alle übereinstimmenden Anmeldeereignisse ab und zeigt sie in Listenform in einer Authentifizierungsübersicht an.
 
-![Screenshot: Abschnitt „Authentifizierungen (Zusammenfassungsbericht)“](./media/overview-sign-in-diagnostics/authentication-summary.png)
+### <a name="select-event"></a>Ereignis auswählen  
 
-Sie können die in dieser Ansicht angezeigten Spalten anpassen.
+Anhand Ihrer Suchkriterien ruft Azure AD alle übereinstimmenden Anmeldeereignisse ab und zeigt sie in Listenform in einer Authentifizierungsübersicht an.  
 
-### <a name="review-diagnostic"></a>Überprüfen der Diagnose
+![Screenshot der Authentifizierungsübersicht](./media/overview-sign-in-diagnostics/review-sign-ins.png)
 
-Für das ausgewählte Anmeldeereignis stellt Azure AD Diagnoseergebnisse bereit.
+Sie können den Spalteninhalt je nach Bedarf anpassen. Beispiele:
 
-![Screenshot: Abschnitt „Diagnoseergebnisse“](./media/overview-sign-in-diagnostics/diagnostics-results.png)
-
-Diese Ergebnisse beginnen mit einer Bewertung, in der mit wenigen Sätzen beschrieben wird, was passiert ist. Die Erläuterung hilft Ihnen, das Verhalten des Systems zu verstehen.
-
-Als Nächstes erhalten Sie eine Übersicht über die entsprechenden Richtlinien für bedingten Zugriff, die auf das ausgewählte Anmeldeereignis angewendet wurden. Die Diagnoseergebnisse enthalten auch die empfohlenen Schritte, mit denen Sie Ihr Problem beheben können. Da es nicht immer möglich ist, Probleme ohne weitere Hilfe zu beheben, empfiehlt es sich, in einem weiteren Schritt ein Supportticket zu öffnen.
+- Risikodetails
+- Status des bedingten Zugriffs
+- Standort
+- Ressourcen-ID
+- Benutzertyp
+- Authentifizierungsdetails
 
 ### <a name="take-action"></a>Ausführen einer Aktion
 
-An diesem Punkt sollten Sie über die Informationen verfügen, die Sie zum Beheben Ihres Problems benötigen.
+Für das ausgewählte Anmeldeereignis werden Ihnen Diagnoseergebnisse bereitgestellt. Lesen Sie sich die Ergebnisse durch, um Aktionen zu identifizieren, die Sie zum Beheben des Problems ergreifen können. In den Ergebnissen finden Sie weitere Informationen zu den nächsten Schritten sowie zu den zugehörigen Richtlinien, Anmeldedetails und der unterstützenden Dokumentation. Da es nicht immer möglich ist, Probleme ohne weitere Hilfe zu beheben, empfiehlt es sich, in einem weiteren Schritt ein Supportticket zu öffnen. 
 
-## <a name="scenarios"></a>Szenarien
 
-Die Anmeldediagnose deckt die folgenden Szenarien ab:
+![Screenshot der Diagnoseergebnisse](./media/overview-sign-in-diagnostics/diagnostic-results.png)
 
-- Blockiert durch bedingten Zugriff
 
-- Fehlerhafte Anmeldung durch bedingten Zugriff
 
-- Mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) bei bedingtem Zugriff
+## <a name="how-to-access-it"></a>Zugreifen
 
-- Mehrstufige Authentifizierung (MFA) aufgrund sonstiger Anforderungen erforderlich
+Um das Diagnosetool verwenden zu können, müssen Sie beim Mandanten als globaler Administrator oder als globaler Leser angemeldet sein. Wenn Sie nicht über diese Zugriffsebene verfügen, nutzen Sie das [Privileged Identity Management (PIM)](../privileged-identity-management/pim-resource-roles-activate-your-roles.md), um sich innerhalb des Mandanten die Zugriffsrechte eines globalen Administrators/Lesers zu erteilen. Dadurch erhalten Sie temporären Zugriff auf das Diagnosetool.  
 
-- MFA-Nachweis erforderlich
+Mit der richtigen Zugriffsebene können Sie das Diagnosetool auf verschiedene Arten starten: 
 
-- MFA-Nachweis erforderlich (als Risikoanmeldung eingestufter Standort)
+**Option A**: Diagnose und Behandlung von Problemen 
 
-- Erfolgreiche Anmeldung
+![Screenshot: Starten der Anmeldediagnose über den bedingten Zugriff](./media/overview-sign-in-diagnostics/troubleshoot-link.png)
 
-### <a name="blocked-by-conditional-access"></a>Blockiert durch bedingten Zugriff
 
-In diesem Szenario wurde ein Anmeldeversuch durch eine Richtlinie für bedingten Zugriff blockiert.
+1. Öffnen Sie **Azure Active Directory (AAD) oder den Bedingten Azure AD-Zugriff**. 
 
-![Screenshot: Zugriffskonfiguration mit Auswahl von „Zugriff blockieren“](./media/overview-sign-in-diagnostics/block-access.png)
+2. Klicken Sie im Hauptmenü auf **Diagnose & Lösen von Problemen**.  
 
-Der Diagnoseabschnitt für dieses Szenario enthält Einzelheiten zum Benutzeranmeldeereignis und zu den angewendeten Richtlinien.
+3. Unter **Problembehandlung** befindet sich eine Kachel für die Anmeldediagnose. 
 
-### <a name="failed-conditional-access"></a>Fehler beim bedingten Zugriff
+4. Klicken Sie auf die Schaltfläche **Problembehandlung**.  
 
-Dieses Szenario ist in der Regel auf einen Anmeldeversuch zurückzuführen, bei dem ein Fehler aufgetreten ist, da die Anforderungen einer Richtlinie für bedingten Zugriff nicht erfüllt wurden. Typische Beispiele:
+ 
 
-![Screenshot: Zugriffskonfiguration mit Beispielen für häufige Richtlinien und Auswahl von „Zugriff gewähren“](./media/overview-sign-in-diagnostics/require-controls.png)
+ 
 
-- Gerät mit Hybrid-Azure AD-Einbindung erforderlich
+**Option B**: Anmeldeereignisse 
 
-- Genehmigte Client-App erforderlich
+![Screenshot: Starten der Anmeldediagnose über Azure AD](./media/overview-sign-in-diagnostics/sign-in-logs-link.png)
 
-- App-Schutzrichtlinie erforderlich
 
-Der Diagnoseabschnitt für dieses Szenario enthält Einzelheiten zum Anmeldeversuch des Benutzers und zu den angewendeten Richtlinien.
 
-### <a name="mfa-from-conditional-access"></a>Mehrstufige Authentifizierung (MFA) für bedingten Zugriff erforderlich
 
-In diesem Szenario verfügt eine Richtlinie für bedingten Zugriff über die Anforderung zum Anmelden per mehrstufiger Authentifizierung.
+1. Öffnen Sie Azure Active Directory. 
 
-![Screenshot: Zugriffskonfiguration mit Auswahl von „Multi-Factor Authentication erforderlich“](./media/overview-sign-in-diagnostics/require-mfa.png)
+2. Wählen Sie im Hauptmenü im Abschnitt **Überwachung** die Option **Anmeldungen** aus. 
 
-Der Diagnoseabschnitt für dieses Szenario enthält Einzelheiten zum Anmeldeversuch des Benutzers und zu den angewendeten Richtlinien.
+3. Wählen Sie aus der Anmeldungsliste eine Anmeldung mit dem Status **Fehler** aus. Sie können Ihre Liste nach Status filtern, um die Suche nach fehlerhaften Anmeldungen zu erleichtern. 
 
-### <a name="mfa-from-other-requirements"></a>Mehrstufige Authentifizierung (MFA) aufgrund sonstiger Anforderungen erforderlich
+4. Für die ausgewählte Anmeldung wird die Registerkarte **Aktivitätsdetails: Anmeldungen** geöffnet. Klicken Sie auf das Symbol mit den Punkten, um weitere Menüsymbole anzeigen zu lassen. Wählen Sie die Registerkarte **Problembehandlung und Support** aus. 
 
-In diesem Szenario wurde keine Anforderung zur Verwendung der mehrstufigen Authentifizierung von einer Richtlinie für bedingten Zugriff erzwungen. Ein Beispiel hierfür ist die mehrstufige Authentifizierung pro Benutzer.
+5. Klicken Sie auf den Link, um die **Anmeldediagnose** zu starten. 
 
-![Screenshot: Konfiguration der mehrstufigen Authentifizierung pro Benutzer](./media/overview-sign-in-diagnostics/mfa-per-user.png)
+ 
 
-Dieses Diagnoseszenario soll weitere Einzelheiten zu folgenden Informationen bereitstellen:
+**Option C**: Supportanfrage 
 
-- Quelle der MFA-Unterbrechung
-- Ergebnis der Clientinteraktion
+Bei der Erstellung einer Supportanfrage besteht ebenfalls die Möglichkeit, das Diagnosetool aufzurufen. Auf diese Weise können Sie eine Selbstdiagnose durchführen, bevor Sie die Supportanfrage übermitteln. 
 
-Sie können auch alle Details des Anmeldeversuchs eines Benutzers anzeigen.
 
-### <a name="mfa-proof-up-required"></a>MFA-Nachweis erforderlich
-
-In diesem Szenario wurden Anmeldeversuche durch Anforderungen zum Einrichten der mehrstufigen Authentifizierung unterbrochen. Diese Einrichtung wird auch als „Nachweis“ (Englisch: Proof Up) bezeichnet.
-
-„MFA-Nachweis erforderlich“ tritt auf, wenn ein Benutzer die mehrstufige Authentifizierung verwenden muss, sie aber noch nicht konfiguriert hat, oder wenn ein Administrator das Konfigurieren der mehrstufigen Authentifizierung für den Benutzer obligatorisch gemacht hat.
-
-Bei diesem Diagnoseszenario soll gezeigt werden, dass der Grund für die Unterbrechung der mehrstufigen Authentifizierung die fehlende Benutzerkonfiguration war. Als Lösung wird empfohlen, dass der Benutzer den Nachweisvorgang durchführen soll.
-
-### <a name="mfa-proof-up-required-risky-sign-in-location"></a>MFA-Nachweis erforderlich (als Risikoanmeldung eingestufter Standort)
-
-In diesem Szenario wurden Anmeldeversuche durch eine Anforderung zum Einrichten der mehrstufigen Authentifizierung an einem riskanten Anmeldestandort unterbrochen.
-
-Bei diesem Diagnoseszenario soll gezeigt werden, dass der Grund für die Unterbrechung der mehrstufigen Authentifizierung die fehlende Benutzerkonfiguration war. Als Lösung wird empfohlen, dass der Benutzer den Nachweisvorgang durchführen soll, und zwar von einem Netzwerkstandort aus, der nicht als riskant eingestuft wird.
-
-Wenn beispielsweise ein Unternehmensnetzwerk als benannter Standort definiert ist, sollte der Benutzer versuchen, den Nachweisvorgang stattdessen aus dem Unternehmensnetzwerk durchzuführen.
-
-### <a name="successful-sign-in"></a>Erfolgreiche Anmeldung
-
-In diesem Szenario wurden Anmeldeereignisse nicht durch den bedingten Zugriff oder die mehrstufige Authentifizierung unterbrochen.
-
-In diesem Diagnoseszenario werden Details zu Benutzeranmeldeereignissen bereitgestellt, für die erwartet wird, dass sie aufgrund von Richtlinien für bedingten Zugriff oder die mehrstufige Authentifizierung unterbrochen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was sind Azure Active Directory-Berichte?](overview-reports.md)
-- [Was ist die Azure Active Directory-Überwachung?](overview-monitoring.md)
+- [Anmeldediagnose für Azure AD-Szenarien](concept-sign-in-diagnostics-scenarios.md)

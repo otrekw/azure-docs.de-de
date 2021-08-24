@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/07/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8e88fb2f6f2fc9ad50911bfda2245cd95ae33236
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: fe1397b2853e95af715e4feb8423f7db3cf548f0
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058747"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219966"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Tutorial: Aktivieren von Azure Stack Edge Pro mit GPU
 
@@ -92,6 +92,26 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Die Aktivierung des Geräts ist abgeschlossen. Sie können nun Freigaben auf Ihrem Gerät hinzufügen.
 
 Wenn während der Aktivierung Probleme auftreten, gehen Sie zu [Beheben von Aktivierungsproblemen auf Ihrem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors).
+
+
+
+## <a name="deploy-workloads"></a>Bereitstellen von Workloads
+
+Nachdem Sie das Gerät aktiviert haben, besteht der nächste Schritt im Bereitstellen der Workloads.
+
+- Informationen über das Bereitstellen von VM-Workloads finden Sie unter [Was sind VMs in Azure Stack Edge?](azure-stack-edge-gpu-virtual-machine-overview.md) und in der zugehörigen Dokumentation zur VM-Bereitstellung.
+- So stellen Sie Netzwerkfunktionen als verwaltete Anwendungen zur Verfügung:
+    - Stellen Sie sicher, dass Sie eine Geräteressource für den Azure-Netzwerkfunktionsmanager (NFM) erstellen, die mit der Azure Stack Edge-Ressource verknüpft ist. Die Geräteressource aggregiert alle Netzwerkfunktionen, die auf dem Azure Stack Edge-Gerät bereitgestellt werden. Ausführliche Anweisungen finden Sie im [Tutorial: Erstellen einer Netzwerkfunktionsmanager-Geräteressource (Vorschauversion)](../network-function-manager/create-device.md). 
+    - Anschließend können Sie den Netzwerkfunktionsmanager in Übereinstimmung mit den Anweisungen im [Tutorial: Bereitstellen von Netzwerkfunktionen in Azure Stack Edge (Vorschauversion)](../network-function-manager/deploy-functions.md) bereitstellen.
+- So stellen Sie IoT Edge- und Kubernetes-Workloads bereit:
+    - Zunächst müssen Sie Compute wie im [Tutorial: Konfigurieren von Compute auf einem Azure Stack Edge Pro GPU-Gerät](azure-stack-edge-gpu-deploy-configure-compute.md) beschrieben konfigurieren. In diesem Schritt wird ein Kubernetes-Cluster erstellt, der als Hostingplattform für IoT Edge auf Ihrem Gerät fungiert. 
+    - Nachdem ein Kubernetes-Cluster auf Ihrem Azure Stack Edge-Gerät erstellt wurde, können Sie die Anwendungsworkloads auf diesem Cluster mittels einer der folgenden Methoden bereitstellen:
+
+        - Nativer Zugriff über `kubectl`
+        - IoT Edge
+        - Azure Arc
+        
+        Weitere Informationen über die Bereitstellung von Workloads finden Sie unter [Verwalten von Kubernetes-Workloads auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,18 @@
 ---
 title: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit der Ermittlung und Bewertung von Azure Migrate
 description: Hier erfahren Sie, wie Sie in einer VMware-Umgebung lokale Server, Apps und Abhängigkeiten unter Verwendung des Azure Migrate-Tools zur Ermittlung und Bewertung entdecken.
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 42140e61146d8682d193f89b2a691b8a13260533
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803706"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464937"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -302,22 +302,20 @@ Wenn die Überprüfung fehlschlägt, können Sie den Status **Fehler** auswähle
 
 ### <a name="start-discovery"></a>Ermittlung starten
 
-Unter **Schritt 3: Geben Sie Anmeldeinformationen für den Server an, um eine Softwareinventur, eine Abhängigkeitsanalyse ohne Agents und eine Ermittlung von SQL Server-Instanzen und -Datenbanken** wählen Sie **Ermittlung starten**, um die vCenter Server-Ermittlung zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse oder FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
-
-> [!NOTE]
-> Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, wenn die Eigenschaft [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) auf `true` festgelegt ist. Die Transportschicht verwendet TLS/SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Der Server der Appliance muss so eingerichtet sein, dass er die [Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
->
-> Wenn auf dem Server kein Zertifikat bereitgestellt wurde, erstellt SQL Server beim Starten ein selbst signiertes Zertifikat zum Verschlüsseln von Anmeldepaketen. [Weitere Informationen](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
->
+Wählen Sie **Ermittlung starten** aus, um die vCenter Server-Ermittlung zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse oder FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
 
 ## <a name="how-discovery-works"></a>Wie die Ermittlung funktioniert
 
 * Die Inventur benötigt ca. 15 Minuten, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden.
 * Wenn Sie Serveranmeldeinformationen angegeben haben, wird die Software-Inventur (Ermittlung installierter Anwendungen) automatisch eingeleitet, wenn die vCenter Server-Ermittlung abgeschlossen wurde. Die Software-Inventur erfolgt einmal alle 12 Stunden.
 * [Die Softwareinventur](how-to-discover-applications.md) identifiziert SQL Server-Instanzen, die auf den Servern ausgeführt werden. Anhand dieser gesammelten Informationen versucht die Appliance, mithilfe der in der Appliance angegebenen Anmeldeinformationen für Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Anschließend werden Daten zu SQL Server-Datenbanken und deren Eigenschaften erfasst. Die SQL Server-Ermittlung erfolgt einmal alle 24 Stunden.
+* Die Appliance kann nur mit den SQL Server-Instanzen verbunden werden, mit denen sie über eine direkte Verbindung verfügt. Für die Softwareinventur selbst ist möglicherweise keine direkte Netzwerkverbindung erforderlich.
 * Die Ermittlung installierter Anwendungen kann länger als 15 Minuten dauern. Die Dauer hängt von der Anzahl der ermittelten Server ab. Bei 500 Servern dauert es ungefähr ein Stunde, bis der ermittelte Bestand im Azure Migrate-Portal angezeigt wird.
-* Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die Abhängigkeitsanalyse ohne Agent zu aktivieren.
+* Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Wenn die Ermittlung von Servern abgeschlossen ist, können Sie im Portal die Abhängigkeitsanalyse ohne Agent auf den Servern aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die [Abhängigkeitsanalyse ohne Agent](how-to-create-group-machine-dependencies-agentless.md) zu aktivieren.
 * SQL Server-Instanzen und die Daten der Datenbanken werden innerhalb von 24 Stunden nach Beginn der Ermittlung im Portal angezeigt.
+* Standardmäßig verwendet Azure Migrate für Verbindungen mit SQL-Instanzen die sicherste Methode, d. h., Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen, indem die TrustServerCertificate-Eigenschaft auf `true` festgelegt wird. Darüber hinaus verwendet die Transportschicht SSL zum Verschlüsseln des Kanals und Umgehen der Zertifikatkette zur Überprüfung der Vertrauenswürdigkeit. Daher muss der Server der Appliance so eingerichtet sein, dass er die Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft. Sie können die Verbindungseinstellungen jedoch ändern, indem Sie auf der Appliance **SQL Server-Verbindungseigenschaften bearbeiten** auswählen. [Erfahren Sie mehr](https://go.microsoft.com/fwlink/?linkid=2158046) darüber, was Sie auswählen sollten.
+
+    :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="Screenshot der Bearbeitung der SQL Server-Verbindungseigenschaften":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

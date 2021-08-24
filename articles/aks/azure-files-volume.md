@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die Verwendung mit mehreren parallelen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 7f3c8ae63e908f440740277084293a011b80b9d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/08/2021
+ms.openlocfilehash: c68783cd614ca5dc1a569f17365992a378d225b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355122"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 ```
 
 ## <a name="mount-file-share-as-an-inline-volume"></a>Einbinden von Dateifreigaben als Inlinevolume
-> Hinweis: Ab 1.18.15, 1.19.7, 1.20.2, 1.21.0 kann der Geheimnisnamespace in `azureFile`-Inlinevolumes nur als `default`-Namespace festgelegt werden. Verwenden Sie das folgende Beispiel für ein persistentes Volume, um einen anderen Geheimnisnamespace anzugeben.
+> Hinweis: Ein `azureFile`-Inlinevolume kann nur auf das Geheimnis im selben Namespace wie dem des Pods zugreifen. Um einen anderen Geheimnisnamespace anzugeben, verwenden Sie stattdessen das folgende Beispiel für ein persistentes Volume.
 
 Um die Azure Files-Freigabe in den Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Wenn Sie den Namen oder den geheimen Namen der Files-Freigabe geändert haben, aktualisieren Sie *shareName* und *secretName*. Aktualisieren Sie bei Bedarf den Wert `mountPath`. Dies ist der Pfad, unter dem die Files-Freigabe im Pod eingebunden wird. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an (z. B. *D:* ).
 
@@ -226,6 +226,14 @@ Aktualisieren Sie die Containerspezifikation so, dass auf *PersistentVolumeClaim
   - name: azure
     persistentVolumeClaim:
       claimName: azurefile
+```
+
+Da die Podspezifikation nicht direkt aktualisiert werden kann, verwenden Sie zum Löschen `kubectl`-Befehle, und erstellen Sie den Pod dann neu:
+
+```console
+kubectl delete pod mypod
+
+kubectl apply -f azure-files-pod.yaml
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

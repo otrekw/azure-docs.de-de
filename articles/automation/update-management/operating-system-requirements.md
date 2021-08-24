@@ -3,14 +3,14 @@ title: Von der Azure Automation-Updateverwaltung unterstützte Clients
 description: Dieser Artikel behandelt die von der Azure Automation-Updateverwaltung unterstützten Windows- und Linux-Betriebssysteme.
 services: automation
 ms.subservice: update-management
-ms.date: 06/07/2021
+ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: b25cc49846f7cd7cba1bb121fcbb8ba93f3a9b02
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 888123d1e1b2b87313f44f8b266d969cbff5bcde
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895872"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460494"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Von der Updateverwaltung unterstützte Betriebssysteme
 
@@ -20,6 +20,8 @@ In diesem Artikel werden die unterstützten Windows- und Linux-Betriebssysteme s
 
 Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen und -patching. Das Patchen erfordert einen System Hybrid Runbook Worker, der automatisch installiert wird, wenn Sie den virtuellen Computer oder Server für die Verwaltung durch Updateverwaltung aktivieren. Informationen zu den Systemanforderungen für Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md#prerequisites) und [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md#prerequisites).
 
+Bei allen Betriebssystemen wird von einer x64-Architektur ausgegangen. x86 wird für kein Betriebssystem unterstützt.
+
 > [!NOTE]
 > Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt, die in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich aufgeführt sind.
 
@@ -27,10 +29,11 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 |---------|---------|
 |Windows Server 2019 (Datacenter/Standard mit Server Core)<br><br>Windows Server 2016 (Datacenter/Standard ohne Server Core)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
-|CentOS 6, 7 und 8 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
-|Red Hat Enterprise 6, 7 und 8 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
-|SUSE Linux Enterprise Server 12, 15 und 15.1 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.     |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x64)      |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
+|CentOS 6, 7 und 8       | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
+|Oracle Linux 6.x, 7.x, 8x | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
+|Red Hat Enterprise 6, 7 und 8      | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
+|SUSE Linux Enterprise Server 12, 15, 15.1 und 15.2      | Linux-Agents erfordern Zugriff auf ein Updaterepository.     |
+|Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS und 20.04 LTS       |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
 
 > [!NOTE]
 > Die Updateverwaltung unterstützt keine sichere Automatisierung der Updateverwaltung über alle Instanzen in einer Azure-VM-Skalierungsgruppe. [Automatische Upgrades von Betriebssystemimages](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ist die empfohlene Methode zum Verwalten von Betriebssystemimage-Upgrades in Ihrer Skalierungsgruppe.
@@ -47,7 +50,7 @@ In der folgenden Tabelle werden Betriebssysteme aufgelistet, die von der Updatev
 
 ## <a name="system-requirements"></a>Systemanforderungen
 
-Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Anforderungen. Weitere Informationen finden Sie unter [Netzwerkplanung](plan-deployment.md#ports). Informationen zu den Anforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Anforderungen. Weitere Informationen finden Sie unter [Netzwerkplanung](plan-deployment.md#ports). Informationen zu den Anforderungen für TLS 1.2 finden Sie unter [TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-for-azure-automation).
 
 ### <a name="windows"></a>Windows
 

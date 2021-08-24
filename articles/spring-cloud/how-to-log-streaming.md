@@ -1,18 +1,18 @@
 ---
 title: Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit
 description: Verwenden des Protokollstreamings zum sofortigen Anzeigen von Anwendungsprotokollen
-author: MikeDodaro
-ms.author: barbkess
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b87f3221e62db6999dd67f475055f699a74c4c2a
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: cc34e87823e11b2c80d669edb0afe50703e38527
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495158"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122350067"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit
 
@@ -31,18 +31,24 @@ Azure Spring Cloud ermöglicht das Protokollstreaming in der Azure-Befehlszeilen
 ## <a name="use-cli-to-tail-logs"></a>Verwenden der Befehlszeilenschnittstelle zum Verfolgen von Protokollen
 
 Legen Sie den Namen der Standardressourcengruppe und den Clusternamen fest, um die wiederholte Angabe von Ressourcengruppen- und Dienstinstanznamen zu vermeiden.
+
 ```azurecli
-az configure --defaults group=<service group name>
-az configure --defaults spring-cloud=<service instance name>
+az config set defaults.group=<service group name>
+az config set defaults.spring-cloud=<service instance name>
 ```
+
 In den folgenden Beispielen werden die Ressourcengruppen- und Dienstnamen in den Befehlen ausgelassen.
 
 ### <a name="tail-log-for-app-with-single-instance"></a>Protokollfragment für eine App mit einer einzelnen Instanz
+
 Wenn eine App mit dem Namen „auth-service“ nur über eine Instanz verfügt, können Sie das Protokoll der App-Instanz mit dem folgenden Befehl anzeigen:
+
 ```azurecli
 az spring-cloud app logs -n auth-service
 ```
+
 Damit werden die Protokolle zurückgegeben:
+
 ```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
@@ -54,13 +60,15 @@ Damit werden die Protokolle zurückgegeben:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Protokollfragment für eine App mit mehreren Instanzen
-Wenn mehrere Instanzen für eine App mit dem Namen `auth-service` vorhanden sind, können Sie das Instanzprotokoll mithilfe der Option `-i/--instance` anzeigen. 
+
+Wenn mehrere Instanzen für eine App mit dem Namen `auth-service` vorhanden sind, können Sie das Instanzprotokoll mithilfe der Option `-i/--instance` anzeigen.
 
 Sie können zunächst die Namen der App-Instanzen mit folgendem Befehl abrufen.
 
 ```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
+
 Ergebnisse:
 
 ```output
@@ -69,7 +77,8 @@ Name                                         Status    DiscoveryStatus
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
-``` 
+```
+
 Anschließend können Sie Protokolle einer App-Instanz mit der Option `-i/--instance` streamen:
 
 ```azurecli
@@ -79,14 +88,17 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 Sie können auch Details zu App-Instanzen im Azure-Portal anzeigen.  Nachdem Sie im linken Navigationsbereich Ihres Azure Spring Cloud-Diensts **Apps** ausgewählt haben, wählen Sie **App-Instanzen** aus.
 
 ### <a name="continuously-stream-new-logs"></a>Fortlaufendes Streamen neuer Protokolle
-Standardmäßig gibt `az spring-cloud app logs` nur vorhandene Protokolle aus, die an die App-Konsole gestreamt werden, und wird dann beendet. Wenn Sie neue Protokolle streamen möchten, fügen Sie „-f“ („--follow“) an:  
+
+Standardmäßig gibt `az spring-cloud app logs` nur vorhandene Protokolle aus, die an die App-Konsole gestreamt werden, und wird dann beendet. Wenn Sie neue Protokolle streamen möchten, fügen Sie „-f“ („--follow“) an:
 
 ```azurecli
 az spring-cloud app logs -n auth-service -f
-``` 
+```
+
 So überprüfen Sie alle unterstützten Protokollierungsoptionen
+
 ```azurecli
-az spring-cloud app logs -h 
+az spring-cloud app logs -h
 ```
 
 ### <a name="format-json-structured-logs"></a>Formatieren strukturierter JSON-Protokolle
@@ -118,10 +130,12 @@ Single vip registry refresh property : null
 ```
 
 > Das verwendete Standardformat lautet:
-> ```
+>
+> ```format
 > {timestamp} {level:>5} [{thread:>15.15}] {logger{39}:<40.40}: {message}{n}{stackTrace}
 > ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Schnellstart: Überwachen von Azure Spring Cloud-Apps mit Protokollen, Metriken und Ablaufverfolgung](./quickstart-logs-metrics-tracing.md)
 * [Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen](./diagnostic-services.md)

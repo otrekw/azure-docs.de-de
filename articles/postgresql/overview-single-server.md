@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 18d944cd2b3bfde1a0ee5fc53e83e4016b11b01f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1501d682de61b52a3933f6f849b4eac6d9f33b87
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379215"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766855"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL Single Server
 
@@ -26,7 +26,7 @@ In diesem Artikel erhalten Sie eine Übersicht und eine Einführung in die grund
 
 ## <a name="overview"></a>Übersicht
 
-Bei Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform ist für die Verarbeitung der meisten Datenbankverwaltungsfunktionen (z. B. Patching, Sicherungen, Hochverfügbarkeit und Sicherheit) mit minimaler Benutzerkonfiguration und -steuerung konzipiert. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die Communityversionen 9.5, 9.6, 10 und 11 von PostgreSQL. Der Dienst ist heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar.
+Bei Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform ist für die Verarbeitung der meisten Datenbankverwaltungsfunktionen (z. B. Patching, Sicherungen, Hochverfügbarkeit und Sicherheit) mit minimaler Benutzerkonfiguration und -steuerung konzipiert. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die Communityversionen 9.6, 10 und 11 von PostgreSQL. Der Dienst ist heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar.
 
 Single Server-Instanzen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte PostgreSQL-Konfigurationseinstellungen konzipiert sind.
 

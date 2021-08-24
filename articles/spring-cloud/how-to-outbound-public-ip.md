@@ -1,18 +1,18 @@
 ---
 title: Identifizieren von ausgehenden öffentlichen IP-Adressen in Azure Spring Cloud
 description: Anzeigen der statischen ausgehenden öffentlichen IP-Adressen für die Kommunikation mit externen Ressourcen, z. B. mit Datenbanken, Speicher, Key Vault usw.
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bea1c156df381d8f3b53ce0eb08173d385b6eada
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc3050cb7c92e0e46c02a4a12f218364b94b2d1f
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080648"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122340468"
 ---
 # <a name="how-to-identify-outbound-public-ip-addresses-in-azure-spring-cloud"></a>Identifizieren von ausgehenden öffentlichen IP-Adressen in Azure Spring Cloud
 
@@ -20,7 +20,7 @@ Auf dieser Seite wird erläutert, wie Sie statische ausgehende öffentliche IP-A
 
 ## <a name="how-ip-addresses-work-in-azure-spring-cloud"></a>Funktionsweise von IP-Adressen in Azure Spring Cloud
 
-Ein Azure Spring Cloud-Dienst verfügt über mindestens eine ausgehende öffentliche IP-Adresse. Die Anzahl der ausgehenden öffentlichen IP-Adressen kann je nach Ebene und anderen Faktoren variieren. 
+Ein Azure Spring Cloud-Dienst verfügt über mindestens eine ausgehende öffentliche IP-Adresse. Die Anzahl der ausgehenden öffentlichen IP-Adressen kann je nach Ebene und anderen Faktoren variieren.
 
 Die ausgehenden öffentlichen IP-Adressen sind in der Regel konstant und bleiben unverändert, es gibt jedoch auch Ausnahmen.
 
@@ -44,6 +44,7 @@ az spring-cloud show --resource-group <group_name> --name <service_name> --query
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
 * [Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Weitere Informationen zu Key Vault in Azure Spring Cloud](./tutorial-managed-identities-key-vault.md)

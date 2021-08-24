@@ -3,22 +3,22 @@ title: 'Azure Defender für Containerregistrierungen: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für Containerregistrierungen.
 author: memildin
 ms.author: memildin
-ms.date: 04/07/2021
+ms.date: 07/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992133"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651813"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
 Azure Container Registry (ACR) ist ein verwalteter, privater Docker-Registrierungsdienst, der Ihre Containerimages für Azure-Bereitstellungen in einer zentralen Registrierung speichert und verwaltet. Er basiert auf der Open-Source-Docker-Registrierung 2.0.
 
-Aktivieren Sie **Azure Defender für Containerregistrierungen** auf Abonnementebene, um alle auf Azure Resource Manager basierenden Registrierungen in Ihrem Abonnement zu schützen. Mit Security Center werden dann Images gescannt, die in die Registrierung gepusht oder importiert werden oder innerhalb der letzten 30 Tage gepullt wurden. Dieses Feature wird pro Image abgerechnet.
+Aktivieren Sie **Azure Defender für Containerregistrierungen** auf Abonnementebene, um die auf Azure Resource Manager basierenden Registrierungen in Ihrem Abonnement zu schützen. Mit Azure Defender werden dann alle Images gescannt, wenn sie in die Registrierung gepusht oder importiert werden oder innerhalb der letzten 30 Tage gepullt wurden. Ihnen wird jedes gescannte Image in Rechnung gestellt – einmal pro Image.
 
 [!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 

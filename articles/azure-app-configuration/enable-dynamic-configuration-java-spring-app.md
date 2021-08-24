@@ -9,27 +9,27 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 22214c6113d182363ccd86d9e79dac971eb0e432
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625516"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465814"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer Java Spring-App
 
-App Configuration verfügt über zwei Bibliotheken für Spring. `spring-cloud-azure-appconfiguration-config` erfordert Spring Boot und ist abhängig von `spring-cloud-context`. `spring-cloud-azure-appconfiguration-config-web` erfordert Spring Web sowie Spring Boot. Beide Bibliotheken unterstützen die manuelle Auslösung, um nach aktualisierten Konfigurationswerten zu suchen. `spring-cloud-azure-appconfiguration-config-web` fügt darüber hinaus Unterstützung für die automatische Überprüfung der Konfigurationsaktualisierung hinzu.
+App Configuration verfügt über zwei Bibliotheken für Spring. `azure-spring-cloud-appconfiguration-config` erfordert Spring Boot und ist abhängig von `spring-cloud-context`. `azure-spring-cloud-appconfiguration-config-web` erfordert Spring Web sowie Spring Boot. Beide Bibliotheken unterstützen die manuelle Auslösung, um nach aktualisierten Konfigurationswerten zu suchen. `azure-spring-cloud-appconfiguration-config-web` fügt darüber hinaus Unterstützung für die automatische Überprüfung der Konfigurationsaktualisierung hinzu.
 
 Mithilfe der Aktualisierung können Sie Ihre Konfigurationswerte aktualisieren, ohne die Anwendung neu starten zu müssen. Dadurch werden jedoch alle Beans in `@RefreshScope` neu erstellt. Die Clientbibliothek speichert eine Hash-ID der zurzeit geladenen Konfigurationen zwischen, um zu viele Aufrufe des Konfigurationsspeichers zu vermeiden. Der Wert wird vom Aktualisierungsvorgang erst aktualisiert, wenn der zwischengespeicherte Wert abgelaufen ist. Dies gilt auch, wenn sich der Wert im Konfigurationsspeicher geändert hat. Die Standardablaufzeit für jede Anforderung beträgt 30 Sekunden. Sie kann bei Bedarf außer Kraft gesetzt werden.
 
-Die automatisierte Aktualisierung von `spring-cloud-azure-appconfiguration-config-web` wird basierend auf der Aktivität (insbesondere `ServletRequestHandledEvent` von Spring Web) ausgelöst. Wird `ServletRequestHandledEvent` nicht ausgelöst, löst die automatisierte Aktualisierung von `spring-cloud-azure-appconfiguration-config-web` keine Aktualisierung aus, auch wenn die Cacheablaufzeit verstrichen ist.
+Die automatisierte Aktualisierung von `azure-spring-cloud-appconfiguration-config-web` wird basierend auf der Aktivität (insbesondere `ServletRequestHandledEvent` von Spring Web) ausgelöst. Wird `ServletRequestHandledEvent` nicht ausgelöst, löst die automatisierte Aktualisierung von `azure-spring-cloud-appconfiguration-config-web` keine Aktualisierung aus, auch wenn die Cacheablaufzeit verstrichen ist.
 
 ## <a name="use-manual-refresh"></a>Verwenden der manuellen Aktualisierung
 
 In App Configuration wird das `AppConfigurationRefresh`-Element verfügbar gemacht. Damit kann überprüft werden, ob der Cache abgelaufen ist, und bei Ablauf eine Aktualisierung ausgelöst werden.
 
 ```java
-import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+import com.azure.spring.cloud.config.AppConfigurationRefresh;
 
 ...
 
@@ -49,29 +49,37 @@ public void myConfigurationRefreshCheck() {
 
 Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit einer Spring Boot-App, die App Configuration nutzt. Dies kann beispielsweise die App sein, die Sie durch Ausführen der Anleitung unter [Schnellstart: Erstellen einer Java Spring-App mit Azure App Configuration](quickstart-java-spring-app.md) erstellen.
 
-Öffnen Sie dann die Datei *pom.xml* in einem Text-Editor, und fügen Sie `<dependency>` für `spring-cloud-azure-appconfiguration-config-web` hinzu.
+Öffnen Sie dann die Datei *pom.xml* in einem Text-Editor, und fügen Sie unter Verwendung des folgenden Codes eine `<dependency>` für `azure-spring-cloud-appconfiguration-config-web` hinzu.
 
-**Spring Cloud 1.1.x**
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.5</version>
-</dependency>
-```
-
-**Spring Cloud 1.2.x**
+**Spring Boot**
 
 ```xml
 <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.7</version>
+    <groupId>com.azure.spring</groupId>
+    <artifactId>azure-spring-cloud-appconfiguration-config-web</artifactId>
+    <version>2.0.0</version>
 </dependency>
 ```
 
-## <a name="run-and-test-the-app-locally"></a>Lokales Ausführen und Testen der App
+> [!NOTE]
+> Unterstützung für ältere Abhängigkeiten finden Sie in unserer [vorherige Bibliothek](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-starter-azure-appconfiguration-config/README.md).
+
+1. Aktualisieren von `bootstrap.properties` zum Aktivieren der Aktualisierung
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].monitoring.enabled=true
+    spring.cloud.azure.appconfiguration.stores[0].monitoring.triggers[0].key=sentinel
+    ```
+
+1. Öffnen Sie das **Azure-Portal**, und navigieren Sie zu der App Configuration-Ressource, die Ihrer Anwendung zugeordnet ist. Wählen Sie **Konfigurations-Explorer** unter **Vorgänge** aus, und erstellen Sie durch Auswählen von **+ Erstellen** > **Schlüssel-Wert** ein neues Schlüssel-Wert-Paar, um die folgenden Parameter hinzuzufügen:
+
+    | Schlüssel | Wert |
+    |---|---|
+    | sentinel | 1 |
+
+    Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
+
+1. Wählen Sie **Übernehmen**.
 
 1. Erstellen Sie Ihre Spring Boot-Anwendung mit Maven, und führen Sie sie aus.
 
@@ -82,8 +90,8 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 
 1. Öffnen Sie ein neues Browserfenster, und navigieren Sie zur URL `http://localhost:8080`.  Die Nachricht für Ihren Schlüssel wird angezeigt.
 
-    Sie können auch *curl* zum Testen Ihrer Anwendung verwenden. Beispiel: 
-    
+    Sie können auch *curl* zum Testen Ihrer Anwendung verwenden. Beispiel:
+
     ```cmd
     curl -X GET http://localhost:8080/
     ```
@@ -92,7 +100,13 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 
     | Schlüssel | Wert |
     |---|---|
-    | application/config.message | Hello - Updated |
+    | /application/config.message | Hello - Updated |
+
+1. Aktualisieren Sie den zuvor erstellten Sentinel-Schlüssel auf einen neuen Wert. Durch diese Änderung wird die Anwendung angewiesen, alle Konfigurationsschlüssel zu aktualisieren, nachdem das Aktualisierungsintervall abgelaufen ist.
+
+    | Schlüssel | Wert |
+    |---|---|
+    | sentinel | 2 |
 
 1. Aktualisieren Sie die Browserseite, um die neue Nachricht anzuzeigen.
 

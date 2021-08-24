@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 476fb664df261cf2b71802d15f23e28eb9970a65
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f802bb5d681e9e77d258d6071def53d4c5e4958f
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407451"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731088"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>Importieren der AdventureWorks-Beispieldatenbank in PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
@@ -70,7 +70,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 ```
 
 
-> **Hinweis: Die Leistungsvorteile von PostgreSQL Hyperscale mit Azure Arc-Aktivierung werden erst vollständig sichtbar, wenn Sie skalieren und Daten/Tabellen auf den Workerknoten der PostgreSQL Hyperscale-Servergruppe horizontal partitionieren/verteilen. Weitere Informationen unter [Empfohlene nächste Schritte](#suggested-next-steps).**
+> **Hinweis: Die Leistungsvorteile von PostgreSQL Hyperscale mit Azure Arc-Aktivierung werden erst vollständig sichtbar, wenn Sie skalieren und Daten/Tabellen auf den Workerknoten der PostgreSQL Hyperscale-Servergruppe horizontal partitionieren/verteilen. Siehe [Empfohlene nächste Schritte](#suggested-next-steps).**
 
 ## <a name="suggested-next-steps"></a>Empfohlene nächste Schritte
 - Lesen Sie die Konzepte und Schrittanleitungen zu Azure Database for PostgreSQL Hyperscale, um Ihre Daten auf mehrere PostgreSQL Hyperscale-Knoten zu verteilen und von der gesamten Leistung von Azure Database for PostgreSQL Hyperscale zu profitieren. :
@@ -82,6 +82,6 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
     * [Entwerfen einer Datenbank mit mehreren Mandanten](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [Entwerfen eines Dashboards für Echtzeitanalysen](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-   > \* Überspringen Sie die Abschnitte **Anmelden am Azure-Portal** und **Erstellen einer Azure Database for PostgreSQL-Instanz für Hyperscale (Citus)** in den oben aufgeführten Dokumenten. Implementieren Sie die restlichen Schritte in Ihrer Azure Arc-Bereitstellung. Diese Abschnitte sind speziell für den PaaS-Dienst „Azure Database for PostgreSQL Hyperscale (Citus)“ in der Azure-Cloud vorgesehen. Die anderen Abschnitte der Dokumente sind jedoch direkt auf Ihre Azure Arc-fähige PostgreSQL Hyperscale-Instanz übertragbar.
+   > \* Überspringen Sie die Abschnitte **Anmelden am Azure-Portal** und **Erstellen einer Azure Database for PostgreSQL-Instanz für Hyperscale (Citus)** in den oben aufgeführten Dokumenten. Implementieren Sie die restlichen Schritte in Ihrer Azure Arc-Bereitstellung. Diese Abschnitte sind speziell für den PaaS-Dienst „Azure Database for PostgreSQL Hyperscale (Citus)“ in der Azure-Cloud vorgesehen. Die anderen Abschnitte der Dokumente sind jedoch direkt auf Ihre Instanz von PostgreSQL Hyperscale mit Azure Arc-Unterstützung übertragbar.
 
 - [Skalieren der Azure Database for PostgreSQL Hyperscale-Servergruppe](scale-out-in-postgresql-hyperscale-server-group.md)

@@ -1,30 +1,42 @@
 ---
-title: Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions in Azure Communication Services
+title: Erstellen eines vertrauenswürdigen Benutzerzugriffsdiensts mithilfe von Azure Functions in Azure Communication Services
 titleSuffix: An Azure Communication Services tutorial
-description: Erfahren Sie, wie Sie mithilfe von Azure Functions einen vertrauenswürdigen Authentifizierungsdienst für Communication Services erstellen.
-author: ddematheu
-manager: nimag
+description: Erfahren Sie, wie Sie mithilfe von Azure Functions einen vertrauenswürdigen Benutzerzugriffsdienst für Communication Services erstellen.
+author: ddematheu2
+manager: chpalm
 services: azure-communication-services
 ms.author: dademath
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 206ee61689ca2e665f8cf8997be44eca356185a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fc1c53a747ca87bcfdac1f742e6235492731e0af
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726599"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291354"
 ---
-# <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions
+# <a name="build-a-trusted-user-access-service-using-azure-functions"></a>Erstellen eines vertrauenswürdigen Benutzerzugriffsdiensts mithilfe von Azure Functions
+
+In diesem Artikel wird beschrieben, wie Sie Azure Functions verwenden, um einen vertrauenswürdigen Benutzerzugriffsdienst zu erstellen.
+
+> [!IMPORTANT]
+> Der am Ende dieses Tutorials erstellte Endpunkt ist nicht sicher. Lesen Sie dazu unbedingt die Sicherheitsdetails im Artikel [Azure Functions-Sicherheit.](../../azure-functions/security-concepts.md) Sie müssen den Endpunkt sicher gestalten, um zu gewährleisten, dass Angreifer keine Tokens bereitstellen können.
 
 [!INCLUDE [Trusted Service JavaScript](./includes/trusted-service-js.md)]
+
+## <a name="securing-azure-function"></a>Absichern von Azure Functions
+
+Wenn Sie einen vertrauenswürdigen Dienst für die Bereitstellung von Zugriffstoken für Benutzer einrichten, müssen Sie auch die Sicherheit des Endpunkts berücksichtigen, um zu gewährleisten, dass kein Angreifer Tokens für Ihren Dienst erstellen kann. Azure Functions bietet integrierte Sicherheitsfeatures, mit denen Sie den Endpunkt mithilfe von verschiedenen Authentifizierungsrichtlinien schützen können. Hier erhalten Sie weitere Informationen über die [Sicherheit von Azure Functions](../../azure-functions/security-concepts.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Hier finden Sie weitere Informationen zum [Bereinigen von Azure Communication Service-Ressourcen](../quickstarts/create-communication-resource.md#clean-up-resources) und zum [Bereinigen von Azure Functions-Ressourcen](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Informationen über die Sicherheit von Azure Functions](../../azure-functions/security-concepts.md)
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Sprachanrufen zu Ihrer App](../quickstarts/voice-video-calling/getting-started-with-calling.md)

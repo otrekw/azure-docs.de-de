@@ -1,14 +1,14 @@
 ---
 title: Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 description: Hier erfahren Sie, wie Sie Ihre Server mit Azure Arc-Unterstützung zu Azure Sentinel hinzufügen und deren Sicherheitsstatus proaktiv überwachen.
-ms.date: 11/16/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df3e6f9bb18618e490f482facf3c5837098f5001
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584737"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122356388"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 
@@ -43,8 +43,8 @@ Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen
 
 Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux mit Azure Policy zu installieren.
 
-Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](../../sentinel/quickstart-get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](../../sentinel/tutorial-investigate-cases.md).
+Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](/azure/azure-arc/servers/articles/sentinel/get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](/azure/azure-arc/servers/articles/sentinel/investigate-cases.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](../../sentinel/tutorial-detect-threats-built-in.md).
+Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](/azure/azure-arc/servers/articles/sentinel/detect-threats-built-in.md).

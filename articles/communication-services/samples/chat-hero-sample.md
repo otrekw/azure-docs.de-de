@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02246f02226aaac1b7d9dbfd035a0479908f52cc
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ef518b5dd3ee0e3657be1bf01873763eafdd221b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111541"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471836"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
 > [Dieses Beispiel ist auf **GitHub** verfügbar.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
@@ -59,7 +57,7 @@ Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einric
 - [Node.js (8.11.2 und höher)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 und höher)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Stellen Sie sicher, dass Sie die Version installieren, die Ihrer Visual Studio-Instanz entspricht (32 oder 64 Bit).)
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure Communication Services-Ressource](../quickstarts/create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../quickstarts/create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
 
 ## <a name="locally-deploying-the-service--client-app"></a>Lokales Bereitstellen der Dienst- und Client-App
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: b1026f718c7c59e88dbf3b041c4b07cd1cfc641c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44d92bbf5c3767a15e600836acd23cf3055f842e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780582"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464985"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>Tutorial: Bewerten von physischen Servern für die Migration zu Azure
 
@@ -66,7 +66,7 @@ Führen Sie eine Bewertung wie folgt aus:
 4. Unter **Ermittlungsquelle**:
 
     - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Server** aus, falls Sie Server mit der Appliance ermittelt haben.
-    - Wählen Sie die Option **Imported servers** (Importierte Server) aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
+    - Wählen Sie die Option **Importierte Server** aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
     
 1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 

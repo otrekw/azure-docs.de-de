@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: dee00c6f733cfbebf68276ee4b54f91b8e2cb35b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b9a3880c88224906e68054475233e8d8ce02476a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765537"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964966"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -203,7 +203,7 @@ Nach der Erstellung der Datenbank zeigt Cloud Shell Informationen wie im folgend
 
 ### <a name="configure-database-variables-in-wordpress"></a>Konfigurieren von Datenbankvariablen in WordPress
 
-Zum Herstellen einer Verbindung für die WordPress-App mit diesem neuen MySQL-Server konfigurieren Sie einige WordPress-spezifische Umgebungsvariablen, z.B. den mit `MYSQL_SSL_CA` definierten SSL-Zertifizierungsstellenpfad. [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) von [DigiCert](https://www.digicert.com/) ist unten im [benutzerdefinierten Image](#use-a-custom-image-for-mysql-ssl-and-other-configurations) angegeben.
+Zum Herstellen einer Verbindung für die WordPress-App mit diesem neuen MySQL-Server konfigurieren Sie einige WordPress-spezifische Umgebungsvariablen, z.B. den mit `MYSQL_SSL_CA` definierten SSL-Zertifizierungsstellenpfad. [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) von [DigiCert](https://www.digicert.com/) ist unten im [benutzerdefinierten Image](#use-a-custom-image-for-mysql-tlsssl-and-other-configurations) angegeben.
 
 Verwenden Sie zum Vornehmen dieser Änderungen in Cloud Shell den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set). Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
 
@@ -245,9 +245,9 @@ Nach der Erstellung der App-Einstellung zeigt Cloud Shell Informationen wie im f
 
 Weitere Informationen zu Umgebungsvariablen finden Sie unter [Konfigurieren von Umgebungsvariablen](configure-custom-container.md#configure-environment-variables).
 
-### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Verwenden eines benutzerdefinierten Images für MySQL-SSL und andere Konfigurationen
+### <a name="use-a-custom-image-for-mysql-tlsssl-and-other-configurations"></a>Verwenden eines benutzerdefinierten Images für MySQL-TLS/-SSL und andere Konfigurationen
 
-Von Azure Database for MySQL wird standardmäßig SSL genutzt. Für WordPress ist eine zusätzliche Konfiguration erforderlich, um SSL mit MySQL nutzen zu können. Mit dem offiziellen Image von WordPress wird nicht diese zusätzliche Konfiguration bereitgestellt, sondern es wurde ein [benutzerdefiniertes Image](https://github.com/Azure-Samples/multicontainerwordpress) erstellt, um Ihnen den Vorgang zu vereinfachen. In der Praxis fügen Sie Ihrem eigenen Image die gewünschten Änderungen hinzu.
+Azure Database for MySQL nutzt standardmäßig TSL/SSL. Für WordPress ist eine zusätzliche Konfiguration erforderlich, damit TSL/SSL mit MySQL verwendet werden kann. Mit dem offiziellen Image von WordPress wird nicht diese zusätzliche Konfiguration bereitgestellt, sondern es wurde ein [benutzerdefiniertes Image](https://github.com/Azure-Samples/multicontainerwordpress) erstellt, um Ihnen den Vorgang zu vereinfachen. In der Praxis fügen Sie Ihrem eigenen Image die gewünschten Änderungen hinzu.
 
 Das benutzerdefinierte Image basiert auf dem „offiziellen Image“ von [WordPress per Docker-Hub](https://hub.docker.com/_/wordpress/). An diesem benutzerdefinierten Image für Azure Database for MySQL wurden die folgenden Änderungen vorgenommen:
 

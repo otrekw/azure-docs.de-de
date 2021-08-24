@@ -4,12 +4,12 @@ description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von K
 services: container-service
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: b8a342730a6f37a5498e59e883b0f77b8bfabbb2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4db6ee6d117f7743147dad43dcfff98dd99fd76d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122346378"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -153,7 +153,7 @@ In einem AKS-Cluster mit mehreren Knotenpools müssen Sie dem Kubernetes-Schedul
 
 Mit Knotenselektoren können Sie verschiedene Parameter festlegen, z. B. das Betriebssystem des Knotens, um zu steuern, wo ein Pod geplant werden soll.
 
-Das folgende einfache Beispiel plant eine NGINX-Instanz auf einem Linux-Knoten unter Verwendung des Knotenselektors *"beta.kubernetes.io/os": linux*:
+Das folgende einfache Beispiel plant eine NGINX-Instanz auf einem Linux-Knoten unter Verwendung des Knotenselektors *"kubernetes.io/os": linux*:
 
 ```yaml
 kind: Pod
@@ -165,7 +165,7 @@ spec:
     - name: myfrontend
       image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
-    "beta.kubernetes.io/os": linux
+    "kubernetes.io/os": linux
 ```
 
 Weitere Informationen zum Steuern, wo Pods geplant werden, finden Sie unter [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-advanced-scheduler].

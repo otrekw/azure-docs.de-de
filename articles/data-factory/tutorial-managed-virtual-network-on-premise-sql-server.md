@@ -1,31 +1,33 @@
 ---
-title: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts
-description: In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum Einrichten des Private Link-Diensts und zum Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes VNet mithilfe eines privaten Endpunkts erläutert.
+title: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts
+description: In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum Einrichten des Private Link-Diensts und zum Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes VNet mithilfe eines privaten Endpunkts erläutert.
 author: lrtoyou1223
 ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: c389eab986fa317174db08a3e33d54d595c50c4c
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657362"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971834"
 ---
-# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>Tutorial: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts
+# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>Tutorial: Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes Data Factory-VNet unter Verwendung eines privaten Endpunkts
 
-In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum Einrichten des Private Link-Diensts und zum Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes VNet mithilfe eines privaten Endpunkts erläutert.
+In diesem Tutorial werden die Schritte für die Verwendung des Azure-Portals zum Einrichten des Private Link-Diensts und zum Zugreifen auf eine lokale SQL Server-Instanz über ein verwaltetes VNet mithilfe eines privaten Endpunkts erläutert.
+
+> [!NOTE]
+> Mit der in diesem Artikel vorgestellten Lösung wird SQL Server-Konnektivität beschrieben, Sie können einen ähnlichen Ansatz aber auch verwenden, um andere verfügbare [lokale Connectors](connector-overview.md) zu verbinden und abzufragen, die in Azure Data Factory unterstützt werden.
 
 :::image type="content" source="./media/tutorial-managed-virtual-network/sql-server-access-model.png" alt-text="Screenshot: Zugriffsmodell von SQL Server" lightbox="./media/tutorial-managed-virtual-network/sql-server-access-model-expanded.png":::
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Virtuelles Netzwerk**. Wenn Sie kein virtuelles Netzwerk besitzen, erstellen Sie eins anhand der Anweisungen unter [Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
-* **Virtuelles Netzwerk zu lokalem Netzwerk:** Erstellen Sie über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) eine Verbindung zwischen dem virtuellen Netzwerk und dem lokalen Netzwerk.
-* **Data Factory mit aktiviertem verwalteten VNet:** Wenn Sie keine Data Factory-Instanz besitzen oder das verwaltete VNet nicht aktiviert ist, erstellen Sie anhand der Anweisungen unter [Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private) eine entsprechende Instanz.
+* **Virtuelles Netzwerk**. Wenn Sie kein virtuelles Netzwerk besitzen, erstellen Sie eins anhand der Anweisungen unter [Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal](../virtual-network/quick-create-portal.md).
+* **Virtuelles Netzwerk zu lokalem Netzwerk:** Erstellen Sie über [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=/azure/virtual-network/toc.json) oder [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/virtual-network/toc.json) eine Verbindung zwischen dem virtuellen Netzwerk und dem lokalen Netzwerk.
+* **Data Factory mit aktiviertem verwalteten VNet:** Wenn Sie keine Data Factory-Instanz besitzen oder das verwaltete VNet nicht aktiviert ist, erstellen Sie anhand der Anweisungen unter [Sicheres Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von privaten Endpunkten](tutorial-copy-data-portal-private.md) eine entsprechende Instanz.
 
 ## <a name="create-subnets-for-resources"></a>Erstellen von Subnetzen für Ressourcen
 
@@ -212,8 +214,10 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 2. Führen Sie das Skript mit den folgenden Optionen aus:<br/>
     **sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433**<br/>
     <FQDN/IP> ist die Ziel-IP-Adresse Ihrer SQL Server-Instanz.<br/>
-    >[!Note] 
-    >Wenn Sie einen FQDN für eine lokale SQL Server-Instanz verwenden möchten, müssen Sie einen Eintrag in der Azure DNS-Zone hinzufügen.
+    
+    > [!Note] 
+    > Wenn Sie einen FQDN für eine lokale SQL Server-Instanz verwenden möchten, müssen Sie einen Eintrag in der Azure DNS-Zone hinzufügen.
+    
 3. Führen Sie den folgenden Befehl aus, und überprüfen Sie die IP-Tabellen (iptables) auf Ihren Back-End-Server-VMs. Ihre IP-Tabellen enthalten einen einzelnen Eintrag mit Ihrer Ziel-IP-Adresse.<br/>
     **sudo iptables -t nat -v -L PREROUTING -n --line-number**
 
@@ -235,7 +239,7 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 4. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 5. Wählen Sie in der Liste die Kachel **Private Link-Dienst** und anschließend **Weiter** aus.
 6. Geben Sie den Namen des privaten Endpunkts ein, und wählen Sie in der Liste „Private Link-Dienst“ die Option **myPrivateLinkService** aus.
-7. Fügen Sie den FQDN Ihrer lokalen SQL Server-Zielinstanz sowie die NAT-IP-Adressen Ihres Private Link-Diensts hinzu.
+7. Fügen Sie den FQDN Ihrer lokalen SQL Server-Zielinstanz sowie die NAT-IP-Adressen Ihres Private Link-Diensts hinzu.
     
     :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="Screenshot: NAT-IP-Adresse im verknüpften Dienst" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
 
@@ -255,7 +259,7 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 
     :::image type="content" source="./media/tutorial-managed-virtual-network/linked-service-2.png" alt-text="Screenshot: Aktivieren von „Interaktives Authoring“":::
 
-5. Geben Sie den **FQDN** Ihrer lokalen SQL Server-Instanz sowie **Benutzername** und **Kennwort** ein.
+5. Geben Sie den **FQDN** Ihrer lokalen SQL Server-Instanz sowie **Benutzername** und **Kennwort** ein.
 6. Klicken Sie anschließend auf **Verbindung testen**.
 
     :::image type="content" source="./media/tutorial-managed-virtual-network/linked-service-3.png" alt-text="Screenshot: Seite zum Erstellen des verknüpften SQL Server-Diensts":::
@@ -266,7 +270,7 @@ Navigieren Sie zur Back-End-Server-VM, und vergewissern Sie sich, dass „telnet
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Tutorial erfahren Sie, wie Sie auf Microsoft Azure SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts zugreifen:
+Im nächsten Tutorial erfahren Sie, wie Sie auf Microsoft Azure SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts zugreifen:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Zugreifen auf SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts](tutorial-managed-virtual-network-sql-managed-instance.md)
+> [Tutorial: Zugreifen auf SQL Managed Instance über ein verwaltetes Data Factory-VNet mithilfe eines privaten Endpunkts](tutorial-managed-virtual-network-sql-managed-instance.md)

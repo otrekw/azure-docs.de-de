@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d2c2ecff92dde411c6ec2a8d00ad997f4c5c02
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: d93fa1d16366ee131d98aebe2ab8e3e040949d72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495825"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356077"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Migration: SQL Server zu einer Azure Arc-fähigen SQL Managed Instance-Instanz
 
 In diesem Szenario werden Sie durch die Schritte zum Migrieren einer Datenbank von einer SQL Server-Instanz zu einer Azure SQL Managed Instance-Instanz in Azure Arc geführt. Dabei werden zwei verschiedene Sicherungs- und Wiederherstellungsmethoden verwendet.
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="use-azure-blob-storage"></a>Verwendung von Azure Blob Storage
 
@@ -31,8 +30,13 @@ Bei dieser Methode wird Azure Blob Storage als temporärer Speicher genutzt, in 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 - [Installieren von Azure Data Studio](install-client-tools.md)
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - [Installieren von Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - Azure-Abonnement
+
+
 
 ### <a name="step-1-provision-azure-blob-storage"></a>Schritt 1: Stellen Sie Azure Blob Storage bereit.
 
@@ -189,7 +193,7 @@ GO
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie mehr über Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen](managed-instance-features.md).
+[Erfahren Sie mehr über Features und Funktionen von Azure Arc-aktivierten SQL Managed Instance-Instanzen](managed-instance-features.md)
 
 [Beginnen Sie mit der Erstellung eines Datencontrollers](create-data-controller.md)
 

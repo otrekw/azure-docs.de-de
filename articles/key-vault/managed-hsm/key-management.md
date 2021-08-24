@@ -2,18 +2,18 @@
 title: 'Verwalten von Schlüsseln in einem verwalteten HSM: Azure Key Vault | Microsoft-Dokumentation'
 description: In diesem Artikel erfahren Sie, wie Sie Schlüssel in einem verwalteten HSM verwalten.
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: mbaldwin
+ms.openlocfilehash: 418bc82a503822a79f138fc71213f9ec5c9b5266
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212041"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471275"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Verwalten eines verwalteten HSM über die Azure-Befehlszeilenschnittstelle
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Ein Abonnement für Microsoft Azure. Falls Sie über kein Azure-Abonnement verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial) registrieren.
-* Azure-Befehlszeilenschnittstelle ab Version 2.12.0. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+* Azure-Befehlszeilenschnittstelle ab Version 2.25.0 Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Ein verwaltetes HSM in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle](quick-create-cli.md). Dort erfahren Sie, wie Sie ein verwaltetes HSM bereitstellen und aktivieren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -48,6 +48,9 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 > In allen nachfolgenden Befehlen werden zwei Verwendungsmethoden gezeigt: eine mit den Parametern **--hsm-name** und **--name** (für den Schlüsselnamen) und eine mit dem Parameter **--id**, um die Angabe der gesamten URL (ggf. einschließlich des Schlüsselnamens) zu ermöglichen. Letztere Methode ist hilfreich, wenn der Aufrufer (ein Benutzer oder eine Anwendung) keinen Lesezugriff auf die Steuerungsebene und nur eingeschränkten Zugriff auf die Datenebene hat.
 
 ## <a name="create-an-hsm-key"></a>Erstellen eines HSM-Schlüssels
+
+> [!NOTE]
+> Generierte oder in verwaltete HSMs importierte Schlüssel können nicht exportiert werden. In den empfohlenen bewährten Methoden finden Sie Informationen zur Schlüsselportabilität und Dauerhaftigkeit.
 
 Verwenden Sie den Befehl `az keyvault key create`, um einen Schlüssel zu erstellen.
 

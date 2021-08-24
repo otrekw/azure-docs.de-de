@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken
 description: Leitfaden zur Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken.
-author: mikedodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/19/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 82ee9b368ecb98d4bb1833ab9a4fc1dc22182e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95b288181180e2409bcb18f4f8233af568bd311c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968878"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356164"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken
 
@@ -46,4 +46,4 @@ Dieses Problem tritt auf, wenn Ihr virtuelles Netzwerk mit benutzerdefinierten D
 
 ## <a name="other-issues"></a>Andere Probleme
 
-[Behandlung von allgemeinen Problemen mit Azure Spring Cloud](./troubleshoot.md).
+[Behandlung von allgemeinen Problemen mit Azure Spring Cloud](./troubleshoot.md)

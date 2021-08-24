@@ -1,5 +1,5 @@
 ---
-title: Was sind Azure Arc-fähige Datendienste?
+title: Was sind Datendienste mit Azure Arc-Unterstützung?
 description: Bietet eine Einführung in Azure Arc-fähige Datendienste
 ms.custom: references_regions
 author: twright-msft
@@ -8,14 +8,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/31/2021
+ms.date: 07/13/2021
 ms.topic: overview
-ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716095"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760986"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Was sind Azure Arc-fähige Datendienste (Vorschauversion)?
 
@@ -42,7 +42,7 @@ Azure Arc bietet weitere Cloudvorteile, wie z. B. schnelle Bereitstellung und 
 
 ## <a name="unified-management"></a>Einheitliche Verwaltung
 
-Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] erhalten Sie nun eine einheitliche Übersicht über alle Datenressourcen, die mit Azure Arc bereitgestellt werden. Neben der Möglichkeit, eine Vielzahl relationaler Datenbanken in Ihrer Umgebung und Azure anzuzeigen und zu verwalten, können Sie auch Protokolle und Telemetriedaten von Kubernetes-APIs abrufen, um die Kapazität und Integrität der zugrunde liegende Infrastruktur zu analysieren. Zusätzlich zur lokalisierten Protokollanalyse und Leistungsüberwachung können Sie nun Azure Monitor nutzen, um einen umfassenden Überblick über sämtliche IT-Ressourcen zu erhalten.
+Mit vertrauten Tools wie dem Azure-Portal, Azure Data Studio und der Azure CLI (`az`) mit der Erweiterung `arcdata` erhalten Sie nun eine einheitliche Übersicht über alle Datenressourcen, die mit Azure Arc bereitgestellt werden. Neben der Möglichkeit, eine Vielzahl relationaler Datenbanken in Ihrer Umgebung und Azure anzuzeigen und zu verwalten, können Sie auch Protokolle und Telemetriedaten von Kubernetes-APIs abrufen, um die Kapazität und Integrität der zugrunde liegende Infrastruktur zu analysieren. Zusätzlich zur lokalisierten Protokollanalyse und Leistungsüberwachung können Sie nun Azure Monitor nutzen, um einen umfassenden Überblick über sämtliche IT-Ressourcen zu erhalten.
 
 ## <a name="disconnected-scenario-support"></a>Unterstützung für nicht verbundenes Szenario
 
@@ -55,17 +55,30 @@ In der folgenden Tabelle werden die Szenarien beschrieben, die derzeit für Arc-
 |Azure-Regionen  |Direkter Konnektivitätsmodus  |Indirekter Konnektivitätsmodus  |
 |---------|---------|---------|
 |East US|Verfügbar|Verfügbar
+|USA (Ost) 2|Verfügbar|Verfügbar
+|USA, Westen 2|Verfügbar|Verfügbar
+|USA (Mitte)|Nicht verfügbar|Verfügbar
+|USA Süd Mitte|Verfügbar|Verfügbar
+|UK, Süden|Verfügbar|Verfügbar
+|Frankreich, Mitte|Verfügbar|Verfügbar
 |Europa, Westen |Verfügbar |Verfügbar
 |Nordeuropa|Verfügbar|Verfügbar
+|Japan, Osten|Nicht verfügbar|Verfügbar
+|Korea, Mitte|Nicht verfügbar|Verfügbar
+|Asien, Osten|Nicht verfügbar|Verfügbar
+|Asien, Südosten|Verfügbar|Verfügbar
+|Australien (Osten)|Verfügbar|Verfügbar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > **Möchten Sie es selbst ausprobieren?**  
 > Mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
+>
+>Stellen Sie außerdem [Jumpstart ArcBox](https://azurearcjumpstart.io/azure_jumpstart_arcbox/) – eine einfach bereitzustellende Sandbox für Azure Arc – bereit. ArcBox funktioniert in einem einzelnen Azure-Abonnement und einer einzelnen Ressourcengruppe vollständig eigenständig. Dadurch ist es ganz leicht, alle verfügbaren Azure Arc-fähigen Technologien mit nur einem Azure-Abonnement zu nutzen.
 
 [Installieren der Clienttools](install-client-tools.md)
 
-[Erstellen des Azure Arc-Datencontrollers](create-data-controller.md) (erfordert zuvor die Installation der Clienttools)
+[Planen der Azure Arc-Datendienst-Bereitstellung](plan-azure-arc-data-services.md) (erfordert zunächst die Installation der Clienttools)
 
 [Erstellen einer Azure SQL Managed Instance-Instanz in Azure Arc](create-sql-managed-instance.md) (erfordert zuvor die Erstellung eines Azure Arc-Datencontrollers)
 

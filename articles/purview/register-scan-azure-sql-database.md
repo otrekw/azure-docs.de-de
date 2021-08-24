@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: da265e1be47a7ee1a98f6e8169f2531110b5c772
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756597"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467114"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -120,7 +120,14 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 ### <a name="firewall-settings"></a>Firewalleinstellungen
 
-Der Datenbankserver muss die Aktivierung von Azure-Verbindungen zulassen. Dadurch kann Azure Purview den Server erreichen und eine Verbindung mit ihm herstellen. Sie können die Schrittanleitung zum [Herstellen von Verbindungen aus Azure](../azure-sql/database/firewall-configure.md#connections-from-inside-azure) befolgen.
+Wenn auf Ihrem Datenbankserver eine Firewall aktiviert ist, müssen Sie die Firewall aktualisieren, um den Zugriff auf eine der folgenden Arten zu ermöglichen:
+
+1. Lassen Sie Azure-Verbindungen über die Firewall zu.
+1. Installieren Sie eine selbstgehostete Integration Runtime, und gewähren Sie ihr Zugriff über die Firewall.
+
+#### <a name="allow-azure-connections"></a>Zulassen von Azure-Verbindungen
+
+Durch Zulassen von Azure-Verbindungen kann Azure Purview den Server erreichen und verbinden, ohne die Firewall selbst zu aktualisieren. Sie können die Schrittanleitung zum [Herstellen von Verbindungen aus Azure](../azure-sql/database/firewall-configure.md#connections-from-inside-azure) befolgen.
 
 1. Navigieren Sie zu Ihrem Datenbankkonto.
 1. Wählen Sie auf der Seite **Übersicht** den Servernamen aus.
@@ -128,9 +135,14 @@ Der Datenbankserver muss die Aktivierung von Azure-Verbindungen zulassen. Dadurc
 1. Wählen Sie für **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** die Option **Ja** aus.
 
     :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="Azure-Diensten und -Ressourcen den Zugriff auf diesen Server erlauben" border="true":::
-    
-> [!Note]
-> Derzeit wird die VNET-Konfiguration von Azure Purview nicht unterstützt. Daher ist es nicht möglich, IP-basierte Firewalleinstellungen festzulegen.
+
+#### <a name="self-hosted-integration-runtime"></a>Selbstgehostete Integration Runtime
+
+Eine selbstgehostete Integration Runtime (SHIR) kann auf einem Computer installiert werden, um eine Verbindung mit einer Ressource in einem privaten Netzwerk herzustellen.
+
+1. [Erstellen und installieren Sie eine selbstgehostete Integration Runtime](/azure/purview/manage-integration-runtimes) auf einem privaten Computer oder einem Computer im gleichen VNet wie der Datenbankserver.
+1. Überprüfen Sie die Firewall des Datenbankservers, um sicherzustellen, dass der SHIR-Computer über die Firewall Zugriff hat. Fügen Sie die IP-Adresse des Computers hinzu, wenn er noch keinen Zugriff hat.
+1. Wenn sich Ihr Azure SQL-Server hinter einem privaten Endpunkt oder in einem VNet befindet, können Sie einen [privaten Endpunkt für die Erfassung](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources) verwenden, um die End-to-End-Netzwerkisolation sicherzustellen.
 
 ## <a name="register-an-azure-sql-database-data-source"></a>Registrieren einer Datenquelle vom Typ „Azure SQL-Datenbank“
 

@@ -1,5 +1,5 @@
 ---
-title: Löschen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+title: Löschen eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 description: Löschen einer Azure Arc-fähigen Postgres Hyperscale-Servergruppe
 services: azure-arc
 ms.service: azure-arc
@@ -7,16 +7,16 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7932ad3b30910e539acfbff2329a03f80a4d1a0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00387e190df3bcc6f654868d078a068e9196a635
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104670357"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122355978"
 ---
-# <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Löschen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
+# <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Löschen eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
 In diesem Dokument werden die Schritte zum Löschen einer Servergruppe aus Ihrem Azure Arc-Setup beschrieben.
 
@@ -26,31 +26,31 @@ In diesem Dokument werden die Schritte zum Löschen einer Servergruppe aus Ihrem
 
 Beispielsweise möchten wir die Instanz _postgres01_ aus dem folgenden Setup löschen:
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 Name        State    Workers
 ----------  -------  ---------
 postgres01  Ready    3
 ```
 
 Das allgemeine Format des Löschbefehls lautet:
-```console
-azdata arc postgres server delete -n <server group name>
+```azurecli
+az postgres arc-server delete -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 Wenn Sie diesen Befehl ausführen, werden Sie aufgefordert, das Löschen der Servergruppe zu bestätigen. Wenn Sie Skripts zum Automatisieren von Löschvorgängen verwenden, müssen Sie den Parameter „--force“ verwenden, um die Bestätigungsanforderung zu umgehen. Beispielsweise können Sie einen Befehl wie den folgenden ausführen: 
-```console
-azdata arc postgres server delete -n <server group name> --force
+```azurecli
+az postgres arc-server delete -n <server group name> --force --k8s-namespace <namespace> --use-k8s
 ```
 
 Um weitere Informationen zum Löschbefehl zu erhalten, führen Sie Folgendes aus:
-```console
-azdata arc postgres server delete --help
+```azurecli
+az postgres arc-server delete --help 
 ```
 
 ### <a name="delete-the-server-group-used-in-this-example"></a>Löschen der in diesem Beispiel verwendeten Servergruppe
 
-```console
-azdata arc postgres server delete -n postgres01
+```azurecli
+az postgres arc-server delete -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Freigeben von Ansprüchen für persistente Kubernetes-Volumes
@@ -112,7 +112,7 @@ persistentvolumeclaim "data-postgres01-0" deleted
   
 
 >[!NOTE]
-> Wie bereits erwähnt, kann das Nichtlöschen der PVCs dazu führen, dass Ihr Kubernetes-Cluster letztlich in eine Situation gerät, in der er Fehler verursacht. Diese Fehler können u. U. bewirken, dass Sie sich nicht mit azdata bei Ihrem Kubernetes-Cluster anmelden können, da die Pods aufgrund dieses Speicherproblems ggf. aus dem Cluster entfernt werden (normales Kubernetes-Verhalten).
+> Wie bereits erwähnt, kann das Nichtlöschen der PVCs dazu führen, dass Ihr Kubernetes-Cluster letztlich in eine Situation gerät, in der er Fehler verursacht. Einige dieser Fehler können sein, dass Ressourcen nicht über die Kubernetes-API erstellt, gelesen, aktualisiert oder gelöscht oder dass Befehle wie `az arcdata dc export` nicht ausgeführt werden können, da die Controllerpods aufgrund dieses Speicherproblems (normales Kubernetes-Verhalten) von den Kubernetes-Knoten entfernt werden können.
 >
 > Beispielsweise können in den Protokollen Meldungen wie die folgende angezeigt werden:  
 > ```output

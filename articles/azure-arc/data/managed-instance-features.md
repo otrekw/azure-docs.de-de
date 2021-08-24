@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 63f5b8be29d3b1e9468016afba618261684e1bca
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: ef855102f4877d26c1b6d16d73e99719e3e97ed1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495860"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122356112"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -26,19 +26,14 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 - Funktionen für mehrere Modelle: [Graph-Verarbeitung](/sql/relational-databases/graphs/sql-graph-overview), [JSON-Daten](/sql/relational-databases/json/json-data-sql-server), [OPENXML](/sql/t-sql/functions/openxml-transact-sql), [Spatial](/sql/relational-databases/spatial/spatial-data-sql-server), [OPENJSON](/sql/t-sql/functions/openjson-transact-sql) und [XML-Indizes](/sql/t-sql/statements/create-xml-index-transact-sql)
 
 
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen
-
-###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
+## <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
   
-|Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
+|Funktion|SQL Managed Instance mit Azure Arc-Unterstützung|
 |-------------|----------------|
-|Always On-Failoverclusterinstanzen<sup>1</sup>| Nicht zutreffend Ähnliche Funktionen verfügbar |
-|AlwaysOn-Verfügbarkeitsgruppen<sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
-|Basis-Verfügbarkeitsgruppen <sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
-|Mindestreplikate für Commitverfügbarkeitsgruppen <sup>2</sup>|Funktionen für Hochverfügbarkeit befinden sich in der Planung.|
+|Always On-Failoverclusterinstanzen<sup>1</sup>| Nicht zutreffend Ähnliche Funktionen verfügbar.|
+|AlwaysOn-Verfügbarkeitsgruppen<sup>2</sup>|Dienstebene „Unternehmenskritisch“. In der Vorschauversion.|
+|Basis-Verfügbarkeitsgruppen <sup>2</sup>|Nicht zutreffend Ähnliche Funktionen verfügbar.|
+|Mindestreplikate für Commitverfügbarkeitsgruppen <sup>2</sup>|Dienstebene „Unternehmenskritisch“. In der Vorschauversion.|
 |Verfügbarkeitsgruppe ohne Cluster|Ja|
 |Datenbank sichern | Ja – `COPY_ONLY` Siehe [BACKUP – (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true).|
 |Sicherungskomprimierung|Ja|
@@ -48,7 +43,7 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 |Datenbankmomentaufnahme|Ja|
 |Schnelle Wiederherstellung|Ja|
 |Hinzufügen von Speicher im laufenden Systembetrieb und CPU|Ja|
-|Protokollversand|Ja| 
+|Protokollversand|Derzeit nicht verfügbar.|
 |Onlineseiten- und Onlinedateiwiederherstellung|Ja|
 |Online-Indizierung|Ja|
 |Onlineschemaänderung|Ja|
@@ -56,12 +51,9 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 
 <sup>1</sup> In dem Szenario, in dem ein Podfehler auftritt, wird eine neue SQL Managed Instance-Instanz gestartet und erneut an das persistente Volume angefügt, das die Daten enthält. [Hier erfahren Sie mehr über persistente Kubernetes-Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
-<sup>2</sup> In zukünftigen Releases werden Funktionen für Verfügbarkeitsgruppen bereitgestellt. 
+## <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
-
-###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
-
-| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+| Funktion | SQL Managed Instance mit Azure Arc-Unterstützung |
 |--|--|
 | columnstore | Ja |
 | Große Objektbinärdateien in gruppierten Columnstore-Indizes | Ja |
@@ -81,9 +73,9 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 | Verschachtelte Ausführung mit Tabellenwertfunktionen mit mehreren Anweisungen | Ja |
 | Verbesserungen beim massenhaften Einfügen | Ja |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
+## <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
 
-| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+| Funktion | SQL Managed Instance mit Azure Arc-Unterstützung |
 |--|--|
 | Sicherheit auf Zeilenebene | Ja |
 | Always Encrypted | Ja |
@@ -95,10 +87,13 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 | Benutzerdefinierte Rollen | Ja |
 | Eigenständige Datenbanken | Ja |
 | Verschlüsselung von Sicherungen | Ja |
+| SQL Server-Authentifizierung | Ja |
+| Azure Active Directory-Authentifizierung | Nein |
+| Windows-Authentifizierung | Nein |
 
-###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
+## <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
-| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+| Funktion | SQL Managed Instance mit Azure Arc-Unterstützung |
 |--|--|
 | Dedizierte Administratorverbindung | Ja |
 | PowerShell-Skriptunterstützung | Ja |
@@ -116,7 +111,7 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+| Funktion | SQL Managed Instance mit Azure Arc-Unterstützung |
 |--|--|
 | JSON | Ja |
 | Abfragespeicher | Ja | 
@@ -139,12 +134,12 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 
 Azure Arc-fähige SQL Managed Instance-Instanzen unterstützen verschiedene Datentools, die Ihnen bei der Verwaltung Ihrer Daten helfen können.
 
-| **Tool** | Azure Arc-fähige SQL Managed Instance-Instanz|
+| **Tool** | SQL Managed Instance mit Azure Arc-Unterstützung|
 | --- | --- | --- |
 | Azure-Portal <sup>1</sup> | Nein |
-| Azure CLI | Nein |
+| Azure CLI | Ja |
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | Ja |
-| Azure PowerShell | Ja |
+| Azure PowerShell | Nein |
 | [BACPAC Datei (Export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja |
 | [BACPAC Datei (Import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja |
 | [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja |
@@ -152,8 +147,9 @@ Azure Arc-fähige SQL Managed Instance-Instanzen unterstützen verschiedene Date
 | [SQL Server-PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ja |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Ja |
 
-<sup>1</sup> Das Azure-Portal wird nur zum Anzeigen von Azure Arc-fähigen SQL Managed Instance-Instanzen im schreibgeschützten Modus während der Vorschau verwendet.
+<sup>1</sup> Das Azure-Portal kann zum Erstellen, Anzeigen und Löschen von Azure Arc-fähigen SQL Managed Instance-Instanzen verwendet werden.  Updates können derzeit nicht über das Azure-Portal durchgeführt werden.
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ### <a name="unsupported-features--services"></a><a name="Unsupported"></a> Nicht unterstützte Features und Dienste
 

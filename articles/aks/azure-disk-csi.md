@@ -5,15 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 29bac1ea9de7fb81797733bbccce24688b4acc10
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 19606a1b529fcd7e6140d81361c5434324836198
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164343"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345886"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure-Datenträgern in Azure Kubernetes Service (AKS) (Vorschauversion)
-
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure-Datenträgern in Azure Kubernetes Service (AKS)
 Der Container Storage Interface-Treiber (CSI) von Azure-Datenträgern ist ein mit der [CSI-Spezifikation](https://github.com/container-storage-interface/spec/blob/master/spec.md) konformer Treiber, der von Azure Kubernetes Service (AKS) zum Verwalten des Lebenszyklus von Azure-Datenträgern verwendet wird.
 
 CSI ist ein Standard für die Bereitstellung beliebiger Block- und Dateispeichersysteme für containerisierte Workloads in Kubernetes. Durch die Übernahme und Verwendung von CSI kann AKS Plug-Ins schreiben, bereitstellen und durchlaufen, um neue oder verbesserte vorhandene Speichersysteme in Kubernetes verfügbar zu machen, ohne den Kerncode von Kubernetes zu ändern oder die Releasezyklen abwarten zu müssen.
@@ -26,8 +25,6 @@ Informationen zum Erstellen eines AKS-Clusters mit Unterstützung für CSI-Treib
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Verwenden persistenter CSI-Volumes mit Azure-Datenträgern
 
 Ein [persistentes Volume (PV)](concepts-storage.md#persistent-volumes) stellt ein Speicherelement dar, das für die Verwendung mit Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. In diesem Artikel erfahren Sie, wie Sie dynamisch PVs mit Azure-Datenträgern zur Verwendung durch einen einzelnen Pod in einem AKS-Cluster erstellen können. Informationen zur statischen Bereitstellung finden Sie unter [Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern](azure-disk-volume.md).
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
 

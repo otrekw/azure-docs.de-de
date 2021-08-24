@@ -1,15 +1,15 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe einer Azure Resource Manager-Vorlage
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 04/13/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: f1ea92383242cb5b1b1a1d09f33f947ff07113c5
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802448"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389805"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe einer ARM-Vorlage
 
@@ -558,7 +558,7 @@ Zum Verwenden der Erweiterung für den in Azure Defender integrierten Scanner st
       },
       "resources": [
         {
-          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }
@@ -595,7 +595,7 @@ Zum Verwenden der Erweiterung für den in Azure Defender integrierten Scanner st
       },
       "resources": [
         {
-          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }

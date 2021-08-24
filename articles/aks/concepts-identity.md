@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 77b35d776b8fcd71f26278a6fda8a102113bd570
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 13fe269431a84a00a8af073849cbd17d188c5175
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109844968"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122345884"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -78,6 +78,16 @@ Beim Erstellen eines Clusters mit bestimmten Attributen benötigen Sie die folge
 | `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` | Erforderlich, wenn ein Subnetz mit einer zugeordneten Routingtabelle in einer anderen Ressourcengruppe, z. B. einem VNET mit einer benutzerdefinierten Routingtabelle, verwendet wird. Erforderlich zum Überprüfen, ob für das Subnetz in der anderen Ressourcengruppe bereits ein Subnetz vorhanden ist. |
 | `Microsoft.Network/virtualNetworks/subnets/read` | Erforderlich, wenn ein internes Lastenausgleichsmodul in einer anderen Ressourcengruppe verwendet wird. Erforderlich für die Überprüfung, ob für das interne Lastenausgleichsmodul in der Ressourcengruppe bereits ein Subnetz vorhanden ist. |
 | `Microsoft.Network/privatednszones/*` | Erforderlich, wenn eine private DNS-Zone in einer anderen Ressourcengruppe, z. B. einer benutzerdefinierten privaten DNS-Zone, verwendet wird. |
+
+## <a name="aks-node-access"></a>AKS-Knotenzugriff
+
+Standardmäßig ist kein Knotenzugriff für AKS erforderlich.  Der folgende Zugriff ist für den Knoten notwendig, wenn eine bestimmte Komponente genutzt wird.
+
+| Zugriff | `Reason` |
+|---|---|
+| `kubelet` | Erforderlich, damit der Kunde dem ACR MSI-Zugriff gewähren kann. |
+| `http app routing` | Erforderlich für die Schreibberechtigung auf „beliebiger Name“.aksapp.io. |
+| `container insights` | Erforderlich, damit der Kunde dem Log Analytics-Arbeitsbereich Berechtigungen gewähren kann. |
 
 ## <a name="kubernetes-rbac"></a>RBAC in Kubernetes
 
