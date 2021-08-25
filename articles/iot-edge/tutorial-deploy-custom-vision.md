@@ -3,18 +3,17 @@ title: 'Tutorial: Bereitstellen einer Custom Vision-Klassifizierung auf einem Ge
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Custom Vision und IoT Edge ein als Container ausgeführtes Modell für maschinelles Sehen erstellen.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fbddd48e0e8007aa08619a3861dafe780f3b6be6
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e407b430d73e43454a71f897184b29e5c12fee44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438348"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740577"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -171,7 +170,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie diese Datei.
 
 >[!NOTE]
->In diesem Tutorial werden Administratoranmeldeinformationen für den Azure Container Registry-Dienst verwendet, weil diese gut für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

@@ -2,19 +2,18 @@
 title: 'Tutorial: Entwickeln eines Moduls für Linux-Geräte mithilfe von Azure IoT Edge'
 description: In diesem Tutorial wird Schritt für Schritt das Einrichten Ihres Entwicklungscomputers und der Cloudressourcen für die Entwicklung von IoT Edge-Modulen mit Linux-Containern für Linux-Geräte beschrieben.
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dfb71802b0aa0fae1bb853823b054ae49d700edf
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: dde83e48fe25e1f7e4d23462574e80c75323dde3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438276"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740581"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Linux-Containern
 
@@ -166,7 +165,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie die Änderungen an der ENV-Datei.
 
 >[!NOTE]
->In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen eine Authentifizierungsoption mit den geringsten Rechten wie Dienstprinzipale auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Azure Container Registry](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

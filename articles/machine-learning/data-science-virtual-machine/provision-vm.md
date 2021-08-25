@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 53c7eb899578a044ecca0900da722c594bdac8dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ba28c96b8359b95b1cd4797e922f2788d7b000e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745305"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Schnellstart: Einrichten der Data Science Virtual Machine für Windows
 
@@ -66,5 +66,5 @@ Sie können nun beginnen, die auf der VM installierten und konfigurierten Tools 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erkunden Sie die Tools in der DSVM-Instanz über das Menü **Start**.
-* Machen Sie sich mit Azure Machine Learning vertraut. Lesen Sie hierzu [Was ist Azure Machine Learning?](../overview-what-is-azure-ml.md), und probieren Sie die [Tutorials](../index.yml) aus.
+* Machen Sie sich mit Azure Machine Learning vertraut. Lesen Sie hierzu [Was ist Azure Machine Learning?](../overview-what-is-azure-machine-learning.md), und probieren Sie die [Tutorials](../index.yml) aus.
 * Lesen Sie den Artikel zu [Data Science mit einer Data Science Virtual Machine-Instanz für Windows in Azure](./vm-do-ten-things.md).

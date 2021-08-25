@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/13/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ee40828bcb83d81aee7f1ece06971decf8143370
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7338e5c8ef1e3f1fce6242b62153dd492de9e3a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746020"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Tutorial: Erstellen einer Node.js- und MongoDB-App in Azure
 
@@ -101,7 +101,7 @@ Sie können Node.js jederzeit beenden, indem Sie im Terminal `Ctrl+C` drücken.
 
 In diesem Schritt erstellen Sie eine MongoDB-Datenbank in Azure. Wenn Ihre App in Azure bereitgestellt ist, nutzt sie diese Clouddatenbank.
 
-Für MongoDB verwendet dieses Tutorial [Azure Cosmos DB](/azure/cosmos-db/). Cosmos DB unterstützt MongoDB-Clientverbindungen.
+Für MongoDB verwendet dieses Tutorial [Azure Cosmos DB](../cosmos-db/index.yml). Cosmos DB unterstützt MongoDB-Clientverbindungen.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -579,5 +579,5 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der App eine
 
 Oder sehen Sie sich weitere Ressourcen an:
 
-> [!div class="nextstepaction"]
-> [Konfigurieren der Node.js-App](configure-language-nodejs.md)
+- [Konfigurieren der Node.js-App](configure-language-nodejs.md)
+- [Referenz zu Umgebungsvariablen und App-Einstellungen](reference-app-settings.md)

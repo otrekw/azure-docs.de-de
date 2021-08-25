@@ -7,15 +7,16 @@ ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: quickstart
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 492d4a799f35d7fee4f500b48cbb31d2a9c5957f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 92969e95972586451fc2b5da20da2bf284191b3b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450003"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745723"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Bereitstellen eines virtuellen Linux-Computers, auf dem SQL Server ausgeführt wird, im Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

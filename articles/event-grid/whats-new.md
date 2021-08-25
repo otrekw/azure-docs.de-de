@@ -3,12 +3,12 @@ title: Neuigkeiten Azure Event Grid
 description: Hier finden Sie Informationen zu den Neuerungen in Azure Event Grid, z. B. aktuelle Versionshinweise, bekannte Probleme, Fehlerbehebungen, veraltete Funktionen und anstehende Änderungen.
 ms.topic: overview
 ms.date: 04/27/2021
-ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f516a9896f98c96e6f9cd2c651d9edac86474d14
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112466664"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068201"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Welche Neuerungen gibt es in Azure Event Grid?
 
@@ -85,14 +85,14 @@ Es werden fortlaufend Verbesserungen an Azure Event Grid vorgenommen. Dieser Art
 - Dieses Release entspricht der API-Version `2019-06-01`.
 - Es fügt Unterstützung für die folgenden neuen Funktionen hinzu:
     * [Domänen](event-domains.md)
-    * Paginierung und Suchfilter für Ressourcenlistenvorgänge. Ein Beispiel finden Sie unter [Themen: Auflisten nach Abonnement](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
+    * Paginierung und Suchfilter für Ressourcenlistenvorgänge. Ein Beispiel finden Sie unter [Themen: Auflisten nach Abonnement](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription).
     * [Service Bus-Warteschlange als Ziel](handler-service-bus.md)
     * [Erweiterte Filterung](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-preview (2019-03)
 - Dieses Release entspricht der API-Version 2019-02-01-preview.
 - Es fügt Unterstützung für die folgenden neuen Funktionen hinzu:
-    * Paginierung und Suchfilter für Ressourcenlistenvorgänge. Ein Beispiel finden Sie unter [Themen: Auflisten nach Abonnement](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription).
+    * Paginierung und Suchfilter für Ressourcenlistenvorgänge. Ein Beispiel finden Sie unter [Themen: Auflisten nach Abonnement](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription).
     * [Manuelles Erstellen/Löschen von Domänenthemen](how-to-event-domains.md)
     * [Service Bus-Warteschlange als Ziel](handler-service-bus.md)
 

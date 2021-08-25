@@ -3,19 +3,18 @@ title: 'Tutorial: Entwickeln von C#-Modulen für Windows mit Azure IoT Edge'
 description: In diesem Tutorial wird gezeigt, wie Sie IoT Edge-Module mit C#-Code erstellen und auf Windows-Geräten bereitstellen, auf denen IoT Edge ausgeführt wird.
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 84e5bbff11d0a5ff5d47ca43a3da54d1f1fb5555
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d7fe67fa9722328be1e730c18893032f98883df7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218854"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740638"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Tutorial: Entwickeln von C#-IoT Edge-Modulen mit Windows-Containern
 

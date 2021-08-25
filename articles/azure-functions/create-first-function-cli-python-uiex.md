@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e144304ae1b36ca02d4b8796e7994e87b09505d9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8bbd177e5cf9a6148179dfec7f7f6b6c0082cdde
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831094"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739841"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Python-Funktion über die Befehlszeile in Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "107831094"
 > - [PowerShell](create-first-function-cli-powershell.md)
 > - [TypeScript](create-first-function-cli-typescript.md)
 
-In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Python-Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der <abbr title="Eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung von <abbr title="Ein Azure-Dienst, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
+In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Python-Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der <abbr title="Eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung in <abbr title="Ein Azure-Dienst, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -35,7 +35,7 @@ Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
-+ Ein <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Ein <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 + [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x. 
   
@@ -53,7 +53,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-+ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> die Version 3.x installiert ist.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> Version 3.x installiert ist.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
@@ -145,7 +145,7 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     <details>
     <summary><strong>Was wird im Ordner „LocalFunctionProj“ erstellt?</strong></summary>
     
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
     </details>
 
 1. Fügen Sie Ihrem Projekt mithilfe des folgenden Befehls eine Funktion hinzu:
@@ -367,7 +367,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="7-invoke-the-function-on-azure"></a>7. Aufrufen der Funktion in Azure
 
-Da für Ihre Funktion ein HTTP-Trigger verwendet wird, können Sie sie aufrufen, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/.">cURL</abbr>. 
+Da für Ihre Funktion ein HTTP-Trigger verwendet wird, können Sie sie aufrufen, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/.">curl</abbr>. 
 
 # <a name="browser"></a>[Browser](#tab/browser)
 
