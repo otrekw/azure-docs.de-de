@@ -1,16 +1,16 @@
 ---
 title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: 51fbac59aef82d0f7a8edbb7ce271e2eb049b699
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5d7ec20ef744358fc393da42cd356bb30cf5579d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747576"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323028"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 

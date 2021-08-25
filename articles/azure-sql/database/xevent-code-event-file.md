@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/06/2020
-ms.openlocfilehash: 869f2c8ca5f0cbfb422c1aaa65907a2ad941e86a
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 9523a28ca191402ca4f1ec4bfb174edce359bf67
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112678140"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722873"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ziels „Ereignisdatei“ für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,12 +43,12 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
 - Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 - Jede Datenbank, in der eine Tabelle erstellt werden kann.
-  
+
   - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](single-database-create-quickstart.md).
 
 - SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion.
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
-  
+
   - Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
   - [Über diesen direkten Link zum Herunterladen.](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -442,9 +442,11 @@ GO
 Wenn das Ziel bei der Ausführung nicht angefügt wird, müssen Sie die Ereignissitzung beenden und dann erneut starten:
 
 ```sql
-ALTER EVENT SESSION ... STATE = STOP;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = STOP;
 GO
-ALTER EVENT SESSION ... STATE = START;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = START;
 GO
 ```
 
@@ -508,7 +510,7 @@ Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsof
 - Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch *C:\myeventdata.xel*. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
 - Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL**.
 - In der **ADD TARGET**-Klausel der **CREATE EVENT SESSION**-Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. *C:\myfile.xel*.
-  
+
   - Es wird kein Azure-Speicherkonto benötigt.
 
 ## <a name="more-information"></a>Weitere Informationen

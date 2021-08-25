@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Funktions-App auf Azure Arc'
 description: Beginnen Sie mit Azure Functions auf Azure Arc, indem Sie Ihre erste Funktions-App implementieren.
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: da00cc070e14490bcd3f4661d30b65bd97553c2e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 3a9c92e500e79b68688ec526baa2a77b8df2ccef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723007"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>Erstellen Sie Ihre erste Funktion auf Azure Arc (Vorschau)
 
@@ -96,7 +96,7 @@ In Azure Functions ist ein Funktionsprojekt die Einheit für die Bereitstellung 
     cd LocalFunctionProj
     ```
 
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Standardmäßig wird die Datei *local.settings.json* von der Versionskontrolle in der Datei *.gitignore* ausgeschlossen. Dieser Ausschluss ist darauf zurückzuführen, dass die Datei vertrauliche Informationen enthalten kann, die aus Azure heruntergeladen werden.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Standardmäßig wird die Datei *local.settings.json* von der Versionskontrolle in der Datei *.gitignore* ausgeschlossen. Dieser Ausschluss ist darauf zurückzuführen, dass die Datei vertrauliche Informationen enthalten kann, die aus Azure heruntergeladen werden.
 
 1. Fügen Sie dem Projekt über den unten gezeigten Befehl eine Funktion hinzu. Hierbei ist das `--name`-Argument der eindeutige Name Ihrer Funktion (HttpExample), mit dem `--template`-Argument wird der Trigger der Funktion (HTTP) angegeben.
 

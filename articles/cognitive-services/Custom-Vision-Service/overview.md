@@ -12,18 +12,24 @@ ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bilderkennung, bildbezeichner, app für bilderkennung, custom vision
-ms.openlocfilehash: e245c4882a06d5053e8781a48469d104bcaced23
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff90aedd43622c3f6fb696c15b3034b2a133322d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454784"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322283"
 ---
 # <a name="what-is-custom-vision"></a>Was ist Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Custom Vision ist ein Bilderkennungsdienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildbezeichner. Ein Bildbezeichner wendet entsprechend den visuellen Merkmalen auf einem Bild Bezeichnungen (die Klassen oder Objekte darstellen) auf Bilder an. Anders als beim Dienst für [maschinelles Sehen](../computer-vision/overview.md) können Sie bei Custom Vision die Bezeichnungen angeben und benutzerdefinierte Modelle für deren Erkennung trainieren.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+* In den [Schnellstarts](./getting-started-build-a-classifier.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten.
+* Die [Anleitungen](./test-your-model.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* Die [Tutorials](./iot-visual-alerts-tutorial.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
+<!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.-->
 
 ## <a name="what-it-does"></a>Funktionsbeschreibung
 

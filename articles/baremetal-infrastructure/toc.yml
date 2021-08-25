@@ -78,7 +78,7 @@
             - name: 'Bereitstellen von Azure Monitor für SAP-Lösungen: Azure PowerShell'
               href: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: Häufig gestellte Fragen zu Azure Monitor für SAP-Lösungen
-              href: ../virtual-machines/workloads/sap/azure-monitor-faq.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+              href: ../virtual-machines/workloads/sap/azure-monitor-faq.yml?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
         - name: Anleitung
           items:
             - name: HA-Einrichtung mit STONITH
@@ -91,8 +91,6 @@
               href: ../virtual-machines/workloads/sap/os-upgrade-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: Einrichten eines SMT-Servers für SUSE Linux
               href: ../virtual-machines/workloads/sap/hana-setup-smt.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-            - name: Migration von HLI zu einem virtuellen Azure-Computer
-              href: ../virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: Erwerben einer Reservierung für SAP HANA (große Instanzen)
               href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md
     - name: Oracle

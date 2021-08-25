@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit der REST-API'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe der REST-API eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 8a3570c8c6e5abd117e823c0ea1dae5f58a7846f
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: a9d79e9db4c79a0bf7795f31a2183f78c2e12a4a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323211"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322000"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit der REST-API
 
@@ -33,7 +33,7 @@ Verwenden Sie für die REST-API den Endpunkt [Verwaltungsgruppen – Erstellen o
 - REST-API-URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-05-01
   ```
 
 - Kein Anforderungstext
@@ -45,7 +45,7 @@ Falls im Azure-Portal ein anderer Name für die Verwaltungsgruppe angezeigt werd
 - REST-API-URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-05-01
   ```
 
 - Anforderungstext
@@ -63,7 +63,7 @@ In den vorstehenden Beispielen wird die neue Verwaltungsgruppe unter der Stammve
 - REST-API-URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-02-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-05-01
   ```
 
 - Anforderungstext
@@ -86,7 +86,7 @@ Verwenden Sie zum Entfernen der oben erstellten Verwaltungsgruppe den Endpunkt [
 - REST-API-URI
 
   ```http
-  DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-02-01
+  DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/Contoso?api-version=2020-05-01
   ```
 
 - Kein Anforderungstext

@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/01/2019
   ms.author: sngun
   ms.custom: seodec18
-  ms.openlocfilehash: 098f113b45f54ed0f74a30731a68708b06ee5663
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 8ded857f617ab61f6914635f41642b86c1848861
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907254"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122321784"
 title: Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,9 +84,6 @@ sections:
       * [Frageseite von Microsoft Q&A](/answers/topics/azure-cosmos-db.html)
 
       * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow eignet sich am besten für Fragen zur Programmierung. Vergewissern Sie sich, dass Ihre Frage [themenbezogen](https://stackoverflow.com/help/on-topic) ist und [so viele Details wie möglich enthält, damit sie klar und beantwortbar ist](https://stackoverflow.com/help/how-to-ask).
-
-
-      Wenn Sie neue Funktionen wünschen, erstellen Sie auf [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) eine neue Anforderung.
 
 
       Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
@@ -249,4 +246,4 @@ sections:
       [azure-portal]: https://portal.azure.com
 
       [query]: ./sql-query-getting-started.md
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nInformationen zu häufig gestellten Fragen anderer APIs finden Sie unter:\n\n* Häufig gestellte Fragen zur [Azure Cosmos DB-API für MongoDB](mongodb-api-faq.yml)\n* Häufig gestellte Fragen zur [Gremlin-API in Azure Cosmos DB](gremlin-api-faq.yml)\n* Häufig gestellte Fragen zur [Cassandra-API in Azure Cosmos DB](cassandra-faq.yml)\n* Häufig gestellte Fragen zur [Tabellen-API in Azure Cosmos DB](table-api-faq.yml)\n"
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nInformationen zu häufig gestellten Fragen anderer APIs finden Sie unter:\n\n* Häufig gestellte Fragen zur [Azure Cosmos DB-API für MongoDB](mongodb/mongodb-faq.yml)\n* Häufig gestellte Fragen zur [Gremlin-API in Azure Cosmos DB](gremlin-api-faq.yml)\n* Häufig gestellte Fragen zur [Cassandra-API in Azure Cosmos DB](cassandra/cassandra-faq.yml)\n* Häufig gestellte Fragen zur [Tabellen-API in Azure Cosmos DB](table/table-api-faq.yml)\n"

@@ -2,18 +2,17 @@
 title: 'Tutorial: Erstellen eines benutzerdefinierten Analysetools'
 titleSuffix: Azure Cognitive Search
 description: Erfahren Sie, wie Sie ein benutzerdefiniertes Analysetool erstellen, um die Qualität der Suchergebnisse in Azure Cognitive Search zu verbessern.
-manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/29/2021
-ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e07f698b25a80701e7e0f6d4c99eff508e43127f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99097656"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182283"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Tutorial: Erstellen eines benutzerdefinierten Analysetools für Telefonnummern
 

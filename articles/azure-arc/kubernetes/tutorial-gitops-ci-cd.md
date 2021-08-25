@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 9a1c0494d14c6bc5dad43e73fbf9a55cc8985445
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290015"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322204"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung
 
@@ -47,13 +47,13 @@ In diesem Tutorial wird davon ausgegangen, dass Sie mit Azure DevOps, Azure Repo
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8sconfiguration
+  az extension add --name k8s-configuration
   ```
   * Führen Sie die folgenden Befehle aus, um diese Erweiterungen auf die aktuelle Version zu aktualisieren:
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8sconfiguration
+    az extension update --name k8s-configuration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Importieren von Anwendungs- und GitOps-Repositorys in Azure Repos
@@ -89,13 +89,13 @@ Der CI/CD-Workflow füllt das Manifestverzeichnis mit zusätzlichen Manifesten z
 1. [Erstellen Sie eine neue GitOps-Verbindung](./tutorial-use-gitops-connected-cluster.md) mit Ihrem neu importierten Repository **arc-cicd-demo-gitops** in Azure Repos.
 
    ```azurecli
-   az k8sconfiguration create \
+   az k8s-configuration create \
       --name cluster-config \
       --cluster-name arc-cicd-cluster \
       --resource-group myResourceGroup \
       --operator-instance-name cluster-config \
       --operator-namespace cluster-config \
-      --repository-url https://dev.azure.com/<Your organization>/arc-cicd-demo-gitops \
+      --repository-url https://dev.azure.com/<Your organization>/<Your project>/_git/arc-cicd-demo-gitops \
       --https-user <Azure Repos username> \
       --https-key <Azure Repos PAT token> \
       --scope cluster \
@@ -108,7 +108,7 @@ Der CI/CD-Workflow füllt das Manifestverzeichnis mit zusätzlichen Manifesten z
    `--git-path=arc-cicd-cluster/manifests`
 
    > [!NOTE]
-   > Wenn Sie eine HTTPS-Verbindungszeichenfolge verwenden und Verbindungsprobleme auftreten, stellen Sie sicher, dass Sie das Benutzernamenpräfix in der URL auslassen. Bei `https://alice@dev.azure.com/contoso/arc-cicd-demo-gitops` muss z. B. `alice@` entfernt werden. Der Benutzer wird stattdessen mit `--https-user` angegeben (z. B. `--https-user alice`).
+   > Wenn Sie eine HTTPS-Verbindungszeichenfolge verwenden und Verbindungsprobleme auftreten, stellen Sie sicher, dass Sie das Benutzernamenpräfix in der URL auslassen. Bei `https://alice@dev.azure.com/contoso/project/_git/arc-cicd-demo-gitops` muss z. B. `alice@` entfernt werden. Der Benutzer wird stattdessen mit `--https-user` angegeben (z. B. `--https-user alice`).
 
 1. Überprüfen Sie den Status der Bereitstellung im Azure-Portal.
    * Bei erfolgreicher Bereitstellung wurden in Ihrem Cluster die Namespaces `dev` und `stage` erstellt.
@@ -181,7 +181,7 @@ Um zu vermeiden, dass für jeden Pod ein Geheimnis für Imagepullvorgänge festg
 | ENVIRONMENT_NAME | Entwicklung |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_FOLDER | `azure-vote-manifests` |
-| MANIFESTS_REPO | `azure-cicd-demo-gitops` |
+| MANIFESTS_REPO | `arc-cicd-demo-gitops` |
 | ORGANIZATION_NAME | Dies ist der Name der Azure DevOps-Organisation. |
 | PROJECT_NAME | Dies ist der Name des GitOps-Projekts in Azure DevOps. |
 | REPO_URL | Dies ist die vollständige URL für das GitOps-Repository. |
@@ -333,7 +333,7 @@ Falls Sie diese Anwendung nicht weiterverwenden möchten, löschen Sie die Resso
 
 1. Löschen Sie die Verbindung für die Azure Arc-GitOps-Konfiguration:
    ```azurecli
-   az k8sconfiguration delete \
+   az k8s-configuration delete \
    --name cluster-config \
    --cluster-name arc-cicd-cluster \
    --resource-group myResourceGroup \

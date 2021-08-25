@@ -32,7 +32,7 @@ productDirectory:
     - title: Azure-Formularerkennung
       imageSrc: ./media/form-recognizer.svg
       summary: Verwandeln Sie Dokumente in verwertbare Daten zu einem Bruchteil der Zeit und Kosten
-      url: ../cognitive-services/form-recognizer/index.yml
+      url: ./form-recognizer/index.yml
     - title: Azure Cognitive Search
       imageSrc: ./media/cognitive-search.svg
       summary: Verwenden der KI-gestützten Cloudsuche für Ihre mobilen Apps und Web-Apps
@@ -48,7 +48,7 @@ productDirectory:
     - title: Plastischer Reader in Azure
       imageSrc: ./media/immersive-reader.svg
       summary: Unterstützen von Benutzern beim Lesen und Verstehen von Text
-      url: ../cognitive-services/immersive-reader/index.yml
+      url: ./immersive-reader/index.yml
 additionalContent:
   sections:
     - title: Zusätzliche Ressourcen
@@ -64,11 +64,11 @@ additionalContent:
         - title: Schnellstartanleitungen zum Programmieren
           links:
             - text: Azure-Formularerkennung
-              url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
+              url: ./form-recognizer/quickstarts/get-started-with-form-recognizer.md
             - text: Azure Metrics Advisor
               url: ./metrics-advisor/quickstarts/web-portal.md
             - text: Plastischer Reader in Azure
-              url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
+              url: ./immersive-reader/quickstarts/client-libraries.md
             - text: Azure Cognitive Search
               url: ../search/search-get-started-portal.md
             - text: Azure Video Analyzer
