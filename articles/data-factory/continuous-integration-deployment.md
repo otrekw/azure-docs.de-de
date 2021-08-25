@@ -91,7 +91,7 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
 
     ![Stufenansicht](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Erstellen Sie eine neue Aufgabe. Suchen Sie nach **AMR-Vorlagenbereitstellung**, und wählen Sie dann **Hinzufügen** aus.
+    b.  Erstellen Sie eine neue Aufgabe. Suchen Sie nach **ARM-Vorlagenbereitstellung**, und wählen Sie dann **Hinzufügen** aus.
 
     c.  Wählen Sie unter der Aufgabe „Bereitstellung“ das Abonnement, die Ressourcengruppe und den Speicherort für das Data Factory-Ziel aus. Geben Sie die Anmeldeinformationen an, falls dies erforderlich ist.
 
