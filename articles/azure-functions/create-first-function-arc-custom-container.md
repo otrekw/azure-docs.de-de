@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Funktions-App auf Azure Arc in einem benut
 description: Starten Sie mit Azure Functions auf Azure Arc, indem Sie Ihre erste Funktions-App in einem benutzerdefinierten Linux-Container bereitstellen.
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 28079b9a7821350736647d49815c541f6a79d119
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746748"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>Erstellen Sie Ihre erste Funktion auf Azure Arc unter Verwendung eines benutzerdefinierten Containers (Vorschau)
 
@@ -101,7 +101,7 @@ In Azure Functions ist ein Funktionsprojekt der Kontext für eine oder mehrere e
     cd LocalFunctionProj
     ```
 
-    Dieser Ordner enthält die Dockerfile und andere Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Standardmäßig wird die Datei *local.settings.json* von der Versionskontrolle in der Datei *.gitignore* ausgeschlossen. Dieser Ausschluss ist darauf zurückzuführen, dass die Datei vertrauliche Informationen enthalten kann, die aus Azure heruntergeladen werden.
+    Dieser Ordner enthält die Dockerfile und andere Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Standardmäßig wird die Datei *local.settings.json* von der Versionskontrolle in der Datei *.gitignore* ausgeschlossen. Dieser Ausschluss ist darauf zurückzuführen, dass die Datei vertrauliche Informationen enthalten kann, die aus Azure heruntergeladen werden.
 
 1. Öffnen Sie die generierte `Dockerfile`, und suchen Sie das `3.0`-Tag für das Basisimage. Wenn ein `3.0`-Tag vorhanden ist, ersetzen Sie es durch ein `3.0.15885`-Tag. In einer JavaScript-Anwendung sollte die Docker-Datei z. B. so geändert werden, dass Sie `FROM mcr.microsoft.com/azure-functions/node:3.0.15885` enthält. Diese Version des Basisimages unterstützt die Bereitstellung in einem Kubernetes-Cluster mit Azure Arc-Unterstützung. 
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e6d06cb63b3fa52e83605abf565afdb7eb9e167b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dc5240d3b0d4e2fa7b209d5f1a3b8b3f9acd01c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691747"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738469"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, Azure Synapse Analytics, Data Factory und Power BI vertraut
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -164,7 +164,7 @@ Außerdem gibt es drei parametrisierte verknüpfte Dienste, die die Data Factor
 ![adf_verknüpftedienste](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
 Für die drei verknüpften Dienste gibt es drei entsprechende Datasets, die sich auf die Daten beziehen, die Sie in den Pipelineaktivitäten als Ein- oder Ausgaben verwenden. Sehen Sie sich jedes Dataset an, um verwendete Verbindungen und Parameter zu erkennen. _AzureBlob_ zeigt auf die Konfigurationsdatei, die die Quell- und Zieltabellen und -Spalten enthält, sowie auf die Tracker-Spalte in jeder Quelle.
-  
+
 ### <a name="data-warehouse-pattern-overview"></a>Übersicht Data Warehouse-Muster
 
 Azure Synapse wird als Analysespeicher verwendet, um Aggregation für die Mandantendaten auszuführen. In diesem Beispiel wird PolyBase zum Laden von Daten in das Data Warehouse verwendet. Rohdaten werden in Stagingtabellen geladen, die über eine Identitätsspalte verfügen, um Zeilen nachzuverfolgen, die in die Tabellen im Sternschema transformiert wurden. Die folgende Abbildung zeigt das Lademuster: ![Das Diagramm zeigt das Lademuster von Datenbanktabellen.](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
@@ -208,7 +208,7 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 
     ![anmeldung-in-power-bi](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
-5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.  
+5. Wählen Sie im linken Bereich **Datenbank** aus, und geben Sie dann als Benutzername *developer* und als Kennwort *P\@ssword1* ein. Klicken Sie auf **Verbinden**.
 
     ![datenbank-anmeldeseite](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 
@@ -244,7 +244,7 @@ Die Einblicke in Muster beim Ticketverkauf können zur Optimierung des Geschäft
 
 Gleichzeitig könnten sich einige Kunden von Wingtip Tickets darüber beschweren, dass sie nicht genügend Tickets verkaufen, um die Betriebskosten zu rechtfertigen. Möglicherweise zeigen die Daten auch eine Möglichkeit zur Verbesserung der Ticketverkäufe für Veranstaltungsorte, die bisher zu wenige Tickets verkaufen. Höhere Umsätzen würde auch den wahrgenommenen Wert des Diensts steigern. Klicken Sie mit der rechten Maustaste auf „fact_Tickets“, und wählen Sie **Neues Measure** aus. Geben Sie den folgenden Ausdruck für das neue Measure namens **AverageTicketsSold** ein:
 
-```sql
+```DAX
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 

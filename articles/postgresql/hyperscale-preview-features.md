@@ -7,13 +7,13 @@ ms.custom: mvc
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
-ms.date: 07/09/2021
-ms.openlocfilehash: 1e0f7c133a0ac0091355cba20d251333e6402212
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/03/2021
+ms.openlocfilehash: fd0fdd25b3dbaed8c9e98ecaf686e95f235375e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743184"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>Previewfunktionen für PostgreSQL – Hyperscale (Citus)
 
@@ -23,34 +23,7 @@ Azure Database for PostgreSQL Hyperscale (Citus) bietet Vorschauversionen für n
 
 Nachfolgend sind die Funktionen aufgeführt, die derzeit als Previewfunktionen verfügbar sind:
 
-* **[Tarif „Basic“:](concepts-hyperscale-tiers.md)** Führen Sie eine Servergruppe nur mithilfe eines Koordinatorknotens und ohne Workerknoten aus. Bietet eine kostengünstige Möglichkeit, erste Tests und Entwicklungsschritte durchzuführen und kleine Produktionsworkloads zu verarbeiten.
-* **[PostgreSQL 12 und 13:](concepts-hyperscale-versions.md)**
-  Verwenden Sie die neueste Datenbankversion in Ihrer Servergruppe.
-* **[Citus 10:](concepts-hyperscale-versions.md#citus-and-other-extension-versions)**
-  Wird automatisch für Servergruppen installiert, auf denen PostgreSQL 13 ausgeführt wird.
-* **[Spaltenbasierter Speicher:](concepts-hyperscale-columnar.md)**
-  Speichern Sie die Spalten (anstelle von Zeilen) ausgewählter Tabellen zusammenhängend auf dem Datenträger. Unterstützt die Komprimierung auf dem Datenträger. Eignet sich gut für Analyse- und Data Warehousing-Workloads.
-* **[Lesereplikate](howto-hyperscale-read-replicas-portal.md)** (derzeit nur in derselben Region): Alle Änderungen an der primären Servergruppe werden in ihrem Replikat widergespiegelt, und Abfragen für das Replikat führen nicht zu einer zusätzlichen Auslastung des ursprünglichen Replikats.
-  Replikate sind ein nützliches Tool zur Verbesserung der Leistung für schreibgeschützte Workloads.
-* **[Verwaltete PgBouncer-Instanz:](concepts-hyperscale-connection-pool.md)**
-  Ein Verbindungspoolfunktion, die gleichzeitige Verbindungen zahlreicher Clients mit der Servergruppe ermöglicht und gleichzeitig die Anzahl aktiver Verbindungen begrenzt. Sie erfüllt Verbindungsanforderungen und sorgt gleichzeitig für eine reibungslose Ausführung des Koordinatorknotens.
 * **[pgAudit:](concepts-hyperscale-audit.md)** Bietet eine detaillierte Sitzungs- und Objektüberwachungsprotokollierung über die standardmäßige PostgreSQL-Protokollierungseinheit. Die Erweiterung generiert Überwachungsprotokolle, die zum Bestehen bestimmter Behörden-, Finanz- oder ISO-Zertifizierungsaudits erforderlich sind.
-* **[UDF create_extension()](concepts-hyperscale-extensions.md#use-postgresql-extensions)** .
-  Ermöglicht das Erstellen von Erweiterungen, deren Installation Administratorzugriff erfordert.
-
-### <a name="available-regions-for-preview-features"></a>Verfügbare Regionen für Previewfunktionen
-
-Die pgAudit-Erweiterung ist in allen [von Hyperscale (Citus) unterstützten Regionen verfügbar](concepts-hyperscale-configuration-options.md#regions).
-Die anderen Previewfunktionen sind nur in der Region **USA, Osten** verfügbar.
-
-## <a name="does-my-server-group-have-access-to-preview-features"></a>Hat meine Servergruppe Zugriff auf Previewfunktionen?
-
-Navigieren Sie im Azure-Portal zur Seite **Übersicht**, um zu ermitteln, ob für Ihre Hyperscale (Citus)-Servergruppe Previewfunktionen aktiviert sind.
-Wird die Eigenschaft **Ebene: Basic (Vorschau)** oder **Ebene: Standard (Vorschau)** angezeigt, hat Ihre Servergruppe Zugriff auf Previewfunktionen.
-
-### <a name="how-to-get-access"></a>Erhalten von Zugriff
-
-Aktivieren Sie beim Erstellen einer neuen Hyperscale (Citus)-Servergruppe das Kontrollkästchen **Enable preview features** (Previewfunktionen aktivieren).
 
 ## <a name="contact-us"></a>Kontakt
 

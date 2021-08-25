@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4923ba6ead6b13f6b919c72304d4f389bac41386
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 1605bcc3a596276e8de99c45f290368691703c4f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287814"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752344"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -112,7 +112,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
 <details>
 <summary><strong>Was wird im Ordner „LocalFunctionProj“ erstellt?</strong></summary>
 
-Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. *Function.java*, *FunctionTest.java* und *pom.xml*. Er enthält auch Konfigurationsdateien mit dem Namen [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. *Function.java*, *FunctionTest.java* und *pom.xml*. Er enthält auch Konfigurationsdateien mit dem Namen [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 </details>
 
 <br/>
