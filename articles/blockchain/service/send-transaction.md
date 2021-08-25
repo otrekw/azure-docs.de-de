@@ -4,16 +4,18 @@ description: Tutorial zur Verwendung des Azure Blockchain Development Kit für d
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a38314b9dbc54750da7dfa81ece487c87b73884
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628644"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643283"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Tutorial: Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service
 
 In diesem Tutorial verwenden Sie das Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service. Außerdem verwenden Sie das Development Kit zum Ausführen einer Smart Contract-Funktion per Transaktion.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 Sie verwenden das Azure Blockchain Development Kit für Ethereum für folgende Zwecke:
 
@@ -81,14 +83,14 @@ Für das Azure Blockchain Development Kit wird Truffle zum Ausführen des Migrat
 
 ![Erfolgreich bereitgestellter Contract](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>Aufrufen einer Funktion des Contracts
+## <a name="call-a-contract-function&quot;></a>Aufrufen einer Funktion des Contracts
 Mit der Funktion **SendRequest** des Contracts **HelloBlockchain** wird die Zustandsvariable **RequestMessage** geändert. Die Änderung des Zustands eines Blockchainnetzwerks wird nicht per Transaktion durchgeführt. Sie können ein Skript erstellen, um die Funktion **SendRequest** per Transaktion auszuführen.
 
 1. Erstellen Sie im Stammverzeichnis Ihres Truffle-Projekts eine neue Datei, und geben Sie ihr den Namen `sendrequest.js`. Fügen Sie der Datei den folgenden Web3-JavaScript-Code hinzu.
 
     ```javascript
     var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
-        
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {
@@ -144,7 +146,7 @@ Smart Contract-Funktionen können den aktuellen Wert von Zustandsvariablen zurü
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
-    
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {

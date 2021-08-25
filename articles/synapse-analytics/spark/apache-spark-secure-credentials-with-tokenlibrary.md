@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: a5355a449cb55f671c59da55ba4d038e9b4b2ec5
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 1290fdb907272d4a47e4b11430fc47955a259951
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860860"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>Schützen von Anmeldeinformationen mit verknüpften Diensten per Tokenbibliothek
 
@@ -25,7 +25,7 @@ Von Synapse wird standardmäßig ein AAD-Passthrough (Azure Active Directory) ge
 
 Beim Abrufen von Geheimnissen aus Azure Key Vault empfehlen wir Ihnen die Erstellung eines verknüpften Diensts für Ihre Azure Key Vault-Instanz.  Stellen Sie sicher, dass die verwaltete Dienstidentität (Managed Service Identity, MSI) des Synapse-Arbeitsbereichs über Berechtigungen für den Geheimnisabruf für Ihre Azure Key Vault-Instanz verfügt.  Synapse führt die Authentifizierung bei Azure Key Vault mit der verwalteten Dienstidentität des Synapse-Arbeitsbereichs durch. Wenn Sie ohne verknüpften Dienst eine direkte Verbindung mit Azure Key Vault herstellen, werden für die Authentifizierung Ihre Benutzeranmeldeinformationen von Azure Active Directory verwendet.
 
-Weitere Informationen finden Sie unter [Verknüpfte Dienste](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [Verknüpfte Dienste](../../data-factory/concepts-linked-services.md?context=/azure/synapse-analytics/context/context).
 
 ## <a name="usage"></a>Verwendung
 

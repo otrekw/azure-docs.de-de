@@ -4,15 +4,15 @@ description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, 
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: f4cb4807e6f2620bb76649fc7c7dcce7363cf4a4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ecb83eb2b2cbdbbb91eb9b7dbf21c106ff0cab04
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637993"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mithilfe von PowerShell
 

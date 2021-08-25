@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 92f89bafe1b96b575d12e8a09289a05c2379d837
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 126a7222b88c7925ec0e6ef1386e5b087d598f46
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280019"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122643443"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
@@ -25,7 +25,10 @@ ms.locfileid: "106280019"
 
 Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie unter [Codierungskonzept](encode-concept.md).
 
-In diesem Tutorial wird gezeigt, wie Sie eine Datei anhand einer URL codieren und das Video mit Azure Media Services über REST streamen können. 
+In diesem Tutorial wird gezeigt, wie Sie eine Datei anhand einer URL codieren und das Video mit Azure Media Services über REST streamen können.
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
+
 
 ![Video abspielen](./media/stream-files-tutorial-with-api/final-video.png)
 

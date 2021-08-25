@@ -1,15 +1,15 @@
 ---
-title: 'Erstellen einer JavaScript-Funktion über die Befehlszeile: Azure Functions'
+title: 'Erstellen einer Java-Funktion über die Befehlszeile: Azure Functions'
 description: Erfahren Sie, wie Sie eine JavaScript-Funktion über die Befehlszeile erstellen und anschließend das lokale Node.js-Projekt für das serverlose Hosten in Azure Functions veröffentlichen.
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb162bcff647e9e1dbced19ddea33a8f3c54b58e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 64f01af6f14bb34aac93fd1aa805e4aceb564608
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831940"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751499"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer JavaScript-Funktion über die Befehlszeile in Azure
 
@@ -76,7 +76,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     cd LocalFunctionProj
     ```
 
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
 1. Fügen Sie dem Projekt über den unten gezeigten Befehl eine Funktion hinzu. Hierbei ist das `--name`-Argument der eindeutige Name Ihrer Funktion (HttpExample), mit dem `--template`-Argument wird der Trigger der Funktion (HTTP) angegeben.
 

@@ -1,10 +1,4 @@
-### YamlMime:Yaml
-ms.openlocfilehash: d67eefeb88752d32518c46ff76ea2127ef968182
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687330"
+### YamlMime:FAQ
 metadata:
   title: Wartungsfenster – Häufig gestellte Fragen
   description: Häufig gestellte Fragen zur Konfiguration von Wartungsfenstern für Azure SQL-Datenbank und Azure SQL Managed Instance.
@@ -14,9 +8,15 @@ metadata:
   ms.topic: reference
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: sstein
+  ms.reviewer: mathoma
   ms.custom: 
   ms.date: 03/23/2021
+  ms.openlocfilehash: 48d46ca71d76d46cb43fbed8fee8dcbe67e4ce3d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121739682"
 title: Wartungsfenster – Häufig gestellte Fragen
 summary: In diesem Artikel werden häufig gestellte Fragen zum Wartungsfenster für [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) beantwortet.
 sections:

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77b41a73ca092f36f38d35f525bc381e29848396
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.openlocfilehash: 9b52bf79589040a585d50700b4369145c7fd98c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113037956"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737275"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Storage 
 
@@ -82,7 +82,7 @@ Sie können die verwaltete Identität des virtuellen Computers verwenden, um die
 Ausführliche Informationen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 >[!NOTE]
-> Weitere Informationen zu den verschiedenen Rollen, die Sie zum Gewähren von Berechtigungen für den Speicher verwenden können, finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
+> Weitere Informationen zu den verschiedenen Rollen, die Sie zum Gewähren von Berechtigungen für den Speicher verwenden können, finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights).
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Erhalten eines Zugriffstokens und seine Verwendung zum Aufrufen von Azure Storage
 
 Azure Storage unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit der MSI abgerufen wurden, direkt angenommen werden können. Dieser Umstand ist Teil der Azure Storage-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.

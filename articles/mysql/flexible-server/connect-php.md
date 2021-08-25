@@ -7,14 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b207091a3c38fb2842a53a9c7c4627fd5c0b790
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109606"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643404"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verwenden von PHP zum Herstellen einer Verbindung mit und zum Abfragen von Daten in einer Azure Database for MySQL Flexible Server-Instanz
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
@@ -22,6 +24,7 @@ ms.locfileid: "105109606"
 In diesem Schnellstart wird gezeigt, wie Sie mithilfe einer [PHP](https://secure.php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure Database for MySQL Flexible Server-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei diesem Artikel wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL Flexible Server haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 
 - [Erstellen einer Azure Database for MySQL Flexible Server-Instanz mit dem Azure-Portal](./quickstart-create-server-portal.md)
