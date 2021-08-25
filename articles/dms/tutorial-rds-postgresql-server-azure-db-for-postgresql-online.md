@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 534790f7a63f8fbf11e80c71c00cf1b98ec4b5da
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6c42c7df67baeba56213000175e0f5c2a50054d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063940"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638486"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Tutorial: Onlinemigration von RDS PostgreSQL mit DMS zu Azure Database for PostgreSQL
 
@@ -109,19 +109,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   > [!NOTE]
    > Der Migrationsdienst verwaltet intern die Aktivierung/Deaktivierung von Fremdschlüsseln und Triggern, um eine zuverlässige und stabile Datenmigration zu gewährleisten. Daher müssen Sie sich keine Gedanken über Änderungen am Schema der Zieldatenbank machen.
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-   ![Abonnements im Portal anzeigen](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-subscription1.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-    ![Ressourcenanbieter anzeigen](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-resource-provider.png)
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-an-instance-of-azure-database-migration-service"></a>Erstellen einer Instanz von Azure Database Migration Service
 

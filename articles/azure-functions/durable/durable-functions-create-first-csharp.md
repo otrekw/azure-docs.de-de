@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: da5819c6a40e1d5a513e9d742702d5435f4efbeb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: cbbe782260852194352ae2db508ce3dbaa1867ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739882"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -53,14 +53,14 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | C# | Erstellen Sie ein lokales C#-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v3 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
     | Auswählen einer Vorlage für die erste Funktion Ihres Projekts | Vorerst überspringen | |
     | Auswählen, wie Sie Ihr Projekt öffnen möchten | Im aktuellen Fenster | Öffnet VS Code wieder im ausgewählten Ordner. |
 
-Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem Ordner erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-run-local.md#local-settings-file).
+Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem Ordner erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-develop-local.md#local-settings-file).
 
 ## <a name="add-functions-to-the-app"></a>Hinzufügen von Funktionen zur App
 
@@ -70,7 +70,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | DurableFunctionsOrchestration | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestration | Der Name der Klasse, in der Funktionen erstellt werden. |
@@ -78,7 +78,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Wenn Sie von VS Code zum Auswählen eines Speicherkontos aufgefordert werden, wählen Sie **Speicherkonto auswählen** aus. Geben Sie bei den Eingabeaufforderungen die folgenden Informationen an, um ein neues Speicherkonto in Azure zu erstellen:
 
-    | Prompt | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen des Abonnements | *Name Ihres Abonnements* | Auswählen des Azure-Abonnements |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos |  |

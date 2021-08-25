@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 521a6a159bd86b7480ce705a83ac3b56ee8c150f
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 2eec691689f709a945df81222d906ab0d15063ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689116"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638457"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
@@ -95,19 +95,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   > [!NOTE]
   > Beim Migrieren einer Datenbank, die durch [Transparent Data Encryption](../azure-sql/database/transparent-data-encryption-tde-overview.md) geschützt ist, zu einer verwalteten Instanz mithilfe der Onlinemigration muss das entsprechende Zertifikat von der lokalen oder der SQL Server-Instanz auf der Azure-VM vor der Datenwiederherstellung migriert werden. Eine ausführliche Anleitung finden Sie unter [Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Instanz](../azure-sql/database/transparent-data-encryption-tde-overview.md).
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrieren des Ressourcenanbieters „Microsoft.DataMigration“
-
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste** und anschließend auf **Abonnements**.
-
-    ![Abonnements im Portal anzeigen](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)
-
-2. Wählen Sie das Abonnement aus, in dem Sie die Azure Database Migration Service-Instanz erstellen möchten, und klicken Sie dann auf **Ressourcenanbieter**.
-
-    ![Ressourcenanbieter anzeigen](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
-
-3. Suchen Sie nach „Migration“, und wählen Sie rechts neben **Microsoft.DataMigration** die Option **Registrieren** aus.
-
-    ![Registrieren des Ressourcenanbieters](media/tutorial-sql-server-to-managed-instance-online/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Erstellen einer Instanz von Azure Database Migration Service
 

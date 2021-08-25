@@ -4,24 +4,27 @@ description: Dieser Schnellstart enthält mehrere Ruby-Codebeispiele, die Sie nu
 author: savjani
 ms.author: pariks
 ms.service: mysql
-ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
+ms.custom: mvc
 ms.date: 5/26/2020
-ms.openlocfilehash: 4eba3fabee50e0011d5a63297c726a9647dd84c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b250d7895e878cb1d422903517337a0eed160757
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97831532"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643412"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Ruby zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Ruby](https://www.ruby-lang.org)-Anwendung und [mysql2](https://rubygems.org/gems/mysql2)-Gem auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
+
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -29,9 +32,11 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 > Sicherstellen, dass der IP-Adresse, über die Sie eine Verbindung herstellen, die Firewallregeln des Servers über das [Azure-Portal](./howto-manage-firewall-using-portal.md) oder die [Azure CLI](./howto-manage-firewall-using-cli.md) hinzugefügt wurden
 
 ## <a name="install-ruby"></a>Installieren von Ruby
+
 Installieren Sie Ruby, Gem und die MySQL2-Bibliothek auf Ihrem eigenen Computer.
 
 ### <a name="windows"></a>Windows
+
 1. Laden Sie Version 2.3 von [Ruby](https://rubyinstaller.org/downloads/) herunter, und installieren Sie sie.
 2. Starten Sie über das Menü „Start“ eine neue Eingabeaufforderung (cmd).
 3. Wechseln Sie in das Ruby-Verzeichnis für Version 2.3. `cd c:\Ruby23-x64\bin`
@@ -40,12 +45,14 @@ Installieren Sie Ruby, Gem und die MySQL2-Bibliothek auf Ihrem eigenen Computer.
 6. Erstellen Sie das Mysql2-Modul für Ruby, indem Sie Gem mit dem Befehl `gem install mysql2` ausführen.
 
 ### <a name="macos"></a>macOS
+
 1. Installieren Sie Ruby per Homebrew, indem Sie den Befehl `brew install ruby` ausführen. Weitere Installationsoptionen finden Sie in der [Installationsdokumentation](https://www.ruby-lang.org/en/documentation/installation/#homebrew) zu Ruby.
 2. Überprüfen Sie die Ruby-Installation, indem Sie den Befehl `ruby -v` ausführen, um die installierte Version anzuzeigen.
 3. Überprüfen Sie die Gem-Installation, indem Sie den Befehl `gem -v` ausführen, um die installierte Version anzuzeigen.
 4. Erstellen Sie das Mysql2-Modul für Ruby, indem Sie Gem mit dem Befehl `gem install mysql2` ausführen.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
+
 1. Installieren Sie Ruby, indem Sie den Befehl `sudo apt-get install ruby-full` ausführen. Weitere Installationsoptionen finden Sie in der [Installationsdokumentation](https://www.ruby-lang.org/en/documentation/installation/) zu Ruby.
 2. Überprüfen Sie die Ruby-Installation, indem Sie den Befehl `ruby -v` ausführen, um die installierte Version anzuzeigen.
 3. Installieren Sie die neuesten Updates für Gem, indem Sie den Befehl `sudo gem update --system` ausführen.
@@ -55,6 +62,7 @@ Installieren Sie Ruby, Gem und die MySQL2-Bibliothek auf Ihrem eigenen Computer.
 7. Erstellen Sie das mysql2-Modul für Ruby, indem Sie Gem mit dem Befehl `sudo gem install mysql2` ausführen.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
+
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
@@ -64,17 +72,20 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
  :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Servername für Azure-Datenbank für MySQL":::
 
 ## <a name="run-ruby-code"></a>Ausführen von Ruby-Code
+
 1. Fügen Sie den Ruby-Code aus den Abschnitten unten in Textdateien ein, und speichern Sie dann die Dateien in einem Projektordner mit der Dateierweiterung „.rb“, z.B. `C:\rubymysql\createtable.rb` oder `/home/username/rubymysql/createtable.rb`.
 2. Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie mit `cd rubymysql` in das Verzeichnis Ihres Projektordners.
 3. Geben Sie anschließend den Ruby-Befehl gefolgt vom Dateinamen ein, z.B. `ruby createtable.rb`, um die Anwendung auszuführen.
 4. Unter Windows müssen Sie unter Umständen den vollständigen Pfad verwenden, um die Ruby-Anwendung zu starten, z.B. `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`, wenn sich die Ruby-Anwendung nicht unter dem Pfad der Umgebungsvariablen befindet.
 
 ## <a name="connect-and-create-a-table"></a>Herstellen einer Verbindung und Erstellen einer Tabelle
+
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und eine Tabelle zu erstellen, indem Sie eine SQL-Anweisung des Typs **CREATE TABLE** gefolgt von SQL-Anweisungen des Typs **INSERT INTO** zum Hinzufügen von Zeilen zur Tabelle nutzen.
 
 Im Code wird die mysql2::client-Klasse verwendet, um eine Verbindung mit dem MySQL-Server herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die Befehle DROP, CREATE TABLE und INSERT INTO auszuführen. Rufen Sie zum Schluss ```close()``` auf, um die Verbindung vor dem Beenden zu schließen.
 
 Ersetzen Sie die Zeichenfolgen `host`, `database`, `username` und `password` durch Ihre eigenen Werte.
+
 ```ruby
 require 'mysql2'
 
@@ -104,10 +115,12 @@ begin
     puts 'Inserted 3 rows of data.'
 
 # Error handling
+
 rescue Exception => e
     puts e.message
 
 # Cleanup
+
 ensure
     client.close if client
     puts 'Done.'
@@ -115,6 +128,7 @@ end
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen.
 
 Im Code wird eine mysql2::client-Klasse verwendet, um mit der ```new()```-Methode eine Verbindung mit Azure Database for MySQL herzustellen. Anschließend wird die ```query()```-Methode aufgerufen, um die SELECT-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
@@ -143,10 +157,12 @@ begin
     puts 'Read ' + resultSet.count.to_s + ' row(s).'
 
 # Error handling
+
 rescue Exception => e
     puts e.message
 
 # Cleanup
+
 ensure
     client.close if client
     puts 'Done.'
@@ -154,6 +170,7 @@ end
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu aktualisieren.
 
 Im Code wird eine .new()-Methode der [mysql2::client](https://rubygems.org/gems/mysql2-client-general_log)-Klasse verwendet, um eine Verbindung mit der Azure-Datenbank für MySQL herzustellen. Dann wird die Methode ```query()``` aufgerufen, um die UPDATE-Befehle auszuführen. Anschließend wird die ```close()```-Methode aufgerufen, um die Verbindung vor dem Beenden zu schließen.
@@ -179,18 +196,20 @@ begin
    puts 'Updated 1 row of data.'
 
 # Error handling
+
 rescue Exception => e
     puts e.message
 
 # Cleanup
+
 ensure
     client.close if client
     puts 'Done.'
 end
 ```
 
-
 ## <a name="delete-data"></a>Löschen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen.
 
 Im Code wird die [mysql2::client](https://rubygems.org/gems/mysql2/)-Klasse verwendet, um eine Verbindung mit dem MySQL-Server herzustellen, den DELETE-Befehl auszuführen und dann die Verbindung mit dem Server zu beenden.
@@ -216,10 +235,14 @@ begin
     puts 'Deleted 1 row.'
 
 # Error handling
+
+
 rescue Exception => e
     puts e.message
 
 # Cleanup
+
+
 ensure
     client.close if client
     puts 'Done.'
@@ -237,9 +260,9 @@ az group delete \
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
-> [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md) <br/>
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zum MySQL2-Client](https://rubygems.org/gems/mysql2-client-general_log) <br/>
+> [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md)
 
+> [!div class="nextstepaction"]
+> [Weitere Informationen zum MySQL2-Client](https://rubygems.org/gems/mysql2-client-general_log)

@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Graph-Beispielabfragen für Azure Policy
 description: Azure Resource Graph-Beispielabfragen für Azure Policy, die die Verwendung von Ressourcentypen und Tabellen für den Zugriff auf Azure Policy in Zusammenhang mit den Ressourcen und Eigenschaften veranschaulichen.
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 30908c9e4fef6ee5bdd33c8f5a59eb0c22e30634
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c1757d475fde691bf3938298d70535cce491be52
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460726"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860619"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-policy"></a>Azure Resource Graph-Beispielabfragen für Azure Policy
 
@@ -27,5 +27,5 @@ Diese Seite zeigt eine Sammlung von [Azure Resource Graph](../../resource-graph/
 
 - Erfahren Sie mehr über die [Abfragesprache](../../resource-graph/concepts/query-language.md).
 - Erfahren Sie mehr über das [Erkunden von Ressourcen](../../resource-graph/concepts/explore-resources.md).
-- Hier finden Sie Beispiele für [einfache Sprachabfragen](../../resource-graph/samples/starter.md).
-- Hier finden Sie Beispiele für [erweiterte Sprachabfragen](../../resource-graph/samples/advanced.md).
+- Sehen Sie sich Beispiele für [einfache Sprachabfragen](../../resource-graph/samples/starter.md) an.
+- Sehen Sie sich Beispiele für [erweiterte Sprachabfragen](../../resource-graph/samples/advanced.md) an.

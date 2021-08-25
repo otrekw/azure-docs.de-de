@@ -8,14 +8,16 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 723d3d3bfb36b17ebdacf9d5961b10071a12ab42
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9f0254738c18415ea34045249569216b7235b2d1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863459"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643436"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Connector/C++ zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Thema wird davon ausgegangen, dass Sie mit der C++-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.
 

@@ -4,16 +4,18 @@ description: Stellen Sie mithilfe von MetaMask eine Verbindung mit einem Azure B
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01eeb187d1d1dd314d008c92559453e1edb67b27
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530436"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643292"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts
 
 In diesem Schnellstart verwenden Sie MetaMask, um eine Verbindung mit einem Azure Blockchain-Netzwerk herzustellen. Zudem verwenden Sie Remix, um einen Smart Contract bereitzustellen. Bei MetaMask handelt es sich um eine Browsererweiterung, die für die Verwaltung von Ether-Wallets und für Smart Contract-Aktionen verwendet wird.
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,18 +70,18 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 
     ```solidity
     pragma solidity ^0.5.0;
-             
+
     contract simple {
         uint balance;
-                 
+
         constructor() public{
             balance = 0;
         }
-                 
+
         function add(uint _num) public {
             balance += _num;
         }
-                 
+
         function get() public view returns (uint){
             return balance;
         }

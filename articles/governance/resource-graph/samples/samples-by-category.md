@@ -1,15 +1,15 @@
 ---
 title: Liste der Azure Resource Graph-Beispielabfragen nach Kategorie
 description: Auflisten von Beispielabfragen für Azure Resource Graph. Zu den Kategorien zählen Tags, Azure Advisor, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 07/21/2021
+ms.date: 08/13/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 6caff29ddf640d2da8d8f2d82045944527c9fd95
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 88843e10de8edc1235c007ab1709eb9c7285e3a2
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457107"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068347"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>Azure Resource Graph-Beispielabfragen nach Kategorie
 
@@ -27,6 +27,10 @@ Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des 
 ## <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-fähiges Kubernetes
 
 [!INCLUDE [azure-resource-graph-samples-cat-azure-arc-enabled-kubernetes](../../../../includes/resource-graph/samples/bycat/azure-arc-enabled-kubernetes.md)]
+
+## <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
+
+[!INCLUDE [azure-resource-graph-samples-cat-azure-arc-enabled-servers](../../../../includes/resource-graph/samples/bycat/azure-arc-enabled-servers.md)]
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
@@ -48,7 +52,7 @@ Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des 
 
 [!INCLUDE [azure-resource-graph-samples-cat-azure-policy](../../../../includes/resource-graph/samples/bycat/azure-policy.md)]
 
-## <a name="azure-policy-guest-configuration"></a>Azure Policy-Gastkonfiguration
+## <a name="azure-policy-guest-configuration"></a>Azure Policy-Gastkonfiguration
 
 [!INCLUDE [azure-resource-graph-samples-cat-azure-policy-guest-configuration](../../../../includes/resource-graph/samples/bycat/azure-policy-guest-configuration.md)]
 
@@ -76,9 +80,17 @@ Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des 
 
 [!INCLUDE [azure-resource-graph-samples-cat-general](../../../../includes/resource-graph/samples/bycat/general.md)]
 
+## <a name="management-groups"></a>Verwaltungsgruppen
+
+[!INCLUDE [azure-resource-graph-samples-cat-management-groups](../../../../includes/resource-graph/samples/bycat/management-groups.md)]
+
 ## <a name="networking"></a>Netzwerk
 
 [!INCLUDE [azure-resource-graph-samples-cat-networking](../../../../includes/resource-graph/samples/bycat/networking.md)]
+
+## <a name="resource-health"></a>Ressourcenintegrität
+
+[!INCLUDE [azure-resource-graph-samples-cat-resource-health](../../../../includes/resource-graph/samples/bycat/resource-health.md)]
 
 ## <a name="tags"></a>`Tags`
 

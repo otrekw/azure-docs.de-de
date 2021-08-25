@@ -8,14 +8,16 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 0da32fb404972556a1c4c964eec692bad20a4db1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa846f8d04f883218ba1b67ad3f5fd41f31f83aa
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94535757"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643428"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Go zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Windows, Linux (Ubuntu) und macOS (Apple) mithilfe von Code in der Programmiersprache [Go](https://golang.org/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Go-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
